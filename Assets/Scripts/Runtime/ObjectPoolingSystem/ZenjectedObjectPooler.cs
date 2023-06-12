@@ -2,7 +2,7 @@ using Plugins.ObjectPooler;
 using UnityEngine;
 using Zenject;
 
-namespace ObjectPoolingSystem
+namespace Runtime.ObjectPoolingSystem
 {
     public class ZenjectedObjectPooler : ObjectPooler
     {
