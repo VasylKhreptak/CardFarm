@@ -1,4 +1,4 @@
-namespace Runtime.Cards
+namespace Cards
 {
     public enum CardType
     {

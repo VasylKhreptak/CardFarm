@@ -1,9 +1,9 @@
 ﻿using Providers.Core;
-using UnityEngine.EventSystems;
+using UI;
 
 namespace Providers
 {
-    public class SafeAreaProvider : SceneInstanceProvider<UIBehaviour>
+    public class SafeAreaProvider : SceneInstanceProvider<TouchArea>
     {
 
     }

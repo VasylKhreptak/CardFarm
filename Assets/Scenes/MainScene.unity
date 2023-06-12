@@ -257,6 +257,8 @@ GameObject:
   - component: {fileID: 255965149}
   - component: {fileID: 255965151}
   - component: {fileID: 255965150}
+  - component: {fileID: 255965154}
+  - component: {fileID: 255965153}
   - component: {fileID: 255965152}
   m_Layer: 5
   m_Name: SafeAreaBehaviour
@@ -335,7 +337,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7902c54109ed444ba0df694c9bad990c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 255965150}
+  _target: {fileID: 255965154}
+--- !u!114 &255965153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255965148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219153b129757de43abc1b63b7dea3c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviour: {fileID: 255965150}
+--- !u!114 &255965154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255965148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fc1245b0a7f044d9109fc8dc5f8795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviour: {fileID: 255965150}
+  _touchCounter: {fileID: 255965153}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
