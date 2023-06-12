@@ -3,6 +3,7 @@ using Providers;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using ZoomLogic.Core;
 
 namespace ZoomLogic
 {
@@ -44,7 +45,7 @@ namespace ZoomLogic
         {
             StopZooming();
 
-            _zoomSubscription = _zoomHandler.Zoom.Subscribe(Zoom);
+            _zoomSubscription = _zoomHandler.SmoothedZoom.Subscribe(Zoom);
         }
 
         private void StopZooming()

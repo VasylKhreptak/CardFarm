@@ -4,18 +4,23 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace ZoomLogic
+namespace ZoomLogic.Core
 {
     public class ZoomHandler : MonoBehaviour
     {
+        [Header("Preferences")]
+        [SerializeField] private float _zoomSmoothSpeed = 10f;
+
         private IDisposable _touchCountDisposable;
         private IDisposable _zoomUpdateSubscription;
 
         private FloatReactiveProperty _zoom = new FloatReactiveProperty();
+        private FloatReactiveProperty _smoothedZoom = new FloatReactiveProperty();
 
         private float _lastZoomDistance;
 
         public IReadOnlyReactiveProperty<float> Zoom => _zoom;
+        public IReadOnlyReactiveProperty<float> SmoothedZoom => _smoothedZoom;
 
         private SafeAreaProvider _safeAreaProvider;
 
@@ -35,6 +40,11 @@ namespace ZoomLogic
         private void OnDisable()
         {
             ClearSubscriptions();
+        }
+
+        private void Update()
+        {
+            _smoothedZoom.Value = Mathf.Lerp(_smoothedZoom.Value, _zoom.Value, _zoomSmoothSpeed * Time.deltaTime);
         }
 
         #endregion
