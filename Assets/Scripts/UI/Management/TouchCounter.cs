@@ -3,7 +3,7 @@ using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace UI
+namespace UI.Management
 {
     public class TouchCounter : MonoBehaviour
     {

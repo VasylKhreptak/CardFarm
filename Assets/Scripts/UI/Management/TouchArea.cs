@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace UI
+namespace UI.Management
 {
     public class TouchArea : MonoBehaviour
     {
