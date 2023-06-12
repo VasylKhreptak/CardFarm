@@ -80,7 +80,7 @@ namespace ZoomLogic
                     float currentDistance = GetTouchDistance();
                     float delta = currentDistance - _lastZoomDistance;
                     _lastZoomDistance = currentDistance;
-                    _zoom.Value = delta;
+                    _zoom.Value = delta * Time.deltaTime;
                 });
         }
 
