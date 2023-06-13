@@ -3919,6 +3919,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DamageableCard
       objectReference: {fileID: 0}
+    - target: {fileID: 7073966988811423101, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d794782d0ddca224998105c67e750aef, type: 3}
 --- !u!1001 &3799863883707387782
