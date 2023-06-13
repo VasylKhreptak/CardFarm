@@ -1,5 +1,4 @@
 using System;
-using CameraMove.Core;
 using Providers;
 using UniRx;
 using UnityEngine;
@@ -20,14 +19,11 @@ namespace CameraZoom.Core
         public IReadOnlyReactiveProperty<float> Zoom => _zoom;
 
         private SafeAreaProvider _safeAreaProvider;
-        private SafeAreaDragObserver _dragObserver;
 
         [Inject]
-        private void Constructor(SafeAreaProvider safeAreaProvider,
-            SafeAreaDragObserver dragObserver)
+        private void Constructor(SafeAreaProvider safeAreaProvider)
         {
             _safeAreaProvider = safeAreaProvider;
-            _dragObserver = dragObserver;
         }
 
         #region MonoBehaviour
@@ -35,7 +31,6 @@ namespace CameraZoom.Core
         private void OnEnable()
         {
             StartListeningTouchCount();
-            StartObservingDrag();
         }
 
         private void OnDisable()
@@ -49,7 +44,6 @@ namespace CameraZoom.Core
         {
             StopListeningTouchCount();
             StopUpdatingZoom();
-            StopObservingDrag();
         }
 
         private void StartListeningTouchCount()
@@ -95,21 +89,6 @@ namespace CameraZoom.Core
         {
             _zoomUpdateSubscription?.Dispose();
             _zoom.Value = 0;
-        }
-
-        private void StartObservingDrag()
-        {
-            StopObservingDrag();
-
-            _dragSubscription = _dragObserver.Delta.Subscribe(delta =>
-            {
-                _zoom.Value = 0;
-            });
-        }
-
-        private void StopObservingDrag()
-        {
-            _dragSubscription?.Dispose();
         }
     }
 }
