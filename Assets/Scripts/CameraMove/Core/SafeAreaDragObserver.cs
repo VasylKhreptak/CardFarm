@@ -9,9 +9,6 @@ namespace CameraMove.Core
 {
     public class SafeAreaDragObserver : MonoBehaviour
     {
-        [Header("Preferences")]
-        [SerializeField] private float _smoothSpeed = 10f;
-
         private IDisposable _dragSubscription;
 
         private Vector2ReactiveProperty _delta = new Vector2ReactiveProperty();
