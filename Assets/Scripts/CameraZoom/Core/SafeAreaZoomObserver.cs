@@ -87,7 +87,6 @@ namespace CameraZoom.Core
         {
             StopUpdatingZoom();
 
-            Debug.Log(Input.touchCount);
             float GetTouchDistance() => Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
 
             _zoomUpdateSubscription = Observable
