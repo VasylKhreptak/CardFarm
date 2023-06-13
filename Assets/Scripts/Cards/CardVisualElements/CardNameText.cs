@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Cards.CardVisualElements
 {
-    public class CardName : MonoBehaviour
+    public class CardNameText : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;

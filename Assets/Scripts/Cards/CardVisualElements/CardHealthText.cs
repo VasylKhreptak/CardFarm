@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Cards.CardVisualElements
 {
-    public class CardHealth : MonoBehaviour
+    public class CardHealthText : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private DamageableCardData _cardData;
