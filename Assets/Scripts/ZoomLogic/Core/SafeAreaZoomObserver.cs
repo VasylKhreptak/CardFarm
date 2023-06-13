@@ -6,7 +6,7 @@ using Zenject;
 
 namespace ZoomLogic.Core
 {
-    public class ZoomHandler : MonoBehaviour
+    public class SafeAreaZoomObserver : MonoBehaviour
     {
         [Header("Preferences")]
         [SerializeField] private float _zoomSmoothSpeed = 10f;

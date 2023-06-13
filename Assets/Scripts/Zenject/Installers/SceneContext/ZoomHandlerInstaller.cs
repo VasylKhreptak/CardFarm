@@ -4,7 +4,7 @@ using ZoomLogic.Core;
 
 namespace Zenject.Installers.SceneContext
 {
-    public class ZoomHandlerInstaller : SceneSingleInstanceInstaller<ZoomHandler>
+    public class ZoomHandlerInstaller : SceneSingleInstanceInstaller<SafeAreaZoomObserver>
     {
 
     }

@@ -18,13 +18,13 @@ namespace ZoomLogic
         private IDisposable _zoomSubscription;
 
         private Transform _cameraTransform;
-        private ZoomHandler _zoomHandler;
+        private SafeAreaZoomObserver _safeAreaZoomObserver;
 
         [Inject]
-        private void Constructor(CameraProvider cameraProvider, ZoomHandler zoomHandler)
+        private void Constructor(CameraProvider cameraProvider, SafeAreaZoomObserver safeAreaZoomObserver)
         {
             _cameraTransform = cameraProvider.Value.transform;
-            _zoomHandler = zoomHandler;
+            _safeAreaZoomObserver = safeAreaZoomObserver;
         }
 
         #region MonoBehaviour
@@ -45,7 +45,7 @@ namespace ZoomLogic
         {
             StopZooming();
 
-            _zoomSubscription = _zoomHandler.SmoothedZoom.Subscribe(Zoom);
+            _zoomSubscription = _safeAreaZoomObserver.SmoothedZoom.Subscribe(Zoom);
         }
 
         private void StopZooming()
