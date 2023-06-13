@@ -50,8 +50,6 @@ namespace CameraZoom.Core
 
         private void Update()
         {
-            if (_dragObserver.IsDragging.Value) return;
-
             _smoothedZoom.Value = Mathf.Lerp(_smoothedZoom.Value, _zoom.Value, _zoomSmoothSpeed * Time.deltaTime);
         }
 
@@ -89,6 +87,7 @@ namespace CameraZoom.Core
         {
             StopUpdatingZoom();
 
+            Debug.Log(Input.touchCount);
             float GetTouchDistance() => Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
 
             _zoomUpdateSubscription = Observable
@@ -99,7 +98,7 @@ namespace CameraZoom.Core
                     float currentDistance = GetTouchDistance();
                     float delta = currentDistance - _lastZoomDistance;
                     _lastZoomDistance = currentDistance;
-                    _zoom.Value = delta * Time.deltaTime;
+                    _zoom.Value = delta;
                 });
         }
 

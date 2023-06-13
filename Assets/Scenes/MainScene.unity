@@ -868,7 +868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0e3f7f453cad9498852a620fc3a9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _zoomSmoothSpeed: 10
+  _zoomSmoothSpeed: 20
 --- !u!1 &607521924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,6 +1315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a324b49f0134891a9a7e7afdc422fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 20
 --- !u!1 &994147948
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2045,7 @@ MonoBehaviour:
   _floorLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  _zoomSpeed: 2
+  _zoomSpeed: 0.1
   _minDistance: 5
   _maxDistance: 35
 --- !u!1 &2058853582
@@ -2091,7 +2092,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c4b533bae8dbd4683ea328075aee20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _smoothSpeed: 10
+  _smoothSpeed: 20
+  _floorLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &2092227682
 GameObject:
   m_ObjectHideFlags: 0

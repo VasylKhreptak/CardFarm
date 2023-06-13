@@ -1,6 +1,6 @@
+using System;
 using Providers;
 using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
 
@@ -10,70 +10,128 @@ namespace CameraMove.Core
     {
         [Header("Preferences")]
         [SerializeField] private float _smoothSpeed = 10f;
+        [SerializeField] private LayerMask _floorLayerMask;
 
-        private CompositeDisposable _subscriptions = new CompositeDisposable();
+        private IDisposable _touchCountSubscription;
+        private IDisposable _updateSubscription;
 
         private Vector2ReactiveProperty _delta = new Vector2ReactiveProperty();
         private Vector2ReactiveProperty _smoothedDelta = new Vector2ReactiveProperty();
-        private BoolReactiveProperty _isDragging = new BoolReactiveProperty();
+
+        private Vector3 _previousFloorPoint;
 
         public IReadOnlyReactiveProperty<Vector2> Delta => _delta;
         public IReadOnlyReactiveProperty<Vector2> SmoothedDelta => _smoothedDelta;
-        public IReadOnlyReactiveProperty<bool> IsDragging => _isDragging;
 
         private SafeAreaProvider _safeAreaProvider;
+        private Camera _camera;
 
         [Inject]
-        private void Constructor(SafeAreaProvider safeAreaProvider)
+        private void Constructor(SafeAreaProvider safeAreaProvider,
+            CameraProvider cameraProvider)
         {
             _safeAreaProvider = safeAreaProvider;
+            _camera = cameraProvider.Value;
         }
 
         #region MonoBehaviour
 
         private void OnEnable()
         {
-            StartObservingDrag();
+            StartObservingTouchCount();
         }
 
         private void OnDisable()
         {
-            StopObservingDrag();
+            StopObserving();
         }
 
         private void Update()
         {
-            _smoothedDelta.Value = Vector2.Lerp(_smoothedDelta.Value, _delta.Value, _smoothSpeed * Time.deltaTime);
+            SmoothDelta();
         }
 
         #endregion
 
-        private void StartObservingDrag()
+        private void SmoothDelta()
         {
-            StopObservingDrag();
-
-            _safeAreaProvider.Value.Behaviour
-                .OnBeginDragAsObservable()
-                .Merge(_safeAreaProvider.Value.Behaviour.OnEndDragAsObservable())
-                .Subscribe(dragData =>
-                {
-                    if (_safeAreaProvider.Value.TouchCounter.TouchCount.Value != 1) return;
-
-                    _delta.Value = Vector2.zero;
-                    _isDragging.Value = true;
-                }).AddTo(_subscriptions);
-
-            _safeAreaProvider.Value.Behaviour.OnDragAsObservable().Subscribe(dragData =>
-            {
-                if (_safeAreaProvider.Value.TouchCounter.TouchCount.Value != 1) return;
-
-                _delta.Value = dragData.delta * Time.deltaTime;
-            }).AddTo(_subscriptions);
+            _smoothedDelta.Value = Vector2.Lerp(_smoothedDelta.Value, _delta.Value, _smoothSpeed * Time.deltaTime);
         }
 
-        private void StopObservingDrag()
+        private void StartObservingTouchCount()
         {
-            _subscriptions?.Clear();
+            StopObservingTouchCount();
+
+            _touchCountSubscription = _safeAreaProvider.Value.TouchCounter.TouchCount.Subscribe(OnTouchCountUpdated);
+        }
+
+        private void StopObservingTouchCount()
+        {
+            _touchCountSubscription?.Dispose();
+        }
+
+        private void StopObserving()
+        {
+            StopObservingTouchCount();
+        }
+
+        private void OnTouchCountUpdated(int touchCount)
+        {
+            if (touchCount == 1)
+            {
+                StartUpdatingDrag();
+            }
+            else
+            {
+                StopUpdatingDrag();
+            }
+        }
+
+        private void StartUpdatingDrag()
+        {
+            StopUpdatingDrag();
+
+            UpdatePreviousFloorPoint();
+            _delta.Value = Vector2.zero;
+
+            _updateSubscription = Observable.EveryUpdate().Subscribe(_ => UpdateDrag());
+        }
+
+        private void StopUpdatingDrag()
+        {
+            _updateSubscription?.Dispose();
+
+            _delta.Value = Vector2.zero;
+        }
+
+        private void UpdateDrag()
+        {
+            Vector3 floorPoint = Vector3.zero;
+
+            if (RaycastFloor(Input.GetTouch(0).position, out RaycastHit hitInfo))
+            {
+                floorPoint = hitInfo.point;
+            }
+
+            Vector3 difference = floorPoint - _previousFloorPoint;
+            
+            _delta.Value = new Vector2(difference.x, difference.z);
+            
+            _previousFloorPoint = floorPoint;
+        }
+
+        private void UpdatePreviousFloorPoint()
+        {
+            if (RaycastFloor(Input.GetTouch(0).position, out RaycastHit hitInfo))
+            {
+                _previousFloorPoint = hitInfo.point;
+            }
+        }
+
+        private bool RaycastFloor(Vector2 screenPosition, out RaycastHit hit)
+        {
+            var ray = _camera.ScreenPointToRay(screenPosition);
+            return Physics.Raycast(ray, out hit, Mathf.Infinity, _floorLayerMask);
         }
     }
 }
