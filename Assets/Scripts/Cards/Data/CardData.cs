@@ -5,6 +5,7 @@ namespace Cards.Data
 {
     public class CardData : MonoBehaviour
     {
+        public int ID = -1;
         public ReactiveProperty<CardType> CardType = new ReactiveProperty<CardType>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ReactiveProperty<Sprite> Background = new ReactiveProperty<Sprite>();
