@@ -4,7 +4,7 @@ using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
 
-namespace CameraMoveLogic.Core
+namespace CameraMove.Core
 {
     public class SafeAreaDragDeltaObserver : MonoBehaviour
     {

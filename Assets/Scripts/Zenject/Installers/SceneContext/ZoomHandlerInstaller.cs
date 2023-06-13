@@ -1,6 +1,5 @@
-﻿using Zenject.Installers.SceneContext.Core;
-using ZoomLogic;
-using ZoomLogic.Core;
+﻿using CameraZoom.Core;
+using Zenject.Installers.SceneContext.Core;
 
 namespace Zenject.Installers.SceneContext
 {

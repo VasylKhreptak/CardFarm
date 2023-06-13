@@ -4,7 +4,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace ZoomLogic.Core
+namespace CameraZoom.Core
 {
     public class SafeAreaZoomObserver : MonoBehaviour
     {
