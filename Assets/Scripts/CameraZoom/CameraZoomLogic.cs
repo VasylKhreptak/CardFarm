@@ -17,6 +17,10 @@ namespace CameraZoom
 
         private IDisposable _zoomSubscription;
 
+        private FloatReactiveProperty _cameraDistance = new FloatReactiveProperty();
+        
+        public IReadOnlyReactiveProperty<float> CameraDistance => _cameraDistance;
+        
         private Transform _cameraTransform;
         private SafeAreaZoomObserver _safeAreaZoomObserver;
 
@@ -28,6 +32,14 @@ namespace CameraZoom
         }
 
         #region MonoBehaviour
+
+        private void Awake()
+        {
+            if (RaycastFloor(out RaycastHit hit))
+            {
+                _cameraDistance.Value = hit.distance;
+            }
+        }
 
         private void OnEnable()
         {
@@ -45,7 +57,7 @@ namespace CameraZoom
         {
             StopZooming();
 
-            _zoomSubscription = _safeAreaZoomObserver.SmoothedZoom.Subscribe(Zoom);
+            _zoomSubscription = _safeAreaZoomObserver.Zoom.Subscribe(Zoom);
         }
 
         private void StopZooming()
@@ -58,6 +70,7 @@ namespace CameraZoom
             if (RaycastFloor(out RaycastHit hit))
             {
                 float cameraDistance = hit.distance;
+                _cameraDistance.Value = cameraDistance;
                 float newCameraDistance = cameraDistance - delta * _zoomSpeed;
                 newCameraDistance = Mathf.Clamp(newCameraDistance, _minDistance, _maxDistance);
                 Vector3 newCameraPosition = hit.point - _cameraTransform.forward * newCameraDistance;

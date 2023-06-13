@@ -17,12 +17,10 @@ namespace CameraZoom.Core
         private IDisposable _dragSubscription;
 
         private FloatReactiveProperty _zoom = new FloatReactiveProperty();
-        private FloatReactiveProperty _smoothedZoom = new FloatReactiveProperty();
 
         private float _lastZoomDistance;
 
         public IReadOnlyReactiveProperty<float> Zoom => _zoom;
-        public IReadOnlyReactiveProperty<float> SmoothedZoom => _smoothedZoom;
 
         private SafeAreaProvider _safeAreaProvider;
         private SafeAreaDragObserver _dragObserver;
@@ -46,11 +44,6 @@ namespace CameraZoom.Core
         private void OnDisable()
         {
             ClearSubscriptions();
-        }
-
-        private void Update()
-        {
-            _smoothedZoom.Value = Mathf.Lerp(_smoothedZoom.Value, _zoom.Value, _zoomSmoothSpeed * Time.deltaTime);
         }
 
         #endregion
@@ -114,7 +107,6 @@ namespace CameraZoom.Core
             _dragSubscription = _dragObserver.Delta.Subscribe(delta =>
             {
                 _zoom.Value = 0;
-                _smoothedZoom.Value = 0;
             });
         }
 

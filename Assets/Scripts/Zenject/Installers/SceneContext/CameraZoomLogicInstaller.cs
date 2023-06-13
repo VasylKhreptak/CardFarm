@@ -1,7 +1,10 @@
-﻿namespace Zenject.Installers.SceneContext
+﻿using CameraZoom;
+using Zenject.Installers.SceneContext.Core;
+
+namespace Zenject.Installers.SceneContext
 {
-    public class CameraZoomLogicInstaller
+    public class CameraZoomLogicInstaller : SceneSingleInstanceInstaller<CameraZoomLogic>
     {
-        
+
     }
 }

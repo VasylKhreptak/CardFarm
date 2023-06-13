@@ -1,5 +1,6 @@
 ﻿using System;
 using CameraMove.Core;
+using CameraZoom;
 using Providers;
 using UniRx;
 using UnityEngine;
@@ -16,12 +17,16 @@ namespace CameraMove
 
         private SafeAreaDragObserver _dragObserver;
         private Transform _cameraTransform;
+        private CameraZoomLogic _cameraZoomLogic;
 
         [Inject]
-        private void Constructor(SafeAreaDragObserver dragObserver, CameraProvider cameraProvider)
+        private void Constructor(SafeAreaDragObserver dragObserver,
+            CameraProvider cameraProvider,
+            CameraZoomLogic cameraZoomLogic)
         {
             _dragObserver = dragObserver;
             _cameraTransform = cameraProvider.Value.transform;
+            _cameraZoomLogic = cameraZoomLogic;
         }
 
         #region MonoBehaviour
@@ -42,7 +47,7 @@ namespace CameraMove
         {
             StopObservingDrag();
 
-            _dragSubscription = _dragObserver.SmoothedDelta.Subscribe(MoveCamera);
+            _dragSubscription = _dragObserver.Delta.Subscribe(MoveCamera);
         }
 
         private void StopObservingDrag()
@@ -52,9 +57,11 @@ namespace CameraMove
 
         private void MoveCamera(Vector2 dragDelta)
         {
+            if (Input.touchCount > 1) return;
+
             Vector3 moveDirection = new Vector3(-dragDelta.x, 0f, -dragDelta.y);
 
-            _cameraTransform.position += moveDirection * _speed * Time.deltaTime;
+            _cameraTransform.position += moveDirection * _speed * Time.deltaTime * _cameraZoomLogic.CameraDistance.Value;
         }
     }
 }
