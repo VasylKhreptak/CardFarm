@@ -4,7 +4,7 @@ namespace Plugins.ObjectPooler
     {
         BaseCard = 0,
         FoodCard = 1,
-        MobCard = 2,
+        DamageableCard = 2,
         SellableCard = 3,
     }
 }

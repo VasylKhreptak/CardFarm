@@ -894,7 +894,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _allocateMaxMemorySize: 0
-  _poolsPreferences: []
+  _poolsPreferences:
+  - pool: 0
+    prefab: {fileID: 1106781378184328992, guid: 7bf54413c6b39324e9a7ddfc51606634,
+      type: 3}
+    initialSize: 1
+    autoExpand: 1
+    maxExpandSize: 500
+  - pool: 1
+    prefab: {fileID: 4316638521175404533, guid: 096e2fd36fb371a418caf0955f9f94b8,
+      type: 3}
+    initialSize: 1
+    autoExpand: 1
+    maxExpandSize: 500
+  - pool: 2
+    prefab: {fileID: 1824749879350333039, guid: d794782d0ddca224998105c67e750aef,
+      type: 3}
+    initialSize: 1
+    autoExpand: 1
+    maxExpandSize: 500
+  - pool: 3
+    prefab: {fileID: 564359370849849034, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
+    initialSize: 1
+    autoExpand: 1
+    maxExpandSize: 500
 --- !u!1 &384721439
 GameObject:
   m_ObjectHideFlags: 0
