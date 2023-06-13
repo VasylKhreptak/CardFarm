@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Cards.CardVisualElements
 {
-    public class CardPrice : MonoBehaviour
+    public class CardPriceText : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private SellableCardData _cardData;
@@ -46,7 +46,7 @@ namespace Cards.CardVisualElements
 
         private void SetPrice(int price)
         {
-            _tmp.text = name;
+            _tmp.text = price.ToString();
         }
     }
 }

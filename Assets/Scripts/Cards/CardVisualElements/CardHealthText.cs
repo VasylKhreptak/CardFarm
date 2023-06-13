@@ -44,9 +44,9 @@ namespace Cards.CardVisualElements
             _healthSubscription?.Dispose();
         }
 
-        private void SetHealth(int price)
+        private void SetHealth(int health)
         {
-            _tmp.text = name;
+            _tmp.text = health.ToString();
         }
     }
 }

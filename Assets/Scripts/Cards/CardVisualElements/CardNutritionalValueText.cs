@@ -44,9 +44,9 @@ namespace Cards.CardVisualElements
             _nutritionalValueSubscription?.Dispose();
         }
 
-        private void SetNutritionalValue(int price)
+        private void SetNutritionalValue(int nutritionalValue)
         {
-            _tmp.text = name;
+            _tmp.text = nutritionalValue.ToString();
         }
     }
 }
