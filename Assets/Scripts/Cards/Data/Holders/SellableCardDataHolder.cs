@@ -1,6 +1,8 @@
-﻿namespace Cards.Data.Holders
+﻿using Data.Holders;
+
+namespace Cards.Data.Holders
 {
-    public class SellableCardDataHolder
+    public class SellableCardDataHolder : DataHolder<SellableCardData>
     {
         
     }

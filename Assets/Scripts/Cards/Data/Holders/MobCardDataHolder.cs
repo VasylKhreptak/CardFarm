@@ -1,7 +1,9 @@
-﻿namespace Cards.Data.Holders
+﻿using Data.Holders;
+
+namespace Cards.Data.Holders
 {
-    public class MobCardDataHolder
+    public class MobCardDataHolder : DataHolder<MobCardData>
     {
-        
+
     }
 }

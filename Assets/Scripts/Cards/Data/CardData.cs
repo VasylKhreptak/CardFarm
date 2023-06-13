@@ -7,7 +7,7 @@ namespace Cards.Data
     [Serializable]
     public class CardData
     {
-        public CardType CardType;
+        public ReactiveProperty<CardType> CardType = new ReactiveProperty<CardType>();
         public StringReactiveProperty Name = new StringReactiveProperty();
         public ReactiveProperty<Sprite> Background = new ReactiveProperty<Sprite>();
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
