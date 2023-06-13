@@ -6,7 +6,7 @@ using Zenject;
 
 namespace CameraMove.Core
 {
-    public class SafeAreaDragDeltaObserver : MonoBehaviour
+    public class SafeAreaDragObserver : MonoBehaviour
     {
         [Header("Preferences")]
         [SerializeField] private float _smoothSpeed = 10f;
@@ -15,9 +15,11 @@ namespace CameraMove.Core
 
         private Vector2ReactiveProperty _delta = new Vector2ReactiveProperty();
         private Vector2ReactiveProperty _smoothedDelta = new Vector2ReactiveProperty();
+        private BoolReactiveProperty _isDragging = new BoolReactiveProperty();
 
         public IReadOnlyReactiveProperty<Vector2> Delta => _delta;
         public IReadOnlyReactiveProperty<Vector2> SmoothedDelta => _smoothedDelta;
+        public IReadOnlyReactiveProperty<bool> IsDragging => _isDragging;
 
         private SafeAreaProvider _safeAreaProvider;
 
@@ -49,20 +51,23 @@ namespace CameraMove.Core
         private void StartObservingDrag()
         {
             StopObservingDrag();
-            
-            _safeAreaProvider.Value.Behaviour.OnBeginDragAsObservable().Subscribe(dragData =>
-            {
-                _delta.Value = Vector2.zero;
-            }).AddTo(_subscriptions);
+
+            _safeAreaProvider.Value.Behaviour
+                .OnBeginDragAsObservable()
+                .Merge(_safeAreaProvider.Value.Behaviour.OnEndDragAsObservable())
+                .Subscribe(dragData =>
+                {
+                    if (_safeAreaProvider.Value.TouchCounter.TouchCount.Value != 1) return;
+
+                    _delta.Value = Vector2.zero;
+                    _isDragging.Value = true;
+                }).AddTo(_subscriptions);
 
             _safeAreaProvider.Value.Behaviour.OnDragAsObservable().Subscribe(dragData =>
             {
-                _delta.Value = dragData.delta * Time.deltaTime;
-            }).AddTo(_subscriptions);
+                if (_safeAreaProvider.Value.TouchCounter.TouchCount.Value != 1) return;
 
-            _safeAreaProvider.Value.Behaviour.OnEndDragAsObservable().Subscribe(dragData =>
-            {
-                _delta.Value = Vector2.zero;
+                _delta.Value = dragData.delta * Time.deltaTime;
             }).AddTo(_subscriptions);
         }
 

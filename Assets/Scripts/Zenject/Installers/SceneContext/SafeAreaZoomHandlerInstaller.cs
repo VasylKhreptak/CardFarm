@@ -3,7 +3,7 @@ using Zenject.Installers.SceneContext.Core;
 
 namespace Zenject.Installers.SceneContext
 {
-    public class ZoomHandlerInstaller : SceneSingleInstanceInstaller<SafeAreaZoomObserver>
+    public class SafeAreaZoomHandlerInstaller : SceneSingleInstanceInstaller<SafeAreaZoomObserver>
     {
 
     }
