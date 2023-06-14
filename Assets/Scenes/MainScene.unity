@@ -4168,7 +4168,7 @@ GameObject:
   - component: {fileID: 2058853583}
   - component: {fileID: 2058853584}
   m_Layer: 0
-  m_Name: SafeAreaDragDeltaObserver
+  m_Name: MapDragObserver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

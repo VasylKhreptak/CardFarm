@@ -15,12 +15,12 @@ namespace CameraMove
 
         private IDisposable _dragSubscription;
 
-        private SafeAreaDragObserver _dragObserver;
+        private MapDragObserver _dragObserver;
         private Transform _cameraTransform;
         private CameraZoomLogic _cameraZoomLogic;
 
         [Inject]
-        private void Constructor(SafeAreaDragObserver dragObserver,
+        private void Constructor(MapDragObserver dragObserver,
             CameraProvider cameraProvider,
             CameraZoomLogic cameraZoomLogic)
         {
