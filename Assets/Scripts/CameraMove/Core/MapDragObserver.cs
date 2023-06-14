@@ -1,4 +1,5 @@
 using System;
+using Extensions.UniRx.UnityEngineBridge.Triggers;
 using Providers;
 using UniRx;
 using UniRx.Triggers;

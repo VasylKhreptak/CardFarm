@@ -1,4 +1,4 @@
-namespace Cards
+namespace Cards.Core
 {
     public enum CardType
     {

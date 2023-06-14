@@ -1,8 +1,11 @@
 ﻿using System;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
+
 // require keep for Windows Universal App
 
-namespace UniRx.Triggers
+namespace Extensions.UniRx.UnityEngineBridge.Triggers
 {
     [DisallowMultipleComponent]
     public class ObservableMouseTrigger : ObservableTriggerBase

@@ -107,6 +107,7 @@ namespace Cards.Logic
             if (Input.touchCount > 1)
             {
                 StopFollowingTouch();
+                return;
             }
 
             Vector3 mousePosition = Input.mousePosition;

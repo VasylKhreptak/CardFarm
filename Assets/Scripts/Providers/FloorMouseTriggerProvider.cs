@@ -1,4 +1,5 @@
-﻿using Providers.Core;
+﻿using Extensions.UniRx.UnityEngineBridge.Triggers;
+using Providers.Core;
 using UniRx.Triggers;
 
 namespace Providers

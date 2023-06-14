@@ -1,3 +1,5 @@
+using Cards.Core;
+using Extensions.UniRx.UnityEngineBridge.Triggers;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
