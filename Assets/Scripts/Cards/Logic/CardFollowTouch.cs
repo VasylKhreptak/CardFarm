@@ -87,7 +87,14 @@ namespace Cards.Logic
         private void StartFollowingTouch()
         {
             StopFollowingTouch();
-            _followTouchSubscription = Observable.EveryUpdate().Subscribe(_ => FollowTouchStep());
+
+            Vector3 mousePosition = Input.mousePosition;
+            if (_screenRaycaster.Raycast(mousePosition, _floorLayerMask, out RaycastHit hit))
+            {
+                Vector3 difference = _transform.position - hit.point;
+                Vector2 offset = new Vector2(difference.x, difference.z);
+                _followTouchSubscription = Observable.EveryUpdate().Subscribe(_ => FollowTouchStep(offset));
+            }
         }
 
         private void StopFollowingTouch()
@@ -95,15 +102,20 @@ namespace Cards.Logic
             _followTouchSubscription?.Dispose();
         }
 
-        private void FollowTouchStep()
+        private void FollowTouchStep(Vector2 horOffset)
         {
+            if (Input.touchCount > 1)
+            {
+                StopFollowingTouch();
+            }
+
             Vector3 mousePosition = Input.mousePosition;
 
             if (_screenRaycaster.Raycast(mousePosition, _floorLayerMask, out RaycastHit hit))
             {
-                Vector3 position = _transform.position;
-                Vector3 targetCardPosition = hit.point + Vector3.up * _cardYOffset;
-                _transform.position = Vector3.Lerp(position, targetCardPosition, _speed * Time.deltaTime);
+                Vector3 cardPosition = _transform.position;
+                Vector3 targetCardPosition = hit.point + Vector3.up * _cardYOffset + new Vector3(horOffset.x, 0f, horOffset.y);
+                _transform.position = Vector3.Lerp(cardPosition, targetCardPosition, _speed * Time.deltaTime);
             }
         }
     }
