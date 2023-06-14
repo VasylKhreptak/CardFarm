@@ -45,10 +45,12 @@ namespace Cards.Logic
                 if (topCard == null)
                 {
                     StopFollowing();
+                    Debug.Log("Stop");
                 }
                 else
                 {
                     StartFollowing();
+                    Debug.Log("Start");
                 }
             });
         }

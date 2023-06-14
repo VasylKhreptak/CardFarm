@@ -4,6 +4,6 @@ namespace Cards.Data
 {
     public class CardDataCallbacks
     {
-        public Action onBottomCardsChainUpdated;
+        public Action onChainBottomPartUpdated;
     }
 }
