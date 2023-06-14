@@ -17,6 +17,7 @@ namespace Cards.Data
         public ReactiveProperty<CardData> TopCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> BottomCard = new ReactiveProperty<CardData>();
         public ReactiveCollection<CardData> BottomCards = new ReactiveCollection<CardData>();
+        public UpperCardsProvider UpperCardsProvider;
         public BottomCardsProvider BottomCardsProvider;
         public Transform BottomCardFollowPoint;
     }
