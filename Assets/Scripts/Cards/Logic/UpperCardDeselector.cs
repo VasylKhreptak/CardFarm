@@ -3,12 +3,11 @@ using Cards.Data;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Graphics
+namespace Cards.Logic
 {
-    public class CardLayerOrderUpdater : MonoBehaviour
+    public class UpperCardDeselector : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private Transform _transform;
         [SerializeField] private CardData _cardData;
 
         private IDisposable _mouseDownSubscription;
@@ -31,25 +30,15 @@ namespace Cards.Graphics
         {
             StopObservingMouseDown();
 
-            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ => OnMousePressed());
+            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ =>
+            {
+                _cardData.UpperCard.Value = null;
+            });
         }
 
         private void StopObservingMouseDown()
         {
             _mouseDownSubscription?.Dispose();
-        }
-
-        private void OnMousePressed()
-        {
-            if (_cardData.BottomCard.Value == null)
-            {
-                SetAsLastSibling();
-            }
-        }
-
-        private void SetAsLastSibling()
-        {
-            _transform.SetAsLastSibling();
         }
     }
 }

@@ -277,7 +277,32 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 1187364119439455923, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 2249817591825427427, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     - target: {fileID: 6282712638965089098, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 6816513907442977381, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 7392950181504087967, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 7820841018766694524, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -318,10 +343,12 @@ MonoBehaviour:
     value: {fileID: 0}
   Icon:
     value: {fileID: 0}
-  TopCard:
+  UpperCard:
     value: {fileID: 0}
   BottomCard:
     value: {fileID: 0}
+  UpperCardsProvider: {fileID: 0}
+  BottomCardsProvider: {fileID: 0}
   BottomCardFollowPoint: {fileID: 8112247566156894595}
   Price:
     value: 0

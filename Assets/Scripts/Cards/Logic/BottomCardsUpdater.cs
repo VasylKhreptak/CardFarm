@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cards.Data;
-using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic
@@ -29,7 +29,8 @@ namespace Cards.Logic
         private void StartObservingBottomCard()
         {
             StopObservingBottomCard();
-            
+
+
         }
 
         private void StopObservingBottomCard()
@@ -39,7 +40,7 @@ namespace Cards.Logic
 
         private void UpdateBottomCards()
         {
-            
+
         }
     }
 }

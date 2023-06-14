@@ -17,10 +17,10 @@ namespace Cards.Logic
 
             upperCards.Add(currentCardData);
 
-            while (currentCardData.TopCard.Value != null)
+            while (currentCardData.UpperCard.Value != null)
             {
-                upperCards.Add(currentCardData.TopCard.Value);
-                currentCardData = currentCardData.TopCard.Value;
+                upperCards.Add(currentCardData.UpperCard.Value);
+                currentCardData = currentCardData.UpperCard.Value;
             }
 
             return upperCards;

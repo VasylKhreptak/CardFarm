@@ -14,8 +14,9 @@ namespace Cards.Data
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ReactiveProperty<Sprite> Background = new ReactiveProperty<Sprite>();
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
-        public ReactiveProperty<CardData> TopCard = new ReactiveProperty<CardData>();
+        public ReactiveProperty<CardData> UpperCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> BottomCard = new ReactiveProperty<CardData>();
+        public ReactiveCollection<CardData> UpperCards = new ReactiveCollection<CardData>();
         public ReactiveCollection<CardData> BottomCards = new ReactiveCollection<CardData>();
         public UpperCardsProvider UpperCardsProvider;
         public BottomCardsProvider BottomCardsProvider;

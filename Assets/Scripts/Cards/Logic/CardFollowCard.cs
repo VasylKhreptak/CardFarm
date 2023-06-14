@@ -40,7 +40,7 @@ namespace Cards.Logic
         private void StartObservingTopCard()
         {
             StopObservingTopCard();
-            _topCardSubscription = _cardData.TopCard.Subscribe(topCard =>
+            _topCardSubscription = _cardData.UpperCard.Subscribe(topCard =>
             {
                 if (topCard == null)
                 {
@@ -71,7 +71,7 @@ namespace Cards.Logic
 
         private void FollowStep()
         {
-            Vector3 targetPosition = _cardData.TopCard.Value.BottomCardFollowPoint.position;
+            Vector3 targetPosition = _cardData.UpperCard.Value.BottomCardFollowPoint.position;
             Vector3 transformPosition = _transform.position;
 
             _transform.position = Vector3.Lerp(transformPosition, targetPosition, _speed * Time.deltaTime);
