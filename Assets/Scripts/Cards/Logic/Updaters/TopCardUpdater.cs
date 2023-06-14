@@ -31,7 +31,7 @@ namespace Cards.Logic.Updaters
                 return;
             }
 
-            _cardData.TopCard.Value = _cardData.UpperCards.Last();
+            _cardData.TopCard.Value = _cardData.UpperCards.First();
         }
     }
 }

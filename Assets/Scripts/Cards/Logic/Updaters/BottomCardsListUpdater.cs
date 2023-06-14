@@ -39,12 +39,7 @@ namespace Cards.Logic.Updaters
         private void UpdateBottomCardsList()
         {
             List<CardData> bottomCards = _cardData.BottomCardsProvider.FindBottomCards();
-            _cardData.BottomCards.Clear();
-
-            foreach (var bottomCard in bottomCards)
-            {
-                _cardData.BottomCards.Add(bottomCard);
-            }
+            _cardData.BottomCards = bottomCards;
 
             _cardData.Callbacks.onBottomCardsListUpdated?.Invoke();
         }

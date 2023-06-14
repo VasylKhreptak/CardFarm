@@ -33,19 +33,14 @@ namespace Cards.Logic.Updaters
 
         private void StopObservingUpperCards()
         {
-            _cardData.Callbacks.onAnyBottomCardUpdated -= UpdateUpperCardsList;
+            _cardData.Callbacks.onAnyUpperCardUpdated -= UpdateUpperCardsList;
         }
 
         private void UpdateUpperCardsList()
         {
             List<CardData> upperCards = _cardData.UpperCardsProvider.FindUpperCards();
             upperCards.Reverse();
-            _cardData.UpperCards.Clear();
-
-            foreach (var upperCard in upperCards)
-            {
-                _cardData.UpperCards.Add(upperCard);
-            }
+            _cardData.UpperCards = upperCards;
 
             _cardData.Callbacks.onUpperCardsListUpdated?.Invoke();
         }
