@@ -1,7 +1,9 @@
 ﻿using System;
 using Cards.Data;
+using Physics;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Logic
 {
@@ -12,11 +14,21 @@ namespace Cards.Logic
         [SerializeField] private CardData _cardData;
 
         [Header("PReferences")]
+        [SerializeField] private LayerMask _floorLayerMask;
+        [SerializeField] private float _cardYOffset = 0.1f;
         [SerializeField] private float _speed = 15f;
 
         private IDisposable _mouseDownSubscription;
         private IDisposable _mouseUpSubscription;
         private IDisposable _followTouchSubscription;
+
+        private ScreenRaycaster _screenRaycaster;
+
+        [Inject]
+        private void Constructor(ScreenRaycaster screenRaycaster)
+        {
+            _screenRaycaster = screenRaycaster;
+        }
 
         #region MonoBehaviour
 
@@ -85,10 +97,14 @@ namespace Cards.Logic
 
         private void FollowTouchStep()
         {
-            Vector3 position = _transform.position;
-            Vector3 mousePosition = position;
+            Vector3 mousePosition = Input.mousePosition;
 
-            _transform.position = Vector3.Lerp(position, mousePosition, _speed * Time.deltaTime);
+            if (_screenRaycaster.Raycast(mousePosition, _floorLayerMask, out RaycastHit hit))
+            {
+                Vector3 position = _transform.position;
+                Vector3 targetCardPosition = hit.point + Vector3.up * _cardYOffset;
+                _transform.position = Vector3.Lerp(position, targetCardPosition, _speed * Time.deltaTime);
+            }
         }
     }
 }

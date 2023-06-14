@@ -553,4 +553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 1106781378184328993}
   _cardData: {fileID: 1106781378184329004}
+  _floorLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
   _speed: 15
