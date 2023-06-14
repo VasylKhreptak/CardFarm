@@ -1,4 +1,5 @@
 using Cards.Core;
+using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using UniRx;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace Cards.Data
         public ReactiveProperty<CardData> TopCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> BottomCard = new ReactiveProperty<CardData>();
         public ReactiveCollection<CardData> BottomCards = new ReactiveCollection<CardData>();
+        public BottomCardsProvider BottomCardsProvider;
         public Transform BottomCardFollowPoint;
     }
 }
