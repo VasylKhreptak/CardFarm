@@ -40,7 +40,7 @@ namespace CameraMove.Core
         private void StartObservingDrag()
         {
             StopObservingDrag();
-
+            
             _dragSubscription = _safeAreaProvider.Value.Behaviour
                 .OnDragAsObservable()
                 .Subscribe(dragData =>

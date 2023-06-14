@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Cards.Logic
 {
-    public class CardFollowCardLogic : MonoBehaviour
+    public class CardFollowCard : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
