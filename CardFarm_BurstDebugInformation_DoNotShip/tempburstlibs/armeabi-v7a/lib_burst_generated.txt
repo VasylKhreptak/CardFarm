@@ -158,9 +158,11 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.RenderPipeline.Universal.ShaderLibrary.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Cinemachine.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.dll
+--root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\NaughtyAttributes.Test.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Services.Core.Internal.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
+--root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\NaughtyAttributes.Core.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Services.Core.Scheduler.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Services.Core.Device.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\IngameDebugConsole.Runtime.dll

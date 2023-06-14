@@ -89,6 +89,7 @@ namespace CameraMove.Core
 
             _dragSubscription = _safeAreaProvider.Value.Behaviour
                 .OnDragAsObservable()
+                .Skip(1)
                 .Subscribe(dragData =>
                 {
                     _delta.Value = dragData.delta;
