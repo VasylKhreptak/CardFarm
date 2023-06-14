@@ -8,13 +8,13 @@ namespace Cards.Logic
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
-        
+
         public List<CardData> FindBottomCards()
         {
             List<CardData> bottomCards = new List<CardData>();
 
             CardData currentCardData = _cardData;
-            
+
             while (currentCardData.BottomCard.Value != null)
             {
                 bottomCards.Add(currentCardData.BottomCard.Value);
