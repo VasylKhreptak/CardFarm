@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 111633968}
   - component: {fileID: 111633970}
   - component: {fileID: 111633969}
+  - component: {fileID: 111633971}
   m_Layer: 0
   m_Name: BuyBoosterZone (2)
   m_TagString: Untagged
@@ -279,6 +280,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111633967}
   m_CullTransparentMesh: 1
+--- !u!65 &111633971
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111633967}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.003114, y: 3.9924269, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &121670024
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +304,7 @@ GameObject:
   - component: {fileID: 121670025}
   - component: {fileID: 121670027}
   - component: {fileID: 121670026}
+  - component: {fileID: 121670028}
   m_Layer: 0
   m_Name: SellZone
   m_TagString: Untagged
@@ -356,6 +371,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121670024}
   m_CullTransparentMesh: 1
+--- !u!65 &121670028
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121670024}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.003114, y: 3.9924269, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &193585802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -813,6 +841,7 @@ GameObject:
   - component: {fileID: 257689813}
   - component: {fileID: 257689815}
   - component: {fileID: 257689814}
+  - component: {fileID: 257689816}
   m_Layer: 0
   m_Name: BuyBoosterZone
   m_TagString: Untagged
@@ -880,6 +909,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257689812}
   m_CullTransparentMesh: 1
+--- !u!65 &257689816
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257689812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.003114, y: 3.9924269, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,7 +2094,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536916248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2065,7 +2107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0, y: -0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &536916250
@@ -4571,6 +4613,7 @@ GameObject:
   - component: {fileID: 5536856523054827646}
   - component: {fileID: 5536856523054827644}
   - component: {fileID: 5536856523054827645}
+  - component: {fileID: 5536856523054827648}
   m_Layer: 0
   m_Name: BuyBoosterZone (1)
   m_TagString: Untagged
@@ -4578,3 +4621,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &5536856523054827648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536856523054827647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.003114, y: 3.9924269, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
