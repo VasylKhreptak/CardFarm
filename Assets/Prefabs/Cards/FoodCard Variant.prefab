@@ -312,6 +312,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 871094102}
+    - target: {fileID: 277232900628726384, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
     - target: {fileID: 771904413631130282, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -555,12 +560,17 @@ MonoBehaviour:
     value: {fileID: 0}
   Icon:
     value: {fileID: 0}
+  TopCard:
+    value: {fileID: 0}
   UpperCard:
     value: {fileID: 0}
   BottomCard:
     value: {fileID: 0}
+  LowestCard:
+    value: {fileID: 0}
   UpperCards: []
   BottomCards: []
+  CardsGroup: []
   UpperCardsProvider: {fileID: 2648549177699036774}
   BottomCardsProvider: {fileID: 7647898702211371696}
   BottomCardFollowPoint: {fileID: 5523304477396398268}

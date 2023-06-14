@@ -47,7 +47,7 @@ namespace Cards.Logic
 
             if (bottomCard != null)
             {
-                bottomCard.Callbacks.onBottomCardsUpdated += Invoke;
+                bottomCard.Callbacks.onAnyBottomCardUpdated += Invoke;
                 _previousBottomCard = bottomCard;
             }
 
@@ -58,13 +58,13 @@ namespace Cards.Logic
         {
             if (_previousBottomCard != null)
             {
-                _previousBottomCard.Callbacks.onBottomCardsUpdated -= Invoke;
+                _previousBottomCard.Callbacks.onAnyBottomCardUpdated -= Invoke;
             }
         }
 
         private void Invoke()
         {
-            _cardData.Callbacks.onBottomCardsUpdated?.Invoke();
+            _cardData.Callbacks.onAnyBottomCardUpdated?.Invoke();
         }
     }
 }

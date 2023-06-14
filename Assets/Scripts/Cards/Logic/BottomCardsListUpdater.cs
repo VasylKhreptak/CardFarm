@@ -28,12 +28,12 @@ namespace Cards.Logic
         {
             StopObservingBottomCard();
 
-            _cardData.Callbacks.onBottomCardsUpdated += UpdateBottomCards;
+            _cardData.Callbacks.onAnyBottomCardUpdated += UpdateBottomCards;
         }
 
         private void StopObservingBottomCard()
         {
-            _cardData.Callbacks.onBottomCardsUpdated -= UpdateBottomCards;
+            _cardData.Callbacks.onAnyBottomCardUpdated -= UpdateBottomCards;
         }
 
         private void UpdateBottomCards()

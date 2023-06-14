@@ -4,7 +4,7 @@ namespace Cards.Data
 {
     public class CardDataCallbacks
     {
-        public Action onBottomCardsUpdated;
+        public Action onAnyBottomCardUpdated;
         public Action onBottomCardsListUpdated;
     }
 }

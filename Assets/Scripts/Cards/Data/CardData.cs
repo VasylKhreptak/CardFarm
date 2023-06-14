@@ -27,12 +27,18 @@ namespace Cards.Data
         public ReactiveProperty<Sprite> Background = new ReactiveProperty<Sprite>();
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
         
+        public ReactiveProperty<CardData> TopCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> UpperCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> BottomCard = new ReactiveProperty<CardData>();
+        public ReactiveProperty<CardData> LowestCard = new ReactiveProperty<CardData>();
+
         public List<CardData> UpperCards = new List<CardData>();
         public List<CardData> BottomCards = new List<CardData>();
+        public List<CardData> CardsGroup = new List<CardData>();
+        
         public UpperCardsProvider UpperCardsProvider;
         public BottomCardsProvider BottomCardsProvider;
+
         public Transform BottomCardFollowPoint;
 
         public BoolReactiveProperty IsTopCard = new BoolReactiveProperty();

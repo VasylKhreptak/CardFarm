@@ -36,7 +36,7 @@ namespace Cards.Graphics.CardVisualElements
         private void StartObservingIcon()
         {
             StopObservingIcon();
-            _backgroundSpriteSubscription = _cardData.Background.Subscribe(SetIcon);
+            _backgroundSpriteSubscription = _cardData.Icon.Subscribe(SetIcon);
         }
 
         private void StopObservingIcon()
