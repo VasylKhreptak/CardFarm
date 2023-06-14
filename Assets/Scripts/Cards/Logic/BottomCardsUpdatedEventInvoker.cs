@@ -65,7 +65,6 @@ namespace Cards.Logic
         private void Invoke()
         {
             _cardData.Callbacks.onBottomCardsUpdated?.Invoke();
-            Debug.Log("Bottom Cards Changed");
         }
     }
 }
