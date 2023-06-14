@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Cards.Core;
 using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
@@ -29,5 +30,10 @@ namespace Cards.Data
         public UpperCardsProvider UpperCardsProvider;
         public BottomCardsProvider BottomCardsProvider;
         public Transform BottomCardFollowPoint;
+
+        public CardDataCallbacks Callbacks = new CardDataCallbacks();
+
+        public List<CardData> BottomCardsList = new List<CardData>();
+        public List<CardData> UpperCardsList = new List<CardData>();
     }
 }

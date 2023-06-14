@@ -287,6 +287,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 2575682665689227054, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179}
     - target: {fileID: 6282712638965089098, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -377,6 +382,8 @@ MonoBehaviour:
   UpperCardsProvider: {fileID: 465171434182217724}
   BottomCardsProvider: {fileID: 5230892333079900970}
   BottomCardFollowPoint: {fileID: 7931876527190905126}
+  BottomCardsList: []
+  UpperCardsList: []
   MaxHealth:
     value: 5
   Health:

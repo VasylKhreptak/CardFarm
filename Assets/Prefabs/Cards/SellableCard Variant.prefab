@@ -287,6 +287,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 2575682665689227054, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     - target: {fileID: 6282712638965089098, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -359,6 +364,8 @@ MonoBehaviour:
   UpperCardsProvider: {fileID: 1797868049133539161}
   BottomCardsProvider: {fileID: 6201471391518995343}
   BottomCardFollowPoint: {fileID: 8112247566156894595}
+  BottomCardsList: []
+  UpperCardsList: []
   Price:
     value: 0
 --- !u!224 &564359370849849035 stripped

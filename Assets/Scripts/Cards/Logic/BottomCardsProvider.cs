@@ -14,9 +14,7 @@ namespace Cards.Logic
             List<CardData> bottomCards = new List<CardData>();
 
             CardData currentCardData = _cardData;
-
-            bottomCards.Add(currentCardData);
-
+            
             while (currentCardData.BottomCard.Value != null)
             {
                 bottomCards.Add(currentCardData.BottomCard.Value);
