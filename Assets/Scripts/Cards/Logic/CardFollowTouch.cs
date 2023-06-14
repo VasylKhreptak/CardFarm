@@ -15,7 +15,6 @@ namespace Cards.Logic
 
         [Header("PReferences")]
         [SerializeField] private LayerMask _floorLayerMask;
-        [SerializeField] private float _cardYOffset = 0.1f;
         [SerializeField] private float _speed = 15f;
 
         private IDisposable _mouseDownSubscription;
@@ -115,8 +114,10 @@ namespace Cards.Logic
             if (_screenRaycaster.Raycast(mousePosition, _floorLayerMask, out RaycastHit hit))
             {
                 Vector3 cardPosition = _transform.position;
-                Vector3 targetCardPosition = hit.point + Vector3.up * _cardYOffset + new Vector3(horOffset.x, 0f, horOffset.y);
-                _transform.position = Vector3.Lerp(cardPosition, targetCardPosition, _speed * Time.deltaTime);
+                Vector3 targetCardPosition = hit.point + new Vector3(horOffset.x, 0f, horOffset.y);
+                cardPosition = Vector3.Lerp(cardPosition, targetCardPosition, _speed * Time.deltaTime);
+                cardPosition.y = _cardData.Height.Value;
+                _transform.position = cardPosition;
             }
         }
     }

@@ -297,6 +297,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 7137134185686426639, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179}
     - target: {fileID: 7392950181504087967, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -315,6 +320,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
+--- !u!114 &465171434182217724 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1187364119439455923, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 1589422760007612751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd29d2b5c31478f81e01062f80b1a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1824749879350333038 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
@@ -339,7 +356,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b9ae3bb42af1648bc170cce34e143d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _baseHeight: 0.01
+  _heightOffset: 0.01
   ID: -1
+  Height:
+    value: 0
   MouseTrigger: {fileID: 6055013777042517554}
   CardType:
     value: 0
@@ -353,13 +374,25 @@ MonoBehaviour:
     value: {fileID: 0}
   BottomCard:
     value: {fileID: 0}
-  UpperCardsProvider: {fileID: 0}
-  BottomCardsProvider: {fileID: 0}
+  UpperCardsProvider: {fileID: 465171434182217724}
+  BottomCardsProvider: {fileID: 5230892333079900970}
   BottomCardFollowPoint: {fileID: 7931876527190905126}
   MaxHealth:
     value: 5
   Health:
     value: 5
+--- !u!114 &5230892333079900970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6816513907442977381, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 1589422760007612751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c46db3b5ba45498f57eeb3f162d835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6055013777042517554 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4758467965833942909, guid: 7bf54413c6b39324e9a7ddfc51606634,

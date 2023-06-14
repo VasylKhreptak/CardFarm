@@ -8,7 +8,15 @@ namespace Cards.Data
 {
     public class CardData : MonoBehaviour
     {
+        [Header("Data")]
+        [SerializeField] private float _baseHeight = 0.001f;
+        [SerializeField] private float _heightOffset = 0.001f;
+
+        public float BaseHeight => _baseHeight;
+        public float HeightOffset => _heightOffset;
+
         public int ID = -1;
+        public FloatReactiveProperty Height = new FloatReactiveProperty();
         public ObservableMouseTrigger MouseTrigger;
         public ReactiveProperty<CardType> CardType = new ReactiveProperty<CardType>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");

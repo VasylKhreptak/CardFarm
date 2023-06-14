@@ -74,7 +74,9 @@ namespace Cards.Logic
             Vector3 targetPosition = _cardData.UpperCard.Value.BottomCardFollowPoint.position;
             Vector3 transformPosition = _transform.position;
 
-            _transform.position = Vector3.Lerp(transformPosition, targetPosition, _speed * Time.deltaTime);
+            transformPosition = Vector3.Lerp(transformPosition, targetPosition, _speed * Time.deltaTime);
+            transformPosition.y = _cardData.Height.Value;
+            _transform.position = transformPosition;
         }
     }
 }
