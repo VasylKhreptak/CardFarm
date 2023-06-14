@@ -2,7 +2,7 @@
 using Cards.Data;
 using UnityEngine;
 
-namespace Cards.Logic
+namespace Cards.Logic.Updaters
 {
     public class BottomCardsListUpdater : MonoBehaviour
     {

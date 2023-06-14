@@ -3,7 +3,7 @@ using Cards.Data;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Logic.BoolStateUpdaters
+namespace Cards.Logic.Updaters
 {
     public class IsTopCardUpdater : MonoBehaviour
     {
