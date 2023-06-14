@@ -65,7 +65,6 @@ namespace Cards.Logic
         private void Invoke()
         {
             _cardData.Callbacks.onAnyUpperCardUpdated?.Invoke();
-            Debug.Log("Update Upper Cards");
         }
     }
 }

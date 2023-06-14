@@ -318,7 +318,7 @@ MonoBehaviour:
     value: {fileID: 0}
   UpperCards: []
   BottomCards: []
-  CardsGroup: []
+  GroupCards: []
   UpperCardsProvider: {fileID: 1187364119439455923}
   BottomCardsProvider: {fileID: 6816513907442977381}
   BottomCardFollowPoint: {fileID: 8655193052913444969}
@@ -867,6 +867,7 @@ RectTransform:
   - {fileID: 2636350741142104231}
   - {fileID: 1701764287583836490}
   - {fileID: 5178122387984731238}
+  - {fileID: 7583820523069455064}
   m_Father: {fileID: 6256525992163840278}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1216,6 +1217,56 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9e4d3e0a4b04819a83160dd429d68b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 1106781378184329004}
+--- !u!1 &7468146710778854342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7583820523069455064}
+  - component: {fileID: 1204520439031820289}
+  m_Layer: 0
+  m_Name: GroupCardsUpdater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7583820523069455064
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7468146710778854342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3384633989507613666}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1204520439031820289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7468146710778854342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160a0914298543b486be4c71bdd62177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}

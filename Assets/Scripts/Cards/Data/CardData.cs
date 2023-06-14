@@ -4,6 +4,7 @@ using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -32,7 +33,7 @@ namespace Cards.Data
 
         public List<CardData> UpperCards = new List<CardData>();
         public List<CardData> BottomCards = new List<CardData>();
-        public List<CardData> CardsGroup = new List<CardData>();
+        public List<CardData> GroupCards = new List<CardData>();
 
         public UpperCardsProvider UpperCardsProvider;
         public BottomCardsProvider BottomCardsProvider;

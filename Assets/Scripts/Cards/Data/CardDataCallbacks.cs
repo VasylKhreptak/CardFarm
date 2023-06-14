@@ -9,5 +9,7 @@ namespace Cards.Data
         
         public Action onAnyUpperCardUpdated;
         public Action onUpperCardsListUpdated;
+        
+        public Action onGroupCardsListUpdated;
     }
 }
