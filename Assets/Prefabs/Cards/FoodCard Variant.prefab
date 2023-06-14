@@ -32,7 +32,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4316638521175404532}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -182,7 +182,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4316638521175404532}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -310,7 +310,7 @@ PrefabInstance:
     - target: {fileID: 1106781378184328992, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_Name
-      value: FoodCard
+      value: FoodCard Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -350,12 +350,12 @@ PrefabInstance:
     - target: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 3.3086
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 3.904
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -395,12 +395,12 @@ PrefabInstance:
     - target: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.31
+      value: 7.3100586
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 11.63
+      value: 11.630005
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -423,6 +423,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 871094102}
     - target: {fileID: 1106781379501151864, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
+    - target: {fileID: 7849383001144894301, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -454,6 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562d5fa491c1d544bb181113b3044812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: -1
   CardType:
     value: 0
   Name:
@@ -462,7 +468,18 @@ MonoBehaviour:
     value: {fileID: 0}
   Icon:
     value: {fileID: 0}
+  TopCard:
+    value: {fileID: 0}
+  BottomCard:
+    value: {fileID: 0}
+  BottomCardFollowPoint: {fileID: 5523304477396398268}
   Price:
     value: 0
   NutritionalValue:
     value: 0
+--- !u!224 &5523304477396398268 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8655193052913444969, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 3799863883936356565}
+  m_PrefabAsset: {fileID: 0}
