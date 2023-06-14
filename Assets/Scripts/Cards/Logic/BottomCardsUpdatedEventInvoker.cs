@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Cards.Logic
 {
-    public class ChainBottomPartEventInvoker : MonoBehaviour
+    public class BottomCardsUpdatedEventInvoker : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -47,7 +47,7 @@ namespace Cards.Logic
 
             if (bottomCard != null)
             {
-                bottomCard.Callbacks.onChainBottomPartUpdated += Invoke;
+                bottomCard.Callbacks.onBottomCardsUpdated += Invoke;
                 _previousBottomCard = bottomCard;
             }
 
@@ -58,13 +58,13 @@ namespace Cards.Logic
         {
             if (_previousBottomCard != null)
             {
-                _previousBottomCard.Callbacks.onChainBottomPartUpdated -= Invoke;
+                _previousBottomCard.Callbacks.onBottomCardsUpdated -= Invoke;
             }
         }
 
         private void Invoke()
         {
-            _cardData.Callbacks.onChainBottomPartUpdated?.Invoke();
+            _cardData.Callbacks.onBottomCardsUpdated?.Invoke();
             Debug.Log("Bottom Cards Changed");
         }
     }
