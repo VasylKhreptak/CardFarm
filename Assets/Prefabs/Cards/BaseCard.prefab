@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 1106781378184329006}
   - component: {fileID: 1106781378184329004}
   - component: {fileID: 8193532437627284258}
+  - component: {fileID: 4758467965833942909}
   m_Layer: 0
   m_Name: BaseCard
   m_TagString: Untagged
@@ -144,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: -1
+  MouseTrigger: {fileID: 4758467965833942909}
   CardType:
     value: 0
   Name:
@@ -165,11 +167,23 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106781378184328992}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.950605, y: 3.991443, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4758467965833942909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106781378184328992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da66e2c89135284458685fa7651ae81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1106781378837674971
 GameObject:
   m_ObjectHideFlags: 0

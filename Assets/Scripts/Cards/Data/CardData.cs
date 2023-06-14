@@ -1,4 +1,5 @@
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 
 namespace Cards.Data
@@ -6,6 +7,7 @@ namespace Cards.Data
     public class CardData : MonoBehaviour
     {
         public int ID = -1;
+        public ObservableMouseTrigger MouseTrigger;
         public ReactiveProperty<CardType> CardType = new ReactiveProperty<CardType>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ReactiveProperty<Sprite> Background = new ReactiveProperty<Sprite>();

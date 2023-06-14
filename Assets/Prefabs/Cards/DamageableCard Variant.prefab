@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: -1
+  MouseTrigger: {fileID: 6055013777042517554}
   CardType:
     value: 0
   Name:
@@ -327,6 +328,18 @@ MonoBehaviour:
     value: 5
   Health:
     value: 5
+--- !u!114 &6055013777042517554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4758467965833942909, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 1589422760007612751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824749879350333039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da66e2c89135284458685fa7651ae81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7931876527190905126 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8655193052913444969, guid: 7bf54413c6b39324e9a7ddfc51606634,
