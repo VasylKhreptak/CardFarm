@@ -4,7 +4,6 @@ using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
