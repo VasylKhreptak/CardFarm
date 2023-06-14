@@ -13,8 +13,8 @@ namespace Cards.Logic.Updaters
 
         private void OnEnable()
         {
-            UpdateBottomCards();
-            StartObservingBottomCard();
+            UpdateBottomCardsList();
+            StartObservingBottomCards();
         }
 
         private void OnDisable()
@@ -24,19 +24,19 @@ namespace Cards.Logic.Updaters
 
         #endregion
 
-        private void StartObservingBottomCard()
+        private void StartObservingBottomCards()
         {
             StopObservingBottomCard();
 
-            _cardData.Callbacks.onAnyBottomCardUpdated += UpdateBottomCards;
+            _cardData.Callbacks.onAnyBottomCardUpdated += UpdateBottomCardsList;
         }
 
         private void StopObservingBottomCard()
         {
-            _cardData.Callbacks.onAnyBottomCardUpdated -= UpdateBottomCards;
+            _cardData.Callbacks.onAnyBottomCardUpdated -= UpdateBottomCardsList;
         }
 
-        private void UpdateBottomCards()
+        private void UpdateBottomCardsList()
         {
             List<CardData> bottomCards = _cardData.BottomCardsProvider.FindBottomCards();
             _cardData.BottomCards.Clear();
