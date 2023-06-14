@@ -13,6 +13,10 @@ namespace CameraMove
         [Header("References")]
         [SerializeField] private float _speed;
 
+        [Header("Preferences")]
+        [SerializeField] private Vector2 _min;
+        [SerializeField] private Vector2 _max;
+
         private IDisposable _dragSubscription;
 
         private MapDragObserver _dragObserver;
@@ -60,8 +64,27 @@ namespace CameraMove
             if (Input.touchCount > 1) return;
 
             Vector3 moveDirection = new Vector3(-dragDelta.x, 0f, -dragDelta.y);
+            Vector3 cameraPosition = _cameraTransform.position;
 
-            _cameraTransform.position += moveDirection * _speed * Time.deltaTime * _cameraZoomLogic.CameraDistance.Value;
+            cameraPosition += moveDirection * _speed * Time.deltaTime * _cameraZoomLogic.CameraDistance.Value;
+
+            cameraPosition = new Vector3(
+                Mathf.Clamp(cameraPosition.x, _min.x, _max.x),
+                cameraPosition.y,
+                Mathf.Clamp(cameraPosition.z, _min.y, _max.y));
+
+            _cameraTransform.position = cameraPosition;
+        }
+
+        private void OnDrawGizmos()
+        {
+            float y = 0f;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(new Vector3(_min.x, y, _min.y), new Vector3(_min.x, y, _max.y));
+            Gizmos.DrawLine(new Vector3(_min.x, y, _max.y), new Vector3(_max.x, y, _max.y));
+            Gizmos.DrawLine(new Vector3(_max.x, y, _max.y), new Vector3(_max.x, y, _min.y));
+            Gizmos.DrawLine(new Vector3(_max.x, y, _min.y), new Vector3(_min.x, y, _min.y));
         }
     }
 }

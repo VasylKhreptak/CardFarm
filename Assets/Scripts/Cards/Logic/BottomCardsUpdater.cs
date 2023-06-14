@@ -29,8 +29,6 @@ namespace Cards.Logic
         private void StartObservingBottomCard()
         {
             StopObservingBottomCard();
-
-
         }
 
         private void StopObservingBottomCard()
