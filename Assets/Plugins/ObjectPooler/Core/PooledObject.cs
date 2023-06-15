@@ -2,13 +2,13 @@ using System;
 using Plugins.ObjectPooler.Linker;
 using UnityEngine;
 
-namespace Plugins.ObjectPooler
+namespace Plugins.ObjectPooler.Core
 {
     public class PooledObject : MonoBehaviour
     {
         public PositionLinker linker;
-        public Pool pool;
-
+        public Enum pool;
+        
         public event Action<PooledObject> onEnable;
         public event Action<PooledObject> onDisable;
 
@@ -25,6 +25,6 @@ namespace Plugins.ObjectPooler
         }
 
         #endregion
-        
+
     }
 }

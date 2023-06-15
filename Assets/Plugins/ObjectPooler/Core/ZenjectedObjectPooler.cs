@@ -1,10 +1,11 @@
-using Plugins.ObjectPooler;
+using System;
+using Plugins.ObjectPooler.Example;
 using UnityEngine;
 using Zenject;
 
-namespace ObjectPoolingSystem
+namespace Plugins.ObjectPooler.Core
 {
-    public class ZenjectedObjectPooler : ObjectPooler
+    public class ZenjectedObjectPooler<T> : ObjectPooler<T> where T : Enum
     {
         private DiContainer _container;
 

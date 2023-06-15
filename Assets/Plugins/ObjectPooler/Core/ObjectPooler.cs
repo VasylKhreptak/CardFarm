@@ -4,9 +4,9 @@ using System.Linq;
 using Plugins.ObjectPooler.Linker;
 using UnityEngine;
 
-namespace Plugins.ObjectPooler
+namespace Plugins.ObjectPooler.Core
 {
-    public class ObjectPooler : MonoBehaviour
+    public abstract class ObjectPooler<T> : MonoBehaviour where T : Enum
     {
         [Header("Preferences")]
         [Tooltip("Allocates memory for the maximum size of the pool(MaxExpandSize).This will reduce the amount of memory allocations, but will increase the memory usage.")]
@@ -15,9 +15,9 @@ namespace Plugins.ObjectPooler
         [Header("Pools")]
         [SerializeField] private PoolPreference[] _poolsPreferences;
 
-        private Dictionary<Pool, Queue<PooledObject>> _pools;
-        private Dictionary<Pool, HashSet<PooledObject>> _activePools;
-        private Dictionary<Pool, HashSet<PooledObject>> _inactivePools;
+        private Dictionary<T, Queue<PooledObject>> _pools;
+        private Dictionary<T, HashSet<PooledObject>> _activePools;
+        private Dictionary<T, HashSet<PooledObject>> _inactivePools;
 
         private Transform _transform;
 
@@ -53,9 +53,9 @@ namespace Plugins.ObjectPooler
 
         private void Init()
         {
-            _pools = new Dictionary<Pool, Queue<PooledObject>>();
-            _activePools = new Dictionary<Pool, HashSet<PooledObject>>();
-            _inactivePools = new Dictionary<Pool, HashSet<PooledObject>>();
+            _pools = new Dictionary<T, Queue<PooledObject>>();
+            _activePools = new Dictionary<T, HashSet<PooledObject>>();
+            _inactivePools = new Dictionary<T, HashSet<PooledObject>>();
 
             foreach (var poolPreferences in _poolsPreferences)
             {
@@ -85,7 +85,7 @@ namespace Plugins.ObjectPooler
             return Instantiate(prefab);
         }
 
-        private Transform CreatePoolFolder(Pool pool)
+        private Transform CreatePoolFolder(T pool)
         {
             GameObject poolParentObj = new GameObject(pool.ToString());
 
@@ -132,13 +132,13 @@ namespace Plugins.ObjectPooler
             }
         }
 
-        private void RemoveFromActivePool(PooledObject pooledObject) => _activePools[pooledObject.pool].Remove(pooledObject);
+        private void RemoveFromActivePool(PooledObject pooledObject) => _activePools[(T)pooledObject.pool].Remove(pooledObject);
 
-        private void AddToActivePool(PooledObject pooledObject) => _activePools[pooledObject.pool].Add(pooledObject);
+        private void AddToActivePool(PooledObject pooledObject) => _activePools[(T)pooledObject.pool].Add(pooledObject);
 
-        private void RemoveFromInactivePool(PooledObject pooledObject) => _inactivePools[pooledObject.pool].Remove(pooledObject);
+        private void RemoveFromInactivePool(PooledObject pooledObject) => _inactivePools[(T)pooledObject.pool].Remove(pooledObject);
 
-        private void AddToInactivePool(PooledObject pooledObject) => _inactivePools[pooledObject.pool].Add(pooledObject);
+        private void AddToInactivePool(PooledObject pooledObject) => _inactivePools[(T)pooledObject.pool].Add(pooledObject);
 
         private void OnObjectEnabled(PooledObject pooledObject)
         {
@@ -156,11 +156,11 @@ namespace Plugins.ObjectPooler
 
         #region Spawn
 
-        public GameObject Spawn(Pool pool) => Spawn(pool, Vector3.zero, Quaternion.identity);
+        public GameObject Spawn(T pool) => Spawn(pool, Vector3.zero, Quaternion.identity);
 
-        public GameObject Spawn(Pool pool, Vector3 position) => Spawn(pool, position, Quaternion.identity);
+        public GameObject Spawn(T pool, Vector3 position) => Spawn(pool, position, Quaternion.identity);
 
-        public GameObject Spawn(Pool pool, Vector3 position, Quaternion rotation)
+        public GameObject Spawn(T pool, Vector3 position, Quaternion rotation)
         {
             if (_pools.ContainsKey(pool) == false)
             {
@@ -179,11 +179,11 @@ namespace Plugins.ObjectPooler
             return pooledGameObject;
         }
 
-        public GameObject Spawn(Pool pool, Vector3 position, LinkerData data) => Spawn(pool, position, Quaternion.identity, data);
+        public GameObject Spawn(T pool, Vector3 position, LinkerData data) => Spawn(pool, position, Quaternion.identity, data);
 
-        public GameObject Spawn(Pool pool, LinkerData data) => Spawn(pool, Vector3.zero, Quaternion.identity, data);
+        public GameObject Spawn(T pool, LinkerData data) => Spawn(pool, Vector3.zero, Quaternion.identity, data);
 
-        public GameObject Spawn(Pool pool, Vector3 position, Quaternion rotation, LinkerData data)
+        public GameObject Spawn(T pool, Vector3 position, Quaternion rotation, LinkerData data)
         {
             GameObject spawnedObject = Spawn(pool, position, rotation);
             StartLinking(spawnedObject, data);
@@ -207,7 +207,7 @@ namespace Plugins.ObjectPooler
             }
         }
 
-        private PooledObject GetAppropriatePoolObject(Pool pool)
+        private PooledObject GetAppropriatePoolObject(T pool)
         {
             if (TryGetInactive(pool, out PooledObject poolObject))
             {
@@ -225,7 +225,7 @@ namespace Plugins.ObjectPooler
             return poolObj;
         }
 
-        private bool TryGetInactive(Pool pool, out PooledObject poolObject)
+        private bool TryGetInactive(T pool, out PooledObject poolObject)
         {
             if (_inactivePools[pool].Count > 0)
             {
@@ -237,24 +237,25 @@ namespace Plugins.ObjectPooler
             return false;
         }
 
-        public GameObject GetPrefab(Pool pool)
+        public GameObject GetPrefab(T pool)
         {
             foreach (var objectPool in _poolsPreferences)
             {
-                if (objectPool.pool == pool)
+                if (EqualityComparer<T>.Default.Equals(objectPool.pool, pool))
                 {
                     return objectPool.prefab;
+
                 }
             }
 
             throw new ArgumentException("Pool '" + pool + "' does not exist.");
         }
 
-        private bool IsExpandable(Pool pool)
+        private bool IsExpandable(T pool)
         {
             foreach (var poolPreferences in _poolsPreferences)
             {
-                if (poolPreferences.pool == pool)
+                if (EqualityComparer<T>.Default.Equals(poolPreferences.pool, pool))
                 {
                     return poolPreferences.autoExpand && _pools[pool].Count < poolPreferences.maxExpandSize;
                 }
@@ -263,9 +264,9 @@ namespace Plugins.ObjectPooler
             throw new ArgumentException("Pool '" + pool + "' does not exist.");
         }
 
-        private PooledObject AddPoolObject(Pool pool) => AddPoolObject(pool, GetPoolFolder(pool));
+        private PooledObject AddPoolObject(T pool) => AddPoolObject(pool, GetPoolFolder(pool));
 
-        private PooledObject AddPoolObject(Pool pool, Transform folder)
+        private PooledObject AddPoolObject(T pool, Transform folder)
         {
             PooledObject newPoolObject = CreateNewPoolObject(pool, folder);
 
@@ -274,7 +275,7 @@ namespace Plugins.ObjectPooler
             return newPoolObject;
         }
 
-        private PooledObject CreateNewPoolObject(Pool pool, Transform folder)
+        private PooledObject CreateNewPoolObject(T pool, Transform folder)
         {
             GameObject newPoolObject = InstantiateObject(GetPrefab(pool));
 
@@ -303,7 +304,7 @@ namespace Plugins.ObjectPooler
             }
         }
 
-        public void DisablePool(Pool pool)
+        public void DisablePool(T pool)
         {
             foreach (var poolItem in _activePools[pool].ToArray())
             {
@@ -311,7 +312,7 @@ namespace Plugins.ObjectPooler
             }
         }
 
-        private Transform GetPoolFolder(Pool pool)
+        private Transform GetPoolFolder(T pool)
         {
             if (_pools[pool].Count == 0)
             {
@@ -381,7 +382,7 @@ namespace Plugins.ObjectPooler
         private class PoolPreference
         {
             [Tooltip("Type of pool.")]
-            public Pool pool;
+            public T pool;
             [Tooltip("Prefab of pool object.")]
             public GameObject prefab;
             [Tooltip("Initial size of pool.")]
