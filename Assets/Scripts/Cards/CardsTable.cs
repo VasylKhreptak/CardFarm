@@ -8,25 +8,25 @@ namespace Cards
 {
     public class CardsTable : MonoBehaviour
     {
-        private IReactiveCollection<CardData> _cards = new ReactiveCollection<CardData>();
+        private IReactiveCollection<CardData> _observableCards = new ReactiveCollection<CardData>();
 
-        public IReadOnlyReactiveCollection<CardData> CardsObservableCollection => _cards;
+        public IReadOnlyReactiveCollection<CardData> ObservableCards => _observableCards;
 
-        public List<CardData> Cards => _cards.ToList();
+        public List<CardData> Cards => _observableCards.ToList();
 
         public void AddCard(CardData cardData)
         {
-            _cards.Add(cardData);
+            _observableCards.Add(cardData);
         }
 
         public bool RemoveCard(CardData cardData)
         {
-            return _cards.Remove(cardData);
+            return _observableCards.Remove(cardData);
         }
 
         public void ClearTable()
         {
-            _cards.Clear();
+            _observableCards.Clear();
         }
     }
 }
