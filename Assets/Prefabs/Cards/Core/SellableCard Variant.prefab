@@ -321,6 +321,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 1926160521809639925, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     - target: {fileID: 2206082539133605184, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -435,6 +440,8 @@ MonoBehaviour:
   _baseHeight: 0.01
   _heightOffset: 0.01
   ID: -1
+  GroupID:
+    value: -1
   Height:
     value: 0
   MouseTrigger: {fileID: 5368408886502043287}
