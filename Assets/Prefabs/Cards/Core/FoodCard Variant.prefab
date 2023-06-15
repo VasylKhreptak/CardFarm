@@ -536,6 +536,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 871094102}
+    - target: {fileID: 7259805928741692331, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
     - target: {fileID: 7392950181504087967, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -618,6 +623,8 @@ MonoBehaviour:
   BottomCard:
     value: {fileID: 0}
   LowestCard:
+    value: {fileID: 0}
+  LowestGroupCard:
     value: {fileID: 0}
   UpperCards: []
   BottomCards: []

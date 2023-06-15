@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Cards.Logic
 {
-    public class IDUpdater : MonoBehaviour
+    public class CardIDUpdater : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CardData _data;

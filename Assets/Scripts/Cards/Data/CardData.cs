@@ -17,9 +17,9 @@ namespace Cards.Data
 
         public int ID = -1;
         public IntReactiveProperty GroupID = new IntReactiveProperty(-1);
-        
+
         public FloatReactiveProperty Height = new FloatReactiveProperty();
-        
+
         public ObservableMouseTrigger MouseTrigger;
 
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
@@ -32,6 +32,7 @@ namespace Cards.Data
         public ReactiveProperty<CardData> UpperCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> BottomCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> LowestCard = new ReactiveProperty<CardData>();
+        public ReactiveProperty<CardData> LowestGroupCard = new ReactiveProperty<CardData>();
 
         public List<CardData> UpperCards = new List<CardData>();
         public List<CardData> BottomCards = new List<CardData>();
