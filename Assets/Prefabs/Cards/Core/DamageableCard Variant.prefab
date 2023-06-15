@@ -336,6 +336,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 4824668281107353555, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179}
     - target: {fileID: 5170954531621235330, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -433,6 +438,8 @@ MonoBehaviour:
     value: 0
   Name:
     value: Name
+  NameColor:
+    value: {r: 1, g: 1, b: 1, a: 1}
   Background:
     value: {fileID: 0}
   Icon:

@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 1339911676}
   - component: {fileID: 1339911679}
   - component: {fileID: 1339911678}
-  - component: {fileID: 1339911677}
+  - component: {fileID: 8134298435425999779}
   m_Layer: 0
   m_Name: Price
   m_TagString: Untagged
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1339911677
+--- !u!114 &8134298435425999779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339911675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7823f2db12c2f94f9c5e3337a9d663f, type: 3}
+  m_Script: {fileID: 11500000, guid: fdae263c0fd24222a786a728d23641df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 871094102}
@@ -486,6 +486,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 871094102}
+    - target: {fileID: 4824668281107353555, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
     - target: {fileID: 5170954531621235330, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -583,6 +588,8 @@ MonoBehaviour:
     value: 0
   Name:
     value: Name
+  NameColor:
+    value: {r: 1, g: 1, b: 1, a: 1}
   Background:
     value: {fileID: 0}
   Icon:

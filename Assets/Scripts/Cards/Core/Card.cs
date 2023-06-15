@@ -13,6 +13,7 @@ namespace Cards.Core
         Rock = 1,
         Tree = 2,
         BerryBush = 3,
+        AppleTree = 10,
 
         #endregion
 
@@ -24,6 +25,12 @@ namespace Cards.Core
         Berry = 6,
         Flint = 7,
         Stick = 9,
+
+        #endregion
+
+        #region Buildings
+
+        House = 11,
 
         #endregion
     }
