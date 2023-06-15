@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using Cards.Core;
-using Cards.Logic;
-using Cards.Logic.Providers;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using UniRx;
 using UnityEngine;
@@ -34,10 +32,6 @@ namespace Cards.Data
         public List<CardData> UpperCards = new List<CardData>();
         public List<CardData> BottomCards = new List<CardData>();
         public List<CardData> GroupCards = new List<CardData>();
-
-        public UpperCardsProvider UpperCardsProvider;
-        public BottomCardsProvider BottomCardsProvider;
-        public GroupCardsProvider GroupCardsProvider;
 
         public Transform BottomCardFollowPoint;
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cards.Data;
+using Extensions.Cards;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
@@ -27,7 +28,7 @@ namespace Cards.Logic.Updaters
 
         private void OnCardsUpdated()
         {
-            List<CardData> GroupCards = _cardData.GroupCardsProvider.FindGroupCards();
+            List<CardData> GroupCards = _cardData.FindGroupCards();
 
             _cardData.GroupCards = GroupCards;
             _cardData.Callbacks.onGroupCardsListUpdated?.Invoke();

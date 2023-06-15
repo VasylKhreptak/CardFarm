@@ -1,4 +1,5 @@
-﻿using Cards.Data;
+﻿using System.Collections.Generic;
+using Cards.Data;
 
 namespace Extensions.Cards
 {
@@ -28,6 +29,52 @@ namespace Extensions.Cards
             }
 
             card.UpperCard.Value = null;
+        }
+
+        public static List<CardData> FindBottomCards(this CardData card)
+        {
+            List<CardData> bottomCards = new List<CardData>();
+
+            CardData currentCardData = card;
+
+            while (currentCardData.BottomCard.Value != null)
+            {
+                bottomCards.Add(currentCardData.BottomCard.Value);
+                currentCardData = currentCardData.BottomCard.Value;
+            }
+
+            return bottomCards;
+        }
+
+        public static List<CardData> FindUpperCards(this CardData card)
+        {
+            List<CardData> upperCards = new List<CardData>();
+
+            CardData currentCardData = card;
+
+            while (currentCardData.UpperCard.Value != null)
+            {
+                upperCards.Add(currentCardData.UpperCard.Value);
+                currentCardData = currentCardData.UpperCard.Value;
+            }
+
+            upperCards.Reverse();
+
+            return upperCards;
+        }
+        
+        public static List<CardData> FindGroupCards(this CardData card)
+        {
+            List<CardData> UpperCards = card.FindUpperCards();
+            List<CardData> BottomCards = card.FindBottomCards();
+
+            List<CardData> GroupCards = new List<CardData>(UpperCards.Count + 1 + BottomCards.Count);
+
+            GroupCards.AddRange(UpperCards);
+            GroupCards.Add(card);
+            GroupCards.AddRange(BottomCards);
+
+            return GroupCards;
         }
     }
 }

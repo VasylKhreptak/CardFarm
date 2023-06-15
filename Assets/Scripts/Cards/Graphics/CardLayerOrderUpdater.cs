@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cards.Data;
+using Extensions.Cards;
 using UniRx;
 using UnityEngine;
 
@@ -45,7 +46,7 @@ namespace Cards.Graphics
 
         private void UpdateLayers()
         {
-            List<CardData> groupCards = _cardData.GroupCardsProvider.FindGroupCards();
+            List<CardData> groupCards = _cardData.FindGroupCards();
 
             foreach (var card in groupCards)
             {

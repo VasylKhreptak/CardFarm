@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cards.Data;
+using Extensions.Cards;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
@@ -38,7 +39,7 @@ namespace Cards.Logic.Updaters
 
         private void UpdateUpperCardsList()
         {
-            List<CardData> upperCards = _cardData.UpperCardsProvider.FindUpperCards();
+            List<CardData> upperCards = _cardData.FindUpperCards();
             _cardData.UpperCards = upperCards;
 
             _cardData.Callbacks.onUpperCardsListUpdated?.Invoke();

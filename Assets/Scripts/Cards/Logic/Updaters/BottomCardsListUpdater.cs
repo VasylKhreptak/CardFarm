@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cards.Data;
+using Extensions.Cards;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
@@ -38,7 +39,7 @@ namespace Cards.Logic.Updaters
 
         private void UpdateBottomCardsList()
         {
-            List<CardData> bottomCards = _cardData.BottomCardsProvider.FindBottomCards();
+            List<CardData> bottomCards = _cardData.FindBottomCards();
             _cardData.BottomCards = bottomCards;
 
             _cardData.Callbacks.onBottomCardsListUpdated?.Invoke();
