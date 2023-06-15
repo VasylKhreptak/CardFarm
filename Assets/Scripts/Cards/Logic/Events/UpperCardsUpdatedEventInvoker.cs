@@ -3,7 +3,7 @@ using Cards.Data;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Logic
+namespace Cards.Logic.Events
 {
     public class UpperCardsUpdatedEventInvoker : MonoBehaviour
     {

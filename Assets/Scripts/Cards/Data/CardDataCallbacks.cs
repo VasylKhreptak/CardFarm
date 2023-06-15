@@ -11,5 +11,6 @@ namespace Cards.Data
         public Action onUpperCardsListUpdated;
         
         public Action onGroupCardsListUpdated;
+        public Action onBecameHeadOfGroup;
     }
 }
