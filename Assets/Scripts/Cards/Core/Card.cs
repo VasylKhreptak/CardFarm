@@ -1,6 +1,6 @@
 namespace Cards.Core
 {
-    public enum CardType
+    public enum Card
     {
         #region Humans
 

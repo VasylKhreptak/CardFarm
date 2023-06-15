@@ -4,6 +4,7 @@ using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -20,7 +21,7 @@ namespace Cards.Data
         public FloatReactiveProperty Height = new FloatReactiveProperty();
         public ObservableMouseTrigger MouseTrigger;
 
-        public ReactiveProperty<CardType> CardType = new ReactiveProperty<CardType>();
+        public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ReactiveProperty<Sprite> Background = new ReactiveProperty<Sprite>();
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
