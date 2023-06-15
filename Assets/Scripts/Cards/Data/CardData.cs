@@ -46,6 +46,7 @@ namespace Cards.Data
         public BoolReactiveProperty IsSingleCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsLowestGroupCard = new BoolReactiveProperty();
+        public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
         
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
     }
