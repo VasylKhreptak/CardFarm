@@ -70,8 +70,6 @@ namespace CameraZoom.Core
         private void StartUpdatingZoom()
         {
             StopUpdatingZoom();
-            
-            float GetTouchDistance() => Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
 
             _zoomUpdateSubscription = Observable
                 .EveryUpdate()
@@ -89,6 +87,16 @@ namespace CameraZoom.Core
         {
             _zoomUpdateSubscription?.Dispose();
             _zoom.Value = 0;
+        }
+
+        private float GetTouchDistance()
+        {
+            if (Input.touchCount < 2)
+            {
+                return _lastZoomDistance;
+            }
+
+            return Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
         }
     }
 }
