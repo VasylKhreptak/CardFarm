@@ -16,7 +16,10 @@ namespace Cards.Data
         public float HeightOffset => _heightOffset;
 
         public int ID = -1;
+        public IntReactiveProperty GroupID = new IntReactiveProperty(-1);
+        
         public FloatReactiveProperty Height = new FloatReactiveProperty();
+        
         public ObservableMouseTrigger MouseTrigger;
 
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
