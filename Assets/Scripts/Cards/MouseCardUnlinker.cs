@@ -4,7 +4,7 @@ using Extensions.Cards;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Core
+namespace Cards
 {
     public class MouseCardUnlinker : MonoBehaviour
     {
