@@ -381,6 +381,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 8236994038230437332, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     m_RemovedComponents:
     - {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
@@ -408,7 +413,7 @@ MonoBehaviour:
   Height:
     value: 0
   MouseTrigger: {fileID: 5368408886502043287}
-  CardType:
+  Card:
     value: 0
   Name:
     value: Name
@@ -437,6 +442,8 @@ MonoBehaviour:
   IsMiddleCard:
     value: 0
   IsSingleCard:
+    value: 0
+  IsSelectedCard:
     value: 0
   Price:
     value: 0
