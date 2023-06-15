@@ -39,7 +39,6 @@ namespace Cards.Logic.Updaters
         private void UpdateUpperCardsList()
         {
             List<CardData> upperCards = _cardData.UpperCardsProvider.FindUpperCards();
-            upperCards.Reverse();
             _cardData.UpperCards = upperCards;
 
             _cardData.Callbacks.onUpperCardsListUpdated?.Invoke();

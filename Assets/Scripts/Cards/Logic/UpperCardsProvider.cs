@@ -21,6 +21,8 @@ namespace Cards.Logic
                 currentCardData = currentCardData.UpperCard.Value;
             }
 
+            upperCards.Reverse();
+            
             return upperCards;
         }
     }
