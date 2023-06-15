@@ -1,11 +1,12 @@
 ﻿using System;
 using Cards.Data;
+using Extensions.Cards;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Logic
+namespace Cards.Core
 {
-    public class UpperCardDeselector : MonoBehaviour
+    public class MouseCardUnlinker : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -16,29 +17,18 @@ namespace Cards.Logic
 
         private void OnEnable()
         {
-            StartObservingMouseDown();
+            _mouseDownSubscription?.Dispose();
+            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ =>
+            {
+                _cardData.Unlink();
+            });
         }
 
         private void OnDisable()
         {
-            StopObservingMouseDown();
+            _mouseDownSubscription?.Dispose();
         }
 
         #endregion
-
-        private void StartObservingMouseDown()
-        {
-            StopObservingMouseDown();
-
-            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ =>
-            {
-                _cardData.UpperCard.Value = null;
-            });
-        }
-
-        private void StopObservingMouseDown()
-        {
-            _mouseDownSubscription?.Dispose();
-        }
     }
 }

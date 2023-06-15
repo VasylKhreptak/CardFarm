@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cards.Data;
 using UniRx;
 using UnityEngine;
@@ -8,48 +9,48 @@ namespace Cards.Graphics
     public class CardLayerOrderUpdater : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private Transform _transform;
         [SerializeField] private CardData _cardData;
 
-        private IDisposable _mouseDownSubscription;
+        private IDisposable _subscription;
 
         #region MonoBehaviour
 
         private void OnEnable()
         {
-            StartObservingMouseDown();
+            StartObserving();
         }
 
         private void OnDisable()
         {
-            StopObservingMouseDown();
+            StopObserving();
         }
 
         #endregion
 
-        private void StartObservingMouseDown()
+        private void StartObserving()
         {
-            StopObservingMouseDown();
+            StopObserving();
 
-            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ => OnMousePressed());
+            _subscription = Observable
+                .CombineLatest(_cardData.IsSelectedCard, _cardData.IsTopCard, _cardData.IsSingleCard)
+                .Where(list => list[0] && (list[1] || list[2]))
+                .Subscribe(_ => UpdateLayers());
+
         }
 
-        private void StopObservingMouseDown()
+        private void StopObserving()
         {
-            _mouseDownSubscription?.Dispose();
+            _subscription?.Dispose();
         }
 
-        private void OnMousePressed()
+        private void UpdateLayers()
         {
-            if (_cardData.BottomCard.Value == null)
+            List<CardData> groupCards = _cardData.GroupCardsProvider.FindGroupCards();
+
+            foreach (var card in groupCards)
             {
-                SetAsLastSibling();
+                card.transform.SetAsLastSibling();
             }
-        }
-
-        private void SetAsLastSibling()
-        {
-            _transform.SetAsLastSibling();
         }
     }
 }

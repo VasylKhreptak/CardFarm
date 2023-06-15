@@ -27,11 +27,7 @@ namespace Cards.Logic.Updaters
 
         private void OnCardsUpdated()
         {
-            List<CardData> GroupCards = new List<CardData>(_cardData.UpperCards.Count + 1 + _cardData.BottomCards.Count);
-
-            GroupCards.AddRange(_cardData.UpperCards);
-            GroupCards.Add(_cardData);
-            GroupCards.AddRange(_cardData.BottomCards);
+            List<CardData> GroupCards = _cardData.GroupCardsProvider.FindGroupCards();
 
             _cardData.GroupCards = GroupCards;
             _cardData.Callbacks.onGroupCardsListUpdated?.Invoke();

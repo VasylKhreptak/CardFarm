@@ -1,4 +1,6 @@
-﻿using Cards.Data;
+﻿using System;
+using Cards.Data;
+using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic.Events
@@ -8,16 +10,20 @@ namespace Cards.Logic.Events
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
+        private IDisposable _isTopCardSubscription;
+
         #region MonoBehaviour
 
         private void OnEnable()
         {
             _cardData.Callbacks.onGroupCardsListUpdated += OnCardsGroupUpdated;
+            _isTopCardSubscription = _cardData.IsTopCard.Subscribe(_ => OnCardsGroupUpdated());
         }
 
         private void OnDisable()
         {
             _cardData.Callbacks.onGroupCardsListUpdated -= OnCardsGroupUpdated;
+            _isTopCardSubscription?.Dispose();
         }
 
         #endregion
