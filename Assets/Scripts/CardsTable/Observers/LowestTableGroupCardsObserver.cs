@@ -4,9 +4,9 @@ using Cards.Data;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Observers
+namespace CardsTable.Observers
 {
-    public class LowestGroupCardsObserver : MonoBehaviour
+    public class LowestTableGroupCardsObserver : MonoBehaviour
     {
         private ReactiveCollection<CardData> _lowestCards = new ReactiveCollection<CardData>();
 

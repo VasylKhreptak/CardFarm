@@ -4,7 +4,7 @@ using Cards.Data;
 using UniRx;
 using UnityEngine;
 
-namespace Cards
+namespace CardsTable.Core
 {
     public class CardsTable : MonoBehaviour
     {
