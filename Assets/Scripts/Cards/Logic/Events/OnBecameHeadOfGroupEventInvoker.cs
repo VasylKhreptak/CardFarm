@@ -27,7 +27,6 @@ namespace Cards.Logic.Events
             if (_cardData.IsTopCard.Value)
             {
                 _cardData.Callbacks.onBecameHeadOfGroup?.Invoke();
-                Debug.Log("Became A Head");
             }
         }
     }
