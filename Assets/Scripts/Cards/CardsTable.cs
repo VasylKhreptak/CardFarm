@@ -12,7 +12,7 @@ namespace Cards
 
         public IReadOnlyReactiveCollection<CardData> ObservableCards => _observableCards;
 
-        public List<CardData> Cards => _observableCards.ToList();
+        public List<CardData> CardsList => _observableCards.ToList();
 
         public void AddCard(CardData cardData)
         {
