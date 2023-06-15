@@ -3,7 +3,7 @@ using Plugins.ObjectPooler.Core;
 
 namespace ObjectPoolers
 {
-    public class CardsObjectPooler : ZenjectedObjectPooler<CardCategory>
+    public class CardsObjectPooler : ZenjectedObjectPooler<Card>
     {
 
     }

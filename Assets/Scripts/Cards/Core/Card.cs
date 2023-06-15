@@ -4,7 +4,7 @@ namespace Cards.Core
     {
         #region Humans
 
-         Villager = 0,
+        Villager = 0,
 
         #endregion
 

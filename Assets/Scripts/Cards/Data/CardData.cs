@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Cards.Core;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
@@ -22,6 +21,7 @@ namespace Cards.Data
 
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
+        public ColorReactiveProperty NameColor = new ColorReactiveProperty(Color.white);
         public ReactiveProperty<Sprite> Background = new ReactiveProperty<Sprite>();
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
 
