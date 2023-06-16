@@ -1489,7 +1489,7 @@ GameObject:
   - component: {fileID: 3619658757889909829}
   - component: {fileID: 2306884501545121961}
   m_Layer: 0
-  m_Name: IsCompatibleWithSelectedCardUpdater
+  m_Name: CanBeUnderSelectedCardUpdater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1528,7 +1528,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
-  _compatibleCards: {fileID: 11400000, guid: 8a8b75a90c8d25d489bcef13be7b9cfc, type: 2}
 --- !u!1 &6661290344176892660
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ namespace Cards.Logic.Updaters
 
         private void OnEnable()
         {
+            OnGroupCardsUpdated();
             StartObservingGroupCards();
         }
 
@@ -37,6 +38,12 @@ namespace Cards.Logic.Updaters
 
         private void OnGroupCardsUpdated()
         {
+            if(_cardData.GroupCards.Count == 0)
+            {
+                _cardData.LowestGroupCard.Value = null;
+                return;
+            }
+            
             _cardData.LowestGroupCard.Value = _cardData.GroupCards.Last();
         }
     }

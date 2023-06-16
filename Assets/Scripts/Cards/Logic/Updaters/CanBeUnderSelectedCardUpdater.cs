@@ -1,7 +1,6 @@
 ﻿using System;
 using Cards.Data;
 using CardsTable;
-using ScriptableObjects.Scripts.Cards;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -12,10 +11,9 @@ namespace Cards.Logic.Updaters
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
-        [SerializeField] private CompatibleCards _compatibleCards;
 
-        private IDisposable _subscription;
-        private IDisposable _cardGroupsIDsSubscription;
+        private IDisposable _isCardCompatibleSubscription;
+        private IDisposable _cardsInfoSubscription;
 
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
 
@@ -41,56 +39,62 @@ namespace Cards.Logic.Updaters
 
         private void StartObserving()
         {
-            StopObserving();
-
-            _subscription = Observable
-                .CombineLatest(
-                    _cardData.IsLowestGroupCard,
-                    _currentSelectedCardHolder.SelectedCard,
-                    (islLowestGroupCard, selectedCard) => (islLowestGroupCard, selectedCard))
-                .Subscribe(tuple => OnConditionUpdated(tuple.islLowestGroupCard, tuple.selectedCard));
+            StartObservingIfCompatible();
         }
 
         private void StopObserving()
         {
-            _subscription?.Dispose();
-            StopObservingCardGroupsID();
+            StopObservingIfCompatible();
+            StopObservingCardsInfo();
         }
 
-        private void OnConditionUpdated(bool islLowestGroupCard, CardData selectedCard)
+        private void StartObservingIfCompatible()
         {
-            if (selectedCard == null)
+            StopObservingIfCompatible();
+
+            _isCardCompatibleSubscription = _cardData.IsCompatibleWithSelectedCard.Subscribe(IsCompatibleValueChanged);
+        }
+
+        private void StopObservingIfCompatible()
+        {
+            _isCardCompatibleSubscription?.Dispose();
+        }
+
+        private void IsCompatibleValueChanged(bool isCompatible)
+        {
+            if (isCompatible == false || _cardData == _currentSelectedCardHolder.SelectedCard.Value)
             {
                 _cardData.CanBeUnderSelectedCard.Value = false;
-                StopObservingCardGroupsID();
                 return;
             }
 
-            StartObservingCardGroupsID(islLowestGroupCard, selectedCard);
+            StartObservingCardsInfo();
         }
 
-        private void StartObservingCardGroupsID(bool islLowestGroupCard, CardData selectedCard)
+        private void StartObservingCardsInfo()
         {
-            StopObservingCardGroupsID();
+            StopObservingCardsInfo();
 
-            _cardGroupsIDsSubscription = Observable
-                .CombineLatest(selectedCard.GroupID, _cardData.GroupID)
-                .Subscribe(list =>
-                {
-                    Debug.Log(selectedCard == _cardData);
-                    
-                    _cardData.CanBeUnderSelectedCard.Value = islLowestGroupCard
-                        && selectedCard != _cardData
-                        && list[0] != list[1]
-                        && _compatibleCards.IsCompatible(selectedCard.Card.Value, _cardData.Card.Value);
-                    
-                    // Debug.Log(selectedCard.Card + " and " + _cardData.Card + " are compatible: " + _compatibleCards.IsCompatible(selectedCard.Card.Value, _cardData.Card.Value));
-                });
+            _cardsInfoSubscription = Observable.CombineLatest(
+                    _cardData.IsLowestGroupCard,
+                    _currentSelectedCardHolder.SelectedCard.Value.GroupID,
+                    _cardData.GroupID,
+                    (isLowestGroupCard, selectedCardGroupID, cardGroupID) => (isLowestGroupCard, selectedCardGroupID, cardGroupID))
+                .Subscribe(tuple =>
+                    OnCardsInfoUpdated(tuple.isLowestGroupCard, tuple.selectedCardGroupID, tuple.cardGroupID));
         }
 
-        private void StopObservingCardGroupsID()
+        private void StopObservingCardsInfo()
         {
-            _cardGroupsIDsSubscription?.Dispose();
+            _cardsInfoSubscription?.Dispose();
+        }
+
+        private void OnCardsInfoUpdated(bool isLowestGroupCard, int selectedCardGroupID, int cardGroupID)
+        {
+            _cardData.CanBeUnderSelectedCard.Value =
+                isLowestGroupCard
+                && selectedCardGroupID != cardGroupID
+                && _cardData != _currentSelectedCardHolder.SelectedCard.Value;
         }
     }
 }
