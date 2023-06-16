@@ -1,22 +1,15 @@
 ﻿using System.Collections.Generic;
 using Cards.Data;
+using UnityEngine;
 
-namespace Extensions.Cards
+namespace Extensions
 {
     public static class CardExtensions
     {
         public static void Link(this CardData card, CardData linkTo)
         {
-            if (linkTo == null) return;
-
-            CardData upperCard = card.UpperCard.Value;
-
-            if (upperCard != null)
-            {
-                upperCard.BottomCard.Value = card;
-            }
-
             card.UpperCard.Value = linkTo;
+            linkTo.BottomCard.Value = card;
         }
 
         public static void Unlink(this CardData card)
@@ -41,6 +34,11 @@ namespace Extensions.Cards
             {
                 bottomCards.Add(currentCardData.BottomCard.Value);
                 currentCardData = currentCardData.BottomCard.Value;
+
+                if (bottomCards.Count > 1000)
+                {
+                    Debug.Break();
+                }
             }
 
             return bottomCards;
@@ -62,7 +60,7 @@ namespace Extensions.Cards
 
             return upperCards;
         }
-        
+
         public static List<CardData> FindGroupCards(this CardData card)
         {
             List<CardData> UpperCards = card.FindUpperCards();

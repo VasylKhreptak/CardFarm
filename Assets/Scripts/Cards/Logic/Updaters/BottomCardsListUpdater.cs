@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cards.Data;
-using Extensions.Cards;
+using Extensions;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters

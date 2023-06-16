@@ -60,6 +60,7 @@ namespace Cards.Logic.Updaters
         {
             if (isCardSelected)
             {
+                ResetJoinableCard();
                 StartUpdatingJoinableCard();
             }
             else
@@ -108,11 +109,6 @@ namespace Cards.Logic.Updaters
         private void UpdateJoinableCard()
         {
             _cardData.JoinableCard.Value = FindJoinableCard();
-
-            if (_cardData.JoinableCard.Value != null)
-            {
-                Debug.Break();
-            }
         }
 
         private CardData FindJoinableCard()
@@ -124,8 +120,6 @@ namespace Cards.Logic.Updaters
                 Ray ray = new Ray(rayOrigin, Vector3.down);
 
                 int hitsCount = UnityEngine.Physics.RaycastNonAlloc(ray, _hits, _raycastDistance, _cardsLayer);
-
-                Debug.Log(hitsCount);
 
                 for (int j = 0; j < hitsCount; j++)
                 {

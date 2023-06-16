@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using Cards.Data;
 using Extensions;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Graphics
+namespace Cards.Logic
 {
-    public class CardLayerOrderUpdater : MonoBehaviour
+    public class CardJoiner : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -33,10 +32,12 @@ namespace Cards.Graphics
             StopObserving();
 
             _subscription = Observable
-                .CombineLatest(_cardData.IsSelectedCard, _cardData.IsTopCard, _cardData.IsSingleCard)
-                .Where(list => list[0] && (list[1] || list[2]))
-                .Subscribe(_ => UpdateLayers());
-
+                .CombineLatest(_cardData.IsSelectedCard, _cardData.JoinableCard,
+                    (isSelected, targetCard) => new { isSelected, targetCard })
+                .Subscribe(tuple =>
+                {
+                    OnCardDataUpdated(tuple.isSelected, tuple.targetCard);
+                });
         }
 
         private void StopObserving()
@@ -44,13 +45,11 @@ namespace Cards.Graphics
             _subscription?.Dispose();
         }
 
-        private void UpdateLayers()
+        private void OnCardDataUpdated(bool isSelected, CardData targetCard)
         {
-            List<CardData> groupCards = _cardData.FindGroupCards();
-
-            foreach (var card in groupCards)
+            if (isSelected == false && targetCard != null)
             {
-                card.transform.SetAsLastSibling();
+                _cardData.Link(targetCard);
             }
         }
     }

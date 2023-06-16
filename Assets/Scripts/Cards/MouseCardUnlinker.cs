@@ -1,6 +1,6 @@
 ﻿using System;
 using Cards.Data;
-using Extensions.Cards;
+using Extensions;
 using UniRx;
 using UnityEngine;
 
