@@ -36,7 +36,7 @@ namespace Cards.Graphics.CardVisualElements
         {
             StopObserving();
 
-            _subscription = _cardData.CanBeParentOfSelectedCard.Subscribe(canBeParent =>
+            _subscription = _cardData.CanBeUnderSelectedCard.Subscribe(canBeParent =>
             {
                 _outlineObject.SetActive(canBeParent);
             });

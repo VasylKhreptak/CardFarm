@@ -1,16 +1,18 @@
 ﻿using System;
 using Cards.Data;
 using CardsTable;
+using ScriptableObjects.Scripts.Cards;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
 namespace Cards.Logic.Updaters
 {
-    public class CanBeParentOfSelectedCardUpdater : MonoBehaviour
+    public class CanBeUnderSelectedCardUpdater : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
+        [SerializeField] private CompatibleCards _compatibleCards;
 
         private IDisposable _subscription;
         private IDisposable _cardGroupsIDsSubscription;
@@ -59,7 +61,7 @@ namespace Cards.Logic.Updaters
         {
             if (selectedCard == null)
             {
-                _cardData.CanBeParentOfSelectedCard.Value = false;
+                _cardData.CanBeUnderSelectedCard.Value = false;
                 StopObservingCardGroupsID();
                 return;
             }
@@ -75,9 +77,14 @@ namespace Cards.Logic.Updaters
                 .CombineLatest(selectedCard.GroupID, _cardData.GroupID)
                 .Subscribe(list =>
                 {
-                    _cardData.CanBeParentOfSelectedCard.Value = islLowestGroupCard
+                    Debug.Log(selectedCard == _cardData);
+                    
+                    _cardData.CanBeUnderSelectedCard.Value = islLowestGroupCard
                         && selectedCard != _cardData
-                        && list[0] != list[1];
+                        && list[0] != list[1]
+                        && _compatibleCards.IsCompatible(selectedCard.Card.Value, _cardData.Card.Value);
+                    
+                    // Debug.Log(selectedCard.Card + " and " + _cardData.Card + " are compatible: " + _compatibleCards.IsCompatible(selectedCard.Card.Value, _cardData.Card.Value));
                 });
         }
 

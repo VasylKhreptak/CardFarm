@@ -17,24 +17,45 @@ namespace Cards.Logic.Events
 
         private void OnEnable()
         {
+            StartObservingIfSingleCard();
             _cardData.Callbacks.onGroupCardsListUpdated += OnCardsGroupUpdated;
         }
 
         private void OnDisable()
         {
             _cardData.Callbacks.onGroupCardsListUpdated -= OnCardsGroupUpdated;
-            _isTopCardSubscription?.Dispose();
-            _isSingleCardSubscription?.Dispose();
+            StopObservingIfTopCard();
+            StopObservingIfSingleCard();
         }
 
         #endregion
 
         private void OnCardsGroupUpdated()
         {
-            _isTopCardSubscription?.Dispose();
-            _isSingleCardSubscription?.Dispose();
-            _isTopCardSubscription = _cardData.IsTopCard.Where(x => x).Subscribe(_ => OnBecameHeadOfGroup());
+            StartObservingIfSingleCard();
+            StartObservingIfTopCard();
+        }
+
+        private void StartObservingIfSingleCard()
+        {
+            StopObservingIfSingleCard();
             _isSingleCardSubscription = _cardData.IsSingleCard.Where(x => x).Subscribe(_ => OnBecameHeadOfGroup());
+        }
+
+        private void StartObservingIfTopCard()
+        {
+            StopObservingIfTopCard();
+            _isTopCardSubscription = _cardData.IsTopCard.Where(x => x).Subscribe(_ => OnBecameHeadOfGroup());
+        }
+
+        private void StopObservingIfSingleCard()
+        {
+            _isSingleCardSubscription?.Dispose();
+        }
+
+        private void StopObservingIfTopCard()
+        {
+            _isTopCardSubscription?.Dispose();
         }
 
         private void OnBecameHeadOfGroup()

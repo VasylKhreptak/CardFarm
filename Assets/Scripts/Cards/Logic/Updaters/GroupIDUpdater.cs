@@ -22,6 +22,7 @@ namespace Cards.Logic.Updaters
 
         private void Awake()
         {
+            UpdateID();
             StartObserving();
         }
 
@@ -34,15 +35,15 @@ namespace Cards.Logic.Updaters
 
         private void StartObserving()
         {
-            _cardData.Callbacks.onBecameHeadOfGroup += OnBecameHeadOfGroup;
+            _cardData.Callbacks.onBecameHeadOfGroup += UpdateID;
         }
 
         private void StoStopObserving()
         {
-            _cardData.Callbacks.onBecameHeadOfGroup -= OnBecameHeadOfGroup;
+            _cardData.Callbacks.onBecameHeadOfGroup -= UpdateID;
         }
 
-        private void OnBecameHeadOfGroup()
+        private void UpdateID()
         {
             int groupID = _idProvider.Value;
 

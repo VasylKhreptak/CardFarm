@@ -14,6 +14,7 @@ namespace Cards.Logic.Updaters
 
         private void OnEnable()
         {
+            OnCardsUpdated();
             _cardData.Callbacks.onUpperCardsListUpdated += OnCardsUpdated;
             _cardData.Callbacks.onBottomCardsListUpdated += OnCardsUpdated;
         }
