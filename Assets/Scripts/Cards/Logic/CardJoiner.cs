@@ -49,7 +49,7 @@ namespace Cards.Logic
         {
             if (isSelected == false && targetCard != null)
             {
-                _cardData.Link(targetCard);
+                _cardData.LinkTo(targetCard);
             }
         }
     }

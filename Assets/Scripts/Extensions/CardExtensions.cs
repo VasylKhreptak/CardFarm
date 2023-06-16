@@ -6,22 +6,33 @@ namespace Extensions
 {
     public static class CardExtensions
     {
-        public static void Link(this CardData card, CardData linkTo)
+        public static void LinkTo(this CardData card, CardData linkTo)
         {
+            if (card == null || linkTo == null) return;
+
             card.UpperCard.Value = linkTo;
             linkTo.BottomCard.Value = card;
         }
 
-        public static void Unlink(this CardData card)
+        public static void UnlinkFromUpper(this CardData card)
         {
             CardData upperCard = card.UpperCard.Value;
 
-            if (upperCard != null)
-            {
-                upperCard.BottomCard.Value = null;
-            }
+            if (upperCard == null) return;
+
+            upperCard.BottomCard.Value = null;
 
             card.UpperCard.Value = null;
+        }
+
+        public static void Separete(this CardData card)
+        {
+            card.UnlinkFromUpper();
+
+            if (card.BottomCard.Value != null)
+            {
+                card.BottomCard.Value.UnlinkFromUpper();
+            }
         }
 
         public static List<CardData> FindBottomCards(this CardData card)

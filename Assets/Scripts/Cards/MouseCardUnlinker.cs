@@ -20,7 +20,7 @@ namespace Cards
             _mouseDownSubscription?.Dispose();
             _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ =>
             {
-                _cardData.Unlink();
+                _cardData.UnlinkFromUpper();
             });
         }
 
