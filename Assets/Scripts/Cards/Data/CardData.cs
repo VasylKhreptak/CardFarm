@@ -3,6 +3,7 @@ using Cards.Core;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -33,6 +34,7 @@ namespace Cards.Data
         public ReactiveProperty<CardData> BottomCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> LowestCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> LowestGroupCard = new ReactiveProperty<CardData>();
+        public ReactiveProperty<CardData> JoinableCard = new ReactiveProperty<CardData>();
 
         public List<CardData> UpperCards = new List<CardData>();
         public List<CardData> BottomCards = new List<CardData>();
