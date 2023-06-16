@@ -18,6 +18,7 @@ namespace Cards.Logic.Events
         private void OnEnable()
         {
             StartObservingIfSingleCard();
+            StartObservingIfTopCard();
             _cardData.Callbacks.onGroupCardsListUpdated += OnCardsGroupUpdated;
         }
 
@@ -61,6 +62,8 @@ namespace Cards.Logic.Events
         private void OnBecameHeadOfGroup()
         {
             _cardData.Callbacks.onBecameHeadOfGroup?.Invoke();
+            StopObservingIfTopCard();
+            StopObservingIfSingleCard();
         }
     }
 }
