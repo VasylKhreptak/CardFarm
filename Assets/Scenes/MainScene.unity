@@ -319,11 +319,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 1998004416183343921, guid: 77f462f9abe61f54caf2687710cf2c8f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77f462f9abe61f54caf2687710cf2c8f, type: 3}
 --- !u!224 &93773454 stripped
@@ -630,11 +625,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: House Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 3295488372090829417, guid: 78691d7c8a1bafc48837005b4ede7bc2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78691d7c8a1bafc48837005b4ede7bc2, type: 3}
@@ -2196,11 +2186,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone Variant (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2830,16 +2815,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1471693054}
     m_Modifications:
-    - target: {fileID: 6553622123777965406, guid: 6ca9fd4000c097f45a8e1867f5c06f1f,
-        type: 3}
-      propertyPath: UpperCard.value
-      value: 
-      objectReference: {fileID: 1923310797}
-    - target: {fileID: 6553622123777965406, guid: 6ca9fd4000c097f45a8e1867f5c06f1f,
-        type: 3}
-      propertyPath: BottomCard.value
-      value: 
-      objectReference: {fileID: 1339122875}
     - target: {fileID: 6712093262863462422, guid: 6ca9fd4000c097f45a8e1867f5c06f1f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2949,11 +2924,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BerryBush Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 6712093262863462423, guid: 6ca9fd4000c097f45a8e1867f5c06f1f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca9fd4000c097f45a8e1867f5c06f1f, type: 3}
@@ -3261,11 +3231,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1471693054}
     m_Modifications:
-    - target: {fileID: 5798554686125516113, guid: d602c864882c8bf4ebe935b8d9f77459,
-        type: 3}
-      propertyPath: BottomCard.value
-      value: 
-      objectReference: {fileID: 1923310797}
     - target: {fileID: 6317876380366923800, guid: d602c864882c8bf4ebe935b8d9f77459,
         type: 3}
       propertyPath: m_Name
@@ -3384,18 +3349,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 953751129}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &953751131 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5798554686125516113, guid: d602c864882c8bf4ebe935b8d9f77459,
-    type: 3}
-  m_PrefabInstance: {fileID: 953751129}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 345e4219acecf0b42beb4951e22dc5a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &956618056
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,11 +3578,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 5592950335277898429, guid: a3f4c70eb63ba8745b8600eb7f387644,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3f4c70eb63ba8745b8600eb7f387644, type: 3}
 --- !u!224 &1008718065 stripped
@@ -3788,11 +3736,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Variant (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5592950335277898429, guid: a3f4c70eb63ba8745b8600eb7f387644,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3f4c70eb63ba8745b8600eb7f387644, type: 3}
 --- !u!224 &1024291336 stripped
@@ -3918,11 +3861,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 5435674924092433097, guid: 5961947055272564196fbb5deff8d9ae,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5961947055272564196fbb5deff8d9ae, type: 3}
 --- !u!224 &1071351548 stripped
@@ -4047,11 +3985,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Villager Variant (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998004416183343921, guid: 77f462f9abe61f54caf2687710cf2c8f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77f462f9abe61f54caf2687710cf2c8f, type: 3}
@@ -4569,11 +4502,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1471693054}
     m_Modifications:
-    - target: {fileID: 1291774207637810486, guid: 0ae693cdc17a7f64194bd0b56105b53d,
-        type: 3}
-      propertyPath: UpperCard.value
-      value: 
-      objectReference: {fileID: 1339122875}
     - target: {fileID: 1601113332552212606, guid: 0ae693cdc17a7f64194bd0b56105b53d,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4684,11 +4612,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flint Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 1601113332552212607, guid: 0ae693cdc17a7f64194bd0b56105b53d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ae693cdc17a7f64194bd0b56105b53d, type: 3}
 --- !u!224 &1313905675 stripped
@@ -4708,11 +4631,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -4839,11 +4757,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 663648612988961172, guid: 06f38007748428d4f96ad1debed0f582,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 663648612988961173, guid: 06f38007748428d4f96ad1debed0f582,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4949,16 +4862,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 360
       objectReference: {fileID: 0}
-    - target: {fileID: 663648612988961176, guid: 06f38007748428d4f96ad1debed0f582,
-        type: 3}
-      propertyPath: UpperCard.value
-      value: 
-      objectReference: {fileID: 2018314602}
-    - target: {fileID: 663648612988961176, guid: 06f38007748428d4f96ad1debed0f582,
-        type: 3}
-      propertyPath: BottomCard.value
-      value: 
-      objectReference: {fileID: 1623771525}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06f38007748428d4f96ad1debed0f582, type: 3}
 --- !u!224 &1339122874 stripped
@@ -4967,18 +4870,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1339122873}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1339122875 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 663648612988961176, guid: 06f38007748428d4f96ad1debed0f582,
-    type: 3}
-  m_PrefabInstance: {fileID: 1339122873}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f493fd0a5186b84fb5f4bb1d52c4c0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1375787996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5365,11 +5256,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager Variant (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1998004416183343921, guid: 77f462f9abe61f54caf2687710cf2c8f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77f462f9abe61f54caf2687710cf2c8f, type: 3}
 --- !u!224 &1541345961 stripped
@@ -5540,11 +5426,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager Variant (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 1998004416183343921, guid: 77f462f9abe61f54caf2687710cf2c8f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77f462f9abe61f54caf2687710cf2c8f, type: 3}
 --- !u!224 &1590683534 stripped
@@ -5635,18 +5516,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1623771525 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1291774207637810486, guid: 0ae693cdc17a7f64194bd0b56105b53d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1313905674}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 345e4219acecf0b42beb4951e22dc5a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1631177107
 GameObject:
   m_ObjectHideFlags: 0
@@ -5786,11 +5655,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -6156,11 +6020,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flint Variant (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1601113332552212607, guid: 0ae693cdc17a7f64194bd0b56105b53d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ae693cdc17a7f64194bd0b56105b53d, type: 3}
 --- !u!224 &1846210963 stripped
@@ -6286,11 +6145,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
 --- !u!224 &1878429510 stripped
@@ -6414,16 +6268,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1471693054}
     m_Modifications:
-    - target: {fileID: 5766434068673494962, guid: 0de3a5e1a7d612142b559fcb2dd5ab20,
-        type: 3}
-      propertyPath: UpperCard.value
-      value: 
-      objectReference: {fileID: 953751131}
-    - target: {fileID: 5766434068673494962, guid: 0de3a5e1a7d612142b559fcb2dd5ab20,
-        type: 3}
-      propertyPath: BottomCard.value
-      value: 
-      objectReference: {fileID: 2018314602}
     - target: {fileID: 7773699931884799760, guid: 0de3a5e1a7d612142b559fcb2dd5ab20,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6534,11 +6378,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Berry Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 7773699931884799761, guid: 0de3a5e1a7d612142b559fcb2dd5ab20,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de3a5e1a7d612142b559fcb2dd5ab20, type: 3}
 --- !u!224 &1923310796 stripped
@@ -6547,18 +6386,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1923310795}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1923310797 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5766434068673494962, guid: 0de3a5e1a7d612142b559fcb2dd5ab20,
-    type: 3}
-  m_PrefabInstance: {fileID: 1923310795}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 562d5fa491c1d544bb181113b3044812, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1928236023
 GameObject:
   m_ObjectHideFlags: 0
@@ -6815,18 +6642,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelectedCard:
     value: {fileID: 0}
---- !u!114 &2018314602 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6553622123777965406, guid: 6ca9fd4000c097f45a8e1867f5c06f1f,
-    type: 3}
-  m_PrefabInstance: {fileID: 752799718}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 345e4219acecf0b42beb4951e22dc5a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2045460957
 GameObject:
   m_ObjectHideFlags: 0

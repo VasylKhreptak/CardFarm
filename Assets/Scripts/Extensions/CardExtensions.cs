@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Cards.Data;
-using UnityEngine;
 
 namespace Extensions
 {
@@ -43,13 +42,12 @@ namespace Extensions
 
             while (currentCardData.BottomCard.Value != null)
             {
-                bottomCards.Add(currentCardData.BottomCard.Value);
-                currentCardData = currentCardData.BottomCard.Value;
+                CardData targetCard = currentCardData.BottomCard.Value;
 
-                if (bottomCards.Count > 1000)
-                {
-                    Debug.Break();
-                }
+                if (bottomCards.Count > 0 && bottomCards[0] == targetCard) break;
+
+                bottomCards.Add(targetCard);
+                currentCardData = targetCard;
             }
 
             return bottomCards;
@@ -63,8 +61,12 @@ namespace Extensions
 
             while (currentCardData.UpperCard.Value != null)
             {
-                upperCards.Add(currentCardData.UpperCard.Value);
-                currentCardData = currentCardData.UpperCard.Value;
+                CardData targetCard = currentCardData.UpperCard.Value;
+
+                if (upperCards.Count > 0 && upperCards[0] == targetCard) break;
+
+                upperCards.Add(targetCard);
+                currentCardData = targetCard;
             }
 
             upperCards.Reverse();
