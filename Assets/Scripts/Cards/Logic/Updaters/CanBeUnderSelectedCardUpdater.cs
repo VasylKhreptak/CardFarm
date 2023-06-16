@@ -65,6 +65,7 @@ namespace Cards.Logic.Updaters
             if (isCompatible == false || _cardData == _currentSelectedCardHolder.SelectedCard.Value)
             {
                 _cardData.CanBeUnderSelectedCard.Value = false;
+                StopObservingCardsInfo();
                 return;
             }
 
