@@ -13,7 +13,7 @@ namespace Cards.Logic
 
         private void OnDisable()
         {
-            _cardData.Separete();
+            _cardData.Separate();
         }
 
         #endregion

@@ -25,7 +25,7 @@ namespace Extensions
             card.UpperCard.Value = null;
         }
 
-        public static void Separete(this CardData card)
+        public static void Separate(this CardData card)
         {
             card.UnlinkFromUpper();
 
