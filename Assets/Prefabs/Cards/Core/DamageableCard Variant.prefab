@@ -336,6 +336,16 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 2306884501545121961, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 2308536637409493149, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179}
     - target: {fileID: 2575682665689227054, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -501,6 +511,8 @@ MonoBehaviour:
   IsSelectedCard:
     value: 0
   IsLowestGroupCard:
+    value: 0
+  CanBeParentOfSelectedCard:
     value: 0
   MaxHealth:
     value: 5

@@ -1,0 +1,89 @@
+﻿using System;
+using Cards.Data;
+using CardsTable;
+using UniRx;
+using UnityEngine;
+using Zenject;
+
+namespace Cards.Logic.Updaters
+{
+    public class CanBeParentOfSelectedCardUpdater : MonoBehaviour
+    {
+        [Header("References")]
+        [SerializeField] private CardData _cardData;
+
+        private IDisposable _subscription;
+        private IDisposable _cardGroupsIDsSubscription;
+
+        private CurrentSelectedCardHolder _currentSelectedCardHolder;
+
+        [Inject]
+        private void Constructor(CurrentSelectedCardHolder currentSelectedCardHolder)
+        {
+            _currentSelectedCardHolder = currentSelectedCardHolder;
+        }
+
+        #region MonoBehaviour
+
+        private void OnEnable()
+        {
+            StartObserving();
+        }
+
+        private void OnDisable()
+        {
+            StopObserving();
+        }
+
+        #endregion
+
+        private void StartObserving()
+        {
+            StopObserving();
+
+            _subscription = Observable
+                .CombineLatest(
+                    _cardData.IsLowestGroupCard,
+                    _currentSelectedCardHolder.SelectedCard,
+                    (islLowestGroupCard, selectedCard) => (islLowestGroupCard, selectedCard))
+                .Subscribe(tuple => OnConditionUpdated(tuple.islLowestGroupCard, tuple.selectedCard));
+        }
+
+        private void StopObserving()
+        {
+            _subscription?.Dispose();
+            StopObservingCardGroupsID();
+        }
+
+        private void OnConditionUpdated(bool islLowestGroupCard, CardData selectedCard)
+        {
+            if (selectedCard == null)
+            {
+                _cardData.CanBeParentOfSelectedCard.Value = false;
+                StopObservingCardGroupsID();
+                return;
+            }
+
+            StartObservingCardGroupsID(islLowestGroupCard, selectedCard);
+        }
+
+        private void StartObservingCardGroupsID(bool islLowestGroupCard, CardData selectedCard)
+        {
+            StopObservingCardGroupsID();
+
+            _cardGroupsIDsSubscription = Observable
+                .CombineLatest(selectedCard.GroupID, _cardData.GroupID)
+                .Subscribe(list =>
+                {
+                    _cardData.CanBeParentOfSelectedCard.Value = islLowestGroupCard
+                        && selectedCard != _cardData
+                        && list[0] != list[1];
+                });
+        }
+
+        private void StopObservingCardGroupsID()
+        {
+            _cardGroupsIDsSubscription?.Dispose();
+        }
+    }
+}

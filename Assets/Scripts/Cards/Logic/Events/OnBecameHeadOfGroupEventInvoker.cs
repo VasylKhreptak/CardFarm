@@ -18,8 +18,6 @@ namespace Cards.Logic.Events
         private void OnEnable()
         {
             _cardData.Callbacks.onGroupCardsListUpdated += OnCardsGroupUpdated;
-            _isTopCardSubscription = _cardData.IsTopCard.Subscribe(_ => OnCardsGroupUpdated());
-            _isSingleCardSubscription = _cardData.IsSingleCard.Where(x => x).Subscribe(_ => OnBecameHeadOfGroup());
         }
 
         private void OnDisable()
@@ -33,10 +31,10 @@ namespace Cards.Logic.Events
 
         private void OnCardsGroupUpdated()
         {
-            if (_cardData.IsTopCard.Value)
-            {
-                OnBecameHeadOfGroup();
-            }
+            _isTopCardSubscription?.Dispose();
+            _isSingleCardSubscription?.Dispose();
+            _isTopCardSubscription = _cardData.IsTopCard.Where(x => x).Subscribe(_ => OnBecameHeadOfGroup());
+            _isSingleCardSubscription = _cardData.IsSingleCard.Where(x => x).Subscribe(_ => OnBecameHeadOfGroup());
         }
 
         private void OnBecameHeadOfGroup()

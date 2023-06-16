@@ -3,6 +3,7 @@ using Cards.Core;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -46,7 +47,7 @@ namespace Cards.Data
         public BoolReactiveProperty IsSingleCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsLowestGroupCard = new BoolReactiveProperty();
-        public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
+        public BoolReactiveProperty CanBeParentOfSelectedCard = new BoolReactiveProperty();
         
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
     }
