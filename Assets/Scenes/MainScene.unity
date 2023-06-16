@@ -1066,7 +1066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &335707774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,6 +1080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _allocateMaxMemorySize: 0
+  _useFolders: 0
   _poolsPreferences:
   - pool: 0
     prefab: {fileID: 1998004416183343921, guid: 77f462f9abe61f54caf2687710cf2c8f,
@@ -1312,6 +1313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _allocateMaxMemorySize: 0
+  _useFolders: 1
   _poolsPreferences: []
 --- !u!1 &384721439
 GameObject:

@@ -11,6 +11,7 @@ namespace Plugins.ObjectPooler.Core
         [Header("Preferences")]
         [Tooltip("Allocates memory for the maximum size of the pool(MaxExpandSize).This will reduce the amount of memory allocations, but will increase the memory usage.")]
         [SerializeField] private bool _allocateMaxMemorySize;
+        [SerializeField] private bool _useFolders = true;
 
         [Header("Pools")]
         [SerializeField] private PoolPreference[] _poolsPreferences;
@@ -69,7 +70,7 @@ namespace Plugins.ObjectPooler.Core
         {
             var objectPool = new Queue<PooledObject>(GetCollectionCapacity(poolPreference));
 
-            Transform poolFolder = CreatePoolFolder(poolPreference.pool);
+            Transform poolFolder = _useFolders ? CreatePoolFolder(poolPreference.pool) : _transform;
 
             for (int i = 0; i < poolPreference.initialSize; i++)
             {
@@ -275,13 +276,13 @@ namespace Plugins.ObjectPooler.Core
             return newPoolObject;
         }
 
-        private PooledObject CreateNewPoolObject(T pool, Transform folder)
+        private PooledObject CreateNewPoolObject(T pool, Transform parent)
         {
             GameObject newPoolObject = InstantiateObject(GetPrefab(pool));
 
             newPoolObject.SetActive(false);
 
-            newPoolObject.transform.SetParent(folder);
+            newPoolObject.transform.SetParent(parent);
 
             PooledObject pooledObject = newPoolObject.AddComponent<PooledObject>();
             pooledObject.pool = pool;
@@ -314,6 +315,8 @@ namespace Plugins.ObjectPooler.Core
 
         private Transform GetPoolFolder(T pool)
         {
+            if (_useFolders == false) return _transform;
+
             if (_pools[pool].Count == 0)
             {
                 throw new Exception("Pool '" + pool + "' is empty.");
