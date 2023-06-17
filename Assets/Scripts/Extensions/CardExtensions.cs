@@ -87,5 +87,10 @@ namespace Extensions
 
             return GroupCards;
         }
+
+        public static void RenderOnTop(this CardData card)
+        {
+            card.transform.SetAsLastSibling();
+        }
     }
 }

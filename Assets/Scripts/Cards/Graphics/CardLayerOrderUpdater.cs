@@ -50,7 +50,7 @@ namespace Cards.Graphics
 
             foreach (var card in groupCards)
             {
-                card.transform.SetAsLastSibling();
+                card.RenderOnTop();
             }
         }
     }

@@ -11,21 +11,9 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
         [Header("Preferences")]
         [SerializeField] private List<CardRecipe> _recipes;
 
-        public bool IsRecipeValid(List<Card> cards, out CardRecipe recipe)
-        {
-            HashSet<Card> cardsss = new HashSet<Card>();
-
-            foreach (var possibleRecipe in _recipes)
-            {
-                if (cards.SequenceEqual(possibleRecipe.Cards))
-                {
-                    recipe = possibleRecipe;
-                    return true;
-                }
-            }
-
-            recipe = null;
-            return false;
-        }
+        // public bool IsRecipeValid(List<Card> cards, out CardRecipe recipe)
+        // {
+        //    
+        // }
     }
 }

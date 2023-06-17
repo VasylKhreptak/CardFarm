@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CardRecipes
   m_EditorClassIdentifier: 
   _recipes:
-  - Cards: 
+  - Cards: 0200000000000000
     Cooldown: 0
     Result:
       Weights: []
