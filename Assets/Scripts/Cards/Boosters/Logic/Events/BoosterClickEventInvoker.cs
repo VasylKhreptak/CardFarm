@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Cards.Boosters.Logic.Events
 {
-    public class ClickEventInvoker : MonoBehaviour
+    public class BoosterClickEventInvoker : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private BoosterCardData _cardData;
@@ -79,7 +79,7 @@ namespace Cards.Boosters.Logic.Events
 
             if (Vector2.Distance(currentCardPosition, _previousCardPosition) < _maxCardDistance)
             {
-                _cardData.OnClick?.Invoke();
+                _cardData.BoosterCallabcks.OnClick?.Invoke();
             }
         }
     }
