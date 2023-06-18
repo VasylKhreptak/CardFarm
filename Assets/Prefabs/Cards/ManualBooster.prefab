@@ -50,7 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 6281717518771182409}
-  _spawnRange: 5
+  _minRange: 5
+  _maxRange: 7
   _cards: 0000000003000000080000000100000005000000
 --- !u!1001 &7064885097297062440
 PrefabInstance:
@@ -127,7 +128,7 @@ PrefabInstance:
     - target: {fileID: 3861553596883588507, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3861553596883588507, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
@@ -137,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 3861553596883588507, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3861553596883588507, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
@@ -167,7 +168,7 @@ PrefabInstance:
     - target: {fileID: 3861553596883588507, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 360
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38a4e433eb7ba854fa05acffc7f51964, type: 3}

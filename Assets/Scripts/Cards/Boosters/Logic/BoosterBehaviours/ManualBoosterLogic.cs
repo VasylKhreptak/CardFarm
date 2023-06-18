@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cards.Boosters.Logic.Core;
 using Cards.Core;
-using Cards.Data;
 using Cards.Logic.Spawn;
 using UnityEngine;
 using Zenject;
@@ -13,12 +12,12 @@ namespace Cards.Boosters.Logic.BoosterBehaviours
         [Header("Preferences")]
         [SerializeField] private List<Card> _cards;
 
-        private CardFactory _cardFactory;
+        private CardSpawner _cardSpawner;
 
         [Inject]
-        private void Constructor(CardFactory cardFactory)
+        private void Constructor(CardSpawner cardSpawner)
         {
-            _cardFactory = cardFactory;
+            _cardSpawner = cardSpawner;
         }
 
         protected override void SpawnCard()
@@ -26,8 +25,7 @@ namespace Cards.Boosters.Logic.BoosterBehaviours
             Card cardToSpawn = GetCardToSpawn();
             Vector3 position = GetRandomPosition();
 
-            CardData spawnedCard = _cardFactory.Create(cardToSpawn);
-            spawnedCard.transform.position = position;
+            _cardSpawner.Spawn(cardToSpawn, position);
         }
 
         private Card GetCardToSpawn()

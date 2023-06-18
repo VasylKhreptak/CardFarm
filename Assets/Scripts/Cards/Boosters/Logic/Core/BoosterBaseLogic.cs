@@ -12,7 +12,8 @@ namespace Cards.Boosters.Logic.Core
         [SerializeField] protected BoosterCardData _cardData;
 
         [Header("Spawn Preferences")]
-        [SerializeField] private float _spawnRange = 5f;
+        [SerializeField] private float _minRange = 8f;
+        [SerializeField] private float _maxRange = 12f;
 
         private IDisposable _totalCardsSubscription;
 
@@ -57,7 +58,8 @@ namespace Cards.Boosters.Logic.Core
                 SpawnCard();
                 _cardData.LeftCards.Value--;
             }
-            else
+
+            if (_cardData.LeftCards.Value == 0)
             {
                 _cardData.gameObject.SetActive(false);
             }
@@ -67,16 +69,25 @@ namespace Cards.Boosters.Logic.Core
 
         protected Vector3 GetRandomPosition()
         {
-            Vector2 randomCircle = Random.insideUnitCircle * _spawnRange;
-            Vector3 randomSphere = new Vector3(randomCircle.x, 0f, randomCircle.y);
+            float range = GetRange();
 
+            Vector2 insideUnitCircle = Random.insideUnitCircle.normalized * range;
+
+            Vector3 randomSphere = new Vector3(insideUnitCircle.x, 0f, insideUnitCircle.y);
             return _cardData.transform.position + randomSphere;
         }
 
         private void OnDrawGizmosSelected()
         {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(_cardData.transform.position, _minRange);
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_cardData.transform.position, _spawnRange);
+            Gizmos.DrawWireSphere(_cardData.transform.position, _maxRange);
+        }
+
+        private float GetRange()
+        {
+            return Random.Range(_minRange, _maxRange);
         }
     }
 }
