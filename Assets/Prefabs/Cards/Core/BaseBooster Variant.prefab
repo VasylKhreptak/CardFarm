@@ -744,7 +744,7 @@ MonoBehaviour:
     value: 0
   MouseTrigger: {fileID: 8701961781298001351}
   Card:
-    value: 0
+    value: 12
   Name:
     value: Stacklands
   NameColor:
