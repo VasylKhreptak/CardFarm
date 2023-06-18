@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Cards.Core;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
-using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
 
@@ -10,8 +9,8 @@ namespace Cards.Data
     public class CardData : MonoBehaviour
     {
         [Header("Data")]
-        [SerializeField] private float _baseHeight = 0.001f;
-        [SerializeField] private float _heightOffset = 0.001f;
+        [SerializeField] private float _baseHeight = 0.01f;
+        [SerializeField] private float _heightOffset = 0.01f;
 
         public float BaseHeight => _baseHeight;
         public float HeightOffset => _heightOffset;
@@ -51,8 +50,6 @@ namespace Cards.Data
         public BoolReactiveProperty CanBeUnderSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
         
-        // public ReactiveProperty<CardRecipe>  
-
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
     }
 }

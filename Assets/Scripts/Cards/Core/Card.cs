@@ -33,5 +33,11 @@ namespace Cards.Core
         House = 11,
 
         #endregion
+
+        #region Other
+
+        Booster = 12,
+
+        #endregion
     }
 }

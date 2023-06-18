@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Cards.Core;
 using Cards.Data;
 using UniRx;
 using UnityEngine;
@@ -27,6 +28,21 @@ namespace CardsTable.Core
         public void ClearTable()
         {
             _observableCards.Clear();
+        }
+
+        public bool TryGetLowestGroupCard(Card card, out CardData cardData)
+        {
+            foreach (CardData cardInTable in _observableCards)
+            {
+                if (cardInTable.IsLowestGroupCard.Value)
+                {
+                    cardData = cardInTable;
+                    return true;
+                }
+            }
+
+            cardData = null;
+            return false;
         }
     }
 }
