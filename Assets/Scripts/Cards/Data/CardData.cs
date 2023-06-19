@@ -5,6 +5,7 @@ using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -63,6 +64,9 @@ namespace Cards.Data
 
         public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>(null);
         public RecipeExecutor RecipeExecutor;
+
+        [FormerlySerializedAs("CardAnimations")]
+        public CardAnimations Animations = new CardAnimations();
 
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
     }

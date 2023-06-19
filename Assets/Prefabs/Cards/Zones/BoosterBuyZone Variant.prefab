@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 4682650202823771812}
   _booster: 13
+  _cardsMoveDuration: 0.5
 --- !u!1 &5202717437099877449
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +514,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8553110877064441643, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8751749595196191504, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_IsActive
@@ -646,6 +652,8 @@ MonoBehaviour:
       Result:
         Weights: []
   RecipeExecutor: {fileID: 0}
+  Animations:
+    MoveAnimation: {fileID: 0}
   BoosterPrice:
     value: 3
   BoosterSpawnPoint: {fileID: 1323114453506917553}

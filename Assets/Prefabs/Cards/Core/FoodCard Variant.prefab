@@ -336,6 +336,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 871094102}
+    - target: {fileID: 606466236671030040, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
     - target: {fileID: 771904413631130282, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -724,10 +729,24 @@ MonoBehaviour:
       Result:
         Weights: []
   RecipeExecutor: {fileID: 5873277363968446321}
+  Animations:
+    MoveAnimation: {fileID: 4382369424566889421}
   Price:
     value: 0
   NutritionalValue:
     value: 0
+--- !u!114 &4382369424566889421 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 606466236671030040, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 3799863883936356565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252b2605a9ca4d5a802f53b51ef5d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5523304477396398268 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8655193052913444969, guid: 7bf54413c6b39324e9a7ddfc51606634,

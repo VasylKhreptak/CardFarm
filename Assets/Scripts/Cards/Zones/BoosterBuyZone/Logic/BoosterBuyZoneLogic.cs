@@ -17,10 +17,12 @@ namespace Cards.Zones.BoosterBuyZone.Logic
 
         [Header("Preferences")]
         [SerializeField] private Card _booster;
+        [SerializeField] private float _cardsMoveDuration = 1f;
 
         private CardData[] _coinsBuffer;
 
         private IDisposable _priceSubscription;
+        private CompositeDisposable _delays = new CompositeDisposable();
 
         private CardsTable _cardsTable;
         private CardSpawner _cardSpawner;
@@ -56,6 +58,7 @@ namespace Cards.Zones.BoosterBuyZone.Logic
         {
             StopObservingClick();
             StopObservingPrice();
+            RemoveDelaySubscriptions();
         }
 
         private void StartObservingClick()
@@ -93,18 +96,28 @@ namespace Cards.Zones.BoosterBuyZone.Logic
             {
                 for (int i = 0; i < foundCoins; i++)
                 {
-                    if (_coinsBuffer[i] == null) continue;
+                    CardData coin = _coinsBuffer[i];
 
-                    _coinsBuffer[i].gameObject.SetActive(false);
+                    if (coin == null) continue;
+
+                    coin.Animations.MoveAnimation.Play(transform.position, _cardsMoveDuration, () =>
+                    {
+                        coin.gameObject.SetActive(false);
+                    });
                 }
 
-                SpawnBooster();
+                Observable.Timer(TimeSpan.FromSeconds(_cardsMoveDuration)).Subscribe(_ => SpawnBooster()).AddTo(_delays);
             }
         }
 
         private void SpawnBooster()
         {
             _cardSpawner.Spawn(_booster, _data.BoosterSpawnPoint.position);
+        }
+
+        private void RemoveDelaySubscriptions()
+        {
+            _delays.Clear();
         }
     }
 }

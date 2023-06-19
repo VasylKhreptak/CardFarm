@@ -186,6 +186,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 606466236671030040, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     - target: {fileID: 771904413631130282, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -573,6 +578,8 @@ MonoBehaviour:
       Result:
         Weights: []
   RecipeExecutor: {fileID: 7904051146303008334}
+  Animations:
+    MoveAnimation: {fileID: 0}
   Price:
     value: 0
 --- !u!224 &564359370849849035 stripped
