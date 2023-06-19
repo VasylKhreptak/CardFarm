@@ -40,5 +40,11 @@ namespace Cards.Core
         FirstBooster = 13,
 
         #endregion
+
+        #region Zones
+
+        Zone = 14,
+
+        #endregion
     }
 }
