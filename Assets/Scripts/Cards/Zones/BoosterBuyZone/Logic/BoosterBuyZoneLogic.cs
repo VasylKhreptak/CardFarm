@@ -93,6 +93,8 @@ namespace Cards.Zones.BoosterBuyZone.Logic
             {
                 for (int i = 0; i < foundCoins; i++)
                 {
+                    if (_coinsBuffer[i] == null) continue;
+
                     _coinsBuffer[i].gameObject.SetActive(false);
                 }
 
