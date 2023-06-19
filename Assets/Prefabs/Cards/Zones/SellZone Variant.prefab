@@ -275,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 4399263348077703630, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4547866102002860345, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -326,7 +326,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 7117717225008243558, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -400,7 +400,7 @@ MonoBehaviour:
     value: -1
   Height:
     value: 0
-  MouseTrigger: {fileID: 0}
+  MouseTrigger: {fileID: 7195069559300310765}
   Card:
     value: 0
   Name:
@@ -464,6 +464,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 348643484191201396}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7195069559300310765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7425491040706682521, guid: d5d346ed3d610c748b54a7004eb99e4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 348643484191201396}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3355022358711133872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da66e2c89135284458685fa7651ae81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8537092254538443450 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8263957201508905678, guid: d5d346ed3d610c748b54a7004eb99e4c,
