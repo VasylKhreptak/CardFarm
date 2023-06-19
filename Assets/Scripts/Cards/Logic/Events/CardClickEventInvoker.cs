@@ -3,7 +3,7 @@ using Cards.Data;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Boosters.Logic.Events
+namespace Cards.Logic.Events
 {
     public class CardClickEventInvoker : MonoBehaviour
     {
