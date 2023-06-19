@@ -938,6 +938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 244573442}
   - component: {fileID: 244573443}
+  - component: {fileID: 244573444}
   m_Layer: 0
   m_Name: StarterBoosterSpawner
   m_TagString: Untagged
@@ -953,7 +954,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244573441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -4.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -972,6 +973,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed2ee538c674515bac5a518a06a918b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &244573444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244573441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e464c9ef85565bc418978cf1e7a1ca53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 244573442}
+  _radius: 1
+  _color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &254902128
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ namespace Runtime.Map
 
         private void Start()
         {
-            _cardSpawner.Spawn(Card.StarterBooster);
+            _cardSpawner.Spawn(Card.StarterBooster, transform.position);
         }
 
         #endregion
