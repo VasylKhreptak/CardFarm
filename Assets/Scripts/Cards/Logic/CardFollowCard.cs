@@ -71,6 +71,8 @@ namespace Cards.Logic
 
         private void FollowStep()
         {
+            
+            
             Vector3 targetPosition = _cardData.UpperCard.Value.BottomCardFollowPoint.position;
             Vector3 transformPosition = _transform.position;
 

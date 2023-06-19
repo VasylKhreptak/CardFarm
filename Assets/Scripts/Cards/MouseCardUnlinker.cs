@@ -17,18 +17,30 @@ namespace Cards
 
         private void OnEnable()
         {
-            _mouseDownSubscription?.Dispose();
-            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ =>
-            {
-                _cardData.UnlinkFromUpper();
-            });
+            StartObservingMouseDown();
         }
 
         private void OnDisable()
         {
-            _mouseDownSubscription?.Dispose();
+            StopObservingMouseDown();
         }
 
         #endregion
+
+        private void StartObservingMouseDown()
+        {
+            StopObservingMouseDown();
+            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ => OnMouseDown());
+        }
+
+        private void StopObservingMouseDown()
+        {
+            _mouseDownSubscription?.Dispose();
+        }
+
+        private void OnMouseDown()
+        {
+            _cardData.UnlinkFromUpper();
+        }
     }
 }

@@ -83,6 +83,11 @@ namespace Cards.Logic
             _mouseUpSubscription?.Dispose();
         }
 
+        private void OnMouseDownAsObservable()
+        {
+            
+        }
+        
         private void StartFollowingTouch()
         {
             StopFollowingTouch();

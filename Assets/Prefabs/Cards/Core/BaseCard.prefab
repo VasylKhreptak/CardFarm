@@ -59,7 +59,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _raycastDistance: 3
-  _cardUpdateInterval: 0.1
+  _cardUpdateInterval: 0.05
   _hitsBufferSize: 20
 --- !u!1 &376562002269147851
 GameObject:
@@ -2460,6 +2460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
+  _minRange: 5
+  _maxRange: 7
 --- !u!1 &8075329039568799836
 GameObject:
   m_ObjectHideFlags: 0
