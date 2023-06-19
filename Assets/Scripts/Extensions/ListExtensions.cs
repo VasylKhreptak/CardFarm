@@ -11,7 +11,7 @@ namespace Extensions
             
             HashSet<T> hashSet2 = new HashSet<T>(list2);
 
-            return list1.All(list2.Contains);
+            return list1.All(hashSet2.Contains);
         }
     }
 }

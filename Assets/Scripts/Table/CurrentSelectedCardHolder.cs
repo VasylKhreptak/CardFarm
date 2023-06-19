@@ -2,7 +2,7 @@
 using UniRx;
 using UnityEngine;
 
-namespace CardsTable
+namespace Table
 {
     public class CurrentSelectedCardHolder : MonoBehaviour
     {

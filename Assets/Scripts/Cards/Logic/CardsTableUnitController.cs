@@ -1,4 +1,5 @@
 ﻿using Cards.Data;
+using Table.Core;
 using UnityEngine;
 using Zenject;
 
@@ -9,10 +10,10 @@ namespace Cards.Logic
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
-        private CardsTable.Core.CardsTable _cardsTable;
+        private CardsTable _cardsTable;
 
         [Inject]
-        private void Constructor(CardsTable.Core.CardsTable cardsTable)
+        private void Constructor(CardsTable cardsTable)
         {
             _cardsTable = cardsTable;
         }

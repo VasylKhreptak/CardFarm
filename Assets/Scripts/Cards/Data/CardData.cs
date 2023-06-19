@@ -57,7 +57,7 @@ namespace Cards.Data
         public BoolReactiveProperty CanBeUnderSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
 
-        public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>();
+        public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>(null);
         public RecipeExecutor RecipeExecutor;
 
         public CardDataCallbacks Callbacks = new CardDataCallbacks();

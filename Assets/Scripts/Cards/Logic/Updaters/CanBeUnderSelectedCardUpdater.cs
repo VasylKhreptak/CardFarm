@@ -1,6 +1,6 @@
 ﻿using System;
 using Cards.Data;
-using CardsTable;
+using Table;
 using UniRx;
 using UnityEngine;
 using Zenject;

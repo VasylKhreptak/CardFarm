@@ -536,6 +536,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManualBooster
       objectReference: {fileID: 0}
+    - target: {fileID: 6313339803202453426, guid: 7d0e54cf41b096b4485b23476e28b827,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6313339803202453427, guid: 7d0e54cf41b096b4485b23476e28b827,
         type: 3}
       propertyPath: m_Pivot.x
@@ -800,6 +805,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManualBooster (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6313339803202453426, guid: 7d0e54cf41b096b4485b23476e28b827,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6313339803202453427, guid: 7d0e54cf41b096b4485b23476e28b827,
         type: 3}
       propertyPath: m_Pivot.x
@@ -918,6 +928,50 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 232665726}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &244573441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 244573442}
+  - component: {fileID: 244573443}
+  m_Layer: 0
+  m_Name: StarterBoosterSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &244573442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244573441}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1647381466}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &244573443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244573441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed2ee538c674515bac5a518a06a918b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &254902128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,6 +2145,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManualBooster (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6313339803202453426, guid: 7d0e54cf41b096b4485b23476e28b827,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6313339803202453427, guid: 7d0e54cf41b096b4485b23476e28b827,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2918,6 +2977,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 22428984, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3448,6 +3511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14be24427fee42adb99a4c276ce8e956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _compatibleCards: {fileID: 11400000, guid: 8a8b75a90c8d25d489bcef13be7b9cfc, type: 2}
 --- !u!224 &836302658 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6313339803202453427, guid: 7d0e54cf41b096b4485b23476e28b827,
@@ -5863,6 +5927,12 @@ MonoBehaviour:
     initialSize: 1
     autoExpand: 1
     maxExpandSize: 100
+  - pool: 12
+    prefab: {fileID: 6313339803202453426, guid: 7d0e54cf41b096b4485b23476e28b827,
+      type: 3}
+    initialSize: 1
+    autoExpand: 1
+    maxExpandSize: 100
 --- !u!1001 &1541345960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6381,6 +6451,7 @@ Transform:
   - {fileID: 407687491}
   - {fileID: 708444009}
   - {fileID: 1693373859}
+  - {fileID: 244573442}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6568,6 +6639,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManualBooster (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6313339803202453426, guid: 7d0e54cf41b096b4485b23476e28b827,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6313339803202453427, guid: 7d0e54cf41b096b4485b23476e28b827,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6707,6 +6783,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ManualBooster (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6313339803202453426, guid: 7d0e54cf41b096b4485b23476e28b827,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6313339803202453427, guid: 7d0e54cf41b096b4485b23476e28b827,
         type: 3}
@@ -7741,6 +7822,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ManualBooster (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6313339803202453426, guid: 7d0e54cf41b096b4485b23476e28b827,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6313339803202453427, guid: 7d0e54cf41b096b4485b23476e28b827,
         type: 3}

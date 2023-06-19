@@ -2,13 +2,17 @@
 using System.Linq;
 using Cards.Core;
 using Cards.Data;
+using ScriptableObjects.Scripts.Cards;
 using UniRx;
 using UnityEngine;
 
-namespace CardsTable.Core
+namespace Table.Core
 {
     public class CardsTable : MonoBehaviour
     {
+        [Header("Preferences")]
+        [SerializeField] private CompatibleCards _compatibleCards;
+
         private IReactiveCollection<CardData> _observableCards = new ReactiveCollection<CardData>();
 
         public IReadOnlyReactiveCollection<CardData> ObservableCards => _observableCards;
@@ -34,7 +38,9 @@ namespace CardsTable.Core
         {
             foreach (CardData cardInTable in _observableCards)
             {
-                if (cardInTable.IsLowestGroupCard.Value)
+                if (cardInTable.IsLowestGroupCard.Value 
+                    && card == cardInTable.Card.Value
+                    && _compatibleCards.IsCompatible(card, cardInTable.Card.Value))
                 {
                     cardData = cardInTable;
                     return true;
