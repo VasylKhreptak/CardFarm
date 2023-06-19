@@ -22,13 +22,13 @@ namespace Cards.Boosters.Logic.Core
         private void OnEnable()
         {
             StartObservingTotalCards();
-            _cardData.BoosterCallabcks.OnClick += OnCLick;
+            _cardData.Callbacks.onClicked += OnCLick;
         }
 
         private void OnDisable()
         {
             StopObservingTotalCards();
-            _cardData.BoosterCallabcks.OnClick -= OnCLick;
+            _cardData.Callbacks.onClicked -= OnCLick;
         }
 
         #endregion

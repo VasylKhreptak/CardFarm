@@ -551,6 +551,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 871094102}
+    - target: {fileID: 5009909806157803717, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
     - target: {fileID: 5170954531621235330, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -661,6 +666,8 @@ MonoBehaviour:
   _baseHeight: 0.01
   _heightOffset: 0.01
   _isWorker: 0
+  _isSellableCard: 0
+  _isCoin: 0
   ID: -1
   GroupID:
     value: -1

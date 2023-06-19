@@ -1,14 +1,14 @@
 ﻿using System;
-using Cards.Boosters.Data;
+using Cards.Data;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Boosters.Logic.Events
 {
-    public class BoosterClickEventInvoker : MonoBehaviour
+    public class CardClickEventInvoker : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private BoosterCardData _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _maxCardDistance = 0.1f;
@@ -79,7 +79,7 @@ namespace Cards.Boosters.Logic.Events
 
             if (Vector2.Distance(currentCardPosition, _previousCardPosition) < _maxCardDistance)
             {
-                _cardData.BoosterCallabcks.OnClick?.Invoke();
+                _cardData.Callbacks.onClicked?.Invoke();
             }
         }
     }

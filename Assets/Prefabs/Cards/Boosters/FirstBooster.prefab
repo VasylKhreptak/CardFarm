@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 382204757454735453, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 7150918256690066688}
     - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
       propertyPath: _maxRange
@@ -80,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 5735062081522388920, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
       propertyPath: m_Name
-      value: HumbleBeginningsBooster
+      value: FirstBooster
       objectReference: {fileID: 0}
     - target: {fileID: 5735062081522388921, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
@@ -189,3 +194,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aea9bef9ed82d6439ace7cfda0849f3, type: 3}
+--- !u!114 &7150918256690066688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5703616818681703235, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3177987741617659459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d16adc2a39423ea24653badecfb5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
