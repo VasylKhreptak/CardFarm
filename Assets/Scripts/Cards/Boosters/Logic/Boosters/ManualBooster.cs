@@ -14,6 +14,7 @@ namespace Cards.Boosters.Logic.Boosters
     {
         [Header("Preferences")]
         [SerializeField] private List<Card> _cards;
+        [SerializeField] private float _cardMoveDuration = 0.5f;
 
         private CardSpawner _cardSpawner;
         private CardsTable _cardsTable;
@@ -28,7 +29,7 @@ namespace Cards.Boosters.Logic.Boosters
         protected override void SpawnCard()
         {
             Card cardToSpawn = GetCardToSpawn();
-            
+
             _cardData.BoosterCallabcks.OnSpawnedCard?.Invoke(cardToSpawn);
 
             if (_cardsTable.TryGetLowestGroupCard(cardToSpawn, out CardData lowestGroupCard))
@@ -40,7 +41,8 @@ namespace Cards.Boosters.Logic.Boosters
             else
             {
                 Vector3 position = GetRandomPosition();
-                _cardSpawner.Spawn(cardToSpawn, position);
+                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
+                spawnedCard.Animations.MoveAnimation.Play(position, _cardMoveDuration);
             }
         }
 

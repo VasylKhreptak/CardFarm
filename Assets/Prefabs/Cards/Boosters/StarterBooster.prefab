@@ -53,6 +53,7 @@ MonoBehaviour:
   _minRange: 5
   _maxRange: 7
   _cards: 0000000003000000080000000100000005000000
+  _cardMoveDuration: 0.3
 --- !u!1001 &7064885097297062440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63,7 +64,7 @@ PrefabInstance:
     - target: {fileID: 1215944152439879773, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3861553596883588506, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}

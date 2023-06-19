@@ -53,6 +53,7 @@ MonoBehaviour:
   _minRange: 8
   _maxRange: 12
   _cards: []
+  _cardMoveDuration: 0.3
 --- !u!1001 &8791578541861149218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,6 +61,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1215944152439879773, guid: 38a4e433eb7ba854fa05acffc7f51964,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 3861553596883588506, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
       propertyPath: m_Name
@@ -169,6 +175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601497717769274485, guid: 38a4e433eb7ba854fa05acffc7f51964,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38a4e433eb7ba854fa05acffc7f51964, type: 3}
