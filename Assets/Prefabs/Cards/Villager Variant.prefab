@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 706076374391090179, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
+      propertyPath: _isWorker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 706076374391090179, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
       propertyPath: Icon.value
       value: 
       objectReference: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd,

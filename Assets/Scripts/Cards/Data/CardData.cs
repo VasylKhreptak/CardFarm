@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Cards.Core;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
+using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
 
@@ -11,10 +12,15 @@ namespace Cards.Data
         [Header("Data")]
         [SerializeField] private float _baseHeight = 0.01f;
         [SerializeField] private float _heightOffset = 0.01f;
+        [Space]
+        [SerializeField] private bool _isWorker;
 
         public float BaseHeight => _baseHeight;
         public float HeightOffset => _heightOffset;
 
+        public bool IsWorker => _isWorker;
+
+        [Space]
         public int ID = -1;
         public IntReactiveProperty GroupID = new IntReactiveProperty(-1);
 
@@ -49,7 +55,9 @@ namespace Cards.Data
         public BoolReactiveProperty IsLowestGroupCard = new BoolReactiveProperty();
         public BoolReactiveProperty CanBeUnderSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
-        
+
+        public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>();
+
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
     }
 }
