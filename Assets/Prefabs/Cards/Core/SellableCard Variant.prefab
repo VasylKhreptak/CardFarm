@@ -510,6 +510,8 @@ MonoBehaviour:
   _baseHeight: 0.01
   _heightOffset: 0.01
   _isWorker: 0
+  _isSellableCard: 1
+  _isCoin: 0
   ID: -1
   GroupID:
     value: -1

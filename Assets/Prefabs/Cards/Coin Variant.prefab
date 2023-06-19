@@ -124,6 +124,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
+      propertyPath: _isCoin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
       propertyPath: Card.value
       value: 8
       objectReference: {fileID: 0}
@@ -137,6 +142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Name.value
       value: Coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _isSellableCard
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378184329006, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}

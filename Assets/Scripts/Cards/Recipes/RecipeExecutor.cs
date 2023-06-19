@@ -82,7 +82,6 @@ namespace Cards.Recipes
 
             SpawnRecipeResult();
             ClearRecipeResources();
-            _cardData.CurrentRecipe.Value = null;
         }
 
         private void SpawnRecipeResult()

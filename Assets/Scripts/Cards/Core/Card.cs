@@ -34,9 +34,10 @@ namespace Cards.Core
 
         #endregion
 
-        #region Other
+        #region Boosters
 
         StarterBooster = 12,
+        FirstBooster = 13,
 
         #endregion
     }

@@ -20,8 +20,6 @@ namespace Plugins.ObjectPooler.Core
         private Dictionary<T, HashSet<PooledObject>> _activePools;
         private Dictionary<T, HashSet<PooledObject>> _inactivePools;
 
-        private Transform _transform;
-
         private int GetCollectionCapacity(PoolPreference preference)
         {
             return _allocateMaxMemorySize ? preference.maxExpandSize : preference.initialSize;
@@ -31,8 +29,6 @@ namespace Plugins.ObjectPooler.Core
 
         private void OnValidate()
         {
-            _transform = transform;
-
             if (_poolsPreferences == null) return;
 
             ValidateInputData();
@@ -70,7 +66,7 @@ namespace Plugins.ObjectPooler.Core
         {
             var objectPool = new Queue<PooledObject>(GetCollectionCapacity(poolPreference));
 
-            Transform poolFolder = _useFolders ? CreatePoolFolder(poolPreference.pool) : _transform;
+            Transform poolFolder = _useFolders ? CreatePoolFolder(poolPreference.pool) : transform;
 
             for (int i = 0; i < poolPreference.initialSize; i++)
             {
@@ -90,7 +86,7 @@ namespace Plugins.ObjectPooler.Core
         {
             GameObject poolParentObj = new GameObject(pool.ToString());
 
-            poolParentObj.transform.SetParent(_transform);
+            poolParentObj.transform.SetParent(transform);
 
             return poolParentObj.transform;
         }
@@ -315,7 +311,7 @@ namespace Plugins.ObjectPooler.Core
 
         private Transform GetPoolFolder(T pool)
         {
-            if (_useFolders == false) return _transform;
+            if (_useFolders == false) return transform;
 
             if (_pools[pool].Count == 0)
             {

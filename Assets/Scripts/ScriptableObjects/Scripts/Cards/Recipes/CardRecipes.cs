@@ -18,9 +18,6 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
             bool hasResources = TryGetResources(cards, out List<Card> resources);
             bool hasWorkers = TryGetWorkers(cards, out List<Card> workers);
 
-            Debug.Log(hasWorkers);
-            Debug.Log(hasResources);
-
             if (hasResources == false)
             {
                 recipe = null;
@@ -44,7 +41,7 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
             {
                 foreach (var possibleRecipe in _recipes)
                 {
-                    if (possibleRecipe.Resources.Count == 1 
+                    if (possibleRecipe.Resources.Count == 1
                         && possibleRecipe.Resources.First() == firstResource
                         && possibleRecipe.Workers.HasAllElementsOf(workers))
                     {
