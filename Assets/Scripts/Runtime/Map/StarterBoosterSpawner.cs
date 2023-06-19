@@ -20,6 +20,9 @@ namespace Runtime.Map
         private void Start()
         {
             _cardSpawner.Spawn(Card.StarterBooster, transform.position);
+            _cardSpawner.Spawn(Card.StarterBooster, transform.position);
+            _cardSpawner.Spawn(Card.StarterBooster, transform.position);
+            _cardSpawner.Spawn(Card.StarterBooster, transform.position);
         }
 
         #endregion

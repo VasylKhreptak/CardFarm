@@ -56,7 +56,6 @@ namespace Cards.Recipes
         {
             StopObservingRecipe();
             _recipeSubscription = _cardData.CurrentRecipe.Subscribe(OnRecipeUpdated);
-
         }
 
         private void StopObservingRecipe()
