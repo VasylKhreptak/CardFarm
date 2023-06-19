@@ -2583,7 +2583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
-  _maxCardDistance: 0.1
+  _maxDistance: 2
 --- !u!1 &8326685145913892960
 GameObject:
   m_ObjectHideFlags: 0

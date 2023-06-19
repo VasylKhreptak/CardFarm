@@ -11,12 +11,12 @@ namespace Cards.Logic.Events
         [SerializeField] private CardData _cardData;
 
         [Header("Preferences")]
-        [SerializeField] private float _maxCardDistance = 0.1f;
+        [SerializeField] private float _maxDistance = 0.1f;
 
         private IDisposable _mouseDownSubscription;
         private IDisposable _mouseUpSubscription;
 
-        private Vector2 _previousCardPosition;
+        private Vector2 _previousClickPosition;
 
         #region MonoBehaviour
 
@@ -68,16 +68,14 @@ namespace Cards.Logic.Events
 
         private void OnMouseDown()
         {
-            Vector3 cardPosition = _cardData.transform.position;
-            _previousCardPosition = new Vector2(cardPosition.x, cardPosition.z);
+            _previousClickPosition = Input.mousePosition;
         }
 
         private void OnMouseUp()
         {
-            Vector3 cardPosition = _cardData.transform.position;
-            Vector2 currentCardPosition = new Vector2(cardPosition.x, cardPosition.z);
+            Vector2 currentClickPosition = Input.mousePosition;
 
-            if (Vector2.Distance(currentCardPosition, _previousCardPosition) < _maxCardDistance)
+            if (Vector2.Distance(currentClickPosition, _previousClickPosition) < _maxDistance)
             {
                 _cardData.Callbacks.onClicked?.Invoke();
             }

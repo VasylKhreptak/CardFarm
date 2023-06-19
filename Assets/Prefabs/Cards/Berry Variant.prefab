@@ -25,6 +25,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 871094102, guid: 096e2fd36fb371a418caf0955f9f94b8, type: 3}
+      propertyPath: _isSellableCard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 871094102, guid: 096e2fd36fb371a418caf0955f9f94b8, type: 3}
       propertyPath: NameColor.value.b
       value: 0
       objectReference: {fileID: 0}

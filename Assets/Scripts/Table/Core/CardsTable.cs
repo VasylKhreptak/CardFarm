@@ -38,9 +38,8 @@ namespace Table.Core
         {
             foreach (CardData cardInTable in _observableCards)
             {
-                if (cardInTable.IsLowestGroupCard.Value 
-                    && card == cardInTable.Card.Value
-                    && _compatibleCards.IsCompatible(card, cardInTable.Card.Value))
+                if (cardInTable.IsLowestGroupCard.Value
+                    && card == cardInTable.Card.Value)
                 {
                     cardData = cardInTable;
                     return true;
@@ -49,6 +48,34 @@ namespace Table.Core
 
             cardData = null;
             return false;
+        }
+
+        public int TryGetLowestGroupCards(Card card, ref CardData[] cards)
+        {
+            int count = 0;
+
+            foreach (CardData cardInTable in _observableCards)
+            {
+                if (cardInTable.IsLowestGroupCard.Value)
+                {
+                    List<CardData> cardsGroup = cardInTable.GroupCards;
+
+                    for (int i = cardsGroup.Count - 1; i >= 0; i--)
+                    {
+                        if (count >= cards.Length) return count;
+
+                        CardData groupCard = cardsGroup[i];
+
+                        if (groupCard.Card.Value == card)
+                        {
+                            cards[count] = groupCard;
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            return count;
         }
     }
 }
