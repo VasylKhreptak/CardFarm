@@ -4,7 +4,7 @@ using TMPro;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Graphics.CardVisualElements
+namespace Cards.Graphics.VisualElements
 {
     public class CardNameText : MonoBehaviour
     {

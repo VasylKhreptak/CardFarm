@@ -12,8 +12,8 @@ namespace Cards.Boosters.Logic.Core
         [SerializeField] protected BoosterCardData _cardData;
 
         [Header("Spawn Preferences")]
-        [SerializeField] private float _minRange = 8f;
-        [SerializeField] private float _maxRange = 12f;
+        [SerializeField] private float _minRange = 5f;
+        [SerializeField] private float _maxRange = 7f;
 
         private IDisposable _totalCardsSubscription;
 

@@ -2,15 +2,17 @@
 using Cards.Boosters.Logic.Core;
 using Cards.Core;
 using Cards.Logic.Spawn;
+using Extensions;
+using ScriptableObjects.Scripts.Cards.Recipes;
 using UnityEngine;
 using Zenject;
 
-namespace Cards.Boosters.Logic.BoosterBehaviours
+namespace Cards.Boosters.Logic.Boosters
 {
-    public class ManualBoosterLogic : BoosterBaseLogic
+    public class WeightedBooster : BoosterBaseLogic
     {
         [Header("Preferences")]
-        [SerializeField] private List<Card> _cards;
+        [SerializeField] private List<CardWeight> _cards;
 
         private CardSpawner _cardSpawner;
 
@@ -26,11 +28,13 @@ namespace Cards.Boosters.Logic.BoosterBehaviours
             Vector3 position = GetRandomPosition();
 
             _cardSpawner.Spawn(cardToSpawn, position);
+
+            _cardData.BoosterCallabcks.OnSpawnedCard?.Invoke(cardToSpawn);
         }
 
         private Card GetCardToSpawn()
         {
-            return _cards[_cardData.TotalCards.Value - _cardData.LeftCards.Value];
+            return _cards.GetByWeight(x => x.Weight).Card;
         }
     }
 }

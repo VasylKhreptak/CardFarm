@@ -3,7 +3,7 @@ using Cards.Data;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Graphics.CardVisualElements
+namespace Cards.Graphics.VisualElements
 {
     public class CardOutlineController : MonoBehaviour
     {

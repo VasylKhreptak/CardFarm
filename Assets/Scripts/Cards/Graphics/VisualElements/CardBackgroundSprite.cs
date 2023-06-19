@@ -4,7 +4,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cards.Graphics.CardVisualElements
+namespace Cards.Graphics.VisualElements
 {
     public class CardBackgroundSpriteUpdater : MonoBehaviour
     {
