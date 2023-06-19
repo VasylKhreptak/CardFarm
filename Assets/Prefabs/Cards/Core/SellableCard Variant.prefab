@@ -331,6 +331,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 1880421872753608925, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     - target: {fileID: 1926160521809639925, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -352,6 +357,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1854063491}
     - target: {fileID: 2308536637409493149, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 2465658523644437456, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -432,6 +442,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1854063491}
     - target: {fileID: 7259805928741692331, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 7294079551765895076, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -550,6 +565,7 @@ MonoBehaviour:
       Cooldown: 0
       Result:
         Weights: []
+  RecipeExecutor: {fileID: 7904051146303008334}
   Price:
     value: 0
 --- !u!224 &564359370849849035 stripped
@@ -568,6 +584,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da66e2c89135284458685fa7651ae81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7904051146303008334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7294079551765895076, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 615042715106327018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a9a6914976485690d1552d117ae654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8112247566156894595 stripped

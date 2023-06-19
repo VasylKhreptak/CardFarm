@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cards.Core;
+using Cards.Recipes;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
@@ -57,6 +58,7 @@ namespace Cards.Data
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
 
         public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>();
+        public RecipeExecutor RecipeExecutor;
 
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
     }
