@@ -402,7 +402,7 @@ MonoBehaviour:
     value: 0
   MouseTrigger: {fileID: 7195069559300310765}
   Card:
-    value: 0
+    value: 14
   Name:
     value: Sell
   NameColor:
