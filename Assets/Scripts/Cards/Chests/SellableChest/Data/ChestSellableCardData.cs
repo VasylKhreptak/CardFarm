@@ -1,9 +1,9 @@
 ﻿using Cards.Data;
 using UniRx;
 
-namespace Cards.Chests.Core.Data
+namespace Cards.Chests.SellableChest.Data
 {
-    public class ChestCardData : SellableCardData
+    public class ChestSellableCardData : SellableCardData
     {
         public ReactiveCollection<SellableCardData> StoredCards = new ReactiveCollection<SellableCardData>();
     }

@@ -1,14 +1,14 @@
 ﻿using System;
-using Cards.Chests.Core.Data;
+using Cards.Chests.SellableChest.Data;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Chests.Core.Logic.Updaters
+namespace Cards.Chests.SellableChest.Logic.Updaters
 {
     public class ChestPriceUpdater : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private ChestCardData _cardData;
+        [SerializeField] private ChestSellableCardData _cardData;
 
         private IDisposable _storedCardsSubscriptions;
 

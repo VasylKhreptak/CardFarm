@@ -1,15 +1,15 @@
 ﻿using System;
-using Cards.Chests.Core.Data;
+using Cards.Chests.SellableChest.Data;
 using TMPro;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Chests.Core.Graphics.VisualElements
+namespace Cards.Chests.SellableChest.Graphics.VisualElements
 {
     public class ChestItemsCountText : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private ChestCardData _cardData;
+        [SerializeField] private ChestSellableCardData _cardData;
         [SerializeField] private TMP_Text _tmp;
 
         private IDisposable _subscription;

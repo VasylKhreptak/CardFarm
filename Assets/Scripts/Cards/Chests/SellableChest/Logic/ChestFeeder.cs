@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
-using Cards.Chests.Core.Data;
+using Cards.Chests.SellableChest.Data;
 using Cards.Core;
 using Cards.Data;
 using UnityEngine;
 
-namespace Cards.Chests.Core.Logic
+namespace Cards.Chests.SellableChest.Logic
 {
     public class ChestFeeder : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private ChestCardData _cardData;
+        [SerializeField] private ChestSellableCardData _cardData;
 
         [Header("Preferences")]
         [SerializeField] private Card _chestType;
