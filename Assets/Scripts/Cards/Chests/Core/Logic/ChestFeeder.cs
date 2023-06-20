@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
-using Cards.CoinChest.Data;
+using Cards.Chests.Core.Data;
 using Cards.Core;
 using Cards.Data;
 using UnityEngine;
 
-namespace Cards.CoinChest.Logic
+namespace Cards.Chests.Core.Logic
 {
-    public class CoinChestFeeder : MonoBehaviour
+    public class ChestFeeder : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private CoinChestCardData _cardData;
+        [SerializeField] private ChestCardData _cardData;
+
+        [Header("Preferences")]
+        [SerializeField] private Card _chestType;
 
         #region MonoBehaviour
 
@@ -41,9 +44,9 @@ namespace Cards.CoinChest.Logic
 
             foreach (var card in bottomCards)
             {
-                if (card.Card.Value == Card.Coin)
+                if (card.Card.Value == _chestType)
                 {
-                    _cardData.Coins.Value++;
+                    _cardData.ItemsCount.Value++;
                     card.gameObject.SetActive(false);
                 }
             }
