@@ -107,5 +107,20 @@ namespace Table.Core
             cardData = null;
             return false;
         }
+
+        public bool TryGetCards(Card card, out List<CardData> cardData)
+        {
+            cardData = new List<CardData>();
+
+            foreach (CardData cardInTable in _observableCards)
+            {
+                if (cardInTable.Card.Value == card)
+                {
+                    cardData.Add(cardInTable);
+                }
+            }
+
+            return cardData.Count > 0;
+        }
     }
 }
