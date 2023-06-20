@@ -150,6 +150,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardData: {fileID: 2049950587668218050}
   _tmp: {fileID: 7560465680449958116}
+--- !u!1 &8363786486374007988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5419135280778787199}
+  - component: {fileID: 1019975607686614677}
+  m_Layer: 6
+  m_Name: CoinChestFeeder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5419135280778787199
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8363786486374007988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7154888618744731733}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1019975607686614677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8363786486374007988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254867624b5c4e3f96a647aa36ec4202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 2049950587668218050}
 --- !u!1001 &3862083484678834499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -607,6 +657,12 @@ MonoBehaviour:
 --- !u!224 &5586025183224455466 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8655193052913444969, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 3862083484678834499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &7154888618744731733 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6256525992163840278, guid: 7bf54413c6b39324e9a7ddfc51606634,
     type: 3}
   m_PrefabInstance: {fileID: 3862083484678834499}
   m_PrefabAsset: {fileID: 0}
