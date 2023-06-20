@@ -1,14 +1,14 @@
 ﻿using System;
-using Cards.Data;
+using ProgressLogic.Core;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Recipes.Graphics.VisualElements
 {
-    public class RecipeProgressStateController : MonoBehaviour
+    public class ProgressStateController : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private ProgressDependentObject _progressDependentObject;
         [SerializeField] private GameObject _progressObject;
 
         private IDisposable _progressSubscription;
@@ -30,7 +30,7 @@ namespace Cards.Recipes.Graphics.VisualElements
         private void StartObservingProgress()
         {
             StopObservingProgress();
-            _progressSubscription = _cardData.RecipeExecutor.Progress.Subscribe(OnProgressChanged);
+            _progressSubscription = _progressDependentObject.Progress.Subscribe(OnProgressChanged);
         }
 
         private void StopObservingProgress()

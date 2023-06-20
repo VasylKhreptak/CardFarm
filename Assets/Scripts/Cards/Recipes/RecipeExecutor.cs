@@ -20,6 +20,9 @@ namespace Cards.Recipes
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
+        [Header("Preferences")]
+        [SerializeField] private float _resultedCardMoveDuration = 0.5f;
+
         [Header("Spawn Preferences")]
         [SerializeField] private float _minRange = 5f;
         [SerializeField] private float _maxRange = 7f;
@@ -97,7 +100,8 @@ namespace Cards.Recipes
             else
             {
                 Vector3 position = GetRandomPosition();
-                _cardSpawner.Spawn(cardToSpawn, position);
+                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
+                spawnedCard.Animations.MoveAnimation.Play(position, _resultedCardMoveDuration);
             }
         }
 

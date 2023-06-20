@@ -1257,7 +1257,7 @@ GameObject:
   - component: {fileID: 6301725546041918821}
   - component: {fileID: 2465658523644437456}
   m_Layer: 6
-  m_Name: Progressbar
+  m_Name: RecipeProgressbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1296,7 +1296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbff6f6b6df64da3ab1c8255e99f57b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 1106781378184329004}
+  _progressDependentObject: {fileID: 7294079551765895076}
   _progressObject: {fileID: 6188990528986735697}
 --- !u!1 &4324074586047670429
 GameObject:
@@ -1650,7 +1650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ce8829758b413792eeaccba387598d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 1106781378184329004}
+  _progressDependentObject: {fileID: 7294079551765895076}
   _slider: {fileID: 4134411187057699794}
 --- !u!1 &5476309882188743456
 GameObject:

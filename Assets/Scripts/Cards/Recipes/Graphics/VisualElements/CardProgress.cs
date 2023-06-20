@@ -1,15 +1,15 @@
 ﻿using System;
-using Cards.Data;
+using ProgressLogic.Core;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Cards.Recipes.Graphics.VisualElements
 {
-    public class RecipeProgress : MonoBehaviour
+    public class CardProgress : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private ProgressDependentObject _progressDependentObject;
         [SerializeField] private Slider _slider;
 
         private IDisposable _progressSubscription;
@@ -36,7 +36,7 @@ namespace Cards.Recipes.Graphics.VisualElements
         private void StartObservingProgress()
         {
             StopObservingProgress();
-            _progressSubscription = _cardData.RecipeExecutor.Progress.Subscribe(SetProgress);
+            _progressSubscription = _progressDependentObject.Progress.Subscribe(SetProgress);
         }
 
         private void StopObservingProgress()
