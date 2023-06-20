@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using ScriptableObjects.Scripts.Cards;
@@ -11,32 +10,28 @@ namespace Table.Core
     public class CardsTable : MonoBehaviour
     {
         [Header("Preferences")]
-        [SerializeField] private CompatibleCards _compatibleCards;
+        [SerializeField] public CompatibleCards _compatibleCards;
 
-        private IReactiveCollection<CardData> _observableCards = new ReactiveCollection<CardData>();
-
-        public IReadOnlyReactiveCollection<CardData> ObservableCards => _observableCards;
-
-        public List<CardData> CardsList => _observableCards.ToList();
+        public IReactiveCollection<CardData> ObservableCards = new ReactiveCollection<CardData>();
 
         public void AddCard(CardData cardData)
         {
-            _observableCards.Add(cardData);
+            ObservableCards.Add(cardData);
         }
 
         public bool RemoveCard(CardData cardData)
         {
-            return _observableCards.Remove(cardData);
+            return ObservableCards.Remove(cardData);
         }
 
         public void ClearTable()
         {
-            _observableCards.Clear();
+            ObservableCards.Clear();
         }
 
         public bool TryGetLowestGroupCard(Card card, out CardData cardData)
         {
-            foreach (CardData cardInTable in _observableCards)
+            foreach (CardData cardInTable in ObservableCards)
             {
                 if (cardInTable.IsLowestGroupCard.Value
                     && card == cardInTable.Card.Value)
@@ -69,7 +64,7 @@ namespace Table.Core
         {
             int count = 0;
 
-            foreach (CardData cardInTable in _observableCards)
+            foreach (CardData cardInTable in ObservableCards)
             {
                 if (cardInTable.IsLowestGroupCard.Value)
                 {
@@ -95,7 +90,7 @@ namespace Table.Core
 
         public bool TryGetFirstCard(Card card, out CardData cardData)
         {
-            foreach (CardData cardInTable in _observableCards)
+            foreach (CardData cardInTable in ObservableCards)
             {
                 if (cardInTable.Card.Value == card)
                 {
@@ -112,7 +107,7 @@ namespace Table.Core
         {
             cardData = new List<CardData>();
 
-            foreach (CardData cardInTable in _observableCards)
+            foreach (CardData cardInTable in ObservableCards)
             {
                 if (cardInTable.Card.Value == card)
                 {
@@ -122,5 +117,7 @@ namespace Table.Core
 
             return cardData.Count > 0;
         }
+
+
     }
 }

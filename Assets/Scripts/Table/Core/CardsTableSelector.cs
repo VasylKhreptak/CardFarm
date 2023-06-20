@@ -60,7 +60,7 @@ namespace Table.Core
         {
             ClearCards();
 
-            foreach (var cardInTable in _cardsTable.CardsList)
+            foreach (var cardInTable in _cardsTable.ObservableCards)
             {
                 OnCardAdded(cardInTable);
             }
