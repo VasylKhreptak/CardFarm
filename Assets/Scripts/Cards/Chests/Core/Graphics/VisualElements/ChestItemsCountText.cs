@@ -36,7 +36,7 @@ namespace Cards.Chests.Core.Graphics.VisualElements
         private void StartObserving()
         {
             StopObserving();
-            _subscription = _cardData.ItemsCount.Subscribe(SetText);
+            _subscription = _cardData.StoredCards.ObserveCountChanged().Subscribe(SetText);
         }
 
         private void StopObserving()

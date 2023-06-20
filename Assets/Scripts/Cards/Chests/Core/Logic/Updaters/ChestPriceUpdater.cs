@@ -1,4 +1,5 @@
-﻿using Cards.Chests.Core.Data;
+﻿using System;
+using Cards.Chests.Core.Data;
 using UniRx;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Cards.Chests.Core.Logic.Updaters
         [Header("References")]
         [SerializeField] private ChestCardData _cardData;
 
-        private CompositeDisposable _subscriptions = new CompositeDisposable();
+        private IDisposable _storedCardsSubscriptions;
 
         #region MonoBehaviour
 
@@ -29,18 +30,20 @@ namespace Cards.Chests.Core.Logic.Updaters
         {
             StopObserving();
 
-            _cardData.ItemsCount.Subscribe(_ => UpdatePrice()).AddTo(_subscriptions);
-            _cardData.PriceForOneCard.Subscribe(_ => UpdatePrice()).AddTo(_subscriptions);
+            _storedCardsSubscriptions = _cardData.StoredCards
+                .ObserveAdd()
+                .Select(x => x.Value.Price.Value)
+                .Subscribe(AddToPrice);
         }
 
         private void StopObserving()
         {
-            _subscriptions.Clear();
+            _storedCardsSubscriptions?.Dispose();
         }
 
-        private void UpdatePrice()
+        private void AddToPrice(int value)
         {
-            _cardData.Price.Value = _cardData.ItemsCount.Value * _cardData.PriceForOneCard.Value;
+            _cardData.Price.Value += value;
         }
     }
 }

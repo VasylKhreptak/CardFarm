@@ -127,5 +127,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9195747696069395228, guid: 85bc94feb92d339459647e5890576d74,
+        type: 3}
+      propertyPath: _isSellableCard
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85bc94feb92d339459647e5890576d74, type: 3}

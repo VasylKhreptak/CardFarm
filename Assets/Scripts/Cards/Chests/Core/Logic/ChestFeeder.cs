@@ -44,9 +44,9 @@ namespace Cards.Chests.Core.Logic
 
             foreach (var card in bottomCards)
             {
-                if (card.Card.Value == _chestType)
+                if (card.Card.Value == _chestType && card.IsSellableCard)
                 {
-                    _cardData.ItemsCount.Value++;
+                    _cardData.StoredCards.Add(card as SellableCardData);
                     card.gameObject.SetActive(false);
                 }
             }
