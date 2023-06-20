@@ -23,6 +23,6 @@ namespace Cards.Core
         CampFire = 18,
         Quarry = 19,
         LumberCamp = 20,
-
+        Garden = 21,
     }
 }
