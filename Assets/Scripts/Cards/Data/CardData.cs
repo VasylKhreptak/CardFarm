@@ -17,14 +17,12 @@ namespace Cards.Data
         [Space]
         [SerializeField] private bool _isWorker;
         [SerializeField] private bool _isSellableCard;
-        [SerializeField] private bool _isCoin;
 
         public float BaseHeight => _baseHeight;
         public float HeightOffset => _heightOffset;
 
         public bool IsWorker => _isWorker;
         public bool IsSellableCard => _isSellableCard;
-        public bool IsCoin => _isCoin;
 
         [Space]
         public int ID = -1;
