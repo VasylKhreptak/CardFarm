@@ -15,8 +15,8 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
 
         public bool TryFindRecipe(List<CardData> cards, out CardRecipe recipe)
         {
-            bool hasResources = TryGetResources(cards, out List<Card> resources);
-            bool hasWorkers = TryGetWorkers(cards, out List<Card> workers);
+            bool hasResources = cards.TryGetResources(out List<Card> resources);
+            bool hasWorkers = cards.TryGetWorkers(out List<Card> workers);
 
             if (hasResources == false)
             {
@@ -28,11 +28,20 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
             {
                 foreach (var possibleRecipe in _recipes)
                 {
-                    if (resources.HasAllElementsOf(possibleRecipe.Resources))
+                    if (resources.HasAllElementsOf(possibleRecipe.Resources) && possibleRecipe.HasWorkers == false)
                     {
                         recipe = possibleRecipe;
                         return true;
                     }
+                }
+            }
+
+            foreach (var possibleRecipe in _recipes)
+            {
+                if (possibleRecipe.Workers.HasAllElementsOf(workers) && resources.HasAllElementsOf(possibleRecipe.Resources))
+                {
+                    recipe = possibleRecipe;
+                    return true;
                 }
             }
 
@@ -51,39 +60,8 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
                 }
             }
 
-            foreach (var possibleRecipe in _recipes)
-            {
-                if (possibleRecipe.Workers.HasAllElementsOf(workers) && resources.HasAllElementsOf(possibleRecipe.Resources))
-                {
-                    recipe = possibleRecipe;
-                    return true;
-                }
-            }
-
             recipe = null;
             return false;
-        }
-
-        public bool TryGetResources(List<CardData> cards, out List<Card> resources)
-        {
-            List<Card> possibleResources = cards
-                .Where(x => x.IsWorker == false)
-                .Select(x => x.Card.Value)
-                .ToList();
-
-            resources = possibleResources;
-            return possibleResources.Count > 0;
-        }
-
-        public bool TryGetWorkers(List<CardData> cards, out List<Card> workers)
-        {
-            List<Card> possibleWorkers = cards
-                .Where(x => x.IsWorker)
-                .Select(x => x.Card.Value)
-                .ToList();
-
-            workers = possibleWorkers;
-            return possibleWorkers.Count > 0;
         }
     }
 }

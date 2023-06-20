@@ -1,5 +1,7 @@
-﻿using Cards.Data;
+﻿using System;
+using Cards.Data;
 using ScriptableObjects.Scripts.Cards.Recipes;
+using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
@@ -10,16 +12,21 @@ namespace Cards.Logic.Updaters
         [SerializeField] private CardData _cardData;
         [SerializeField] private CardRecipes _cardRecipes;
 
+        private IDisposable _isTopCardSubscription;
+
+
         #region MonoBehaviour
 
         private void OnEnable()
         {
             _cardData.Callbacks.onBecameHeadOfGroup += OnBecameHeadOfGroup;
+            _isTopCardSubscription = _cardData.IsTopCard.Where(x => x == false).Subscribe(_ => ResetCurrentRecipe());
         }
 
         private void OnDisable()
         {
             _cardData.Callbacks.onBecameHeadOfGroup -= OnBecameHeadOfGroup;
+            _isTopCardSubscription.Dispose();
             ResetCurrentRecipe();
         }
 

@@ -36,3 +36,52 @@ MonoBehaviour:
         Weight: 20
       - Card: 7
         Weight: 5
+  - Resources: 05000000
+    Workers: 00000000
+    Cooldown: 10
+    Result:
+      Weights:
+      - Card: 9
+        Weight: 1
+  - Resources: 050000000500000008000000
+    Workers: 
+    Cooldown: 10
+    Result:
+      Weights:
+      - Card: 15
+        Weight: 1
+  - Resources: 040000000400000004000000
+    Workers: 00000000
+    Cooldown: 10
+    Result:
+      Weights:
+      - Card: 16
+        Weight: 1
+  - Resources: 050000000500000005000000
+    Workers: 00000000
+    Cooldown: 10
+    Result:
+      Weights:
+      - Card: 17
+        Weight: 1
+  - Resources: 0900000007000000
+    Workers: 
+    Cooldown: 10
+    Result:
+      Weights:
+      - Card: 18
+        Weight: 1
+  - Resources: 04000000040000000400000005000000
+    Workers: 00000000
+    Cooldown: 10
+    Result:
+      Weights:
+      - Card: 19
+        Weight: 1
+  - Resources: 05000000050000000500000004000000
+    Workers: 00000000
+    Cooldown: 10
+    Result:
+      Weights:
+      - Card: 20
+        Weight: 1

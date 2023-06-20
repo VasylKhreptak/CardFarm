@@ -11,5 +11,7 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
         public List<Card> Workers = new List<Card>();
         public float Cooldown;
         public CardWeights Result = new CardWeights();
+        
+        public bool HasWorkers => Workers.Count > 0;
     }
 }

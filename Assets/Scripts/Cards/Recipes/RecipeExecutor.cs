@@ -104,7 +104,7 @@ namespace Cards.Recipes
         private void ClearRecipeResources()
         {
             CardData firstWorker = GetFirstWorker();
-            CardData lastResource = GetLastResource();
+            CardData lowestTargetResource = GetLastResource();
             List<CardData> resourcesToRemove = GetResourcesToRemove();
 
             foreach (var resourceToRemove in resourcesToRemove)
@@ -112,7 +112,7 @@ namespace Cards.Recipes
                 resourceToRemove.gameObject.SetActive(false);
             }
 
-            firstWorker.LinkTo(lastResource);
+            firstWorker.LinkTo(lowestTargetResource);
         }
 
         protected Vector3 GetRandomPosition()
@@ -140,7 +140,7 @@ namespace Cards.Recipes
 
         private CardData GetFirstWorker()
         {
-            return _cardData.GroupCards.First(x => x.IsWorker);
+            return _cardData.GroupCards.FirstOrDefault(x => x.IsWorker);
         }
 
         private CardData GetLastResource()
@@ -157,14 +157,15 @@ namespace Cards.Recipes
 
         private List<CardData> GetResourcesToRemove()
         {
-            List<CardData> resources = new List<CardData>(_cardData.CurrentRecipe.Value.Resources.Count);
+            List<Card> recipeResources = _cardData.CurrentRecipe.Value.Resources;
+            List<CardData> resourcesToRemove = new List<CardData>(recipeResources.Count);
 
-            _cardData.CurrentRecipe.Value.Resources.ForEach(x =>
+            if (_cardData.GroupCards.TryGetResources(out List<CardData> foundResources))
             {
-                resources.Add(_cardData.GroupCards.Last(card => card.Card.Value == x));
-            });
+                resourcesToRemove = foundResources.Skip(foundResources.Count - recipeResources.Count).ToList();
+            }
 
-            return resources;
+            return resourcesToRemove;
         }
     }
 }
