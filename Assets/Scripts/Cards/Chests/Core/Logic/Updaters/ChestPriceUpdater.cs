@@ -9,7 +9,7 @@ namespace Cards.Chests.Core.Logic.Updaters
         [Header("References")]
         [SerializeField] private ChestCardData _cardData;
 
-        private CompositeDisposable _subscriptions;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         #region MonoBehaviour
 
