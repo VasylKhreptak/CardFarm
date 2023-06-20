@@ -63,7 +63,6 @@ namespace Cards.Data
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
 
         public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>(null);
-        public RecipeExecutor RecipeExecutor;
 
         [FormerlySerializedAs("CardAnimations")]
         public CardAnimations Animations = new CardAnimations();

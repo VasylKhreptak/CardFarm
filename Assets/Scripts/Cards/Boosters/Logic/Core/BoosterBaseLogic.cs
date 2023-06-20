@@ -55,7 +55,7 @@ namespace Cards.Boosters.Logic.Core
         {
             if (_cardData.LeftCards.Value > 0)
             {
-                SpawnCard();
+                SpawnResultedCard();
                 _cardData.LeftCards.Value--;
             }
 
@@ -65,7 +65,7 @@ namespace Cards.Boosters.Logic.Core
             }
         }
 
-        protected abstract void SpawnCard();
+        protected abstract void SpawnResultedCard();
 
         protected Vector3 GetRandomPosition()
         {

@@ -1,16 +1,16 @@
 ﻿using System;
-using Cards.Data;
-using ScriptableObjects.Scripts.Cards.Recipes;
+using Cards.AutomatedFactories.Data;
+using ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes;
 using UniRx;
 using UnityEngine;
 
-namespace Cards.Logic.Updaters
+namespace Cards.Boosters.Logic.Updaters
 {
-    public class CurrentRecipeUpdater : MonoBehaviour
+    public class CurrentCardFactoryRecipeUpdater : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
-        [SerializeField] private CardRecipes _cardRecipes;
+        [SerializeField] private AutomatedCardFactoryData _cardData;
+        [SerializeField] private CardFactoryRecipes _cardRecipes;
 
         private IDisposable _isTopCardSubscription;
         private IDisposable _isCardSingleSubscription;
@@ -42,7 +42,7 @@ namespace Cards.Logic.Updaters
                 return;
             }
 
-            bool hasRecipe = _cardRecipes.TryFindRecipe(_cardData.GroupCards, out CardRecipe recipe);
+            bool hasRecipe = _cardRecipes.TryFindRecipe(_cardData.GroupCards, out CardFactoryRecipe recipe);
 
             if (hasRecipe == false)
             {
@@ -50,7 +50,7 @@ namespace Cards.Logic.Updaters
                 return;
             }
 
-            _cardData.CurrentRecipe.Value = recipe;
+            _cardData.CurrentFactoryRecipe.Value = recipe;
         }
 
         private void ResetCurrentRecipe()

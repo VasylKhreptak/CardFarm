@@ -9,6 +9,8 @@ namespace Extensions
         {
             if (card == null || linkTo == null) return;
 
+            if (card == linkTo) return;
+
             card.UpperCard.Value = linkTo;
             linkTo.BottomCard.Value = card;
         }

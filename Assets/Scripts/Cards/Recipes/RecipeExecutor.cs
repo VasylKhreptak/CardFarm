@@ -131,6 +131,8 @@ namespace Cards.Recipes
 
         private void OnDrawGizmosSelected()
         {
+            if (_cardData == null) return;
+
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(_cardData.transform.position, _minRange);
             Gizmos.color = Color.red;

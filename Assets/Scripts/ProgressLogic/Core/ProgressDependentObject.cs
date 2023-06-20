@@ -6,7 +6,7 @@ namespace ProgressLogic.Core
 {
     public abstract class ProgressDependentObject : MonoBehaviour
     {
-        protected FloatReactiveProperty _progress = new FloatReactiveProperty();
+        private FloatReactiveProperty _progress = new FloatReactiveProperty();
 
         public IReadOnlyReactiveProperty<float> Progress => _progress;
 
@@ -37,6 +37,7 @@ namespace ProgressLogic.Core
                 {
                     _progress.Value = 1;
                     OnProgressCompleted();
+                    _progress.Value = 0;
                 })
                 .OnKill(() =>
                 {
