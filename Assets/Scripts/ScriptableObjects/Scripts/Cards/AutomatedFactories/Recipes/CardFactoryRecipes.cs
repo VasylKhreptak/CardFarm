@@ -23,11 +23,12 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
 
             foreach (var possibleRecipe in _recipes)
             {
-                if (resources.Count < possibleRecipe.Resources.Count) continue;
-
                 int recipeResourcesCount = possibleRecipe.Resources.Count;
 
                 List<CardData> clampedResources = resources.GetRange(0, recipeResourcesCount);
+
+                if (clampedResources.Count < recipeResourcesCount) continue;
+
                 List<Card> clampedResourcesCards = clampedResources.Select(x => x.Card.Value).ToList();
 
                 if (clampedResourcesCards.HasAllElementsOf(possibleRecipe.Resources))

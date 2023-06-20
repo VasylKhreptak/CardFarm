@@ -1,25 +1,34 @@
-﻿using Cards.Core;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Cards.AutomatedFactories.Data;
+using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
 using Extensions;
 using ProgressLogic.Core;
+using ScriptableObjects.Scripts.Cards;
 using ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes;
 using Table.Core;
+using UniRx;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Cards.AutomatedFactories.Logic
 {
-    public class AutomatedFactoryLogic : ProgressDependentObject
+    public class AutomatedFactoryRecipeExecutor : ProgressDependentObject
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
-        [SerializeField] private CardFactoryRecipes _recipes;
+        [SerializeField] private AutomatedCardFactoryData _cardData;
+        [SerializeField] private CompatibleCards _compatibleCards;
 
         [Header("Spawn Preferences")]
         [SerializeField] private float _minRange = 5f;
         [SerializeField] private float _maxRange = 7f;
         [SerializeField] private float _resultedCardMoveDuration = 0.5f;
+
+        private IDisposable _currentRecipeSubscription;
 
         private CardsTable _cardsTable;
         private CardSpawner _cardSpawner;
@@ -49,24 +58,45 @@ namespace Cards.AutomatedFactories.Logic
 
         private void StartObserving()
         {
-            _cardData.Callbacks.onBottomCardsListUpdated += OnBottomCardsUpdated;
+            StopObserving();
+
+            _currentRecipeSubscription = _cardData.CurrentFactoryRecipe.Subscribe(OnCurrentRecipeChanged);
         }
 
         private void StopObserving()
         {
-            _cardData.Callbacks.onBottomCardsListUpdated -= OnBottomCardsUpdated;
+            _currentRecipeSubscription?.Dispose();
         }
 
         protected override void OnProgressCompleted()
         {
+            if (_cardData.CurrentFactoryRecipe.Value == null ||
+                _cardData.CurrentFactoryRecipe.Value.Cooldown == 0) return;
+
+            SpawnRecipeResult();
+            ClearRecipeResources();
+
+            TryExecuteActiveRecipe();
         }
 
-        private void OnBottomCardsUpdated()
+        private void OnCurrentRecipeChanged(CardFactoryRecipe recipe)
         {
-
+            if (recipe == null)
+            {
+                StopProgress();
+            }
+            else
+            {
+                StartProgress(_cardData.CurrentFactoryRecipe.Value.Cooldown);
+            }
         }
 
-        protected void SpawnResultedCard()
+        private void TryExecuteActiveRecipe()
+        {
+            OnCurrentRecipeChanged(_cardData.CurrentFactoryRecipe.Value);
+        }
+
+        protected void SpawnRecipeResult()
         {
             Card cardToSpawn = GetCardToSpawn();
 
@@ -84,7 +114,7 @@ namespace Cards.AutomatedFactories.Logic
             }
         }
 
-        protected Vector3 GetRandomPosition()
+        private Vector3 GetRandomPosition()
         {
             float range = GetRange();
 
@@ -101,7 +131,25 @@ namespace Cards.AutomatedFactories.Logic
 
         private Card GetCardToSpawn()
         {
-            return Card.Coin;
+            return _cardData.CurrentFactoryRecipe.Value.Result.Weights.GetByWeight(x => x.Weight).Card;
+        }
+
+        private void ClearRecipeResources()
+        {
+            int recipeResourcesCount = _cardData.CurrentFactoryRecipe.Value.Resources.Count;
+            CardData previousCard = _cardData.BottomCards[recipeResourcesCount];
+
+            List<CardData> resourcesToRemove = _cardData.BottomCards.Take(recipeResourcesCount).ToList();
+
+            foreach (CardData resourceCard in resourcesToRemove)
+            {
+                resourceCard.gameObject.SetActive(false);
+            }
+
+            if (previousCard != null && _compatibleCards.IsCompatible(previousCard.Card.Value, _cardData.Card.Value))
+            {
+                previousCard.LinkTo(_cardData);
+            }
         }
     }
 }

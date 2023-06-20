@@ -42,7 +42,7 @@ namespace Cards.Boosters.Logic.Updaters
                 return;
             }
 
-            bool hasRecipe = _cardRecipes.TryFindRecipe(_cardData.GroupCards, out CardFactoryRecipe recipe);
+            bool hasRecipe = _cardRecipes.TryFindRecipe(_cardData.BottomCards, out CardFactoryRecipe recipe);
 
             if (hasRecipe == false)
             {
@@ -55,7 +55,7 @@ namespace Cards.Boosters.Logic.Updaters
 
         private void ResetCurrentRecipe()
         {
-            _cardData.CurrentRecipe.Value = null;
+            _cardData.CurrentFactoryRecipe.Value = null;
         }
     }
 }
