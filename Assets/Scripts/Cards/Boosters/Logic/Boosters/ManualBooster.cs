@@ -29,8 +29,8 @@ namespace Cards.Boosters.Logic.Boosters
         protected override void SpawnResultedCard()
         {
             Card cardToSpawn = GetCardToSpawn();
-            
-            if (_cardsTable.TryGetLowestGroupCard(cardToSpawn, out CardData lowestGroupCard))
+
+            if (_cardsTable.TryGetLowestCompatibleGroupCard(cardToSpawn, cardToSpawn, out CardData lowestGroupCard))
             {
                 Vector3 position = _cardData.transform.position;
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, position);
@@ -42,7 +42,7 @@ namespace Cards.Boosters.Logic.Boosters
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
                 spawnedCard.Animations.MoveAnimation.Play(position, _cardMoveDuration);
             }
-            
+
             _cardData.BoosterCallabcks.OnSpawnedCard?.Invoke(cardToSpawn);
         }
 

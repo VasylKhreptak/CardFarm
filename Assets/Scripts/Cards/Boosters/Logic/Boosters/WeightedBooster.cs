@@ -31,7 +31,7 @@ namespace Cards.Boosters.Logic.Boosters
         {
             Card cardToSpawn = GetCardToSpawn();
 
-            if (_cardsTable.TryGetLowestGroupCard(cardToSpawn, out CardData lowestGroupCard))
+            if (_cardsTable.TryGetLowestCompatibleGroupCard(cardToSpawn, cardToSpawn, out CardData lowestGroupCard))
             {
                 Vector3 position = _cardData.transform.position;
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, position);

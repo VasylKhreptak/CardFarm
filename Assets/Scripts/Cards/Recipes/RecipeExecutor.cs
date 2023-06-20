@@ -91,7 +91,7 @@ namespace Cards.Recipes
         {
             Card cardToSpawn = _cardData.CurrentRecipe.Value.Result.Weights.GetByWeight(x => x.Weight).Card;
 
-            if (_cardsTable.TryGetLowestGroupCard(cardToSpawn, out CardData lowestGroupCard))
+            if (_cardsTable.TryGetLowestCompatibleGroupCard(cardToSpawn, cardToSpawn, out CardData lowestGroupCard))
             {
                 Vector3 position = _cardData.transform.position;
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, position);

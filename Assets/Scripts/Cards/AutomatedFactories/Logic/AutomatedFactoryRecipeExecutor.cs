@@ -100,7 +100,7 @@ namespace Cards.AutomatedFactories.Logic
         {
             Card cardToSpawn = GetCardToSpawn();
 
-            if (_cardsTable.TryGetLowestGroupCard(cardToSpawn, out CardData lowestGroupCard))
+            if (_cardsTable.TryGetLowestCompatibleGroupCard(cardToSpawn, cardToSpawn, out CardData lowestGroupCard))
             {
                 Vector3 position = _cardData.transform.position;
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, position);
@@ -137,7 +137,13 @@ namespace Cards.AutomatedFactories.Logic
         private void ClearRecipeResources()
         {
             int recipeResourcesCount = _cardData.CurrentFactoryRecipe.Value.Resources.Count;
-            CardData previousCard = _cardData.BottomCards[recipeResourcesCount];
+
+            CardData previousCard = null;
+
+            if (_cardData.BottomCards.Count > recipeResourcesCount)
+            {
+                previousCard = _cardData.BottomCards[recipeResourcesCount];
+            }
 
             List<CardData> resourcesToRemove = _cardData.BottomCards.Take(recipeResourcesCount).ToList();
 

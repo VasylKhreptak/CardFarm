@@ -50,6 +50,21 @@ namespace Table.Core
             return false;
         }
 
+        public bool TryGetLowestCompatibleGroupCard(Card topCard, Card card, out CardData cardData)
+        {
+            if (TryGetLowestGroupCard(card, out CardData lowestCard))
+            {
+                if (_compatibleCards.IsCompatible(topCard, card))
+                {
+                    cardData = lowestCard;
+                    return true;
+                }
+            }
+
+            cardData = null;
+            return false;
+        }
+
         public int TryGetLowestGroupCards(Card card, ref CardData[] cards)
         {
             int count = 0;
