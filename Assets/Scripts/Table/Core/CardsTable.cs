@@ -92,5 +92,20 @@ namespace Table.Core
 
             return count;
         }
+
+        public bool TryGetFirstCard(Card card, out CardData cardData)
+        {
+            foreach (CardData cardInTable in _observableCards)
+            {
+                if (cardInTable.Card.Value == card)
+                {
+                    cardData = cardInTable;
+                    return true;
+                }
+            }
+
+            cardData = null;
+            return false;
+        }
     }
 }
