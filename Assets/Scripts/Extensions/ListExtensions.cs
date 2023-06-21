@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Extensions
 {
@@ -8,10 +9,18 @@ namespace Extensions
         {
             if (list1.Count != list2.Count) return false;
 
-            HashSet<T> hashSet1 = new HashSet<T>(list1);
-            HashSet<T> hashSet2 = new HashSet<T>(list2);
+            foreach (T element in list1)
+            {
+                int countInList1 = list1.Count(x => EqualityComparer<T>.Default.Equals(x, element));
+                int countInList2 = list2.Count(x => EqualityComparer<T>.Default.Equals(x, element));
 
-            return hashSet1.SetEquals(hashSet2);
+                if (countInList1 != countInList2)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
