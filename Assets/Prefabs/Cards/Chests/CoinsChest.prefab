@@ -129,6 +129,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9195747696069395228, guid: 85bc94feb92d339459647e5890576d74,
         type: 3}
+      propertyPath: Icon.value
+      value: 
+      objectReference: {fileID: 21300000, guid: f05ab79712615cf4ba4f11233d48c98e,
+        type: 3}
+    - target: {fileID: 9195747696069395228, guid: 85bc94feb92d339459647e5890576d74,
+        type: 3}
+      propertyPath: Name.value
+      value: Coin Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195747696069395228, guid: 85bc94feb92d339459647e5890576d74,
+        type: 3}
       propertyPath: _isSellableCard
       value: 1
       objectReference: {fileID: 0}
