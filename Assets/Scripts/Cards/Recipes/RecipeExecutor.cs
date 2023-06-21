@@ -29,6 +29,8 @@ namespace Cards.Recipes
 
         private IDisposable _recipeSubscription;
 
+        private int _resultsLeft;
+
         private CardsTable _cardsTable;
         private CardSpawner _cardSpawner;
 
