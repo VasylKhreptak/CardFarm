@@ -50,7 +50,14 @@ namespace Cards.Logic.Updaters
 
         private void OnCardStateUpdated(bool isSelected)
         {
-            _currentSelectedCardHolder.SelectedCard.Value = isSelected ? _cardData : null;
+            if (isSelected)
+            {
+                _currentSelectedCardHolder.SelectedCard.Value = _cardData;
+            }
+            else if (_currentSelectedCardHolder.SelectedCard.Value == _cardData)
+            {
+                _currentSelectedCardHolder.SelectedCard.Value = null;
+            }
         }
     }
 }
