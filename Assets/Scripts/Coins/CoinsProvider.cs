@@ -4,8 +4,8 @@ using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
 using Extensions;
-using Table.CardSelectors;
 using Table.Core;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -14,14 +14,14 @@ namespace Coins
     public class CoinsProvider : MonoBehaviour
     {
         private CardsTable _cardsTable;
-        private CoinChestSelector _coinChestSelector;
+        private CardsTableSelector _cardsTableSelector;
         private CardSpawner _cardSpawner;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, CoinChestSelector coinChestSelector, CardSpawner cardSpawner)
+        private void Constructor(CardsTable cardsTable, CardsTableSelector coinChestSelector, CardSpawner cardSpawner)
         {
             _cardsTable = cardsTable;
-            _coinChestSelector = coinChestSelector;
+            _cardsTableSelector = coinChestSelector;
             _cardSpawner = cardSpawner;
         }
 
@@ -31,9 +31,12 @@ namespace Coins
         {
             int count = 0;
 
-            foreach (var coinChestCard in _coinChestSelector.SelectedCards)
+            if (_cardsTableSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
             {
-                count += (coinChestCard as ChestSellableCardData).StoredCards.Count;
+                foreach (var coinChestCard in chests)
+                {
+                    count += (coinChestCard as ChestSellableCardData).StoredCards.Count;
+                }
             }
 
             return count;
@@ -41,7 +44,13 @@ namespace Coins
 
         public bool TryGetCoinFromChests(out CardData cardData)
         {
-            foreach (var card in _coinChestSelector.SelectedCards)
+            if (_cardsTableSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests) == false)
+            {
+                cardData = null;
+                return false;
+            }
+
+            foreach (var card in chests)
             {
                 ChestSellableCardData chest = card as ChestSellableCardData;
 
@@ -110,9 +119,9 @@ namespace Coins
 
             int leftCoinsCount = count - coinsCountInTable;
 
-            if (leftCoinsCount > 0)
+            if (leftCoinsCount > 0 && _cardsTableSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
             {
-                foreach (var coinChests in _coinChestSelector.SelectedCards)
+                foreach (var coinChests in chests)
                 {
                     ChestSellableCardData chest = coinChests as ChestSellableCardData;
 

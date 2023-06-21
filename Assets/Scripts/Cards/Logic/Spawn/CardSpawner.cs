@@ -7,8 +7,6 @@ namespace Cards.Logic.Spawn
 {
     public class CardSpawner : MonoBehaviour
     {
-
-
         private CardFactory _cardFactory;
 
         [Inject]

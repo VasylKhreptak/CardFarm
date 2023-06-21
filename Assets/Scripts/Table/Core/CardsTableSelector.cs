@@ -8,12 +8,11 @@ namespace Table.Core
 {
     public class CardsTableSelector : MonoBehaviour
     {
-        [Header("Preferences")]
-        [SerializeField] private Card _selectorType;
-
-        public IReactiveCollection<CardData> SelectedCards = new ReactiveCollection<CardData>();
+        private ReactiveDictionary<Card, ReactiveCollection<CardData>> _selectedCardsMap = new ReactiveDictionary<Card, ReactiveCollection<CardData>>();
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
+
+        public IReadOnlyReactiveDictionary<Card, ReactiveCollection<CardData>> SelectedCardsMap => _selectedCardsMap;
 
         private CardsTable _cardsTable;
 
@@ -66,28 +65,35 @@ namespace Table.Core
 
         private void ClearCards()
         {
-            SelectedCards.Clear();
+            _selectedCardsMap.Clear();
         }
 
         private void OnCardAdded(CardData card)
         {
-            if (card.Card.Value == _selectorType)
+            if (_selectedCardsMap.ContainsKey(card.Card.Value) == false)
             {
-                SelectedCards.Add(card);
+                _selectedCardsMap.Add(card.Card.Value, new ReactiveCollection<CardData>());
             }
+
+            _selectedCardsMap[card.Card.Value].Add(card);
         }
 
         private void OnCardRemoved(CardData card)
         {
-            if (card.Card.Value == _selectorType)
+            if (_selectedCardsMap.TryGetValue(card.Card.Value, out var collection))
             {
-                SelectedCards.Remove(card);
+                collection.Remove(card);
+
+                if (collection.Count == 0)
+                {
+                    _selectedCardsMap.Remove(card.Card.Value);
+                }
             }
         }
 
         private void OnCardsReset()
         {
-            SelectedCards.Clear();
+            _selectedCardsMap.Clear();
         }
     }
 }
