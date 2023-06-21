@@ -36,6 +36,7 @@ namespace Cards.Chests.SellableChest.Logic
         private void StopObserving()
         {
             _cardData.Callbacks.onBottomCardsListUpdated -= OnBottomCardsUpdated;
+            _cardData.StoredCards.Clear();
         }
 
         private void OnBottomCardsUpdated()

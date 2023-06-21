@@ -17,6 +17,8 @@ namespace Extensions
 
         public static void UnlinkFromUpper(this CardData card)
         {
+            if (card == null) return;
+
             CardData upperCard = card.UpperCard.Value;
 
             if (upperCard == null) return;
@@ -28,6 +30,8 @@ namespace Extensions
 
         public static void Separate(this CardData card)
         {
+            if (card == null) return;
+
             card.UnlinkFromUpper();
 
             if (card.BottomCard.Value != null)

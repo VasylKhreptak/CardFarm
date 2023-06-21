@@ -45,6 +45,23 @@ namespace Table.Core
             return false;
         }
 
+        public bool TryGetLowestGroupCardOrFirst(Card card, out CardData cardData)
+        {
+            if (TryGetLowestGroupCard(card, out cardData)) return true;
+
+            foreach (CardData cardInTable in ObservableCards)
+            {
+                if (cardInTable.Card.Value == card)
+                {
+                    cardData = cardInTable;
+                    return true;
+                }
+            }
+
+            cardData = null;
+            return false;
+        }
+        
         public bool TryGetLowestCompatibleGroupCard(Card topCard, Card card, out CardData cardData)
         {
             if (TryGetLowestGroupCard(card, out CardData lowestCard))
@@ -118,6 +135,19 @@ namespace Table.Core
             return cardData.Count > 0;
         }
 
+        public int GetCardsCount(Card card)
+        {
+            int count = 0;
 
+            foreach (CardData cardInTable in ObservableCards)
+            {
+                if (cardInTable.Card.Value == card)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
     }
 }

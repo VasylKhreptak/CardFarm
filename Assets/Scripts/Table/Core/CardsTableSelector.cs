@@ -11,9 +11,7 @@ namespace Table.Core
         [Header("Preferences")]
         [SerializeField] private Card _selectorType;
 
-        private IReactiveCollection<CardData> _selectedCards = new ReactiveCollection<CardData>();
-
-        public IReadOnlyReactiveCollection<CardData> SelectedCards => _selectedCards;
+        public IReactiveCollection<CardData> SelectedCards = new ReactiveCollection<CardData>();
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
@@ -68,14 +66,14 @@ namespace Table.Core
 
         private void ClearCards()
         {
-            _selectedCards.Clear();
+            SelectedCards.Clear();
         }
 
         private void OnCardAdded(CardData card)
         {
             if (card.Card.Value == _selectorType)
             {
-                _selectedCards.Add(card);
+                SelectedCards.Add(card);
             }
         }
 
@@ -83,13 +81,13 @@ namespace Table.Core
         {
             if (card.Card.Value == _selectorType)
             {
-                _selectedCards.Remove(card);
+                SelectedCards.Remove(card);
             }
         }
 
         private void OnCardsReset()
         {
-            _selectedCards.Clear();
+            SelectedCards.Clear();
         }
     }
 }
