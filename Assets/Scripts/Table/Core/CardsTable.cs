@@ -12,26 +12,28 @@ namespace Table.Core
         [Header("Preferences")]
         [SerializeField] public CompatibleCards _compatibleCards;
 
-        public IReactiveCollection<CardData> ObservableCards = new ReactiveCollection<CardData>();
+        private ReactiveCollection<CardData> _observableCards = new ReactiveCollection<CardData>();
+
+        public IReadOnlyReactiveCollection<CardData> ObservableCards => _observableCards;
 
         public void AddCard(CardData cardData)
         {
-            ObservableCards.Add(cardData);
+            _observableCards.Add(cardData);
         }
 
         public bool RemoveCard(CardData cardData)
         {
-            return ObservableCards.Remove(cardData);
+            return _observableCards.Remove(cardData);
         }
 
         public void ClearTable()
         {
-            ObservableCards.Clear();
+            _observableCards.Clear();
         }
 
         public bool TryGetLowestGroupCard(Card card, out CardData cardData)
         {
-            foreach (CardData cardInTable in ObservableCards)
+            foreach (CardData cardInTable in _observableCards)
             {
                 if (cardInTable.IsLowestGroupCard.Value
                     && card == cardInTable.Card.Value)
@@ -49,7 +51,7 @@ namespace Table.Core
         {
             if (TryGetLowestGroupCard(card, out cardData)) return true;
 
-            foreach (CardData cardInTable in ObservableCards)
+            foreach (CardData cardInTable in _observableCards)
             {
                 if (cardInTable.Card.Value == card)
                 {
@@ -61,7 +63,7 @@ namespace Table.Core
             cardData = null;
             return false;
         }
-        
+
         public bool TryGetLowestCompatibleGroupCard(Card topCard, Card card, out CardData cardData)
         {
             if (TryGetLowestGroupCard(card, out CardData lowestCard))
@@ -81,7 +83,7 @@ namespace Table.Core
         {
             int count = 0;
 
-            foreach (CardData cardInTable in ObservableCards)
+            foreach (CardData cardInTable in _observableCards)
             {
                 if (cardInTable.IsLowestGroupCard.Value)
                 {
@@ -107,7 +109,7 @@ namespace Table.Core
 
         public bool TryGetFirstCard(Card card, out CardData cardData)
         {
-            foreach (CardData cardInTable in ObservableCards)
+            foreach (CardData cardInTable in _observableCards)
             {
                 if (cardInTable.Card.Value == card)
                 {
@@ -124,7 +126,7 @@ namespace Table.Core
         {
             cardData = new List<CardData>();
 
-            foreach (CardData cardInTable in ObservableCards)
+            foreach (CardData cardInTable in _observableCards)
             {
                 if (cardInTable.Card.Value == card)
                 {
@@ -139,7 +141,7 @@ namespace Table.Core
         {
             int count = 0;
 
-            foreach (CardData cardInTable in ObservableCards)
+            foreach (CardData cardInTable in _observableCards)
             {
                 if (cardInTable.Card.Value == card)
                 {
