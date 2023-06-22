@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cards.Data;
+using Cards.Logic.Spawn;
 using Extensions;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Graphics
 {
@@ -12,7 +13,17 @@ namespace Cards.Graphics
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
-        private IDisposable _subscription;
+        private CompositeDisposable _delaySubscriptions = new CompositeDisposable();
+
+        private CardSpawner _cardSpawner;
+
+        [Inject]
+        private void Constructor(CardSpawner cardSpawner)
+        {
+            _cardSpawner = cardSpawner;
+        }
+
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         #region MonoBehaviour
 
@@ -32,26 +43,57 @@ namespace Cards.Graphics
         {
             StopObserving();
 
-            _subscription = Observable
-                .CombineLatest(_cardData.IsSelectedCard, _cardData.IsTopCard, _cardData.IsSingleCard)
-                .Where(list => list[0] && (list[1] || list[2]))
-                .Subscribe(_ => UpdateLayers());
-
+            _cardData.Callbacks.onBecameHeadOfGroup += OnBecameHeadOfGroup;
+            _cardData.IsSelectedCard.Subscribe(IsCardSelectedValueChanged).AddTo(_subscriptions);
         }
 
         private void StopObserving()
         {
-            _subscription?.Dispose();
+            _cardData.Callbacks.onBecameHeadOfGroup -= OnBecameHeadOfGroup;
+            _subscriptions.Clear();
+            _cardSpawner.OnCardSpawnedNonParameterized -= RenderGroupOnTopFrameDelayed;
+            _delaySubscriptions.Clear();
         }
 
-        private void UpdateLayers()
+        private void OnBecameHeadOfGroup()
         {
-            List<CardData> groupCards = _cardData.FindGroupCards();
+            RenderGroupOnTop();
+        }
 
-            foreach (var card in groupCards)
+        private void IsCardSelectedValueChanged(bool isSelected)
+        {
+            if (isSelected)
+            {
+                RenderGroupOnTop();
+
+                _cardSpawner.OnCardSpawnedNonParameterized -= RenderGroupOnTopFrameDelayed;
+                _cardSpawner.OnCardSpawnedNonParameterized += RenderGroupOnTopFrameDelayed;
+            }
+            else
+            {
+                _cardSpawner.OnCardSpawnedNonParameterized -= RenderGroupOnTopFrameDelayed;
+            }
+        }
+
+        private void RenderGroupOnTop()
+        {
+            RenderOnTop(_cardData.GroupCards);
+        }
+
+        private void RenderOnTop(List<CardData> cards)
+        {
+            foreach (var card in cards)
             {
                 card.RenderOnTop();
             }
+        }
+
+        private void RenderGroupOnTopFrameDelayed()
+        {
+            Observable.NextFrame().Subscribe(_ =>
+            {
+                RenderGroupOnTop();
+            }).AddTo(_delaySubscriptions);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cards.Data;
+using UnityEngine;
 
 namespace Extensions
 {
@@ -96,7 +97,12 @@ namespace Extensions
 
         public static void RenderOnTop(this CardData card)
         {
-            card.transform.SetAsLastSibling();
+            Transform parent = card.transform.parent;
+
+            if (parent != null && parent.gameObject.activeInHierarchy)
+            {
+                card.transform.SetAsLastSibling();
+            }
         }
     }
 }
