@@ -1,6 +1,5 @@
 using System;
 using CameraZoom.Core;
-using Providers;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -9,6 +8,9 @@ namespace CameraZoom
 {
     public class CameraZoomLogic : MonoBehaviour
     {
+        [Header("References")]
+        [SerializeField] private Transform _transform;
+
         [Header("Preferences")]
         [SerializeField] private LayerMask _floorLayerMask;
         [SerializeField] private float _zoomSpeed = 1f;
@@ -18,16 +20,14 @@ namespace CameraZoom
         private IDisposable _zoomSubscription;
 
         private FloatReactiveProperty _cameraDistance = new FloatReactiveProperty();
-        
+
         public IReadOnlyReactiveProperty<float> CameraDistance => _cameraDistance;
-        
-        private Transform _cameraTransform;
+
         private SafeAreaZoomObserver _safeAreaZoomObserver;
 
         [Inject]
-        private void Constructor(CameraProvider cameraProvider, SafeAreaZoomObserver safeAreaZoomObserver)
+        private void Constructor(SafeAreaZoomObserver safeAreaZoomObserver)
         {
-            _cameraTransform = cameraProvider.Value.transform;
             _safeAreaZoomObserver = safeAreaZoomObserver;
         }
 
@@ -73,14 +73,14 @@ namespace CameraZoom
                 _cameraDistance.Value = cameraDistance;
                 float newCameraDistance = cameraDistance - delta * _zoomSpeed;
                 newCameraDistance = Mathf.Clamp(newCameraDistance, _minDistance, _maxDistance);
-                Vector3 newCameraPosition = hit.point - _cameraTransform.forward * newCameraDistance;
-                _cameraTransform.position = newCameraPosition;
+                Vector3 newCameraPosition = hit.point - _transform.forward * newCameraDistance;
+                _transform.position = newCameraPosition;
             }
         }
 
         private bool RaycastFloor(out RaycastHit hit)
         {
-            Ray ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
+            Ray ray = new Ray(_transform.position, _transform.forward);
             return UnityEngine.Physics.Raycast(ray, out hit, _maxDistance, _floorLayerMask);
         }
     }

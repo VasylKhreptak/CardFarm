@@ -1,7 +1,6 @@
 ﻿using System;
 using CameraMove.Core;
 using CameraZoom;
-using Providers;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -11,25 +10,23 @@ namespace CameraMove
     public class CameraMoveLogic : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private float _speed;
+        [SerializeField] private Transform _transform;
 
         [Header("Preferences")]
+        [SerializeField] private float _speed;
         [SerializeField] private Vector2 _min;
         [SerializeField] private Vector2 _max;
 
         private IDisposable _dragSubscription;
 
         private MapDragObserver _dragObserver;
-        private Transform _cameraTransform;
         private CameraZoomLogic _cameraZoomLogic;
 
         [Inject]
         private void Constructor(MapDragObserver dragObserver,
-            CameraProvider cameraProvider,
             CameraZoomLogic cameraZoomLogic)
         {
             _dragObserver = dragObserver;
-            _cameraTransform = cameraProvider.Value.transform;
             _cameraZoomLogic = cameraZoomLogic;
         }
 
@@ -64,7 +61,7 @@ namespace CameraMove
             if (Input.touchCount > 1) return;
 
             Vector3 moveDirection = new Vector3(-dragDelta.x, 0f, -dragDelta.y);
-            Vector3 cameraPosition = _cameraTransform.position;
+            Vector3 cameraPosition = _transform.position;
 
             cameraPosition += moveDirection * _speed * Time.deltaTime * _cameraZoomLogic.CameraDistance.Value;
 
@@ -73,7 +70,7 @@ namespace CameraMove
                 cameraPosition.y,
                 Mathf.Clamp(cameraPosition.z, _min.y, _max.y));
 
-            _cameraTransform.position = cameraPosition;
+            _transform.position = cameraPosition;
         }
 
         private void OnDrawGizmos()
