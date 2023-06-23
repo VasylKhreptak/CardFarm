@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 8193532437627284258}
   - component: {fileID: 4758467965833942909}
   - component: {fileID: 2161483601052853841}
+  - component: {fileID: 4262552001322664400}
   m_Layer: 6
   m_Name: BaseCard
   m_TagString: Untagged
@@ -260,6 +261,7 @@ MonoBehaviour:
   _heightOffset: 0.01
   _isWorker: 0
   _isSellableCard: 0
+  _canSortingLayerChange: 1
   ID: -1
   GroupID:
     value: -1
@@ -363,6 +365,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &4262552001322664400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106781378184328992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b0e1661b764df980f5858f99b03c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 1106781378184329004}
 --- !u!1 &1106781378837674971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,6 +1020,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8655193052913444969}
   - component: {fileID: 3600946420744596847}
+  - component: {fileID: 2923045713288182754}
   m_Layer: 6
   m_Name: BottonCardFollowPoint
   m_TagString: Untagged
@@ -1047,6 +1063,18 @@ MonoBehaviour:
   _transform: {fileID: 8655193052913444969}
   _radius: 0.1
   _color: {r: 0.049001455, g: 1, b: 0, a: 1}
+--- !u!114 &2923045713288182754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816247129412743349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30321c76aef6441f80656fd8c4eea501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2829272072979174877
 GameObject:
   m_ObjectHideFlags: 0
