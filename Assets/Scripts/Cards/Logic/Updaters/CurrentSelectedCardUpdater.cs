@@ -28,7 +28,7 @@ namespace Cards.Logic.Updaters
         {
             _cardData ??= GetComponentInParent<CardData>();
         }
-        
+
         private void OnEnable()
         {
             StartObserving();
@@ -51,6 +51,7 @@ namespace Cards.Logic.Updaters
         private void StopObserving()
         {
             _isCardSelectedSubscription?.Dispose();
+            OnCardStateUpdated(false);
         }
 
         private void OnCardStateUpdated(bool isSelected)
