@@ -1,7 +1,9 @@
 ﻿using System;
+using Animations.Shake.Position;
 using Cards.Boosters.Data;
 using UniRx;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Cards.Boosters.Logic.Core
@@ -16,6 +18,14 @@ namespace Cards.Boosters.Logic.Core
         [SerializeField] private float _maxRange = 7f;
 
         private IDisposable _totalCardsSubscription;
+
+        private CameraShakeAnimation _cameraShakeAnimation;
+
+        [Inject]
+        private void Constructor(CameraShakeAnimation cameraShakeAnimation)
+        {
+            _cameraShakeAnimation = cameraShakeAnimation;
+        }
 
         #region MonoBehaviour
 
@@ -60,7 +70,9 @@ namespace Cards.Boosters.Logic.Core
         {
             if (_cardData.LeftCards.Value > 0)
             {
+                _cameraShakeAnimation.Play();
                 SpawnResultedCard();
+                
                 _cardData.LeftCards.Value--;
             }
 
