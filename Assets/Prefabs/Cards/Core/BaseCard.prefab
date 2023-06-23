@@ -2660,7 +2660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
   _mainEase: 1
-  _duration: 0.5
+  _duration: 0.4
   _jumpPower: 5
   _numberOfJumps: 1
   _jumpEase: 3
