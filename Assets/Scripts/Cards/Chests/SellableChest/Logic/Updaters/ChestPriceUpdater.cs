@@ -17,13 +17,13 @@ namespace Cards.Chests.SellableChest.Logic.Updaters
         {
             _cardData ??= GetComponentInParent<ChestSellableCardData>();
         }
-        
-        private void OnEnable()
+
+        private void Awake()
         {
             StartObserving();
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             StopObserving();
         }

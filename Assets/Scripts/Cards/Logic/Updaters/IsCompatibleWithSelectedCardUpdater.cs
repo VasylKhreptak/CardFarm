@@ -30,7 +30,7 @@ namespace Cards.Logic.Updaters
         {
             _cardData ??= GetComponentInParent<CardData>();
         }
-        
+
         private void OnEnable()
         {
             StartObservingSelectedCard();
@@ -56,7 +56,7 @@ namespace Cards.Logic.Updaters
 
         private void OnSelectedCardUpdated(CardData selectedCard)
         {
-            if (selectedCard == null)
+            if (selectedCard == null || selectedCard == _cardData)
             {
                 _cardData.IsCompatibleWithSelectedCard.Value = false;
                 return;
