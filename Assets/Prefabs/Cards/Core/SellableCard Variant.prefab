@@ -336,6 +336,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 1781362583947358597, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     - target: {fileID: 1880421872753608925, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -607,6 +612,8 @@ MonoBehaviour:
   Animations:
     MoveAnimation: {fileID: 64048489458420466}
     JumpAnimation: {fileID: 5960606192708736452}
+  IsPlayingAnyAnimation:
+    value: 0
   Price:
     value: 0
 --- !u!224 &564359370849849035 stripped

@@ -1,12 +1,13 @@
 ﻿using System;
 using Cards.Data;
+using Cards.Graphics.Animations.Core;
 using DG.Tweening;
 using Extensions;
 using UnityEngine;
 
 namespace Cards.Graphics.Animations
 {
-    public class CardJumpAnimation : MonoBehaviour
+    public class CardJumpAnimation : CardAnimation
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -63,9 +64,14 @@ namespace Cards.Graphics.Animations
                 .Append(jumpAnimation)
                 .Join(flipAnimation)
                 .SetEase(_mainEase)
+                .OnStart(() =>
+                {
+                    _isPlaying.Value = true;
+                })
                 .OnComplete(() =>
                 {
                     onComplete?.Invoke();
+                    _isPlaying.Value = false;
                 })
                 .Play();
         }
@@ -73,6 +79,7 @@ namespace Cards.Graphics.Animations
         public void Stop()
         {
             _animation?.Kill();
+            _isPlaying.Value = false;
         }
 
         private Vector3 ValidatePosition(Vector3 position)

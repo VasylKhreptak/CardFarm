@@ -336,6 +336,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 1781362583947358597, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179}
     - target: {fileID: 1880421872753608925, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -611,6 +616,8 @@ MonoBehaviour:
   Animations:
     MoveAnimation: {fileID: 2189974551833070167}
     JumpAnimation: {fileID: 5494253294988809569}
+  IsPlayingAnyAnimation:
+    value: 0
   MaxHealth:
     value: 5
   Health:

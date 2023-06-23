@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using Cards.Core;
-using Cards.Recipes;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -64,8 +62,8 @@ namespace Cards.Data
 
         public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>(null);
 
-        [FormerlySerializedAs("CardAnimations")]
         public CardAnimations Animations = new CardAnimations();
+        public BoolReactiveProperty IsPlayingAnyAnimation = new BoolReactiveProperty();
 
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
     }

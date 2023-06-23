@@ -1,12 +1,13 @@
 ﻿using System;
 using Cards.Data;
+using Cards.Graphics.Animations.Core;
 using DG.Tweening;
 using Extensions;
 using UnityEngine;
 
 namespace Cards.Graphics.Animations
 {
-    public class CardMoveAnimation : MonoBehaviour
+    public class CardMoveAnimation : CardAnimation
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -45,9 +46,14 @@ namespace Cards.Graphics.Animations
 
             _tween = _cardData.transform.DOMove(targetPosition, duration)
                 .SetEase(_curve)
+                .OnStart(() =>
+                {
+                    _isPlaying.Value = true;
+                })
                 .OnComplete(() =>
                 {
                     onComplete?.Invoke();
+                    _isPlaying.Value = false;
                 })
                 .Play();
         }
@@ -55,6 +61,7 @@ namespace Cards.Graphics.Animations
         public void Stop()
         {
             _tween?.Kill();
+            _isPlaying.Value = false;
         }
 
         private Vector3 ValidatePosition(Vector3 position)
