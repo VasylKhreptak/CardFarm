@@ -17,8 +17,7 @@ namespace Cards.Logic
         [SerializeField] private LayerMask _floorLayerMask;
         [SerializeField] private float _speed = 15f;
 
-        private IDisposable _mouseDownSubscription;
-        private IDisposable _mouseUpSubscription;
+        private IDisposable _isSelectedSubscription;
         private IDisposable _followTouchSubscription;
 
         private ScreenRaycaster _screenRaycaster;
@@ -51,44 +50,27 @@ namespace Cards.Logic
 
         private void StartObserving()
         {
-            StartObservingMouseDown();
-            StartObservingMouseUp();
+            StopObserving();
+
+            _isSelectedSubscription = _cardData.IsSelectedCard.Subscribe(isSelected =>
+            {
+                if (isSelected)
+                {
+                    StartFollowingTouch();
+                }
+                else
+                {
+                    StopFollowingTouch();
+                }
+            });
         }
 
         private void StopObserving()
         {
-            StopObservingMouseDown();
-            StopObservingMouseUp();
             StopFollowingTouch();
+            _isSelectedSubscription?.Dispose();
         }
 
-        private void StartObservingMouseDown()
-        {
-            StopObservingMouseDown();
-            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ => StartFollowingTouch());
-        }
-
-        private void StopObservingMouseDown()
-        {
-            _mouseDownSubscription?.Dispose();
-        }
-
-        private void StartObservingMouseUp()
-        {
-            StopObservingMouseUp();
-            _mouseUpSubscription = _cardData.MouseTrigger.OnMouseUpAsObservable().Subscribe(_ => StopFollowingTouch());
-        }
-
-        private void StopObservingMouseUp()
-        {
-            _mouseUpSubscription?.Dispose();
-        }
-
-        private void OnMouseDownAsObservable()
-        {
-            
-        }
-        
         private void StartFollowingTouch()
         {
             StopFollowingTouch();
