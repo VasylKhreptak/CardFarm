@@ -1,4 +1,6 @@
-﻿using Cards.Core;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
 using Cards.Zones.SellZone.Data;
@@ -37,67 +39,53 @@ namespace Cards.Zones.SellZone.Logic
 
         private void StartObserving()
         {
-            _zoneData.Callbacks.onBottomCardsListUpdated += OnCardsUpdated;
+            _zoneData.Callbacks.onBottomCardsListUpdated += OnBottomCardsUpdated;
         }
 
         private void StopObserving()
         {
-            _zoneData.Callbacks.onBottomCardsListUpdated -= OnCardsUpdated;
+            _zoneData.Callbacks.onBottomCardsListUpdated -= OnBottomCardsUpdated;
         }
 
-        private void OnCardsUpdated()
+        private void OnBottomCardsUpdated()
         {
-            if (_zoneData.BottomCards.Count == 0) return;
-
-            int coins = GetCoinsCount();
-
-            SpawnCoins(coins);
-
-            DisableGroupCards();
+            TrySellBottomCards();
         }
 
-        private int GetCoinsCount()
+        private void TrySellBottomCards()
         {
-            int coinsToSpawn = 0;
+            List<CardData> bottomCards = _zoneData.BottomCards.ToList();
 
-            foreach (var card in _zoneData.BottomCards)
+            if (bottomCards.Count == 0) return;
+
+            if (bottomCards.Count >= 1)
             {
-                if (card.IsSellableCard)
-                {
-                    SellableCardData sellableCardData = card as SellableCardData;
+                bottomCards[0].UnlinkFromUpper();
+            }
 
-                    if (sellableCardData != null)
+            CardData previousSpawnedCoin = null;
+
+            foreach (var bottomCard in bottomCards)
+            {
+                if (bottomCard.IsSellableCard == false) return;
+
+                SellableCardData sellableCard = bottomCard as SellableCardData;
+
+                if (sellableCard == null) return;
+
+                for (int i = 0; i < sellableCard.Price.Value; i++)
+                {
+                    CardData spawnedCoin = _cardSpawner.Spawn(Card.Coin, _zoneData.CoinSpawnPoint.position);
+
+                    if (previousSpawnedCoin != null)
                     {
-                        coinsToSpawn += sellableCardData.Price.Value;
+                        spawnedCoin.LinkTo(previousSpawnedCoin);
                     }
-                }
-            }
 
-            return coinsToSpawn;
-        }
-
-        private void DisableGroupCards()
-        {
-            foreach (var card in _zoneData.BottomCards)
-            {
-                card.gameObject.SetActive(false);
-            }
-        }
-
-        private void SpawnCoins(int count)
-        {
-            CardData previousCard = null;
-
-            for (int i = 0; i < count; i++)
-            {
-                CardData coinCard = _cardSpawner.Spawn(Card.Coin, _zoneData.CoinSpawnPoint.position);
-
-                if (previousCard != null)
-                {
-                    coinCard.LinkTo(previousCard);
+                    previousSpawnedCoin = spawnedCoin;
                 }
 
-                previousCard = coinCard;
+                sellableCard.gameObject.SetActive(false);
             }
         }
     }

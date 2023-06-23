@@ -17,12 +17,14 @@ namespace Cards.Data
         [Space]
         [SerializeField] private bool _isWorker;
         [SerializeField] private bool _isSellableCard;
+        [SerializeField] private bool _canSortingLayerChange = true;
 
         public float BaseHeight => _baseHeight;
         public float HeightOffset => _heightOffset;
 
         public bool IsWorker => _isWorker;
         public bool IsSellableCard => _isSellableCard;
+        public bool CanSortingLayerChange => _canSortingLayerChange;
 
         [Space]
         public int ID = -1;

@@ -97,6 +97,8 @@ namespace Extensions
 
         public static void RenderOnTop(this CardData card)
         {
+            if (card.CanSortingLayerChange == false) return;
+
             Transform parent = card.transform.parent;
 
             if (parent != null && parent.gameObject.activeInHierarchy)

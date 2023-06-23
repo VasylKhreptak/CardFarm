@@ -352,6 +352,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanBeSellZoneUnderSelectedCard
       objectReference: {fileID: 0}
+    - target: {fileID: 8553110877064441643, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8751749595196191504, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_Name
@@ -394,7 +399,7 @@ MonoBehaviour:
   _heightOffset: 0.01
   _isWorker: 0
   _isSellableCard: 0
-  _isCoin: 0
+  _canSortingLayerChange: 0
   ID: -1
   GroupID:
     value: -1
@@ -450,7 +455,8 @@ MonoBehaviour:
       Cooldown: 0
       Result:
         Weights: []
-  RecipeExecutor: {fileID: 0}
+  Animations:
+    MoveAnimation: {fileID: 0}
   CoinSpawnPoint: {fileID: 5974213635198002519}
 --- !u!224 &5974213635198002519 stripped
 RectTransform:
