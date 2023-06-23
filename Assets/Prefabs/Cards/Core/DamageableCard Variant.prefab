@@ -371,6 +371,26 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 2524044519098052835, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 2524044519098052835, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _flipEase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524044519098052835, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _jumpEase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524044519098052835, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _mainEase
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2575682665689227054, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -392,6 +412,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 706076374391090179}
     - target: {fileID: 3845918150356545301, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 4262552001322664400, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -422,6 +447,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 706076374391090179}
     - target: {fileID: 6282712638965089098, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 6499048130321804334, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -522,7 +552,7 @@ MonoBehaviour:
   _heightOffset: 0.01
   _isWorker: 0
   _isSellableCard: 0
-  _isCoin: 0
+  _canSortingLayerChange: 1
   ID: -1
   GroupID:
     value: -1
@@ -578,9 +608,9 @@ MonoBehaviour:
       Cooldown: 0
       Result:
         Weights: []
-  RecipeExecutor: {fileID: 8302110075869130475}
   Animations:
     MoveAnimation: {fileID: 2189974551833070167}
+    JumpAnimation: {fileID: 5494253294988809569}
   MaxHealth:
     value: 5
   Health:
@@ -595,6 +625,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252b2605a9ca4d5a802f53b51ef5d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5494253294988809569 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6499048130321804334, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 1589422760007612751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95150f5baacb43c286d0cde1a9786a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6055013777042517554 stripped
@@ -615,15 +657,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1589422760007612751}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8302110075869130475 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7294079551765895076, guid: 7bf54413c6b39324e9a7ddfc51606634,
-    type: 3}
-  m_PrefabInstance: {fileID: 1589422760007612751}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4a9a6914976485690d1552d117ae654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

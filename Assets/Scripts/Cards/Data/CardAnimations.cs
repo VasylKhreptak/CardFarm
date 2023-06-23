@@ -7,5 +7,6 @@ namespace Cards.Data
     public class CardAnimations
     {
         public CardMoveAnimation MoveAnimation;
+        public CardJumpAnimation JumpAnimation;
     }
 }

@@ -34,6 +34,7 @@ namespace Cards.CardDataFillers
             _cardData.BottomCardFollowPoint = bottomCardFollowPoint != null ? bottomCardFollowPoint.transform : null;
             
             _cardData.Animations.MoveAnimation = GetComponentInChildren<CardMoveAnimation>();
+            _cardData.Animations.JumpAnimation = GetComponentInChildren<CardJumpAnimation>();
         }
     }
 }

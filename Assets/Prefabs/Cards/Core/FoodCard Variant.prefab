@@ -521,6 +521,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 871094102}
+    - target: {fileID: 2524044519098052835, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
     - target: {fileID: 2575682665689227054, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -542,6 +547,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 871094102}
     - target: {fileID: 3845918150356545301, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
+    - target: {fileID: 4262552001322664400, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -576,6 +586,12 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 871094102}
+    - target: {fileID: 6499048130321804334, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
     - target: {fileID: 6602408350882929898, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -672,7 +688,7 @@ MonoBehaviour:
   _heightOffset: 0.01
   _isWorker: 0
   _isSellableCard: 0
-  _isCoin: 0
+  _canSortingLayerChange: 1
   ID: -1
   GroupID:
     value: -1
@@ -728,9 +744,9 @@ MonoBehaviour:
       Cooldown: 0
       Result:
         Weights: []
-  RecipeExecutor: {fileID: 5873277363968446321}
   Animations:
     MoveAnimation: {fileID: 4382369424566889421}
+    JumpAnimation: {fileID: 7965343571633222907}
   Price:
     value: 0
   NutritionalValue:
@@ -753,16 +769,16 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3799863883936356565}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5873277363968446321 stripped
+--- !u!114 &7965343571633222907 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7294079551765895076, guid: 7bf54413c6b39324e9a7ddfc51606634,
+  m_CorrespondingSourceObject: {fileID: 6499048130321804334, guid: 7bf54413c6b39324e9a7ddfc51606634,
     type: 3}
   m_PrefabInstance: {fileID: 3799863883936356565}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4a9a6914976485690d1552d117ae654, type: 3}
+  m_Script: {fileID: 11500000, guid: 95150f5baacb43c286d0cde1a9786a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8553089367571648424 stripped

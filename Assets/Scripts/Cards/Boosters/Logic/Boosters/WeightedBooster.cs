@@ -15,7 +15,6 @@ namespace Cards.Boosters.Logic.Boosters
     {
         [Header("Preferences")]
         [SerializeField] private List<CardWeight> _cards;
-        [SerializeField] private float _cardMoveDuration = 0.5f;
 
         private CardSpawner _cardSpawner;
         private CardsTable _cardsTable;
@@ -41,7 +40,7 @@ namespace Cards.Boosters.Logic.Boosters
             {
                 Vector3 position = GetRandomPosition();
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
-                spawnedCard.Animations.MoveAnimation.Play(position, _cardMoveDuration);
+                spawnedCard.Animations.JumpAnimation.Play(position);
             }
 
             _cardData.BoosterCallabcks.OnSpawnedCard?.Invoke(cardToSpawn);
