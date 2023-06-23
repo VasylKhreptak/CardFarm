@@ -13,8 +13,7 @@ namespace Cards.Logic.Events
         [Header("Preferences")]
         [SerializeField] private float _maxDistance = 0.1f;
 
-        private IDisposable _mouseDownSubscription;
-        private IDisposable _mouseUpSubscription;
+        private IDisposable _isSelectedSubscription;
 
         private Vector2 _previousClickPosition;
 
@@ -24,7 +23,7 @@ namespace Cards.Logic.Events
         {
             _cardData ??= GetComponentInParent<CardData>();
         }
-        
+
         private void OnEnable()
         {
             StartObserving();
@@ -39,36 +38,25 @@ namespace Cards.Logic.Events
 
         private void StartObserving()
         {
-            StartObservingMouseDown();
-            StartObservingMouseUp();
+            StopObserving();
+            _isSelectedSubscription = _cardData.IsSelectedCard.Subscribe(IsSelectedValueChanged);
         }
 
         private void StopObserving()
         {
-            StopObservingMouseDown();
-            StopObservingMouseUp();
+            _isSelectedSubscription?.Dispose();
         }
 
-        private void StartObservingMouseDown()
+        private void IsSelectedValueChanged(bool isSelected)
         {
-            StopObservingMouseDown();
-            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ => OnMouseDown());
-        }
-
-        private void StopObservingMouseDown()
-        {
-            _mouseDownSubscription?.Dispose();
-        }
-
-        private void StartObservingMouseUp()
-        {
-            StopObservingMouseUp();
-            _mouseUpSubscription = _cardData.MouseTrigger.OnMouseUpAsObservable().Subscribe(_ => OnMouseUp());
-        }
-
-        private void StopObservingMouseUp()
-        {
-            _mouseUpSubscription?.Dispose();
+            if (isSelected)
+            {
+                OnMouseDown();
+            }
+            else
+            {
+                OnMouseUp();
+            }
         }
 
         private void OnMouseDown()
