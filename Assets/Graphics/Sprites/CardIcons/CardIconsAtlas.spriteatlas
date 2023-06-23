@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CardIconsAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 3
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: fff6fd628141b374f87a0ad4b1c5ecb7, type: 3}
+    - {fileID: 2800000, guid: 81d954b2072658840be4ddb846644d66, type: 3}
+    - {fileID: 2800000, guid: ae995c51e784a14498ed5ef5c9e87bd0, type: 3}
+    - {fileID: 2800000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
+    - {fileID: 2800000, guid: 9871e8d7308587749abee0c195a6e23d, type: 3}
+    - {fileID: 2800000, guid: d0e75e864fa07194c94a6262c6ed6480, type: 3}
+    - {fileID: 2800000, guid: 3c580b7a36bd63a48bff6caa7bc605cc, type: 3}
+    - {fileID: 2800000, guid: f05ab79712615cf4ba4f11233d48c98e, type: 3}
+    - {fileID: 2800000, guid: a5724fbb1d2e40e4db783492e58b3278, type: 3}
+    - {fileID: 2800000, guid: d223422c09ff5d94b98296370f3a1964, type: 3}
+    - {fileID: 2800000, guid: 83c46fd70292a894db584832d91b7083, type: 3}
+    - {fileID: 2800000, guid: 426963d6f313ffc469783a996a323a43, type: 3}
+    - {fileID: 2800000, guid: 35668956222d91244a45abe3154577c3, type: 3}
+    - {fileID: 2800000, guid: b5d533a8e4b79ba48a41f73eb617b013, type: 3}
+    - {fileID: 2800000, guid: 457ed01a61bd26f479813296afd3cdd4, type: 3}
+    - {fileID: 2800000, guid: ce61582e1cb853a4b9f4762a196edefe, type: 3}
+    - {fileID: 2800000, guid: 65ce6e8de554801469cfe2b5b1bdff12, type: 3}
+    - {fileID: 2800000, guid: 5a2a9e1dade259d41a0bf333d3e7e079, type: 3}
+    - {fileID: 2800000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
+    - {fileID: 2800000, guid: 768f09dbc8e6e4443824c8c5de58afe9, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: ae995c51e784a14498ed5ef5c9e87bd0, type: 3}
+  - {fileID: 21300000, guid: fff6fd628141b374f87a0ad4b1c5ecb7, type: 3}
+  - {fileID: 21300000, guid: 81d954b2072658840be4ddb846644d66, type: 3}
+  - {fileID: 21300000, guid: 35668956222d91244a45abe3154577c3, type: 3}
+  - {fileID: 21300000, guid: d0e75e864fa07194c94a6262c6ed6480, type: 3}
+  - {fileID: 21300000, guid: 426963d6f313ffc469783a996a323a43, type: 3}
+  - {fileID: 21300000, guid: f05ab79712615cf4ba4f11233d48c98e, type: 3}
+  - {fileID: 21300000, guid: 9871e8d7308587749abee0c195a6e23d, type: 3}
+  - {fileID: 21300000, guid: 83c46fd70292a894db584832d91b7083, type: 3}
+  - {fileID: 21300000, guid: b5d533a8e4b79ba48a41f73eb617b013, type: 3}
+  - {fileID: 21300000, guid: 457ed01a61bd26f479813296afd3cdd4, type: 3}
+  - {fileID: 21300000, guid: 3c580b7a36bd63a48bff6caa7bc605cc, type: 3}
+  - {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
+  - {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
+  - {fileID: 21300000, guid: a5724fbb1d2e40e4db783492e58b3278, type: 3}
+  - {fileID: 21300000, guid: 768f09dbc8e6e4443824c8c5de58afe9, type: 3}
+  - {fileID: 21300000, guid: d223422c09ff5d94b98296370f3a1964, type: 3}
+  - {fileID: 21300000, guid: 5a2a9e1dade259d41a0bf333d3e7e079, type: 3}
+  - {fileID: 21300000, guid: 65ce6e8de554801469cfe2b5b1bdff12, type: 3}
+  - {fileID: 21300000, guid: ce61582e1cb853a4b9f4762a196edefe, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - BerryCardIcon
+  - AppleTreeCardIcon
+  - BerryBushCardIcon
+  - PlankCardIcon
+  - CampfireCardIcon
+  - LamberCampCardIcon
+  - CoinChestCardIcon
+  - BrickCardIcon
+  - HouseCardIcon
+  - QuarryCardIcon
+  - RockCardIcon
+  - CoinCardIcon
+  - VillagerCardIcon
+  - BoosterCardIcon
+  - FlintCardIcon
+  - WoodCardIcon
+  - GardenCardIcon
+  - TreeCardIcon
+  - StoneCardIcon
+  - StickCardIcon
+  m_RenderDataMap: {}
+  m_Tag: CardIconsAtlas
+  m_IsVariant: 0

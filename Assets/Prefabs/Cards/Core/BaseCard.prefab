@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 1106781378184329004}
   - component: {fileID: 8193532437627284258}
   - component: {fileID: 4758467965833942909}
+  - component: {fileID: 2161483601052853841}
   m_Layer: 6
   m_Name: BaseCard
   m_TagString: Untagged
@@ -259,7 +260,6 @@ MonoBehaviour:
   _heightOffset: 0.01
   _isWorker: 0
   _isSellableCard: 0
-  _isCoin: 0
   ID: -1
   GroupID:
     value: -1
@@ -315,7 +315,6 @@ MonoBehaviour:
       Cooldown: 0
       Result:
         Weights: []
-  RecipeExecutor: {fileID: 7294079551765895076}
   Animations:
     MoveAnimation: {fileID: 606466236671030040}
 --- !u!65 &8193532437627284258
@@ -343,6 +342,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da66e2c89135284458685fa7651ae81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!223 &2161483601052853841
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106781378184328992}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1106781378837674971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,6 +2576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
+  _resultedCardMoveDuration: 0.5
   _minRange: 5
   _maxRange: 7
 --- !u!1 &8006598870142321143
