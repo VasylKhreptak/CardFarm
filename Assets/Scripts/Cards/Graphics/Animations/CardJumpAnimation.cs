@@ -54,7 +54,7 @@ namespace Cards.Graphics.Animations
             _cardData.UnlinkFromUpper();
 
             Stop();
-
+            
             Tween jumpAnimation = _cardData.transform.DOJump(targetPosition, _jumpPower, _numberOfJumps, duration).SetEase(_jumpEase);
             _cardData.transform.localRotation = Quaternion.Euler(_startLocalRotation);
             Tween flipAnimation = _cardData.transform.DOLocalRotate(_endLocalRotation, duration).SetEase(_flipEase);
