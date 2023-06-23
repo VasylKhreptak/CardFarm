@@ -19,6 +19,7 @@ namespace Cards.Graphics.VisualElements
         private void OnValidate()
         {
             _image ??= GetComponent<Image>();
+            _cardData ??= GetComponentInParent<CardData>();
         }
 
         private void OnEnable()

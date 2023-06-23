@@ -11,6 +11,11 @@ namespace Cards.Logic.Updaters
 
         #region MonoBehaviour
 
+        private void OnValidate()
+        {
+            _cardData ??= GetComponentInParent<CardData>();
+        }
+        
         private void OnEnable()
         {
             OnGroupCardsUpdated();

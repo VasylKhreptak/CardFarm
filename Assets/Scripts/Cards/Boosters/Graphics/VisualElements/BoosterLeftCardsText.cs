@@ -19,6 +19,7 @@ namespace Cards.Boosters.Graphics.VisualElements
         private void OnValidate()
         {
             _tmp ??= GetComponent<TMP_Text>();
+            _cardData ??= GetComponentInParent<BoosterCardData>();
         }
 
         private void OnEnable()

@@ -3,6 +3,7 @@ using Cards.AutomatedFactories.Data;
 using ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes;
 using UniRx;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Cards.Boosters.Logic.Updaters
 {
@@ -16,6 +17,11 @@ namespace Cards.Boosters.Logic.Updaters
         private IDisposable _isCardSingleSubscription;
 
         #region MonoBehaviour
+
+        private void OnValidate()
+        {
+            _cardData ??= GetComponentInParent<AutomatedCardFactoryData>();
+        }
 
         private void OnEnable()
         {

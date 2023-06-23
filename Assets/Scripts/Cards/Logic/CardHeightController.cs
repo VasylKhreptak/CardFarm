@@ -8,7 +8,6 @@ namespace Cards.Logic
     public class CardHeightController : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private Transform _transform;
         [SerializeField] private CardData _cardData;
 
         private IDisposable _upperCardHeightSubscription;
@@ -17,6 +16,11 @@ namespace Cards.Logic
 
         #region MonoBehaviour
 
+        private void OnValidate()
+        {
+            _cardData ??= GetComponentInParent<CardData>();
+        }
+        
         private void OnEnable()
         {
             StartObservingUpperCard();
@@ -43,7 +47,7 @@ namespace Cards.Logic
 
         private void UpdateHeight(CardData upperCardData)
         {
-            Vector3 position = _transform.position;
+            Vector3 position = _cardData.transform.position;
 
             _upperCardHeightSubscription?.Dispose();
 

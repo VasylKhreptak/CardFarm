@@ -19,6 +19,7 @@ namespace Cards.Graphics.VisualElements
         private void OnValidate()
         {
             _tmp ??= GetComponent<TMP_Text>();
+            _cardData ??= GetComponentInParent<CardData>();
         }
 
         private void OnEnable()

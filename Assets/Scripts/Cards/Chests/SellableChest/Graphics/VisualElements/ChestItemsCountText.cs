@@ -19,6 +19,7 @@ namespace Cards.Chests.SellableChest.Graphics.VisualElements
         private void OnValidate()
         {
             _tmp ??= GetComponent<TMP_Text>();
+            _cardData ??= GetComponentInParent<ChestSellableCardData>();
         }
 
         private void OnEnable()

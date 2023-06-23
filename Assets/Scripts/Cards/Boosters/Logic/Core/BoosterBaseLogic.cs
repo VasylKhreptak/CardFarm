@@ -19,6 +19,11 @@ namespace Cards.Boosters.Logic.Core
 
         #region MonoBehaviour
 
+        private void OnValidate()
+        {
+            _cardData ??= GetComponentInParent<BoosterCardData>();
+        }
+
         private void OnEnable()
         {
             StartObservingTotalCards();

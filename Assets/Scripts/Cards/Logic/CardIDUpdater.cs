@@ -20,6 +20,11 @@ namespace Cards.Logic
 
         #region MonoBehaviour
 
+        private void OnValidate()
+        {
+            _data ??= GetComponentInParent<CardData>();
+        }
+        
         private void Awake()
         {
             _data.ID = _idProvider.Value;

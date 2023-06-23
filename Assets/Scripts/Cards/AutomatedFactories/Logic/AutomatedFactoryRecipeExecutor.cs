@@ -42,6 +42,11 @@ namespace Cards.AutomatedFactories.Logic
 
         #region MonoBehaviour
 
+        private void OnValidate()
+        {
+            _cardData ??= GetComponentInParent<AutomatedCardFactoryData>();
+        }
+
         private void OnEnable()
         {
             StartObserving();

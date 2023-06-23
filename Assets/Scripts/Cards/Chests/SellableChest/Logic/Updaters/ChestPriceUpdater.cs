@@ -13,6 +13,11 @@ namespace Cards.Chests.SellableChest.Logic.Updaters
 
         #region MonoBehaviour
 
+        private void OnValidate()
+        {
+            _cardData ??= GetComponentInParent<ChestSellableCardData>();
+        }
+        
         private void OnEnable()
         {
             StartObserving();

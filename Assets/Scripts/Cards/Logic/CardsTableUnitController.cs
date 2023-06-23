@@ -20,6 +20,11 @@ namespace Cards.Logic
 
         #region MonoBehaviour
 
+        private void OnValidate()
+        {
+            _cardData ??= GetComponentInParent<CardData>();
+        }
+        
         private void OnEnable()
         {
             Register();

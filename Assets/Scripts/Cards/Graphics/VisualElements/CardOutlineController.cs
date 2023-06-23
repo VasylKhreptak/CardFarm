@@ -18,6 +18,7 @@ namespace Cards.Graphics.VisualElements
         private void OnValidate()
         {
             _outlineObject ??= transform.GetChild(0).gameObject;
+            _cardData ??= GetComponentInParent<CardData>();
         }
 
         private void OnEnable()

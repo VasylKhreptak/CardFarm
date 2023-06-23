@@ -34,6 +34,7 @@ namespace Cards.Logic
         private void OnValidate()
         {
             _transform ??= GetComponent<Transform>();
+            _cardData ??= GetComponentInParent<CardData>();
         }
 
         private void OnEnable()
