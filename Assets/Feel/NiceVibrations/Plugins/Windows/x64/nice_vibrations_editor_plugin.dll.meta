@@ -12,6 +12,7 @@ PluginImporter:
   validateReferences: 1
   platformData:
   - first:
+<<<<<<< HEAD
       : Any
     second:
       enabled: 0
@@ -24,6 +25,8 @@ PluginImporter:
         Exclude Win64: 1
         Exclude WindowsStoreApps: 1
   - first:
+=======
+>>>>>>> master
       Any: 
     second:
       enabled: 1
@@ -31,6 +34,7 @@ PluginImporter:
   - first:
       Editor: Editor
     second:
+<<<<<<< HEAD
       enabled: 1
       settings:
         CPU: x86_64
@@ -75,6 +79,11 @@ PluginImporter:
         PlaceholderPath: 
         SDK: AnySDK
         ScriptingBackend: AnyScriptingBackend
+=======
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
+>>>>>>> master
   userData: 
   assetBundleName: 
   assetBundleVariant: 
