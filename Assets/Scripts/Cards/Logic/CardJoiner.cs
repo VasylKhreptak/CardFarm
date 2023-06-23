@@ -37,7 +37,7 @@ namespace Cards.Logic
             StopObserving();
 
             _subscription = Observable
-                .CombineLatest(_cardData.IsSelectedCard, _cardData.JoinableCard,
+                .CombineLatest(_cardData.IsSelected, _cardData.JoinableCard,
                     (isSelected, targetCard) => new { isSelected, targetCard })
                 .Subscribe(tuple =>
                 {

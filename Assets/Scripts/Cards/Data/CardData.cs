@@ -4,6 +4,7 @@ using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -38,6 +39,8 @@ namespace Cards.Data
         public ReactiveProperty<Sprite> Background = new ReactiveProperty<Sprite>();
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
 
+        public BoolReactiveProperty IsInteractable = new BoolReactiveProperty(true);
+
         public ReactiveProperty<CardData> TopCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> UpperCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> BottomCard = new ReactiveProperty<CardData>();
@@ -55,7 +58,7 @@ namespace Cards.Data
         public BoolReactiveProperty IsBottomCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsMiddleCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsSingleCard = new BoolReactiveProperty();
-        public BoolReactiveProperty IsSelectedCard = new BoolReactiveProperty();
+        public BoolReactiveProperty IsSelected = new BoolReactiveProperty();
         public BoolReactiveProperty IsLowestGroupCard = new BoolReactiveProperty();
         public BoolReactiveProperty CanBeUnderSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
@@ -64,6 +67,7 @@ namespace Cards.Data
 
         public CardAnimations Animations = new CardAnimations();
         public BoolReactiveProperty IsPlayingAnyAnimation = new BoolReactiveProperty();
+        public BoolReactiveProperty CanBeSelected = new BoolReactiveProperty();
 
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
     }

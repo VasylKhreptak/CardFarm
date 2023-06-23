@@ -526,6 +526,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 706076374391090179}
+    - target: {fileID: 8680314788924757713, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 706076374391090179}
     m_RemovedComponents:
     - {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
@@ -574,6 +579,8 @@ MonoBehaviour:
     value: {fileID: 0}
   Icon:
     value: {fileID: 0}
+  IsInteractable:
+    value: 1
   TopCard:
     value: {fileID: 0}
   UpperCard:
@@ -617,6 +624,8 @@ MonoBehaviour:
     MoveAnimation: {fileID: 2189974551833070167}
     JumpAnimation: {fileID: 5494253294988809569}
   IsPlayingAnyAnimation:
+    value: 0
+  CanBeSelected:
     value: 0
   MaxHealth:
     value: 5

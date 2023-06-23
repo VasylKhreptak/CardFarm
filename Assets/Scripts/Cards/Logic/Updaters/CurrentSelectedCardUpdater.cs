@@ -45,7 +45,7 @@ namespace Cards.Logic.Updaters
         {
             StopObserving();
 
-            _isCardSelectedSubscription = _cardData.IsSelectedCard.Subscribe(OnCardStateUpdated);
+            _isCardSelectedSubscription = _cardData.IsSelected.Subscribe(OnCardStateUpdated);
         }
 
         private void StopObserving()

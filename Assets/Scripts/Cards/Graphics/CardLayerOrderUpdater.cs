@@ -49,7 +49,7 @@ namespace Cards.Graphics
             StopObserving();
 
             _cardData.Callbacks.onBecameHeadOfGroup += OnBecameHeadOfGroup;
-            _cardData.IsSelectedCard.Subscribe(IsCardSelectedValueChanged).AddTo(_subscriptions);
+            _cardData.IsSelected.Subscribe(IsCardSelectedValueChanged).AddTo(_subscriptions);
         }
 
         private void StopObserving()

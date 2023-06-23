@@ -5,12 +5,13 @@ using UnityEngine;
 
 namespace Cards.Logic.Updaters
 {
-    public class IsSelectedCardUpdater : MonoBehaviour
+    public class IsSelectedUpdater : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
         private IDisposable _mouseDownSubscription;
+        private IDisposable _canBeSelectedSubscription;
         private IDisposable _mouseUpSubscription;
 
         #region MonoBehaviour
@@ -19,7 +20,7 @@ namespace Cards.Logic.Updaters
         {
             _cardData ??= GetComponentInParent<CardData>();
         }
-        
+
         private void OnEnable()
         {
             StartObserving();
@@ -34,14 +35,18 @@ namespace Cards.Logic.Updaters
 
         private void StartObserving()
         {
+            StartObservingIfCanBeSelected();
             StartObservingMouseDown();
             StartObservingMouseUp();
         }
 
         private void StopObserving()
         {
+            StopObservingIfCanBeSelected();
             StopObservingMouseDown();
             StopObservingMouseUp();
+
+            _cardData.IsSelected.Value = false;
         }
 
         private void StartObservingMouseDown()
@@ -49,7 +54,10 @@ namespace Cards.Logic.Updaters
             StopObservingMouseDown();
             _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ =>
             {
-                _cardData.IsSelectedCard.Value = true;
+                if (_cardData.CanBeSelected.Value)
+                {
+                    _cardData.IsSelected.Value = true;
+                }
             });
         }
 
@@ -63,13 +71,28 @@ namespace Cards.Logic.Updaters
             StopObservingMouseUp();
             _mouseUpSubscription = _cardData.MouseTrigger.OnMouseUpAsObservable().Subscribe(_ =>
             {
-                _cardData.IsSelectedCard.Value = false;
+                _cardData.IsSelected.Value = false;
             });
         }
 
         private void StopObservingMouseUp()
         {
             _mouseUpSubscription?.Dispose();
+        }
+
+        private void StartObservingIfCanBeSelected()
+        {
+            StopObservingIfCanBeSelected();
+
+            _canBeSelectedSubscription = _cardData.CanBeSelected.Where(x => x == false).Subscribe(canBeSelected =>
+            {
+                _cardData.IsSelected.Value = false;
+            });
+        }
+
+        private void StopObservingIfCanBeSelected()
+        {
+            _canBeSelectedSubscription?.Dispose();
         }
     }
 }

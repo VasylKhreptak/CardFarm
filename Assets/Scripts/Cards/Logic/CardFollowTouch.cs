@@ -52,7 +52,7 @@ namespace Cards.Logic
         {
             StopObserving();
 
-            _isSelectedSubscription = _cardData.IsSelectedCard.Subscribe(isSelected =>
+            _isSelectedSubscription = _cardData.IsSelected.Subscribe(isSelected =>
             {
                 if (isSelected)
                 {

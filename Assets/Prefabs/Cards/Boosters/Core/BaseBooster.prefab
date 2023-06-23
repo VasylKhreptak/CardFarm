@@ -811,6 +811,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3829932553933156705}
+    - target: {fileID: 1781362583947358597, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3829932553933156705}
     - target: {fileID: 1880421872753608925, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -981,6 +986,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3829932553933156705}
+    - target: {fileID: 8680314788924757713, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3829932553933156705}
     m_RemovedComponents:
     - {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
     - {fileID: 8453801090765566011, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
@@ -1042,6 +1052,8 @@ MonoBehaviour:
     value: {fileID: 0}
   Icon:
     value: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
+  IsInteractable:
+    value: 1
   TopCard:
     value: {fileID: 0}
   UpperCard:
@@ -1066,7 +1078,7 @@ MonoBehaviour:
     value: 0
   IsSingleCard:
     value: 0
-  IsSelectedCard:
+  IsSelected:
     value: 0
   IsLowestGroupCard:
     value: 0
@@ -1084,6 +1096,10 @@ MonoBehaviour:
   Animations:
     MoveAnimation: {fileID: 3648043868061569442}
     JumpAnimation: {fileID: 6988368992212487828}
+  IsPlayingAnyAnimation:
+    value: 0
+  CanBeSelected:
+    value: 0
   TotalCards:
     value: 5
   LeftCards:
