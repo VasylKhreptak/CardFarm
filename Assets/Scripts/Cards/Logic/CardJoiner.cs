@@ -19,7 +19,7 @@ namespace Cards.Logic
         {
             _cardData ??= GetComponentInParent<CardData>();
         }
-        
+
         private void OnEnable()
         {
             StartObserving();
@@ -52,11 +52,6 @@ namespace Cards.Logic
 
         private void OnCardDataUpdated(bool isSelected, CardData targetCard)
         {
-            if (isSelected)
-            {
-                _cardData.UnlinkFromUpper();
-            }
-
             if (isSelected == false && targetCard != null)
             {
                 _cardData.LinkTo(targetCard);

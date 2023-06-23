@@ -28,7 +28,7 @@ namespace Cards.Logic.Updaters
         {
             _cardData ??= GetComponentInParent<CardData>();
         }
-        
+
         private void Awake()
         {
             _hits = new RaycastHit[_hitsBufferSize];
@@ -99,7 +99,6 @@ namespace Cards.Logic.Updaters
             StopUpdatingJoinableCard();
 
             _intervalSubscription = Observable.Interval(TimeSpan.FromSeconds(_cardUpdateInterval))
-                .DoOnSubscribe(UpdateJoinableCard)
                 .Subscribe(_ =>
                 {
                     UpdateJoinableCard();
