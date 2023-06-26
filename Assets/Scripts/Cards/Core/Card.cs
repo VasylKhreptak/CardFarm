@@ -33,5 +33,10 @@ namespace Cards.Core
         Milkshake = 28,
         FruitSalad = 29,
         Apple = 30,
+        Mushroom = 31,
+        Onion = 32,
+        Carrot = 33,
+        Potato = 34,
+        Plains = 35,
     }
 }

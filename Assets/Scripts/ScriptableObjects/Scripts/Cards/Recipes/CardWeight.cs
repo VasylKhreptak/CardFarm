@@ -7,6 +7,6 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
     public class CardWeight
     {
         public Card Card;
-        public float Weight;
+        public float Weight = 1;
     }
 }
