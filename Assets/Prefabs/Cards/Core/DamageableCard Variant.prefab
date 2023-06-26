@@ -264,7 +264,7 @@ PrefabInstance:
     - target: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.218476
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -633,6 +633,11 @@ MonoBehaviour:
     value: 0
   CanBeSelected:
     value: 0
+  CurrentReproductionRecipe:
+    value:
+      Cooldown: 0
+      Resources: 
+      Results: []
   MaxHealth:
     value: 5
   Health:
