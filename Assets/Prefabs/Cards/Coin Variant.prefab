@@ -352,6 +352,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3573013257164753988}
+    - target: {fileID: 7641205947910088817, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7820841018766694524, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -453,6 +458,8 @@ MonoBehaviour:
     value: 0
   IsCompatibleWithSelectedCard:
     value: 0
+  CanBeSelected:
+    value: 0
   CurrentRecipe:
     value:
       Resources: 
@@ -460,14 +467,21 @@ MonoBehaviour:
       Cooldown: 0
       Result:
         Weights: []
+  Durability:
+    value: 1
+  MaxDurability:
+    value: 1
   Animations:
     MoveAnimation: {fileID: 1009733192742700460}
     JumpAnimation: {fileID: 6654230070194707098}
     FlipAnimation: {fileID: 7104678131513168796}
   IsPlayingAnyAnimation:
     value: 0
-  CanBeSelected:
-    value: 0
+  CurrentReproductionRecipe:
+    value:
+      Cooldown: 0
+      Resources: 
+      Results: []
   Price:
     value: 1
 --- !u!114 &1009733192742700460 stripped

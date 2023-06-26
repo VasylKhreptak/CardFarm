@@ -62,12 +62,15 @@ namespace Cards.Data
         public BoolReactiveProperty IsLowestGroupCard = new BoolReactiveProperty();
         public BoolReactiveProperty CanBeUnderSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
+        public BoolReactiveProperty CanBeSelected = new BoolReactiveProperty();
 
         public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>(null);
+        
+        public IntReactiveProperty Durability = new IntReactiveProperty(1);
+        public IntReactiveProperty MaxDurability = new IntReactiveProperty(1);
 
         public CardAnimations Animations = new CardAnimations();
         public BoolReactiveProperty IsPlayingAnyAnimation = new BoolReactiveProperty();
-        public BoolReactiveProperty CanBeSelected = new BoolReactiveProperty();
 
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
 
