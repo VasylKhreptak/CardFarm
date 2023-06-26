@@ -1,4 +1,5 @@
 ﻿using System;
+using Cards.Core;
 
 namespace Cards.Data
 {
@@ -13,6 +14,9 @@ namespace Cards.Data
         public Action onGroupCardsListUpdated;
         public Action onBecameHeadOfGroup;
 
+        public Action<Card> OnReproduced;
+        public Action OnReproducedNoArgs;
+        
         public Action onClicked;
     }
 }

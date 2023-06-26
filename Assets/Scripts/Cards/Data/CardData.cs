@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using Cards.Core;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
+using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -70,5 +70,7 @@ namespace Cards.Data
         public BoolReactiveProperty CanBeSelected = new BoolReactiveProperty();
 
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
+
+        public ReactiveProperty<CardReproductionRecipe> CurrentReproductionRecipe = new ReactiveProperty<CardReproductionRecipe>();
     }
 }

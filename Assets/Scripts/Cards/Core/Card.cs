@@ -25,5 +25,9 @@ namespace Cards.Core
         Quarry = 19,
         LumberCamp = 20,
         Garden = 21,
+        Cow = 23,
+        Milk = 25,
+        Chicken = 24,
+        Egg = 26,
     }
 }

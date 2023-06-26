@@ -461,6 +461,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1106781378184329006, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.30980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106781378184329006, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106781378184329006, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8941177
+      objectReference: {fileID: 0}
     - target: {fileID: 1106781378837674951, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -595,8 +610,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 706076374391090179, guid: d794782d0ddca224998105c67e750aef,
-        type: 3}
+      objectReference: {fileID: 871094102}
     - target: {fileID: 6602408350882929898, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -702,7 +716,7 @@ MonoBehaviour:
   _baseHeight: 0.01
   _heightOffset: 0.01
   _isWorker: 0
-  _isSellableCard: 0
+  _isSellableCard: 1
   _canSortingLayerChange: 1
   ID: -1
   GroupID:
@@ -715,7 +729,7 @@ MonoBehaviour:
   Name:
     value: Name
   NameColor:
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 0, g: 0, b: 0, a: 1}
   Background:
     value: {fileID: 0}
   Icon:
