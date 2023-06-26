@@ -19,6 +19,10 @@ MonoBehaviour:
     Result:
       Weights:
       - Card: 5
+        Weight: 5
+      - Card: 9
+        Weight: 2
+      - Card: 30
         Weight: 1
   - Resources: 03000000
     Workers: 00000000
@@ -36,6 +40,8 @@ MonoBehaviour:
         Weight: 20
       - Card: 7
         Weight: 5
+      - Card: 8
+        Weight: 3
   - Resources: 05000000
     Workers: 00000000
     Cooldown: 10
@@ -105,4 +111,13 @@ MonoBehaviour:
     Result:
       Weights:
       - Card: 29
+        Weight: 1
+  - Resources: 0a000000
+    Workers: 
+    Cooldown: 10
+    Result:
+      Weights:
+      - Card: 30
+        Weight: 5
+      - Card: 9
         Weight: 1
