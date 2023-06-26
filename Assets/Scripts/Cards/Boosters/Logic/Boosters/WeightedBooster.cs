@@ -41,6 +41,7 @@ namespace Cards.Boosters.Logic.Boosters
                 Vector3 position = GetRandomPosition();
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
                 spawnedCard.Animations.JumpAnimation.Play(position);
+                spawnedCard.Animations.FlipAnimation.Play();
             }
 
             _cardData.BoosterCallabcks.OnSpawnedCard?.Invoke(cardToSpawn);

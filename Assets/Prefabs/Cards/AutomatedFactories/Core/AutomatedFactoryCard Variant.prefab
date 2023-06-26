@@ -746,6 +746,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3594824769674065748}
+    - target: {fileID: 7816034676176084162, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3594824769674065748}
     - target: {fileID: 7904051146303008334, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
@@ -781,12 +786,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da66e2c89135284458685fa7651ae81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1275547599300752909 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5960606192708736452, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4831223344307741641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95150f5baacb43c286d0cde1a9786a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2112543513882102581 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6798947982536747260, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
     type: 3}
   m_PrefabInstance: {fileID: 4831223344307741641}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3419312012035227403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7816034676176084162, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4831223344307741641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858b3c6ba7f146c3afdb2ff9beb59bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3719843715909857866 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8112247566156894595, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
@@ -844,6 +873,8 @@ MonoBehaviour:
     value: {fileID: 0}
   Icon:
     value: {fileID: 0}
+  IsInteractable:
+    value: 1
   TopCard:
     value: {fileID: 0}
   UpperCard:
@@ -868,7 +899,7 @@ MonoBehaviour:
     value: 0
   IsSingleCard:
     value: 0
-  IsSelectedCard:
+  IsSelected:
     value: 0
   IsLowestGroupCard:
     value: 0
@@ -885,7 +916,12 @@ MonoBehaviour:
         Weights: []
   Animations:
     MoveAnimation: {fileID: 4893301508794771771}
-    JumpAnimation: {fileID: 7531657957953465024}
+    JumpAnimation: {fileID: 1275547599300752909}
+    FlipAnimation: {fileID: 3419312012035227403}
+  IsPlayingAnyAnimation:
+    value: 0
+  CanBeSelected:
+    value: 0
   Price:
     value: 5
   CurrentFactoryRecipe:
@@ -894,18 +930,6 @@ MonoBehaviour:
       Cooldown: 0
       Result:
         Weights: []
---- !u!114 &7531657957953465024 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3138488917540915465, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
-    type: 3}
-  m_PrefabInstance: {fileID: 4831223344307741641}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95150f5baacb43c286d0cde1a9786a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8718050276280176114 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4321002090125372987, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,

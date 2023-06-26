@@ -35,6 +35,7 @@ namespace Cards.CardDataFillers
             
             _cardData.Animations.MoveAnimation = GetComponentInChildren<CardMoveAnimation>();
             _cardData.Animations.JumpAnimation = GetComponentInChildren<CardJumpAnimation>();
+            _cardData.Animations.FlipAnimation = GetComponentInChildren<CardFlipAnimation>();
         }
     }
 }

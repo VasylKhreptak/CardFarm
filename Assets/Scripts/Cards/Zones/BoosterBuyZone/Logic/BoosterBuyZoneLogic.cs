@@ -116,7 +116,8 @@ namespace Cards.Zones.BoosterBuyZone.Logic
         {
             CardData spawnedBooster = _cardSpawner.Spawn(_booster, _data.transform.position);
 
-            spawnedBooster.Animations.JumpAnimation.Play(_data.BoosterSpawnPoint.position, _cardsMoveDuration);
+            spawnedBooster.Animations.JumpAnimation.Play(_data.BoosterSpawnPoint.position);
+            spawnedBooster.Animations.FlipAnimation.Play();
         }
 
         private void RemoveDelaySubscriptions()

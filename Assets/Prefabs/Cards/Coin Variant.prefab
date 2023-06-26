@@ -337,6 +337,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3573013257164753988}
+    - target: {fileID: 7273647887069144360, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3573013257164753988}
     - target: {fileID: 7294079551765895076, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -440,7 +445,7 @@ MonoBehaviour:
     value: 0
   IsSingleCard:
     value: 0
-  IsSelectedCard:
+  IsSelected:
     value: 0
   IsLowestGroupCard:
     value: 0
@@ -458,6 +463,7 @@ MonoBehaviour:
   Animations:
     MoveAnimation: {fileID: 1009733192742700460}
     JumpAnimation: {fileID: 6654230070194707098}
+    FlipAnimation: {fileID: 7104678131513168796}
   IsPlayingAnyAnimation:
     value: 0
   CanBeSelected:
@@ -498,6 +504,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95150f5baacb43c286d0cde1a9786a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7104678131513168796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7273647887069144360, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 462132610136733364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858b3c6ba7f146c3afdb2ff9beb59bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &9112118023246274269 stripped

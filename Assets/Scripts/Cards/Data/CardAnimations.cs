@@ -8,5 +8,6 @@ namespace Cards.Data
     {
         public CardMoveAnimation MoveAnimation;
         public CardJumpAnimation JumpAnimation;
+        public CardFlipAnimation FlipAnimation;
     }
 }

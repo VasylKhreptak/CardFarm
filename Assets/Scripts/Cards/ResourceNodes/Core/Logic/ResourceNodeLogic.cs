@@ -92,6 +92,7 @@ namespace Cards.ResourceNodes.Core.Logic
                 Vector3 position = GetRandomPosition();
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
                 spawnedCard.Animations.JumpAnimation.Play(position);
+                spawnedCard.Animations.FlipAnimation.Play();
             }
 
             StartProgress(_resourceNodeData.Recipe.Cooldown);
