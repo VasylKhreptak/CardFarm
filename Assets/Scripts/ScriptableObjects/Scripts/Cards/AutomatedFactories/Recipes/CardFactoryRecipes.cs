@@ -25,7 +25,7 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
             {
                 int recipeResourcesCount = possibleRecipe.Resources.Count;
 
-                List<CardData> clampedResources = resources.GetRange(0, recipeResourcesCount);
+                List<CardData> clampedResources = resources.GetRange(0, Mathf.Min(resources.Count, recipeResourcesCount));
 
                 if (clampedResources.Count < recipeResourcesCount) continue;
 

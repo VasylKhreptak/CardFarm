@@ -1,18 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9093945263228909869
+--- !u!1001 &4444208734311685285
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1689009862130173038, guid: 522ee1ee0a7bedb438eb60315935add9,
-        type: 3}
-      propertyPath: _recipes
-      value: 
-      objectReference: {fileID: 11400000, guid: b4abb7bf742f37a4884eb355a51ee7bd,
-        type: 2}
     - target: {fileID: 1689009862130173038, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: _compatibleCards
@@ -24,32 +18,42 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2821592650263023148, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160935708319952703, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: m_Name
+      value: CurrentCardFactoryRecipeUpdater
+      objectReference: {fileID: 0}
     - target: {fileID: 3537400196176558120, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: _cardRecipes
       value: 
-      objectReference: {fileID: 11400000, guid: b4abb7bf742f37a4884eb355a51ee7bd,
+      objectReference: {fileID: 11400000, guid: 49a6a57a61bcb7c4e83ac408cb998240,
         type: 2}
     - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: Card.value
-      value: 21
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: Icon.value
       value: 
-      objectReference: {fileID: 21300000, guid: d223422c09ff5d94b98296370f3a1964,
+      objectReference: {fileID: 21300000, guid: d0e75e864fa07194c94a6262c6ed6480,
         type: 3}
     - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: Name.value
-      value: Garden
+      value: Campfire
       objectReference: {fileID: 0}
     - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: NameColor.value.b
-      value: 0
+      value: 0.003921569
       objectReference: {fileID: 0}
     - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
@@ -59,13 +63,8 @@ PrefabInstance:
     - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: NameColor.value.r
-      value: 0
+      value: 0.03137255
       objectReference: {fileID: 0}
-    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
-        type: 3}
-      propertyPath: Animations.MoveAnimation
-      value: 
-      objectReference: {fileID: 4457526530159054870}
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: m_Pivot.x
@@ -149,12 +148,12 @@ PrefabInstance:
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9.34
+      value: 16.82
       objectReference: {fileID: 0}
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2.16
+      value: 2.74
       objectReference: {fileID: 0}
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
@@ -174,7 +173,7 @@ PrefabInstance:
     - target: {fileID: 4962674127960976643, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: m_Name
-      value: GardenFactoryCard
+      value: Campfire
       objectReference: {fileID: 0}
     - target: {fileID: 4962674127960976653, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
@@ -198,15 +197,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 522ee1ee0a7bedb438eb60315935add9, type: 3}
---- !u!114 &4457526530159054870 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4893301508794771771, guid: 522ee1ee0a7bedb438eb60315935add9,
-    type: 3}
-  m_PrefabInstance: {fileID: 9093945263228909869}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 252b2605a9ca4d5a802f53b51ef5d8bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

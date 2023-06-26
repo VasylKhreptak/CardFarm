@@ -29,5 +29,6 @@ namespace Cards.Core
         Milk = 25,
         Chicken = 24,
         Egg = 26,
+        Omelette = 27,
     }
 }

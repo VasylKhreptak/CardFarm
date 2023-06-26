@@ -37,7 +37,7 @@ namespace Cards.Graphics.VisualElements
         private void StartObservingNutritionalValue()
         {
             StopObservingNutritionalValue();
-            _nutritionalValueSubscription = _cardData.Price.Subscribe(SetNutritionalValue);
+            _nutritionalValueSubscription = _cardData.NutritionalValue.Subscribe(SetNutritionalValue);
         }
 
         private void StopObservingNutritionalValue()
