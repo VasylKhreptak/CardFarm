@@ -436,6 +436,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 5954904143893168541, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     - target: {fileID: 6282712638965089098, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData

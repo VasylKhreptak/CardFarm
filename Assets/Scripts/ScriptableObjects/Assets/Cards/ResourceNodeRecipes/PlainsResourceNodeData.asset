@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlainsResourceNodeData
   m_EditorClassIdentifier: 
   Recipe:
-    Cooldown: 1
+    Cooldown: 60
     Result:
       Weights:
       - Card: 23

@@ -1,7 +1,7 @@
 ﻿using Cards.Data;
 using UnityEngine;
 
-namespace Cards.Logic
+namespace Cards.Logic.Durability
 {
     public class DurabilityRestorer : MonoBehaviour
     {
