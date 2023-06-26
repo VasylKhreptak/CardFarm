@@ -305,7 +305,7 @@ MonoBehaviour:
     value: 0
   IsSingleCard:
     value: 0
-  IsSelectedCard:
+  IsSelected:
     value: 0
   IsLowestGroupCard:
     value: 0
@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
-  _maxDistance: 2
+  _maxDistance: 10
 --- !u!1 &8326685145913892960
 GameObject:
   m_ObjectHideFlags: 0
