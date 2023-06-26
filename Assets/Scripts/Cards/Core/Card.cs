@@ -30,5 +30,6 @@ namespace Cards.Core
         Chicken = 24,
         Egg = 26,
         Omelette = 27,
+        Milkshake = 28,
     }
 }

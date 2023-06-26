@@ -44,4 +44,6 @@ MonoBehaviour:
   - Card: 24
     CompatibleCards: 1a000000
   - Card: 27
-    CompatibleCards: 1b000000190000001a00000006000000
+    CompatibleCards: 1b000000190000001a00000006000000060000001c000000
+  - Card: 28
+    CompatibleCards: 1b000000190000001a000000060000001c000000
