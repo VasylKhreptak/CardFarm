@@ -134,11 +134,13 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_BURST_1_0_0_OR_NEWER
 --compilation-defines=USING_ANIMATION_MODULE
 --compilation-defines=USING_PHYSICS2D_MODULE
+--compilation-defines=UNIVERSAL_1_0_0_OR_NEWER
 --compilation-defines=MODULE_AI_EXISTS
 --compilation-defines=MODULE_ANIMATION_EXISTS
 --compilation-defines=MODULE_PHYSICS_EXISTS
 --compilation-defines=MODULE_PHYSICS_2D_EXISTS
 --compilation-defines=MODULE_PARTICLE_SYSTEM_EXISTS
+--compilation-defines=ENABLE_ANIMATION_BURST
 --compilation-defines=MOREMOUNTAINS_URP_INSTALLED
 --compilation-defines=CINEMACHINE_POST_PROCESSING_V2
 --compilation-defines=CINEMACHINE_TIMELINE
@@ -149,8 +151,6 @@ Library: lib_burst_generated
 --compilation-defines=CINEMACHINE_UNITY_ANIMATION
 --compilation-defines=CINEMACHINE_UNITY_IMGUI
 --compilation-defines=TIMELINE_FRAMEACCURATE
---compilation-defines=UNIVERSAL_1_0_0_OR_NEWER
---compilation-defines=ENABLE_ANIMATION_BURST
 --generate-link-xml=Temp\burst.link.xml
 --output=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\tempburstlibs\armeabi-v7a\lib_burst_generated
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
@@ -160,6 +160,7 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Services.Core.Telemetry.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Universal.Runtime.dll
+--root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Postprocessing.Runtime.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Flow.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\MoreMountains.Feedbacks.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Core.dll
@@ -168,6 +169,7 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\StompyRobot.SRDebugger.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.Internal.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\UniRx.dll
+--root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.2D.Animation.Runtime.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\MoreMountains.Feedbacks.URP.dll
@@ -192,7 +194,9 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\MoreMountains.Feel.Demos.HDRP.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Lofelt.NiceVibrations.Demo.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Services.Core.Analytics.dll
+--root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.2D.IK.Runtime.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Lofelt.NiceVibrations.dll
+--root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.2D.Common.Runtime.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\DOTween.Modules.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Services.Core.Configuration.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\MoreMountains.Tools.TextMeshPro.dll
@@ -205,18 +209,14 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\MoreMountains.Tools.Feedbacks.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\MoreMountains.Feel.Demos.URP.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.ShaderLibrary.dll
---root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Universal.Shaders.dll
---root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Postprocessing.Runtime.dll
---root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.2D.IK.Runtime.dll
---root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.2D.Animation.Runtime.dll
---root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.2D.Common.Runtime.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.001.dll
+--root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Universal.Shaders.dll
 --assembly-folder=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\
 --pdb-search-paths=Temp/ManagedSymbols/
 --method=Unity.Jobs.IJobForExtensions+ForJobStruct`1[[UnityEngine.Rendering.Universal.ReorderJob`1[[UnityEngine.Rendering.VisibleLight, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.Rendering.Universal.ReorderJob`1[[UnityEngine.Rendering.VisibleLight, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--b04c75a68edf1d166f6547f2ea0e8928
 --method=Unity.Jobs.IJobForExtensions+ForJobStruct`1[[UnityEngine.Rendering.Universal.ReorderJob`1[[UnityEngine.Rendering.Universal.LightMinMaxZ, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.Rendering.Universal.ReorderJob`1[[UnityEngine.Rendering.Universal.LightMinMaxZ, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--e943843acfb78f5f2f3716a6553740d9
---method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
 --method=UnityEngine.U2D.Animation.BurstedSpriteSkinUtilities, Unity.2D.Animation.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ValidateBoneWeights(Unity.Collections.NativeSlice`1[[UnityEngine.BoneWeight, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--5bf0a813706ef9287fcaa55dd0ccb876
+--method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
 --method=Unity.Jobs.IJobExtensions+JobStruct`1[[UnityEngine.Rendering.Universal.RadixSortJob, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.Rendering.Universal.RadixSortJob&, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--26c6d10914da2fc98755b3533c59141e
 --method=Unity.Jobs.IJobForExtensions+ForJobStruct`1[[UnityEngine.Rendering.Universal.SliceCombineJob, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.Rendering.Universal.SliceCombineJob&, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--e046a1595d0148509657ed4dbcb52a86
 --method=Unity.Jobs.IJobForExtensions+ForJobStruct`1[[UnityEngine.Rendering.Universal.SliceCullingJob, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.Rendering.Universal.SliceCullingJob&, Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--1998da082e6413092f0e7bcd5a0e9331
