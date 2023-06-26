@@ -39,7 +39,7 @@ namespace Cards.Logic.Events
         private void StartObserving()
         {
             StopObserving();
-            _isSelectedSubscription = _cardData.IsSelected.Subscribe(IsSelectedValueChanged);
+            _isSelectedSubscription = _cardData.IsSelected.Skip(1).Subscribe(IsSelectedValueChanged);
         }
 
         private void StopObserving()
