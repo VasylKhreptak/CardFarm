@@ -265,6 +265,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 2497773413687021429, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2669296866402104051, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -358,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 3051697175370202821, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3051697175370202821, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -429,6 +434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Booster
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076389051216230989, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3437239771057578830, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -533,7 +543,7 @@ PrefabInstance:
     - target: {fileID: 8553110877064441643, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8751749595196191504, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -558,6 +568,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3051697175370202824, guid: d5d346ed3d610c748b54a7004eb99e4c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d5d346ed3d610c748b54a7004eb99e4c, type: 3}
+--- !u!114 &402582641259156830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4752684720196136140, guid: d5d346ed3d610c748b54a7004eb99e4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4927693721908689298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858b3c6ba7f146c3afdb2ff9beb59bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1323114453506917553 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6214416359162199331, guid: d5d346ed3d610c748b54a7004eb99e4c,
@@ -701,10 +723,16 @@ MonoBehaviour:
   Animations:
     MoveAnimation: {fileID: 7569965088597082990}
     JumpAnimation: {fileID: 4275661140694146136}
+    FlipAnimation: {fileID: 402582641259156830}
   IsPlayingAnyAnimation:
     value: 0
   CanBeSelected:
     value: 0
+  CurrentReproductionRecipe:
+    value:
+      Cooldown: 0
+      Resources: 
+      Results: []
   BoosterPrice:
     value: 3
   BoosterSpawnPoint: {fileID: 1323114453506917553}
