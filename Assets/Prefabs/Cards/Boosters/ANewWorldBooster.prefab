@@ -52,8 +52,7 @@ MonoBehaviour:
   _cardData: {fileID: 6281717518771182409}
   _minRange: 5
   _maxRange: 7
-  _cards: 0000000003000000080000000100000005000000
-  _cardMoveDuration: 0.3
+  _cards: 000000000300000008000000010000000500000017000000
 --- !u!1001 &7064885097297062440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64,12 +63,27 @@ PrefabInstance:
     - target: {fileID: 1215944152439879773, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829932553933156705, guid: 38a4e433eb7ba854fa05acffc7f51964,
+        type: 3}
+      propertyPath: LeftCards.value
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829932553933156705, guid: 38a4e433eb7ba854fa05acffc7f51964,
+        type: 3}
+      propertyPath: TotalCards.value
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3854719997234696467, guid: 38a4e433eb7ba854fa05acffc7f51964,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3861553596883588506, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
       propertyPath: m_Name
-      value: StarterBooster
+      value: ANewWorldBooster
       objectReference: {fileID: 0}
     - target: {fileID: 3861553596883588507, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
@@ -175,6 +189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562621252401985538, guid: 38a4e433eb7ba854fa05acffc7f51964,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 9172753996360274559, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
