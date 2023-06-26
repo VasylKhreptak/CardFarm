@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: Name.value
       value: Apple Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 1854063491, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
+      propertyPath: Durability.value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1854063491, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
+      propertyPath: MaxDurability.value
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 564359370849849028, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_Color.b

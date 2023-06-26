@@ -82,11 +82,15 @@ namespace Cards.Recipes
 
         protected override void OnProgressCompleted()
         {
-            if (_cardData.CurrentRecipe.Value == null ||
-                _cardData.CurrentRecipe.Value.Cooldown == 0) return;
+            if (_cardData.CurrentRecipe.Value == null || _cardData.CurrentRecipe.Value.Cooldown == 0) return;
 
             SpawnRecipeResult();
-            ClearRecipeResources();
+            DecreaseResourcesDurability();
+
+            if (_cardData.CurrentRecipe.Value != null && _cardData.CurrentRecipe.Value.Cooldown != 0)
+            {
+                StartProgress(_cardData.CurrentRecipe.Value.Cooldown);
+            }
         }
 
         private void SpawnRecipeResult()
@@ -107,18 +111,28 @@ namespace Cards.Recipes
             }
         }
 
-        private void ClearRecipeResources()
+        private void DecreaseResourcesDurability()
         {
             CardData firstWorker = GetFirstWorker();
             CardData lowestTargetResource = GetLastResource();
             List<CardData> resourcesToRemove = GetResourcesToRemove();
 
-            foreach (var resourceToRemove in resourcesToRemove)
+            int brokenResourcesCount = 0;
+
+            foreach (var targetResource in resourcesToRemove)
             {
-                resourceToRemove.gameObject.SetActive(false);
+                if (targetResource.Durability.Value == 1)
+                {
+                    brokenResourcesCount++;
+                }
+
+                targetResource.Durability.Value--;
             }
 
-            firstWorker.LinkTo(lowestTargetResource);
+            if (brokenResourcesCount == resourcesToRemove.Count)
+            {
+                firstWorker.LinkTo(lowestTargetResource);
+            }
         }
 
         protected Vector3 GetRandomPosition()
