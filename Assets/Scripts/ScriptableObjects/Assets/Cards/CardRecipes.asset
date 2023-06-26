@@ -99,3 +99,10 @@ MonoBehaviour:
       Weights:
       - Card: 28
         Weight: 1
+  - Resources: 1e00000006000000
+    Workers: 
+    Cooldown: 10
+    Result:
+      Weights:
+      - Card: 29
+        Weight: 1

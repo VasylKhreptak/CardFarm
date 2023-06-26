@@ -31,5 +31,7 @@ namespace Cards.Core
         Egg = 26,
         Omelette = 27,
         Milkshake = 28,
+        FruitSalad = 29,
+        Apple = 30,
     }
 }
