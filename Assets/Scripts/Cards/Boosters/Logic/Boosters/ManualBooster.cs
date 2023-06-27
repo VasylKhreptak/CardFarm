@@ -3,7 +3,6 @@ using Cards.Boosters.Logic.Core;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
-using Constraints.CardTable;
 using Extensions;
 using Table.Core;
 using UnityEngine;
@@ -18,14 +17,12 @@ namespace Cards.Boosters.Logic.Boosters
 
         private CardSpawner _cardSpawner;
         private CardsTable _cardsTable;
-        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner, CardsTable cardsTable, CardsTableBounds cardsTableBounds)
+        private void Constructor(CardSpawner cardSpawner, CardsTable cardsTable)
         {
             _cardSpawner = cardSpawner;
             _cardsTable = cardsTable;
-            _cardsTableBounds = cardsTableBounds;
         }
 
         protected override void SpawnResultedCard()

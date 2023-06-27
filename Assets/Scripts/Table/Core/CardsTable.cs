@@ -13,7 +13,7 @@ namespace Table.Core
         [SerializeField] public CompatibleCards _compatibleCards;
 
         private ReactiveCollection<CardData> _observableCards = new ReactiveCollection<CardData>();
-
+        
         public IReadOnlyReactiveCollection<CardData> ObservableCards => _observableCards;
 
         public void AddCard(CardData cardData)

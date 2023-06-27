@@ -19,14 +19,12 @@ namespace Cards.Boosters.Logic.Boosters
 
         private CardSpawner _cardSpawner;
         private CardsTable _cardsTable;
-        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner, CardsTable cardsTable, CardsTableBounds cardsTableBounds)
+        private void Constructor(CardSpawner cardSpawner, CardsTable cardsTable)
         {
             _cardSpawner = cardSpawner;
             _cardsTable = cardsTable;
-            _cardsTableBounds = cardsTableBounds;
         }
 
         protected override void SpawnResultedCard()

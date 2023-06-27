@@ -20,7 +20,7 @@ namespace Cards.Boosters.Logic.Core
         private IDisposable _totalCardsSubscription;
 
         private CameraShakeAnimation _cameraShakeAnimation;
-        private CardsTableBounds _cardsTableBounds;
+        protected CardsTableBounds _cardsTableBounds;
 
         [Inject]
         private void Constructor(CameraShakeAnimation cameraShakeAnimation, CardsTableBounds cardsTableBounds)
