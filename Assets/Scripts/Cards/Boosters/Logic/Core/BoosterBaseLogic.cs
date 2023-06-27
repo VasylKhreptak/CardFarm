@@ -1,10 +1,10 @@
 ﻿using System;
 using Animations.Shake.Position;
 using Cards.Boosters.Data;
+using Constraints.CardTable;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 
 namespace Cards.Boosters.Logic.Core
 {
@@ -14,17 +14,19 @@ namespace Cards.Boosters.Logic.Core
         [SerializeField] protected BoosterCardData _cardData;
 
         [Header("Spawn Preferences")]
-        [SerializeField] private float _minRange = 5f;
-        [SerializeField] private float _maxRange = 7f;
+        [SerializeField] protected float _minRange = 5f;
+        [SerializeField] protected float _maxRange = 7f;
 
         private IDisposable _totalCardsSubscription;
 
         private CameraShakeAnimation _cameraShakeAnimation;
+        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CameraShakeAnimation cameraShakeAnimation)
+        private void Constructor(CameraShakeAnimation cameraShakeAnimation, CardsTableBounds cardsTableBounds)
         {
             _cameraShakeAnimation = cameraShakeAnimation;
+            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
@@ -72,7 +74,7 @@ namespace Cards.Boosters.Logic.Core
             {
                 _cameraShakeAnimation.Play();
                 SpawnResultedCard();
-                
+
                 _cardData.LeftCards.Value--;
             }
 
@@ -84,27 +86,12 @@ namespace Cards.Boosters.Logic.Core
 
         protected abstract void SpawnResultedCard();
 
-        protected Vector3 GetRandomPosition()
-        {
-            float range = GetRange();
-
-            Vector2 insideUnitCircle = Random.insideUnitCircle.normalized * range;
-
-            Vector3 randomSphere = new Vector3(insideUnitCircle.x, 0f, insideUnitCircle.y);
-            return _cardData.transform.position + randomSphere;
-        }
-
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(_cardData.transform.position, _minRange);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(_cardData.transform.position, _maxRange);
-        }
-
-        private float GetRange()
-        {
-            return Random.Range(_minRange, _maxRange);
         }
     }
 }

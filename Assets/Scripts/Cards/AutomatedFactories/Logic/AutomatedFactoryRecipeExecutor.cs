@@ -5,6 +5,7 @@ using Cards.AutomatedFactories.Data;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
+using Constraints.CardTable;
 using Extensions;
 using ProgressLogic.Core;
 using ScriptableObjects.Scripts.Cards;
@@ -32,12 +33,14 @@ namespace Cards.AutomatedFactories.Logic
 
         private CardsTable _cardsTable;
         private CardSpawner _cardSpawner;
+        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, CardSpawner cardSpawner)
+        private void Constructor(CardsTable cardsTable, CardSpawner cardSpawner, CardsTableBounds cardsTableBounds)
         {
             _cardsTable = cardsTable;
             _cardSpawner = cardSpawner;
+            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
@@ -113,25 +116,10 @@ namespace Cards.AutomatedFactories.Logic
             }
             else
             {
-                Vector3 position = GetRandomPosition();
+                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
                 spawnedCard.Animations.MoveAnimation.Play(position, _resultedCardMoveDuration);
             }
-        }
-
-        private Vector3 GetRandomPosition()
-        {
-            float range = GetRange();
-
-            Vector2 insideUnitCircle = Random.insideUnitCircle.normalized * range;
-
-            Vector3 randomSphere = new Vector3(insideUnitCircle.x, 0f, insideUnitCircle.y);
-            return _cardData.transform.position + randomSphere;
-        }
-
-        private float GetRange()
-        {
-            return Random.Range(_minRange, _maxRange);
         }
 
         private Card GetCardToSpawn()

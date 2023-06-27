@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cards.Core;
+using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;

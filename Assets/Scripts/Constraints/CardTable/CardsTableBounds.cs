@@ -2,7 +2,7 @@
 
 namespace Constraints.CardTable
 {
-    public class CardsTableConstraints : SurfaceConstraints
+    public class CardsTableBounds : SurfaceBounds
     {
         
     }

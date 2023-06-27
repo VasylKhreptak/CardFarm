@@ -1,6 +1,8 @@
 ﻿using Cards.Entities.Animals.Cattle.Data;
+using Constraints.CardTable;
 using Extensions;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Entities.Animals.Cattle.Logic
 {
@@ -12,6 +14,14 @@ namespace Cards.Entities.Animals.Cattle.Logic
         [Header("Spawn Preferences")]
         [SerializeField] private float _minRange = 5f;
         [SerializeField] private float _maxRange = 7f;
+
+        private CardsTableBounds _cardsTableBounds;
+
+        [Inject]
+        private void Constructor(CardsTableBounds cardsTableBounds)
+        {
+            _cardsTableBounds = cardsTableBounds;
+        }
 
         #region MonoBehaviour
 
@@ -50,29 +60,14 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
         private void JumpInRandomDirection()
         {
-            Vector3 randomPosition = GetRandomPosition();
+            Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
 
-            _cardData.Animations.JumpAnimation.Play(randomPosition);
+            _cardData.Animations.JumpAnimation.Play(position);
 
             if (_cardData.CanSortingLayerChange)
             {
                 _cardData.RenderOnTop();
             }
-        }
-
-        private Vector3 GetRandomPosition()
-        {
-            float range = GetRange();
-
-            Vector2 insideUnitCircle = Random.insideUnitCircle.normalized * range;
-
-            Vector3 randomSphere = new Vector3(insideUnitCircle.x, 0f, insideUnitCircle.y);
-            return _cardData.transform.position + randomSphere;
-        }
-
-        private float GetRange()
-        {
-            return Random.Range(_minRange, _maxRange);
         }
     }
 }

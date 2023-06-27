@@ -3,6 +3,7 @@ using Cards.Boosters.Logic.Core;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
+using Constraints.CardTable;
 using Extensions;
 using Table.Core;
 using UnityEngine;
@@ -17,12 +18,14 @@ namespace Cards.Boosters.Logic.Boosters
 
         private CardSpawner _cardSpawner;
         private CardsTable _cardsTable;
+        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner, CardsTable cardsTable)
+        private void Constructor(CardSpawner cardSpawner, CardsTable cardsTable, CardsTableBounds cardsTableBounds)
         {
             _cardSpawner = cardSpawner;
             _cardsTable = cardsTable;
+            _cardsTableBounds = cardsTableBounds;
         }
 
         protected override void SpawnResultedCard()
@@ -37,7 +40,7 @@ namespace Cards.Boosters.Logic.Boosters
             }
             else
             {
-                Vector3 position = GetRandomPosition();
+                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
                 spawnedCard.Animations.JumpAnimation.Play(position);
                 spawnedCard.Animations.FlipAnimation.Play();

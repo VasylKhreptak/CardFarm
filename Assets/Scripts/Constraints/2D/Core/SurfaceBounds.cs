@@ -2,7 +2,7 @@
 
 namespace Constraints._2D.Core
 {
-    public class SurfaceConstraints : MonoBehaviour
+    public class SurfaceBounds : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private Transform _transform;
@@ -83,6 +83,26 @@ namespace Constraints._2D.Core
             float z = Random.Range(minWorld.y + bounds.extents.z, maxWorld.y - bounds.extents.z);
 
             return new Vector3(x, _transform.position.y, z);
+        }
+
+        public Vector3 GetRandomPositionInRange(Bounds bounds, float range)
+        {
+            Vector3 position = Vector3.zero;
+
+            Vector2 insideUnitCircle = Random.insideUnitCircle.normalized * range;
+
+            Vector3 randomSphere = new Vector3(insideUnitCircle.x, 0f, insideUnitCircle.y);
+
+            position = bounds.center + randomSphere;
+            bounds.center = position;
+            position = Clamp(bounds);
+            return position;
+        }
+
+        public Vector3 GetRandomPositionInRange(Bounds bounds, float minRange, float maxRange)
+        {
+            float range = Random.Range(minRange, maxRange);
+            return GetRandomPositionInRange(bounds, range);
         }
 
         private void OnDrawGizmos()

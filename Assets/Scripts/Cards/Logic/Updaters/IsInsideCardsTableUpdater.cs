@@ -10,12 +10,12 @@ namespace Cards.Logic.Updaters
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
-        private CardsTableConstraints _cardsTableConstraints;
+        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardsTableConstraints cardsTableConstraints)
+        private void Constructor(CardsTableBounds cardsTableBounds)
         {
-            _cardsTableConstraints = cardsTableConstraints;
+            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaivour
@@ -34,7 +34,7 @@ namespace Cards.Logic.Updaters
 
         private void UpdateValue()
         {
-            _cardData.IsInsideCardsTable.Value = _cardsTableConstraints.IsInside(_cardData.Collider.bounds);
+            _cardData.IsInsideCardsTable.Value = _cardsTableBounds.IsInside(_cardData.Collider.bounds);
         }
     }
 }

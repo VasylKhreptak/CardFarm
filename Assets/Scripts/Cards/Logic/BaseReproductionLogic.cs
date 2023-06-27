@@ -4,6 +4,7 @@ using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
+using Constraints.CardTable;
 using Extensions;
 using ProgressLogic.Core;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
@@ -26,11 +27,13 @@ namespace Cards.Logic
         private IDisposable _currentRecipeSubscription;
 
         private CardSpawner _cardSpawner;
+        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner)
+        private void Constructor(CardSpawner cardSpawner, CardsTableBounds cardsTableBounds)
         {
             _cardSpawner = cardSpawner;
+            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
@@ -94,7 +97,9 @@ namespace Cards.Logic
             {
                 groupCard.UnlinkFromUpper();
 
-                groupCard.Animations.JumpAnimation.Play(GetRandomPosition());
+                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
+
+                groupCard.Animations.JumpAnimation.Play(position);
             }
         }
 
@@ -104,23 +109,10 @@ namespace Cards.Logic
 
             CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
 
+            Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
+
             spawnedCard.Animations.FlipAnimation.Play();
-            spawnedCard.Animations.JumpAnimation.Play(GetRandomPosition());
-        }
-
-        private Vector3 GetRandomPosition()
-        {
-            float range = GetRange();
-
-            Vector2 insideUnitCircle = Random.insideUnitCircle.normalized * range;
-
-            Vector3 randomSphere = new Vector3(insideUnitCircle.x, 0f, insideUnitCircle.y);
-            return _cardData.transform.position + randomSphere;
-        }
-
-        private float GetRange()
-        {
-            return Random.Range(_minRange, _maxRange);
+            spawnedCard.Animations.JumpAnimation.Play(position);
         }
     }
 }

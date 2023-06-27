@@ -1,7 +1,9 @@
 ﻿using System;
 using Cards.Data;
+using Constraints.CardTable;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Logic
 {
@@ -16,6 +18,14 @@ namespace Cards.Logic
 
         private IDisposable _topCardSubscription;
         private IDisposable _updateDisposable;
+
+        private CardsTableBounds _cardsTableBounds;
+
+        [Inject]
+        private void Constructor(CardsTableBounds cardsTableBounds)
+        {
+            _cardsTableBounds = cardsTableBounds;
+        }
 
         #region MonoBehaviour
 
@@ -72,14 +82,16 @@ namespace Cards.Logic
 
         private void FollowStep()
         {
-            
-            
             Vector3 targetPosition = _cardData.UpperCard.Value.BottomCardFollowPoint.position;
             Vector3 transformPosition = _transform.position;
 
             transformPosition = Vector3.Lerp(transformPosition, targetPosition, _speed * Time.deltaTime);
             transformPosition.y = _cardData.Height.Value;
-            _transform.position = transformPosition;
+            
+            Bounds bounds = _cardData.Collider.bounds;
+            bounds.center = transformPosition;
+            Vector3 clampedPosition = _cardsTableBounds.Clamp(bounds);
+            _transform.position = clampedPosition;
         }
     }
 }

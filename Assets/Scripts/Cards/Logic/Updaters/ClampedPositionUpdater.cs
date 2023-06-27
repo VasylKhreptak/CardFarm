@@ -12,15 +12,18 @@ namespace Cards.Logic.Updaters
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
+        [Header("Preferences")]
+        [SerializeField] private Vector3 _boundExpand = new Vector3(0.02f, 0.02f, 0.02f);
+
         private IDisposable _isInsideTableSubscription;
         private IDisposable _updateSubscription;
 
-        private CardsTableConstraints _cardsTableConstraints;
+        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardsTableConstraints cardsTableConstraints)
+        private void Constructor(CardsTableBounds cardsTableBounds)
         {
-            _cardsTableConstraints = cardsTableConstraints;
+            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
@@ -70,7 +73,10 @@ namespace Cards.Logic.Updaters
         private void StartUpdatingClampedPosition()
         {
             StopUpdatingClampedPosition();
-            _updateSubscription = Observable.EveryUpdate().Subscribe(_ => OnUpdateTick());
+            _updateSubscription = Observable
+                .EveryUpdate()
+                .DoOnSubscribe(OnUpdateTick)
+                .Subscribe(_ => OnUpdateTick());
         }
 
         private void StopUpdatingClampedPosition()
@@ -85,7 +91,9 @@ namespace Cards.Logic.Updaters
 
         private void UpdateClampedPosition()
         {
-            _cardData.ClampedPosition.Value = _cardsTableConstraints.Clamp(_cardData.Collider.bounds);
+            Bounds bounds = _cardData.Collider.bounds;
+            bounds.Expand(_boundExpand);
+            _cardData.ClampedPosition.Value = _cardsTableBounds.Clamp(bounds);
         }
     }
 }

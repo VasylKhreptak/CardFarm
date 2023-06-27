@@ -4,6 +4,7 @@ using Cards.Data;
 using Cards.Entities.Animals.Cattle.Data;
 using Cards.Entities.Data;
 using Cards.Logic.Spawn;
+using Constraints.CardTable;
 using Extensions;
 using ScriptableObjects.Scripts.Cards.Cattle;
 using Table.Core;
@@ -31,12 +32,14 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
         private CardsTable _cardsTable;
         private CardSpawner _cardSpawner;
+        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, CardSpawner cardSpawner)
+        private void Constructor(CardsTable cardsTable, CardSpawner cardSpawner, CardsTableBounds cardsTableBounds)
         {
             _cardsTable = cardsTable;
             _cardSpawner = cardSpawner;
+            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
@@ -129,7 +132,7 @@ namespace Cards.Entities.Animals.Cattle.Logic
             }
             else
             {
-                Vector3 position = GetRandomPosition();
+                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
                 spawnedCard.Animations.JumpAnimation.Play(position);
                 spawnedCard.Animations.FlipAnimation.Play();
@@ -137,21 +140,6 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
             _cardData.CattleCallbacks.OnItemSpawned?.Invoke(cardToSpawn);
             _cardData.CattleCallbacks.OnItemSpawnedNoArgs?.Invoke();
-        }
-
-        private Vector3 GetRandomPosition()
-        {
-            float range = GetRange();
-
-            Vector2 insideUnitCircle = Random.insideUnitCircle.normalized * range;
-
-            Vector3 randomSphere = new Vector3(insideUnitCircle.x, 0f, insideUnitCircle.y);
-            return _cardData.transform.position + randomSphere;
-        }
-
-        private float GetRange()
-        {
-            return Random.Range(_minRange, _maxRange);
         }
     }
 }

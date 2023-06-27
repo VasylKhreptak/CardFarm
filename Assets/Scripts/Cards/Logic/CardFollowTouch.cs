@@ -1,5 +1,6 @@
 ﻿using System;
 using Cards.Data;
+using Constraints.CardTable;
 using Physics;
 using UniRx;
 using UnityEngine;
@@ -21,11 +22,13 @@ namespace Cards.Logic
         private IDisposable _followTouchSubscription;
 
         private ScreenRaycaster _screenRaycaster;
+        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(ScreenRaycaster screenRaycaster)
+        private void Constructor(ScreenRaycaster screenRaycaster, CardsTableBounds cardsTableBounds)
         {
             _screenRaycaster = screenRaycaster;
+            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
@@ -105,7 +108,11 @@ namespace Cards.Logic
                 Vector3 targetCardPosition = hit.point + new Vector3(horOffset.x, 0f, horOffset.y);
                 cardPosition = Vector3.Lerp(cardPosition, targetCardPosition, _speed * Time.deltaTime);
                 cardPosition.y = _cardData.Height.Value;
-                _transform.position = cardPosition;
+
+                Bounds bounds = _cardData.Collider.bounds;
+                bounds.center = cardPosition;
+                Vector3 clampedPosition = _cardsTableBounds.Clamp(bounds);
+                _transform.position = clampedPosition;
             }
         }
     }

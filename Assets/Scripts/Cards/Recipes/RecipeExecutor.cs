@@ -4,6 +4,7 @@ using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
+using Constraints.CardTable;
 using Extensions;
 using ProgressLogic.Core;
 using ScriptableObjects.Scripts.Cards.Recipes;
@@ -33,12 +34,14 @@ namespace Cards.Recipes
 
         private CardsTable _cardsTable;
         private CardSpawner _cardSpawner;
+        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, CardSpawner cardSpawner)
+        private void Constructor(CardsTable cardsTable, CardSpawner cardSpawner, CardsTableBounds cardsTableBounds)
         {
             _cardsTable = cardsTable;
             _cardSpawner = cardSpawner;
+            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
@@ -105,7 +108,7 @@ namespace Cards.Recipes
             }
             else
             {
-                Vector3 position = GetRandomPosition();
+                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
                 spawnedCard.Animations.MoveAnimation.Play(position, _resultedCardMoveDuration);
             }
@@ -135,16 +138,6 @@ namespace Cards.Recipes
             }
         }
 
-        protected Vector3 GetRandomPosition()
-        {
-            float range = GetRange();
-
-            Vector2 insideUnitCircle = Random.insideUnitCircle.normalized * range;
-
-            Vector3 randomSphere = new Vector3(insideUnitCircle.x, 0f, insideUnitCircle.y);
-            return _cardData.transform.position + randomSphere;
-        }
-
         private void OnDrawGizmosSelected()
         {
             if (_cardData == null) return;
@@ -154,12 +147,7 @@ namespace Cards.Recipes
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(_cardData.transform.position, _maxRange);
         }
-
-        private float GetRange()
-        {
-            return Random.Range(_minRange, _maxRange);
-        }
-
+        
         private CardData GetFirstWorker()
         {
             return _cardData.GroupCards.FirstOrDefault(x => x.IsWorker);

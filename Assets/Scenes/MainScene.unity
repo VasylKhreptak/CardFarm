@@ -3600,7 +3600,7 @@ GameObject:
   - component: {fileID: 1826761135}
   - component: {fileID: 1826761136}
   m_Layer: 0
-  m_Name: CardTableConstraintsInstaller
+  m_Name: CardsTableBoundsInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4005,7 +4005,7 @@ GameObject:
   - component: {fileID: 2050913544}
   - component: {fileID: 2050913545}
   m_Layer: 0
-  m_Name: CardTableConstraints
+  m_Name: CardTableBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4040,7 +4040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2050913544}
   _min: {x: -24.71, y: -18.27}
-  _max: {x: 24.71, y: 5.2}
+  _max: {x: 24.71, y: 11.33}
 --- !u!1 &2058853582
 GameObject:
   m_ObjectHideFlags: 0
