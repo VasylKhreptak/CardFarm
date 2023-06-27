@@ -38,7 +38,10 @@ namespace Quests.Logic.QuestObservers
         {
             if (_cardsTableSelector.SelectedCardsMap.TryGetValue(Card.SellZone, out ReactiveCollection<CardData> cards))
             {
-                _currentSellZoneData = cards[0] as SellZoneData;
+                if (cards.Count > 0)
+                {
+                    _currentSellZoneData = cards[0] as SellZoneData;
+                }
 
                 StartObservingSellZone();
             }
@@ -48,7 +51,10 @@ namespace Quests.Logic.QuestObservers
                 {
                     if (x.Key == Card.SellZone)
                     {
-                        _currentSellZoneData = x.Value[0] as SellZoneData;
+                        if (x.Value.Count > 0)
+                        {
+                            _currentSellZoneData = x.Value[0] as SellZoneData;
+                        }
 
                         StartObservingSellZone();
                     }
