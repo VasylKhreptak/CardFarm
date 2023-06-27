@@ -29,10 +29,12 @@ namespace Cards.CardDataFillers
             if (_cardData == null) return;
 
             _cardData.MouseTrigger = GetComponentInChildren<ObservableMouseTrigger>();
-            
+
             BottomCardFollowPoint bottomCardFollowPoint = GetComponentInChildren<BottomCardFollowPoint>();
             _cardData.BottomCardFollowPoint = bottomCardFollowPoint != null ? bottomCardFollowPoint.transform : null;
-            
+
+            _cardData.Collider = GetComponentInChildren<Collider>();
+
             _cardData.Animations.MoveAnimation = GetComponentInChildren<CardMoveAnimation>();
             _cardData.Animations.JumpAnimation = GetComponentInChildren<CardJumpAnimation>();
             _cardData.Animations.FlipAnimation = GetComponentInChildren<CardFlipAnimation>();

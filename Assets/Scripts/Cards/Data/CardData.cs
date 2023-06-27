@@ -33,6 +33,8 @@ namespace Cards.Data
 
         public ObservableMouseTrigger MouseTrigger;
 
+        public Collider Collider;
+
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ColorReactiveProperty NameColor = new ColorReactiveProperty(Color.white);
@@ -64,8 +66,11 @@ namespace Cards.Data
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty CanBeSelected = new BoolReactiveProperty();
 
+        public BoolReactiveProperty IsInsideCardsTable = new BoolReactiveProperty();
+        public Vector3ReactiveProperty ClampedPosition = new Vector3ReactiveProperty();
+
         public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>(null);
-        
+
         public IntReactiveProperty Durability = new IntReactiveProperty(1);
         public IntReactiveProperty MaxDurability = new IntReactiveProperty(1);
 

@@ -941,6 +941,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3829932553933156705}
+    - target: {fileID: 6682434459153667145, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3829932553933156705}
     - target: {fileID: 6816184043897521364, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -1016,6 +1021,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3829932553933156705}
+    - target: {fileID: 8773328932188210635, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3829932553933156705}
     m_RemovedComponents:
     - {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
     - {fileID: 8453801090765566011, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
@@ -1067,6 +1077,7 @@ MonoBehaviour:
   Height:
     value: 0
   MouseTrigger: {fileID: 8701961781298001351}
+  Collider: {fileID: 5440254971330906520}
   Card:
     value: 12
   Name:
@@ -1113,6 +1124,10 @@ MonoBehaviour:
     value: 0
   CanBeSelected:
     value: 0
+  IsInsideCardsTable:
+    value: 0
+  ClampedPosition:
+    value: {x: 0, y: 0, z: 0}
   CurrentRecipe:
     value:
       Resources: 
@@ -1142,6 +1157,12 @@ MonoBehaviour:
 --- !u!224 &4816460698899237587 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8655193052913444969, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 4236459283825386170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5440254971330906520 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8193532437627284258, guid: 7bf54413c6b39324e9a7ddfc51606634,
     type: 3}
   m_PrefabInstance: {fileID: 4236459283825386170}
   m_PrefabAsset: {fileID: 0}
