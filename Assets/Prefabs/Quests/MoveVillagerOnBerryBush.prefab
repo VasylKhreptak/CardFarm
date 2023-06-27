@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8609782257049868907}
   - component: {fileID: 8609782257049868904}
-  - component: {fileID: 2614866791736900592}
-  - component: {fileID: 9219852525839706298}
+  - component: {fileID: 7625258693689627935}
+  - component: {fileID: 2421308040907752950}
   m_Layer: 0
-  m_Name: OpenBoosterQuest
+  m_Name: MoveVillagerOnBerryBush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,15 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb794ab34e984feb90e04809afb11bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Quest: 0
-  Name: Open Booster
+  Quest: 1
+  Name: Move Worker On Berry Bush
   Reward:
     Cards: 08000000
   IsCompleted:
     value: 0
   TookReward:
     value: 0
---- !u!114 &2614866791736900592
+--- !u!114 &7625258693689627935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,11 +63,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8609782257049868906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24f7d8ec5f2149faa1397fce356a83de, type: 3}
+  m_Script: {fileID: 11500000, guid: e075e2058ad6419db7982a07751ccc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
---- !u!114 &9219852525839706298
+  _topCard: 0
+  _bottomCard: 3
+--- !u!114 &2421308040907752950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

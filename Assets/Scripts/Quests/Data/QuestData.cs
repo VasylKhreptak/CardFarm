@@ -1,5 +1,5 @@
 ﻿using System;
-using Quests.Core;
+using Quests.Logic.Core;
 using UniRx;
 using UnityEngine;
 

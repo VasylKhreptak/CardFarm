@@ -1,5 +1,5 @@
 ﻿using Plugins.ObjectPooler.Core;
-using Quests.Core;
+using Quests.Logic.Core;
 
 namespace ObjectPoolers
 {

@@ -1,4 +1,4 @@
-﻿namespace Quests.Core
+﻿namespace Quests.Logic.Core
 {
     public enum Quest
     {

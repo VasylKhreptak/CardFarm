@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Quests.Logic.QuestObservers
 {
-    public class OpenNewWorldBoosterQuestObserver : QuestObserver
+    public class OpenNewWorldBoosterQuest : QuestObserver
     {
         private CompositeDisposable _compositeDisposable = new CompositeDisposable();
 

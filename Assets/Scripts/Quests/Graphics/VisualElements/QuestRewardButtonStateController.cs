@@ -79,7 +79,10 @@ namespace Quests.Graphics.VisualElements
             if (quest != null)
             {
                 StartObservingIsQuestCompleted();
+                return;
             }
+
+            _buttonObject.SetActive(false);
         }
 
         private void OnIsQuestCompletedUpdated(bool isCompleted)
