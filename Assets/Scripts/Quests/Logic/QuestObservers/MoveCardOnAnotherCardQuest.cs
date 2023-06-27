@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Cards.Core;
 using Cards.Data;
@@ -18,6 +17,7 @@ namespace Quests.Logic.QuestObservers
         [SerializeField] private Card _bottomCard;
 
         private IDisposable _newCardsAppearedSubscription;
+        private IDisposable _topCardsCountSubscription;
         private IDisposable _topCardsSubscription;
 
         private CardsTableSelector _cardsTableSelector;
@@ -36,6 +36,8 @@ namespace Quests.Logic.QuestObservers
         public override void StopObserving()
         {
             StopObservingNewCardType();
+            StopObservingTopCardsCount();
+            StopObservingTopCards();
         }
 
         private void StartObservingNewCardType()
@@ -45,7 +47,7 @@ namespace Quests.Logic.QuestObservers
                 {
                     if (x.Key == _topCard)
                     {
-                        OnNewCardsAppeared(x.Value);
+                        StartObservingTopCardsCount(x.Value);
                     }
                 });
         }
@@ -53,29 +55,38 @@ namespace Quests.Logic.QuestObservers
         private void StopObservingNewCardType()
         {
             _newCardsAppearedSubscription?.Dispose();
-            StopObservingTopCards();
         }
 
-        private void OnNewCardsAppeared(ReactiveCollection<CardData> cards)
+        private void StartObservingTopCardsCount(ReactiveCollection<CardData> cards)
         {
-            StartObservingTopCards(cards);
+            StopObservingTopCardsCount();
+
+            _topCardsCountSubscription = cards.ObserveCountChanged().Subscribe(count =>
+            {
+                StartObservingTopCards(cards);
+            });
         }
 
-        private void StartObservingTopCards(IReadOnlyCollection<CardData> cards)
+        private void StopObservingTopCardsCount()
         {
-            if (cards.Count == 0) return;
+            _topCardsCountSubscription?.Dispose();
+        }
 
+        private void StartObservingTopCards(ReactiveCollection<CardData> cards)
+        {
             StopObservingTopCards();
 
-            IObservable<CardData>[] topCards = cards.Select(x => x.TopCard as IObservable<CardData>).ToArray();
+            IObservable<CardData>[] topCardObservables = cards.Select(x => x.TopCard as IObservable<CardData>).ToArray();
 
-            _topCardsSubscription = Observable.Merge(topCards).Where(x => x.Card.Value == _bottomCard)
+            Debug.Log(topCardObservables.Length);
+
+            _topCardsSubscription = Observable.Merge(topCardObservables)
+                .Where(x => x != null && x.Card.Value == _bottomCard)
                 .Subscribe(_ =>
                 {
                     _questData.IsCompleted.Value = true;
-                    Debug.Log("Completed");
+                    StopObserving();
                 });
-
         }
 
         private void StopObservingTopCards()
