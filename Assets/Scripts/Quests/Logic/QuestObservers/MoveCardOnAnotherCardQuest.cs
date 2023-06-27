@@ -78,8 +78,6 @@ namespace Quests.Logic.QuestObservers
 
             IObservable<CardData>[] topCardObservables = cards.Select(x => x.TopCard as IObservable<CardData>).ToArray();
 
-            Debug.Log(topCardObservables.Length);
-
             _topCardsSubscription = Observable.Merge(topCardObservables)
                 .Where(x => x != null && x.Card.Value == _bottomCard)
                 .Subscribe(_ =>
