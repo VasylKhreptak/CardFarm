@@ -16,7 +16,6 @@ namespace Cards.Zones.BoosterBuyZone.Logic
         [SerializeField] private BoosterBuyZoneData _data;
 
         [Header("Preferences")]
-        [SerializeField] private Card _booster;
         [SerializeField] private float _cardsMoveDuration = 1f;
         [SerializeField] private float _coinMoveDelay = 0.3f;
 
@@ -114,10 +113,12 @@ namespace Cards.Zones.BoosterBuyZone.Logic
 
         private void SpawnBooster()
         {
-            CardData spawnedBooster = _cardSpawner.Spawn(_booster, _data.transform.position);
+            CardData spawnedBooster = _cardSpawner.Spawn(_data.TargetBoosterCard, _data.transform.position);
 
             spawnedBooster.Animations.JumpAnimation.Play(_data.BoosterSpawnPoint.position);
             spawnedBooster.Animations.FlipAnimation.Play();
+            
+            _data.onSpawnedBooster?.Invoke();
         }
 
         private void RemoveDelaySubscriptions()

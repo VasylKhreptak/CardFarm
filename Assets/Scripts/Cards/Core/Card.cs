@@ -39,5 +39,6 @@ namespace Cards.Core
         Potato = 34,
         Plains = 35,
         SellZone = 36,
+        BuyHumbleBeginningsBoosterZone = 37,
     }
 }

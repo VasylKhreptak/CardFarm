@@ -12,7 +12,6 @@ namespace Quests.Logic.QuestObservers
     public class SellAnyCardQuest : QuestObserver
     {
         private IDisposable _newCardsAppearedSubscription;
-        private IDisposable _topCardsCountSubscription;
 
         private SellZoneData _currentSellZoneData;
 

@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 4682650202823771812}
-  _booster: 13
   _cardsMoveDuration: 0.5
   _coinMoveDelay: 0.3
 --- !u!1 &5202717437099877449
@@ -438,7 +437,7 @@ PrefabInstance:
     - target: {fileID: 3076389051216230989, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3437239771057578830, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -580,6 +579,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858b3c6ba7f146c3afdb2ff9beb59bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1212089143703722836 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6102548960899719878, guid: d5d346ed3d610c748b54a7004eb99e4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4927693721908689298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1323114453506917553 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6214416359162199331, guid: d5d346ed3d610c748b54a7004eb99e4c,
@@ -669,8 +674,9 @@ MonoBehaviour:
   Height:
     value: 0
   MouseTrigger: {fileID: 2552990783886124811}
+  Collider: {fileID: 1212089143703722836}
   Card:
-    value: 14
+    value: 37
   Name:
     value: Booster
   NameColor:
@@ -713,6 +719,12 @@ MonoBehaviour:
     value: 0
   IsCompatibleWithSelectedCard:
     value: 0
+  CanBeSelected:
+    value: 0
+  IsInsideCardsTable:
+    value: 0
+  ClampedPosition:
+    value: {x: 0, y: 0, z: 0}
   CurrentRecipe:
     value:
       Resources: 
@@ -720,19 +732,22 @@ MonoBehaviour:
       Cooldown: 0
       Result:
         Weights: []
+  Durability:
+    value: 1
+  MaxDurability:
+    value: 1
   Animations:
     MoveAnimation: {fileID: 7569965088597082990}
     JumpAnimation: {fileID: 4275661140694146136}
     FlipAnimation: {fileID: 402582641259156830}
   IsPlayingAnyAnimation:
     value: 0
-  CanBeSelected:
-    value: 0
   CurrentReproductionRecipe:
     value:
       Cooldown: 0
       Resources: 
       Results: []
+  _targetBoosterCard: 13
   BoosterPrice:
     value: 3
   BoosterSpawnPoint: {fileID: 1323114453506917553}
