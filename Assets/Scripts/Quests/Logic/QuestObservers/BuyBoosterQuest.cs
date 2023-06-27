@@ -44,7 +44,6 @@ namespace Quests.Logic.QuestObservers
             {
                 _currentBoosterBuyZone = GetTargetBuyZone(cards);
 
-                Debug.Log(_currentBoosterBuyZone == null);
                 StartObservingBuyZone();
             }
 
@@ -54,8 +53,6 @@ namespace Quests.Logic.QuestObservers
                     if (x.Key == Card.SellZone)
                     {
                         _currentBoosterBuyZone = GetTargetBuyZone(x.Value);
-                        Debug.Log(_currentBoosterBuyZone == null);
-
 
                         StartObservingBuyZone();
                     }
