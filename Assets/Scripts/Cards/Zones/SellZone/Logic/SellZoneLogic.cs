@@ -68,7 +68,9 @@ namespace Cards.Zones.SellZone.Logic
             foreach (var bottomCard in bottomCards)
             {
                 if (bottomCard.IsSellableCard == false) return;
-
+                
+                if(bottomCard.Card.Value == Card.Coin) return;
+                
                 SellableCardData sellableCard = bottomCard as SellableCardData;
 
                 if (sellableCard == null) return;
@@ -86,6 +88,7 @@ namespace Cards.Zones.SellZone.Logic
                 }
 
                 sellableCard.gameObject.SetActive(false);
+                _zoneData.onSoldCard?.Invoke(sellableCard.Card.Value);
             }
         }
     }

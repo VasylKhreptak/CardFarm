@@ -42,6 +42,11 @@ namespace Quests.Logic.QuestObservers
 
         private void StartObservingNewCardType()
         {
+            if (_cardsTableSelector.SelectedCardsMap.TryGetValue(_topCard, out ReactiveCollection<CardData> cards))
+            {
+                StartObservingTopCardsCount(cards);
+            }
+
             _newCardsAppearedSubscription = _cardsTableSelector.SelectedCardsMap.ObserveAdd()
                 .Subscribe(x =>
                 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using Cards.Core;
 using Cards.Data;
 using Table;
 using UniRx;
@@ -49,7 +50,7 @@ namespace Cards.Zones.SellZone.Logic.Updaters
 
         private void OnSelectedCardUpdated(CardData selectedCard)
         {
-            if (selectedCard == null)
+            if (selectedCard == null || selectedCard.Card.Value == Card.Coin)
             {
                 _cardData.IsCompatibleWithSelectedCard.Value = false;
                 return;

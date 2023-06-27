@@ -86,12 +86,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 1533140414782644598, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 1632583281552787175, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -126,7 +126,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 2838797209280089399, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -246,7 +246,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 3051697176898155043, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -260,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 3076389051216230989, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3437239771057578830, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -281,7 +281,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 4399263348077703630, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_IsActive
@@ -316,7 +316,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 5299866899253154200, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -326,12 +326,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 5788307395077044703, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 6289967143396901936, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -356,6 +356,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
+      objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 8253568150029054383, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8263957201508905678, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -376,7 +381,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 9125888027024053518, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -428,8 +433,9 @@ MonoBehaviour:
   Height:
     value: 0
   MouseTrigger: {fileID: 7195069559300310765}
+  Collider: {fileID: 5793382380851165874}
   Card:
-    value: 14
+    value: 36
   Name:
     value: Sell
   NameColor:
@@ -472,6 +478,12 @@ MonoBehaviour:
     value: 0
   IsCompatibleWithSelectedCard:
     value: 0
+  CanBeSelected:
+    value: 0
+  IsInsideCardsTable:
+    value: 0
+  ClampedPosition:
+    value: {x: 0, y: 0, z: 0}
   CurrentRecipe:
     value:
       Resources: 
@@ -479,13 +491,15 @@ MonoBehaviour:
       Cooldown: 0
       Result:
         Weights: []
+  Durability:
+    value: 1
+  MaxDurability:
+    value: 1
   Animations:
     MoveAnimation: {fileID: 3006686116813382280}
     JumpAnimation: {fileID: 8926764570651311550}
     FlipAnimation: {fileID: 4981628751513072824}
   IsPlayingAnyAnimation:
-    value: 0
-  CanBeSelected:
     value: 0
   CurrentReproductionRecipe:
     value:
@@ -505,6 +519,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858b3c6ba7f146c3afdb2ff9beb59bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5793382380851165874 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6102548960899719878, guid: d5d346ed3d610c748b54a7004eb99e4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 348643484191201396}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5974213635198002519 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6214416359162199331, guid: d5d346ed3d610c748b54a7004eb99e4c,

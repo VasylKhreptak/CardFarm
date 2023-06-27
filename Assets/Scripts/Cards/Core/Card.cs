@@ -38,5 +38,6 @@ namespace Cards.Core
         Carrot = 33,
         Potato = 34,
         Plains = 35,
+        SellZone = 36,
     }
 }
