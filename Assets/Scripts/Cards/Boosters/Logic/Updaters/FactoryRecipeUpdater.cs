@@ -17,6 +17,7 @@ namespace Cards.Boosters.Logic.Updaters
 
         private IDisposable _isTopCardSubscription;
         private IDisposable _isCardSingleSubscription;
+        private IDisposable _cardStatsSubscription;
 
         #region MonoBehaviour
 
@@ -35,8 +36,9 @@ namespace Cards.Boosters.Logic.Updaters
         private void OnDisable()
         {
             _cardData.Callbacks.onBecameHeadOfGroup -= OnBecameHeadOfGroup;
-            _isTopCardSubscription.Dispose();
-            _isCardSingleSubscription.Dispose();
+            _isTopCardSubscription?.Dispose();
+            _isCardSingleSubscription?.Dispose();
+            _cardStatsSubscription?.Dispose();
             ResetCurrentRecipe();
         }
 
@@ -44,23 +46,29 @@ namespace Cards.Boosters.Logic.Updaters
 
         private void OnBecameHeadOfGroup()
         {
-            if (_cardData.IsTopCard.Value == false || _cardData.IsSingleCard.Value)
-            {
-                ResetCurrentRecipe();
-                return;
-            }
+            _cardStatsSubscription?.Dispose();
+            _cardStatsSubscription = Observable
+                .CombineLatest(_cardData.IsTopCard, _cardData.IsSingleCard)
+                .Subscribe(list =>
+                {
+                    if (list[0] == false || list[1])
+                    {
+                        ResetCurrentRecipe();
+                        return;
+                    }
 
-            List<Card> bottomCards = _cardData.BottomCards.Select(x => x.Card.Value).ToList();
+                    List<Card> bottomCards = _cardData.BottomCards.Select(x => x.Card.Value).ToList();
 
-            bool hasRecipe = _cardRecipes.TryFindRecipe(bottomCards, out FactoryRecipe recipe);
+                    bool hasRecipe = _cardRecipes.TryFindRecipe(bottomCards, out FactoryRecipe recipe);
 
-            if (hasRecipe == false)
-            {
-                ResetCurrentRecipe();
-                return;
-            }
+                    if (hasRecipe == false)
+                    {
+                        ResetCurrentRecipe();
+                        return;
+                    }
 
-            _cardData.CurrentFactoryRecipe.Value = recipe;
+                    _cardData.CurrentFactoryRecipe.Value = recipe;
+                });
         }
 
         private void ResetCurrentRecipe()
