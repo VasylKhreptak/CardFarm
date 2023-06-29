@@ -41,9 +41,14 @@ namespace Quests.Logic.QuestObservers.Core
 
         public abstract void StopObserving();
 
-        protected void MarkQuestAsCompleted()
+        protected void MarkQuestAsCompleted(bool stopObserving = true)
         {
             _questData.IsCompleted.Value = true;
+
+            if (stopObserving)
+            {
+                StopObserving();
+            }
         }
     }
 }
