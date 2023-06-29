@@ -16,6 +16,7 @@ namespace Quests.Logic.QuestObservers
         [SerializeField] private Card _targetBuyZone;
 
         private IDisposable _newCardsAppearedSubscription;
+        private IDisposable _zonesCountSubscription;
 
         private BoosterBuyZoneData _currentBoosterBuyZone;
 
@@ -35,35 +36,62 @@ namespace Quests.Logic.QuestObservers
         public override void StopObserving()
         {
             StopObservingNewCardType();
-            StopObservingButZone();
+            StopObservingBuyZone();
+            StopObservingZonesCount();
         }
 
         private void StartObservingNewCardType()
         {
             if (_cardsTableSelector.SelectedCardsMap.TryGetValue(_targetBuyZone, out ReactiveCollection<CardData> cards))
             {
-                _currentBoosterBuyZone = GetTargetBuyZone(cards);
-
-                StartObservingBuyZone();
+                StartObservingZonesCount(cards);
             }
 
             _newCardsAppearedSubscription = _cardsTableSelector.SelectedCardsMap.ObserveAdd()
                 .Subscribe(x =>
                 {
-                    if (x.Key == Card.SellZone)
+                    if (x.Key == _targetBuyZone)
                     {
-                        _currentBoosterBuyZone = GetTargetBuyZone(x.Value);
-
-                        StartObservingBuyZone();
+                        StartObservingZonesCount(x.Value);
                     }
                 });
+        }
+
+        private void StartObservingZonesCount(ReactiveCollection<CardData> cards)
+        {
+            StopObservingZonesCount();
+            _zonesCountSubscription = cards.ObserveCountChanged()
+                .DoOnSubscribe(() => OnZonesCountChanged(cards.Count, cards))
+                .Subscribe(x =>
+                {
+                    OnZonesCountChanged(x, cards);
+                });
+        }
+
+        private void OnZonesCountChanged(int count, ReactiveCollection<CardData> cards)
+        {
+            if (count > 0)
+            {
+                _currentBoosterBuyZone = GetTargetBuyZone(cards);
+                StopObservingZonesCount();
+                StartObservingBuyZone();
+            }
+            else
+            {
+                StopObservingBuyZone();
+            }
+        }
+
+        private void StopObservingZonesCount()
+        {
+            _zonesCountSubscription?.Dispose();
         }
 
         private BoosterBuyZoneData GetTargetBuyZone(ReactiveCollection<CardData> cards)
         {
             foreach (var buyZone in cards)
             {
-                BoosterBuyZoneData buyZoneData = cards[0] as BoosterBuyZoneData;
+                BoosterBuyZoneData buyZoneData = buyZone as BoosterBuyZoneData;
 
                 if (buyZoneData == null) continue;
 
@@ -85,12 +113,12 @@ namespace Quests.Logic.QuestObservers
         {
             if (_currentBoosterBuyZone == null) return;
 
-            StopObservingButZone();
+            StopObservingBuyZone();
 
             _currentBoosterBuyZone.onSpawnedBooster += OnSpawnedBooster;
         }
 
-        private void StopObservingButZone()
+        private void StopObservingBuyZone()
         {
             if (_currentBoosterBuyZone == null) return;
 

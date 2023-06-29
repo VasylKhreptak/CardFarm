@@ -1,91 +1,20 @@
-﻿using System;
-using Cards.Core;
-using Cards.Data;
-using Cards.Zones.SellZone.Data;
+﻿using Cards.Data;
 using Quests.Logic.QuestObservers.Core;
-using Table.Core;
 using UniRx;
-using Zenject;
 
 namespace Quests.Logic.QuestObservers
 {
-    public class SellAnyCardQuest : QuestObserver
+    public class SellAnyCardQuest : QuestCardsObserver
     {
-        private IDisposable _newCardsAppearedSubscription;
-
-        private SellZoneData _currentSellZoneData;
-
-        private CardsTableSelector _cardsTableSelector;
-
-        [Inject]
-        private void Constructor(CardsTableSelector cardsTableSelector)
-        {
-            _cardsTableSelector = cardsTableSelector;
-        }
-
-        public override void StartObserving()
-        {
-            StartObservingNewCardType();
-        }
 
         public override void StopObserving()
         {
-            StopObservingNewCardType();
-            StopObservingSellZone();
+            base.StopObserving();
         }
 
-        private void StartObservingNewCardType()
+        protected override void OnCardsCountChanged(ReactiveCollection<CardData> cards)
         {
-            if (_cardsTableSelector.SelectedCardsMap.TryGetValue(Card.SellZone, out ReactiveCollection<CardData> cards))
-            {
-                if (cards.Count > 0)
-                {
-                    _currentSellZoneData = cards[0] as SellZoneData;
-                }
-
-                StartObservingSellZone();
-            }
-
-            _newCardsAppearedSubscription = _cardsTableSelector.SelectedCardsMap.ObserveAdd()
-                .Subscribe(x =>
-                {
-                    if (x.Key == Card.SellZone)
-                    {
-                        if (x.Value.Count > 0)
-                        {
-                            _currentSellZoneData = x.Value[0] as SellZoneData;
-                        }
-
-                        StartObservingSellZone();
-                    }
-                });
-        }
-
-        private void StopObservingNewCardType()
-        {
-            _newCardsAppearedSubscription?.Dispose();
-        }
-
-        private void StartObservingSellZone()
-        {
-            if (_currentSellZoneData == null) return;
-
-            StopObservingSellZone();
-
-            _currentSellZoneData.onSoldCard += OnSoldCard;
-        }
-
-        private void StopObservingSellZone()
-        {
-            if (_currentSellZoneData == null) return;
-
-            _currentSellZoneData.onSoldCard -= OnSoldCard;
-        }
-
-        private void OnSoldCard(Card card)
-        {
-            _questData.IsCompleted.Value = true;
-            StopObserving();
+            
         }
     }
 }

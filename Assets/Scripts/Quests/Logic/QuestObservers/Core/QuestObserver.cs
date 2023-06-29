@@ -40,5 +40,10 @@ namespace Quests.Logic.QuestObservers.Core
         public abstract void StartObserving();
 
         public abstract void StopObserving();
+
+        protected void MarkQuestAsCompleted()
+        {
+            _questData.IsCompleted.Value = true;
+        }
     }
 }
