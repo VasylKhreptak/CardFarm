@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Cards.Core;
 using Cards.Data;
-using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
 {
-    public class CurrentReproductionRecipeUpdater : MonoBehaviour
+    public abstract class RecipeUpdater<T> : MonoBehaviour where T : CardData
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
-        [SerializeField] private CardReproductionRecipes _cardRecipes;
+        [SerializeField] protected T _cardData;
 
         private IDisposable _isTopCardSubscription;
         private IDisposable _isCardSingleSubscription;
@@ -23,7 +18,7 @@ namespace Cards.Logic.Updaters
 
         private void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData ??= GetComponentInParent<T>();
         }
 
         private void OnEnable()
@@ -57,23 +52,12 @@ namespace Cards.Logic.Updaters
                         return;
                     }
 
-                    List<Card> resources = _cardData.GroupCards.Select(x => x.Card.Value).ToList();
-
-                    bool hasRecipe = _cardRecipes.TryGetRecipe(resources, out var recipe);
-
-                    if (hasRecipe == false)
-                    {
-                        ResetCurrentRecipe();
-                        return;
-                    }
-
-                    _cardData.CurrentReproductionRecipe.Value = recipe;
+                    UpdateRecipe();
                 });
         }
 
-        private void ResetCurrentRecipe()
-        {
-            _cardData.CurrentReproductionRecipe.Value = null;
-        }
+        protected abstract void ResetCurrentRecipe();
+
+        protected abstract void UpdateRecipe();
     }
 }
