@@ -113,6 +113,8 @@ namespace Cards.Recipes
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
                 spawnedCard.Animations.MoveAnimation.Play(position, _resultedCardMoveDuration);
             }
+
+            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
         }
 
         private void DecreaseResourcesDurability()

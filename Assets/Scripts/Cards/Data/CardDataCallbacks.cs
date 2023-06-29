@@ -16,9 +16,9 @@ namespace Cards.Data
         public Action onBecameHeadOfGroup;
 
         public Action<Card> OnReproduced;
-        public Action OnReproducedNoArgs;
 
         public Action<CardRecipe> onExecutedRecipe;
+        public Action<Card> onSpawnedRecipeResult;
 
         public Action onClicked;
     }

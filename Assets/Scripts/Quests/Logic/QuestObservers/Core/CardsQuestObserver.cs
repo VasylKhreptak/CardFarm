@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Quests.Logic.QuestObservers.Core
 {
-    public abstract class QuestCardsObserver : QuestObserver
+    public abstract class CardsQuestObserver : QuestObserver
     {
         [Header("Preferences")]
         [SerializeField] private Card _targetCard;

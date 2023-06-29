@@ -8,7 +8,7 @@ using UniRx;
 
 namespace Quests.Logic.QuestObservers
 {
-    public class OpenBoosterQuest : QuestCardsObserver
+    public class OpenBoosterQuest : CardsQuestObserver
     {
         private IDisposable _boostersSubscription;
 

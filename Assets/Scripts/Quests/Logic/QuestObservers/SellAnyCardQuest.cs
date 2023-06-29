@@ -8,7 +8,7 @@ using UniRx;
 
 namespace Quests.Logic.QuestObservers
 {
-    public class SellAnyCardQuest : QuestCardsObserver
+    public class SellAnyCardQuest : CardsQuestObserver
     {
         private List<SellZoneData> _sellZones = new List<SellZoneData>();
 
