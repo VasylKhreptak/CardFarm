@@ -12,7 +12,6 @@ using Table.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 
 namespace Cards.Recipes
 {
@@ -87,6 +86,8 @@ namespace Cards.Recipes
         {
             if (_cardData.CurrentRecipe.Value == null || _cardData.CurrentRecipe.Value.Cooldown == 0) return;
 
+            _cardData.Callbacks.onExecutedRecipe?.Invoke(_cardData.CurrentRecipe.Value);
+
             SpawnRecipeResult();
             DecreaseResourcesDurability();
 
@@ -147,7 +148,7 @@ namespace Cards.Recipes
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(_cardData.transform.position, _maxRange);
         }
-        
+
         private CardData GetFirstWorker()
         {
             return _cardData.GroupCards.FirstOrDefault(x => x.IsWorker);

@@ -1,5 +1,6 @@
 ﻿using System;
 using Cards.Core;
+using ScriptableObjects.Scripts.Cards.Recipes;
 
 namespace Cards.Data
 {
@@ -16,7 +17,9 @@ namespace Cards.Data
 
         public Action<Card> OnReproduced;
         public Action OnReproducedNoArgs;
-        
+
+        public Action<CardRecipe> onExecutedRecipe;
+
         public Action onClicked;
     }
 }
