@@ -11,6 +11,6 @@
         MakeStickFromWood = 6,
         GrowBerryBush = 7,
         BuildAHouse = 8,
-        CreateANewWorker = 9,
+        GrowBaby = 9,
     }
 }
