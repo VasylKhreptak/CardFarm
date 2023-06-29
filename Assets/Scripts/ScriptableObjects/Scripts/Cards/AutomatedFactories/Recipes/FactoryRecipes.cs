@@ -7,13 +7,13 @@ using UnityEngine;
 
 namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
 {
-    [CreateAssetMenu(fileName = "New Recipe", menuName = "ScriptableObjects/CardFactoryRecipes")]
-    public class CardFactoryRecipes : ScriptableObject
+    [CreateAssetMenu(fileName = "FactoryRecipes", menuName = "ScriptableObjects/FactoryRecipes")]
+    public class FactoryRecipes : ScriptableObject
     {
         [Header("References")]
-        [SerializeField] private List<CardFactoryRecipe> _recipes;
+        [SerializeField] private List<FactoryRecipe> _recipes;
 
-        public bool TryFindRecipe(List<CardData> resources, out CardFactoryRecipe recipe)
+        public bool TryFindRecipe(List<Card> resources, out FactoryRecipe recipe)
         {
             if (resources.Count == 0)
             {
@@ -25,13 +25,11 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
             {
                 int recipeResourcesCount = possibleRecipe.Resources.Count;
 
-                List<CardData> clampedResources = resources.GetRange(0, Mathf.Min(resources.Count, recipeResourcesCount));
+                List<Card> clampedResources = resources.GetRange(0, Mathf.Min(resources.Count, recipeResourcesCount));
 
                 if (clampedResources.Count < recipeResourcesCount) continue;
-
-                List<Card> clampedResourcesCards = clampedResources.Select(x => x.Card.Value).ToList();
-
-                if (clampedResourcesCards.HasAllElementsOf(possibleRecipe.Resources))
+                
+                if (clampedResources.HasAllElementsOf(possibleRecipe.Resources))
                 {
                     recipe = possibleRecipe;
                     return true;

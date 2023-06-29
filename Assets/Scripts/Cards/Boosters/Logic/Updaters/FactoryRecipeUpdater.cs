@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Cards.AutomatedFactories.Data;
+using Cards.Core;
 using ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes;
 using UniRx;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Cards.Boosters.Logic.Updaters
 {
-    public class CurrentCardFactoryRecipeUpdater : MonoBehaviour
+    public class FactoryRecipeUpdater : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private AutomatedCardFactoryData _cardData;
-        [SerializeField] private CardFactoryRecipes _cardRecipes;
+        [SerializeField] private FactoryRecipes _cardRecipes;
 
         private IDisposable _isTopCardSubscription;
         private IDisposable _isCardSingleSubscription;
@@ -48,7 +50,9 @@ namespace Cards.Boosters.Logic.Updaters
                 return;
             }
 
-            bool hasRecipe = _cardRecipes.TryFindRecipe(_cardData.BottomCards, out CardFactoryRecipe recipe);
+            List<Card> bottomCards = _cardData.BottomCards.Select(x => x.Card.Value).ToList();
+
+            bool hasRecipe = _cardRecipes.TryFindRecipe(bottomCards, out FactoryRecipe recipe);
 
             if (hasRecipe == false)
             {

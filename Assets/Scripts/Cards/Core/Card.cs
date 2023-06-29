@@ -40,5 +40,6 @@ namespace Cards.Core
         Plains = 35,
         SellZone = 36,
         HumbleBeginningsBoosterBuyZone = 37,
+        Baby = 38,
     }
 }

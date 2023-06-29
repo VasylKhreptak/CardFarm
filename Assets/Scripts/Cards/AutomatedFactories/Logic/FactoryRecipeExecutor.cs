@@ -17,7 +17,7 @@ using Zenject;
 
 namespace Cards.AutomatedFactories.Logic
 {
-    public class AutomatedFactoryRecipeExecutor : ProgressDependentObject
+    public class FactoryRecipeExecutor : ProgressDependentObject
     {
         [Header("References")]
         [SerializeField] private AutomatedCardFactoryData _cardData;
@@ -26,7 +26,6 @@ namespace Cards.AutomatedFactories.Logic
         [Header("Spawn Preferences")]
         [SerializeField] private float _minRange = 5f;
         [SerializeField] private float _maxRange = 7f;
-        [SerializeField] private float _resultedCardMoveDuration = 0.5f;
 
         private IDisposable _currentRecipeSubscription;
 
@@ -85,12 +84,12 @@ namespace Cards.AutomatedFactories.Logic
             SpawnRecipeResult();
             ClearRecipeResources();
 
-            TryExecuteActiveRecipe();
+            ExecuteActiveRecipe();
         }
 
-        private void OnCurrentRecipeChanged(CardFactoryRecipe recipe)
+        private void OnCurrentRecipeChanged(FactoryRecipe recipe)
         {
-            if (recipe == null)
+            if (recipe == null || recipe.Cooldown == 0)
             {
                 StopProgress();
             }
@@ -100,7 +99,7 @@ namespace Cards.AutomatedFactories.Logic
             }
         }
 
-        private void TryExecuteActiveRecipe()
+        private void ExecuteActiveRecipe()
         {
             OnCurrentRecipeChanged(_cardData.CurrentFactoryRecipe.Value);
         }
@@ -119,7 +118,7 @@ namespace Cards.AutomatedFactories.Logic
             {
                 Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
-                spawnedCard.Animations.MoveAnimation.Play(position, _resultedCardMoveDuration);
+                spawnedCard.Animations.MoveAnimation.Play(position);
             }
 
             _cardData.AutomatedFactoryCallbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);

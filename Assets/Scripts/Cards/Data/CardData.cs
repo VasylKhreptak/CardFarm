@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Cards.Core;
-using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
@@ -19,6 +18,7 @@ namespace Cards.Data
         [SerializeField] private bool _isSellableCard;
         [SerializeField] private bool _canSortingLayerChange = true;
         [SerializeField] private bool _isAutomatedFactory;
+        [SerializeField] private bool _isIncubator;
 
         public float BaseHeight => _baseHeight;
         public float HeightOffset => _heightOffset;
@@ -27,6 +27,7 @@ namespace Cards.Data
         public bool IsSellableCard => _isSellableCard;
         public bool CanSortingLayerChange => _canSortingLayerChange;
         public bool IsAutomatedFactory => _isAutomatedFactory;
+        public bool IsIncubator => _isIncubator;
 
         [Space]
         public int ID = -1;

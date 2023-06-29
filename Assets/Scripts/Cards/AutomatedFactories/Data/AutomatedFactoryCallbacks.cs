@@ -7,7 +7,7 @@ namespace Cards.AutomatedFactories.Data
     [Serializable]
     public class AutomatedFactoryCallbacks
     {
-        public Action<CardFactoryRecipe> onExecutedRecipe;
+        public Action<FactoryRecipe> onExecutedRecipe;
         public Action<Card> onSpawnedRecipeResult;
     }
 }
