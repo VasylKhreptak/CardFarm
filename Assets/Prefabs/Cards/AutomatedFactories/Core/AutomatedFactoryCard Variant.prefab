@@ -479,7 +479,7 @@ PrefabInstance:
     - target: {fileID: 521652541118679619, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 564359370849849034, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
@@ -709,7 +709,7 @@ PrefabInstance:
     - target: {fileID: 4131032017452411057, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4261766899330316009, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
@@ -867,6 +867,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4831223344307741641}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &4194997811700904193 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8735950013125923528, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4831223344307741641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4893301508794771771 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 64048489458420466, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
@@ -902,12 +908,14 @@ MonoBehaviour:
   _isWorker: 0
   _isSellableCard: 1
   _canSortingLayerChange: 1
+  _isAutomatedFactory: 1
   ID: -1
   GroupID:
     value: -1
   Height:
     value: 0
   MouseTrigger: {fileID: 687818708349390174}
+  Collider: {fileID: 4194997811700904193}
   Card:
     value: 0
   Name:
@@ -952,6 +960,12 @@ MonoBehaviour:
     value: 0
   IsCompatibleWithSelectedCard:
     value: 0
+  CanBeSelected:
+    value: 0
+  IsInsideCardsTable:
+    value: 0
+  ClampedPosition:
+    value: {x: 0, y: 0, z: 0}
   CurrentRecipe:
     value:
       Resources: 
@@ -959,13 +973,15 @@ MonoBehaviour:
       Cooldown: 0
       Result:
         Weights: []
+  Durability:
+    value: 1
+  MaxDurability:
+    value: 1
   Animations:
     MoveAnimation: {fileID: 4893301508794771771}
     JumpAnimation: {fileID: 1275547599300752909}
     FlipAnimation: {fileID: 3419312012035227403}
   IsPlayingAnyAnimation:
-    value: 0
-  CanBeSelected:
     value: 0
   CurrentReproductionRecipe:
     value:

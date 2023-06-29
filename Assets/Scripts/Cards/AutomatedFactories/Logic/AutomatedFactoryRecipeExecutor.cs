@@ -14,7 +14,6 @@ using Table.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 
 namespace Cards.AutomatedFactories.Logic
 {
@@ -81,6 +80,8 @@ namespace Cards.AutomatedFactories.Logic
             if (_cardData.CurrentFactoryRecipe.Value == null ||
                 _cardData.CurrentFactoryRecipe.Value.Cooldown == 0) return;
 
+            _cardData.AutomatedFactoryCallbacks.onExecutedRecipe?.Invoke(_cardData.CurrentFactoryRecipe.Value);
+
             SpawnRecipeResult();
             ClearRecipeResources();
 
@@ -120,6 +121,8 @@ namespace Cards.AutomatedFactories.Logic
                 CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
                 spawnedCard.Animations.MoveAnimation.Play(position, _resultedCardMoveDuration);
             }
+
+            _cardData.AutomatedFactoryCallbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
         }
 
         private Card GetCardToSpawn()
