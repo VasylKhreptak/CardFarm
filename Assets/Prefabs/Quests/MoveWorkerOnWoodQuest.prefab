@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
-  _topCard: 0
-  _bottomCard: 5
+  _targetCard: 0
+  _targetTopCard: 5
 --- !u!114 &2421308040907752950
 MonoBehaviour:
   m_ObjectHideFlags: 0
