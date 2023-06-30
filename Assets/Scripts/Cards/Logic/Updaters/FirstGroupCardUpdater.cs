@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Cards.Logic.Updaters
 {
-    public class LowestGroupCardUpdater : MonoBehaviour, IValidatable
+    public class FirstGroupCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -51,11 +51,11 @@ namespace Cards.Logic.Updaters
         {
             if (_cardData.GroupCards.Count == 0)
             {
-                _cardData.LowestGroupCard.Value = null;
+                _cardData.FirstGroupCard.Value = null;
                 return;
             }
 
-            _cardData.LowestGroupCard.Value = _cardData.GroupCards.Last();
+            _cardData.FirstGroupCard.Value = _cardData.GroupCards.First();
         }
     }
 }

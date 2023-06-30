@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 5178122387984731238}
   - component: {fileID: 4190233432472343}
   m_Layer: 6
-  m_Name: TopCardUpdater
+  m_Name: FirstUpperCardUpdater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,15 +334,17 @@ MonoBehaviour:
     value: {fileID: 0}
   IsInteractable:
     value: 1
-  TopCard:
-    value: {fileID: 0}
   UpperCard:
     value: {fileID: 0}
   BottomCard:
     value: {fileID: 0}
-  LowestCard:
+  FirstUpperCard:
     value: {fileID: 0}
-  LowestGroupCard:
+  LastBottomCard:
+    value: {fileID: 0}
+  FirstGroupCard:
+    value: {fileID: 0}
+  LastGroupCard:
     value: {fileID: 0}
   JoinableCard:
     value: {fileID: 0}
@@ -1368,6 +1370,7 @@ RectTransform:
   - {fileID: 5815195155819671487}
   - {fileID: 3676575902462654534}
   - {fileID: 3951743767308762955}
+  - {fileID: 3130306815301448044}
   m_Father: {fileID: 6256525992163840278}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1681,6 +1684,56 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34911261f2b848e2be4ae1bbb7053c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 1106781378184329004}
+--- !u!1 &4932607098460236267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3130306815301448044}
+  - component: {fileID: 5908756320297366099}
+  m_Layer: 6
+  m_Name: FirstGroupCardUpdater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3130306815301448044
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932607098460236267}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3384633989507613666}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5908756320297366099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932607098460236267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e41981717c94a4185d8e47b922e6fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
@@ -2973,7 +3026,7 @@ GameObject:
   - component: {fileID: 5386211083049795303}
   - component: {fileID: 277232900628726384}
   m_Layer: 6
-  m_Name: LowestCardUpdater
+  m_Name: LastBottomCardUpdater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

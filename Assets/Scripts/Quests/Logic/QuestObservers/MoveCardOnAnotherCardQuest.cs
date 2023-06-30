@@ -32,7 +32,7 @@ namespace Quests.Logic.QuestObservers
         {
             StopObservingTopCards();
 
-            List<IObservable<CardData>> topCardsObservables = cards.Select(x => x.TopCard as IObservable<CardData>).ToList();
+            List<IObservable<CardData>> topCardsObservables = cards.Select(x => x.FirstUpperCard as IObservable<CardData>).ToList();
 
             _topCardsSubscription = topCardsObservables
                 .Merge()

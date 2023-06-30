@@ -40,7 +40,7 @@ namespace Cards.Logic.Updaters
         private void StartObserving()
         {
             StopObserving();
-            _lowestGroupCardSubscription = _cardData.LowestGroupCard.Subscribe(OnLowestGroupCardUpdated);
+            _lowestGroupCardSubscription = _cardData.LastGroupCard.Subscribe(OnLowestGroupCardUpdated);
         }
 
         private void StopObserving()

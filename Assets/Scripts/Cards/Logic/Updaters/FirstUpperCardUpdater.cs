@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Cards.Logic.Updaters
 {
-    public class LowestCardUpdater : MonoBehaviour, IValidatable
+    public class FirstUpperCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -24,25 +24,25 @@ namespace Cards.Logic.Updaters
 
         private void OnEnable()
         {
-            _cardData.Callbacks.onBottomCardsListUpdated += OnBottomCardsListUpdated;
+            _cardData.Callbacks.onUpperCardsListUpdated += OnUpperCardsListUpdated;
         }
 
         private void OnDisable()
         {
-            _cardData.Callbacks.onBottomCardsListUpdated -= OnBottomCardsListUpdated;
+            _cardData.Callbacks.onUpperCardsListUpdated -= OnUpperCardsListUpdated;
         }
 
         #endregion
 
-        private void OnBottomCardsListUpdated()
+        private void OnUpperCardsListUpdated()
         {
-            if (_cardData.BottomCards.Count == 0)
+            if (_cardData.UpperCards.Count == 0)
             {
-                _cardData.LowestCard.Value = null;
+                _cardData.FirstUpperCard.Value = null;
                 return;
             }
 
-            _cardData.LowestCard.Value = _cardData.BottomCards.Last();
+            _cardData.FirstUpperCard.Value = _cardData.UpperCards.First();
         }
     }
 }

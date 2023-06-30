@@ -5,6 +5,7 @@ using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -47,11 +48,15 @@ namespace Cards.Data
 
         public BoolReactiveProperty IsInteractable = new BoolReactiveProperty(true);
 
-        public ReactiveProperty<CardData> TopCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> UpperCard = new ReactiveProperty<CardData>();
         public ReactiveProperty<CardData> BottomCard = new ReactiveProperty<CardData>();
-        public ReactiveProperty<CardData> LowestCard = new ReactiveProperty<CardData>();
-        public ReactiveProperty<CardData> LowestGroupCard = new ReactiveProperty<CardData>();
+        
+        public ReactiveProperty<CardData> FirstUpperCard = new ReactiveProperty<CardData>();
+        public ReactiveProperty<CardData> LastBottomCard = new ReactiveProperty<CardData>();
+        
+        public ReactiveProperty<CardData> FirstGroupCard = new ReactiveProperty<CardData>();
+        public ReactiveProperty<CardData> LastGroupCard = new ReactiveProperty<CardData>();
+        
         public ReactiveProperty<CardData> JoinableCard = new ReactiveProperty<CardData>();
 
         public List<CardData> UpperCards = new List<CardData>();
