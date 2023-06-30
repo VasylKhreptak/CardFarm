@@ -26,7 +26,7 @@ namespace Cards.Zones.SellZone.Logic
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
         {
             Validate();
         }

@@ -18,7 +18,7 @@ namespace Cards.Logic.Updaters
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
         {
             Validate();
         }

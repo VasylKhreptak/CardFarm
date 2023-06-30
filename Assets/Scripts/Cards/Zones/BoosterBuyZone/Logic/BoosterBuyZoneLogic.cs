@@ -123,10 +123,7 @@ namespace Cards.Zones.BoosterBuyZone.Logic
 
         private void SpawnBooster()
         {
-            CardData spawnedBooster = _cardSpawner.Spawn(_cardData.TargetBoosterCard, _cardData.transform.position);
-
-            spawnedBooster.Animations.JumpAnimation.Play(_cardData.BoosterSpawnPoint.position);
-            spawnedBooster.Animations.FlipAnimation.Play();
+            _cardSpawner.SpawnAndMove(_cardData.TargetBoosterCard, _cardData.transform.position, _cardData.BoosterSpawnPoint.position);
 
             _cardData.onSpawnedBooster?.Invoke();
         }

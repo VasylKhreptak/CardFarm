@@ -111,12 +111,7 @@ namespace Cards.Logic
         {
             Card cardToSpawn = _cardData.CurrentReproductionRecipe.Value.Results.GetByWeight(x => x.Weight).Card;
 
-            CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
-
-            Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
-
-            spawnedCard.Animations.FlipAnimation.Play();
-            spawnedCard.Animations.JumpAnimation.Play(position);
+            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
         }
     }
 }

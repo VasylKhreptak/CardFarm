@@ -27,9 +27,7 @@ namespace Cards.Boosters.Logic.Boosters
         {
             Card cardToSpawn = GetCardToSpawn();
 
-            CardData spawnedCard = _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position, null, false, true);
-
-            spawnedCard.Animations.FlipAnimation.Play();
+            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
             _cardData.BoosterCallabcks.OnSpawnedCard?.Invoke(cardToSpawn);
         }

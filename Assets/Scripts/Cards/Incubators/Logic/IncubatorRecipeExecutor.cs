@@ -38,7 +38,7 @@ namespace Cards.Incubators.Logic
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
         {
             Validate();
         }

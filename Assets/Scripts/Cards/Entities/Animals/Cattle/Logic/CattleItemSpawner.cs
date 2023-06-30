@@ -117,9 +117,7 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
             Card cardToSpawn = cattleCard.Card;
 
-            CardData spawnedCard = _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position,
-                null, true, true);
-            spawnedCard.Animations.FlipAnimation.Play();
+            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
             _cardData.CattleCallbacks.OnItemSpawned?.Invoke(cardToSpawn);
             _cardData.CattleCallbacks.OnItemSpawnedNoArgs?.Invoke();

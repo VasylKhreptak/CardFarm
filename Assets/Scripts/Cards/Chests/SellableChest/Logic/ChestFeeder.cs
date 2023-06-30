@@ -17,7 +17,7 @@ namespace Cards.Chests.SellableChest.Logic
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
         {
             Validate();
         }

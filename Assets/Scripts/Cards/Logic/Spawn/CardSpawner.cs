@@ -57,17 +57,18 @@ namespace Cards.Logic.Spawn
             bool jump = true,
             bool flip = true)
         {
-            CardData spawnedCard = Spawn(card, position);
-
-            if (tryJoinToExistingGroup && _cardsTable.TryGetLowestCompatibleGroupCard(card, card, out var existingGroup))
+            if (tryJoinToExistingGroup && _cardsTable.TryGetLowestCompatibleGroupCard(card, card, out var lowestGroupCard))
             {
-                spawnedCard.LinkTo(existingGroup);
+                CardData spawnedCard = Spawn(card, position);
+                spawnedCard.LinkTo(lowestGroupCard);
+                return spawnedCard;
             }
             else
             {
+                CardData spawnedCard = Spawn(card, position);
                 Bounds cardBounds = spawnedCard.Collider.bounds;
                 cardBounds.center = position;
-                Vector3 moveToPosition = targetPosition.HasValue ? targetPosition.Value : _cardsTableBounds.GetRandomPositionInRange(cardBounds, _minRange, _maxRange);
+                Vector3 moveToPosition = targetPosition ?? _cardsTableBounds.GetRandomPositionInRange(cardBounds, _minRange, _maxRange);
 
                 if (jump)
                 {
@@ -82,9 +83,9 @@ namespace Cards.Logic.Spawn
                 {
                     spawnedCard.Animations.FlipAnimation.Play();
                 }
-            }
 
-            return spawnedCard;
+                return spawnedCard;
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Cards.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
         {
             Validate();
         }
