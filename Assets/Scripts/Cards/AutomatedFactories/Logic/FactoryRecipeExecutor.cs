@@ -5,12 +5,10 @@ using Cards.AutomatedFactories.Data;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
-using Constraints.CardTable;
 using Extensions;
 using ProgressLogic.Core;
 using ScriptableObjects.Scripts.Cards;
 using ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes;
-using Table.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -23,29 +21,21 @@ namespace Cards.AutomatedFactories.Logic
         [SerializeField] private AutomatedCardFactoryData _cardData;
         [SerializeField] private CompatibleCards _compatibleCards;
 
-        [Header("Spawn Preferences")]
-        [SerializeField] private float _minRange = 5f;
-        [SerializeField] private float _maxRange = 7f;
-
         private IDisposable _currentRecipeSubscription;
 
-        private CardsTable _cardsTable;
         private CardSpawner _cardSpawner;
-        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, CardSpawner cardSpawner, CardsTableBounds cardsTableBounds)
+        private void Constructor(CardSpawner cardSpawner)
         {
-            _cardsTable = cardsTable;
             _cardSpawner = cardSpawner;
-            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
 
         private void OnValidate()
         {
-            _cardData ??= GetComponentInParent<AutomatedCardFactoryData>();
+            _cardData = GetComponentInParent<AutomatedCardFactoryData>(true);
         }
 
         private void OnEnable()
@@ -108,18 +98,7 @@ namespace Cards.AutomatedFactories.Logic
         {
             Card cardToSpawn = GetCardToSpawn();
 
-            if (_cardsTable.TryGetLowestCompatibleGroupCard(cardToSpawn, cardToSpawn, out CardData lowestGroupCard))
-            {
-                Vector3 position = _cardData.transform.position;
-                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, position);
-                spawnedCard.LinkTo(lowestGroupCard);
-            }
-            else
-            {
-                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
-                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
-                spawnedCard.Animations.MoveAnimation.Play(position);
-            }
+            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
             _cardData.AutomatedFactoryCallbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
         }

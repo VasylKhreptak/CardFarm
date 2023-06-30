@@ -1,11 +1,12 @@
 ﻿using System;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Zones.SellZone.Logic.Updaters
 {
-    public class CanBeSellZoneUnderSelectedCard : MonoBehaviour
+    public class CanBeSellZoneUnderSelectedCard : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -13,6 +14,11 @@ namespace Cards.Zones.SellZone.Logic.Updaters
         private IDisposable _isCompatibleWithSelectedCardSubscription;
 
         #region MonoBehaviour
+
+        public void OnValidate()
+        {
+            _cardData = GetComponentInParent<CardData>(true);
+        }
 
         private void OnEnable()
         {

@@ -1,12 +1,13 @@
 ﻿using System;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using Extensions;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic
 {
-    public class CardJoiner : MonoBehaviour
+    public class CardJoiner : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -15,9 +16,9 @@ namespace Cards.Logic
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

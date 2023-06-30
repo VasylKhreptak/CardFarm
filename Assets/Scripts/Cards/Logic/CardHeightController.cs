@@ -1,11 +1,12 @@
 ﻿using System;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic
 {
-    public class CardHeightController : MonoBehaviour
+    public class CardHeightController : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -16,11 +17,11 @@ namespace Cards.Logic
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
-        
+
         private void OnEnable()
         {
             StartObservingUpperCard();

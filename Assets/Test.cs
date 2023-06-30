@@ -1,15 +1,12 @@
-using UniRx;
 using UnityEngine;
 
+[ExecuteAlways]
 public class Test : MonoBehaviour
 {
-    private void Awake()
+    private void Update()
     {
-        ReactiveCollection<int> qwqwe = new ReactiveCollection<int>();
-        
-        qwqwe.ObserveCountChanged().Subscribe(x =>
-        {
-            Debug.Log(x);
-        });
+        Bounds bounds = GetComponent<Collider>().bounds;
+
+        Debug.Log(bounds.ToString());
     }
 }

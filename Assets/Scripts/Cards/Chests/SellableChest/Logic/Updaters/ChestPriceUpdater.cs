@@ -1,10 +1,11 @@
 ﻿using Cards.Chests.SellableChest.Data;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Chests.SellableChest.Logic.Updaters
 {
-    public class ChestPriceUpdater : MonoBehaviour
+    public class ChestPriceUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private ChestSellableCardData _cardData;
@@ -13,9 +14,9 @@ namespace Cards.Chests.SellableChest.Logic.Updaters
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<ChestSellableCardData>();
+            _cardData = GetComponentInParent<ChestSellableCardData>(true);
         }
 
         private void Awake()

@@ -2,12 +2,13 @@
 using Cards.Data;
 using Cards.Graphics.Animations.Core;
 using DG.Tweening;
+using EditorTools.Validators.Core;
 using Extensions;
 using UnityEngine;
 
 namespace Cards.Graphics.Animations
 {
-    public class CardMoveAnimation : CardAnimation
+    public class CardMoveAnimation : CardAnimation, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -20,9 +21,9 @@ namespace Cards.Graphics.Animations
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnDisable()

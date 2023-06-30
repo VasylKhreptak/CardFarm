@@ -2,18 +2,17 @@
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
-using Constraints.CardTable;
 using Extensions;
 using ProgressLogic.Core;
 using ScriptableObjects.Scripts.Cards.ResourceNodes;
-using Table.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.ResourceNodes.Core.Logic
 {
-    public class ResourceNodeLogic : ProgressDependentObject
+    public class ResourceNodeLogic : ProgressDependentObject, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -22,23 +21,20 @@ namespace Cards.ResourceNodes.Core.Logic
         [Header("Preferences")]
         [SerializeField] private ResourceNodeData _resourceNodeData;
 
-        [Header("Spawn Preferences")]
-        [SerializeField] private float _minRange = 5f;
-        [SerializeField] private float _maxRange = 7f;
-
-        private CardsTable _cardsTable;
         private CardSpawner _cardSpawner;
-        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, CardSpawner cardSpawner, CardsTableBounds cardsTableBounds)
+        private void Constructor(CardSpawner cardSpawner)
         {
-            _cardsTable = cardsTable;
             _cardSpawner = cardSpawner;
-            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
+
+        public void OnValidate()
+        {
+            _cardData = GetComponentInParent<CardData>(true);
+        }
 
         private void OnEnable()
         {
@@ -84,19 +80,7 @@ namespace Cards.ResourceNodes.Core.Logic
         {
             Card cardToSpawn = GetCardToSpawn();
 
-            if (_cardsTable.TryGetLowestCompatibleGroupCard(cardToSpawn, cardToSpawn, out CardData lowestGroupCard))
-            {
-                Vector3 position = _cardData.transform.position;
-                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, position);
-                spawnedCard.LinkTo(lowestGroupCard);
-            }
-            else
-            {
-                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
-                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
-                spawnedCard.Animations.JumpAnimation.Play(position);
-                spawnedCard.Animations.FlipAnimation.Play();
-            }
+            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
             StartProgress(_resourceNodeData.Recipe.Cooldown);
         }

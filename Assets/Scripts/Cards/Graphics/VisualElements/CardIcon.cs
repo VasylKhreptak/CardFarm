@@ -1,12 +1,15 @@
 ﻿using System;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Graphics.VisualElements
 {
-    public class CardIcon : MonoBehaviour
+    public class CardIcon : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -16,10 +19,10 @@ namespace Cards.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _image ??= GetComponent<Image>();
-            _cardData ??= GetComponentInParent<CardData>();
+            _image = GetComponent<Image>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

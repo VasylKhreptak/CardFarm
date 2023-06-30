@@ -1,11 +1,12 @@
 ﻿using System;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
 {
-    public abstract class RecipeUpdater<T> : MonoBehaviour where T : CardData
+    public abstract class RecipeUpdater<T> : MonoBehaviour, IValidatable where T : CardData
     {
         [Header("References")]
         [SerializeField] protected T _cardData;
@@ -16,13 +17,14 @@ namespace Cards.Logic.Updaters
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<T>();
+            _cardData = GetComponentInParent<T>(true);
         }
 
         private void OnEnable()
         {
+            OnBecameHeadOfGroup();
             _cardData.Callbacks.onBecameHeadOfGroup += OnBecameHeadOfGroup;
             _isTopCardSubscription = _cardData.IsTopCard.Where(x => x == false).Subscribe(_ => ResetCurrentRecipe());
             _isCardSingleSubscription = _cardData.IsSingleCard.Where(x => x).Subscribe(_ => ResetCurrentRecipe());

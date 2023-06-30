@@ -1,12 +1,13 @@
 ﻿using System;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using TMPro;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Graphics.VisualElements
 {
-    public class CardHealthText : MonoBehaviour
+    public class CardHealthText : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private DamageableCardData _cardData;
@@ -16,10 +17,10 @@ namespace Cards.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _tmp ??= GetComponent<TMP_Text>();
-            _cardData ??= GetComponentInParent<DamageableCardData>();
+            _tmp = GetComponent<TMP_Text>();
+            _cardData = GetComponentInParent<DamageableCardData>(true);
         }
 
         private void OnEnable()

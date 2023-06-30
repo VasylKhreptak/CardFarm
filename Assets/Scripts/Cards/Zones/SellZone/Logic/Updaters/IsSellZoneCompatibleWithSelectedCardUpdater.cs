@@ -5,10 +5,11 @@ using Table;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Zones.SellZone.Logic.Updaters
 {
-    public class IsSellZoneCompatibleWithSelectedCardUpdater : MonoBehaviour
+    public class IsSellZoneCompatibleWithSelectedCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -24,6 +25,11 @@ namespace Cards.Zones.SellZone.Logic.Updaters
         }
 
         #region MonoBehaviour
+
+        public void OnValidate()
+        {
+            _cardData = GetComponentInParent<CardData>(true);
+        }
 
         private void OnEnable()
         {

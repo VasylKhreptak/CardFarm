@@ -12,10 +12,11 @@ using ScriptableObjects.Scripts.Cards.Incubators.Recipes;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Incubators.Logic
 {
-    public class IncubatorRecipeExecutor : ProgressDependentObject
+    public class IncubatorRecipeExecutor : ProgressDependentObject, IValidatable
     {
         [Header("References")]
         [SerializeField] private IncubatorData _cardData;
@@ -38,9 +39,9 @@ namespace Cards.Incubators.Logic
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<IncubatorData>();
+            _cardData = GetComponentInParent<IncubatorData>(true);
         }
 
         private void OnEnable()

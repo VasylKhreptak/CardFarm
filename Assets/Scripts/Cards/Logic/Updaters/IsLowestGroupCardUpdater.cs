@@ -1,11 +1,12 @@
 ﻿using System;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
 {
-    public class IsLowestGroupCardUpdater : MonoBehaviour
+    public class IsLowestGroupCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -14,11 +15,11 @@ namespace Cards.Logic.Updaters
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
-        
+
         private void OnEnable()
         {
             StartObserving();

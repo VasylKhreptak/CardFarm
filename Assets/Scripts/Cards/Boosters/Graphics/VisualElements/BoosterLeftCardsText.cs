@@ -1,12 +1,13 @@
 ﻿using System;
 using Cards.Boosters.Data;
+using EditorTools.Validators.Core;
 using TMPro;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Boosters.Graphics.VisualElements
 {
-    public class BoosterLeftCardsText : MonoBehaviour
+    public class BoosterLeftCardsText : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private BoosterCardData _cardData;
@@ -16,10 +17,10 @@ namespace Cards.Boosters.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _tmp ??= GetComponent<TMP_Text>();
-            _cardData ??= GetComponentInParent<BoosterCardData>();
+            _tmp = GetComponent<TMP_Text>();
+            _cardData = GetComponentInParent<BoosterCardData>(true);
         }
 
         private void OnEnable()

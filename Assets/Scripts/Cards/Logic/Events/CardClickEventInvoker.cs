@@ -1,11 +1,12 @@
 ﻿using System;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic.Events
 {
-    public class CardClickEventInvoker : MonoBehaviour
+    public class CardClickEventInvoker : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -19,9 +20,9 @@ namespace Cards.Logic.Events
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

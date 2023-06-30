@@ -5,13 +5,13 @@ using Physics;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Logic
 {
-    public class CardFollowTouch : MonoBehaviour
+    public class CardFollowTouch : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private Transform _transform;
         [SerializeField] private CardData _cardData;
 
         [Header("PReferences")]
@@ -33,10 +33,9 @@ namespace Cards.Logic
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _transform ??= GetComponent<Transform>();
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -81,7 +80,7 @@ namespace Cards.Logic
             Vector3 mousePosition = Input.mousePosition;
             if (_screenRaycaster.Raycast(mousePosition, _floorLayerMask, out RaycastHit hit))
             {
-                Vector3 difference = _transform.position - hit.point;
+                Vector3 difference = _cardData.transform.position - hit.point;
                 Vector2 offset = new Vector2(difference.x, difference.z);
                 _followTouchSubscription = Observable.EveryUpdate().Subscribe(_ => FollowTouchStep(offset));
             }
@@ -104,7 +103,7 @@ namespace Cards.Logic
 
             if (_screenRaycaster.Raycast(mousePosition, _floorLayerMask, out RaycastHit hit))
             {
-                Vector3 cardPosition = _transform.position;
+                Vector3 cardPosition = _cardData.transform.position;
                 Vector3 targetCardPosition = hit.point + new Vector3(horOffset.x, 0f, horOffset.y);
                 cardPosition = Vector3.Lerp(cardPosition, targetCardPosition, _speed * Time.deltaTime);
                 cardPosition.y = _cardData.Height.Value;
@@ -112,7 +111,7 @@ namespace Cards.Logic
                 Bounds bounds = _cardData.Collider.bounds;
                 bounds.center = cardPosition;
                 Vector3 clampedPosition = _cardsTableBounds.Clamp(bounds);
-                _transform.position = clampedPosition;
+                _cardData.transform.position = clampedPosition;
             }
         }
     }

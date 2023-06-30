@@ -1,11 +1,12 @@
 ﻿using System;
 using Cards.Boosters.Data;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Boosters.Logic.Events
 {
-    public class BoosterEmptiedEventInvoker : MonoBehaviour
+    public class BoosterEmptiedEventInvoker : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private BoosterCardData _boosterCardData;
@@ -14,9 +15,9 @@ namespace Cards.Boosters.Logic.Events
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _boosterCardData ??= GetComponentInParent<BoosterCardData>();
+            _boosterCardData = GetComponentInParent<BoosterCardData>(true);
         }
 
         private void OnEnable()

@@ -2,11 +2,12 @@
 using Cards.Chests.SellableChest.Data;
 using Cards.Core;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using UnityEngine;
 
 namespace Cards.Chests.SellableChest.Logic
 {
-    public class ChestFeeder : MonoBehaviour
+    public class ChestFeeder : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private ChestSellableCardData _cardData;
@@ -16,9 +17,9 @@ namespace Cards.Chests.SellableChest.Logic
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<ChestSellableCardData>();
+            _cardData = GetComponentInParent<ChestSellableCardData>(true);
         }
         
         private void OnEnable()

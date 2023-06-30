@@ -1,12 +1,13 @@
 ﻿using System;
 using Cards.Zones.BoosterBuyZone.Data;
+using EditorTools.Validators.Core;
 using TMPro;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Zones.BoosterBuyZone.Graphics.VisualElements
 {
-    public class BoosterPriceText : MonoBehaviour
+    public class BoosterPriceText : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private BoosterBuyZoneData _cardData;
@@ -16,9 +17,9 @@ namespace Cards.Zones.BoosterBuyZone.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _tmp ??= GetComponent<TMP_Text>();
+            _tmp = GetComponent<TMP_Text>();
         }
 
         private void OnEnable()

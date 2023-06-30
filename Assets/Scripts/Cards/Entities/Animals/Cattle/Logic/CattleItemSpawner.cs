@@ -2,20 +2,18 @@
 using Cards.Core;
 using Cards.Data;
 using Cards.Entities.Animals.Cattle.Data;
-using Cards.Entities.Data;
 using Cards.Logic.Spawn;
-using Constraints.CardTable;
+using EditorTools.Validators.Core;
 using Extensions;
 using ScriptableObjects.Scripts.Cards.Cattle;
-using Table.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Entities.Animals.Cattle.Logic
 {
-    public class CattleItemSpawner : MonoBehaviour
+    public class CattleItemSpawner : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CattleCardData _cardData;
@@ -23,30 +21,22 @@ namespace Cards.Entities.Animals.Cattle.Logic
         [Header("Preferences")]
         [SerializeField] private CattleItemSpawnerData _data;
 
-        [Header("Spawn Preferences")]
-        [SerializeField] private float _minRange = 5f;
-        [SerializeField] private float _maxRange = 7f;
-
         private IDisposable _intervalSubscription;
         private IDisposable _isCardSingleSubscription;
 
-        private CardsTable _cardsTable;
         private CardSpawner _cardSpawner;
-        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, CardSpawner cardSpawner, CardsTableBounds cardsTableBounds)
+        private void Constructor(CardSpawner cardSpawner)
         {
-            _cardsTable = cardsTable;
             _cardSpawner = cardSpawner;
-            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CattleCardData>();
+            _cardData = GetComponentInParent<CattleCardData>(true);
         }
 
         private void OnEnable()
@@ -124,19 +114,9 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
             Card cardToSpawn = cattleCard.Card;
 
-            if (_cardsTable.TryGetLowestCompatibleGroupCard(cardToSpawn, cardToSpawn, out CardData lowestGroupCard))
-            {
-                Vector3 position = _cardData.transform.position;
-                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, position);
-                spawnedCard.LinkTo(lowestGroupCard);
-            }
-            else
-            {
-                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
-                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
-                spawnedCard.Animations.JumpAnimation.Play(position);
-                spawnedCard.Animations.FlipAnimation.Play();
-            }
+            CardData spawnedCard = _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position,
+                null, true, true);
+            spawnedCard.Animations.FlipAnimation.Play();
 
             _cardData.CattleCallbacks.OnItemSpawned?.Invoke(cardToSpawn);
             _cardData.CattleCallbacks.OnItemSpawnedNoArgs?.Invoke();

@@ -2,10 +2,11 @@
 using Constraints.CardTable;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Logic.Updaters
 {
-    public class IsInsideCardsTableUpdater : MonoBehaviour
+    public class IsInsideCardsTableUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -20,9 +21,9 @@ namespace Cards.Logic.Updaters
 
         #region MonoBehaivour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void Update()

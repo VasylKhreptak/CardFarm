@@ -5,10 +5,11 @@ using Extensions;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Graphics
 {
-    public class CardLayerOrderUpdater : MonoBehaviour
+    public class CardLayerOrderUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -27,9 +28,9 @@ namespace Cards.Graphics
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
         
         private void OnEnable()

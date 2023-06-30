@@ -1,12 +1,13 @@
 ﻿using System;
 using Cards.Chests.SellableChest.Data;
+using EditorTools.Validators.Core;
 using TMPro;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Chests.SellableChest.Graphics.VisualElements
 {
-    public class ChestItemsCountText : MonoBehaviour
+    public class ChestItemsCountText : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private ChestSellableCardData _cardData;
@@ -16,10 +17,10 @@ namespace Cards.Chests.SellableChest.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _tmp ??= GetComponent<TMP_Text>();
-            _cardData ??= GetComponentInParent<ChestSellableCardData>();
+            _tmp = GetComponent<TMP_Text>();
+            _cardData = GetComponentInParent<ChestSellableCardData>(true);
         }
 
         private void OnEnable()

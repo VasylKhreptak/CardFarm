@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6874c566684cf19a94d2fcfe934958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 9195747696069395228}
+  _cardData: {fileID: 0}
 --- !u!1 &7424889002385893783
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,17 +111,17 @@ PrefabInstance:
     - target: {fileID: 302493228, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 64048489458420466, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 161928299932586816, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 521652541118679619, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -261,62 +261,62 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 564359372343886381, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 614724759906550525, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 768652195340204073, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 786336319766363449, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 815714265772882842, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 816112179040888515, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _data
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 824729164903310302, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 1311122386514509855, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 1591044412716788906, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 1746907244545100267, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 2087830639797775938, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 2918477419534760311, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
@@ -326,12 +326,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 3114164014172808900, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 3724110072250202170, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
@@ -341,17 +341,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 4092083931107676536, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 4114440927029425528, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 4131032017452411057, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -361,32 +361,32 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 4455854680745973503, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 4922104985401461675, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 5367648823401592377, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 5552890494265231663, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 5713935055913505640, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 5801756564987336693, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -396,26 +396,26 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 5992432367743640832, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 6067989905856114083, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 6205645074834406718, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 6357582081558484565, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6690883950014223545, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
@@ -426,32 +426,32 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 7205802763299463574, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 7234907831959394999, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 7747637961905692133, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 7802786590005582401, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 7816034676176084162, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 7904051146303008334, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
@@ -461,17 +461,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 8846965743915824190, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 9068276414637050321, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 9195747696069395228}
+      objectReference: {fileID: 0}
     - target: {fileID: 9183290287491818322, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -557,6 +557,8 @@ MonoBehaviour:
   _isWorker: 0
   _isSellableCard: 0
   _canSortingLayerChange: 1
+  _isAutomatedFactory: 0
+  _isIncubator: 0
   ID: -1
   GroupID:
     value: -1

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Cards.Core;
 using Cards.Data;
@@ -7,10 +8,11 @@ using Cards.Zones.SellZone.Data;
 using Extensions;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Zones.SellZone.Logic
 {
-    public class SellZoneLogic : MonoBehaviour
+    public class SellZoneLogic : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private SellZoneData _zoneData;
@@ -24,6 +26,11 @@ namespace Cards.Zones.SellZone.Logic
         }
 
         #region MonoBehaviour
+
+        public void OnValidate()
+        {
+            _zoneData = GetComponentInParent<SellZoneData>(true);
+        }
 
         private void OnEnable()
         {
@@ -68,9 +75,9 @@ namespace Cards.Zones.SellZone.Logic
             foreach (var bottomCard in bottomCards)
             {
                 if (bottomCard.IsSellableCard == false) return;
-                
-                if(bottomCard.Card.Value == Card.Coin) return;
-                
+
+                if (bottomCard.Card.Value == Card.Coin) return;
+
                 SellableCardData sellableCard = bottomCard as SellableCardData;
 
                 if (sellableCard == null) return;

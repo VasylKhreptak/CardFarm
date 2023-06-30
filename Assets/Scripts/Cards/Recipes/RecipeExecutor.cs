@@ -12,38 +12,33 @@ using Table.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Recipes
 {
-    public class RecipeExecutor : ProgressDependentObject
+    public class RecipeExecutor : ProgressDependentObject, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
-
-        [Header("Preferences")]
-        [SerializeField] private float _resultedCardMoveDuration = 0.5f;
-
-        [Header("Spawn Preferences")]
-        [SerializeField] private float _minRange = 5f;
-        [SerializeField] private float _maxRange = 7f;
 
         private IDisposable _recipeSubscription;
 
         private int _resultsLeft;
 
-        private CardsTable _cardsTable;
         private CardSpawner _cardSpawner;
-        private CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, CardSpawner cardSpawner, CardsTableBounds cardsTableBounds)
+        private void Constructor(CardSpawner cardSpawner)
         {
-            _cardsTable = cardsTable;
             _cardSpawner = cardSpawner;
-            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
+
+        public void OnValidate()
+        {
+            _cardData = GetComponentInParent<CardData>(true);
+        }
 
         private void OnEnable()
         {
@@ -101,18 +96,7 @@ namespace Cards.Recipes
         {
             Card cardToSpawn = _cardData.CurrentRecipe.Value.Result.Weights.GetByWeight(x => x.Weight).Card;
 
-            if (_cardsTable.TryGetLowestCompatibleGroupCard(cardToSpawn, cardToSpawn, out CardData lowestGroupCard))
-            {
-                Vector3 position = _cardData.transform.position;
-                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, position);
-                spawnedCard.LinkTo(lowestGroupCard);
-            }
-            else
-            {
-                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
-                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _cardData.transform.position);
-                spawnedCard.Animations.MoveAnimation.Play(position, _resultedCardMoveDuration);
-            }
+            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
             _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
         }
@@ -139,16 +123,6 @@ namespace Cards.Recipes
             {
                 firstWorker.LinkTo(lowestTargetResource);
             }
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            if (_cardData == null) return;
-
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(_cardData.transform.position, _minRange);
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_cardData.transform.position, _maxRange);
         }
 
         private CardData GetFirstWorker()

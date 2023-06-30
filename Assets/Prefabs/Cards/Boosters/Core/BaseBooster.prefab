@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f6b69f7cc1440e989582717e17a6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 3829932553933156705}
+  _cardData: {fileID: 0}
   _tmp: {fileID: 8276745469950945994}
 --- !u!1 &7410926294378359877
 GameObject:
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dea32e1a904d08a4f34fc66a676e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boosterCardData: {fileID: 3829932553933156705}
+  _boosterCardData: {fileID: 0}
 --- !u!1 &7509956096164046782
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,32 +594,32 @@ PrefabInstance:
     - target: {fileID: 4190233432472343, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 154212064968638915, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 171333187416605907, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 277232900628726384, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 277670274747375401, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _data
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 286845925495527988, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 552819098959709841, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
@@ -629,7 +629,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 1106781378184328992, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_Name
@@ -780,7 +780,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 1106781378837674968, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -805,22 +805,22 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 1204520439031820289, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 1472788062517335976, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 1781362583947358597, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 1880421872753608925, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -830,17 +830,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 2206082539133605184, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 2306884501545121961, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 2308536637409493149, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -855,17 +855,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 3477643887258593426, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 3571491043317664914, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 3607325753008040723, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_IsActive
@@ -875,12 +875,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 3845918150356545301, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 4262552001322664400, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -890,27 +890,27 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 4824668281107353555, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 5009909806157803717, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 5170954531621235330, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 5532608855236817473, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 6076439567138778451, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -925,7 +925,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 6301725546041918821, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
@@ -935,37 +935,37 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 6602408350882929898, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 6682434459153667145, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 6816184043897521364, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 7137134185686426639, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 7259805928741692331, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 7273647887069144360, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 7294079551765895076, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -975,7 +975,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 7641205947910088817, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -985,7 +985,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 7830257334794638351, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -995,12 +995,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 8236994038230437332, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 8285886438910412785, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_IsActive
@@ -1020,12 +1020,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     - target: {fileID: 8773328932188210635, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
-      objectReference: {fileID: 3829932553933156705}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
     - {fileID: 8453801090765566011, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
@@ -1071,6 +1071,8 @@ MonoBehaviour:
   _isWorker: 0
   _isSellableCard: 0
   _canSortingLayerChange: 1
+  _isAutomatedFactory: 0
+  _isIncubator: 0
   ID: -1
   GroupID:
     value: -1

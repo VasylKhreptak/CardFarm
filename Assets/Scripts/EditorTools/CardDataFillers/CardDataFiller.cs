@@ -1,21 +1,21 @@
 ﻿using Cards.Data;
 using Cards.Graphics.Animations;
-using Cards.Logic;
+using EditorTools.Validators.Core;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using NaughtyAttributes;
 using Tags.Cards;
 using UnityEngine;
 
-namespace Cards.CardDataFillers
+namespace EditorTools.CardDataFillers
 {
-    public class CardDataFiller : MonoBehaviour
+    public class CardDataFiller : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] protected CardData _cardData;
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
             FillData();
         }

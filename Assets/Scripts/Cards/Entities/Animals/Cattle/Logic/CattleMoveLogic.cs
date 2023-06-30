@@ -1,12 +1,14 @@
 ﻿using Cards.Entities.Animals.Cattle.Data;
 using Constraints.CardTable;
+using EditorTools.Validators.Core;
 using Extensions;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Entities.Animals.Cattle.Logic
 {
-    public class CattleMoveLogic : MonoBehaviour
+    public class CattleMoveLogic : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CattleCardData _cardData;
@@ -25,9 +27,9 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CattleCardData>();
+            _cardData = GetComponentInParent<CattleCardData>(true);
         }
 
         private void OnEnable()

@@ -2,10 +2,12 @@
 using Cards.Data;
 using UniRx;
 using UnityEngine;
+using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Logic.Durability
 {
-    public class DurabilityController : MonoBehaviour
+    public class DurabilityController : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -15,9 +17,9 @@ namespace Cards.Logic.Durability
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

@@ -2,10 +2,11 @@
 using ItemsIDManagement;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Logic
 {
-    public class CardIDUpdater : MonoBehaviour
+    public class CardIDUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _data;
@@ -20,11 +21,11 @@ namespace Cards.Logic
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _data ??= GetComponentInParent<CardData>();
+            _data = GetComponentInParent<CardData>(true);
         }
-        
+
         private void Awake()
         {
             _data.ID = _idProvider.Value;

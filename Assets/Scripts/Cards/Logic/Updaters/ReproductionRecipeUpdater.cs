@@ -12,7 +12,6 @@ namespace Cards.Logic.Updaters
         [Header("References")]
         [SerializeField] private CardReproductionRecipes _cardRecipes;
 
-
         protected override void ResetCurrentRecipe()
         {
             _cardData.CurrentReproductionRecipe.Value = null;

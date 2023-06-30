@@ -5,10 +5,11 @@ using Table;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Logic.Updaters
 {
-    public class IsCompatibleWithSelectedCardUpdater : MonoBehaviour
+    public class IsCompatibleWithSelectedCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -26,9 +27,9 @@ namespace Cards.Logic.Updaters
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

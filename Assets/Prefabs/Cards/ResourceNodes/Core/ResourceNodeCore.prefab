@@ -49,10 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400949843438444ebf67206199d0f732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 2709758502585604610}
+  _cardData: {fileID: 0}
   _resourceNodeData: {fileID: 0}
-  _minRange: 5
-  _maxRange: 7
 --- !u!1001 &2709758501872687489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,6 +58,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 521652541118679619, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 564359370849849034, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_Name
@@ -180,25 +183,23 @@ PrefabInstance:
       propertyPath: _progressDependentObject
       value: 
       objectReference: {fileID: 4896331869501068885}
+    - target: {fileID: 4131032017452411057, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6690883950014223545, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9183290287491818322, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
---- !u!114 &2709758502585604610 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1854063491, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2709758501872687489}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 345e4219acecf0b42beb4951e22dc5a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8917206610946912637 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6798947982536747260, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,

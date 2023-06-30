@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
 {
-    public class JoinableCardUpdater : MonoBehaviour
+    public class JoinableCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("Preferences")]
         [SerializeField] private Transform[] _cardCorners;
@@ -24,9 +25,9 @@ namespace Cards.Logic.Updaters
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void Awake()

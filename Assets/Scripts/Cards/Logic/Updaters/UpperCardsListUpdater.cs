@@ -1,22 +1,23 @@
 ﻿using System.Collections.Generic;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using Extensions;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
 {
-    public class UpperCardsListUpdater : MonoBehaviour
+    public class UpperCardsListUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
-        
+
         private void OnEnable()
         {
             UpdateUpperCardsList();

@@ -1,5 +1,4 @@
 ﻿using System;
-using Cards.Data;
 using Cards.Logic.Spawn;
 using Quests.Logic;
 using UniRx;
@@ -64,10 +63,7 @@ namespace Quests.Graphics.VisualElements
         {
             foreach (var cardToSpawn in _questsManager.CurrentQuest.Value.Reward.Cards)
             {
-                CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, Vector3.zero);
-
-                spawnedCard.Animations.FlipAnimation.Play();
-                spawnedCard.Animations.JumpAnimation.Play(Vector3.zero);
+                _cardSpawner.SpawnAndMove(cardToSpawn, Vector3.zero);
             }
         }
 

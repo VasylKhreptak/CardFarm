@@ -4,14 +4,14 @@ using Constraints.CardTable;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Logic
 {
-    public class CardFollowCard : MonoBehaviour
+    public class CardFollowCard : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
-        [SerializeField] private Transform _transform;
 
         [Header("Preferences")]
         [SerializeField] private float _speed = 5f;
@@ -29,10 +29,9 @@ namespace Cards.Logic
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _transform ??= GetComponent<Transform>();
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -83,15 +82,15 @@ namespace Cards.Logic
         private void FollowStep()
         {
             Vector3 targetPosition = _cardData.UpperCard.Value.BottomCardFollowPoint.position;
-            Vector3 transformPosition = _transform.position;
+            Vector3 transformPosition = _cardData.transform.position;
 
             transformPosition = Vector3.Lerp(transformPosition, targetPosition, _speed * Time.deltaTime);
             transformPosition.y = _cardData.Height.Value;
-            
+
             Bounds bounds = _cardData.Collider.bounds;
             bounds.center = transformPosition;
             Vector3 clampedPosition = _cardsTableBounds.Clamp(bounds);
-            _transform.position = clampedPosition;
+            _cardData.transform.position = clampedPosition;
         }
     }
 }

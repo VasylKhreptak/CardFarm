@@ -1,4 +1,5 @@
 ﻿using System;
+using EditorTools.Validators.Core;
 using ProgressLogic.Core;
 using UniRx;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Cards.Recipes.Graphics.VisualElements
 {
-    public class CardProgress : MonoBehaviour
+    public class ProgressUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private ProgressDependentObject _progressDependentObject;
@@ -16,9 +17,9 @@ namespace Cards.Recipes.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _slider ??= GetComponent<Slider>();
+            _slider = GetComponent<Slider>();
         }
 
         private void OnEnable()

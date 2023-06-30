@@ -1,19 +1,20 @@
 ﻿using System.Linq;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
 {
-    public class LowestGroupCardUpdater : MonoBehaviour
+    public class LowestGroupCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
         
         private void OnEnable()

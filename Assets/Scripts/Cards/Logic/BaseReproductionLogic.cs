@@ -11,11 +11,11 @@ using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Logic
 {
-    public class BaseReproductionLogic : ProgressDependentObject
+    public class BaseReproductionLogic : ProgressDependentObject, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -38,9 +38,9 @@ namespace Cards.Logic
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

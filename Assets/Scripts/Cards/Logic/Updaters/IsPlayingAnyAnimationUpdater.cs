@@ -2,12 +2,13 @@
 using System.Linq;
 using Cards.Data;
 using Cards.Graphics.Animations.Core;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Logic.Updaters
 {
-    public class IsPlayingAnyAnimationUpdater : MonoBehaviour
+    public class IsPlayingAnyAnimationUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -17,12 +18,13 @@ namespace Cards.Logic.Updaters
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<CardData>();
+            _cardData = GetComponentInParent<CardData>(true);
 
             if (_cardData == null) return;
-            _animations ??= _cardData.GetComponentsInChildren<CardAnimation>();
+
+            _animations = _cardData.GetComponentsInChildren<CardAnimation>();
         }
 
         private void OnEnable()

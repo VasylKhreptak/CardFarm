@@ -2,38 +2,34 @@
 using Animations.Shake.Position;
 using Cards.Boosters.Data;
 using Constraints.CardTable;
+using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Boosters.Logic.Core
 {
-    public abstract class BoosterBaseLogic : MonoBehaviour
+    public abstract class BoosterBaseLogic : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] protected BoosterCardData _cardData;
 
-        [Header("Spawn Preferences")]
-        [SerializeField] protected float _minRange = 5f;
-        [SerializeField] protected float _maxRange = 7f;
-
         private IDisposable _totalCardsSubscription;
 
         private CameraShakeAnimation _cameraShakeAnimation;
-        protected CardsTableBounds _cardsTableBounds;
 
         [Inject]
-        private void Constructor(CameraShakeAnimation cameraShakeAnimation, CardsTableBounds cardsTableBounds)
+        private void Constructor(CameraShakeAnimation cameraShakeAnimation)
         {
             _cameraShakeAnimation = cameraShakeAnimation;
-            _cardsTableBounds = cardsTableBounds;
         }
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _cardData ??= GetComponentInParent<BoosterCardData>();
+            _cardData = GetComponentInParent<BoosterCardData>(true);
         }
 
         private void OnEnable()
@@ -85,13 +81,5 @@ namespace Cards.Boosters.Logic.Core
         }
 
         protected abstract void SpawnResultedCard();
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(_cardData.transform.position, _minRange);
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_cardData.transform.position, _maxRange);
-        }
     }
 }

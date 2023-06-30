@@ -1,12 +1,13 @@
 ﻿using System;
 using Cards.Data;
+using EditorTools.Validators.Core;
 using TMPro;
 using UniRx;
 using UnityEngine;
 
 namespace Cards.Graphics.VisualElements
 {
-    public class CardNutritionalValueText : MonoBehaviour
+    public class CardNutritionalValueText : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private FoodCardData _cardData;
@@ -16,10 +17,10 @@ namespace Cards.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        public void OnValidate()
         {
-            _tmp ??= GetComponent<TMP_Text>();
-            _cardData ??= GetComponentInParent<FoodCardData>();
+            _tmp = GetComponent<TMP_Text>();
+            _cardData = GetComponentInParent<FoodCardData>(true);
         }
 
         private void OnEnable()
