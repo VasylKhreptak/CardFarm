@@ -8,7 +8,6 @@ using Cards.Zones.SellZone.Data;
 using Extensions;
 using UnityEngine;
 using Zenject;
-using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Zones.SellZone.Logic
 {
@@ -28,6 +27,11 @@ namespace Cards.Zones.SellZone.Logic
         #region MonoBehaviour
 
         public void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _zoneData = GetComponentInParent<SellZoneData>(true);
         }

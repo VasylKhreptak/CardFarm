@@ -4,15 +4,12 @@ using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
-using Constraints.CardTable;
 using Extensions;
 using ProgressLogic.Core;
 using ScriptableObjects.Scripts.Cards.Recipes;
-using Table.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Recipes
 {
@@ -35,7 +32,12 @@ namespace Cards.Recipes
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CardData>(true);
         }

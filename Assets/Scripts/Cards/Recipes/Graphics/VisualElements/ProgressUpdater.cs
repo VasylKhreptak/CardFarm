@@ -1,9 +1,9 @@
 ﻿using System;
-using EditorTools.Validators.Core;
 using ProgressLogic.Core;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Cards.Recipes.Graphics.VisualElements
 {
@@ -17,7 +17,12 @@ namespace Cards.Recipes.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _slider = GetComponent<Slider>();
         }

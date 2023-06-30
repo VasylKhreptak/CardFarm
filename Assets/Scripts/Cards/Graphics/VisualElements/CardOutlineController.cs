@@ -1,8 +1,8 @@
 ﻿using System;
 using Cards.Data;
-using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Graphics.VisualElements
 {
@@ -18,8 +18,13 @@ namespace Cards.Graphics.VisualElements
 
         public void OnValidate()
         {
-            _outlineObject ??= transform.GetChild(0).gameObject;
-            _cardData ??= GetComponentInParent<CardData>(true);
+            Validate();
+        }
+
+        public void Validate()
+        {
+            _outlineObject = transform.GetChild(0).gameObject;
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

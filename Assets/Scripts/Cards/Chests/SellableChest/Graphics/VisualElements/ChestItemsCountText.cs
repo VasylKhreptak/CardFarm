@@ -1,9 +1,9 @@
 ﻿using System;
 using Cards.Chests.SellableChest.Data;
-using EditorTools.Validators.Core;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Chests.SellableChest.Graphics.VisualElements
 {
@@ -17,7 +17,12 @@ namespace Cards.Chests.SellableChest.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _tmp = GetComponent<TMP_Text>();
             _cardData = GetComponentInParent<ChestSellableCardData>(true);

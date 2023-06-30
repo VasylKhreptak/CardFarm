@@ -1,9 +1,9 @@
 ﻿using System;
 using Cards.Data;
-using EditorTools.Validators.Core;
 using Extensions;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards
 {
@@ -16,7 +16,12 @@ namespace Cards
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CardData>(true);
         }

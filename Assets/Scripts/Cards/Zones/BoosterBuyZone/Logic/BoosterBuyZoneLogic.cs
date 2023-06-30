@@ -6,9 +6,7 @@ using Cards.Zones.BoosterBuyZone.Data;
 using Coins;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
-using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Zones.BoosterBuyZone.Logic
 {
@@ -37,7 +35,12 @@ namespace Cards.Zones.BoosterBuyZone.Logic
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<BoosterBuyZoneData>(true);
         }

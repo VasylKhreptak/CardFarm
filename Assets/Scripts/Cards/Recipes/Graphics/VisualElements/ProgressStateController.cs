@@ -1,9 +1,7 @@
 ﻿using System;
-using EditorTools.Validators.Core;
 using ProgressLogic.Core;
 using UniRx;
 using UnityEngine;
-using IValidatable = Zenject.IValidatable;
 
 namespace Cards.Recipes.Graphics.VisualElements
 {

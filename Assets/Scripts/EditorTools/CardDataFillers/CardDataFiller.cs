@@ -1,10 +1,10 @@
 ﻿using Cards.Data;
 using Cards.Graphics.Animations;
-using EditorTools.Validators.Core;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using NaughtyAttributes;
 using Tags.Cards;
 using UnityEngine;
+using Zenject;
 
 namespace EditorTools.CardDataFillers
 {
@@ -15,7 +15,12 @@ namespace EditorTools.CardDataFillers
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             FillData();
         }

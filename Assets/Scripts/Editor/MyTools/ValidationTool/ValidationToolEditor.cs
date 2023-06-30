@@ -1,26 +1,26 @@
 using System.Collections.Generic;
-using EditorTools.Validators;
 using Extensions;
 using UnityEditor;
 using UnityEngine;
+using Zenject;
 
-namespace Editor.MyTools
+namespace Editor.MyTools.ValidationTool
 {
-    public class MyToolsEditor : EditorWindow
+    public class ValidationToolEditor : EditorWindow
     {
         private string _prefabPath = "Assets/Prefabs";
 
-        [MenuItem("MyTools/Tools")]
+        [MenuItem("MyTools/Validation")]
         public static void ShowWindow()
         {
-            GetWindow<MyToolsEditor>("My Tools");
+            GetWindow<ValidationToolEditor>("Validation Tool");
         }
 
         private void OnGUI()
         {
             GUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Validate Prefabs"))
+            if (GUILayout.Button("Validate Scripts"))
             {
                 ValidatePrefabs();
             }
@@ -32,9 +32,11 @@ namespace Editor.MyTools
 
         private void ValidatePrefabs()
         {
-            List<ChildrenValidator> validators = ComponentLoader.LoadAllComponents<ChildrenValidator>(_prefabPath);
+            List<IValidatable> validators = ComponentLoader.LoadAllComponents<IValidatable>(_prefabPath);
 
-            validators.ForEach(validator => validator.OnValidate());
+            validators.ForEach(validator => validator.Validate());
+
+            Debug.Log($"Validated {validators.Count} scripts in {_prefabPath}.");
         }
     }
 }

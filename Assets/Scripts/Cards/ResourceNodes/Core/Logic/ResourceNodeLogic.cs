@@ -8,7 +8,6 @@ using ScriptableObjects.Scripts.Cards.ResourceNodes;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
-using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.ResourceNodes.Core.Logic
 {
@@ -31,7 +30,12 @@ namespace Cards.ResourceNodes.Core.Logic
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CardData>(true);
         }

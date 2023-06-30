@@ -1,8 +1,8 @@
 ﻿using System;
 using Cards.Data;
-using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Logic.Events
 {
@@ -16,11 +16,16 @@ namespace Cards.Logic.Events
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CardData>(true);
         }
-        
+
         private void OnEnable()
         {
             StartObservingIfSingleCard();

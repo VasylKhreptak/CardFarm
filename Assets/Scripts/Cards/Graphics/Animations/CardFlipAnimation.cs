@@ -2,9 +2,9 @@
 using Cards.Data;
 using Cards.Graphics.Animations.Core;
 using DG.Tweening;
-using EditorTools.Validators.Core;
 using Extensions;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Graphics.Animations
 {
@@ -23,7 +23,12 @@ namespace Cards.Graphics.Animations
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CardData>(true);
         }

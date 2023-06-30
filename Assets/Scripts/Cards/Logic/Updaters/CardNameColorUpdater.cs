@@ -1,54 +1,59 @@
 ﻿using System;
 using Cards.Data;
-using EditorTools.Validators.Core;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Logic.Updaters
 {
     public class CardNameColorUpdater : MonoBehaviour, IValidatable
     {
-    [Header("References")]
-    [SerializeField] private TMP_Text _tmp;
-    [SerializeField] private CardData _cardData;
+        [Header("References")]
+        [SerializeField] private TMP_Text _tmp;
+        [SerializeField] private CardData _cardData;
 
-    private IDisposable _colorSubscription;
+        private IDisposable _colorSubscription;
 
-    #region MonoBehaviour
+        #region MonoBehaviour
 
-    public void OnValidate()
-    {
-        _tmp = GetComponent<TMP_Text>();
-        _cardData = GetComponentInParent<CardData>(true);
-    }
+        private void OnValidate()
+        {
+            Validate();
+        }
 
-    private void OnEnable()
-    {
-        StartObserving();
-    }
+        public void Validate()
+        {
+            _tmp = GetComponent<TMP_Text>();
+            _cardData = GetComponentInParent<CardData>(true);
+        }
 
-    private void OnDisable()
-    {
-        StopObserving();
-    }
+        private void OnEnable()
+        {
+            StartObserving();
+        }
 
-    #endregion
+        private void OnDisable()
+        {
+            StopObserving();
+        }
 
-    private void StartObserving()
-    {
-        StopObserving();
-        _colorSubscription = _cardData.NameColor.Subscribe(SetColor);
-    }
+        #endregion
 
-    private void StopObserving()
-    {
-        _colorSubscription?.Dispose();
-    }
+        private void StartObserving()
+        {
+            StopObserving();
+            _colorSubscription = _cardData.NameColor.Subscribe(SetColor);
+        }
 
-    private void SetColor(Color color)
-    {
-        _tmp.color = color;
-    }
+        private void StopObserving()
+        {
+            _colorSubscription?.Dispose();
+        }
+
+        private void SetColor(Color color)
+        {
+            _tmp.color = color;
+        }
     }
 }

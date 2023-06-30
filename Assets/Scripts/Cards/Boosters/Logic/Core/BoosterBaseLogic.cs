@@ -1,12 +1,9 @@
 ﻿using System;
 using Animations.Shake.Position;
 using Cards.Boosters.Data;
-using Constraints.CardTable;
-using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Boosters.Logic.Core
 {
@@ -27,7 +24,12 @@ namespace Cards.Boosters.Logic.Core
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<BoosterCardData>(true);
         }

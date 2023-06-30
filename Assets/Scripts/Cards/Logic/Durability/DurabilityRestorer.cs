@@ -1,6 +1,6 @@
 ﻿using Cards.Data;
-using EditorTools.Validators.Core;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Logic.Durability
 {
@@ -11,7 +11,12 @@ namespace Cards.Logic.Durability
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CardData>(true);
         }

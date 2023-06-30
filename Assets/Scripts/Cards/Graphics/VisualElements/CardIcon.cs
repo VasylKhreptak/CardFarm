@@ -1,11 +1,9 @@
 ﻿using System;
 using Cards.Data;
-using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
-using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Graphics.VisualElements
 {
@@ -20,6 +18,11 @@ namespace Cards.Graphics.VisualElements
         #region MonoBehaviour
 
         public void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _image = GetComponent<Image>();
             _cardData = GetComponentInParent<CardData>(true);

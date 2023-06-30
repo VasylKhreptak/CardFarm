@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Cards.Data;
-using EditorTools.Validators.Core;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Logic.Updaters
 {
@@ -12,11 +12,16 @@ namespace Cards.Logic.Updaters
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CardData>(true);
         }
-        
+
         private void OnEnable()
         {
             OnGroupCardsUpdated();
@@ -44,12 +49,12 @@ namespace Cards.Logic.Updaters
 
         private void OnGroupCardsUpdated()
         {
-            if(_cardData.GroupCards.Count == 0)
+            if (_cardData.GroupCards.Count == 0)
             {
                 _cardData.LowestGroupCard.Value = null;
                 return;
             }
-            
+
             _cardData.LowestGroupCard.Value = _cardData.GroupCards.Last();
         }
     }

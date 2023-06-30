@@ -3,13 +3,11 @@ using Cards.Core;
 using Cards.Data;
 using Cards.Entities.Animals.Cattle.Data;
 using Cards.Logic.Spawn;
-using EditorTools.Validators.Core;
 using Extensions;
 using ScriptableObjects.Scripts.Cards.Cattle;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Entities.Animals.Cattle.Logic
 {
@@ -34,7 +32,12 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CattleCardData>(true);
         }

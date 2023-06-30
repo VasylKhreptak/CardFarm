@@ -1,10 +1,8 @@
 ﻿using Cards.Entities.Animals.Cattle.Data;
 using Constraints.CardTable;
-using EditorTools.Validators.Core;
 using Extensions;
 using UnityEngine;
 using Zenject;
-using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Entities.Animals.Cattle.Logic
 {
@@ -27,9 +25,15 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CattleCardData>(true);
+
         }
 
         private void OnEnable()

@@ -1,9 +1,9 @@
 ﻿using System;
 using Cards.Boosters.Data;
-using EditorTools.Validators.Core;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Boosters.Graphics.VisualElements
 {
@@ -17,7 +17,12 @@ namespace Cards.Boosters.Graphics.VisualElements
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _tmp = GetComponent<TMP_Text>();
             _cardData = GetComponentInParent<BoosterCardData>(true);

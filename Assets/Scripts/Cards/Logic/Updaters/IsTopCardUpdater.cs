@@ -1,8 +1,8 @@
 ﻿using System;
 using Cards.Data;
-using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Logic.Updaters
 {
@@ -15,7 +15,12 @@ namespace Cards.Logic.Updaters
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CardData>(true);
         }
@@ -51,10 +56,6 @@ namespace Cards.Logic.Updaters
         private void OnCardsUpdated(CardData upperCard, CardData bottomCard)
         {
             _cardData.IsTopCard.Value = upperCard == null && bottomCard != null;
-        }
-        public void Validate()
-        {
-            throw new NotImplementedException();
         }
     }
 }

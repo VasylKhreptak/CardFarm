@@ -1,8 +1,8 @@
 ﻿using System;
 using Cards.Boosters.Data;
-using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Boosters.Logic.Events
 {
@@ -15,7 +15,12 @@ namespace Cards.Boosters.Logic.Events
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _boosterCardData = GetComponentInParent<BoosterCardData>(true);
         }

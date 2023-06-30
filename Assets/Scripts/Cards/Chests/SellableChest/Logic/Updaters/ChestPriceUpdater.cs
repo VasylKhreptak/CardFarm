@@ -1,7 +1,7 @@
 ﻿using Cards.Chests.SellableChest.Data;
-using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Chests.SellableChest.Logic.Updaters
 {
@@ -15,6 +15,11 @@ namespace Cards.Chests.SellableChest.Logic.Updaters
         #region MonoBehaviour
 
         public void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<ChestSellableCardData>(true);
         }

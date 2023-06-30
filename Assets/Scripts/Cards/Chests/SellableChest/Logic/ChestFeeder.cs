@@ -2,8 +2,8 @@
 using Cards.Chests.SellableChest.Data;
 using Cards.Core;
 using Cards.Data;
-using EditorTools.Validators.Core;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Chests.SellableChest.Logic
 {
@@ -19,9 +19,14 @@ namespace Cards.Chests.SellableChest.Logic
 
         public void OnValidate()
         {
+            Validate();
+        }
+
+        public void Validate()
+        {
             _cardData = GetComponentInParent<ChestSellableCardData>(true);
         }
-        
+
         private void OnEnable()
         {
             StartObserving();

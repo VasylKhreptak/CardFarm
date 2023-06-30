@@ -1,9 +1,9 @@
 ﻿using System;
 using Cards.Data;
-using EditorTools.Validators.Core;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Graphics.VisualElements
 {
@@ -18,6 +18,11 @@ namespace Cards.Graphics.VisualElements
         #region MonoBehaviour
 
         public void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _tmp = GetComponent<TMP_Text>();
             _cardData = GetComponentInParent<FoodCardData>(true);

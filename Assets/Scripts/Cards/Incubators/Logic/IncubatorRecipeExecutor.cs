@@ -12,7 +12,6 @@ using ScriptableObjects.Scripts.Cards.Incubators.Recipes;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Incubators.Logic
 {
@@ -40,6 +39,11 @@ namespace Cards.Incubators.Logic
         #region MonoBehaviour
 
         public void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<IncubatorData>(true);
         }

@@ -5,7 +5,6 @@ using Extensions;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using IValidatable = EditorTools.Validators.Core.IValidatable;
 
 namespace Cards.Graphics
 {
@@ -28,11 +27,16 @@ namespace Cards.Graphics
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CardData>(true);
         }
-        
+
         private void OnEnable()
         {
             StartObserving();

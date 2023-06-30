@@ -6,7 +6,7 @@ namespace Extensions
 {
     public static class ComponentLoader
     {
-        public static List<T> LoadAllComponents<T>(string path) where T : Component
+        public static List<T> LoadAllComponents<T>(string path)
         {
             List<T> components = new List<T>();
 

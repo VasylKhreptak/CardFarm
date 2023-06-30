@@ -1,8 +1,8 @@
 ﻿using System;
 using Cards.Data;
-using EditorTools.Validators.Core;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Zones.SellZone.Logic.Updaters
 {
@@ -15,7 +15,12 @@ namespace Cards.Zones.SellZone.Logic.Updaters
 
         #region MonoBehaviour
 
-        public void OnValidate()
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public void Validate()
         {
             _cardData = GetComponentInParent<CardData>(true);
         }
