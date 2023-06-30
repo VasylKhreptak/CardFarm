@@ -6,6 +6,7 @@ using Cards.Data;
 using Cards.Logic.Spawn;
 using Cards.Zones.SellZone.Data;
 using Extensions;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -15,6 +16,8 @@ namespace Cards.Zones.SellZone.Logic
     {
         [Header("References")]
         [SerializeField] private SellZoneData _zoneData;
+
+        private CompositeDisposable _delaySubscriptions = new CompositeDisposable();
 
         private CardSpawner _cardSpawner;
 
@@ -44,6 +47,8 @@ namespace Cards.Zones.SellZone.Logic
         private void OnDisable()
         {
             StopObserving();
+
+            _delaySubscriptions.Clear();
         }
 
         #endregion
@@ -74,7 +79,7 @@ namespace Cards.Zones.SellZone.Logic
                 bottomCards[0].UnlinkFromUpper();
             }
 
-            CardData previousSpawnedCoin = null;
+            float delay = 0f;
 
             foreach (var bottomCard in bottomCards)
             {
@@ -88,18 +93,16 @@ namespace Cards.Zones.SellZone.Logic
 
                 for (int i = 0; i < sellableCard.Price.Value; i++)
                 {
-                    CardData spawnedCoin = _cardSpawner.Spawn(Card.Coin, _zoneData.CoinSpawnPoint.position);
-
-                    if (previousSpawnedCoin != null)
+                    Observable.Timer(TimeSpan.FromSeconds(_zoneData.CoinSpawnInterval)).Subscribe(_ =>
                     {
-                        spawnedCoin.LinkTo(previousSpawnedCoin);
-                    }
-
-                    previousSpawnedCoin = spawnedCoin;
+                        _cardSpawner.SpawnAndMove(Card.Coin, _zoneData.transform.position, _zoneData.CoinSpawnPoint.position, flip: false, jump: false);
+                    }).AddTo(_delaySubscriptions);
                 }
 
                 sellableCard.gameObject.SetActive(false);
                 _zoneData.onSoldCard?.Invoke(sellableCard.Card.Value);
+
+                delay += _zoneData.CoinSpawnInterval;
             }
         }
     }

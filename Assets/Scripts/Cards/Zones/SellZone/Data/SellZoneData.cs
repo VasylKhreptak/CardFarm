@@ -7,6 +7,11 @@ namespace Cards.Zones.SellZone.Data
 {
     public class SellZoneData : ZoneData
     {
+        [Header("Preferences")]
+        [SerializeField] private float _coinSpawnInterval = 0.1f;
+
+        public float CoinSpawnInterval => _coinSpawnInterval;
+
         public Transform CoinSpawnPoint;
 
         public Action<Card> onSoldCard;
