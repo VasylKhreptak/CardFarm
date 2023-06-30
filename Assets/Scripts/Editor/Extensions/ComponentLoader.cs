@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Extensions
+namespace Editor.Extensions
 {
     public static class ComponentLoader
     {
