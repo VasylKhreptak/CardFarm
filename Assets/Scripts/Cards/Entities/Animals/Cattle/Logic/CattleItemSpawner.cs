@@ -1,10 +1,9 @@
 ﻿using System;
 using Cards.Core;
-using Cards.Data;
 using Cards.Entities.Animals.Cattle.Data;
 using Cards.Logic.Spawn;
 using Extensions;
-using ScriptableObjects.Scripts.Cards.Cattle;
+using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -17,7 +16,8 @@ namespace Cards.Entities.Animals.Cattle.Logic
         [SerializeField] private CattleCardData _cardData;
 
         [Header("Preferences")]
-        [SerializeField] private CattleItemSpawnerData _data;
+        [SerializeField] private float _spawnInterval;
+        [SerializeField] private CardWeight[] _result;
 
         private IDisposable _intervalSubscription;
         private IDisposable _isCardSingleSubscription;
@@ -62,7 +62,7 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
         private void StopObserving()
         {
-            StopInterval();
+            StopSpawning();
             StopObservingIfCardSingle();
         }
 
@@ -82,40 +82,29 @@ namespace Cards.Entities.Animals.Cattle.Logic
         {
             if (isSingle)
             {
-                StartInterval();
+                StartSpawning();
             }
             else
             {
-                StopInterval();
+                StopSpawning();
             }
         }
 
-        private void StartInterval()
+        private void StartSpawning()
         {
-            StopInterval();
-
-            _intervalSubscription = Observable
-                .Interval(TimeSpan.FromSeconds(_data.Recipe.Cooldown))
-                .Subscribe(_ => OnIntervalTick());
+            StopSpawning();
+            _intervalSubscription = Observable.Interval(TimeSpan.FromSeconds(_spawnInterval))
+                .Subscribe(_ => SpawnItem());
         }
 
-        private void StopInterval()
+        private void StopSpawning()
         {
             _intervalSubscription?.Dispose();
         }
 
-        private void OnIntervalTick()
+        private void SpawnItem()
         {
-            TrySpawnItem();
-        }
-
-        private void TrySpawnItem()
-        {
-            CattleCardWeight cattleCard = _data.Recipe.Weights.GetByWeight(x => x.Weight);
-
-            if (MathfExtensions.Probability(cattleCard.SpawnChance) == false) return;
-
-            Card cardToSpawn = cattleCard.Card;
+            Card cardToSpawn = _result.GetByWeight(x => x.Weight).Card;
 
             _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 

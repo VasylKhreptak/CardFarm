@@ -1,19 +1,26 @@
-﻿using Cards.Entities.Animals.Cattle.Data;
+﻿using System;
+using Cards.Entities.Animals.Cattle.Data;
 using Constraints.CardTable;
 using Extensions;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
 namespace Cards.Entities.Animals.Cattle.Logic
 {
-    public class CattleMoveLogic : MonoBehaviour, IValidatable
+    public class CattleJumpLogic : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CattleCardData _cardData;
 
+        [Header("Preferences")]
+        [SerializeField] private float _jumpInterval = 20f;
+
         [Header("Spawn Preferences")]
         [SerializeField] private float _minRange = 5f;
         [SerializeField] private float _maxRange = 7f;
+
+        private IDisposable _jumpSubscription;
 
         private CardsTableBounds _cardsTableBounds;
 
@@ -33,35 +40,29 @@ namespace Cards.Entities.Animals.Cattle.Logic
         public void Validate()
         {
             _cardData = GetComponentInParent<CattleCardData>(true);
-
         }
 
         private void OnEnable()
         {
-            StartObserving();
+            StartJumping();
         }
 
         private void OnDisable()
         {
-            StopObserving();
+            StopJumping();
         }
 
         #endregion
 
-        private void StartObserving()
+        private void StartJumping()
         {
-            StopObserving();
-            _cardData.CattleCallbacks.OnItemSpawnedNoArgs += OnCattleSpawnedCard;
+            StopJumping();
+            _jumpSubscription = Observable.Interval(TimeSpan.FromSeconds(_jumpInterval)).Subscribe(_ => JumpInRandomDirection());
         }
 
-        private void StopObserving()
+        private void StopJumping()
         {
-            _cardData.CattleCallbacks.OnItemSpawnedNoArgs -= OnCattleSpawnedCard;
-        }
-
-        private void OnCattleSpawnedCard()
-        {
-            JumpInRandomDirection();
+            _jumpSubscription?.Dispose();
         }
 
         private void JumpInRandomDirection()
@@ -74,6 +75,8 @@ namespace Cards.Entities.Animals.Cattle.Logic
             {
                 _cardData.RenderOnTop();
             }
+
+            _cardData.CattleCallbacks.onJumped?.Invoke();
         }
     }
 }

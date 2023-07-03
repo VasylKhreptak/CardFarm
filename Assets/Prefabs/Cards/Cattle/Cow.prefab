@@ -139,6 +139,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 208e8e56faf25ed4ca7a4e00a739e989,
         type: 2}
+    - target: {fileID: 3072631795546420754, guid: 039b737f4430bd14e95bc803be2831b3,
+        type: 3}
+      propertyPath: _spawnInterval
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072631795546420754, guid: 039b737f4430bd14e95bc803be2831b3,
+        type: 3}
+      propertyPath: _result.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072631795546420754, guid: 039b737f4430bd14e95bc803be2831b3,
+        type: 3}
+      propertyPath: _result.Array.data[0].Card
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072631795546420754, guid: 039b737f4430bd14e95bc803be2831b3,
+        type: 3}
+      propertyPath: _result.Array.data[0].Weight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6523124616696110047, guid: 039b737f4430bd14e95bc803be2831b3,
         type: 3}
       propertyPath: m_AnchorMax.y
