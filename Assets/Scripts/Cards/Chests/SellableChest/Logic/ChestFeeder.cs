@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using Cards.Chests.SellableChest.Data;
 using Cards.Core;
 using Cards.Data;
+using Extensions;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -14,6 +16,11 @@ namespace Cards.Chests.SellableChest.Logic
 
         [Header("Preferences")]
         [SerializeField] private Card _chestType;
+        [SerializeField] private float _maxDistanceToFollowPoint = 0.5f;
+        [SerializeField] private float _distanceCheckInterval = 0.2f;
+
+        private IDisposable _bottomCardSubscription;
+        private IDisposable _distanceCheckSubscription;
 
         #region MonoBehaviour
 
@@ -29,38 +36,87 @@ namespace Cards.Chests.SellableChest.Logic
 
         private void OnEnable()
         {
-            StartObserving();
+            StartObservingBottomCard();
         }
 
         private void OnDisable()
         {
-            StopObserving();
+            StopObservingBottomCardDistance();
+            StopObservingBottomCard();
         }
 
         #endregion
 
-        private void StartObserving()
+        private void StartObservingBottomCard()
         {
-            _cardData.Callbacks.onBottomCardsListUpdated += OnBottomCardsUpdated;
+            StopObservingBottomCard();
+            _bottomCardSubscription = _cardData.BottomCard.Subscribe(OnBottomCardUpdated);
         }
 
-        private void StopObserving()
+        private void StopObservingBottomCard()
         {
-            _cardData.Callbacks.onBottomCardsListUpdated -= OnBottomCardsUpdated;
-            _cardData.StoredCards.Clear();
+            _bottomCardSubscription?.Dispose();
         }
 
-        private void OnBottomCardsUpdated()
+        private void OnBottomCardUpdated(CardData bottomCard)
         {
-            List<CardData> bottomCards = _cardData.BottomCards;
+            StopObservingBottomCardDistance();
 
-            foreach (var card in bottomCards)
+            if (bottomCard == null) return;
+
+            if (bottomCard.Card.Value == _chestType)
             {
-                if (card.Card.Value == _chestType && card.IsSellableCard)
+                StartObservingBottomCardDistance(bottomCard);
+            }
+            else
+            {
+                bottomCard.UnlinkFromUpper();
+            }
+        }
+
+        private void StartObservingBottomCardDistance(CardData bottomCard)
+        {
+            StopObservingBottomCardDistance();
+            _distanceCheckSubscription = Observable
+                .Interval(TimeSpan.FromSeconds(_distanceCheckInterval))
+                .DoOnSubscribe(CheckBottomCardDistance)
+                .Subscribe(_ => CheckBottomCardDistance());
+        }
+
+        private void StopObservingBottomCardDistance()
+        {
+            _distanceCheckSubscription?.Dispose();
+        }
+
+        private void CheckBottomCardDistance()
+        {
+            CardData bottomCard = _cardData.BottomCard.Value;
+
+            if (_cardData.BottomCard.Value == null)
+            {
+                StopObservingBottomCardDistance();
+                return;
+            }
+
+            float distance = Vector3.Distance(_cardData.BottomCardFollowPoint.position, bottomCard.transform.position);
+
+            if (distance < _maxDistanceToFollowPoint)
+            {
+                StopObservingBottomCard();
+
+                CardData nextBottomCard = bottomCard.BottomCard.Value;
+
+                bottomCard.gameObject.SetActive(false);
+
+                if (nextBottomCard != null)
                 {
-                    _cardData.StoredCards.Add(card as SellableCardData);
-                    card.gameObject.SetActive(false);
+                    nextBottomCard.LinkTo(_cardData);
                 }
+
+                _cardData.StoredCards.Add(bottomCard as SellableCardData);
+
+                StopObservingBottomCardDistance();
+                StartObservingBottomCard();
             }
         }
     }

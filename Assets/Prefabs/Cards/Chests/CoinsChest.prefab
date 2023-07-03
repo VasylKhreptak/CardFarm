@@ -12,10 +12,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551064867314371679, guid: 85bc94feb92d339459647e5890576d74,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3291080008655472349, guid: 85bc94feb92d339459647e5890576d74,
         type: 3}
       propertyPath: _chestType
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291080008655472349, guid: 85bc94feb92d339459647e5890576d74,
+        type: 3}
+      propertyPath: _distanceCheckInterval
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291080008655472349, guid: 85bc94feb92d339459647e5890576d74,
+        type: 3}
+      propertyPath: _maxDistanceToFollowPoint
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4015863121363750529, guid: 85bc94feb92d339459647e5890576d74,
         type: 3}
