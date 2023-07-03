@@ -13,7 +13,7 @@ namespace Table.Core
         [SerializeField] public CompatibleCards _compatibleCards;
 
         private ReactiveCollection<CardData> _observableCards = new ReactiveCollection<CardData>();
-        
+
         public IReadOnlyReactiveCollection<CardData> ObservableCards => _observableCards;
 
         public void AddCard(CardData cardData)
@@ -71,6 +71,20 @@ namespace Table.Core
                 if (_compatibleCards.IsCompatible(topCard, card))
                 {
                     cardData = lowestCard;
+                    return true;
+                }
+            }
+
+            cardData = null;
+            return false;
+        }
+
+        public bool TryGetLowestPrioritizedCompatibleGroupCard(Card topCard, Card[] prioritizedCards, out CardData cardData)
+        {
+            foreach (var prioritizedCard in prioritizedCards)
+            {
+                if (TryGetLowestCompatibleGroupCard(topCard, prioritizedCard, out cardData))
+                {
                     return true;
                 }
             }

@@ -27,7 +27,14 @@ namespace Cards.Boosters.Logic.Boosters
         {
             Card cardToSpawn = GetCardToSpawn();
 
-            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+            if (cardToSpawn == Card.Coin)
+            {
+                _cardSpawner.SpawnCoinAndMove(_cardData.transform.position);
+            }
+            else
+            {
+                _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+            }
 
             _cardData.BoosterCallabcks.OnSpawnedCard?.Invoke(cardToSpawn);
         }

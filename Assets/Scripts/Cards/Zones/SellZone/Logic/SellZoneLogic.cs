@@ -95,7 +95,7 @@ namespace Cards.Zones.SellZone.Logic
                 {
                     Observable.Timer(TimeSpan.FromSeconds(_zoneData.CoinSpawnInterval)).Subscribe(_ =>
                     {
-                        _cardSpawner.SpawnAndMove(Card.Coin, _zoneData.transform.position, _zoneData.CoinSpawnPoint.position, flip: false, jump: false);
+                        _cardSpawner.SpawnCoinAndMove(_zoneData.transform.position, _zoneData.CoinSpawnPoint.position, flip: false, jump: false);
                     }).AddTo(_delaySubscriptions);
                 }
 

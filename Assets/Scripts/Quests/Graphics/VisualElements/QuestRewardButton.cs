@@ -1,4 +1,5 @@
 ﻿using System;
+using Cards.Core;
 using Cards.Logic.Spawn;
 using Quests.Logic;
 using UniRx;
@@ -63,6 +64,12 @@ namespace Quests.Graphics.VisualElements
         {
             foreach (var cardToSpawn in _questsManager.CurrentQuest.Value.Reward.Cards)
             {
+                if (cardToSpawn == Card.Coin)
+                {
+                    _cardSpawner.SpawnCoinAndMove(Vector3.zero);
+                    continue;
+                }
+
                 _cardSpawner.SpawnAndMove(cardToSpawn, Vector3.zero);
             }
         }

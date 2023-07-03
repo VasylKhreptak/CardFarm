@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cards.Boosters.Logic.Core;
 using Cards.Core;
-using Cards.Data;
 using Cards.Logic.Spawn;
 using UnityEngine;
 using Zenject;
@@ -25,7 +24,14 @@ namespace Cards.Boosters.Logic.Boosters
         {
             Card cardToSpawn = GetCardToSpawn();
 
-            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+            if (cardToSpawn == Card.Coin)
+            {
+                _cardSpawner.SpawnCoinAndMove(_cardData.transform.position);
+            }
+            else
+            {
+                _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+            }
 
             _cardData.BoosterCallabcks.OnSpawnedCard?.Invoke(cardToSpawn);
         }

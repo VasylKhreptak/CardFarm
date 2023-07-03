@@ -14,6 +14,11 @@ namespace Cards.Logic.Spawn
         [Header("Preferences")]
         [SerializeField] private float _minRange = 5f;
         [SerializeField] private float _maxRange = 7f;
+        [SerializeField] private Card[] _coinJoinablePrioritizedCards = new[]
+        {
+            Card.CoinChest, Card.Coin
+        };
+
 
         public event Action<CardData> OnCardSpawned;
         public event Action OnCardSpawnedNonParameterized;
@@ -51,13 +56,38 @@ namespace Cards.Logic.Spawn
             return spawnedCard;
         }
 
-        public CardData SpawnAndMove(Card card, Vector3 position,
+        public CardData SpawnAndMove(Card card,
+            Vector3 position,
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
             bool jump = true,
             bool flip = true)
         {
-            if (tryJoinToExistingGroup && _cardsTable.TryGetLowestCompatibleGroupCard(card, card, out var lowestGroupCard))
+            return SpawnAndMove(card, card, position, targetPosition, tryJoinToExistingGroup, jump, flip);
+        }
+
+        public CardData SpawnAndMove(
+            Card card,
+            Card bottomCard,
+            Vector3 position,
+            Vector3? targetPosition = null,
+            bool tryJoinToExistingGroup = true,
+            bool jump = true,
+            bool flip = true)
+        {
+            return SpawnAndMove(card, new[] { bottomCard }, position, targetPosition, tryJoinToExistingGroup, jump, flip);
+        }
+
+        public CardData SpawnAndMove(
+            Card card,
+            Card[] prioritizedCardsToJoin,
+            Vector3 position,
+            Vector3? targetPosition = null,
+            bool tryJoinToExistingGroup = true,
+            bool jump = true,
+            bool flip = true)
+        {
+            if (tryJoinToExistingGroup && _cardsTable.TryGetLowestPrioritizedCompatibleGroupCard(card, prioritizedCardsToJoin, out var lowestGroupCard))
             {
                 CardData spawnedCard = Spawn(card, position);
                 spawnedCard.LinkTo(lowestGroupCard);
@@ -86,6 +116,16 @@ namespace Cards.Logic.Spawn
 
                 return spawnedCard;
             }
+        }
+
+        public CardData SpawnCoinAndMove(
+            Vector3 position,
+            Vector3? targetPosition = null,
+            bool tryJoinToExistingGroup = true,
+            bool jump = true,
+            bool flip = true)
+        {
+            return SpawnAndMove(Card.Coin, _coinJoinablePrioritizedCards, position, targetPosition, tryJoinToExistingGroup, jump, flip);
         }
     }
 }
