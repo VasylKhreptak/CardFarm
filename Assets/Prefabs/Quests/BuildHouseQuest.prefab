@@ -49,7 +49,7 @@ MonoBehaviour:
   Quest: 8
   Name: Build A House
   Reward:
-    Cards: 08000000
+    Cards: 00000000
   IsCompleted:
     value: 0
   TookReward:

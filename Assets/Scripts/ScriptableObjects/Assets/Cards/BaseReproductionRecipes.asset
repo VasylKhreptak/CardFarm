@@ -15,6 +15,7 @@ MonoBehaviour:
   _recipes:
   - Cooldown: 120
     Resources: 1a00000018000000
+    ResourcesToRemove: 1a000000
     Results:
     - Card: 24
       Weight: 1

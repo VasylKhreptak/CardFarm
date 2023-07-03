@@ -88,9 +88,13 @@ namespace Cards.Logic
 
         protected override void OnProgressCompleted()
         {
+            CardData[] cardsToRemove = GetCardsToRemove();
+
             SpawnResult();
 
             UnlinkResources();
+
+            RemoveCards(cardsToRemove);
         }
 
         private void UnlinkResources()
@@ -107,11 +111,24 @@ namespace Cards.Logic
             }
         }
 
+        private CardData[] GetCardsToRemove()
+        {
+            return _cardData.GroupCards.Where(x => _cardData.CurrentReproductionRecipe.Value.ResourcesToRemove.Contains(x.Card.Value)).ToArray();
+        }
+
         private void SpawnResult()
         {
             Card cardToSpawn = _cardData.CurrentReproductionRecipe.Value.Results.GetByWeight(x => x.Weight).Card;
 
             _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+        }
+
+        private void RemoveCards(CardData[] cards)
+        {
+            foreach (var card in cards)
+            {
+                card.gameObject.SetActive(false);
+            }
         }
     }
 }

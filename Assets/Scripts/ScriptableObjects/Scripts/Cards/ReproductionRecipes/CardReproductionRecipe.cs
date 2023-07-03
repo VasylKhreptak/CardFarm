@@ -10,6 +10,7 @@ namespace ScriptableObjects.Scripts.Cards.ReproductionRecipes
     {
         public float Cooldown;
         public List<Card> Resources = new List<Card>();
+        public List<Card> ResourcesToRemove = new List<Card>();
         public List<CardWeight> Results = new List<CardWeight>();
     }
 }

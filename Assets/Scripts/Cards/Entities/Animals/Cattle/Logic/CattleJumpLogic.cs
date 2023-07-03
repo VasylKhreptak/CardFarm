@@ -21,6 +21,7 @@ namespace Cards.Entities.Animals.Cattle.Logic
         [SerializeField] private float _maxRange = 7f;
 
         private IDisposable _jumpSubscription;
+        private IDisposable _isCardSingleSubscription;
 
         private CardsTableBounds _cardsTableBounds;
 
@@ -44,15 +45,39 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
         private void OnEnable()
         {
-            StartJumping();
+            StartObservingIfCardSingle();
         }
 
         private void OnDisable()
         {
             StopJumping();
+            StopObservingIfCardSingle();
         }
 
         #endregion
+
+        private void StartObservingIfCardSingle()
+        {
+            StopObservingIfCardSingle();
+            _isCardSingleSubscription = _cardData.IsSingleCard.Subscribe(OnIsCardSingleUpdated);
+        }
+
+        private void StopObservingIfCardSingle()
+        {
+            _isCardSingleSubscription?.Dispose();
+        }
+
+        private void OnIsCardSingleUpdated(bool isSingle)
+        {
+            if (isSingle)
+            {
+                StartJumping();
+            }
+            else
+            {
+                StopJumping();
+            }
+        }
 
         private void StartJumping()
         {
