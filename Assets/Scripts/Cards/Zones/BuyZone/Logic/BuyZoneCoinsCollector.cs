@@ -21,6 +21,8 @@ namespace Cards.Zones.BuyZone.Logic
 
         private CompositeDisposable _delays = new CompositeDisposable();
 
+        private bool _canCollectCoins = true;
+
         private CardSpawner _cardSpawner;
         private CoinsProvider _coinsProvider;
 
@@ -84,9 +86,13 @@ namespace Cards.Zones.BuyZone.Logic
 
         private void CollectCoins()
         {
+            if (_canCollectCoins == false) return;
+
             int price = _cardData.Price.Value;
 
             int coinsCount = _coinsProvider.GetCoinsCount();
+
+            coinsCount = Mathf.Min(price, _cardData.LeftCoins.Value);
 
             if (coinsCount == 0) return;
 
@@ -112,6 +118,13 @@ namespace Cards.Zones.BuyZone.Logic
 
                 delay += _coinMoveDelay;
             }
+
+            _canCollectCoins = false;
+
+            Observable.Timer(TimeSpan.FromSeconds(delay + _cardsMoveDuration)).Subscribe(_ =>
+            {
+                _canCollectCoins = true;
+            }).AddTo(_delays);
         }
 
         private void RemoveDelaySubscriptions()
