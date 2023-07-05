@@ -9071,7 +9071,7 @@ PrefabInstance:
     - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: Price.value
-      value: 10
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
@@ -17677,7 +17677,7 @@ PrefabInstance:
     - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: Price.value
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
@@ -20015,7 +20015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minSpawnInterval: 30
   _maxSpawnInterval: 60
-  _spawnFromQuest: 8
+  _spawnFromQuest: 6
   _maxOrders: 5
 --- !u!1 &1585800379
 GameObject:
