@@ -159,12 +159,12 @@ PrefabInstance:
       propertyPath: _result.Array.data[0].Weight
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5713689392577174631, guid: 039b737f4430bd14e95bc803be2831b3,
-        type: 3}
-      propertyPath: _jumpInterval
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6523124616696110047, guid: 039b737f4430bd14e95bc803be2831b3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097597556971840131, guid: 039b737f4430bd14e95bc803be2831b3,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

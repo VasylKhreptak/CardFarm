@@ -42,5 +42,13 @@ namespace Cards.Core
         HumbleBeginningsBoosterBuyZone = 37,
         Baby = 38,
         Order = 39,
+        Butchery = 40,
+        Stew = 41,
+        Parrot = 42,
+        Rabbit = 43,
+        Poop = 44,
+        Frittata = 45,
+        RawMeat = 46,
+        CookedMeat = 47,
     }
 }
