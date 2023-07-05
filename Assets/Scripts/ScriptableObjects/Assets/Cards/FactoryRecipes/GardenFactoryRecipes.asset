@@ -15,13 +15,22 @@ MonoBehaviour:
   _recipes:
   - Resources: 06000000
     Cooldown: 10
+    ResultCount: 1
     Result:
       Weights:
       - Card: 3
         Weight: 1
   - Resources: 1e000000
     Cooldown: 10
+    ResultCount: 1
     Result:
       Weights:
       - Card: 10
+        Weight: 1
+  - Resources: 22000000
+    Cooldown: 10
+    ResultCount: 2
+    Result:
+      Weights:
+      - Card: 34
         Weight: 1

@@ -29,6 +29,7 @@ namespace Cards.Logic
 
         private void OnEnable()
         {
+            UpdateHeight(null);
             StartObservingUpperCard();
         }
 

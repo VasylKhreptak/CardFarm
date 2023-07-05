@@ -71,7 +71,7 @@ namespace Cards.AutomatedFactories.Logic
 
             _cardData.AutomatedFactoryCallbacks.onExecutedRecipe?.Invoke(_cardData.CurrentFactoryRecipe.Value);
 
-            SpawnRecipeResult();
+            SpawnRecipeResults();
             ClearRecipeResources();
 
             ExecuteActiveRecipe();
@@ -94,7 +94,15 @@ namespace Cards.AutomatedFactories.Logic
             OnCurrentRecipeChanged(_cardData.CurrentFactoryRecipe.Value);
         }
 
-        protected void SpawnRecipeResult()
+        private void SpawnRecipeResults()
+        {
+            for (int i = 0; i < _cardData.CurrentFactoryRecipe.Value.ResultCount; i++)
+            {
+                SpawnRecipeResult();
+            }
+        }
+
+        private void SpawnRecipeResult()
         {
             Card cardToSpawn = GetCardToSpawn();
 

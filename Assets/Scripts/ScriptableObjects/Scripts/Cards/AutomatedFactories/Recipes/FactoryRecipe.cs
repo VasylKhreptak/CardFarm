@@ -10,6 +10,7 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
     {
         public List<Card> Resources = new List<Card>();
         public float Cooldown;
+        public int ResultCount = 1;
         public CardWeights Result = new CardWeights();
     }
 }
