@@ -47,6 +47,23 @@ namespace Table.Core
             return false;
         }
 
+        public bool TryGetLowestRecipeFreeGroupCard(Card card, out CardData cardData)
+        {
+            foreach (CardData cardInTable in _observableCards)
+            {
+                if (cardInTable.IsLowestGroupCard.Value
+                    && card == cardInTable.Card.Value
+                    && cardInTable.IsTakingPartInRecipe.Value == false)
+                {
+                    cardData = cardInTable;
+                    return true;
+                }
+            }
+
+            cardData = null;
+            return false;
+        }
+
         public bool TryGetLowestGroupCardOrFirst(Card card, out CardData cardData)
         {
             if (TryGetLowestGroupCard(card, out cardData)) return true;
@@ -66,7 +83,7 @@ namespace Table.Core
 
         public bool TryGetLowestCompatibleGroupCard(Card topCard, Card card, out CardData cardData)
         {
-            if (TryGetLowestGroupCard(card, out CardData lowestCard))
+            if (TryGetLowestRecipeFreeGroupCard(card, out CardData lowestCard))
             {
                 if (_compatibleCards.IsCompatible(topCard, card))
                 {
