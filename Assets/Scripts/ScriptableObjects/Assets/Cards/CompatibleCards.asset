@@ -79,3 +79,5 @@ MonoBehaviour:
     CompatibleCards: 2d000000
   - Card: 44
     CompatibleCards: 2c0000001e00000006000000220000002100000020000000
+  - Card: 41
+    CompatibleCards: 29000000

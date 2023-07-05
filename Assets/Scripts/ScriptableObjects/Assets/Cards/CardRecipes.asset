@@ -151,11 +151,3 @@ MonoBehaviour:
       Weights:
       - Card: 40
         Weight: 5
-  - Resources: 2c0000001e000000
-    Workers: 
-    Cooldown: 10
-    ResultCount: 1
-    Result:
-      Weights:
-      - Card: 10
-        Weight: 5

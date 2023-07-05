@@ -154,7 +154,6 @@ namespace Cards.AutomatedFactories.Logic
         {
             if (card != null && _compatibleCards.IsCompatible(card.Card.Value, _cardData.Card.Value))
             {
-                Debug.Log("Linked");
                 card.LinkTo(_cardData);
             }
         }
