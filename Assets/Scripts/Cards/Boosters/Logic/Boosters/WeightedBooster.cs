@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cards.Boosters.Logic.Core;
 using Cards.Core;
-using Cards.Data;
 using Cards.Logic.Spawn;
 using Extensions;
 using ScriptableObjects.Scripts.Cards.Recipes;

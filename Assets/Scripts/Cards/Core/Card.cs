@@ -50,5 +50,9 @@ namespace Cards.Core
         Frittata = 45,
         RawMeat = 46,
         CookedMeat = 47,
+        AnimalBooster = 48,
+        BuildingBooster = 49,
+        AnimalBoosterBuyZone = 50,
+        BuildingBoosterBuyZone = 51,
     }
 }

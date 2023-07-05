@@ -52,6 +52,7 @@ namespace Cards.Zones.BuyZone.Logic.Updaters
         {
             if (collectedCoins == _buyZoneData.Price.Value)
             {
+                _buyZoneData.BuyZoneCallbacks.spawnCardCommand.Invoke();
                 _buyZoneData.CollectedCoins.Value = 0;
                 return;
             }

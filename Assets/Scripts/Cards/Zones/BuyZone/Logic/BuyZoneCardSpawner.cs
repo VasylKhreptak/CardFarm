@@ -1,7 +1,5 @@
-﻿using System;
-using Cards.Logic.Spawn;
+﻿using Cards.Logic.Spawn;
 using Cards.Zones.BuyZone.Data;
-using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -11,8 +9,6 @@ namespace Cards.Zones.BuyZone.Logic
     {
         [Header("References")]
         [SerializeField] private BuyZoneData _cardData;
-
-        private IDisposable _leftCoinsSubscription;
 
         private CardSpawner _cardSpawner;
 
@@ -36,33 +32,25 @@ namespace Cards.Zones.BuyZone.Logic
 
         private void OnEnable()
         {
-            StartObservingLeftCoins();
+            StartObserving();
         }
 
         private void OnDisable()
         {
-            StopObservingLeftCoins();
+            StopObserving();
         }
 
         #endregion
 
-        private void StartObservingLeftCoins()
+        private void StartObserving()
         {
-            StopObservingLeftCoins();
-            _leftCoinsSubscription = _cardData.LeftCoins.Subscribe(OnLeftCoinsUpdated);
+            StopObserving();
+            _cardData.BuyZoneCallbacks.spawnCardCommand += SpawnCard;
         }
 
-        private void StopObservingLeftCoins()
+        private void StopObserving()
         {
-            _leftCoinsSubscription?.Dispose();
-        }
-
-        private void OnLeftCoinsUpdated(int leftCoins)
-        {
-            if (leftCoins == 0)
-            {
-                SpawnCard();
-            }
+            _cardData.BuyZoneCallbacks.spawnCardCommand -= SpawnCard;
         }
 
         private void SpawnCard()

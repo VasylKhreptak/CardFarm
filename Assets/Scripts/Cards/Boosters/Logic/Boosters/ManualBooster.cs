@@ -19,7 +19,7 @@ namespace Cards.Boosters.Logic.Boosters
         {
             _cardSpawner = cardSpawner;
         }
-
+        
         protected override void SpawnResultedCard()
         {
             Card cardToSpawn = GetCardToSpawn();

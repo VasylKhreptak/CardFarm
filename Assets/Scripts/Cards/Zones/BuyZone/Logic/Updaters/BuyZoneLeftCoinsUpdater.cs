@@ -50,6 +50,12 @@ namespace Cards.Zones.BuyZone.Logic.Updaters
 
         private void OnCollectedCoinsUpdated(int collectedCoins)
         {
+            if (collectedCoins == _buyZoneData.Price.Value)
+            {
+                _buyZoneData.LeftCoins.Value = _buyZoneData.Price.Value;
+                return;
+            }
+
             _buyZoneData.LeftCoins.Value = _buyZoneData.Price.Value - collectedCoins;
         }
     }
