@@ -15652,6 +15652,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
+      propertyPath: LeftCoins.value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: TargetCard.value
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
       propertyPath: CanBeSelected.value
       value: 1
       objectReference: {fileID: 0}

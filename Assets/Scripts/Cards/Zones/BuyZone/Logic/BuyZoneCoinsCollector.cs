@@ -2,24 +2,22 @@
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
-using Cards.Zones.BoosterBuyZone.Data;
+using Cards.Zones.BuyZone.Data;
 using Coins;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Cards.Zones.BoosterBuyZone.Logic
+namespace Cards.Zones.BuyZone.Logic
 {
-    public class BoosterBuyZoneLogic : MonoBehaviour, IValidatable
+    public class BuyZoneCoinsCollector : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private BoosterBuyZoneData _cardData;
+        [SerializeField] private BuyZoneData _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _cardsMoveDuration = 1f;
-        [SerializeField] private float _coinMoveDelay = 0.3f;
-
-        private bool _canSpawn = true;
+        [SerializeField] private float _coinMoveDelay = 0.2f;
 
         private CompositeDisposable _delays = new CompositeDisposable();
 
@@ -42,7 +40,7 @@ namespace Cards.Zones.BoosterBuyZone.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<BoosterBuyZoneData>(true);
+            _cardData = GetComponentInParent<BuyZoneData>(true);
         }
 
         private void OnEnable()
@@ -81,20 +79,22 @@ namespace Cards.Zones.BoosterBuyZone.Logic
 
         private void OnClicked()
         {
-            TrySpawnBooster();
+            CollectCoins();
         }
 
-        private void TrySpawnBooster()
+        private void CollectCoins()
         {
-            if (_canSpawn == false) return;
+            int price = _cardData.Price.Value;
 
-            int price = _cardData.BoosterPrice.Value;
+            int coinsCount = _coinsProvider.GetCoinsCount();
 
-            if (_coinsProvider.GetCoinsCount() < price) return;
+            if (coinsCount == 0) return;
+
+            int coinsToSpawn = Mathf.Min(price, coinsCount);
 
             float delay = 0f;
 
-            for (int i = 0; i < price; i++)
+            for (int i = 0; i < coinsToSpawn; i++)
             {
                 Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
                 {
@@ -105,27 +105,13 @@ namespace Cards.Zones.BoosterBuyZone.Logic
                         fakeCoin.Animations.MoveAnimation.Play(_cardData.transform.position, _cardsMoveDuration, () =>
                         {
                             fakeCoin.gameObject.SetActive(false);
+                            _cardData.CollectedCoins.Value++;
                         });
                     }
                 }).AddTo(_delays);
 
                 delay += _coinMoveDelay;
             }
-
-            _canSpawn = false;
-            Observable.Timer(TimeSpan.FromSeconds(delay + _cardsMoveDuration - _coinMoveDelay))
-                .Subscribe(_ =>
-                {
-                    SpawnBooster();
-                    _canSpawn = true;
-                }).AddTo(_delays);
-        }
-
-        private void SpawnBooster()
-        {
-            _cardSpawner.SpawnAndMove(_cardData.TargetBoosterCard, _cardData.transform.position, _cardData.BoosterSpawnPoint.position);
-
-            _cardData.onSpawnedBooster?.Invoke();
         }
 
         private void RemoveDelaySubscriptions()

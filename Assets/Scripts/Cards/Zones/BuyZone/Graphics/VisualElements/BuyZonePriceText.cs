@@ -1,16 +1,16 @@
 ﻿using System;
-using Cards.Zones.BoosterBuyZone.Data;
+using Cards.Zones.BuyZone.Data;
 using TMPro;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Cards.Zones.BoosterBuyZone.Graphics.VisualElements
+namespace Cards.Zones.BuyZone.Graphics.VisualElements
 {
-    public class BoosterPriceText : MonoBehaviour, IValidatable
+    public class BuyZonePriceText : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private BoosterBuyZoneData _cardData;
+        [SerializeField] private BuyZoneData _cardData;
         [SerializeField] private TMP_Text _tmp;
 
         private IDisposable _priceSubscription;
@@ -42,7 +42,7 @@ namespace Cards.Zones.BoosterBuyZone.Graphics.VisualElements
         private void StartObservingPrice()
         {
             StopObservingPrice();
-            _priceSubscription = _cardData.BoosterPrice.Subscribe(SetPrice);
+            _priceSubscription = _cardData.Price.Subscribe(SetPrice);
         }
 
         private void StopObservingPrice()

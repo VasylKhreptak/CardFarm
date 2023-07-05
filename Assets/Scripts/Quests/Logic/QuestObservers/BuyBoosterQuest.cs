@@ -1,7 +1,7 @@
 ﻿using System;
 using Cards.Core;
 using Cards.Data;
-using Cards.Zones.BoosterBuyZone.Data;
+using Cards.Zones.BuyZone.Data;
 using Quests.Logic.QuestObservers.Core;
 using Table.Core;
 using UniRx;
@@ -18,7 +18,7 @@ namespace Quests.Logic.QuestObservers
         private IDisposable _newCardsAppearedSubscription;
         private IDisposable _zonesCountSubscription;
 
-        private BoosterBuyZoneData _currentBoosterBuyZone;
+        private BuyZoneData _currentBoosterBuyZone;
 
         private CardsTableSelector _cardsTableSelector;
 
@@ -87,11 +87,11 @@ namespace Quests.Logic.QuestObservers
             _zonesCountSubscription?.Dispose();
         }
 
-        private BoosterBuyZoneData GetTargetBuyZone(ReactiveCollection<CardData> cards)
+        private BuyZoneData GetTargetBuyZone(ReactiveCollection<CardData> cards)
         {
             foreach (var buyZone in cards)
             {
-                BoosterBuyZoneData buyZoneData = buyZone as BoosterBuyZoneData;
+                BuyZoneData buyZoneData = buyZone as BuyZoneData;
 
                 if (buyZoneData == null) continue;
 
@@ -115,14 +115,14 @@ namespace Quests.Logic.QuestObservers
 
             StopObservingBuyZone();
 
-            _currentBoosterBuyZone.onSpawnedBooster += OnSpawnedBooster;
+            _currentBoosterBuyZone.BuyZoneCallbacks.onSpawnedCard += OnSpawnedBooster;
         }
 
         private void StopObservingBuyZone()
         {
             if (_currentBoosterBuyZone == null) return;
 
-            _currentBoosterBuyZone.onSpawnedBooster -= OnSpawnedBooster;
+            _currentBoosterBuyZone.BuyZoneCallbacks.onSpawnedCard -= OnSpawnedBooster;
         }
 
         private void OnSpawnedBooster()
