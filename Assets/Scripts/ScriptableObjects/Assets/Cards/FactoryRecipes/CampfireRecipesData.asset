@@ -19,3 +19,9 @@ MonoBehaviour:
       Weights:
       - Card: 27
         Weight: 1
+  - Resources: 2e000000
+    Cooldown: 60
+    Result:
+      Weights:
+      - Card: 47
+        Weight: 1

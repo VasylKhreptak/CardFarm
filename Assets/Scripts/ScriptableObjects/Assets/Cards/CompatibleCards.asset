@@ -72,4 +72,6 @@ MonoBehaviour:
   - Card: 43
     CompatibleCards: 28000000
   - Card: 46
-    CompatibleCards: 2e000000
+    CompatibleCards: 2e00000012000000
+  - Card: 47
+    CompatibleCards: 2f000000
