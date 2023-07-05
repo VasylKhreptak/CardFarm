@@ -1011,6 +1011,7 @@ MonoBehaviour:
       Resources: 
       Workers: 
       Cooldown: 0
+      ResultCount: 1
       Result:
         Weights: []
   Durability:
@@ -1035,6 +1036,7 @@ MonoBehaviour:
     value:
       Resources: 
       Cooldown: 0
+      ResultCount: 1
       Result:
         Weights: []
 --- !u!224 &8718050276280176114 stripped

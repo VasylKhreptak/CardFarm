@@ -8,5 +8,7 @@ namespace Cards.Graphics.Animations.Core
         protected BoolReactiveProperty _isPlaying = new BoolReactiveProperty();
 
         public IReadOnlyReactiveProperty<bool> IsPlaying => _isPlaying;
+        
+        public abstract void Stop();
     }
 }

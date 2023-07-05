@@ -12,6 +12,8 @@ namespace Extensions
 
             if (card == linkTo) return;
 
+            linkTo.BottomCard.Value.UnlinkFromUpper();
+
             card.UpperCard.Value = linkTo;
             linkTo.BottomCard.Value = card;
         }

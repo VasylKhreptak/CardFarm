@@ -18,7 +18,7 @@ namespace Cards.AutomatedFactories.Logic
     public class FactoryRecipeExecutor : ProgressDependentObject
     {
         [Header("References")]
-        [SerializeField] private AutomatedCardFactoryData _cardData;
+        [SerializeField] protected AutomatedCardFactoryData _cardData;
         [SerializeField] private CompatibleCards _compatibleCards;
 
         private IDisposable _currentRecipeSubscription;
@@ -96,19 +96,32 @@ namespace Cards.AutomatedFactories.Logic
 
         private void SpawnRecipeResults()
         {
-            for (int i = 0; i < _cardData.CurrentFactoryRecipe.Value.ResultCount; i++)
+            CardData previousCard = null;
+
+            int cardsToSpawn = _cardData.CurrentFactoryRecipe.Value.ResultCount;
+
+            for (int i = 0; i < cardsToSpawn; i++)
             {
-                SpawnRecipeResult();
+                CardData spawnedCard = SpawnRecipeResult();
+
+                if (i == cardsToSpawn - 1)
+                {
+                    spawnedCard.LinkTo(previousCard);
+                }
+
+                previousCard = spawnedCard;
             }
         }
 
-        private void SpawnRecipeResult()
+        private CardData SpawnRecipeResult()
         {
             Card cardToSpawn = GetCardToSpawn();
 
-            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+            CardData spawnedCard = _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
             _cardData.AutomatedFactoryCallbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
+
+            return spawnedCard;
         }
 
         private Card GetCardToSpawn()
@@ -134,9 +147,15 @@ namespace Cards.AutomatedFactories.Logic
                 resourceCard.gameObject.SetActive(false);
             }
 
-            if (previousCard != null && _compatibleCards.IsCompatible(previousCard.Card.Value, _cardData.Card.Value))
+            TryLinkCardToTop(previousCard);
+        }
+
+        protected virtual void TryLinkCardToTop(CardData card)
+        {
+            if (card != null && _compatibleCards.IsCompatible(card.Card.Value, _cardData.Card.Value))
             {
-                previousCard.LinkTo(_cardData);
+                Debug.Log("Linked");
+                card.LinkTo(_cardData);
             }
         }
     }

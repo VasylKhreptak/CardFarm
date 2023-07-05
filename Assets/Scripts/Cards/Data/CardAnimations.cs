@@ -9,5 +9,12 @@ namespace Cards.Data
         public CardMoveAnimation MoveAnimation;
         public CardJumpAnimation JumpAnimation;
         public CardFlipAnimation FlipAnimation;
+
+        public void Stop()
+        {
+            MoveAnimation.Stop();
+            JumpAnimation.Stop();
+            FlipAnimation.Stop();
+        }
     }
 }

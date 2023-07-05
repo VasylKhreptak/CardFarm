@@ -64,7 +64,7 @@ namespace Cards.Graphics.Animations
                 .Play();
         }
 
-        public void Stop()
+        public override void Stop()
         {
             _tween?.Kill();
             _isPlaying.Value = false;

@@ -71,6 +71,8 @@ namespace Cards.Logic
                     _cardData.Height.Value = position.y;
                 });
             }
+            
+            _cardData.transform.position = position;
         }
     }
 }
