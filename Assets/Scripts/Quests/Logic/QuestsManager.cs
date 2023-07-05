@@ -14,13 +14,15 @@ namespace Quests.Logic
         [Header("Preferences")]
         [SerializeField] private List<Quest> _questsToRegister = new List<Quest>();
 
-        private ReactiveCollection<QuestData> _quests = new ReactiveCollection<QuestData>();
+        private ReactiveCollection<QuestData> _leftQuests = new ReactiveCollection<QuestData>();
         private ReactiveProperty<QuestData> _currentQuest = new ReactiveProperty<QuestData>();
+        private ReactiveCollection<Quest> _finishedQuests = new ReactiveCollection<Quest>();
 
         private IDisposable _questsCountSubscription;
 
-        public IReadOnlyReactiveCollection<QuestData> Quests => _quests;
+        public IReadOnlyReactiveCollection<QuestData> LeftQuests => _leftQuests;
         public IReadOnlyReactiveProperty<QuestData> CurrentQuest => _currentQuest;
+        public IReadOnlyReactiveCollection<Quest> FinishedQuests => _finishedQuests;
 
         private QuestsObjectPooler _questsObjectPooler;
 
@@ -47,12 +49,14 @@ namespace Quests.Logic
 
         public void RegisterQuest(QuestData questData)
         {
-            _quests.Add(questData);
+            _leftQuests.Add(questData);
+            _finishedQuests.Remove(questData.Quest);
         }
 
         public void UnregisterQuest(QuestData questData)
         {
-            _quests.Remove(questData);
+            _leftQuests.Remove(questData);
+            _finishedQuests.Add(questData.Quest);
         }
 
         private void CreateQuests()
@@ -68,7 +72,7 @@ namespace Quests.Logic
         private void StartObservingQuestsCount()
         {
             StopObservingQuestsCount();
-            _questsCountSubscription = _quests.ObserveCountChanged().Subscribe(OnQuestsCountUpdated);
+            _questsCountSubscription = _leftQuests.ObserveCountChanged().Subscribe(OnQuestsCountUpdated);
         }
 
         private void StopObservingQuestsCount()
@@ -89,13 +93,13 @@ namespace Quests.Logic
 
         private bool TryGetFirstNonRewardedQuest(out QuestData questData)
         {
-            if (_quests.Count == 0)
+            if (_leftQuests.Count == 0)
             {
                 questData = null;
                 return false;
             }
 
-            foreach (var possibleQuest in _quests)
+            foreach (var possibleQuest in _leftQuests)
             {
                 if (possibleQuest.TookReward.Value == false)
                 {

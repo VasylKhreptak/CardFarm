@@ -95,5 +95,15 @@ namespace Table.Core
         {
             _selectedCardsMap.Clear();
         }
+
+        public int GetCount(Card card)
+        {
+            if (_selectedCardsMap.TryGetValue(card, out var cards))
+            {
+                return cards.Count;
+            }
+
+            return 0;
+        }
     }
 }

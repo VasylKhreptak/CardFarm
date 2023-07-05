@@ -41,5 +41,6 @@ namespace Cards.Core
         SellZone = 36,
         HumbleBeginningsBoosterBuyZone = 37,
         Baby = 38,
+        Order = 39,
     }
 }

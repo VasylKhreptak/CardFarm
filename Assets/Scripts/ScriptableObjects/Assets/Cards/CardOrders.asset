@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bd2b5cf2e544d196cf9b334038f43b, type: 3}
+  m_Name: CardOrders
+  m_EditorClassIdentifier: 
+  _orders:
+  - Icon: {fileID: 21300000, guid: 35668956222d91244a45abe3154577c3, type: 3}
+    TargetCard: 17
+    RewardCard: 13
+  - Icon: {fileID: 21300000, guid: 9871e8d7308587749abee0c195a6e23d, type: 3}
+    TargetCard: 16
+    RewardCard: 13
+  - Icon: {fileID: 21300000, guid: 767064bd94a27db4fb4515aaaa260754, type: 3}
+    TargetCard: 29
+    RewardCard: 13
+  - Icon: {fileID: 21300000, guid: 3bbcd6798185ab945869de3900794a77, type: 3}
+    TargetCard: 28
+    RewardCard: 13
+  - Icon: {fileID: 21300000, guid: 8e52f493926e80e46bb2e007e11d73bb, type: 3}
+    TargetCard: 26
+    RewardCard: 13
