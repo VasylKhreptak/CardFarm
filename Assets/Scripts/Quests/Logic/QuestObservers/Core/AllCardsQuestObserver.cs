@@ -19,14 +19,14 @@ namespace Quests.Logic.QuestObservers.Core
 
         public override void StartObserving()
         {
-            foreach (var tableCard in _cardsTable.ObservableCards)
+            foreach (var tableCard in _cardsTable.Cards)
             {
                 OnCardAdded(tableCard);
             }
 
-            _cardsTable.ObservableCards.ObserveAdd().Subscribe(x => OnCardAdded(x.Value)).AddTo(_subscriptions);
-            _cardsTable.ObservableCards.ObserveRemove().Subscribe(x => OnCardRemoved(x.Value)).AddTo(_subscriptions);
-            _cardsTable.ObservableCards.ObserveReset().Subscribe(_ => OnCardsCleared()).AddTo(_subscriptions);
+            _cardsTable.Cards.ObserveAdd().Subscribe(x => OnCardAdded(x.Value)).AddTo(_subscriptions);
+            _cardsTable.Cards.ObserveRemove().Subscribe(x => OnCardRemoved(x.Value)).AddTo(_subscriptions);
+            _cardsTable.Cards.ObserveReset().Subscribe(_ => OnCardsCleared()).AddTo(_subscriptions);
         }
 
         public override void StopObserving()

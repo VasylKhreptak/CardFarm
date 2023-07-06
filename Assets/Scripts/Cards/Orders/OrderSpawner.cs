@@ -121,7 +121,7 @@ namespace Cards.Orders
 
         private void SpawnOrder()
         {
-            Bounds bounds = _cardsTable.ObservableCards.First().Collider.bounds;
+            Bounds bounds = _cardsTable.Cards.First().Collider.bounds;
 
             Vector3 randomPosition = _cardsTableBounds.GetRandomPoint(bounds);
 

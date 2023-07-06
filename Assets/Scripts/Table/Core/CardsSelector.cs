@@ -40,7 +40,7 @@ namespace Table.Core
         {
             SyncSelectedCard();
 
-            IReadOnlyReactiveCollection<CardData> reactiveCollection = _cardsTable.ObservableCards;
+            IReadOnlyReactiveCollection<CardData> reactiveCollection = _cardsTable.Cards;
 
             reactiveCollection.ObserveAdd().Select(x => x.Value).Subscribe(OnCardAdded).AddTo(_subscriptions);
             reactiveCollection.ObserveRemove().Select(x => x.Value).Subscribe(OnCardRemoved).AddTo(_subscriptions);
@@ -57,7 +57,7 @@ namespace Table.Core
         {
             ClearCards();
 
-            foreach (var cardInTable in _cardsTable.ObservableCards)
+            foreach (var cardInTable in _cardsTable.Cards)
             {
                 OnCardAdded(cardInTable);
             }
