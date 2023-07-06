@@ -24,7 +24,7 @@ namespace Cards.Orders
         private IDisposable _spawnSubscription;
 
         private QuestsManager _questsManager;
-        private CardsTableSelector _cardsTableSelector;
+        private CardsSelector _cardsSelector;
         private CardSpawner _cardSpawner;
         private CardsTableBounds _cardsTableBounds;
         private CardsTable _cardsTable;
@@ -32,13 +32,13 @@ namespace Cards.Orders
         [Inject]
         private void Constructor(
             QuestsManager questsManager,
-            CardsTableSelector cardsTableSelector,
+            CardsSelector cardsSelector,
             CardSpawner cardSpawner,
             CardsTableBounds cardsTableBounds,
             CardsTable cardsTable)
         {
             _questsManager = questsManager;
-            _cardsTableSelector = cardsTableSelector;
+            _cardsSelector = cardsSelector;
             _cardSpawner = cardSpawner;
             _cardsTableBounds = cardsTableBounds;
             _cardsTable = cardsTable;
@@ -105,7 +105,7 @@ namespace Cards.Orders
                 .Timer(TimeSpan.FromSeconds(Random.Range(_minSpawnInterval, _maxSpawnInterval)))
                 .Subscribe(_ =>
                 {
-                    if (_cardsTableSelector.GetCount(Card.Order) < _maxOrders)
+                    if (_cardsSelector.GetCount(Card.Order) < _maxOrders)
                     {
                         SpawnOrder();
                     }

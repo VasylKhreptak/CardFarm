@@ -3,7 +3,7 @@ using Table.Core;
 
 namespace Zenject.Installers.SceneContext
 {
-    public class CardsTableSelectorInstaller : SceneSingleInstanceInstaller<CardsTableSelector>
+    public class CardsTableSelectorInstaller : SceneSingleInstanceInstaller<CardsSelector>
     {
 
     }

@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Table.Core
 {
-    public class CardsTableSelector : MonoBehaviour
+    public class CardsSelector : MonoBehaviour
     {
         private ReactiveDictionary<Card, ReactiveCollection<CardData>> _selectedCardsMap = new ReactiveDictionary<Card, ReactiveCollection<CardData>>();
 

@@ -20,12 +20,12 @@ namespace Quests.Logic.QuestObservers
 
         private BuyZoneData _currentBoosterBuyZone;
 
-        private CardsTableSelector _cardsTableSelector;
+        private CardsSelector _cardsSelector;
 
         [Inject]
-        private void Constructor(CardsTableSelector cardsTableSelector)
+        private void Constructor(CardsSelector cardsSelector)
         {
-            _cardsTableSelector = cardsTableSelector;
+            _cardsSelector = cardsSelector;
         }
 
         public override void StartObserving()
@@ -42,12 +42,12 @@ namespace Quests.Logic.QuestObservers
 
         private void StartObservingNewCardType()
         {
-            if (_cardsTableSelector.SelectedCardsMap.TryGetValue(_targetBuyZone, out ReactiveCollection<CardData> cards))
+            if (_cardsSelector.SelectedCardsMap.TryGetValue(_targetBuyZone, out ReactiveCollection<CardData> cards))
             {
                 StartObservingZonesCount(cards);
             }
 
-            _newCardsAppearedSubscription = _cardsTableSelector.SelectedCardsMap.ObserveAdd()
+            _newCardsAppearedSubscription = _cardsSelector.SelectedCardsMap.ObserveAdd()
                 .Subscribe(x =>
                 {
                     if (x.Key == _targetBuyZone)

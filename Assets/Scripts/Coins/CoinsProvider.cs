@@ -14,14 +14,14 @@ namespace Coins
     public class CoinsProvider : MonoBehaviour
     {
         private CardsTable _cardsTable;
-        private CardsTableSelector _cardsTableSelector;
+        private CardsSelector _cardsSelector;
         private CardSpawner _cardSpawner;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, CardsTableSelector coinChestSelector, CardSpawner cardSpawner)
+        private void Constructor(CardsTable cardsTable, CardsSelector coinChestSelector, CardSpawner cardSpawner)
         {
             _cardsTable = cardsTable;
-            _cardsTableSelector = coinChestSelector;
+            _cardsSelector = coinChestSelector;
             _cardSpawner = cardSpawner;
         }
 
@@ -31,7 +31,7 @@ namespace Coins
         {
             int count = 0;
 
-            if (_cardsTableSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
+            if (_cardsSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
             {
                 foreach (var coinChestCard in chests)
                 {
@@ -44,7 +44,7 @@ namespace Coins
 
         public bool TryGetCoinFromChests(out CardData cardData)
         {
-            if (_cardsTableSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests) == false)
+            if (_cardsSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests) == false)
             {
                 cardData = null;
                 return false;
@@ -119,7 +119,7 @@ namespace Coins
 
             int leftCoinsCount = count - coinsCountInTable;
 
-            if (leftCoinsCount > 0 && _cardsTableSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
+            if (leftCoinsCount > 0 && _cardsSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
             {
                 foreach (var coinChests in chests)
                 {

@@ -16,22 +16,22 @@ namespace Quests.Logic.QuestObservers.Core
         private IDisposable _cardAppearedSubscription;
         private IDisposable _cardsCountSubscription;
 
-        private CardsTableSelector _cardsTableSelector;
+        private CardsSelector _cardsSelector;
 
         [Inject]
-        private void Constructor(CardsTableSelector cardsTableSelector)
+        private void Constructor(CardsSelector cardsSelector)
         {
-            _cardsTableSelector = cardsTableSelector;
+            _cardsSelector = cardsSelector;
         }
 
         public override void StartObserving()
         {
-            if (_cardsTableSelector.SelectedCardsMap.TryGetValue(_targetCard, out var boosterCards))
+            if (_cardsSelector.SelectedCardsMap.TryGetValue(_targetCard, out var boosterCards))
             {
                 StarObservingCardsCount(boosterCards);
             }
 
-            _cardAppearedSubscription = _cardsTableSelector.SelectedCardsMap.ObserveAdd().Subscribe(x =>
+            _cardAppearedSubscription = _cardsSelector.SelectedCardsMap.ObserveAdd().Subscribe(x =>
             {
                 if (x.Key == _targetCard)
                 {
