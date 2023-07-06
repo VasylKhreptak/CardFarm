@@ -12,6 +12,8 @@ namespace Cards.Zones.BuyZone.Data
         public IntReactiveProperty CollectedCoins = new IntReactiveProperty(0);
         public IntReactiveProperty LeftCoins = new IntReactiveProperty(3);
 
+        public BoolReactiveProperty IsLocked = new BoolReactiveProperty(false);
+
         public Transform BoughtCardSpawnPoint;
 
         public BuyZoneCallbacks BuyZoneCallbacks = new BuyZoneCallbacks();

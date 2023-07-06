@@ -99,8 +99,6 @@ namespace Cards.Orders
 
         private void StartSpawningOrders()
         {
-            Debug.Log("Start spawning orders");
-
             StopSpawningOrders();
 
             _spawnSubscription = Observable
@@ -119,7 +117,6 @@ namespace Cards.Orders
         private void StopSpawningOrders()
         {
             _spawnSubscription?.Dispose();
-            Debug.Log("Stop spawning orders");
         }
 
         private void SpawnOrder()

@@ -10,7 +10,7 @@ namespace Cards.Graphics.VisualElements
     public class CardNameText : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] protected CardData _cardData;
         [SerializeField] private TMP_Text _tmp;
 
         private IDisposable _nameSubscription;
@@ -51,7 +51,7 @@ namespace Cards.Graphics.VisualElements
             _nameSubscription?.Dispose();
         }
 
-        private void SetName(string name)
+        protected virtual void SetName(string name)
         {
             if (name == null) return;
 
