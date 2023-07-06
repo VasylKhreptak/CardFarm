@@ -1,5 +1,6 @@
 ﻿using Cards.Orders.Data;
 using ScriptableObjects.Scripts.Cards.Orders;
+using ScriptableObjects.Scripts.DataPairs;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +12,8 @@ namespace Cards.Orders.Logic
         [SerializeField] private OrderData _orderData;
 
         [Header("Preferences")]
-        [SerializeField] private CardOrders _orders;
+        [SerializeField] private CardSpritePairs _cardSpritePairs;
+        [SerializeField] private CardOrders _cardOrders;
 
         #region MonoBehaviour
 
@@ -34,7 +36,10 @@ namespace Cards.Orders.Logic
 
         private void RandomizeOrder()
         {
-            _orderData.Order.Value = _orders.GetRandomOrder();
+            _orderData.OrderRequiredCard = _cardOrders.GetRandomCard();
+            _orderData.OrderIcon.Value = _cardSpritePairs.GetValue(_orderData.OrderRequiredCard);
+            _orderData.TargetCardsCount.Value = _cardOrders.GetRandomCardsCount();
+            _orderData.Rewards = _cardOrders.Rewards;
         }
     }
 }

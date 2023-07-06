@@ -1,17 +1,16 @@
-﻿using System;
-using Cards.Orders.Data;
+﻿using Cards.Orders.Data;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Cards.Orders.Logic
+namespace Cards.Orders.Logic.Updaters
 {
-    public class OrderObserver : MonoBehaviour, IValidatable
+    public class OrderLeftCardsCountUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private OrderData _orderData;
 
-        private IDisposable _leftCardsCountSubscription;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         #region MonoBehaviour
 
@@ -40,17 +39,18 @@ namespace Cards.Orders.Logic
         private void StartObserving()
         {
             StopObserving();
-            _leftCardsCountSubscription = _orderData.LeftCardsCount.Subscribe(OnLeftCardsCountUpdated);
+            _orderData.CurrentCardsCount.Subscribe(_ => UpdateCount()).AddTo(_subscriptions);
+            _orderData.TargetCardsCount.Subscribe(_ => UpdateCount()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
         {
-            _leftCardsCountSubscription?.Dispose();
+            _subscriptions.Clear();
         }
 
-        private void OnLeftCardsCountUpdated(int leftCardsCount)
+        private void UpdateCount()
         {
-            _orderData.IsOrderCompleted.Value = leftCardsCount == 0;
+            _orderData.LeftCardsCount.Value = _orderData.TargetCardsCount.Value - _orderData.CurrentCardsCount.Value;
         }
     }
 }

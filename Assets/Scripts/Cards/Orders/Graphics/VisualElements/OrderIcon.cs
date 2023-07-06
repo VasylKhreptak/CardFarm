@@ -1,5 +1,4 @@
 ﻿using System;
-using Cards.Orders.Core;
 using Cards.Orders.Data;
 using UniRx;
 using UnityEngine;
@@ -56,7 +55,7 @@ namespace Cards.Orders.Graphics.VisualElements
         private void StartObservingOrder()
         {
             StopObservingOrder();
-            _orderSubscription = _orderData.Order.Subscribe(OnOrderChanged);
+            _orderSubscription = _orderData.OrderIcon.Subscribe(OnOrderIconChanged);
         }
 
         private void StopObservingOrder()
@@ -64,15 +63,9 @@ namespace Cards.Orders.Graphics.VisualElements
             _orderSubscription?.Dispose();
         }
 
-        private void OnOrderChanged(Order order)
+        private void OnOrderIconChanged(Sprite icon)
         {
-            if (order == null)
-            {
-                _image.sprite = null;
-                return;
-            }
-
-            _image.sprite = order.Icon;
+            _image.sprite = icon;
         }
     }
 }

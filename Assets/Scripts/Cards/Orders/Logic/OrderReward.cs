@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Cards.Core;
-using Cards.Data;
 using Cards.Logic.Spawn;
 using Cards.Orders.Data;
+using Extensions;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -65,25 +63,17 @@ namespace Cards.Orders.Logic
         {
             if (isCompleted)
             {
-                OnOrderCompleted();
+                SpawnReward();
             }
         }
 
-        private void OnOrderCompleted()
+        private void SpawnReward()
         {
-            if (_orderData.Order.Value == null) return;
-
-            Card cardToSpawn = _orderData.Order.Value.RewardCard;
+            Card cardToSpawn = _orderData.Rewards.GetByWeight(x => x.Weight).Card;
 
             _cardSpawner.SpawnAndMove(cardToSpawn, _orderData.transform.position);
 
-            List<CardData> bottomCards = _orderData.BottomCards.ToList();
-
-            foreach (var bottomCard in bottomCards)
-            {
-                bottomCard.gameObject.SetActive(false);
-            }
-
+            _orderData.IsOrderCompleted.Value = false;
             _orderData.gameObject.SetActive(false);
         }
     }
