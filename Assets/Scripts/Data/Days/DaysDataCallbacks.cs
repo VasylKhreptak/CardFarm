@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Data.Game
+namespace Data.Days
 {
-    public class GameDataCallbacks
+    public class DaysDataCallbacks
     {
         public Action onNewDayCome;
     }

@@ -1,11 +1,9 @@
-﻿using Data;
-using Data.Game;
+﻿using Runtime.Days;
 using Zenject.Installers.SceneContext.Core;
 
 namespace Zenject.Installers.SceneContext
 {
-    public class GameDataInstaller : DataInstaller<GameData>
+    public class DaysRunnerInstaller : SceneSingleInstanceInstaller<DaysRunner>
     {
-
     }
 }
