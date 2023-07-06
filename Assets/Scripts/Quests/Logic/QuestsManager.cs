@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ObjectPoolers;
 using Quests.Data;
 using Quests.Logic.Core;
@@ -23,6 +24,9 @@ namespace Quests.Logic
         public IReadOnlyReactiveCollection<QuestData> LeftQuests => _leftQuests;
         public IReadOnlyReactiveProperty<QuestData> CurrentQuest => _currentQuest;
         public IReadOnlyReactiveCollection<Quest> FinishedQuests => _finishedQuests;
+
+        public event Action<Quest> onFinishedQuest;
+        public event Action<Quest> onStartedQuest;
 
         private QuestsObjectPooler _questsObjectPooler;
 
@@ -51,12 +55,14 @@ namespace Quests.Logic
         {
             _leftQuests.Add(questData);
             _finishedQuests.Remove(questData.Quest);
+            onStartedQuest?.Invoke(questData.Quest);
         }
 
         public void UnregisterQuest(QuestData questData)
         {
             _leftQuests.Remove(questData);
             _finishedQuests.Add(questData.Quest);
+            onFinishedQuest?.Invoke(questData.Quest);
         }
 
         private void CreateQuests()
@@ -110,6 +116,18 @@ namespace Quests.Logic
 
             questData = null;
             return false;
+        }
+
+        public bool IsQuestFinished(Quest quest)
+        {
+            return _finishedQuests.Contains(quest);
+        }
+
+        public bool IsQuestActive(Quest quest)
+        {
+            QuestData questData = _leftQuests.FirstOrDefault(q => q.Quest == quest);
+
+            return questData != null;
         }
     }
 }

@@ -22,7 +22,6 @@ namespace Cards.Orders
         [SerializeField] private int _maxOrders = 5;
 
         private IDisposable _spawnSubscription;
-        private CompositeDisposable _questSubscriptions = new CompositeDisposable();
 
         private QuestsManager _questsManager;
         private CardsTableSelector _cardsTableSelector;
@@ -63,26 +62,45 @@ namespace Cards.Orders
         {
             StopObservingQuests();
 
-            _questsManager.FinishedQuests.ObserveAdd().Subscribe(quest =>
+            if (_questsManager.IsQuestFinished(_spawnFromQuest))
             {
-                if (quest.Value == _spawnFromQuest) StartSpawningOrders();
-            }).AddTo(_questSubscriptions);
-
-            _questsManager.FinishedQuests.ObserveRemove().Subscribe(quest =>
+                StartSpawningOrders();
+            }
+            else
             {
-                if (quest.Value == _spawnFromQuest) StopSpawningOrders();
-            }).AddTo(_questSubscriptions);
+                StopSpawningOrders();
+            }
 
-            _questsManager.FinishedQuests.ObserveReset().Subscribe(_ => StopSpawningOrders()).AddTo(_questSubscriptions);
+            _questsManager.onFinishedQuest += OnFinishedQuest;
+            _questsManager.onStartedQuest += OnStartedQuest;
         }
 
         private void StopObservingQuests()
         {
-            _questSubscriptions.Clear();
+            _questsManager.onFinishedQuest -= OnFinishedQuest;
+            _questsManager.onStartedQuest -= OnStartedQuest;
+        }
+
+        private void OnFinishedQuest(Quest quest)
+        {
+            if (quest == _spawnFromQuest)
+            {
+                StartSpawningOrders();
+            }
+        }
+
+        private void OnStartedQuest(Quest quest)
+        {
+            if (quest == _spawnFromQuest)
+            {
+                StopSpawningOrders();
+            }
         }
 
         private void StartSpawningOrders()
         {
+            Debug.Log("Start spawning orders");
+
             StopSpawningOrders();
 
             _spawnSubscription = Observable
@@ -101,6 +119,7 @@ namespace Cards.Orders
         private void StopSpawningOrders()
         {
             _spawnSubscription?.Dispose();
+            Debug.Log("Stop spawning orders");
         }
 
         private void SpawnOrder()
