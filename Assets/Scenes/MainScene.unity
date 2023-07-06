@@ -2625,6 +2625,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 758635648}
+    - target: {fileID: 7888659933339687974, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: _targetQuest
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7943049280611862358, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: m_Name
@@ -4376,6 +4381,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1370913184}
+    - target: {fileID: 7888659933339687974, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: _targetQuest
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7943049280611862358, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: m_Name
@@ -7285,6 +7295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 589898879346134961, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 729075528684383974, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}

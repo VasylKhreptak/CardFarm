@@ -76,7 +76,7 @@ namespace Cards.Logic.Updaters
         {
             cardData.CurrentRecipe.Subscribe(recipe =>
             {
-                SetState(recipe != null);
+                SetState(recipe != null && recipe.Cooldown > 0);
             }).AddTo(_firstGroupCardSubscriptions);
         }
 
@@ -84,7 +84,7 @@ namespace Cards.Logic.Updaters
         {
             cardData.CurrentReproductionRecipe.Subscribe(recipe =>
             {
-                SetState(recipe != null);
+                SetState(recipe != null && recipe.Cooldown > 0);
             }).AddTo(_firstGroupCardSubscriptions);
         }
 
@@ -96,7 +96,7 @@ namespace Cards.Logic.Updaters
 
                 factoryData.CurrentFactoryRecipe.Subscribe(recipe =>
                 {
-                    SetState(recipe != null);
+                    SetState(recipe != null && recipe.Cooldown > 0);
                 }).AddTo(_firstGroupCardSubscriptions);
             }
         }
@@ -109,7 +109,7 @@ namespace Cards.Logic.Updaters
 
                 incubatorData.CurrentIncubatorRecipe.Subscribe(recipe =>
                 {
-                    SetState(recipe != null);
+                    SetState(recipe != null && recipe.Cooldown > 0);
                 }).AddTo(_firstGroupCardSubscriptions);
             }
         }

@@ -14,7 +14,7 @@ namespace Cards.Logic.Updaters
         private IDisposable _mouseDownSubscription;
         private IDisposable _canBeSelectedSubscription;
         private IDisposable _mouseUpSubscription;
-
+        
         #region MonoBehaviour
 
         private void OnValidate()
