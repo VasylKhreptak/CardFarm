@@ -47,10 +47,18 @@ namespace ProgressLogic.Core
                 .Play();
         }
 
+        protected void SetTimeScale(float timeScale)
+        {
+            if (_progressTween == null) return;
+
+            _progressTween.timeScale = timeScale;
+        }
+
         protected void StopProgress()
         {
             _progressTween?.Kill();
             _progress.Value = 0;
+            SetTimeScale(1f);
         }
 
         protected abstract void OnProgressCompleted();
