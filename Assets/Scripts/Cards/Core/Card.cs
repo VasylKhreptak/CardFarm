@@ -54,5 +54,6 @@ namespace Cards.Core
         BuildingBooster = 49,
         AnimalBoosterBuyZone = 50,
         BuildingBoosterBuyZone = 51,
+        Dog = 52,
     }
 }
