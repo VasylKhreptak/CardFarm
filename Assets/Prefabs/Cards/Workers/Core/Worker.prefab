@@ -608,7 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseHeight: 0.01
   _heightOffset: 0.01
-  _isWorker: 0
+  _isWorker: 1
   _isSellableCard: 0
   _canSortingLayerChange: 1
   _isAutomatedFactory: 0

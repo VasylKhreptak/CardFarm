@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
+using Cards.Workers.Data;
 using Extensions;
 using ProgressLogic.Core;
 using ScriptableObjects.Scripts.Cards.ResourceNodes;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -19,6 +22,8 @@ namespace Cards.ResourceNodes.Core.Logic
         [FormerlySerializedAs("_resourceNodeRecipe")]
         [Header("Preferences")]
         [SerializeField] private ResourceNodeData _resourceNodeData;
+
+        private IDisposable _workersSubscription;
 
         private CardSpawner _cardSpawner;
 
@@ -43,26 +48,27 @@ namespace Cards.ResourceNodes.Core.Logic
         private void OnEnable()
         {
             OnBottomCardsListUpdated();
-            StartObserving();
+            StartObservingBottomCards();
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
 
-            StopObserving();
+            StopObservingBottomCards();
+            StopObservingWorker();
         }
 
         #endregion
 
-        private void StartObserving()
+        private void StartObservingBottomCards()
         {
-            StopObserving();
+            StopObservingBottomCards();
 
             _cardData.Callbacks.onBottomCardsListUpdated += OnBottomCardsListUpdated;
         }
 
-        private void StopObserving()
+        private void StopObservingBottomCards()
         {
             _cardData.Callbacks.onBottomCardsListUpdated -= OnBottomCardsListUpdated;
         }
@@ -74,10 +80,12 @@ namespace Cards.ResourceNodes.Core.Logic
             if (bottomCards.Count == 1 && bottomCards[0].IsWorker)
             {
                 StartProgress(_resourceNodeData.Recipe.Cooldown);
+                StartObservingWorker();
                 return;
             }
 
             StopProgress();
+            StopObservingWorker();
         }
 
         protected override void OnProgressCompleted()
@@ -87,11 +95,25 @@ namespace Cards.ResourceNodes.Core.Logic
             _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
             StartProgress(_resourceNodeData.Recipe.Cooldown);
+            StartObservingWorker();
         }
 
         private Card GetCardToSpawn()
         {
             return _resourceNodeData.Recipe.Result.Weights.GetByWeight(x => x.Weight).Card;
+        }
+
+        private void StartObservingWorker()
+        {
+            StopObservingWorker();
+
+            WorkerData worker = _cardData.BottomCards[0] as WorkerData;
+            _workersSubscription = worker.Efficiency.Subscribe(SetTimeScale);
+        }
+
+        private void StopObservingWorker()
+        {
+            _workersSubscription?.Dispose();
         }
     }
 }

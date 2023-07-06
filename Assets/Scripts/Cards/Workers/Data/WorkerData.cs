@@ -10,8 +10,8 @@ namespace Cards.Workers.Data
         public IntReactiveProperty MinSatiety = new IntReactiveProperty(0);
         public IntReactiveProperty MaxSatiety = new IntReactiveProperty(0);
         public FloatReactiveProperty Efficiency = new FloatReactiveProperty(1);
-        public IntReactiveProperty MinEfficiency = new IntReactiveProperty(0);
-        public IntReactiveProperty MaxEfficiency = new IntReactiveProperty(0);
+        public FloatReactiveProperty MinEfficiency = new FloatReactiveProperty(0);
+        public FloatReactiveProperty MaxEfficiency = new FloatReactiveProperty(0);
         public AnimationCurve SatietyToEfficiencyCurve = AnimationCurve.Linear(0, 0, 1, 1);
     }
 }

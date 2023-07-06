@@ -59,8 +59,8 @@ namespace Cards.Workers.Logic.Updaters
             int minSatiety = _workerData.MinSatiety.Value;
             int maxSatiety = _workerData.MaxSatiety.Value;
             float efficiency;
-            int minEfficiency = _workerData.MinEfficiency.Value;
-            int maxEfficiency = _workerData.MaxEfficiency.Value;
+            float minEfficiency = _workerData.MinEfficiency.Value;
+            float maxEfficiency = _workerData.MaxEfficiency.Value;
             AnimationCurve curve = _workerData.SatietyToEfficiencyCurve;
 
             efficiency = curve.Evaluate(minSatiety, maxSatiety, satiety, minEfficiency, maxEfficiency);

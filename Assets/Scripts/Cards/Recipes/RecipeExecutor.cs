@@ -4,6 +4,7 @@ using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
+using Cards.Workers.Data;
 using Extensions;
 using ProgressLogic.Core;
 using ScriptableObjects.Scripts.Cards.Recipes;
@@ -19,6 +20,7 @@ namespace Cards.Recipes
         [SerializeField] private CardData _cardData;
 
         private IDisposable _recipeSubscription;
+        private IDisposable _workersSubscription;
 
         private int _resultsLeft;
 
@@ -52,6 +54,7 @@ namespace Cards.Recipes
             base.OnDisable();
 
             StopObservingRecipe();
+            StopObservingWorkers();
         }
 
         #endregion
@@ -69,13 +72,15 @@ namespace Cards.Recipes
 
         private void OnRecipeUpdated(CardRecipe recipe)
         {
-            if (recipe == null)
+            if (recipe == null || recipe.Cooldown == 0)
             {
                 StopProgress();
+                StopObservingWorkers();
             }
             else
             {
                 StartProgress(recipe.Cooldown);
+                StartObservingWorkers();
             }
         }
 
@@ -155,6 +160,42 @@ namespace Cards.Recipes
             }
 
             return resourcesToRemove;
+        }
+
+        private void StartObservingWorkers()
+        {
+            StopObservingWorkers();
+
+            List<WorkerData> workers = GetWorkers();
+
+            if (workers.Count == 0) return;
+
+            List<IObservable<float>> workerEfficiencyObservables = workers.Select(x => x.Efficiency as IObservable<float>).ToList();
+
+            _workersSubscription = workerEfficiencyObservables
+                .Merge()
+                .Subscribe(_ =>
+                {
+                    float efficiency = CalculateWorkersEfficiency(workers);
+                    SetTimeScale(efficiency);
+                });
+        }
+
+        private void StopObservingWorkers()
+        {
+            _workersSubscription?.Dispose();
+        }
+
+        private List<WorkerData> GetWorkers()
+        {
+            List<CardData> groupCards = _cardData.GroupCards;
+
+            return groupCards.Where(x => x.IsWorker).Select(x => x as WorkerData).ToList();
+        }
+
+        private float CalculateWorkersEfficiency(List<WorkerData> workers)
+        {
+            return workers.Select(x => x.Efficiency.Value).Average();
         }
     }
 }
