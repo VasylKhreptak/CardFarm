@@ -64,6 +64,24 @@ namespace Table.Core
             return false;
         }
 
+        public bool TryGetLowestUniqRecipeFreeGroupCard(CardData cardData, out CardData foundCard)
+        {
+            foreach (CardData cardInTable in _cards)
+            {
+                if (cardInTable.IsLowestGroupCard.Value
+                    && cardData.Card.Value == cardInTable.Card.Value
+                    && cardInTable.IsTakingPartInRecipe.Value == false
+                    && cardData != cardInTable)
+                {
+                    foundCard = cardInTable;
+                    return true;
+                }
+            }
+
+            foundCard = null;
+            return false;
+        }
+
         public bool TryGetLowestGroupCardOrFirst(Card card, out CardData cardData)
         {
             if (TryGetLowestGroupCard(card, out cardData)) return true;

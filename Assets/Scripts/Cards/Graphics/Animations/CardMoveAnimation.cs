@@ -19,6 +19,8 @@ namespace Cards.Graphics.Animations
 
         private Tween _tween;
 
+        public float Duration => _duration;
+
         #region MonoBehaviour
 
         private void OnValidate()
@@ -46,6 +48,8 @@ namespace Cards.Graphics.Animations
         public void Play(Vector3 targetPosition, float duration, Action onComplete = null)
         {
             _cardData.UnlinkFromUpper();
+            
+            _cardData.RenderOnTop();
 
             Stop();
             targetPosition = ValidatePosition(targetPosition);

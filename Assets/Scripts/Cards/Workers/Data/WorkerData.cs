@@ -7,6 +7,7 @@ namespace Cards.Workers.Data
     public class WorkerData : DamageableCardData
     {
         public IntReactiveProperty Satiety = new IntReactiveProperty(0);
+        public IntReactiveProperty NeededSatiety = new IntReactiveProperty(0);
         public IntReactiveProperty MinSatiety = new IntReactiveProperty(0);
         public IntReactiveProperty MaxSatiety = new IntReactiveProperty(0);
         public FloatReactiveProperty Efficiency = new FloatReactiveProperty(1);
