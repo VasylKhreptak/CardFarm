@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Cards.Boosters.Logic.Updaters
 {
-    public class FactoryRecipeUpdater : RecipeUpdater<AutomatedCardFactoryData>
+    public class FactoryRecipeUpdater : RecipeUpdater<AutomatedFactoryData>
     {
         [Header("References")]
         [SerializeField] private FactoryRecipes _cardRecipes;

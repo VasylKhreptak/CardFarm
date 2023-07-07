@@ -12,7 +12,7 @@ namespace Quests.Logic.QuestObservers.Core
         [Header("Preferences")]
         [SerializeField] private Card _recipeResult;
 
-        List<AutomatedCardFactoryData> _subscribedCards = new List<AutomatedCardFactoryData>();
+        List<AutomatedFactoryData> _subscribedCards = new List<AutomatedFactoryData>();
 
         public override void StopObserving()
         {
@@ -25,7 +25,7 @@ namespace Quests.Logic.QuestObservers.Core
         {
             if (cardData.IsAutomatedFactory)
             {
-                StartObservingCard(cardData as AutomatedCardFactoryData);
+                StartObservingCard(cardData as AutomatedFactoryData);
             }
         }
 
@@ -33,7 +33,7 @@ namespace Quests.Logic.QuestObservers.Core
         {
             if (cardData.IsAutomatedFactory)
             {
-                StopObservingCard(cardData as AutomatedCardFactoryData);
+                StopObservingCard(cardData as AutomatedFactoryData);
             }
         }
 
@@ -42,14 +42,14 @@ namespace Quests.Logic.QuestObservers.Core
             StopObservingCards();
         }
 
-        private void StartObservingCard(AutomatedCardFactoryData cardData)
+        private void StartObservingCard(AutomatedFactoryData cardData)
         {
             cardData.AutomatedFactoryCallbacks.onSpawnedRecipeResult += OnSpawnedRecipeResult;
 
             _subscribedCards.Add(cardData);
         }
 
-        private void StopObservingCard(AutomatedCardFactoryData cardData)
+        private void StopObservingCard(AutomatedFactoryData cardData)
         {
             cardData.AutomatedFactoryCallbacks.onSpawnedRecipeResult -= OnSpawnedRecipeResult;
 

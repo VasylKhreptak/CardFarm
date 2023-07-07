@@ -16,6 +16,7 @@ namespace Cards.Data
         [Space]
         [SerializeField] private bool _isWorker;
         [SerializeField] private bool _isFood;
+        [SerializeField] private bool _isResourceNode;
         [SerializeField] private bool _isSellableCard;
         [SerializeField] private bool _canSortingLayerChange = true;
         [SerializeField] private bool _isAutomatedFactory;
@@ -30,6 +31,7 @@ namespace Cards.Data
         public bool IsAutomatedFactory => _isAutomatedFactory;
         public bool IsIncubator => _isIncubator;
         public bool IsFood => _isFood;
+        public bool IsResourceNode => _isResourceNode;
 
         [Space]
         public int ID = -1;

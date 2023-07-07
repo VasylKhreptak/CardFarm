@@ -4,7 +4,7 @@ using UniRx;
 
 namespace Cards.AutomatedFactories.Data
 {
-    public class AutomatedCardFactoryData : SellableCardData
+    public class AutomatedFactoryData : SellableCardData
     {
         public ReactiveProperty<FactoryRecipe> CurrentFactoryRecipe = new ReactiveProperty<FactoryRecipe>();
 

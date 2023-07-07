@@ -61,6 +61,12 @@ namespace Cards.Logic.Updaters
                 return;
             }
 
+            if (firstGroupCard.IsResourceNode)
+            {
+                SetState(true);
+                return;
+            }
+
             TryStartObservingCurrentRecipe(firstGroupCard);
             TryStartObservingReproductionRecipe(firstGroupCard);
             TryStartObservingFactoryRecipe(firstGroupCard);
@@ -92,7 +98,7 @@ namespace Cards.Logic.Updaters
         {
             if (cardData.IsAutomatedFactory)
             {
-                AutomatedCardFactoryData factoryData = cardData as AutomatedCardFactoryData;
+                AutomatedFactoryData factoryData = cardData as AutomatedFactoryData;
 
                 factoryData.CurrentFactoryRecipe.Subscribe(recipe =>
                 {

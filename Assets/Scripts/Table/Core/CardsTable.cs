@@ -114,11 +114,41 @@ namespace Table.Core
             return false;
         }
 
+        public bool TryGetLowestUniqCompatibleGroupCard(CardData topCard, Card card, out CardData cardData)
+        {
+            if (TryGetLowestRecipeFreeGroupCard(card, out CardData lowestCard))
+            {
+                if (_compatibleCards.IsCompatible(topCard.Card.Value, card) &&
+                    topCard != lowestCard)
+                {
+                    cardData = lowestCard;
+                    return true;
+                }
+            }
+
+            cardData = null;
+            return false;
+        }
+
         public bool TryGetLowestPrioritizedCompatibleGroupCard(Card topCard, Card[] prioritizedCards, out CardData cardData)
         {
             foreach (var prioritizedCard in prioritizedCards)
             {
                 if (TryGetLowestCompatibleGroupCard(topCard, prioritizedCard, out cardData))
+                {
+                    return true;
+                }
+            }
+
+            cardData = null;
+            return false;
+        }
+
+        public bool TryGetLowestUniqPrioritizedCompatibleGroupCard(CardData topCard, Card[] prioritizedCards, out CardData cardData)
+        {
+            foreach (var prioritizedCard in prioritizedCards)
+            {
+                if (TryGetLowestUniqCompatibleGroupCard(topCard, prioritizedCard, out cardData))
                 {
                     return true;
                 }

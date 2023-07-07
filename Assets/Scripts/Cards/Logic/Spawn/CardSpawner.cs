@@ -60,7 +60,6 @@ namespace Cards.Logic.Spawn
             Vector3 position,
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
-            
             bool jump = true,
             bool flip = true)
         {
@@ -88,35 +87,33 @@ namespace Cards.Logic.Spawn
             bool jump = true,
             bool flip = true)
         {
-            if (tryJoinToExistingGroup && _cardsTable.TryGetLowestPrioritizedCompatibleGroupCard(card, prioritizedCardsToJoin, out var lowestGroupCard))
+
+            CardData spawnedCard = Spawn(card, position);
+            if (tryJoinToExistingGroup && _cardsTable.TryGetLowestUniqPrioritizedCompatibleGroupCard(spawnedCard, prioritizedCardsToJoin, out var lowestGroupCard))
             {
-                CardData spawnedCard = Spawn(card, position);
                 spawnedCard.LinkTo(lowestGroupCard);
                 return spawnedCard;
             }
+
+            Bounds cardBounds = spawnedCard.Collider.bounds;
+            cardBounds.center = position;
+            Vector3 moveToPosition = targetPosition ?? _cardsTableBounds.GetRandomPositionInRange(cardBounds, _minRange, _maxRange);
+
+            if (jump)
+            {
+                spawnedCard.Animations.JumpAnimation.Play(moveToPosition);
+            }
             else
             {
-                CardData spawnedCard = Spawn(card, position);
-                Bounds cardBounds = spawnedCard.Collider.bounds;
-                cardBounds.center = position;
-                Vector3 moveToPosition = targetPosition ?? _cardsTableBounds.GetRandomPositionInRange(cardBounds, _minRange, _maxRange);
-
-                if (jump)
-                {
-                    spawnedCard.Animations.JumpAnimation.Play(moveToPosition);
-                }
-                else
-                {
-                    spawnedCard.Animations.MoveAnimation.Play(moveToPosition);
-                }
-
-                if (flip)
-                {
-                    spawnedCard.Animations.FlipAnimation.Play();
-                }
-
-                return spawnedCard;
+                spawnedCard.Animations.MoveAnimation.Play(moveToPosition);
             }
+
+            if (flip)
+            {
+                spawnedCard.Animations.FlipAnimation.Play();
+            }
+
+            return spawnedCard;
         }
 
         public CardData SpawnCoinAndMove(

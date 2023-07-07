@@ -18,7 +18,7 @@ namespace Cards.AutomatedFactories.Logic
     public class FactoryRecipeExecutor : ProgressDependentObject
     {
         [Header("References")]
-        [SerializeField] protected AutomatedCardFactoryData _cardData;
+        [SerializeField] protected AutomatedFactoryData _cardData;
         [SerializeField] private CompatibleCards _compatibleCards;
 
         private IDisposable _currentRecipeSubscription;
@@ -35,7 +35,7 @@ namespace Cards.AutomatedFactories.Logic
 
         private void OnValidate()
         {
-            _cardData = GetComponentInParent<AutomatedCardFactoryData>(true);
+            _cardData = GetComponentInParent<AutomatedFactoryData>(true);
         }
 
         private void OnEnable()
