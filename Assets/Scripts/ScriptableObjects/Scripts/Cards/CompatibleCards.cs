@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Cards.Core;
+using Cards.Data;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -10,21 +11,47 @@ namespace ScriptableObjects.Scripts.Cards
     public class CompatibleCards : ScriptableObject
     {
         [Header("Preferences")]
-        [SerializeField] private CompatibleCardsData[] _compatibleCardsData;
+        [SerializeField] private CompatibleCardsData[] _whiteList;
+        [SerializeField] private CompatibleCardsData[] _blackList;
 
-        private Dictionary<Card, HashSet<Card>> _compatibleCards;
+        private Dictionary<Card, HashSet<Card>> _whiteListMap;
+        private Dictionary<Card, HashSet<Card>> _blackListMap;
 
         public bool IsCompatible(Card topCard, Card bottomCard)
         {
-            if (_compatibleCards == null)
+            if (_whiteListMap == null || _blackListMap == null)
                 Initialize();
 
-            if (_compatibleCards.TryGetValue(topCard, out var compatibleCards))
+            if (_whiteListMap.TryGetValue(topCard, out var compatibleCards))
             {
-                return compatibleCards.Contains(bottomCard);
+                if (compatibleCards.Contains(bottomCard)) return true;
             }
 
-            return false;
+            if (_blackListMap.TryGetValue(topCard, out var incompatibleCards))
+            {
+                if (incompatibleCards.Contains(bottomCard)) return false;
+            }
+
+            return topCard == bottomCard;
+        }
+
+        public bool IsCompatibleByType(CardData topCard, CardData bottomCard)
+        {
+            if (topCard == null || bottomCard == null) return false;
+
+            if (topCard.IsStackable == false || bottomCard.IsStackable == false) return false;
+
+            if (topCard.CanBeStackedOnlyWithSameCard || bottomCard.CanBeStackedOnlyWithSameCard)
+            {
+                if (topCard.Card.Value != bottomCard.Card.Value) return false;
+            }
+
+            if (topCard.IsSellableCard && bottomCard.IsSellableCard) return true;
+
+            if (topCard.IsWorker &&
+                (bottomCard.IsSellableCard || bottomCard.IsAutomatedFactory)) return true;
+
+            return IsCompatible(topCard.Card.Value, bottomCard.Card.Value);
         }
 
         private void Awake()
@@ -35,13 +62,21 @@ namespace ScriptableObjects.Scripts.Cards
         [Button("Initialize")]
         private void Initialize()
         {
-            _compatibleCards = new Dictionary<Card, HashSet<Card>>();
+            _whiteListMap = new Dictionary<Card, HashSet<Card>>();
+            _blackListMap = new Dictionary<Card, HashSet<Card>>();
 
-            if (_compatibleCardsData == null) return;
+            if (_whiteList == null) return;
 
-            foreach (var compatibleCardsData in _compatibleCardsData)
+            foreach (var whiteListCardsData in _whiteList)
             {
-                _compatibleCards.Add(compatibleCardsData.Card, new HashSet<Card>(compatibleCardsData.CompatibleCards));
+                _whiteListMap.Add(whiteListCardsData.Card, new HashSet<Card>(whiteListCardsData.CompatibleCards));
+            }
+
+            if (_blackList == null) return;
+
+            foreach (var blackListCardsData in _blackList)
+            {
+                _blackListMap.Add(blackListCardsData.Card, new HashSet<Card>(blackListCardsData.CompatibleCards));
             }
         }
 

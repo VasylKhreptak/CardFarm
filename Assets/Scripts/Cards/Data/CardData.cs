@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Cards.Core;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
+using NaughtyAttributes;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
@@ -23,6 +24,8 @@ namespace Cards.Data
         [SerializeField] private bool _isIncubator;
         [SerializeField] private bool _isAnimal;
         [SerializeField] private bool _isStackable = true;
+        [SerializeField] private bool _isDamageable = true;
+        [SerializeField, ShowIf(nameof(_isStackable))] private bool _canBeStackedOnlyWithSameCard;
 
         public float BaseHeight => _baseHeight;
         public float HeightOffset => _heightOffset;
@@ -36,6 +39,9 @@ namespace Cards.Data
         public bool IsResourceNode => _isResourceNode;
         public bool IsAnimal => _isAnimal;
         public bool IsStackable => _isStackable;
+        public bool IsDamageable => _isDamageable;
+        
+        public bool CanBeStackedOnlyWithSameCard => _canBeStackedOnlyWithSameCard;
 
         [Space]
         public int ID = -1;

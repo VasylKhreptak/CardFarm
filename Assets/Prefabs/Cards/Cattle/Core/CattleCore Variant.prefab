@@ -117,6 +117,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1047073071230854646}
+    - target: {fileID: 380334992738263104, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1047073071230854646}
     - target: {fileID: 484580481302317390, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: _cardData
@@ -143,6 +148,11 @@ PrefabInstance:
       value: 0.96470594
       objectReference: {fileID: 0}
     - target: {fileID: 915879297404928186, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1047073071230854646}
+    - target: {fileID: 1029102442086880939, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -541,10 +551,14 @@ MonoBehaviour:
   _baseHeight: 0.01
   _heightOffset: 0.01
   _isWorker: 0
+  _isFood: 0
+  _isResourceNode: 0
   _isSellableCard: 0
   _canSortingLayerChange: 1
   _isAutomatedFactory: 0
   _isIncubator: 0
+  _isAnimal: 1
+  _isStackable: 0
   ID: -1
   GroupID:
     value: -1
@@ -604,11 +618,14 @@ MonoBehaviour:
     value: 0
   ClampedPosition:
     value: {x: 0, y: 0, z: 0}
+  IsTakingPartInRecipe:
+    value: 0
   CurrentRecipe:
     value:
       Resources: 
       Workers: 
       Cooldown: 0
+      ResultCount: 1
       Result:
         Weights: []
   Durability:
@@ -619,6 +636,7 @@ MonoBehaviour:
     MoveAnimation: {fileID: 486260136569144724}
     JumpAnimation: {fileID: 6117105487572310690}
     FlipAnimation: {fileID: 7648276446668821412}
+    ShakeAnimation: {fileID: 1626866486009633128}
   IsPlayingAnyAnimation:
     value: 0
   CurrentReproductionRecipe:
@@ -641,6 +659,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252b2605a9ca4d5a802f53b51ef5d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1626866486009633128 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1029102442086880939, guid: d794782d0ddca224998105c67e750aef,
+    type: 3}
+  m_PrefabInstance: {fileID: 1791255370715680707}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4308e373710841d59f48c3aa9d4d47ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5538420079293882865 stripped

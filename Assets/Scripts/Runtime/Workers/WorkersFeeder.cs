@@ -101,6 +101,8 @@ namespace Runtime.Workers
 
                         float foodMoveDuration = food.Animations.MoveAnimation.Duration;
 
+                        food.Separate();
+                        
                         food.Animations.MoveAnimation.Play(worker.transform.position, () =>
                         {
                             int workerNeededSatiety = worker.NeededSatiety.Value;

@@ -17,7 +17,7 @@ PrefabInstance:
     - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
       propertyPath: _cards.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
@@ -46,6 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
+      propertyPath: _cards.Array.data[5].Card
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
+        type: 3}
       propertyPath: _cards.Array.data[0].Weight
       value: 1
       objectReference: {fileID: 0}
@@ -67,6 +72,11 @@ PrefabInstance:
     - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
       propertyPath: _cards.Array.data[4].Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
+        type: 3}
+      propertyPath: _cards.Array.data[5].Weight
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5633327936941314306, guid: 8aea9bef9ed82d6439ace7cfda0849f3,

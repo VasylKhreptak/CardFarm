@@ -67,7 +67,7 @@ namespace Cards.Logic.Updaters
                 return;
             }
 
-            _cardData.IsCompatibleWithSelectedCard.Value = _compatibleCards.IsCompatible(selectedCard.Card.Value, _cardData.Card.Value);
+            _cardData.IsCompatibleWithSelectedCard.Value = _compatibleCards.IsCompatibleByType(selectedCard, _cardData);
         }
     }
 }
