@@ -121,6 +121,8 @@ namespace Cards.Orders
 
         private void SpawnOrder()
         {
+            if (_cardsTable.Cards.Count == 0) return;
+
             Bounds bounds = _cardsTable.Cards.First().Collider.bounds;
 
             Vector3 randomPosition = _cardsTableBounds.GetRandomPoint(bounds);

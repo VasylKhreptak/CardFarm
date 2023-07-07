@@ -64,12 +64,12 @@ namespace Cards.Food.Logic
                 targetNutritionalValue = 0;
             }
 
+            _foodData.NutritionalValue.Value = targetNutritionalValue;
+
             if (targetNutritionalValue == 0)
             {
                 _foodData.gameObject.SetActive(false);
             }
-
-            _foodData.NutritionalValue.Value = targetNutritionalValue;
         }
 
         private void ResetNutritionalValue()
