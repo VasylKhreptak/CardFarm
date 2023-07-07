@@ -87,10 +87,14 @@ namespace Runtime.Workers
 
             FoodCardData lastMovedFood = null;
 
+            List<FoodCardData> foodToRemove = new List<FoodCardData>();
+
             foreach (var worker in workerCards)
             {
                 while (worker.NeededSatiety.Value > 0)
                 {
+                    foodToRemove.Clear();
+
                     foreach (var food in foodCards)
                     {
                         if (food.gameObject.activeSelf == false) continue;
@@ -108,17 +112,22 @@ namespace Runtime.Workers
 
                         yield return new WaitForSeconds(foodMoveDuration);
 
+                        if (lastMovedFood != null && lastMovedFood.gameObject.activeSelf == false)
+                        {
+                            foodToRemove.Add(lastMovedFood);
+                        }
+                        
                         if (worker.NeededSatiety.Value <= 0)
                         {
                             break;
                         }
                     }
 
-                    if (lastMovedFood != null && lastMovedFood.gameObject.activeSelf == false)
+                    foreach (var cardToRemove in foodToRemove)
                     {
-                        foodCards.Remove(lastMovedFood);
+                        foodCards.Remove(cardToRemove);
                     }
-
+                    
                     if (foodCards.Count == 0) yield break;
                 }
             }
