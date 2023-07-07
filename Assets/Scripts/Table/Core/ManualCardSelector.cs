@@ -10,7 +10,7 @@ namespace Table.Core
         private ReactiveCollection<CardData> _selectedCards = new ReactiveCollection<CardData>();
 
         public IReadOnlyReactiveCollection<CardData> SelectedCards => _selectedCards;
-
+        
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private CardsTable _cardsTable;

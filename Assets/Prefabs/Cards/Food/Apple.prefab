@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: NutritionalValue.value
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 871094102, guid: 096e2fd36fb371a418caf0955f9f94b8, type: 3}
+      propertyPath: MaxNutritionalValue.value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4316638521175404532, guid: 096e2fd36fb371a418caf0955f9f94b8,
         type: 3}
       propertyPath: m_Pivot.x

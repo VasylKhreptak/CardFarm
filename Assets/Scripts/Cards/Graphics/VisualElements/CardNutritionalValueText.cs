@@ -1,5 +1,6 @@
 ﻿using System;
 using Cards.Data;
+using Cards.Food.Data;
 using TMPro;
 using UniRx;
 using UnityEngine;

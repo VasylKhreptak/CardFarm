@@ -1,6 +1,7 @@
+using Cards.Data;
 using UniRx;
 
-namespace Cards.Data
+namespace Cards.Food.Data
 {
     public class FoodCardData : SellableCardData
     {

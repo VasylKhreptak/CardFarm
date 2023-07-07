@@ -405,6 +405,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 934001121197455679, guid: 729dc15cae8215a49afcc6aef97b1428,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3877436869873974262, guid: 729dc15cae8215a49afcc6aef97b1428,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -418,7 +423,7 @@ PrefabInstance:
     - target: {fileID: 5783176560838625278, guid: 729dc15cae8215a49afcc6aef97b1428,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6135980548240136486, guid: 729dc15cae8215a49afcc6aef97b1428,
         type: 3}
@@ -439,6 +444,11 @@ PrefabInstance:
     - target: {fileID: 6135980548240136486, guid: 729dc15cae8215a49afcc6aef97b1428,
         type: 3}
       propertyPath: Price.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135980548240136486, guid: 729dc15cae8215a49afcc6aef97b1428,
+        type: 3}
+      propertyPath: MaxNutritionalValue.value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7363587524984557620, guid: 729dc15cae8215a49afcc6aef97b1428,
