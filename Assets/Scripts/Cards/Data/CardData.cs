@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cards.Core;
+using Cards.Gestures.PositionShake;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using NaughtyAttributes;
 using ScriptableObjects.Scripts.Cards.Recipes;
@@ -40,7 +41,7 @@ namespace Cards.Data
         public bool IsAnimal => _isAnimal;
         public bool IsStackable => _isStackable;
         public bool IsDamageable => _isDamageable;
-        
+
         public bool CanBeStackedOnlyWithSameCard => _canBeStackedOnlyWithSameCard;
 
         [Space]
@@ -103,5 +104,7 @@ namespace Cards.Data
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
 
         public ReactiveProperty<CardReproductionRecipe> CurrentReproductionRecipe = new ReactiveProperty<CardReproductionRecipe>();
+
+        public PositionShakeObserver PositionShakeObserver;
     }
 }

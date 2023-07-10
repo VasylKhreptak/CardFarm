@@ -1,4 +1,5 @@
 ﻿using Cards.Data;
+using Cards.Gestures.PositionShake;
 using Cards.Graphics.Animations;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using NaughtyAttributes;
@@ -40,6 +41,8 @@ namespace EditorTools.CardDataFillers
             _cardData.BottomCardFollowPoint = bottomCardFollowPoint != null ? bottomCardFollowPoint.transform : null;
 
             _cardData.Collider = GetComponentInChildren<Collider>();
+
+            _cardData.PositionShakeObserver = GetComponentInChildren<PositionShakeObserver>();
 
             _cardData.Animations.MoveAnimation = GetComponentInChildren<CardMoveAnimation>();
             _cardData.Animations.JumpAnimation = GetComponentInChildren<CardJumpAnimation>();
