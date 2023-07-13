@@ -1,89 +1,61 @@
-﻿using System;
-using UniRx;
-using UniRx.Triggers;
+﻿using UniRx;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Runtime.Screen
 {
     public class ScreenEdges : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] private UIBehaviour _uiBehaviour;
+        [Header("Preferences")]
+        [SerializeField, Range(0f, 1f)] private float _horizontalPercent;
+        [SerializeField, Range(0f, 1f)] private float _verticalPercent;
 
         private BoolReactiveProperty _isPointerDown = new BoolReactiveProperty(false);
         private Vector2ReactiveProperty _directionFromCenter = new Vector2ReactiveProperty(Vector2.zero);
-
-        private IDisposable _pointerDownSubscription;
-        private IDisposable _pointerUpSubscription;
 
         public IReadOnlyReactiveProperty<bool> IsPointerDown => _isPointerDown;
         public IReadOnlyReactiveProperty<Vector2> DirectionFromCenter => _directionFromCenter;
 
         #region MonoBehaviour
 
-        private void OnValidate()
+        private void Update()
         {
-            _uiBehaviour ??= GetComponent<UIBehaviour>();
-        }
+            if (Input.touchCount != 1 || Input.GetMouseButton(0) == false)
+            {
+                ResetValues();
+                return;
+            }
 
-        private void OnEnable()
-        {
-            StartObserving();
-            Debug.Log("OnEnable");
+            Vector2 mousePosition = Input.mousePosition;
+            float halfHorizontalPercent = _horizontalPercent * 0.5f;
+            float halfVerticalPercent = _verticalPercent * 0.5f;
+
+            if (mousePosition.x < UnityEngine.Screen.width * halfHorizontalPercent ||
+                mousePosition.x > UnityEngine.Screen.width * (1f - halfHorizontalPercent) ||
+                mousePosition.y < UnityEngine.Screen.height * halfVerticalPercent ||
+                mousePosition.y > UnityEngine.Screen.height * (1f - halfVerticalPercent))
+            {
+                _isPointerDown.Value = true;
+                Vector2 vectorFromCenter = mousePosition - new Vector2(UnityEngine.Screen.width * 0.5f, UnityEngine.Screen.height * 0.5f);
+                _directionFromCenter.Value = vectorFromCenter.normalized;
+            }
+            else
+            {
+                ResetValues();
+            }
+
         }
 
         private void OnDisable()
         {
-            StopObserving();
+            ResetValues();
         }
 
         #endregion
 
-        private void StartObserving()
-        {
-            StartObservingPointerDown();
-            StartObservingPointerUp();
-        }
-
-        private void StopObserving()
-        {
-            StopObservingPointerDown();
-            StopObservingPointerUp();
-        }
-
-        private void StartObservingPointerDown()
-        {
-            StopObservingPointerDown();
-            _pointerDownSubscription = _uiBehaviour.OnPointerDownAsObservable().Subscribe(_ => OnPointerDown());
-        }
-
-        private void StopObservingPointerDown()
-        {
-            _pointerDownSubscription?.Dispose();
-        }
-
-        private void StartObservingPointerUp()
-        {
-            StopObservingPointerUp();
-            _pointerUpSubscription = _uiBehaviour.OnPointerUpAsObservable().Subscribe(_ => OnPointerUp());
-        }
-
-        private void StopObservingPointerUp()
-        {
-            _pointerUpSubscription?.Dispose();
-        }
-
-        private void OnPointerDown()
-        {
-            _isPointerDown.Value = true;
-            Debug.Log("OnPointerDown");
-        }
-
-        private void OnPointerUp()
+        private void ResetValues()
         {
             _isPointerDown.Value = false;
-            Debug.Log("OnPointerUp");
+            _directionFromCenter.Value = Vector2.zero;
         }
     }
 }
