@@ -6977,6 +6977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 1349560457}
   _speed: 1
+  _moveByEdgeSpeed: 15
   _min: {x: -21.5, y: -16.33}
   _max: {x: 20.9, y: 4.71}
 --- !u!1001 &967542999

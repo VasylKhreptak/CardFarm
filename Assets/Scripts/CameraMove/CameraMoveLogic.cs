@@ -1,6 +1,7 @@
 ﻿using System;
 using CameraMove.Core;
-using CameraZoom;
+using Runtime.Screen;
+using Table;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -14,20 +15,24 @@ namespace CameraMove
 
         [Header("Preferences")]
         [SerializeField] private float _speed;
+        [SerializeField] private float _moveByEdgeSpeed;
         [SerializeField] private Vector2 _min;
         [SerializeField] private Vector2 _max;
 
         private IDisposable _dragSubscription;
 
         private MapDragObserver _dragObserver;
-        private CameraZoomLogic _cameraZoomLogic;
+        private ScreenEdges _screenEdges;
+        private CurrentSelectedCardHolder _currentSelectedCardHolder;
 
         [Inject]
         private void Constructor(MapDragObserver dragObserver,
-            CameraZoomLogic cameraZoomLogic)
+            ScreenEdges screenEdges,
+            CurrentSelectedCardHolder currentSelectedCardHolder)
         {
             _dragObserver = dragObserver;
-            _cameraZoomLogic = cameraZoomLogic;
+            _screenEdges = screenEdges;
+            _currentSelectedCardHolder = currentSelectedCardHolder;
         }
 
         #region MonoBehaviour
@@ -42,13 +47,18 @@ namespace CameraMove
             StopObservingDrag();
         }
 
+        private void Update()
+        {
+            TryMoveByEdge();
+        }
+
         #endregion
 
         private void StartObservingDrag()
         {
             StopObservingDrag();
 
-            _dragSubscription = _dragObserver.Delta.Subscribe(MoveCamera);
+            _dragSubscription = _dragObserver.Delta.Subscribe(delta => MoveCamera(-delta));
         }
 
         private void StopObservingDrag()
@@ -56,9 +66,9 @@ namespace CameraMove
             _dragSubscription?.Dispose();
         }
 
-        private void MoveCamera(Vector2 dragDelta)
+        private void MoveCamera(Vector2 direction)
         {
-            Vector3 moveDirection = new Vector3(-dragDelta.x, 0f, -dragDelta.y);
+            Vector3 moveDirection = new Vector3(direction.x, 0f, direction.y);
             Vector3 cameraPosition = _transform.position;
 
             cameraPosition += moveDirection * _speed;
@@ -69,6 +79,13 @@ namespace CameraMove
                 Mathf.Clamp(cameraPosition.z, _min.y, _max.y));
 
             _transform.position = cameraPosition;
+        }
+
+        private void TryMoveByEdge()
+        {
+            if (_currentSelectedCardHolder.SelectedCard == null) return;
+
+            MoveCamera(_screenEdges.DirectionFromCenter.Value * _moveByEdgeSpeed * Time.deltaTime);
         }
 
         private void OnDrawGizmos()
