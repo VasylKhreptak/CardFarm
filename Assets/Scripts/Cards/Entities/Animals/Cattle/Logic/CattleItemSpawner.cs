@@ -7,6 +7,7 @@ using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Cards.Entities.Animals.Cattle.Logic
 {
@@ -16,7 +17,8 @@ namespace Cards.Entities.Animals.Cattle.Logic
         [SerializeField] private CattleCardData _cardData;
 
         [Header("Preferences")]
-        [SerializeField] private float _spawnInterval;
+        [SerializeField] private float _minSpawnInterval;
+        [SerializeField] private float _maxSpawnInterval;
         [SerializeField] private CardWeight[] _result;
 
         private IDisposable _intervalSubscription;
@@ -53,6 +55,11 @@ namespace Cards.Entities.Animals.Cattle.Logic
         }
 
         #endregion
+
+        private float GetSpawnInterval()
+        {
+            return Random.Range(_minSpawnInterval, _maxSpawnInterval);
+        }
 
         private void StarObserving()
         {
@@ -93,8 +100,12 @@ namespace Cards.Entities.Animals.Cattle.Logic
         private void StartSpawning()
         {
             StopSpawning();
-            _intervalSubscription = Observable.Interval(TimeSpan.FromSeconds(_spawnInterval))
-                .Subscribe(_ => SpawnItem());
+            _intervalSubscription = Observable.Interval(TimeSpan.FromSeconds(GetSpawnInterval()))
+                .Subscribe(_ =>
+                {
+                    SpawnItem();
+                    StartSpawning();
+                });
         }
 
         private void StopSpawning()

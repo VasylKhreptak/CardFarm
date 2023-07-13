@@ -161,6 +161,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3072631795546420754, guid: 039b737f4430bd14e95bc803be2831b3,
         type: 3}
+      propertyPath: _maxSpawnInterval
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072631795546420754, guid: 039b737f4430bd14e95bc803be2831b3,
+        type: 3}
+      propertyPath: _minSpawnInterval
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072631795546420754, guid: 039b737f4430bd14e95bc803be2831b3,
+        type: 3}
       propertyPath: _result.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -187,7 +197,7 @@ PrefabInstance:
     - target: {fileID: 8731803597761440820, guid: 039b737f4430bd14e95bc803be2831b3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 039b737f4430bd14e95bc803be2831b3, type: 3}

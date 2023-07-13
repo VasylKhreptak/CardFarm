@@ -50,7 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 6626042939367546929}
-  _spawnInterval: 80
+  _minSpawnInterval: 120
+  _maxSpawnInterval: 140
   _result:
   - Card: 44
     Weight: 1
@@ -61,6 +62,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 99440928908756261, guid: 039b737f4430bd14e95bc803be2831b3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 110620885670019500, guid: 039b737f4430bd14e95bc803be2831b3,
         type: 3}
       propertyPath: m_Name
@@ -197,6 +203,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _spawnInterval
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072631795546420754, guid: 039b737f4430bd14e95bc803be2831b3,
+        type: 3}
+      propertyPath: _maxSpawnInterval
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072631795546420754, guid: 039b737f4430bd14e95bc803be2831b3,
+        type: 3}
+      propertyPath: _minSpawnInterval
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3072631795546420754, guid: 039b737f4430bd14e95bc803be2831b3,
         type: 3}
