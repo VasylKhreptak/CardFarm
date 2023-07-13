@@ -1,17 +1,10 @@
-using System;
-using Providers;
 using UniRx;
 using UnityEngine;
-using Zenject;
 
 namespace CameraZoom.Core
 {
     public class ZoomObserver : MonoBehaviour
     {
-        private IDisposable _touchCountDisposable;
-        private IDisposable _zoomUpdateSubscription;
-        private IDisposable _dragSubscription;
-
         private FloatReactiveProperty _zoom = new FloatReactiveProperty();
 
         private float _lastZoomDistance;
@@ -20,75 +13,39 @@ namespace CameraZoom.Core
 
         #region MonoBehaviour
 
-        private void OnEnable()
+        private void Update()
         {
-            // StartListeningTouchCount();
-        }
+            if (Input.touchCount != 2)
+            {
+                ResetValues();
+                return;
+            }
 
-        private void OnDisable()
-        {
-            ClearSubscriptions();
+            OnTwoFingersPressed();
         }
 
         #endregion
 
-        private void ClearSubscriptions()
+        private void OnTwoFingersPressed()
         {
-            StopListeningTouchCount();
-            StopUpdatingZoom();
-        }
-
-        // private void StartListeningTouchCount()
-        // {
-        //     _touchCountDisposable?.Dispose();
-        //     _touchCountDisposable = _safeAreaProvider.Value.TouchCounter.TouchCount.Subscribe(touchCount =>
-        //     {
-        //         if (touchCount == 2)
-        //         {
-        //             StartUpdatingZoom();
-        //         }
-        //         else
-        //         {
-        //             StopUpdatingZoom();
-        //         }
-        //     });
-        // }
-
-        private void StopListeningTouchCount()
-        {
-            _touchCountDisposable?.Dispose();
-        }
-
-        private void StartUpdatingZoom()
-        {
-            StopUpdatingZoom();
-
-            _zoomUpdateSubscription = Observable
-                .EveryUpdate()
-                .DoOnSubscribe(() => _lastZoomDistance = GetTouchDistance())
-                .Subscribe(_ =>
-                {
-                    float currentDistance = GetTouchDistance();
-                    float delta = currentDistance - _lastZoomDistance;
-                    _lastZoomDistance = currentDistance;
-                    _zoom.Value = delta;
-                });
-        }
-
-        private void StopUpdatingZoom()
-        {
-            _zoomUpdateSubscription?.Dispose();
-            _zoom.Value = 0;
-        }
-
-        private float GetTouchDistance()
-        {
-            if (Input.touchCount < 2)
+            Touch firstTouch = Input.GetTouch(0);
+            Touch secondTouch = Input.GetTouch(1);
+            
+            if (firstTouch.phase == TouchPhase.Began || secondTouch.phase == TouchPhase.Began)
             {
-                return _lastZoomDistance;
+                _lastZoomDistance = Vector2.Distance(firstTouch.position, secondTouch.position);
             }
+            
+            float zoomDistance = Vector2.Distance(firstTouch.position, secondTouch.position);
+            float delta = zoomDistance - _lastZoomDistance;
+            _zoom.Value = delta;
+            _lastZoomDistance = zoomDistance;
+        }
 
-            return Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
+        private void ResetValues()
+        {
+            _lastZoomDistance = 0;
+            _zoom.Value = 0;
         }
     }
 }
