@@ -15,6 +15,7 @@ namespace CameraMove.Core
         private Vector2ReactiveProperty _delta = new Vector2ReactiveProperty();
 
         private Vector2 _previousHitPosition;
+        private int _previousTouchCount;
 
         public IReadOnlyReactiveProperty<Vector2> Delta => _delta;
 
@@ -32,9 +33,19 @@ namespace CameraMove.Core
 
         private void Update()
         {
-            if (Input.touchCount != 1 || _currentSelectedCardHolder.SelectedCard.Value != null)
+            int touchCount = Input.touchCount;
+
+            if (touchCount >= 1 && _previousTouchCount != touchCount)
+            {
+                UpdatePreviousPosition(Input.GetTouch(touchCount - 1).position);
+            }
+            
+            if (touchCount != 1 || _currentSelectedCardHolder.SelectedCard.Value != null)
             {
                 ResetValues();
+
+                _previousTouchCount = touchCount;
+                
                 return;
             }
 
@@ -52,13 +63,16 @@ namespace CameraMove.Core
             {
                 OnMouseUp();
             }
+
+            _previousTouchCount = touchCount;
         }
 
         #endregion
 
         private void OnMouseDown()
         {
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+            Touch firstTouch = Input.GetTouch(0);
+            Ray ray = _camera.ScreenPointToRay(firstTouch.position);
 
             if (UnityEngine.Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
@@ -70,7 +84,8 @@ namespace CameraMove.Core
 
         private void OnMouse()
         {
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+            Touch firstTouch = Input.GetTouch(0);
+            Ray ray = _camera.ScreenPointToRay(firstTouch.position);
 
             if (UnityEngine.Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
@@ -80,7 +95,7 @@ namespace CameraMove.Core
 
                 _delta.Value = hitPoint - _previousHitPosition;
 
-                UpdatePreviousPosition();
+                UpdatePreviousPosition(firstTouch.position);
             }
         }
 
@@ -95,10 +110,9 @@ namespace CameraMove.Core
             _previousHitPosition = Vector3.zero;
         }
 
-
-        private void UpdatePreviousPosition()
+        private void UpdatePreviousPosition(Vector2 touchPosition)
         {
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = _camera.ScreenPointToRay(touchPosition);
 
             if (UnityEngine.Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
