@@ -75,6 +75,8 @@ namespace Cards.AutomatedFactories.Logic
             ClearRecipeResources();
 
             ExecuteActiveRecipe();
+
+            TryDecreaseDurability();
         }
 
         private void OnCurrentRecipeChanged(FactoryRecipe recipe)
@@ -92,6 +94,14 @@ namespace Cards.AutomatedFactories.Logic
         private void ExecuteActiveRecipe()
         {
             OnCurrentRecipeChanged(_cardData.CurrentFactoryRecipe.Value);
+        }
+
+        private void TryDecreaseDurability()
+        {
+            if (_cardData.IsBreakable)
+            {
+                _cardData.Durability.Value--;
+            }
         }
 
         private void SpawnRecipeResults()
@@ -152,7 +162,7 @@ namespace Cards.AutomatedFactories.Logic
 
         protected virtual void TryLinkCardToTop(CardData card)
         {
-            if (card != null && _compatibleCards.IsCompatible(card.Card.Value, _cardData.Card.Value))
+            if (card != null && _compatibleCards.IsCompatibleByType(card, _cardData))
             {
                 card.LinkTo(_cardData);
             }

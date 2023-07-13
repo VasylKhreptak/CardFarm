@@ -8,15 +8,11 @@ namespace Cards.AutomatedFactories.BreakableFactories.Logic
         protected override void OnProgressCompleted()
         {
             base.OnProgressCompleted();
-
-            _cardData.Durability.Value--;
-        }
-
-        protected override void TryLinkCardToTop(CardData card)
-        {
-            if (_cardData.Durability.Value <= 1) return;
-
-            base.TryLinkCardToTop(card);
+            
+            if (_cardData.IsBreakable)
+            {
+                _cardData.Durability.Value--;
+            }
         }
     }
 }

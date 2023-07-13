@@ -55,5 +55,14 @@ namespace Cards.Core
         AnimalBoosterBuyZone = 50,
         BuildingBoosterBuyZone = 51,
         Dog = 52,
+        FishingSpot = 53,
+        Cod = 54,
+        Tuna = 55,
+        Mackerel = 56,
+        SeaWeed = 57,
+        RawFish = 58,
+        GrilledFish = 59,
+        Sushi = 60,
+        TamagoSushi = 61,
     }
 }

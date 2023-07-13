@@ -476,7 +476,7 @@ PrefabInstance:
     - target: {fileID: 521652541118679619, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 564359370849849034, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
@@ -643,6 +643,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3594824769674065748}
+    - target: {fileID: 1211409701403973134, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3594824769674065748}
     - target: {fileID: 1311122386514509855, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
@@ -658,6 +663,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3594824769674065748}
+    - target: {fileID: 1999854602532856037, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3594824769674065748}
     - target: {fileID: 2087830639797775938, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
@@ -669,6 +679,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3594824769674065748}
     - target: {fileID: 2921324520531411267, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3594824769674065748}
+    - target: {fileID: 3044150550693373442, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -711,7 +726,7 @@ PrefabInstance:
     - target: {fileID: 4131032017452411057, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4261766899330316009, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
@@ -943,10 +958,18 @@ MonoBehaviour:
   _baseHeight: 0.01
   _heightOffset: 0.01
   _isWorker: 0
+  _isFood: 0
+  _isResourceNode: 0
   _isSellableCard: 1
   _canSortingLayerChange: 1
   _isAutomatedFactory: 1
   _isIncubator: 0
+  _isAnimal: 0
+  _isStackable: 1
+  _isDamageable: 1
+  _canBeStackedOnlyWithSameCard: 0
+  _isOrder: 0
+  _isBreakable: 0
   ID: -1
   GroupID:
     value: -1
@@ -1006,6 +1029,8 @@ MonoBehaviour:
     value: 0
   ClampedPosition:
     value: {x: 0, y: 0, z: 0}
+  IsTakingPartInRecipe:
+    value: 0
   CurrentRecipe:
     value:
       Resources: 
@@ -1022,6 +1047,7 @@ MonoBehaviour:
     MoveAnimation: {fileID: 4893301508794771771}
     JumpAnimation: {fileID: 1275547599300752909}
     FlipAnimation: {fileID: 3419312012035227403}
+    ShakeAnimation: {fileID: 6036018379463914951}
   IsPlayingAnyAnimation:
     value: 0
   CurrentReproductionRecipe:
@@ -1030,6 +1056,7 @@ MonoBehaviour:
       Resources: 
       ResourcesToRemove: 
       Results: []
+  PositionShakeObserver: {fileID: 7580977388921210315}
   Price:
     value: 5
   CurrentFactoryRecipe:
@@ -1039,6 +1066,30 @@ MonoBehaviour:
       ResultCount: 1
       Result:
         Weights: []
+--- !u!114 &6036018379463914951 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1211409701403973134, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4831223344307741641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4308e373710841d59f48c3aa9d4d47ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7580977388921210315 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3044150550693373442, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4831223344307741641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3887a6b8d44fd9a1ad3c9d575b3459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8718050276280176114 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4321002090125372987, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,

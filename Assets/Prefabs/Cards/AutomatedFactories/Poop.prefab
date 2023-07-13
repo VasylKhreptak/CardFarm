@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6163250139717584282
+--- !u!1001 &4798988078434139434
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -16,6 +16,53 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537400196176558120, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: _cardRecipes
+      value: 
+      objectReference: {fileID: 11400000, guid: b4abb7bf742f37a4884eb355a51ee7bd,
+        type: 2}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: Card.value
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: Icon.value
+      value: 
+      objectReference: {fileID: 21300000, guid: 08f12d9e8ec4871438a13b6178f94732,
+        type: 3}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: Name.value
+      value: Poop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: Price.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: _isBreakable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: NameColor.value.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: NameColor.value.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: NameColor.value.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
@@ -75,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
@@ -100,12 +147,12 @@ PrefabInstance:
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -21.7
+      value: -11.64
       objectReference: {fileID: 0}
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 12.4
+      value: -10.12
       objectReference: {fileID: 0}
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
@@ -125,55 +172,27 @@ PrefabInstance:
     - target: {fileID: 4962674127960976643, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: m_Name
-      value: BreakableAutomatedFactory
+      value: Poop
       objectReference: {fileID: 0}
-    - target: {fileID: 6290015064227125214, guid: 522ee1ee0a7bedb438eb60315935add9,
+    - target: {fileID: 4962674127960976653, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
-      propertyPath: _progressDependentObject
-      value: 
-      objectReference: {fileID: 2182288754659492702}
+      propertyPath: m_Color.b
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962674127960976653, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.43529415
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962674127960976653, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.3921569
+      objectReference: {fileID: 0}
     - target: {fileID: 6464175383265676375, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8366604011912208825, guid: 522ee1ee0a7bedb438eb60315935add9,
-        type: 3}
-      propertyPath: _progressDependentObject
-      value: 
-      objectReference: {fileID: 2182288754659492702}
-    m_RemovedComponents:
-    - {fileID: 1689009862130173038, guid: 522ee1ee0a7bedb438eb60315935add9, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 522ee1ee0a7bedb438eb60315935add9, type: 3}
---- !u!1 &2568080332839855398 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8515150406125904060, guid: 522ee1ee0a7bedb438eb60315935add9,
-    type: 3}
-  m_PrefabInstance: {fileID: 6163250139717584282}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2182288754659492702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2568080332839855398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c281cee88a84ffd825bffd6a9c42e08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardData: {fileID: 7235913845016687310}
-  _compatibleCards: {fileID: 11400000, guid: 8a8b75a90c8d25d489bcef13be7b9cfc, type: 2}
---- !u!114 &7235913845016687310 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
-    type: 3}
-  m_PrefabInstance: {fileID: 6163250139717584282}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 374da55a5ecd435283fddcb0068b4be2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

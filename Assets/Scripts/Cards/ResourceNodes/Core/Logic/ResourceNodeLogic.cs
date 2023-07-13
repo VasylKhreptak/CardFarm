@@ -21,7 +21,7 @@ namespace Cards.ResourceNodes.Core.Logic
 
         [FormerlySerializedAs("_resourceNodeRecipe")]
         [Header("Preferences")]
-        [SerializeField] private ResourceNodeData _resourceNodeData;
+        [SerializeField] private ResourceNodeRecipeData _resourceNodeData;
 
         private IDisposable _workersSubscription;
 
@@ -90,12 +90,22 @@ namespace Cards.ResourceNodes.Core.Logic
 
         protected override void OnProgressCompleted()
         {
+            SpawnCard();
+
+            StartProgress(_resourceNodeData.Recipe.Cooldown);
+            StartObservingWorker();
+        }
+
+        private void SpawnCard()
+        {
             Card cardToSpawn = GetCardToSpawn();
 
             _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
-            StartProgress(_resourceNodeData.Recipe.Cooldown);
-            StartObservingWorker();
+            if (_cardData.IsBreakable)
+            {
+                _cardData.Durability.Value--;
+            }
         }
 
         private Card GetCardToSpawn()

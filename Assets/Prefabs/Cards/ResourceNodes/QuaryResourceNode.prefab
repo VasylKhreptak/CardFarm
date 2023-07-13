@@ -155,6 +155,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2709758502585604610, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
         type: 3}
+      propertyPath: _isBreakable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709758502585604610, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
       propertyPath: NameColor.value.b
       value: 0
       objectReference: {fileID: 0}

@@ -59,6 +59,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1854063491, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
+      propertyPath: _isBreakable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1854063491, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
       propertyPath: _isResourceNode
       value: 1
       objectReference: {fileID: 0}
@@ -200,7 +204,7 @@ PrefabInstance:
     - target: {fileID: 9183290287491818322, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
