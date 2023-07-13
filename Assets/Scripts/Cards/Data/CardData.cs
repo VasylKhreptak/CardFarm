@@ -27,6 +27,7 @@ namespace Cards.Data
         [SerializeField] private bool _isStackable = true;
         [SerializeField] private bool _isDamageable = true;
         [SerializeField, ShowIf(nameof(_isStackable))] private bool _canBeStackedOnlyWithSameCard;
+        [SerializeField] private bool _isOrder;
 
         public float BaseHeight => _baseHeight;
         public float HeightOffset => _heightOffset;
@@ -41,8 +42,8 @@ namespace Cards.Data
         public bool IsAnimal => _isAnimal;
         public bool IsStackable => _isStackable;
         public bool IsDamageable => _isDamageable;
-
         public bool CanBeStackedOnlyWithSameCard => _canBeStackedOnlyWithSameCard;
+        public bool IsOrder => _isOrder;
 
         [Space]
         public int ID = -1;

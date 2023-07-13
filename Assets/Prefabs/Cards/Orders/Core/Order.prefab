@@ -1045,6 +1045,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 6444555626552152201}
+    - target: {fileID: 2501728543964782568, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 6444555626552152201}
     - target: {fileID: 2575682665689227054, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -1055,6 +1060,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 6444555626552152201}
+    - target: {fileID: 3111104603713967330, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 3477643887258593426, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -1228,6 +1238,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
+--- !u!114 &388360385220394824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2501728543964782568, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 2870014989658022048}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3887a6b8d44fd9a1ad3c9d575b3459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &661173463616873282 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3384633989507613666, guid: 7bf54413c6b39324e9a7ddfc51606634,
@@ -1261,10 +1283,17 @@ MonoBehaviour:
   _baseHeight: 0.01
   _heightOffset: 0.01
   _isWorker: 0
+  _isFood: 0
+  _isResourceNode: 0
   _isSellableCard: 0
   _canSortingLayerChange: 1
   _isAutomatedFactory: 0
   _isIncubator: 0
+  _isAnimal: 0
+  _isStackable: 1
+  _isDamageable: 1
+  _canBeStackedOnlyWithSameCard: 0
+  _isOrder: 1
   ID: -1
   GroupID:
     value: -1
@@ -1351,6 +1380,7 @@ MonoBehaviour:
       Resources: 
       ResourcesToRemove: 
       Results: []
+  PositionShakeObserver: {fileID: 388360385220394824}
   OrderIcon:
     value: {fileID: 0}
   OrderRequiredCard: 0

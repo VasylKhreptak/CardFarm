@@ -46,9 +46,11 @@ namespace ScriptableObjects.Scripts.Cards
                 if (topCard.Card.Value != bottomCard.Card.Value) return false;
             }
 
-            if(topCard.IsAnimal && bottomCard.IsAnimal) return false;
-            
-            if(topCard.IsAnimal && bottomCard.IsAutomatedFactory) return true;
+            if (topCard.IsAnimal && bottomCard.IsAnimal) return false;
+
+            if (topCard.IsSellableCard && bottomCard.IsOrder) return true;
+
+            if (topCard.IsAnimal && bottomCard.IsAutomatedFactory) return true;
 
             if (topCard.IsSellableCard && bottomCard.IsSellableCard) return true;
 
