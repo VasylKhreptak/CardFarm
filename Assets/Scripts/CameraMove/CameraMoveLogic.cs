@@ -58,12 +58,10 @@ namespace CameraMove
 
         private void MoveCamera(Vector2 dragDelta)
         {
-            if (Input.touchCount > 1) return;
-
             Vector3 moveDirection = new Vector3(-dragDelta.x, 0f, -dragDelta.y);
             Vector3 cameraPosition = _transform.position;
 
-            cameraPosition += moveDirection * _speed * Time.deltaTime * _cameraZoomLogic.CameraDistance.Value;
+            cameraPosition += moveDirection * _speed;
 
             cameraPosition = new Vector3(
                 Mathf.Clamp(cameraPosition.x, _min.x, _max.x),

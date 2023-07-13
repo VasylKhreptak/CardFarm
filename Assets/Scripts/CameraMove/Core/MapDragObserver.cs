@@ -1,8 +1,7 @@
-using System;
-using Extensions.UniRx.UnityEngineBridge.Triggers;
+using Extensions;
 using Providers;
+using Table;
 using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
 
@@ -10,95 +9,101 @@ namespace CameraMove.Core
 {
     public class MapDragObserver : MonoBehaviour
     {
-        private IDisposable _dragSubscription;
-        private IDisposable _floorMouseDownSubscription;
-        private IDisposable _floorMouseUpSubscription;
+        [Header("Preferences")]
+        [SerializeField] private LayerMask _cardLayerMask;
 
         private Vector2ReactiveProperty _delta = new Vector2ReactiveProperty();
 
+        private Vector2 _previousHitPosition;
+
         public IReadOnlyReactiveProperty<Vector2> Delta => _delta;
 
-        private SafeAreaProvider _safeAreaProvider;
-        private ObservableMouseTrigger _floorMouseTrigger;
+        private Camera _camera;
+        private CurrentSelectedCardHolder _currentSelectedCardHolder;
 
         [Inject]
-        private void Constructor(SafeAreaProvider safeAreaProvider,
-            FloorMouseTriggerProvider floorMouseTrigger)
+        private void Constructor(CameraProvider cameraProvider, CurrentSelectedCardHolder currentSelectedCardHolder)
         {
-            _safeAreaProvider = safeAreaProvider;
-            _floorMouseTrigger = floorMouseTrigger.Value;
+            _camera = cameraProvider.Value;
+            _currentSelectedCardHolder = currentSelectedCardHolder;
         }
 
         #region MonoBehaviour
 
-        private void OnEnable()
+        private void Update()
         {
-            StartObservingFloorMouseDown();
-            StartObservingFloorMouseUp();
-        }
+            if (Input.touchCount != 1 || _currentSelectedCardHolder.SelectedCard.Value != null)
+            {
+                ResetValues();
+                return;
+            }
 
-        private void OnDisable()
-        {
-            StopObserving();
+            if (Input.GetMouseButtonDown(0))
+            {
+                OnMouseDown();
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                OnMouse();
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                OnMouseUp();
+            }
         }
 
         #endregion
 
-        private void StopObserving()
+        private void OnMouseDown()
         {
-            StopObservingDrag();
-            StopObservingFloorMouseDown();
-            StopObservingFloorMouseUp();
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+            if (UnityEngine.Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+            {
+                if (_cardLayerMask.ContainsLayer(hit.collider.gameObject.layer)) return;
+
+                _previousHitPosition = new Vector2(hit.point.x, hit.point.z);
+            }
         }
 
-        private void StartObservingFloorMouseDown()
+        private void OnMouse()
         {
-            StopObservingFloorMouseDown();
-            _floorMouseDownSubscription = _floorMouseTrigger
-                .OnMouseDownAsObservable()
-                .Subscribe(_ =>
-                {
-                    StartObservingDrag();
-                });
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+            if (UnityEngine.Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+            {
+                if (_cardLayerMask.ContainsLayer(hit.collider.gameObject.layer)) return;
+
+                Vector2 hitPoint = new Vector2(hit.point.x, hit.point.z);
+
+                _delta.Value = hitPoint - _previousHitPosition;
+
+                UpdatePreviousPosition();
+            }
         }
 
-        private void StopObservingFloorMouseDown()
+        private void OnMouseUp()
         {
-            _floorMouseDownSubscription?.Dispose();
+            ResetValues();
         }
 
-        private void StartObservingFloorMouseUp()
+        private void ResetValues()
         {
-            StopObservingFloorMouseUp();
-            _floorMouseUpSubscription = _floorMouseTrigger
-                .OnMouseUpAsObservable()
-                .Subscribe(_ =>
-                {
-                    StopObservingDrag();
-                });
+            _delta.Value = Vector2.zero;
+            _previousHitPosition = Vector3.zero;
         }
 
-        private void StopObservingFloorMouseUp()
-        {
-            _floorMouseUpSubscription?.Dispose();
-        }
 
-        private void StartObservingDrag()
+        private void UpdatePreviousPosition()
         {
-            StopObservingDrag();
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            _dragSubscription = _safeAreaProvider.Value.Behaviour
-                .OnDragAsObservable()
-                .Skip(1)
-                .Subscribe(dragData =>
-                {
-                    _delta.Value = dragData.delta;
-                });
-        }
-
-        private void StopObservingDrag()
-        {
-            _dragSubscription?.Dispose();
+            if (UnityEngine.Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+            {
+                _previousHitPosition = new Vector2(hit.point.x, hit.point.z);
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using Zenject;
 
 namespace CameraZoom.Core
 {
-    public class SafeAreaZoomObserver : MonoBehaviour
+    public class ZoomObserver : MonoBehaviour
     {
         private IDisposable _touchCountDisposable;
         private IDisposable _zoomUpdateSubscription;
@@ -18,19 +18,11 @@ namespace CameraZoom.Core
 
         public IReadOnlyReactiveProperty<float> Zoom => _zoom;
 
-        private SafeAreaProvider _safeAreaProvider;
-
-        [Inject]
-        private void Constructor(SafeAreaProvider safeAreaProvider)
-        {
-            _safeAreaProvider = safeAreaProvider;
-        }
-
         #region MonoBehaviour
 
         private void OnEnable()
         {
-            StartListeningTouchCount();
+            // StartListeningTouchCount();
         }
 
         private void OnDisable()
@@ -46,21 +38,21 @@ namespace CameraZoom.Core
             StopUpdatingZoom();
         }
 
-        private void StartListeningTouchCount()
-        {
-            _touchCountDisposable?.Dispose();
-            _touchCountDisposable = _safeAreaProvider.Value.TouchCounter.TouchCount.Subscribe(touchCount =>
-            {
-                if (touchCount == 2)
-                {
-                    StartUpdatingZoom();
-                }
-                else
-                {
-                    StopUpdatingZoom();
-                }
-            });
-        }
+        // private void StartListeningTouchCount()
+        // {
+        //     _touchCountDisposable?.Dispose();
+        //     _touchCountDisposable = _safeAreaProvider.Value.TouchCounter.TouchCount.Subscribe(touchCount =>
+        //     {
+        //         if (touchCount == 2)
+        //         {
+        //             StartUpdatingZoom();
+        //         }
+        //         else
+        //         {
+        //             StopUpdatingZoom();
+        //         }
+        //     });
+        // }
 
         private void StopListeningTouchCount()
         {

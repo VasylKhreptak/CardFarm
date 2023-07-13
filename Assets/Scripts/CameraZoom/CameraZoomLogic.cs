@@ -23,10 +23,10 @@ namespace CameraZoom
 
         public IReadOnlyReactiveProperty<float> CameraDistance => _cameraDistance;
 
-        private SafeAreaZoomObserver _safeAreaZoomObserver;
+        private ZoomObserver _safeAreaZoomObserver;
 
         [Inject]
-        private void Constructor(SafeAreaZoomObserver safeAreaZoomObserver)
+        private void Constructor(ZoomObserver safeAreaZoomObserver)
         {
             _safeAreaZoomObserver = safeAreaZoomObserver;
         }
