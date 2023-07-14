@@ -160,7 +160,7 @@ namespace Cards.AutomatedFactories.Logic
             TryLinkCardToTop(previousCard);
         }
 
-        protected virtual void TryLinkCardToTop(CardData card)
+        private void TryLinkCardToTop(CardData card)
         {
             if (card != null && _compatibleCards.IsCompatibleByCategory(card, _cardData))
             {

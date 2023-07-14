@@ -20,7 +20,7 @@ namespace ScriptableObjects.Scripts.Cards
         private Dictionary<Card, HashSet<Card>> _whiteListMap;
         private Dictionary<Card, HashSet<Card>> _blackListMap;
 
-        public bool IsCompatible(Card topCard, Card bottomCard)
+        public bool IsCompatibleWithFilters(Card topCard, Card bottomCard)
         {
             if (_whiteListMap == null || _blackListMap == null)
                 Initialize();
@@ -48,10 +48,9 @@ namespace ScriptableObjects.Scripts.Cards
 
             if (topCard.IsSellableCard && bottomCard.IsSellableCard) return true;
 
-            if (topCard.IsWorker &&
-                (bottomCard.IsSellableCard || bottomCard.IsAutomatedFactory)) return true;
+            if (topCard.IsWorker && (bottomCard.IsSellableCard || bottomCard.IsAutomatedFactory)) return true;
 
-            return IsCompatible(topCard.Card.Value, bottomCard.Card.Value);
+            return IsCompatibleWithFilters(topCard.Card.Value, bottomCard.Card.Value);
         }
 
         public bool IsCompatibleByRecipe(CardData topCard, CardData bottomCard)
@@ -64,10 +63,13 @@ namespace ScriptableObjects.Scripts.Cards
 
             CardData firstGroupCard = bottomCard.FirstGroupCard.Value;
 
-            if (firstGroupCard == null) return IsCompatible(topCard.Card.Value, bottomCard.Card.Value);
+            if (firstGroupCard == null) return IsCompatibleWithFilters(topCard.Card.Value, bottomCard.Card.Value);
 
             List<CardRecipe> groupPossibleRecipes = firstGroupCard.PossibleRecipes;
             List<CardData> groupCardsData = firstGroupCard.GroupCards;
+
+            bool isGroupCardsAllSame = groupCardsData.Any(x => x.Card.Value != firstGroupCard.Card.Value) == false;
+
             bool isCompatible = false;
 
             if (topCard.IsWorker == false)
@@ -98,6 +100,12 @@ namespace ScriptableObjects.Scripts.Cards
 
                 foreach (var possibleRecipe in groupPossibleRecipes)
                 {
+                    if (possibleRecipe.Resources.Count == 1 && isGroupCardsAllSame && possibleRecipe.Resources[0] == firstGroupCard.Card.Value)
+                    {
+                        isCompatible = true;
+                        break;
+                    }
+
                     if (possibleRecipe.Resources.HasExactlyAllElementsOf(groupCards) &&
                         possibleRecipe.Workers.Contains(topCard.Card.Value) &&
                         bottomCard.IsTakingPartInRecipe.Value == false)
@@ -113,7 +121,7 @@ namespace ScriptableObjects.Scripts.Cards
                 return true;
             }
 
-            return IsCompatible(topCard.Card.Value, bottomCard.Card.Value);
+            return IsCompatibleWithFilters(topCard.Card.Value, bottomCard.Card.Value);
         }
 
         private bool IsProhibited(CardData topCard, CardData bottomCard)

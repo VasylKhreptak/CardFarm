@@ -69,7 +69,6 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
             List<CardRecipe> foundRecipes = new List<CardRecipe>();
 
             bool hasResources = cards.TryGetResources(out List<Card> resources);
-            // bool hasWorkers = cards.TryGetWorkers(out List<Card> workers);
 
             if (hasResources == false)
             {
@@ -77,8 +76,18 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
                 return false;
             }
 
+            Card firstResource = resources.First();
+            
+            bool isResourcesAllSame = resources.Any(x => x != firstResource) == false;
+            
             foreach (var recipe in _recipes)
             {
+                if(isResourcesAllSame && recipe.Resources.Count == 1 && recipe.Resources.First() == firstResource)
+                {
+                    foundRecipes.Add(recipe);
+                    continue;
+                }
+                
                 if (recipe.Resources.HasAllLessElementOf(resources))
                 {
                     foundRecipes.Add(recipe);

@@ -698,6 +698,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3594824769674065748}
+    - target: {fileID: 3155735362543434469, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3594824769674065748}
     - target: {fileID: 3212366959425776072, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
@@ -870,6 +875,7 @@ PrefabInstance:
       objectReference: {fileID: 3594824769674065748}
     m_RemovedComponents:
     - {fileID: 1854063491, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
+    - {fileID: 768652195340204073, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
 --- !u!114 &687818708349390174 stripped
 MonoBehaviour:
@@ -895,6 +901,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95150f5baacb43c286d0cde1a9786a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1725809229491871959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6122848552042201886, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4831223344307741641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3303012864168122354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725809229491871959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c512fd1978284ee5b28b62bcb1339953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 3594824769674065748}
 --- !u!224 &2112543513882102581 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6798947982536747260, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
@@ -970,6 +995,7 @@ MonoBehaviour:
   _canBeStackedOnlyWithSameCard: 0
   _isOrder: 0
   _isBreakable: 0
+  _canBeUnderCards: 1
   ID: -1
   GroupID:
     value: -1
@@ -1039,6 +1065,7 @@ MonoBehaviour:
       ResultCount: 1
       Result:
         Weights: []
+  PossibleRecipes: []
   Durability:
     value: 1
   MaxDurability:
@@ -1063,9 +1090,11 @@ MonoBehaviour:
     value:
       Resources: 
       Cooldown: 0
-      ResultCount: 1
+      MinResultCount: 1
+      MaxResultCount: 1
       Result:
         Weights: []
+  FactoryRecipes: {fileID: 0}
 --- !u!114 &6036018379463914951 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1211409701403973134, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,

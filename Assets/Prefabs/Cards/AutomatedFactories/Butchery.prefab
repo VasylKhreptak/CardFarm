@@ -46,6 +46,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
+      propertyPath: FactoryRecipes
+      value: 
+      objectReference: {fileID: 11400000, guid: 37fa21d81086e6d4292a12fa90fd9a8c,
+        type: 2}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
       propertyPath: NameColor.value.b
       value: 0
       objectReference: {fileID: 0}

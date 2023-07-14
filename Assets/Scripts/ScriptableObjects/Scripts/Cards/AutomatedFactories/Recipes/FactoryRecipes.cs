@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Cards.Core;
-using Cards.Data;
 using Extensions;
 using UnityEngine;
 
@@ -12,6 +10,8 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
     {
         [Header("References")]
         [SerializeField] private List<FactoryRecipe> _recipes;
+
+        public IReadOnlyList<FactoryRecipe> Recipes => _recipes;
 
         public bool TryFindRecipe(List<Card> resources, out FactoryRecipe recipe)
         {
@@ -28,7 +28,7 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
                 List<Card> clampedResources = resources.GetRange(0, Mathf.Min(resources.Count, recipeResourcesCount));
 
                 if (clampedResources.Count < recipeResourcesCount) continue;
-                
+
                 if (clampedResources.HasExactlyAllElementsOf(possibleRecipe.Resources))
                 {
                     recipe = possibleRecipe;

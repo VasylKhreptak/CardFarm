@@ -9,5 +9,7 @@ namespace Cards.AutomatedFactories.Data
         public ReactiveProperty<FactoryRecipe> CurrentFactoryRecipe = new ReactiveProperty<FactoryRecipe>();
 
         public AutomatedFactoryCallbacks AutomatedFactoryCallbacks = new AutomatedFactoryCallbacks();
+
+        public FactoryRecipes FactoryRecipes;
     }
 }

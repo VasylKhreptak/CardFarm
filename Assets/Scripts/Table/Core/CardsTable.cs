@@ -103,7 +103,7 @@ namespace Table.Core
         {
             if (TryGetLowestRecipeFreeGroupCard(card, out CardData lowestCard))
             {
-                if (_compatibleCards.IsCompatible(topCard, card))
+                if (_compatibleCards.IsCompatibleWithFilters(topCard, card))
                 {
                     cardData = lowestCard;
                     return true;
@@ -118,7 +118,7 @@ namespace Table.Core
         {
             if (TryGetLowestRecipeFreeGroupCard(card, out CardData lowestCard))
             {
-                if (_compatibleCards.IsCompatible(topCard.Card.Value, card) &&
+                if (_compatibleCards.IsCompatibleWithFilters(topCard.Card.Value, card) &&
                     topCard != lowestCard)
                 {
                     cardData = lowestCard;

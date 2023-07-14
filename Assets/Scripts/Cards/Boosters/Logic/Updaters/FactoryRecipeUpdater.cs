@@ -10,14 +10,11 @@ namespace Cards.Boosters.Logic.Updaters
 {
     public class FactoryRecipeUpdater : RecipeUpdaterCore<AutomatedFactoryData>
     {
-        [Header("References")]
-        [SerializeField] private FactoryRecipes _cardRecipes;
-
         protected override void UpdateRecipe()
         {
             List<Card> bottomCards = _cardData.BottomCards.Select(x => x.Card.Value).ToList();
 
-            _cardRecipes.TryFindRecipe(bottomCards, out FactoryRecipe recipe);
+            _cardData.FactoryRecipes.TryFindRecipe(bottomCards, out FactoryRecipe recipe);
 
             _cardData.CurrentFactoryRecipe.Value = recipe;
         }
