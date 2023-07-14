@@ -23,7 +23,7 @@ namespace ScriptableObjects.Scripts.Cards.Incubators.Recipes
             {
                 if (possibleRecipe.Resources.Count != resources.Count) continue;
 
-                if (resources.HasAllElementsOf(possibleRecipe.Resources))
+                if (resources.HasExactlyAllElementsOf(possibleRecipe.Resources))
                 {
                     recipe = possibleRecipe;
                     return true;

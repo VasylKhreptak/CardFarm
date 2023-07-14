@@ -356,9 +356,9 @@ namespace Plugins.ObjectPooler.Core
                 poolPreference.initialSize = poolPreference.maxExpandSize;
             }
 
-            if (poolPreference.initialSize < 1)
+            if (poolPreference.initialSize < 0)
             {
-                poolPreference.initialSize = 1;
+                poolPreference.initialSize = 0;
             }
         }
 

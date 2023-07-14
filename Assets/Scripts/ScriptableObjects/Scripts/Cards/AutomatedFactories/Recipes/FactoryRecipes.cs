@@ -29,7 +29,7 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
 
                 if (clampedResources.Count < recipeResourcesCount) continue;
                 
-                if (clampedResources.HasAllElementsOf(possibleRecipe.Resources))
+                if (clampedResources.HasExactlyAllElementsOf(possibleRecipe.Resources))
                 {
                     recipe = possibleRecipe;
                     return true;

@@ -97,6 +97,7 @@ namespace Cards.Data
         public BoolReactiveProperty IsTakingPartInRecipe = new BoolReactiveProperty();
 
         public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>(null);
+        public List<CardRecipe> PossibleRecipes = new List<CardRecipe>();
 
         public IntReactiveProperty Durability = new IntReactiveProperty(1);
         public IntReactiveProperty MaxDurability = new IntReactiveProperty(1);

@@ -21,7 +21,7 @@ namespace ScriptableObjects.Scripts.Cards.ReproductionRecipes
 
             foreach (var possibleRecipe in _recipes)
             {
-                if (cards.HasAllElementsOf(possibleRecipe.Resources))
+                if (cards.HasExactlyAllElementsOf(possibleRecipe.Resources))
                 {
                     recipe = possibleRecipe;
                     return true;

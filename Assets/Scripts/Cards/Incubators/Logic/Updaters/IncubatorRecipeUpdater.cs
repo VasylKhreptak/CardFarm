@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Cards.Incubators.Logic.Updaters
 {
-    public class IncubatorRecipeUpdater : RecipeUpdater<IncubatorData>
+    public class IncubatorRecipeUpdater : RecipeUpdaterCore<IncubatorData>
     {
         [Header("References")]
         [SerializeField] private IncubatorRecipes _recipes;
