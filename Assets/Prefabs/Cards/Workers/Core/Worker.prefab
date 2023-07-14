@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bdd21aec3b84df09c74438278e6e6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 0}
+  _cardData: {fileID: 2102762693797215169}
 --- !u!1 &9189177685983970485
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +422,16 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2102762693797215169}
+    - target: {fileID: 3799119778679187111, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 2102762693797215169}
+    - target: {fileID: 3840652479364348480, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 2102762693797215169}
     - target: {fileID: 3868708802738333281, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: _cardData
@@ -437,6 +447,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2102762693797215169}
+    - target: {fileID: 4405117140128542125, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 4701316350351751685, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: _cardData
@@ -572,6 +587,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2102762693797215169}
+    - target: {fileID: 8423776746097803548, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 8431567731975675200, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: _cardData
@@ -695,10 +715,18 @@ MonoBehaviour:
   _heightOffset: 0.01
   _isWorker: 1
   _isFood: 0
+  _isResourceNode: 0
   _isSellableCard: 0
   _canSortingLayerChange: 1
   _isAutomatedFactory: 0
   _isIncubator: 0
+  _isAnimal: 0
+  _isStackable: 1
+  _isDamageable: 1
+  _canBeStackedOnlyWithSameCard: 0
+  _isOrder: 0
+  _isBreakable: 1
+  _canBeUnderCards: 0
   ID: -1
   GroupID:
     value: -1
@@ -768,6 +796,7 @@ MonoBehaviour:
       ResultCount: 1
       Result:
         Weights: []
+  PossibleRecipes: []
   Durability:
     value: 1
   MaxDurability:
@@ -785,6 +814,7 @@ MonoBehaviour:
       Resources: 
       ResourcesToRemove: 
       Results: []
+  PositionShakeObserver: {fileID: 8869868308773631331}
   MaxHealth:
     value: 15
   Health:
@@ -833,3 +863,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5737926172976026564}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8869868308773631331 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3799119778679187111, guid: d794782d0ddca224998105c67e750aef,
+    type: 3}
+  m_PrefabInstance: {fileID: 5737926172976026564}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3887a6b8d44fd9a1ad3c9d575b3459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

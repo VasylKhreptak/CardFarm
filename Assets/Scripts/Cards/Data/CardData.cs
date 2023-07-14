@@ -7,6 +7,7 @@ using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -29,6 +30,7 @@ namespace Cards.Data
         [SerializeField, ShowIf(nameof(_isStackable))] private bool _canBeStackedOnlyWithSameCard;
         [SerializeField] private bool _isOrder;
         [SerializeField] private bool _isBreakable = true;
+        [SerializeField] private bool _canBeUnderCards = true;
 
         public float BaseHeight => _baseHeight;
         public float HeightOffset => _heightOffset;
@@ -46,6 +48,7 @@ namespace Cards.Data
         public bool CanBeStackedOnlyWithSameCard => _canBeStackedOnlyWithSameCard;
         public bool IsOrder => _isOrder;
         public bool IsBreakable => _isBreakable;
+        public bool CanBeUnderCards => _canBeUnderCards;
 
         [Space]
         public int ID = -1;

@@ -81,7 +81,8 @@ namespace ScriptableObjects.Scripts.Cards
                     if (isCompatible) break;
                 }
 
-                if (groupCardsData.Any(x => x.Card.Value != firstGroupCard.Card.Value) == false)
+                if (topCard.Card.Value == firstGroupCard.Card.Value &&
+                    groupCardsData.Any(x => x.Card.Value != firstGroupCard.Card.Value) == false)
                 {
                     return true;
                 }
@@ -121,6 +122,8 @@ namespace ScriptableObjects.Scripts.Cards
 
             if (topCard.IsStackable == false || bottomCard.IsStackable == false) return true;
 
+            if (bottomCard.CanBeUnderCards == false) return true;
+
             if (topCard.CanBeStackedOnlyWithSameCard || bottomCard.CanBeStackedOnlyWithSameCard)
             {
                 if (topCard.Card.Value != bottomCard.Card.Value) return true;
@@ -128,7 +131,6 @@ namespace ScriptableObjects.Scripts.Cards
 
             if (topCard.IsAnimal && bottomCard.IsAnimal) return true;
 
-            if (topCard.IsWorker == false && bottomCard.IsWorker) return true;
 
             return false;
         }
