@@ -1,17 +1,16 @@
 ﻿using System;
-using Cards.AutomatedFactories.Data;
 using Cards.Data;
 using Table;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Cards.AutomatedFactories.Logic.Updaters
+namespace Cards.ResourceNodes.Core.Logic.Updaters
 {
-    public class IsFactoryCompatibleWithSelectedCardUpdater : MonoBehaviour, IValidatable
+    public class IsResourceNodeCompatibleWithSelectedCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private AutomatedFactoryData _cardData;
+        [SerializeField] private CardData _cardData;
 
         private IDisposable _selectedCardSubscription;
 
@@ -32,7 +31,7 @@ namespace Cards.AutomatedFactories.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<AutomatedFactoryData>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -68,14 +67,7 @@ namespace Cards.AutomatedFactories.Logic.Updaters
 
             bool isCompatible = false;
 
-            foreach (var recipe in _cardData.FactoryRecipes.Recipes)
-            {
-                if (recipe.Resources.Contains(selectedCard.Card.Value))
-                {
-                    isCompatible = true;
-                    break;
-                }
-            }
+            isCompatible = selectedCard.IsWorker;
 
             if (isCompatible == false)
             {

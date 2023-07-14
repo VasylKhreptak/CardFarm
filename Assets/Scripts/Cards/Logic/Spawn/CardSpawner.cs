@@ -19,7 +19,6 @@ namespace Cards.Logic.Spawn
             Card.CoinChest, Card.Coin
         };
 
-
         public event Action<CardData> OnCardSpawned;
         public event Action OnCardSpawnedNonParameterized;
 
