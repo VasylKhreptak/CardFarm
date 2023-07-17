@@ -1,19 +1,19 @@
 ﻿using System;
-using Cards.Chests.SellableChest.Data;
+using Cards.Chests.Data;
 using TMPro;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Cards.Chests.SellableChest.Graphics.VisualElements
+namespace Cards.Chests.Graphics.VisualElements
 {
-    public class ChestItemsCountText : MonoBehaviour, IValidatable
+    public class ChestSizeText : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private ChestSellableCardData _cardData;
+        [SerializeField] private ChestData _chestData;
         [SerializeField] private TMP_Text _tmp;
 
-        private IDisposable _subscription;
+        private IDisposable _sizeSubscription;
 
         #region MonoBehaviour
 
@@ -24,8 +24,8 @@ namespace Cards.Chests.SellableChest.Graphics.VisualElements
 
         public void Validate()
         {
+            _chestData = GetComponentInParent<ChestData>(true);
             _tmp = GetComponent<TMP_Text>();
-            _cardData = GetComponentInParent<ChestSellableCardData>(true);
         }
 
         private void OnEnable()
@@ -42,18 +42,17 @@ namespace Cards.Chests.SellableChest.Graphics.VisualElements
 
         private void StartObserving()
         {
-            StopObserving();
-            _subscription = _cardData.StoredCards.ObserveCountChanged().Subscribe(SetText);
+            _sizeSubscription = _chestData.Size.Subscribe(SetText);
         }
 
         private void StopObserving()
         {
-            _subscription?.Dispose();
+            _sizeSubscription?.Dispose();
         }
 
-        private void SetText(int count)
+        private void SetText(int size)
         {
-            _tmp.text = count.ToString();
+            _tmp.text = size.ToString();
         }
     }
 }

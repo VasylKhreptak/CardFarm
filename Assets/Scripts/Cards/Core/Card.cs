@@ -64,5 +64,6 @@ namespace Cards.Core
         GrilledFish = 59,
         Sushi = 60,
         TamagoSushi = 61,
+        ResourceChest = 62,
     }
 }

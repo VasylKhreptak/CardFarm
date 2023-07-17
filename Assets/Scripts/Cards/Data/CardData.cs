@@ -31,6 +31,8 @@ namespace Cards.Data
         [SerializeField] private bool _isOrder;
         [SerializeField] private bool _isBreakable = true;
         [SerializeField] private bool _canBeUnderCards = true;
+        [SerializeField] private bool _isResource;
+        [SerializeField] private bool _canBePlacedInChest;
 
         public float BaseHeight => _baseHeight;
         public float HeightOffset => _heightOffset;
@@ -49,6 +51,8 @@ namespace Cards.Data
         public bool IsOrder => _isOrder;
         public bool IsBreakable => _isBreakable;
         public bool CanBeUnderCards => _canBeUnderCards;
+        public bool IsResource => _isResource;
+        public bool CanBePlacedInChest => _canBePlacedInChest;
 
         [Space]
         public int ID = -1;

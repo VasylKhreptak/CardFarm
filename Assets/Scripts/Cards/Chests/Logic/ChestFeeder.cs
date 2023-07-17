@@ -1,5 +1,5 @@
 ﻿using System;
-using Cards.Chests.SellableChest.Data;
+using Cards.Chests.Data;
 using Cards.Core;
 using Cards.Data;
 using Extensions;
@@ -7,15 +7,14 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Cards.Chests.SellableChest.Logic
+namespace Cards.Chests.Logic
 {
     public class ChestFeeder : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private ChestSellableCardData _cardData;
+        [SerializeField] private ChestData _cardData;
 
         [Header("Preferences")]
-        [SerializeField] private Card _chestType;
         [SerializeField] private float _maxDistanceToFollowPoint = 0.5f;
         [SerializeField] private float _distanceCheckInterval = 0.2f;
 
@@ -31,7 +30,7 @@ namespace Cards.Chests.SellableChest.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<ChestSellableCardData>(true);
+            _cardData = GetComponentInParent<ChestData>(true);
         }
 
         private void OnEnable()
@@ -62,19 +61,13 @@ namespace Cards.Chests.SellableChest.Logic
         {
             StopObservingBottomCardDistance();
 
-            if (bottomCard == null) return;
-
-            if (bottomCard.Card.Value == _chestType)
+            if (CanCardBeAdded(bottomCard))
             {
-                StartObservingBottomCardDistance(bottomCard);
-            }
-            else
-            {
-                bottomCard.UnlinkFromUpper();
+                StartObservingBottomCardDistance();
             }
         }
 
-        private void StartObservingBottomCardDistance(CardData bottomCard)
+        private void StartObservingBottomCardDistance()
         {
             StopObservingBottomCardDistance();
             _distanceCheckSubscription = Observable
@@ -102,22 +95,49 @@ namespace Cards.Chests.SellableChest.Logic
 
             if (distance < _maxDistanceToFollowPoint)
             {
-                StopObservingBottomCard();
-
-                CardData nextBottomCard = bottomCard.BottomCard.Value;
-
-                bottomCard.gameObject.SetActive(false);
-
-                if (nextBottomCard != null)
-                {
-                    nextBottomCard.LinkTo(_cardData);
-                }
-
-                _cardData.StoredCards.Add(bottomCard as SellableCardData);
-
                 StopObservingBottomCardDistance();
-                StartObservingBottomCard();
+
+                TryAddCardToChest(bottomCard);
             }
+        }
+
+        private bool TryAddCardToChest(CardData card)
+        {
+            if (_cardData.StoredCards.Count >= _cardData.Capacity.Value) return false;
+
+            if (CanCardBeAdded(card))
+            {
+                AddCardToChest(card);
+                return true;
+            }
+
+            return false;
+        }
+
+        private void AddCardToChest(CardData card)
+        {
+            CardData nextBottomCard = card.BottomCard.Value;
+
+            card.gameObject.SetActive(false);
+
+            nextBottomCard.LinkTo(_cardData);
+
+            _cardData.StoredCards.Add(card as SellableCardData);
+        }
+
+        private bool CanCardBeAdded(CardData cardData)
+        {
+            if (cardData == null) return false;
+
+            Card? chestType = _cardData.ChestType.Value;
+
+            if (cardData.CanBePlacedInChest == false) return false;
+
+            if (chestType == null) return true;
+
+            if (cardData.Card.Value == chestType.Value) return true;
+
+            return false;
         }
     }
 }

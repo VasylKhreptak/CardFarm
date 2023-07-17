@@ -46,6 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
+      propertyPath: _isResource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
       propertyPath: _isBreakable
       value: 1
       objectReference: {fileID: 0}
@@ -68,6 +73,11 @@ PrefabInstance:
     - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
         type: 3}
       propertyPath: NameColor.value.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594824769674065748, guid: 522ee1ee0a7bedb438eb60315935add9,
+        type: 3}
+      propertyPath: _canBePlacedInChest
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4962674127960976642, guid: 522ee1ee0a7bedb438eb60315935add9,

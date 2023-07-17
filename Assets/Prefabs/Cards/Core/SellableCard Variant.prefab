@@ -31,8 +31,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 564359370849849035}
-  m_RootOrder: 1
+  m_Father: {fileID: 4321002090125372987}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -331,7 +331,17 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 1389918201210214671, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     - target: {fileID: 1472788062517335976, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 1749323702996037604, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -376,7 +386,17 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 2501728543964782568, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     - target: {fileID: 2524044519098052835, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 2540732230461850383, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -602,10 +622,21 @@ MonoBehaviour:
   _baseHeight: 0.01
   _heightOffset: 0.01
   _isWorker: 0
+  _isFood: 0
+  _isResourceNode: 0
   _isSellableCard: 1
   _canSortingLayerChange: 1
   _isAutomatedFactory: 0
   _isIncubator: 0
+  _isAnimal: 0
+  _isStackable: 1
+  _isDamageable: 0
+  _canBeStackedOnlyWithSameCard: 0
+  _isOrder: 0
+  _isBreakable: 1
+  _canBeUnderCards: 1
+  _isResource: 0
+  _canBePlacedInChest: 0
   ID: -1
   GroupID:
     value: -1
@@ -665,13 +696,17 @@ MonoBehaviour:
     value: 0
   ClampedPosition:
     value: {x: 0, y: 0, z: 0}
+  IsTakingPartInRecipe:
+    value: 0
   CurrentRecipe:
     value:
       Resources: 
       Workers: 
       Cooldown: 0
+      ResultCount: 1
       Result:
         Weights: []
+  PossibleRecipes: []
   Durability:
     value: 1
   MaxDurability:
@@ -680,18 +715,45 @@ MonoBehaviour:
     MoveAnimation: {fileID: 64048489458420466}
     JumpAnimation: {fileID: 5960606192708736452}
     FlipAnimation: {fileID: 7816034676176084162}
+    ShakeAnimation: {fileID: 1211409701403973134}
   IsPlayingAnyAnimation:
     value: 0
   CurrentReproductionRecipe:
     value:
       Cooldown: 0
       Resources: 
+      ResourcesToRemove: 
       Results: []
+  PositionShakeObserver: {fileID: 3044150550693373442}
   Price:
     value: 0
---- !u!224 &564359370849849035 stripped
+--- !u!114 &1211409701403973134 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1749323702996037604, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 615042715106327018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4308e373710841d59f48c3aa9d4d47ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3044150550693373442 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2501728543964782568, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 615042715106327018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3887a6b8d44fd9a1ad3c9d575b3459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &4321002090125372987 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
+  m_CorrespondingSourceObject: {fileID: 3710502747120736209, guid: 7bf54413c6b39324e9a7ddfc51606634,
     type: 3}
   m_PrefabInstance: {fileID: 615042715106327018}
   m_PrefabAsset: {fileID: 0}

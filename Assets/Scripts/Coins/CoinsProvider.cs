@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Cards.Chests.SellableChest.Data;
+using Cards.Chests.Data;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
@@ -35,7 +35,7 @@ namespace Coins
             {
                 foreach (var coinChestCard in chests)
                 {
-                    count += (coinChestCard as ChestSellableCardData).StoredCards.Count;
+                    count += (coinChestCard as ChestData).StoredCards.Count;
                 }
             }
 
@@ -52,7 +52,7 @@ namespace Coins
 
             foreach (var card in chests)
             {
-                ChestSellableCardData chest = card as ChestSellableCardData;
+                ChestData chest = card as ChestData;
 
                 if (chest.StoredCards.Count > 0)
                 {
@@ -123,7 +123,7 @@ namespace Coins
             {
                 foreach (var coinChests in chests)
                 {
-                    ChestSellableCardData chest = coinChests as ChestSellableCardData;
+                    ChestData chest = coinChests as ChestData;
 
                     int chestSize = chest.StoredCards.Count;
 
