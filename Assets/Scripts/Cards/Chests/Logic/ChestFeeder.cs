@@ -97,7 +97,10 @@ namespace Cards.Chests.Logic
             {
                 StopObservingBottomCardDistance();
 
-                TryAddCardToChest(bottomCard);
+                if (TryAddCardToChest(bottomCard) == false)
+                {
+                    bottomCard.UnlinkFromUpper();
+                }
             }
         }
 
