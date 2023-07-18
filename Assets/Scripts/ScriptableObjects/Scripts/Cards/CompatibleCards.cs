@@ -143,14 +143,14 @@ namespace ScriptableObjects.Scripts.Cards
 
             bool isCardsSame = topCard.Card.Value == bottomCard.Card.Value;
 
-            if (bottomCard.CanBeStackedWithSameCard && topCard.CanBeStackedWithSameCard && isCardsSame == false) return true;
-
             if (bottomCard.CanBeUnderCards == false && bottomCard.CanBeStackedWithSameCard == false) return true;
 
             if (topCard.CanBeStackedOnlyWithSameCard || bottomCard.CanBeStackedOnlyWithSameCard)
             {
                 if (isCardsSame == false) return true;
             }
+
+            if (bottomCard.CanBeStackedWithSameCard && topCard.CanBeStackedWithSameCard && isCardsSame) return false;
 
             return false;
         }

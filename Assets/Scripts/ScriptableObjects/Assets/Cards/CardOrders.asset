@@ -19,4 +19,4 @@ MonoBehaviour:
   - Card: 8
     Weight: 10
   _minCardsCount: 1
-  _maxCardsCount: 3
+  _maxCardsCount: 1

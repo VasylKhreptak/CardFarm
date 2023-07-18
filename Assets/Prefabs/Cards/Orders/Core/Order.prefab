@@ -977,7 +977,7 @@ PrefabInstance:
     - target: {fileID: 1106781378837674969, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_fontSize
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378837674969, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -1046,6 +1046,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6444555626552152201}
     - target: {fileID: 2501728543964782568, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 6444555626552152201}
+    - target: {fileID: 2540732230461850383, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -1160,6 +1165,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 6444555626552152201}
+    - target: {fileID: 7127377167791929427, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 7137134185686426639, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -1237,6 +1247,7 @@ PrefabInstance:
       objectReference: {fileID: 6444555626552152201}
     m_RemovedComponents:
     - {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
+    - {fileID: 154212064968638915, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
 --- !u!114 &388360385220394824 stripped
 MonoBehaviour:
@@ -1288,12 +1299,16 @@ MonoBehaviour:
   _isSellableCard: 0
   _canSortingLayerChange: 1
   _isAutomatedFactory: 0
-  _isIncubator: 0
   _isAnimal: 0
   _isStackable: 1
   _isDamageable: 1
   _canBeStackedOnlyWithSameCard: 0
   _isOrder: 1
+  _isBreakable: 1
+  _canBeUnderCards: 1
+  _isResource: 0
+  _canBePlacedInChest: 0
+  _canBeStackedWithSameCard: 1
   ID: -1
   GroupID:
     value: -1
@@ -1360,9 +1375,11 @@ MonoBehaviour:
       Resources: 
       Workers: 
       Cooldown: 0
-      ResultCount: 1
+      MinResultCount: 1
+      MaxResultCount: 1
       Result:
         Weights: []
+  PossibleRecipes: []
   Durability:
     value: 1
   MaxDurability:
@@ -1459,6 +1476,25 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2870014989658022048}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8909807998792882772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6661290344176892660, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 2870014989658022048}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2341411576902394257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8909807998792882772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5fea40295b401bac3d2890931a4d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 6444555626552152201}
 --- !u!114 &9071682012651424910 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6499048130321804334, guid: 7bf54413c6b39324e9a7ddfc51606634,
