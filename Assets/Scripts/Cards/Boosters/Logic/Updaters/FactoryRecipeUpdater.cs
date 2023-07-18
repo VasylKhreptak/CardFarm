@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Cards.AutomatedFactories.Data;
 using Cards.Core;
+using Cards.Factories.Data;
 using Cards.Logic.Updaters;
 using ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes;
 using UnityEngine;
 
 namespace Cards.Boosters.Logic.Updaters
 {
-    public class FactoryRecipeUpdater : RecipeUpdaterCore<AutomatedFactoryData>
+    public class FactoryRecipeUpdater : RecipeUpdaterCore<FactoryData>
     {
         protected override void UpdateRecipe()
         {

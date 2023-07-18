@@ -38,5 +38,17 @@ namespace Extensions
 
             return true;
         }
+
+        public static bool HasAllElementOf<T>(this List<T> list1, List<T> list2)
+        {
+            foreach (T element in list2)
+            {
+                int countInList1 = list1.Count(x => EqualityComparer<T>.Default.Equals(x, element));
+
+                if (countInList1 == 0) return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8609782257049868907}
   - component: {fileID: 8609782257049868904}
   - component: {fileID: 8788698299557252707}
-  - component: {fileID: 55185185430700425}
+  - component: {fileID: 4359171025244880811}
   m_Layer: 0
   m_Name: GrowChildQuest
   m_TagString: Untagged
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
---- !u!114 &55185185430700425
+--- !u!114 &4359171025244880811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8609782257049868906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88efc801fcf44d55a3d39f2422280b96, type: 3}
+  m_Script: {fileID: 11500000, guid: d9c82bc0a344467f9f0360a4bfefbc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}

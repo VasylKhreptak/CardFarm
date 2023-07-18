@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Cards.Core;
+using Cards.Data;
 using Extensions;
 using UnityEngine;
 
@@ -38,6 +40,30 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
 
             recipe = null;
             return false;
+        }
+
+        public bool TryGetPossibleRecipes(List<CardData> cards, out List<FactoryRecipe> possibleRecipes)
+        {
+            if (cards.Count == 0)
+            {
+                possibleRecipes = _recipes.ToList();
+                return true;
+            }
+
+            List<FactoryRecipe> foundRecipes = new List<FactoryRecipe>();
+
+            List<Card> cardsList = cards.Select(x => x.Card.Value).ToList();
+
+            foreach (var recipe in _recipes)
+            {
+                if (recipe.Resources.HasAllElementOf(cardsList))
+                {
+                    foundRecipes.Add(recipe);
+                }
+            }
+
+            possibleRecipes = foundRecipes;
+            return foundRecipes.Count > 0;
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
-using Cards.AutomatedFactories.Data;
 using Cards.Data;
-using Cards.Incubators.Data;
+using Cards.Factories.Data;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -70,7 +69,6 @@ namespace Cards.Logic.Updaters
             TryStartObservingCurrentRecipe(firstGroupCard);
             TryStartObservingReproductionRecipe(firstGroupCard);
             TryStartObservingFactoryRecipe(firstGroupCard);
-            TryStartObservingIncubatorRecipe(firstGroupCard);
         }
 
         private void SetState(bool state)
@@ -98,22 +96,9 @@ namespace Cards.Logic.Updaters
         {
             if (cardData.IsAutomatedFactory)
             {
-                AutomatedFactoryData factoryData = cardData as AutomatedFactoryData;
+                FactoryData factoryData = cardData as FactoryData;
 
                 factoryData.CurrentFactoryRecipe.Subscribe(recipe =>
-                {
-                    SetState(recipe != null && recipe.Cooldown > 0);
-                }).AddTo(_firstGroupCardSubscriptions);
-            }
-        }
-
-        private void TryStartObservingIncubatorRecipe(CardData cardData)
-        {
-            if (cardData.IsIncubator)
-            {
-                IncubatorData incubatorData = cardData as IncubatorData;
-
-                incubatorData.CurrentIncubatorRecipe.Subscribe(recipe =>
                 {
                     SetState(recipe != null && recipe.Cooldown > 0);
                 }).AddTo(_firstGroupCardSubscriptions);
