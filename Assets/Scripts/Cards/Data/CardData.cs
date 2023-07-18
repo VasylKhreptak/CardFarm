@@ -32,6 +32,7 @@ namespace Cards.Data
         [SerializeField] private bool _canBeUnderCards = true;
         [SerializeField] private bool _isResource;
         [SerializeField] private bool _canBePlacedInChest;
+        [SerializeField] private bool _canBeStackedWithSameCard = true;
 
         public float BaseHeight => _baseHeight;
         public float HeightOffset => _heightOffset;
@@ -51,6 +52,7 @@ namespace Cards.Data
         public bool CanBeUnderCards => _canBeUnderCards;
         public bool IsResource => _isResource;
         public bool CanBePlacedInChest => _canBePlacedInChest;
+        public bool CanBeStackedWithSameCard => _canBeStackedWithSameCard;
 
         [Space]
         public int ID = -1;

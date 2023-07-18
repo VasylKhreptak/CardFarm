@@ -719,7 +719,6 @@ MonoBehaviour:
   _isSellableCard: 0
   _canSortingLayerChange: 1
   _isAutomatedFactory: 0
-  _isIncubator: 0
   _isAnimal: 0
   _isStackable: 1
   _isDamageable: 1
@@ -727,6 +726,8 @@ MonoBehaviour:
   _isOrder: 0
   _isBreakable: 1
   _canBeUnderCards: 0
+  _isResource: 0
+  _canBePlacedInChest: 0
   ID: -1
   GroupID:
     value: -1
@@ -793,7 +794,8 @@ MonoBehaviour:
       Resources: 
       Workers: 
       Cooldown: 0
-      ResultCount: 1
+      MinResultCount: 1
+      MaxResultCount: 1
       Result:
         Weights: []
   PossibleRecipes: []

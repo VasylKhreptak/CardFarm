@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cards.Core;
 using Cards.Data;
+using Cards.Factories.Data;
 using Extensions;
 using NaughtyAttributes;
 using ScriptableObjects.Scripts.Cards.Recipes;
@@ -57,10 +58,6 @@ namespace ScriptableObjects.Scripts.Cards
         {
             if (IsProhibited(topCard, bottomCard)) return false;
 
-            if (topCard.IsSellableCard && bottomCard.IsOrder) return true;
-
-            if (topCard.IsAnimal && bottomCard.IsAutomatedFactory) return true;
-
             CardData firstGroupCard = bottomCard.FirstGroupCard.Value;
 
             if (firstGroupCard == null) return IsCompatibleWithFilters(topCard.Card.Value, bottomCard.Card.Value);
@@ -72,7 +69,21 @@ namespace ScriptableObjects.Scripts.Cards
 
             bool isCompatible = false;
 
-            if (topCard.IsWorker == false)
+            if (firstGroupCard.IsAutomatedFactory)
+            {
+                FactoryData factoryData = firstGroupCard as FactoryData;
+
+                foreach (var possibleFactoryRecipe in factoryData.PossibleFactoryRecipes)
+                {
+                    if (possibleFactoryRecipe.Resources.Contains(topCard.Card.Value))
+                    {
+                        isCompatible = true;
+                        break;
+                    }
+                }
+            }
+
+            if (isCompatible == false && topCard.IsWorker == false)
             {
                 foreach (var possibleRecipe in groupPossibleRecipes)
                 {
@@ -94,7 +105,7 @@ namespace ScriptableObjects.Scripts.Cards
                     return false;
                 }
             }
-            else
+            else if (isCompatible == false)
             {
                 List<Card> groupCards = groupCardsData.Select(x => x.Card.Value).ToList();
 
@@ -130,15 +141,16 @@ namespace ScriptableObjects.Scripts.Cards
 
             if (topCard.IsStackable == false || bottomCard.IsStackable == false) return true;
 
-            if (bottomCard.CanBeUnderCards == false) return true;
+            bool isCardsSame = topCard.Card.Value == bottomCard.Card.Value;
+
+            if (bottomCard.CanBeStackedWithSameCard && topCard.CanBeStackedWithSameCard && isCardsSame == false) return true;
+
+            if (bottomCard.CanBeUnderCards == false && bottomCard.CanBeStackedWithSameCard == false) return true;
 
             if (topCard.CanBeStackedOnlyWithSameCard || bottomCard.CanBeStackedOnlyWithSameCard)
             {
-                if (topCard.Card.Value != bottomCard.Card.Value) return true;
+                if (isCardsSame == false) return true;
             }
-
-            if (topCard.IsAnimal && bottomCard.IsAnimal) return true;
-
 
             return false;
         }
