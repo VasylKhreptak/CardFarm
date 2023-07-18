@@ -21,6 +21,10 @@ namespace Cards.Factories.Logic
         [SerializeField] protected FactoryData _cardData;
         [SerializeField] private CompatibleCards _compatibleCards;
 
+        [Header("Preferences")]
+        [SerializeField] private float _minSpreadRange = 5f;
+        [SerializeField] private float _maxSpreadRange = 7f;
+
         private IDisposable _currentRecipeSubscription;
 
         private CardSpawner _cardSpawner;
@@ -72,7 +76,7 @@ namespace Cards.Factories.Logic
             _cardData.AutomatedFactoryCallbacks.onExecutedRecipe?.Invoke(_cardData.CurrentFactoryRecipe.Value);
 
             SpawnRecipeResults();
-            ClearRecipeResources();
+            TryClearRecipeResources();
 
             ExecuteActiveRecipe();
 
@@ -139,6 +143,20 @@ namespace Cards.Factories.Logic
             return _cardData.CurrentFactoryRecipe.Value.Result.Weights.GetByWeight(x => x.Weight).Card;
         }
 
+        private void TryClearRecipeResources()
+        {
+            FactoryRecipe currentRecipe = _cardData.CurrentFactoryRecipe.Value;
+
+            if (currentRecipe.RemoveResourcesOnComplete)
+            {
+                ClearRecipeResources();
+            }
+            else
+            {
+                SpreadRecipeResources();
+            }
+        }
+
         private void ClearRecipeResources()
         {
             int recipeResourcesCount = _cardData.CurrentFactoryRecipe.Value.Resources.Count;
@@ -160,9 +178,31 @@ namespace Cards.Factories.Logic
             TryLinkCardToTop(previousCard);
         }
 
+        private void SpreadRecipeResources()
+        {
+            int recipeResourcesCount = _cardData.CurrentFactoryRecipe.Value.Resources.Count;
+
+            CardData previousCard = null;
+
+            if (_cardData.BottomCards.Count > recipeResourcesCount)
+            {
+                previousCard = _cardData.BottomCards[recipeResourcesCount];
+            }
+
+            List<CardData> resourcesToSpread = _cardData.BottomCards.Take(recipeResourcesCount).ToList();
+
+            foreach (CardData resourceCard in resourcesToSpread)
+            {
+                resourceCard.Separate();
+                resourceCard.Animations.MoveAnimation.PlayRandomly(_minSpreadRange, _maxSpreadRange);
+            }
+
+            TryLinkCardToTop(previousCard);
+        }
+
         private void TryLinkCardToTop(CardData card)
         {
-            if (card != null && _compatibleCards.IsCompatibleByCategory(card, _cardData))
+            if (_compatibleCards.IsCompatibleByCategory(card, _cardData))
             {
                 card.LinkTo(_cardData);
             }

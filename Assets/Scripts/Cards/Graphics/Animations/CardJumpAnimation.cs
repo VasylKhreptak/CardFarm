@@ -1,10 +1,12 @@
 ﻿using System;
 using Cards.Data;
 using Cards.Graphics.Animations.Core;
+using Constraints.CardTable;
 using DG.Tweening;
 using Extensions;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Cards.Graphics.Animations
 {
@@ -22,6 +24,14 @@ namespace Cards.Graphics.Animations
         [SerializeField] private Ease _jumpEase;
 
         private Tween _animation;
+
+        private CardsTableBounds _cardsTableBounds;
+
+        [Inject]
+        private void Constructor(CardsTableBounds cardsTableBounds)
+        {
+            _cardsTableBounds = cardsTableBounds;
+        }
 
         #region MonoBehaviour
 
@@ -68,6 +78,23 @@ namespace Cards.Graphics.Animations
                     _isPlaying.Value = false;
                 })
                 .Play();
+        }
+
+        public void PlayRandomly(float minRange, float maxRange, Action onComplete = null)
+        {
+            PlayRandomly(minRange, maxRange, _duration, onComplete);
+        }
+
+        public void PlayRandomly(float minRange, float maxRange, float duration, Action onComplete = null)
+        {
+            Vector3 randomDirection = Random.insideUnitCircle;
+            randomDirection.y = 0;
+            float range = Random.Range(minRange, maxRange);
+            Vector3 targetPosition = _cardData.transform.position + randomDirection * range;
+            Bounds bounds = _cardData.Collider.bounds;
+            bounds.center = targetPosition;
+            targetPosition = _cardsTableBounds.Clamp(bounds);
+            Play(targetPosition, duration, onComplete);
         }
 
         public override void Stop()

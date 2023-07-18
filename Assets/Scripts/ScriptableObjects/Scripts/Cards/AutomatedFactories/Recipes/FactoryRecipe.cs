@@ -11,7 +11,6 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
     {
         public List<Card> Resources = new List<Card>();
         public bool RemoveResourcesOnComplete = true;
-        public bool LinkResultToFactory = false;
         public float Cooldown;
         public int MinResultCount = 1;
         public int MaxResultCount = 1;
