@@ -15,7 +15,7 @@ namespace Cards.Core
         Flint = 7,
         Stick = 9,
         House = 11,
-        NewWorldBooster = 12,
+        StartBooster = 12,
         HumbleBeginningsBooster = 13,
         Zone = 14,
         CoinChest = 15,

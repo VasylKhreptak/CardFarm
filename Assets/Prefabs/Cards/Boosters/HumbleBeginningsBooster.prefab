@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 7150918256690066688}
+    - target: {fileID: 462683759817003558, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
+        type: 3}
+      propertyPath: m_text
+      value: Humble Beginnings
+      objectReference: {fileID: 0}
     - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
       propertyPath: _maxRange

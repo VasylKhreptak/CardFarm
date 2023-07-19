@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 3759502882076838688, guid: 38a4e433eb7ba854fa05acffc7f51964,
+        type: 3}
+      propertyPath: m_Name
+      value: StartBoosterText
+      objectReference: {fileID: 0}
     - target: {fileID: 3829932553933156705, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
       propertyPath: LeftCards.value
@@ -81,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 3861553596883588506, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
       propertyPath: m_Name
-      value: ANewWorldBooster
+      value: StartBooster
       objectReference: {fileID: 0}
     - target: {fileID: 3861553596883588507, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
@@ -192,6 +197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965046690023770116, guid: 38a4e433eb7ba854fa05acffc7f51964,
+        type: 3}
+      propertyPath: m_text
+      value: Start
       objectReference: {fileID: 0}
     - target: {fileID: 9172753996360274559, guid: 38a4e433eb7ba854fa05acffc7f51964,
         type: 3}
