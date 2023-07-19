@@ -227,7 +227,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6429347362616100229}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -235,7 +235,7 @@ RectTransform:
   - {fileID: 63578805001102515}
   m_Father: {fileID: 8718050276280176114}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.255}
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.181
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -447,6 +447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardData: {fileID: 3594824769674065748}
   _compatibleCards: {fileID: 11400000, guid: 8a8b75a90c8d25d489bcef13be7b9cfc, type: 2}
+  _minSpreadRange: 5
+  _maxSpreadRange: 7
 --- !u!1 &8903204718465331305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1048,7 @@ MonoBehaviour:
   _canBeUnderCards: 1
   _isResource: 0
   _canBePlacedInChest: 0
+  _canBeStackedWithSameCard: 1
   ID: -1
   GroupID:
     value: -1
@@ -1141,7 +1144,6 @@ MonoBehaviour:
     value:
       Resources: 
       RemoveResourcesOnComplete: 1
-      LinkResultToFactory: 0
       Cooldown: 0
       MinResultCount: 1
       MaxResultCount: 1
