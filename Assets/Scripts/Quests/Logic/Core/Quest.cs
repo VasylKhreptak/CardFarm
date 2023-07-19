@@ -3,12 +3,11 @@
     public enum Quest
     {
         OpenNewWorldBooster = 0,
-        MoveWorkerOnBerryBush = 1,
-        MoveWorkerOnRock = 2,
+        GetStone = 1,
+        CollectBerry = 2,
         SellAnyCard = 3,
         BuyHumbleBeginningsBooster = 4,
-        MoveWorkerOnWood = 5,
-        MakeStickFromWood = 6,
+        MakeStick = 6,
         BuildGarden = 10,
         CreateCampfire = 13,
         GrowBerryBush = 7,
@@ -18,5 +17,6 @@
         BuildLumberCamp = 12,
         CreateBrick = 14,
         CreatePlank = 15,
+        MakeBaby = 16,
     }
 }

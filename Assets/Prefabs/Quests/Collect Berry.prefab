@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8609782257049868907}
   - component: {fileID: 8609782257049868904}
-  - component: {fileID: 7625258693689627935}
   - component: {fileID: 2421308040907752950}
+  - component: {fileID: -4810308183933317129}
   m_Layer: 0
-  m_Name: MoveWorkerOnRock
+  m_Name: Collect Berry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,28 +47,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Quest: 2
-  Name: Move Worker On Rock
+  Name: Collect Berry
   Reward:
     Cards: 08000000
   IsCompleted:
     value: 0
   TookReward:
     value: 0
---- !u!114 &7625258693689627935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8609782257049868906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e075e2058ad6419db7982a07751ccc57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _questData: {fileID: 8609782257049868904}
-  _targetCard: 0
-  _targetTopCard: 1
+  Recipe:
+    Result:
+      BackgroundColor: {r: 0.89019614, g: 0.5764706, b: 0.30980393, a: 1}
+      Icon: {fileID: 21300000, guid: ae995c51e784a14498ed5ef5c9e87bd0, type: 3}
+      Quantity: 1
+    TargetCards:
+    - BackgroundColor: {r: 0.2509804, g: 0.24705884, b: 0.23137257, a: 1}
+      Icon: {fileID: 21300000, guid: 81d954b2072658840be4ddb846644d66, type: 3}
+      Quantity: 1
+    - BackgroundColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
+      Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
+      Quantity: 1
 --- !u!114 &2421308040907752950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,3 +79,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
+--- !u!114 &-4810308183933317129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609782257049868906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f6b7da1b734b76ab99470c9f2f6fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questData: {fileID: 8609782257049868904}
+  _recipeResult: 6

@@ -13,5 +13,6 @@ namespace Quests.Data
         public QuestReward Reward;
         public BoolReactiveProperty IsCompleted = new BoolReactiveProperty();
         public BoolReactiveProperty TookReward = new BoolReactiveProperty();
+        public QuestRecipe Recipe = new QuestRecipe();
     }
 }

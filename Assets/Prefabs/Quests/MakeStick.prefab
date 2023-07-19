@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8609782257049868907}
   - component: {fileID: 8609782257049868904}
-  - component: {fileID: 7625258693689627935}
-  - component: {fileID: 2421308040907752950}
+  - component: {fileID: 8788698299557252707}
+  - component: {fileID: 3443028053564193075}
   m_Layer: 0
-  m_Name: MoveVillagerOnBerryBush
+  m_Name: MakeStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,30 +46,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb794ab34e984feb90e04809afb11bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Quest: 1
-  Name: Move Worker On Berry Bush
+  Quest: 6
+  Name: Make Stick
   Reward:
     Cards: 08000000
   IsCompleted:
     value: 0
   TookReward:
     value: 0
---- !u!114 &7625258693689627935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8609782257049868906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e075e2058ad6419db7982a07751ccc57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _questData: {fileID: 8609782257049868904}
-  _targetCard: 0
-  _targetTopCard: 3
---- !u!114 &2421308040907752950
+  Recipe:
+    Result:
+      BackgroundColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+      Icon: {fileID: 21300000, guid: ce61582e1cb853a4b9f4762a196edefe, type: 3}
+      Quantity: 1
+    TargetCards:
+    - BackgroundColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+      Icon: {fileID: 21300000, guid: 768f09dbc8e6e4443824c8c5de58afe9, type: 3}
+      Quantity: 1
+    - BackgroundColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
+      Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
+      Quantity: 1
+--- !u!114 &8788698299557252707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,3 +79,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
+--- !u!114 &3443028053564193075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609782257049868906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f6b7da1b734b76ab99470c9f2f6fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questData: {fileID: 8609782257049868904}
+  _recipeResult: 9

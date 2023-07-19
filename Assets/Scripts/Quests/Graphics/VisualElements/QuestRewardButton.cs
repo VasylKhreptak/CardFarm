@@ -1,6 +1,7 @@
 ﻿using System;
 using Cards.Core;
 using Cards.Logic.Spawn;
+using Quests.Data;
 using Quests.Logic;
 using UniRx;
 using UnityEngine;
@@ -28,6 +29,11 @@ namespace Quests.Graphics.VisualElements
 
         #region MonoBehaviour
 
+        private void OnValidate()
+        {
+            _button ??= GetComponent<Button>();
+        }
+
         private void OnEnable()
         {
             StartObservingClick();
@@ -53,7 +59,9 @@ namespace Quests.Graphics.VisualElements
 
         private void OnClick()
         {
-            if (_questsManager.CurrentQuest.Value == null || _questsManager.CurrentQuest.Value.TookReward.Value) return;
+            QuestData currentQuest = _questsManager.CurrentQuest.Value;
+
+            if (currentQuest == null || currentQuest.TookReward.Value || currentQuest.IsCompleted.Value == false) return;
 
             SpawnReward();
 
