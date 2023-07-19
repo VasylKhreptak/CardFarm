@@ -2,7 +2,7 @@
 using System.Linq;
 using Cards.Core;
 using Cards.Logic.Spawn;
-using Constraints.CardTable;
+using Constraints;
 using Quests.Logic;
 using Quests.Logic.Core;
 using Table.Core;
@@ -26,7 +26,7 @@ namespace Cards.Orders
         private QuestsManager _questsManager;
         private CardsSelector _cardsSelector;
         private CardSpawner _cardSpawner;
-        private CardsTableBounds _cardsTableBounds;
+        private UpperZoneBounds _upperZoneBounds;
         private CardsTable _cardsTable;
 
         [Inject]
@@ -34,13 +34,13 @@ namespace Cards.Orders
             QuestsManager questsManager,
             CardsSelector cardsSelector,
             CardSpawner cardSpawner,
-            CardsTableBounds cardsTableBounds,
+            UpperZoneBounds upperZoneBounds,
             CardsTable cardsTable)
         {
             _questsManager = questsManager;
             _cardsSelector = cardsSelector;
             _cardSpawner = cardSpawner;
-            _cardsTableBounds = cardsTableBounds;
+            _upperZoneBounds = upperZoneBounds;
             _cardsTable = cardsTable;
         }
 
@@ -125,7 +125,7 @@ namespace Cards.Orders
 
             Bounds bounds = _cardsTable.Cards.First().Collider.bounds;
 
-            Vector3 randomPosition = _cardsTableBounds.GetRandomPoint(bounds);
+            Vector3 randomPosition = _upperZoneBounds.GetRandomPoint(bounds);
 
             _cardSpawner.SpawnAndMove(Card.Order, randomPosition, randomPosition, false);
         }

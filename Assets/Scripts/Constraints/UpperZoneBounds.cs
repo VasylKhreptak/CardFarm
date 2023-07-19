@@ -2,7 +2,7 @@
 
 namespace Constraints
 {
-    public class UpperZoneConstraints : SurfaceBounds
+    public class UpperZoneBounds : SurfaceBounds
     {
 
     }
