@@ -107,6 +107,7 @@ namespace Cards.Logic
 
             if (_screenRaycaster.Raycast(mousePosition, _floorLayerMask, out RaycastHit hit))
             {
+                float startHeight = _cardData.transform.position.y;
                 Vector3 cardPosition = _cardData.transform.position;
                 Vector3 targetCardPosition = hit.point + new Vector3(horOffset.x, 0f, horOffset.y);
                 cardPosition = Vector3.Lerp(cardPosition, targetCardPosition, _speed * Time.deltaTime);
@@ -115,6 +116,7 @@ namespace Cards.Logic
                 Bounds bounds = _cardData.Collider.bounds;
                 bounds.center = cardPosition;
                 Vector3 clampedPosition = _cardsTableBounds.Clamp(bounds);
+                clampedPosition.y = startHeight;
                 _cardData.transform.position = clampedPosition;
             }
         }

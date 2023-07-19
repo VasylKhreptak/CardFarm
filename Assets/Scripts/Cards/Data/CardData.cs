@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using Cards.Core;
 using Cards.Gestures.PositionShake;
+using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using NaughtyAttributes;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -15,6 +15,7 @@ namespace Cards.Data
     {
         [Header("Data")]
         [SerializeField] private float _baseHeight = 0.01f;
+        [SerializeField] private float _selectedHeight = 0.1f;
         [SerializeField] private float _heightOffset = 0.01f;
         [Space]
         [SerializeField] private bool _isWorker;
@@ -35,6 +36,7 @@ namespace Cards.Data
         [SerializeField] private bool _canBeStackedWithSameCard = true;
 
         public float BaseHeight => _baseHeight;
+        public float SelectedHeight => _selectedHeight;
         public float HeightOffset => _heightOffset;
 
         public bool IsWorker => _isWorker;
@@ -54,7 +56,6 @@ namespace Cards.Data
         public bool CanBePlacedInChest => _canBePlacedInChest;
         public bool CanBeStackedWithSameCard => _canBeStackedWithSameCard;
 
-        [Space]
         public int ID = -1;
         public IntReactiveProperty GroupID = new IntReactiveProperty(-1);
 
@@ -117,5 +118,7 @@ namespace Cards.Data
         public ReactiveProperty<CardReproductionRecipe> CurrentReproductionRecipe = new ReactiveProperty<CardReproductionRecipe>();
 
         public PositionShakeObserver PositionShakeObserver;
+        
+        public CardSelectedHeightController CardSelectedHeightController;
     }
 }

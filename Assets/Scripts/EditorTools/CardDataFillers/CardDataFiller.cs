@@ -1,6 +1,7 @@
 ﻿using Cards.Data;
 using Cards.Gestures.PositionShake;
 using Cards.Graphics.Animations;
+using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using NaughtyAttributes;
 using Tags.Cards;
@@ -48,6 +49,7 @@ namespace EditorTools.CardDataFillers
             _cardData.Animations.JumpAnimation = GetComponentInChildren<CardJumpAnimation>();
             _cardData.Animations.FlipAnimation = GetComponentInChildren<CardFlipAnimation>();
             _cardData.Animations.ShakeAnimation = GetComponentInChildren<CardShakeAnimation>();
+            _cardData.CardSelectedHeightController = GetComponentInChildren<CardSelectedHeightController>();
         }
     }
 }

@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Cards.Logic
 {
-    public class CardHeightController : MonoBehaviour, IValidatable
+    public class CardGroupHeightController : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -63,7 +63,7 @@ namespace Cards.Logic
                 position.y = _cardData.BaseHeight;
                 _cardData.Height.Value = position.y;
             }
-            else
+            else if (_cardData.CardSelectedHeightController.IsUpdatingHeightProperty.Value == false)
             {
                 _upperCardHeightSubscription = upperCardData.Height.Subscribe(height =>
                 {
@@ -71,7 +71,7 @@ namespace Cards.Logic
                     _cardData.Height.Value = position.y;
                 });
             }
-            
+
             _cardData.transform.position = position;
         }
     }
