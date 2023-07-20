@@ -1,5 +1,5 @@
 ﻿using Cards.Zones.BuyZone.Data;
-using Coins;
+using Economy;
 using Graphics.UI.Particles.Coins.Logic;
 using Providers.Graphics;
 using UnityEngine;
@@ -14,18 +14,18 @@ namespace Cards.Zones.BuyZone.Logic
 
         private bool _canCollectCoins = true;
 
-        private CoinsProvider _coinsProvider;
         private CoinsSpender _coinsSpender;
         private Camera _camera;
+        private CoinsBank _coinsBank;
 
         [Inject]
         private void Constructor(CoinsSpender coinsSpender,
-            CoinsProvider coinsProvider,
+            CoinsBank coinsBank,
             CameraProvider cameraProvider)
         {
             _coinsSpender = coinsSpender;
-            _coinsProvider = coinsProvider;
             _camera = cameraProvider.Value;
+            _coinsBank = coinsBank;
         }
 
         #region MonoBehaviour
@@ -85,13 +85,11 @@ namespace Cards.Zones.BuyZone.Logic
 
             int price = _cardData.Price.Value;
 
-            int coinsCount = _coinsProvider.GetCoinsCount();
+            int totalCoinsCount = _coinsBank.Value;
 
-            coinsCount = Mathf.Min(price, _cardData.LeftCoins.Value);
+            int coinsToSpawn = Mathf.Min(price, totalCoinsCount);
 
-            if (coinsCount == 0) return;
-
-            int coinsToSpawn = Mathf.Min(price, coinsCount);
+            if (coinsToSpawn == 0) return;
 
             Vector3 coinMoveDestination = RectTransformUtility.WorldToScreenPoint(_camera, _cardData.transform.position);
 
