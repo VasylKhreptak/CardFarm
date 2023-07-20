@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Cards.Core;
 using Cards.Data;
-using Cards.Logic.Spawn;
 using Cards.Zones.SellZone.Data;
 using Extensions;
-using UniRx;
+using Graphics.UI.Particles.Coins.Logic;
+using Providers.Graphics;
 using UnityEngine;
 using Zenject;
 
@@ -17,14 +16,14 @@ namespace Cards.Zones.SellZone.Logic
         [Header("References")]
         [SerializeField] private SellZoneData _zoneData;
 
-        private CompositeDisposable _delaySubscriptions = new CompositeDisposable();
-
-        private CardSpawner _cardSpawner;
+        private CoinsCollector _coinsCollector;
+        private Camera _camera;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner)
+        private void Constructor(CoinsCollector coinsCollector, CameraProvider cameraProvider)
         {
-            _cardSpawner = cardSpawner;
+            _coinsCollector = coinsCollector;
+            _camera = cameraProvider.Value;
         }
 
         #region MonoBehaviour
@@ -47,8 +46,6 @@ namespace Cards.Zones.SellZone.Logic
         private void OnDisable()
         {
             StopObserving();
-
-            _delaySubscriptions.Clear();
         }
 
         #endregion
@@ -79,8 +76,6 @@ namespace Cards.Zones.SellZone.Logic
                 bottomCards[0].UnlinkFromUpper();
             }
 
-            float delay = 0f;
-
             foreach (var bottomCard in bottomCards)
             {
                 if (bottomCard.IsSellableCard == false) return;
@@ -91,18 +86,12 @@ namespace Cards.Zones.SellZone.Logic
 
                 if (sellableCard == null) return;
 
-                for (int i = 0; i < sellableCard.Price.Value; i++)
-                {
-                    Observable.Timer(TimeSpan.FromSeconds(_zoneData.CoinSpawnInterval)).Subscribe(_ =>
-                    {
-                        _cardSpawner.SpawnCoinAndMove(_zoneData.transform.position, _zoneData.CoinSpawnPoint.position, flip: false, jump: false);
-                    }).AddTo(_delaySubscriptions);
-                }
+                Vector3 coinsSpawnPosition = RectTransformUtility.WorldToScreenPoint(_camera, sellableCard.transform.position);
+
+                _coinsCollector.Collect(sellableCard.Price.Value, coinsSpawnPosition);
 
                 sellableCard.gameObject.SetActive(false);
                 _zoneData.onSoldCard?.Invoke(sellableCard.Card.Value);
-
-                delay += _zoneData.CoinSpawnInterval;
             }
         }
     }

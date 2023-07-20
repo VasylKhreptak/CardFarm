@@ -16,20 +16,20 @@ public class Test : MonoBehaviour
         _coinsSpender = coinsSpender;
     }
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 startPosition = Input.mousePosition;
-
-            _coinsCollector.Collect(Random.Range(1, 21), startPosition);
-        }
-
-        if (Input.GetMouseButtonDown(2))
-        {
-            Vector3 startPosition = Input.mousePosition;
-
-            _coinsSpender.Spend(Random.Range(1, 21), startPosition);
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetMouseButtonDown(0))
+    //     {
+    //         Vector3 startPosition = Input.mousePosition;
+    //
+    //         _coinsCollector.Collect(Random.Range(1, 21), startPosition);
+    //     }
+    //
+    //     if (Input.GetMouseButtonDown(2))
+    //     {
+    //         Vector3 startPosition = Input.mousePosition;
+    //
+    //         _coinsSpender.Spend(Random.Range(1, 21), startPosition);
+    //     }
+    // }
 }
