@@ -1,7 +1,7 @@
 using Providers.Core;
 using UnityEngine;
 
-namespace Providers
+namespace Providers.Graphics
 {
     public class CameraProvider : SceneInstanceProvider<Camera>
     {
