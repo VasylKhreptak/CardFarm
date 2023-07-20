@@ -83,11 +83,9 @@ namespace Cards.Zones.BuyZone.Logic
         {
             if (_canCollectCoins == false) return;
 
-            int price = _cardData.Price.Value;
-
             int totalCoinsCount = _coinsBank.Value;
 
-            int coinsToSpawn = Mathf.Min(price, totalCoinsCount);
+            int coinsToSpawn = Mathf.Min(_cardData.LeftCoins.Value, totalCoinsCount);
 
             if (coinsToSpawn == 0) return;
 
