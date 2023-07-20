@@ -8886,12 +8886,6 @@ MonoBehaviour:
     initialSize: 0
     autoExpand: 1
     maxExpandSize: 100
-  - pool: 22
-    prefab: {fileID: 7278596283047796325, guid: 1e2701391d0cb774286846049a5fd45d,
-      type: 3}
-    initialSize: 0
-    autoExpand: 1
-    maxExpandSize: 100
   - pool: 25
     prefab: {fileID: 7980561131696152965, guid: 729dc15cae8215a49afcc6aef97b1428,
       type: 3}

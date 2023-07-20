@@ -8,7 +8,6 @@ namespace Cards.Core
         BerryBush = 3,
         AppleTree = 10,
         Coin = 8,
-        FakeCoin = 22,
         Stone = 4,
         Wood = 5,
         Berry = 6,
