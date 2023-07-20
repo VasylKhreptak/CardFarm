@@ -3,7 +3,6 @@ using Cards.Core;
 using Cards.Gestures.PositionShake;
 using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
-using NaughtyAttributes;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
@@ -13,7 +12,6 @@ namespace Cards.Data
 {
     public class CardData : MonoBehaviour
     {
-        [Header("Data")]
         [SerializeField] private float _baseHeight = 0.01f;
         [SerializeField] private float _selectedHeight = 0.1f;
         [SerializeField] private float _heightOffset = 0.01f;
@@ -27,7 +25,7 @@ namespace Cards.Data
         [SerializeField] private bool _isAnimal;
         [SerializeField] private bool _isStackable = true;
         [SerializeField] private bool _isDamageable = true;
-        [SerializeField, ShowIf(nameof(_isStackable))] private bool _canBeStackedOnlyWithSameCard;
+        [SerializeField] private bool _canBeStackedOnlyWithSameCard;
         [SerializeField] private bool _isOrder;
         [SerializeField] private bool _isBreakable = true;
         [SerializeField] private bool _canBeUnderCards = true;
@@ -118,7 +116,7 @@ namespace Cards.Data
         public ReactiveProperty<CardReproductionRecipe> CurrentReproductionRecipe = new ReactiveProperty<CardReproductionRecipe>();
 
         public PositionShakeObserver PositionShakeObserver;
-        
+
         public CardSelectedHeightController CardSelectedHeightController;
     }
 }
