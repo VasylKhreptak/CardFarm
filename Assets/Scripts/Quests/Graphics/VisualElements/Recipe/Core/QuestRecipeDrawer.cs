@@ -78,6 +78,7 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             GameObject spawnedPart = _objectPooler.Spawn(part);
 
             spawnedPart.transform.SetAsLastSibling();
+            spawnedPart.transform.localScale = Vector3.one;
 
             return spawnedPart;
         }
