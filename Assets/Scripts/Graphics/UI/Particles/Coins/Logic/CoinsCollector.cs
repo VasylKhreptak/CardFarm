@@ -31,7 +31,7 @@ namespace Graphics.UI.Particles.Coins.Logic
             _particlesPileSpawner.Spawn(Particle.Coin, count, position, _iconPositionProvider.Value, maxRange, OnCollectedCoin);
         }
 
-        public void OnCollectedCoin()
+        private void OnCollectedCoin()
         {
             _coinsBank.Add(1);
         }
