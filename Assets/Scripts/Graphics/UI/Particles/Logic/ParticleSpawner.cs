@@ -46,7 +46,7 @@ namespace Graphics.UI.Particles.Logic
 
         public ParticleData SpawnInRandomRange(Particle particle, Vector3 position, float maxRange)
         {
-            return SpawnInRange(particle, position, Random.Range(0, maxRange));
+            return SpawnInRandomRange(particle, position, 0, maxRange);
         }
 
         public ParticleData SpawnInRandomRange(Particle particle, Vector3 position, float minRange, float maxRange)

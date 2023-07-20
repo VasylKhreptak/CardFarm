@@ -6568,6 +6568,7 @@ GameObject:
   - component: {fileID: 1444864358}
   - component: {fileID: 1444864359}
   - component: {fileID: 1444864360}
+  - component: {fileID: 1444864361}
   m_Layer: 5
   m_Name: UIParticlePooler
   m_TagString: Untagged
@@ -6628,6 +6629,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7d525f71354e49ae87766b8d23ac83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1444864361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444864357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c64fa25e1e2462abfdd084b963fcc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minCount: 1
+  _maxCount: 10
+  _minInterval: 0.04
+  _maxInterval: 0.1
+  _minRange: 40
+  _maxRange: 200
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1463480071 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
@@ -7669,6 +7712,7 @@ MonoBehaviour:
   - {fileID: 2112877860}
   - {fileID: 878893098}
   - {fileID: 1030162194}
+  - {fileID: 1916636123}
   - {fileID: 1244063666}
   - {fileID: 2020669105}
   - {fileID: 1709444635}
@@ -7742,6 +7786,7 @@ Transform:
   - {fileID: 137071643}
   - {fileID: 1954299598}
   - {fileID: 1259146664}
+  - {fileID: 1916636124}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8519,6 +8564,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905233977}
   m_CullTransparentMesh: 1
+--- !u!1 &1916636122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1916636124}
+  - component: {fileID: 1916636123}
+  m_Layer: 0
+  m_Name: ParticlesPileSpawnerInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1916636123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916636122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b3f1aa171045f98e6381489a65c7f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToBind: {fileID: 1444864361}
+--- !u!4 &1916636124
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916636122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1619450391}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1930877346
 GameObject:
   m_ObjectHideFlags: 0
