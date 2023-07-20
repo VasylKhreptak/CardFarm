@@ -7,11 +7,13 @@ public class Test : MonoBehaviour
     public Canvas Canvas;
 
     private CoinsCollector _coinsCollector;
+    private CoinsSpender _coinsSpender;
 
     [Inject]
-    private void Constructor(CoinsCollector coinsCollector)
+    private void Constructor(CoinsCollector coinsCollector, CoinsSpender coinsSpender)
     {
         _coinsCollector = coinsCollector;
+        _coinsSpender = coinsSpender;
     }
 
     private void Update()
@@ -21,6 +23,15 @@ public class Test : MonoBehaviour
             Vector3 startPosition = Input.mousePosition;
 
             _coinsCollector.Collect(Random.Range(1, 21), startPosition);
+        }
+
+        if (Input.GetMouseButtonDown(2))
+        {
+            Debug.Log("Spending coins");
+            
+            Vector3 startPosition = Input.mousePosition;
+
+            _coinsSpender.Spend(Random.Range(1, 21), startPosition);
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Graphics.UI.Particles.Logic
             Spawn(particle, count, startPosition, targetPosition, range, onComplete);
         }
 
-        public void Spawn(Particle particle, int count, Vector3 startPosition, Vector3 targetPosition, float range, Action onComplete = null)
+        public void Spawn(Particle particle, int count, Vector3 startPosition, Vector3 targetPosition, float range, Action onComplete = null, Action onStart = null)
         {
             float interval = GetInterval(count);
 
@@ -56,6 +56,7 @@ namespace Graphics.UI.Particles.Logic
                 {
                     ParticleData particleData = _particleSpawner.SpawnInRandomRange(particle, startPosition, range);
                     particleData.Animations.MoveSequence.Play(targetPosition, onComplete);
+                    onStart?.Invoke();
                 }).AddTo(_subscriptions);
 
                 delay += interval;
