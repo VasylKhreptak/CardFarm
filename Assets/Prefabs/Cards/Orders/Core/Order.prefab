@@ -1015,6 +1015,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 6444555626552152201}
+    - target: {fileID: 1475933332041759479, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1749323702996037604, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -1026,6 +1031,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6444555626552152201}
     - target: {fileID: 1926160521809639925, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 6444555626552152201}
+    - target: {fileID: 1933687641745398689, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -1055,6 +1065,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 6444555626552152201}
+    - target: {fileID: 2571387044614040553, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 2575682665689227054, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -1068,7 +1083,7 @@ PrefabInstance:
     - target: {fileID: 3111104603713967330, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 3477643887258593426, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -1292,6 +1307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseHeight: 0.01
+  _selectedHeight: 0.4
   _heightOffset: 0.01
   _isWorker: 0
   _isFood: 0
@@ -1398,6 +1414,7 @@ MonoBehaviour:
       ResourcesToRemove: 
       Results: []
   PositionShakeObserver: {fileID: 388360385220394824}
+  CardSelectedHeightController: {fileID: 4395937403363195649}
   OrderIcon:
     value: {fileID: 0}
   OrderRequiredCard: 0
@@ -1420,6 +1437,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252b2605a9ca4d5a802f53b51ef5d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4395937403363195649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1933687641745398689, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 2870014989658022048}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d672ea825926493fb6d0ac424610f83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4580881889885359940 stripped

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Editor.Extensions;
-using Extensions;
 using UnityEditor;
 using UnityEngine;
 using Zenject;

@@ -182,6 +182,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2102762693797215169}
+    - target: {fileID: 926357504401646318, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 2102762693797215169}
     - target: {fileID: 1029102442086880939, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: _cardData
@@ -450,7 +455,7 @@ PrefabInstance:
     - target: {fileID: 4405117140128542125, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4701316350351751685, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
@@ -681,6 +686,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4308e373710841d59f48c3aa9d4d47ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4862234250290114858 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 926357504401646318, guid: d794782d0ddca224998105c67e750aef,
+    type: 3}
+  m_PrefabInstance: {fileID: 5737926172976026564}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d672ea825926493fb6d0ac424610f83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5892237958399973779 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2189974551833070167, guid: d794782d0ddca224998105c67e750aef,
@@ -712,6 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseHeight: 0.01
+  _selectedHeight: 0.4
   _heightOffset: 0.01
   _isWorker: 1
   _isFood: 0
@@ -728,6 +746,7 @@ MonoBehaviour:
   _canBeUnderCards: 0
   _isResource: 0
   _canBePlacedInChest: 0
+  _canBeStackedWithSameCard: 1
   ID: -1
   GroupID:
     value: -1
@@ -817,6 +836,7 @@ MonoBehaviour:
       ResourcesToRemove: 
       Results: []
   PositionShakeObserver: {fileID: 8869868308773631331}
+  CardSelectedHeightController: {fileID: 4862234250290114858}
   MaxHealth:
     value: 15
   Health:

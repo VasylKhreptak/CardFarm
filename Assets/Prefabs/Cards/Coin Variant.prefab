@@ -242,6 +242,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3573013257164753988}
+    - target: {fileID: 1933687641745398689, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 3573013257164753988}
     - target: {fileID: 2206082539133605184, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -459,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseHeight: 0.01
+  _selectedHeight: 0.4
   _heightOffset: 0.01
   _isWorker: 0
   _isFood: 0
@@ -466,7 +472,6 @@ MonoBehaviour:
   _isSellableCard: 1
   _canSortingLayerChange: 1
   _isAutomatedFactory: 0
-  _isIncubator: 0
   _isAnimal: 0
   _isStackable: 1
   _isDamageable: 1
@@ -476,6 +481,7 @@ MonoBehaviour:
   _canBeUnderCards: 1
   _isResource: 1
   _canBePlacedInChest: 1
+  _canBeStackedWithSameCard: 1
   ID: -1
   GroupID:
     value: -1
@@ -542,7 +548,8 @@ MonoBehaviour:
       Resources: 
       Workers: 
       Cooldown: 0
-      ResultCount: 1
+      MinResultCount: 1
+      MaxResultCount: 1
       Result:
         Weights: []
   PossibleRecipes: []
@@ -564,6 +571,7 @@ MonoBehaviour:
       ResourcesToRemove: 
       Results: []
   PositionShakeObserver: {fileID: 2656631139634719068}
+  CardSelectedHeightController: {fileID: 2070535990268587285}
   Price:
     value: 1
 --- !u!114 &1009733192742700460 stripped
@@ -576,6 +584,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252b2605a9ca4d5a802f53b51ef5d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2070535990268587285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1933687641745398689, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 462132610136733364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d672ea825926493fb6d0ac424610f83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2174969835202353488 stripped

@@ -153,6 +153,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1047073071230854646}
+    - target: {fileID: 926357504401646318, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1047073071230854646}
     - target: {fileID: 1029102442086880939, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: _cardData
@@ -331,7 +336,7 @@ PrefabInstance:
     - target: {fileID: 1853963227507526374, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2069572723132503013, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
@@ -366,7 +371,7 @@ PrefabInstance:
     - target: {fileID: 2869793762755880980, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3115703095592213672, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
@@ -560,6 +565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseHeight: 0.01
+  _selectedHeight: 0.4
   _heightOffset: 0.01
   _isWorker: 0
   _isFood: 0
@@ -666,6 +672,7 @@ MonoBehaviour:
       ResourcesToRemove: 
       Results: []
   PositionShakeObserver: {fileID: 3198398010913565028}
+  CardSelectedHeightController: {fileID: 1441367912939285805}
   MaxHealth:
     value: 5
   Health:
@@ -680,6 +687,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252b2605a9ca4d5a802f53b51ef5d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1441367912939285805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 926357504401646318, guid: d794782d0ddca224998105c67e750aef,
+    type: 3}
+  m_PrefabInstance: {fileID: 1791255370715680707}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d672ea825926493fb6d0ac424610f83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1626866486009633128 stripped

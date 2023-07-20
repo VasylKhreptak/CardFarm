@@ -2,16 +2,16 @@
 {
     Properties
     {
-        _ShadowColor ("Shadow Color", Color) = (0.35,0.4,0.45,1.0)
+        _ShadowColor("Shadow Color", Color) = (0.35,0.4,0.45,1.0)
     }
 
     SubShader
     {
         Tags
         {
-            "RenderPipeline"="UniversalPipeline"
-            "RenderType"="Transparent"
-            "Queue"="Transparent-1"
+            "RenderPipeline" = "UniversalPipeline"
+            "RenderType" = "Transparent"
+            "Queue" = "Transparent-1"
         }
 
         Pass
@@ -87,7 +87,7 @@
                 #ifdef _MAIN_LIGHT_SHADOWS
                 VertexPositionInputs vertexInput = (VertexPositionInputs)0;
                 vertexInput.positionWS = input.positionWS;
- 
+
                 float4 shadowCoord = GetShadowCoord(vertexInput);
                 half shadowAttenutation = MainLightRealtimeShadow(shadowCoord);
                 color = lerp(half4(1,1,1,1), _ShadowColor, (1.0 - shadowAttenutation) * _ShadowColor.a);

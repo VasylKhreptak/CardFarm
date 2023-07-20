@@ -644,6 +644,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 9195747696069395228}
+    - target: {fileID: 1323148708637221451, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 9195747696069395228}
     - target: {fileID: 1591044412716788906, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
@@ -659,6 +664,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 9195747696069395228}
+    - target: {fileID: 2085874285797917469, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2087830639797775938, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: _cardData
@@ -897,7 +907,7 @@ PrefabInstance:
     - target: {fileID: 9183290287491818322, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1854063491, guid: 680bf6b697d6daf4b88e81f6f34b3a8f, type: 3}
@@ -996,6 +1006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseHeight: 0.01
+  _selectedHeight: 0.4
   _heightOffset: 0.01
   _isWorker: 0
   _isFood: 0
@@ -1003,7 +1014,6 @@ MonoBehaviour:
   _isSellableCard: 1
   _canSortingLayerChange: 1
   _isAutomatedFactory: 0
-  _isIncubator: 0
   _isAnimal: 0
   _isStackable: 0
   _isDamageable: 0
@@ -1013,6 +1023,7 @@ MonoBehaviour:
   _canBeUnderCards: 1
   _isResource: 0
   _canBePlacedInChest: 0
+  _canBeStackedWithSameCard: 1
   ID: -1
   GroupID:
     value: -1
@@ -1079,7 +1090,8 @@ MonoBehaviour:
       Resources: 
       Workers: 
       Cooldown: 0
-      ResultCount: 1
+      MinResultCount: 1
+      MaxResultCount: 1
       Result:
         Weights: []
   PossibleRecipes: []
@@ -1101,6 +1113,7 @@ MonoBehaviour:
       ResourcesToRemove: 
       Results: []
   PositionShakeObserver: {fileID: 7888748191559813048}
+  CardSelectedHeightController: {fileID: 6131735410974934001}
   Price:
     value: 0
   Size:
@@ -1163,6 +1176,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252b2605a9ca4d5a802f53b51ef5d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6131735410974934001 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1323148708637221451, guid: 680bf6b697d6daf4b88e81f6f34b3a8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5135379434035929530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d672ea825926493fb6d0ac424610f83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6308209196549257140 stripped
