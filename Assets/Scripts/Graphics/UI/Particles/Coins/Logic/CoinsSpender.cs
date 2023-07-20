@@ -3,6 +3,7 @@ using Economy;
 using Graphics.UI.Particles.Core;
 using Graphics.UI.Particles.Logic;
 using Providers.Graphics.UI;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +11,8 @@ namespace Graphics.UI.Particles.Coins.Logic
 {
     public class CoinsSpender : MonoBehaviour
     {
+        private CompositeDisposable _delays = new CompositeDisposable();
+
         private CoinIconPositionProvider _coinPositionProvider;
         private ParticlesPileSpawner _particlesPileSpawner;
         private CoinsBank _coinsBank;
@@ -24,7 +27,16 @@ namespace Graphics.UI.Particles.Coins.Logic
             _coinsBank = coinsBank;
         }
 
-        public void Spend(int count, Vector3 targetPosition, Action onCompleted = null)
+        #region MonoBehaviour
+
+        private void OnDisable()
+        {
+            _delays.Clear();
+        }
+
+        #endregion
+
+        public void Spend(int count, Vector3 targetPosition, Action onSpentCoin = null, Action onSpentAllCoins = null)
         {
             int totalCoins = _coinsBank.Value;
 
@@ -32,11 +44,25 @@ namespace Graphics.UI.Particles.Coins.Logic
 
             count = Mathf.Min(totalCoins, count);
 
-            _particlesPileSpawner.Spawn(Particle.Coin, count, _coinPositionProvider.Value, 0f, (coin) =>
-            {
-                OnSpentCoin();
-                coin.Animations.MoveAnimation.Play(targetPosition, onCompleted);
-            });
+            float coinMoveDuration = 0;
+
+            _particlesPileSpawner.Spawn(Particle.Coin, count, _coinPositionProvider.Value, 0f,
+                coin =>
+                {
+                    OnSpentCoin();
+                    coin.Animations.MoveAnimation.Play(targetPosition, () =>
+                    {
+                        onSpentCoin?.Invoke();
+                        coin.gameObject.SetActive(false);
+                    });
+                    coinMoveDuration = coin.Animations.MoveAnimation.Duration;
+                }, () =>
+                {
+                    Observable.Timer(TimeSpan.FromSeconds(coinMoveDuration)).Subscribe(_ =>
+                    {
+                        onSpentAllCoins?.Invoke();
+                    }).AddTo(_delays);
+                });
         }
 
         private void OnSpentCoin()

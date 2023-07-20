@@ -1,6 +1,7 @@
 ﻿using System;
 using Cards.Core;
 using Cards.Logic.Spawn;
+using Graphics.UI.Particles.Coins.Logic;
 using Quests.Data;
 using Quests.Logic;
 using UniRx;
@@ -18,12 +19,16 @@ namespace Quests.Graphics.VisualElements
         private IDisposable _clickSubscription;
 
         private QuestsManager _questsManager;
+        private CoinsCollector _coinsCollector;
         private CardSpawner _cardSpawner;
 
         [Inject]
-        private void Constructor(QuestsManager questsManager, CardSpawner cardSpawner)
+        private void Constructor(QuestsManager questsManager,
+            CoinsCollector coinsCollector,
+            CardSpawner cardSpawner)
         {
             _questsManager = questsManager;
+            _coinsCollector = coinsCollector;
             _cardSpawner = cardSpawner;
         }
 
@@ -74,7 +79,7 @@ namespace Quests.Graphics.VisualElements
             {
                 if (cardToSpawn == Card.Coin)
                 {
-                    _cardSpawner.SpawnCoinAndMove(Vector3.zero);
+                    _coinsCollector.Collect(1, _button.transform.position);
                     continue;
                 }
 

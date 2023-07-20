@@ -17,6 +17,8 @@ namespace Graphics.UI.Particles.Graphics.Animations
 
         private Tween _animation;
 
+        public float Duration => _moveDuration;
+
         #region MonoBehaviour
 
         private void OnValidate()

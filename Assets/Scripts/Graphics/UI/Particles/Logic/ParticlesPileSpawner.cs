@@ -38,13 +38,15 @@ namespace Graphics.UI.Particles.Logic
 
         #endregion
 
-        public void Spawn(Particle particle, int count, Vector3 startPosition, Action<ParticleData> onSpawnedItem = null)
+        public void Spawn(Particle particle, int count, Vector3 startPosition, Action<ParticleData> onSpawnedItem = null, Action onSpawnedAllItems = null)
         {
             float range = GetRange(count);
-            Spawn(particle, count, startPosition, range, onSpawnedItem);
+            Spawn(particle, count, startPosition, range, onSpawnedItem, onSpawnedAllItems);
         }
 
-        public void Spawn(Particle particle, int count, Vector3 startPosition, float range, Action<ParticleData> onSpawnedItem = null)
+        public void Spawn(Particle particle, int count, Vector3 startPosition, float range,
+            Action<ParticleData> onSpawnedItem = null,
+            Action onSpawnedAllItems = null)
         {
             float interval = GetInterval(count);
 
@@ -60,6 +62,11 @@ namespace Graphics.UI.Particles.Logic
 
                 delay += interval;
             }
+
+            Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
+            {
+                onSpawnedAllItems?.Invoke();
+            }).AddTo(_subscriptions);
         }
 
         public float GetRange(int count)
