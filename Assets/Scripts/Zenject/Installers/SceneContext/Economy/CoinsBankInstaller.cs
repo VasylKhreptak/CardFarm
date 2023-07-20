@@ -1,7 +1,10 @@
-﻿namespace Zenject.Installers.SceneContext.Economy
+﻿using Economy;
+using Zenject.Installers.SceneContext.Core;
+
+namespace Zenject.Installers.SceneContext.Economy
 {
-    public class CoinsBankInstaller
+    public class CoinsBankInstaller : SceneSingleInstanceInstaller<CoinsBank>
     {
-        
+
     }
 }
