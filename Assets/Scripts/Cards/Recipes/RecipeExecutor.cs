@@ -6,7 +6,9 @@ using Cards.Data;
 using Cards.Logic.Spawn;
 using Cards.Workers.Data;
 using Extensions;
+using Graphics.UI.Particles.Coins.Logic;
 using ProgressLogic.Core;
+using Providers.Graphics;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
@@ -25,11 +27,15 @@ namespace Cards.Recipes
         private int _resultsLeft;
 
         private CardSpawner _cardSpawner;
+        private CoinsCollector _coinsCollector;
+        private Camera _camera;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner)
+        private void Constructor(CardSpawner cardSpawner, CoinsCollector coinsCollector, CameraProvider cameraProvider)
         {
             _cardSpawner = cardSpawner;
+            _coinsCollector = coinsCollector;
+            _camera = cameraProvider.Value;
         }
 
         #region MonoBehaviour
@@ -103,7 +109,15 @@ namespace Cards.Recipes
         {
             Card cardToSpawn = _cardData.CurrentRecipe.Value.Result.Weights.GetByWeight(x => x.Weight).Card;
 
-            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+            if (cardToSpawn == Card.Coin)
+            {
+                Vector3 spawnPosition = RectTransformUtility.WorldToScreenPoint(_camera, _cardData.transform.position);
+                _coinsCollector.Collect(1, spawnPosition, 0f);
+            }
+            else
+            {
+                _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+            }
 
             _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
         }
