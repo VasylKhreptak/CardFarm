@@ -1,5 +1,6 @@
 ﻿using Economy;
 using Graphics.UI.Particles.Core;
+using Graphics.UI.Particles.Data;
 using Graphics.UI.Particles.Logic;
 using Providers.Graphics.UI;
 using UnityEngine;
@@ -23,17 +24,27 @@ namespace Graphics.UI.Particles.Coins.Logic
 
         public void Collect(int count, Vector3 position)
         {
-            _particlesPileSpawner.Spawn(Particle.Coin, count, position, _iconPositionProvider.Value, OnCollectedCoin);
+            _particlesPileSpawner.Spawn(Particle.Coin, count, position, OnSpawnedCoin);
         }
 
         public void Collect(int count, Vector3 position, float maxRange)
         {
-            _particlesPileSpawner.Spawn(Particle.Coin, count, position, _iconPositionProvider.Value, maxRange, OnCollectedCoin);
+            _particlesPileSpawner.Spawn(Particle.Coin, count, position, maxRange, OnSpawnedCoin);
+
         }
 
-        private void OnCollectedCoin()
+        private void OnSpawnedCoin(ParticleData coin)
+        {
+            coin.Animations.MoveSequence.Play(_iconPositionProvider.Value, () =>
+            {
+                OnCollectedCoin(coin);
+            });
+        }
+
+        private void OnCollectedCoin(ParticleData coin)
         {
             _coinsBank.Add(1);
+            coin.gameObject.SetActive(false);
         }
     }
 }

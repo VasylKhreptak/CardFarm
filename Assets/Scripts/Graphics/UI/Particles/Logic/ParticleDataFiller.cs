@@ -24,6 +24,7 @@ namespace Graphics.UI.Particles.Logic
             if (_particleData == null) return;
 
             _particleData.Animations.MoveSequence = GetComponentInChildren<ParticleMoveSequence>(true);
+            _particleData.Animations.MoveAnimation = GetComponentInChildren<ParticleMoveAnimation>(true);
         }
 
         #endregion

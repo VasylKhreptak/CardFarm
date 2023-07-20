@@ -27,8 +27,6 @@ public class Test : MonoBehaviour
 
         if (Input.GetMouseButtonDown(2))
         {
-            Debug.Log("Spending coins");
-            
             Vector3 startPosition = Input.mousePosition;
 
             _coinsSpender.Spend(Random.Range(1, 21), startPosition);

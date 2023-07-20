@@ -7,5 +7,6 @@ namespace Graphics.UI.Particles.Data
     public class ParticleAnimations
     {
         public ParticleMoveSequence MoveSequence;
+        public ParticleMoveAnimation MoveAnimation;
     }
 }

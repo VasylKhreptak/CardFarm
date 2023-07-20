@@ -24,6 +24,8 @@ namespace Graphics.UI.Particles.Logic
             GameObject spawnedParticle = _particlePooler.Spawn(particle);
             ParticleData particleData = spawnedParticle.GetComponent<ParticleData>();
             particleData.RectTransform.position = Vector2.zero;
+            particleData.RectTransform.localScale = Vector2.one;
+            particleData.RectTransform.SetAsLastSibling();
             OnSpawned?.Invoke(particle);
             return particleData;
         }

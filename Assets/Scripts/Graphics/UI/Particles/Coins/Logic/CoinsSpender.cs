@@ -24,7 +24,7 @@ namespace Graphics.UI.Particles.Coins.Logic
             _coinsBank = coinsBank;
         }
 
-        public void Spend(int count, Vector3 targetPosition, Action onComplete = null)
+        public void Spend(int count, Vector3 targetPosition, Action onCompleted = null)
         {
             int totalCoins = _coinsBank.Value;
 
@@ -32,7 +32,11 @@ namespace Graphics.UI.Particles.Coins.Logic
 
             count = Mathf.Min(totalCoins, count);
 
-            _particlesPileSpawner.Spawn(Particle.Coin, count, _coinPositionProvider.Value, targetPosition, 0f, onComplete, OnSpentCoin);
+            _particlesPileSpawner.Spawn(Particle.Coin, count, _coinPositionProvider.Value, 0f, (coin) =>
+            {
+                OnSpentCoin();
+                coin.Animations.MoveAnimation.Play(targetPosition, onCompleted);
+            });
         }
 
         private void OnSpentCoin()
