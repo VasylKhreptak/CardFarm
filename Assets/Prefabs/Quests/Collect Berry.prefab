@@ -49,7 +49,7 @@ MonoBehaviour:
   Quest: 2
   Name: Collect Berry
   Reward:
-    Cards: 08000000
+    Cards: 0800000001000000
   IsCompleted:
     value: 0
   TookReward:

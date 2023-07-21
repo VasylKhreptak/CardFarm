@@ -6,7 +6,7 @@
         GetStone = 1,
         CollectBerry = 2,
         SellAnyCard = 3,
-        BuyHumbleBeginningsBooster = 4,
+        BuyFirstBooster = 4,
         MakeStick = 6,
         BuildGarden = 10,
         CreateCampfire = 13,
