@@ -1,4 +1,5 @@
 ﻿using Data.Days;
+using NaughtyAttributes;
 using ProgressLogic.Core;
 using UnityEngine;
 using Zenject;
@@ -38,6 +39,7 @@ namespace Runtime.Days
             StartProgress(_dayDuration);
         }
 
+        [Button("Trigger New Day")]
         protected override void OnProgressCompleted()
         {
             _daysData.Callbacks.onNewDayCome?.Invoke();

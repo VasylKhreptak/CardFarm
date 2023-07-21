@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Cards.Data;
-using Cards.Food.Data;
 using Cards.Workers.Data;
 using Data.Days;
-using Extensions;
+using Economy;
+using Graphics.UI.Particles.Coins.Logic;
 using NaughtyAttributes;
-using Table.Core;
+using Providers.Graphics;
 using Table.ManualCardSelectors;
 using UnityEngine;
 using Zenject;
@@ -16,23 +15,30 @@ namespace Runtime.Workers
 {
     public class WorkersFeeder : MonoBehaviour
     {
+        [Header("Preferences")]
+        [SerializeField] private float _feedDelay = 1f;
+        [SerializeField] private float _feedInterval = 0.2f;
+
         private Coroutine _feedWorkersCoroutine;
 
         private DaysData _daysData;
         private WorkersSelector _workersSelector;
-        private FoodSelector _foodSelector;
-        private CardsTable _cardsTable;
+        private CoinsBank _coinsBank;
+        private CoinsSpender _coinsSpender;
+        private Camera _camera;
 
         [Inject]
         private void Constructor(DaysData daysData,
             WorkersSelector workersSelector,
-            FoodSelector foodSelector,
-            CardsTable cardsTable)
+            CoinsBank coinsBank,
+            CoinsSpender coinsSpender,
+            CameraProvider cameraProvider)
         {
             _daysData = daysData;
             _workersSelector = workersSelector;
-            _foodSelector = foodSelector;
-            _cardsTable = cardsTable;
+            _coinsBank = coinsBank;
+            _coinsSpender = coinsSpender;
+            _camera = cameraProvider.Value;
         }
 
         #region MonoBehaviour
@@ -77,67 +83,22 @@ namespace Runtime.Workers
 
         private IEnumerator FeedWorkersRoutine()
         {
+            yield return new WaitForSeconds(_feedDelay);
+
             List<WorkerData> workerCards = _workersSelector.SelectedCards.Select(x => x as WorkerData).ToList();
 
-            DecreaseWorkersSatiety(workerCards);
-
-            if (_foodSelector.SelectedCards.Count == 0) yield break;
-
-            List<FoodCardData> foodCards = _foodSelector.SelectedCards.Select(x => x as FoodCardData).ToList();
-
-            FoodCardData lastMovedFood = null;
-
-            List<FoodCardData> foodToRemove = new List<FoodCardData>();
+            EmptyWorkersSatiety(workerCards);
 
             foreach (var worker in workerCards)
             {
-                while (worker.NeededSatiety.Value > 0)
-                {
-                    foodToRemove.Clear();
+                if (_coinsBank.Value == 0) yield break;
 
-                    foreach (var food in foodCards)
-                    {
-                        if (food.gameObject.activeSelf == false) continue;
-
-                        float foodMoveDuration = food.Animations.MoveAnimation.Duration;
-
-                        food.Separate();
-                        
-                        food.Animations.MoveAnimation.Play(worker.transform.position, () =>
-                        {
-                            int workerNeededSatiety = worker.NeededSatiety.Value;
-                            worker.Satiety.Value += food.NutritionalValue.Value;
-                            food.NutritionalValue.Value -= workerNeededSatiety;
-                        });
-
-                        lastMovedFood = food;
-
-                        yield return new WaitForSeconds(foodMoveDuration);
-
-                        if (lastMovedFood != null && lastMovedFood.gameObject.activeSelf == false)
-                        {
-                            foodToRemove.Add(lastMovedFood);
-                        }
-                        
-                        if (worker.NeededSatiety.Value <= 0)
-                        {
-                            break;
-                        }
-                    }
-
-                    foreach (var cardToRemove in foodToRemove)
-                    {
-                        foodCards.Remove(cardToRemove);
-                    }
-                    
-                    if (foodCards.Count == 0) yield break;
-                }
+                FeedWorker(worker);
+                yield return new WaitForSeconds(_feedInterval);
             }
-
-            TryLinkCardToGroup(lastMovedFood);
         }
 
-        private void DecreaseWorkersSatiety(List<WorkerData> workers)
+        private void EmptyWorkersSatiety(List<WorkerData> workers)
         {
             foreach (var worker in workers)
             {
@@ -145,12 +106,21 @@ namespace Runtime.Workers
             }
         }
 
-        private void TryLinkCardToGroup(CardData cardData)
+        private void FillWorkerSatiety(WorkerData worker)
         {
-            if (_cardsTable.TryGetLowestUniqRecipeFreeGroupCard(cardData, out var lastGroupCard))
-            {
-                cardData.LinkTo(lastGroupCard);
-            }
+            worker.Satiety.Value = worker.MaxSatiety.Value;
+        }
+
+        private void FeedWorker(WorkerData worker)
+        {
+            int neededCoins = worker.NeededSatiety.Value;
+
+            _coinsSpender.Spend(neededCoins,
+                () => RectTransformUtility.WorldToScreenPoint(_camera, worker.transform.position),
+                onSpentAllCoins: () =>
+                {
+                    FillWorkerSatiety(worker);
+                });
         }
     }
 }

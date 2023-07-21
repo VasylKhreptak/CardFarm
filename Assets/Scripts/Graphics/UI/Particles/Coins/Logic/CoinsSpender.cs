@@ -44,12 +44,13 @@ namespace Graphics.UI.Particles.Coins.Logic
 
             count = Mathf.Min(totalCoins, count);
 
+            _coinsBank.TrySpend(count);
+
             float coinMoveDuration = 0;
 
             _particlesPileSpawner.Spawn(Particle.Coin, count, _coinPositionProvider.Value, 0f,
                 coin =>
                 {
-                    OnSpentCoin();
                     coin.Animations.MoveAnimation.Play(targetPositionGetter, () =>
                     {
                         onSpentCoin?.Invoke();
@@ -63,11 +64,6 @@ namespace Graphics.UI.Particles.Coins.Logic
                         onSpentAllCoins?.Invoke();
                     }).AddTo(_delays);
                 });
-        }
-
-        private void OnSpentCoin()
-        {
-            _coinsBank.TrySpend(1);
         }
     }
 }

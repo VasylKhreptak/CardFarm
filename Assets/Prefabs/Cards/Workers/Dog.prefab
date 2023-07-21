@@ -35,6 +35,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2102762693797215169, guid: dac2a171685e834488b07df9da6fd044,
         type: 3}
+      propertyPath: Satiety.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102762693797215169, guid: dac2a171685e834488b07df9da6fd044,
+        type: 3}
       propertyPath: MaxHealth.value
       value: 9
       objectReference: {fileID: 0}
@@ -46,12 +51,12 @@ PrefabInstance:
     - target: {fileID: 2102762693797215169, guid: dac2a171685e834488b07df9da6fd044,
         type: 3}
       propertyPath: MaxEfficiency.value
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2102762693797215169, guid: dac2a171685e834488b07df9da6fd044,
         type: 3}
       propertyPath: MinEfficiency.value
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3281701408211394233, guid: dac2a171685e834488b07df9da6fd044,
         type: 3}
