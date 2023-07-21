@@ -2,6 +2,6 @@ namespace Plugins.ObjectPooler.Example
 {
     public enum MainPool
     {
-        Sphere = 0,
+        CloudParticle = 0,
     }
 }

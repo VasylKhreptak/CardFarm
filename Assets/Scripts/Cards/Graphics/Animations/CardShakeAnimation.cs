@@ -73,6 +73,7 @@ namespace Cards.Graphics.Animations
         {
             _tween?.Kill();
             _isPlaying.Value = false;
+            _cardData.transform.localRotation = Quaternion.identity;
         }
     }
 }
