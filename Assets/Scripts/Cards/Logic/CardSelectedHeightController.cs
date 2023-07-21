@@ -65,6 +65,10 @@ namespace Cards.Logic
             {
                 SetCardHeight(_cardData.SelectedHeight);
             }
+            else if (_cardData.JoinableCard.Value != null)
+            {
+                SetCardHeight(_cardData.JoinableCard.Value.Height.Value + _cardData.HeightOffset);
+            }
             else
             {
                 SetCardHeight(_cardData.BaseHeight);
