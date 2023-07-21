@@ -127,6 +127,16 @@ PrefabInstance:
       propertyPath: _cards.Array.data[9].Weight
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5703616818681703235, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
+        type: 3}
+      propertyPath: LeftCards.value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703616818681703235, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
+        type: 3}
+      propertyPath: TotalCards.value
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5735062081522388920, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
       propertyPath: m_Name
