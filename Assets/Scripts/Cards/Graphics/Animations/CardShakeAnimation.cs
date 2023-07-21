@@ -49,7 +49,6 @@ namespace Cards.Graphics.Animations
 
         public void Play(float duration, Action onComplete = null)
         {
-            _cardData.UnlinkFromUpper();
             _cardData.RenderOnTop();
             Stop();
 
