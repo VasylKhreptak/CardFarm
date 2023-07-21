@@ -3,6 +3,8 @@ using Cards.Core;
 using Cards.Logic.Spawn;
 using Cards.Orders.Data;
 using Extensions;
+using Graphics.UI.Particles.Coins.Logic;
+using Providers.Graphics;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -17,11 +19,15 @@ namespace Cards.Orders.Logic
         private IDisposable _isOrderCompletedSubscription;
 
         private CardSpawner _cardSpawner;
+        private CoinsCollector _coinsCollector;
+        private Camera _camera;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner)
+        private void Constructor(CardSpawner cardSpawner, CoinsCollector coinsCollector, CameraProvider cameraProvider)
         {
             _cardSpawner = cardSpawner;
+            _coinsCollector = coinsCollector;
+            _camera = cameraProvider.Value;
         }
 
         #region MonoBehaviour
@@ -71,7 +77,15 @@ namespace Cards.Orders.Logic
         {
             Card cardToSpawn = _orderData.Rewards.GetByWeight(x => x.Weight).Card;
 
-            _cardSpawner.SpawnAndMove(cardToSpawn, _orderData.transform.position);
+            if (cardToSpawn == Card.Coin)
+            {
+                Vector3 spawnPosition = RectTransformUtility.WorldToScreenPoint(_camera, _orderData.transform.position);
+                _coinsCollector.Collect(1, spawnPosition, 0f);
+            }
+            else
+            {
+                _cardSpawner.SpawnAndMove(cardToSpawn, _orderData.transform.position);
+            }
 
             _orderData.IsOrderCompleted.Value = false;
             _orderData.gameObject.SetActive(false);
