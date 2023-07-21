@@ -16,19 +16,21 @@ MonoBehaviour:
   - Resources: 02000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 5
-        Weight: 5
+        Weight: 10
       - Card: 9
         Weight: 2
       - Card: 30
-        Weight: 1
+        Weight: 2
   - Resources: 03000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 6
@@ -36,7 +38,8 @@ MonoBehaviour:
   - Resources: 01000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 4
@@ -48,7 +51,8 @@ MonoBehaviour:
   - Resources: 05000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 9
@@ -56,7 +60,8 @@ MonoBehaviour:
   - Resources: 040000000400000004000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 16
@@ -64,7 +69,8 @@ MonoBehaviour:
   - Resources: 050000000500000005000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 17
@@ -72,7 +78,8 @@ MonoBehaviour:
   - Resources: 0900000007000000
     Workers: 
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 18
@@ -80,7 +87,8 @@ MonoBehaviour:
   - Resources: 04000000040000000400000005000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 19
@@ -88,7 +96,8 @@ MonoBehaviour:
   - Resources: 05000000050000000500000004000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 20
@@ -96,7 +105,8 @@ MonoBehaviour:
   - Resources: 0500000005000000040000000400000006000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 21
@@ -104,7 +114,8 @@ MonoBehaviour:
   - Resources: 1900000006000000
     Workers: 
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 28
@@ -112,7 +123,8 @@ MonoBehaviour:
   - Resources: 1e00000006000000
     Workers: 
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 29
@@ -120,7 +132,8 @@ MonoBehaviour:
   - Resources: 0a000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 30
@@ -130,7 +143,8 @@ MonoBehaviour:
   - Resources: 040000000500000005000000
     Workers: 00000000
     Cooldown: 30
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 11
@@ -138,7 +152,8 @@ MonoBehaviour:
   - Resources: 100000000500000005000000
     Workers: 00000000
     Cooldown: 30
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 40
@@ -146,7 +161,8 @@ MonoBehaviour:
   - Resources: 3a00000039000000
     Workers: 
     Cooldown: 20
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 60
@@ -154,7 +170,8 @@ MonoBehaviour:
   - Resources: 1b00000039000000
     Workers: 
     Cooldown: 20
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 61
@@ -162,7 +179,8 @@ MonoBehaviour:
   - Resources: 11000000110000001000000007000000
     Workers: 00000000
     Cooldown: 10
-    ResultCount: 1
+    MinResultCount: 1
+    MaxResultCount: 1
     Result:
       Weights:
       - Card: 62

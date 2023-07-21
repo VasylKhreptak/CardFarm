@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 8402068266431299274}
   - component: {fileID: 8287482367166643936}
   m_Layer: 6
-  m_Name: CardTouchFlicker
+  m_Name: CardClickFlicker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardData: {fileID: 3829932553933156705}
   _flickerObject: {fileID: 1555506505416943733}
-  _flickerTime: 0.1
+  _flickerTime: 0.07
 --- !u!1001 &4236459283825386170
 PrefabInstance:
   m_ObjectHideFlags: 0

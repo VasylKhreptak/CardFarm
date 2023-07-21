@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2421308040907752950}
   - component: {fileID: 2404468955054411023}
   m_Layer: 0
-  m_Name: GetStone
+  m_Name: PunchTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb794ab34e984feb90e04809afb11bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Quest: 1
-  Name: Get Stone
+  Quest: 17
+  Name: Punch Tree
   Reward:
-    Cards: 0800000002000000
+    Cards: 08000000
   IsCompleted:
     value: 0
   TookReward:
@@ -57,11 +57,11 @@ MonoBehaviour:
   Recipe:
     Result:
       BackgroundColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
-      Icon: {fileID: 21300000, guid: 65ce6e8de554801469cfe2b5b1bdff12, type: 3}
+      Icon: {fileID: 21300000, guid: 768f09dbc8e6e4443824c8c5de58afe9, type: 3}
       Quantity: 1
     TargetCards:
     - BackgroundColor: {r: 0.2509804, g: 0.2509804, b: 0.23137257, a: 1}
-      Icon: {fileID: 21300000, guid: 457ed01a61bd26f479813296afd3cdd4, type: 3}
+      Icon: {fileID: 21300000, guid: 5a2a9e1dade259d41a0bf333d3e7e079, type: 3}
       Quantity: 1
     - BackgroundColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
       Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
@@ -92,4 +92,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
-  _recipeResult: 4
+  _recipeResult: 5

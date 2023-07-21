@@ -18,5 +18,6 @@
         CreateBrick = 14,
         CreatePlank = 15,
         MakeBaby = 16,
+        PunchTree = 17,
     }
 }

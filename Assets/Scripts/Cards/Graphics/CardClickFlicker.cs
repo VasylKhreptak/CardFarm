@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Cards.Graphics
 {
-    public class CardTouchFlicker : MonoBehaviour, IValidatable
+    public class CardClickFlicker : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -16,7 +16,6 @@ namespace Cards.Graphics
         [SerializeField] private float _flickerTime = 0.1f;
 
         private IDisposable _delayDisposable;
-        private IDisposable _touchDisposable;
 
         #region MonoBehaviour
 
@@ -32,33 +31,18 @@ namespace Cards.Graphics
 
         private void OnEnable()
         {
-            StartObservingTouch();
+            _cardData.Callbacks.onClicked += Flicker;
             DisableFlickerLayer();
         }
 
         private void OnDisable()
         {
-            StopObservingTouch();
+            _cardData.Callbacks.onClicked -= Flicker;
             _delayDisposable?.Dispose();
             DisableFlickerLayer();
         }
 
         #endregion
-
-        private void StartObservingTouch()
-        {
-            _touchDisposable = _cardData.IsSelected.Where(x => x).Subscribe(_ => OnTouch());
-        }
-
-        private void StopObservingTouch()
-        {
-            _touchDisposable?.Dispose();
-        }
-
-        private void OnTouch()
-        {
-            Flicker();
-        }
 
         private void Flicker()
         {
