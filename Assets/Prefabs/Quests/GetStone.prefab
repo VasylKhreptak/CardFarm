@@ -49,7 +49,7 @@ MonoBehaviour:
   Quest: 1
   Name: Get Stone
   Reward:
-    Cards: 0800000002000000
+    Cards: 080000000800000002000000
   IsCompleted:
     value: 0
   TookReward:
