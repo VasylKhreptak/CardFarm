@@ -18,6 +18,7 @@ namespace Quests.Logic
         private ReactiveCollection<QuestData> _leftQuests = new ReactiveCollection<QuestData>();
         private ReactiveProperty<QuestData> _currentQuest = new ReactiveProperty<QuestData>();
         private ReactiveCollection<Quest> _finishedQuests = new ReactiveCollection<Quest>();
+        private BoolReactiveProperty _isCurrentQuestCompleted = new BoolReactiveProperty(false);
 
         private IDisposable _questsCountSubscription;
 
@@ -43,7 +44,6 @@ namespace Quests.Logic
             StartObservingQuestsCount();
             CreateQuests();
         }
-
         private void OnDestroy()
         {
             StopObservingQuestsCount();
