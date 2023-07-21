@@ -36,7 +36,7 @@ namespace Graphics.UI.Particles.Coins.Logic
 
         #endregion
 
-        public void Spend(int count, Vector3 targetPosition, Action onSpentCoin = null, Action onSpentAllCoins = null)
+        public void Spend(int count, Func<Vector3> targetPositionGetter, Action onSpentCoin = null, Action onSpentAllCoins = null)
         {
             int totalCoins = _coinsBank.Value;
 
@@ -50,7 +50,7 @@ namespace Graphics.UI.Particles.Coins.Logic
                 coin =>
                 {
                     OnSpentCoin();
-                    coin.Animations.MoveAnimation.Play(targetPosition, () =>
+                    coin.Animations.MoveAnimation.Play(targetPositionGetter, () =>
                     {
                         onSpentCoin?.Invoke();
                         coin.gameObject.SetActive(false);

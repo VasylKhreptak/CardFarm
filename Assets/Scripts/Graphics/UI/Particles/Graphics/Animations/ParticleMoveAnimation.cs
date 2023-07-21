@@ -38,11 +38,19 @@ namespace Graphics.UI.Particles.Graphics.Animations
 
         #endregion
 
-        public void Play(Vector3 position, Action onComplete = null)
+        public void Play(Func<Vector3> targetPositionGetter, Action onComplete = null)
         {
             Stop();
 
-            _particleData.transform.DOMove(position, _moveDuration)
+            Vector3 startPosition = _particleData.transform.position;
+            float progress = 0;
+            _animation = DOTween.To(() => progress, x => progress = x, 1, _moveDuration)
+                .OnUpdate(() =>
+                {
+                    Vector3 targetPosition = targetPositionGetter.Invoke();
+                    Vector3 position = Vector3.Lerp(startPosition, targetPosition, progress);
+                    _particleData.transform.position = position;
+                })
                 .SetEase(_moveCurve)
                 .OnComplete(() => onComplete?.Invoke())
                 .Play();

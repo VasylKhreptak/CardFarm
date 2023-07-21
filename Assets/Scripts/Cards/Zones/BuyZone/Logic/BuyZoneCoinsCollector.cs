@@ -89,9 +89,8 @@ namespace Cards.Zones.BuyZone.Logic
 
             if (coinsToSpawn == 0) return;
 
-            Vector3 coinMoveDestination = RectTransformUtility.WorldToScreenPoint(_camera, _cardData.transform.position);
 
-            _coinsSpender.Spend(coinsToSpawn, coinMoveDestination,
+            _coinsSpender.Spend(coinsToSpawn, () => RectTransformUtility.WorldToScreenPoint(_camera, _cardData.transform.position),
                 () =>
                 {
                     _cardData.CollectedCoins.Value += 1;

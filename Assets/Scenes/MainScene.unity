@@ -133,17 +133,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -302,17 +307,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -1522,12 +1532,12 @@ PrefabInstance:
     - target: {fileID: 1180136411967912122, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2925615486595121638, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5435674924092433096, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
@@ -1638,6 +1648,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435674924092433097, guid: 5961947055272564196fbb5deff8d9ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5961947055272564196fbb5deff8d9ae, type: 3}
@@ -1804,12 +1819,12 @@ PrefabInstance:
     - target: {fileID: 1180136411967912122, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2925615486595121638, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5435674924092433096, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
@@ -1920,6 +1935,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435674924092433097, guid: 5961947055272564196fbb5deff8d9ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5961947055272564196fbb5deff8d9ae, type: 3}
@@ -2633,17 +2653,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -2898,17 +2923,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -3078,17 +3108,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -4795,17 +4830,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -4930,12 +4970,12 @@ PrefabInstance:
     - target: {fileID: 1180136411967912122, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2925615486595121638, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5435674924092433096, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
@@ -5046,6 +5086,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock Variant (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435674924092433097, guid: 5961947055272564196fbb5deff8d9ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5961947055272564196fbb5deff8d9ae, type: 3}
@@ -5588,17 +5633,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -7077,12 +7127,12 @@ PrefabInstance:
     - target: {fileID: 1180136411967912122, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2925615486595121638, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5435674924092433096, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
@@ -7193,6 +7243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock Variant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435674924092433097, guid: 5961947055272564196fbb5deff8d9ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5961947055272564196fbb5deff8d9ae, type: 3}
@@ -7309,12 +7364,12 @@ PrefabInstance:
     - target: {fileID: 1180136411967912122, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2925615486595121638, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5435674924092433096, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
@@ -7425,6 +7480,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435674924092433097, guid: 5961947055272564196fbb5deff8d9ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5961947055272564196fbb5deff8d9ae, type: 3}
@@ -8244,17 +8304,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -9392,17 +9457,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -9770,12 +9840,12 @@ PrefabInstance:
     - target: {fileID: 1180136411967912122, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2925615486595121638, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5435674924092433096, guid: 5961947055272564196fbb5deff8d9ae,
         type: 3}
@@ -9886,6 +9956,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435674924092433097, guid: 5961947055272564196fbb5deff8d9ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5961947055272564196fbb5deff8d9ae, type: 3}
@@ -10422,17 +10497,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -11152,17 +11232,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
@@ -11332,17 +11417,22 @@ PrefabInstance:
     - target: {fileID: 2232217454689301227, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2739065891212037047, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
       propertyPath: m_Name
       value: Brick Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010814111126901188, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010814111126901189, guid: 75bcfe2563bb5654f9c8d7c7c4fe4eae,
         type: 3}
