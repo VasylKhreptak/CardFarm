@@ -7,6 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1327268198554003105, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327268198554003105, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327268198554003105, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2472474939989186373, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
         type: 3}
       propertyPath: m_Color.b
@@ -131,6 +146,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FishingSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709758502107150251, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.23137257
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709758502107150251, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.2392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709758502107150251, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709758502107150251, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4282072384
       objectReference: {fileID: 0}
     - target: {fileID: 2709758502585604610, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
         type: 3}

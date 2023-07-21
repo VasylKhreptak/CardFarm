@@ -38,7 +38,7 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
 
             foreach (var possibleRecipe in _recipes)
             {
-                if (possibleRecipe.Workers.HasExactlyAllElementsOf(workers) && resources.HasExactlyAllElementsOf(possibleRecipe.Resources))
+                if (possibleRecipe.Workers.Count == workers.Count && resources.HasExactlyAllElementsOf(possibleRecipe.Resources))
                 {
                     recipe = possibleRecipe;
                     return true;
@@ -52,7 +52,7 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
                 {
                     if (possibleRecipe.Resources.Count == 1
                         && possibleRecipe.Resources.First() == firstResource
-                        && possibleRecipe.Workers.HasExactlyAllElementsOf(workers))
+                        && possibleRecipe.Workers.Count == workers.Count)
                     {
                         recipe = possibleRecipe;
                         return true;

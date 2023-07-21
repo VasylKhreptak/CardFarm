@@ -60,6 +60,8 @@ namespace Cards.Workers.Graphics.Logic
             }
 
             StartObservingRecipeExecution(cardData);
+
+            _previousFirstGroupCard = cardData;
         }
 
         private void StartObservingRecipeExecution(CardData cardData)

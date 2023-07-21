@@ -108,6 +108,8 @@ namespace ScriptableObjects.Scripts.Cards
             else if (isCompatible == false)
             {
                 List<Card> groupCards = groupCardsData.Select(x => x.Card.Value).ToList();
+                bool hasWorkers = groupCardsData.TryGetWorkers(out List<Card> workers);
+                int groupWorkersCount = hasWorkers ? workers.Count : 0;
 
                 foreach (var possibleRecipe in groupPossibleRecipes)
                 {
@@ -118,7 +120,7 @@ namespace ScriptableObjects.Scripts.Cards
                     }
 
                     if (possibleRecipe.Resources.HasExactlyAllElementsOf(groupCards) &&
-                        possibleRecipe.Workers.Contains(topCard.Card.Value) &&
+                        groupWorkersCount < possibleRecipe.Workers.Count &&
                         bottomCard.IsTakingPartInRecipe.Value == false)
                     {
                         isCompatible = true;
