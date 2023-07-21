@@ -137,6 +137,21 @@ PrefabInstance:
       propertyPath: Price.value
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3164499271376732041, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.76470596
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164499271376732041, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164499271376732041, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.7568628
+      objectReference: {fileID: 0}
     - target: {fileID: 4735891903402816612, guid: c0ee70cf615ef6e4cbaa25bd928e2488,
         type: 3}
       propertyPath: m_AnchorMax.y

@@ -21,7 +21,6 @@ namespace Cards.Graphics.Animations
         [SerializeField] private float _randomness = 90f;
         [SerializeField] private ShakeRandomnessMode _randomnessMode = ShakeRandomnessMode.Full;
 
-
         private Tween _tween;
 
         #region MonoBehaviour
