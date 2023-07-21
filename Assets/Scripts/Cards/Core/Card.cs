@@ -15,7 +15,7 @@ namespace Cards.Core
         Stick = 9,
         House = 11,
         StartBooster = 12,
-        HumbleBeginningsBooster = 13,
+        FirstBooster = 13,
         Zone = 14,
         CoinChest = 15,
         Brick = 16,

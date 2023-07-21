@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 462683759817003558, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
       propertyPath: m_text
-      value: Humble Beginnings
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
@@ -140,7 +140,7 @@ PrefabInstance:
     - target: {fileID: 5735062081522388920, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
       propertyPath: m_Name
-      value: HumbleBeginningsBooster
+      value: FirstBooster
       objectReference: {fileID: 0}
     - target: {fileID: 5735062081522388921, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}

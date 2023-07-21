@@ -676,6 +676,16 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 3829932553933156705}
+    - target: {fileID: 1106781379501151869, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.9837
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106781379501151869, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1.9837
+      objectReference: {fileID: 0}
     - target: {fileID: 1204520439031820289, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
