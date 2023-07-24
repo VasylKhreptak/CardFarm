@@ -49,7 +49,14 @@ namespace Zones.BuyZone.Logic.Updaters
 
         private void ClampCollectedCoinsCount(int collectedCoinsCount)
         {
-            _buyZoneData.CollectedCoinsCount.Value = Mathf.Clamp(collectedCoinsCount, 0, _buyZoneData.Price.Value);
+            if (collectedCoinsCount > _buyZoneData.Price.Value)
+            {
+                _buyZoneData.CollectedCoinsCount.Value = _buyZoneData.Price.Value;
+            }
+            else if (collectedCoinsCount < 0)
+            {
+                _buyZoneData.CollectedCoinsCount.Value = 0;
+            }
         }
     }
 }
