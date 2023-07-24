@@ -90,8 +90,6 @@ namespace Zones.BuyZone.Logic
 
             if (coinsToSpawn == 0) return;
 
-            Debug.Log($"Collecting {coinsToSpawn} coins");
-
             _coinsSpender.Spend(coinsToSpawn, () => _zoneData.transform.position,
                 () =>
                 {

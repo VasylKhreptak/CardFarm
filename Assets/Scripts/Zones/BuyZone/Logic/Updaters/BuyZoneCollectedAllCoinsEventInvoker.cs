@@ -49,8 +49,6 @@ namespace Zones.BuyZone.Logic.Updaters
 
         private void OnCollectedCoinsCountChanged(int collectedCoinsCount)
         {
-            collectedCoinsCount = Mathf.Min(collectedCoinsCount, _buyZoneData.Price.Value);
-
             if (collectedCoinsCount == _buyZoneData.Price.Value)
             {
                 _buyZoneData.Callbacks.OnCollectedAllCoins?.Invoke();
