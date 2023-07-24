@@ -8,7 +8,7 @@ using Zenject;
 
 namespace CameraMove
 {
-    public class CameraMoveLogic : MonoBehaviour
+    public class CameraMover : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private Transform _transform;
@@ -16,14 +16,14 @@ namespace CameraMove
         [Header("Preferences")]
         [SerializeField] private float _speed;
         [SerializeField] private float _moveByEdgeSpeed;
-        [SerializeField] private Vector2 _min;
-        [SerializeField] private Vector2 _max;
 
         private IDisposable _dragSubscription;
 
         private MapDragObserver _dragObserver;
         private ScreenEdges _screenEdges;
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
+
+        public bool CanMove = true;
 
         [Inject]
         private void Constructor(MapDragObserver dragObserver,
@@ -58,7 +58,7 @@ namespace CameraMove
         {
             StopObservingDrag();
 
-            _dragSubscription = _dragObserver.Delta.Subscribe(delta => MoveCamera(-delta));
+            _dragSubscription = _dragObserver.Delta.Subscribe(delta => TryMoveCamera(-delta));
         }
 
         private void StopObservingDrag()
@@ -66,37 +66,25 @@ namespace CameraMove
             _dragSubscription?.Dispose();
         }
 
-        private void MoveCamera(Vector2 direction)
+        private void TryMoveCamera(Vector2 direction)
         {
+            if (CanMove == false) return;
+
             Vector3 moveDirection = new Vector3(direction.x, 0f, direction.y);
             Vector3 cameraPosition = _transform.position;
 
             cameraPosition += moveDirection * _speed;
-
-            cameraPosition = new Vector3(
-                Mathf.Clamp(cameraPosition.x, _min.x, _max.x),
-                cameraPosition.y,
-                Mathf.Clamp(cameraPosition.z, _min.y, _max.y));
 
             _transform.position = cameraPosition;
         }
 
         private void TryMoveByEdge()
         {
+            if (CanMove == false) return;
+
             if (_currentSelectedCardHolder.SelectedCard == null) return;
 
-            MoveCamera(_screenEdges.DirectionFromCenter.Value * _moveByEdgeSpeed * Time.deltaTime);
-        }
-
-        private void OnDrawGizmos()
-        {
-            float y = 0f;
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(new Vector3(_min.x, y, _min.y), new Vector3(_min.x, y, _max.y));
-            Gizmos.DrawLine(new Vector3(_min.x, y, _max.y), new Vector3(_max.x, y, _max.y));
-            Gizmos.DrawLine(new Vector3(_max.x, y, _max.y), new Vector3(_max.x, y, _min.y));
-            Gizmos.DrawLine(new Vector3(_max.x, y, _min.y), new Vector3(_min.x, y, _min.y));
+            TryMoveCamera(_screenEdges.DirectionFromCenter.Value * _moveByEdgeSpeed * Time.deltaTime);
         }
     }
 }

@@ -8,7 +8,7 @@ using Tags.Cards;
 using UnityEngine;
 using Zenject;
 
-namespace EditorTools.CardDataFillers
+namespace DebugTools.CardDataFillers
 {
     public class CardDataFiller : MonoBehaviour, IValidatable
     {
