@@ -1,30 +1,31 @@
-﻿using Cards.Zones.BuyZone.Data;
+﻿using System;
 using Economy;
 using Graphics.UI.Particles.Coins.Logic;
-using Providers.Graphics;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
+using Zones.BuyZone.Data;
 
-namespace Cards.Zones.BuyZone.Logic
+namespace Zones.BuyZone.Logic
 {
     public class BuyZoneCoinsCollector : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private BuyZoneData _cardData;
+        [SerializeField] private BuyZoneData _zoneData;
+
+        private IDisposable _clickSubscription;
 
         private bool _canCollectCoins = true;
 
         private CoinsSpender _coinsSpender;
-        private Camera _camera;
         private CoinsBank _coinsBank;
 
         [Inject]
         private void Constructor(CoinsSpender coinsSpender,
-            CoinsBank coinsBank,
-            CameraProvider cameraProvider)
+            CoinsBank coinsBank)
         {
             _coinsSpender = coinsSpender;
-            _camera = cameraProvider.Value;
             _coinsBank = coinsBank;
         }
 
@@ -37,7 +38,7 @@ namespace Cards.Zones.BuyZone.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<BuyZoneData>(true);
+            _zoneData = GetComponentInParent<BuyZoneData>(true);
         }
 
         private void OnEnable()
@@ -66,10 +67,12 @@ namespace Cards.Zones.BuyZone.Logic
         private void StartObservingClick()
         {
             StopObservingClick();
+            _clickSubscription = _zoneData.BackgroundBehaviour.OnPointerClickAsObservable().Subscribe(_ => OnClicked());
         }
 
         private void StopObservingClick()
         {
+            _clickSubscription?.Dispose();
         }
 
         private void OnClicked()
@@ -83,14 +86,16 @@ namespace Cards.Zones.BuyZone.Logic
 
             int totalCoinsCount = _coinsBank.Value;
 
-            int coinsToSpawn = Mathf.Min(_cardData.LeftCoins.Value, totalCoinsCount);
+            int coinsToSpawn = Mathf.Min(_zoneData.LeftCoinsCount.Value, totalCoinsCount);
 
             if (coinsToSpawn == 0) return;
 
-            _coinsSpender.Spend(coinsToSpawn, () => RectTransformUtility.WorldToScreenPoint(_camera, _cardData.transform.position),
+            Debug.Log($"Collecting {coinsToSpawn} coins");
+
+            _coinsSpender.Spend(coinsToSpawn, () => _zoneData.transform.position,
                 () =>
                 {
-                    _cardData.CollectedCoins.Value += 1;
+                    _zoneData.CollectedCoinsCount.Value += 1;
                 },
                 () =>
                 {
