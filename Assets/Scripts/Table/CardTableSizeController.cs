@@ -17,6 +17,8 @@ namespace Table
 
         private IDisposable _cardsCountChangedSubscription;
 
+        private int _maxCardsCount;
+
         private CardsTable _cardsTable;
 
         [Inject]
@@ -61,7 +63,16 @@ namespace Table
         {
             if (count == 0) return;
 
-            if (count % _increaseEach == 0)
+            if (count > _maxCardsCount)
+            {
+                _maxCardsCount = count;
+            }
+            else
+            {
+                return;
+            }
+
+            if (_maxCardsCount % _increaseEach == 0)
             {
                 var sizeDelta = _tableRectTransform.sizeDelta;
                 sizeDelta.x += sizeDelta.x * _increaseByPercent.x;

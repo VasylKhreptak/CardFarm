@@ -66,10 +66,12 @@ namespace Cards.Zones.BuyZone.Logic
         private void StartObservingClick()
         {
             StopObservingClick();
+            _cardData.Callbacks.onClicked += OnClicked;
         }
 
         private void StopObservingClick()
         {
+            _cardData.Callbacks.onClicked -= OnClicked;
         }
 
         private void OnClicked()
