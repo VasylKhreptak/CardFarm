@@ -20,6 +20,8 @@ namespace Plugins.ObjectPooler.Core
         private Dictionary<T, HashSet<PooledObject>> _activePools;
         private Dictionary<T, HashSet<PooledObject>> _inactivePools;
 
+        public int ActiveObjectsCount => _activePools.Sum(x => x.Value.Count);
+        
         private int GetCollectionCapacity(PoolPreference preference)
         {
             return _allocateMaxMemorySize ? preference.maxExpandSize : preference.initialSize;
@@ -303,7 +305,7 @@ namespace Plugins.ObjectPooler.Core
 
         public void DisablePool(T pool)
         {
-            foreach (var poolItem in _activePools[pool].ToArray())
+            foreach (var poolItem in _activePools[pool].ToList())
             {
                 poolItem.gameObject.SetActive(false);
             }

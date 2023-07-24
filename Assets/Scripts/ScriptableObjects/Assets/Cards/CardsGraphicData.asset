@@ -23,3 +23,8 @@ MonoBehaviour:
       _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
       _textColor: {r: 0, g: 0, b: 0, a: 0}
       _icon: {fileID: 21300000, guid: 0d98a277f3006cb4b886e91f214873fc, type: 3}
+  - Key: 0
+    Value:
+      _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+      _textColor: {r: 0, g: 0, b: 0, a: 0}
+      _icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}

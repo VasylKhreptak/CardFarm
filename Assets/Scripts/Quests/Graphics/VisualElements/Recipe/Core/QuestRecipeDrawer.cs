@@ -15,7 +15,6 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         [SerializeField] private QuestRecipePartPooler _objectPooler;
 
         private IDisposable _subscription;
-        private IDisposable _frameDelaySubscription;
 
         private QuestsManager _questsManager;
 
@@ -33,7 +32,6 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         private void OnDestroy()
         {
             StopObserving();
-            _frameDelaySubscription?.Dispose();
         }
 
         private void StartObserving()
@@ -52,22 +50,18 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
 
             if (questData == null || questData.Recipe.IsValid() == false) return;
 
-            _frameDelaySubscription?.Dispose();
-            _frameDelaySubscription = Observable.NextFrame().Subscribe(_ =>
+            SpawnCard(questData.Recipe.Result);
+            Spawn(QuestRecipePart.EqualsSign);
+
+            for (int i = 0; i < questData.Recipe.TargetCards.Count; i++)
             {
-                SpawnCard(questData.Recipe.Result);
-                Spawn(QuestRecipePart.EqualsSign);
+                SpawnCard(questData.Recipe.TargetCards[i]);
 
-                for (int i = 0; i < questData.Recipe.TargetCards.Count; i++)
+                if (i < questData.Recipe.TargetCards.Count - 1)
                 {
-                    SpawnCard(questData.Recipe.TargetCards[i]);
-
-                    if (i < questData.Recipe.TargetCards.Count - 1)
-                    {
-                        Spawn(QuestRecipePart.PlusSign);
-                    }
+                    Spawn(QuestRecipePart.PlusSign);
                 }
-            });
+            }
         }
 
         private void SpawnCard(QuestRecipeCardData cardData)

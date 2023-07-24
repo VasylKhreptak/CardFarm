@@ -72,6 +72,7 @@ namespace Quests.Logic
 
         private void StartObservingQuestCompletion(QuestData questData)
         {
+            StopObservingQuestCompletion();
             _isQuestCompletedSubscription = questData.IsCompleted.Subscribe(isCompleted =>
             {
                 _isCurrentQuestCompleted.Value = isCompleted;
