@@ -4,7 +4,7 @@ using Runtime.Commands;
 using UnityEngine;
 using Zenject;
 
-namespace ObjectPoolers.GameRestartActions
+namespace ObjectPoolers.GameRestartActions.PoolCleaners.Core
 {
     public class ObjectPoolerCleaner<T> : MonoBehaviour where T : Enum
     {

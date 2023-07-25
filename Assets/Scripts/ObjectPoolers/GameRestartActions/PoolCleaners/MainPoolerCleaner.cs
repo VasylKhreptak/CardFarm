@@ -1,4 +1,5 @@
-﻿using Plugins.ObjectPooler.Example;
+﻿using ObjectPoolers.GameRestartActions.PoolCleaners.Core;
+using Plugins.ObjectPooler.Example;
 
 namespace ObjectPoolers.GameRestartActions.PoolCleaners
 {
