@@ -3,6 +3,7 @@ using Cards.Zones.BuyZone.Data;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Cards.Zones.BuyZone.Logic
@@ -13,9 +14,7 @@ namespace Cards.Zones.BuyZone.Logic
         [SerializeField] private BuyZoneData _buyZoneData;
         [SerializeField] private GameObject _leftCardsTextObject;
         [SerializeField] private TMP_Text _nameText;
-
-        [Header("Preferences")]
-        [SerializeField] private string _lockedName = "???";
+        [SerializeField] private Image _lockedStateImage;
 
         private IDisposable _isLockedSubscription;
 
@@ -57,8 +56,9 @@ namespace Cards.Zones.BuyZone.Logic
         private void OnLockedStateChanged(bool isLocked)
         {
             _leftCardsTextObject.SetActive(!isLocked);
-            _nameText.text = isLocked ? _lockedName : _buyZoneData.Name.Value;
+            _nameText.enabled = !isLocked;
             _buyZoneData.IsInteractable.Value = !isLocked;
+            _lockedStateImage.enabled = isLocked;
         }
     }
 }
