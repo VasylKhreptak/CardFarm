@@ -6,15 +6,14 @@ using Zenject;
 
 namespace Cards.Logic
 {
-    public class CardGroupHeightController : MonoBehaviour, IValidatable
+    public class CardHeightInheritor : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
         private IDisposable _upperCardHeightSubscription;
-        private IDisposable _isUpdatingHeightSubscription;
-
         private IDisposable _upperCardSubscription;
+        private IDisposable _frameDelaySubscription;
 
         #region MonoBehaviour
 
@@ -37,7 +36,7 @@ namespace Cards.Logic
         private void OnDisable()
         {
             StopObservingUpperCard();
-            _isUpdatingHeightSubscription?.Dispose();
+            _frameDelaySubscription?.Dispose();
         }
 
         #endregion
@@ -59,7 +58,6 @@ namespace Cards.Logic
             Vector3 position = _cardData.transform.position;
 
             _upperCardHeightSubscription?.Dispose();
-            _isUpdatingHeightSubscription?.Dispose();
 
             if (upperCardData == null)
             {
@@ -68,24 +66,18 @@ namespace Cards.Logic
             }
             else
             {
-                _isUpdatingHeightSubscription = _cardData.CardSelectedHeightController
-                    .IsUpdatingHeightProperty
-                    .Subscribe(isUpdating =>
+                _frameDelaySubscription?.Dispose();
+                _frameDelaySubscription = Observable.NextFrame().Subscribe(_ =>
+                {
+                    _upperCardHeightSubscription?.Dispose();
+                    _upperCardHeightSubscription = upperCardData.Height.Subscribe(height =>
                     {
-                        if (isUpdating == false)
-                        {
-                            _upperCardHeightSubscription?.Dispose();
-                            _upperCardHeightSubscription = upperCardData.Height.Subscribe(height =>
-                            {
-                                position.y = height;
-                                _cardData.Height.Value = position.y;
-                            });
-                        }
-                        else
-                        {
-                            _upperCardHeightSubscription?.Dispose();
-                        }
+                        if (_cardData.CardSelectedHeightController.IsUpdatingHeightProperty.Value) return;
+
+                        position.y = height;
+                        _cardData.Height.Value = position.y;
                     });
+                });
             }
 
             _cardData.transform.position = position;

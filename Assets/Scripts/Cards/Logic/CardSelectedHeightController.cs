@@ -61,18 +61,7 @@ namespace Cards.Logic
 
         private void UpdateHeight(bool isSelected)
         {
-            if (isSelected)
-            {
-                SetCardHeight(_cardData.SelectedHeight);
-            }
-            else if (_cardData.JoinableCard.Value != null)
-            {
-                SetCardHeight(_cardData.JoinableCard.Value.Height.Value);
-            }
-            else
-            {
-                SetCardHeight(_cardData.BaseHeight);
-            }
+            SetCardHeight(isSelected ? _cardData.SelectedHeight : _cardData.BaseHeight);
         }
 
         private void SetCardHeight(float height)

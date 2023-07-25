@@ -2613,7 +2613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
-  _moveDuration: 0.3
+  _moveDuration: 0.2
   _moveEase: 9
 --- !u!1 &5517646160174154624
 GameObject:
@@ -4319,7 +4319,7 @@ GameObject:
   - component: {fileID: 407847162472389659}
   - component: {fileID: 7137134185686426639}
   m_Layer: 6
-  m_Name: CardGroupHeightController
+  m_Name: CardHeightInheritor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
