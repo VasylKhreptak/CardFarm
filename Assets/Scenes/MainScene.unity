@@ -1361,6 +1361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 359594561}
   - component: {fileID: 359594562}
+  - component: {fileID: 359594563}
   m_Layer: 0
   m_Name: MainObjectPooler
   m_TagString: Untagged
@@ -1404,6 +1405,19 @@ MonoBehaviour:
     initialSize: 5
     autoExpand: 1
     maxExpandSize: 30
+--- !u!114 &359594563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359594560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332436601b0e4d228a74e203000e5599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetPooler: {fileID: 359594562}
 --- !u!1 &386186197
 GameObject:
   m_ObjectHideFlags: 0
@@ -7959,6 +7973,7 @@ GameObject:
   - component: {fileID: 1444864359}
   - component: {fileID: 1444864360}
   - component: {fileID: 1444864361}
+  - component: {fileID: 1444864362}
   m_Layer: 5
   m_Name: UIParticlePooler
   m_TagString: Untagged
@@ -8061,6 +8076,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1444864362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444864357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae93dbe89c248f0970067c8f296c84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetPooler: {fileID: 1444864359}
 --- !u!114 &1463480071 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
@@ -8131,6 +8159,7 @@ GameObject:
   - component: {fileID: 1471693056}
   - component: {fileID: 1471693057}
   - component: {fileID: 1471693058}
+  - component: {fileID: 1471693059}
   m_Layer: 0
   m_Name: CardsTable
   m_TagString: Untagged
@@ -8554,6 +8583,19 @@ MonoBehaviour:
   _tableRectTransform: {fileID: 1471693054}
   _increaseEach: 10
   _increaseByPercent: {x: 0.15, y: 0.1}
+--- !u!114 &1471693059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471693051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd70561ad684b0c9e09d66a9caedaa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetPooler: {fileID: 1471693057}
 --- !u!1 &1476206747
 GameObject:
   m_ObjectHideFlags: 0

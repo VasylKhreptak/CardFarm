@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
+using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -24,11 +25,13 @@ namespace Runtime.Map
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private CardSpawner _cardSpawner;
+        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner)
+        private void Constructor(CardSpawner cardSpawner, GameRestartCommand gameRestartCommand)
         {
             _cardSpawner = cardSpawner;
+            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
@@ -43,9 +46,15 @@ namespace Runtime.Map
             SpawnCards();
         }
 
+        private void OnEnable()
+        {
+            _gameRestartCommand.OnExecute += OnRestart;
+        }
+
         private void OnDisable()
         {
             _subscriptions.Clear();
+            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -82,6 +91,12 @@ namespace Runtime.Map
         private CardData SpawnCard(Card card)
         {
             return _cardSpawner.SpawnAndMove(card, _transform.position, tryJoinToExistingGroup: false);
+        }
+
+        private void OnRestart()
+        {
+            _subscriptions.Clear();
+            SpawnCards();
         }
     }
 }
