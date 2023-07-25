@@ -13,6 +13,9 @@ namespace Cards.Zones.BuyZone.Graphics.VisualElements
         [SerializeField] private BuyZoneData _cardData;
         [SerializeField] private TMP_Text _tmp;
 
+        [Header("Preferences")]
+        [SerializeField] private string _prefix = "x";
+
         private IDisposable _subscription;
 
         #region MonoBehaviour
@@ -52,7 +55,7 @@ namespace Cards.Zones.BuyZone.Graphics.VisualElements
 
         private void SetText(int value)
         {
-            _tmp.text = value.ToString();
+            _tmp.text = _prefix + value.ToString();
         }
     }
 }

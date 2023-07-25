@@ -201,6 +201,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 4682650202823771812}
+--- !u!1 &4968930700797419924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4077386286506252429}
+  - component: {fileID: 7951216021955896326}
+  - component: {fileID: 3447996019962760730}
+  m_Layer: 6
+  m_Name: CoinIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4077386286506252429
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968930700797419924}
+  m_LocalRotation: {x: 0.000000012174543, y: -1, z: 0.00000032782592, w: 0.0000002562662}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4822732277928587573}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.39, y: 0}
+  m_SizeDelta: {x: 0.688, y: 0.688}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7951216021955896326
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968930700797419924}
+  m_CullTransparentMesh: 1
+--- !u!114 &3447996019962760730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968930700797419924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 0d98a277f3006cb4b886e91f214873fc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5202717437099877449
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,13 +308,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5915804007750002599}
-  m_RootOrder: 4
+  m_Father: {fileID: 4822732277928587573}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.48495007}
-  m_SizeDelta: {x: 0, y: 0.96990013}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.288, y: 0}
+  m_SizeDelta: {x: 2.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6698779574134185148
 CanvasRenderer:
@@ -268,7 +344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: x3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -302,7 +378,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -351,6 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardData: {fileID: 4682650202823771812}
   _tmp: {fileID: 4429655820378700530}
+  _prefix: x
 --- !u!1 &5447186377251163814
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buyZoneData: {fileID: 4682650202823771812}
-  _leftCardsTextObject: {fileID: 5202717437099877449}
+  _leftCardsTextObject: {fileID: 7075529850321483494}
   _nameText: {fileID: 7943049282139556783}
   _lockedStateImage: {fileID: 9151123225642838276}
 --- !u!1 &6559469006989363738
@@ -480,6 +557,44 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7075529850321483494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4822732277928587573}
+  m_Layer: 6
+  m_Name: LeftCoins
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4822732277928587573
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075529850321483494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8216812353460420220}
+  - {fileID: 4077386286506252429}
+  m_Father: {fileID: 5915804007750002599}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_SizeDelta: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7684086145675532151
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +683,11 @@ PrefabInstance:
       value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 485109039223068362, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 492707961597466850, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -1124,7 +1244,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseHeight: 0.01
   _selectedHeight: 0.1
-  _heightOffset: 0.01
   _isWorker: 0
   _isFood: 0
   _isResourceNode: 0
