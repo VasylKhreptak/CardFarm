@@ -4534,7 +4534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 1349560457}
   _speed: 1
-  _moveByEdgeSpeed: 15
+  _cardCenteringSpeed: 1
   CanMove: 1
 --- !u!114 &956618059
 MonoBehaviour:
