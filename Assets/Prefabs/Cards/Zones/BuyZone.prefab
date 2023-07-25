@@ -454,8 +454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 4682650202823771812}
-  _cardsMoveDuration: 0.5
-  _coinMoveDelay: 0.2
 --- !u!1001 &4927693721908689298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -483,6 +481,16 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 452509669779426027, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 480402200547533325, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 485109039223068362, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -493,6 +501,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 554560121855317516, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 4682650202823771812}
     - target: {fileID: 945634048653939236, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_IsActive
@@ -531,13 +544,18 @@ PrefabInstance:
     - target: {fileID: 2497773413687021429, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2669296866402104051, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 2727603470762725339, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2800447867674135444, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -701,13 +719,18 @@ PrefabInstance:
     - target: {fileID: 3076389051216230989, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 3273910706306169596, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 3382053261301732938, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3437239771057578830, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -718,6 +741,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 3566371717761774355, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3869310405197248997, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -758,6 +786,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 4598187380719833669, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 4682650202823771812}
     - target: {fileID: 4628604280495087168, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -783,6 +816,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 5182616642592895415, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 5299866899253154200, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -868,6 +906,16 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 8246623468920245377, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253568150029054383, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8263957201508905678, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_IsActive
@@ -901,7 +949,7 @@ PrefabInstance:
     - target: {fileID: 8888314673727946243, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 8904230965933755696, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -923,6 +971,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 4682650202823771812}
+    - target: {fileID: 9213482588005436104, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3051697175370202824, guid: d5d346ed3d610c748b54a7004eb99e4c, type: 3}
     - {fileID: 3051697176898155043, guid: d5d346ed3d610c748b54a7004eb99e4c, type: 3}
@@ -994,12 +1047,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseHeight: 0.01
+  _selectedHeight: 0.1
   _heightOffset: 0.01
   _isWorker: 0
+  _isFood: 0
+  _isResourceNode: 0
   _isSellableCard: 0
   _canSortingLayerChange: 0
   _isAutomatedFactory: 0
-  _isIncubator: 0
+  _isAnimal: 0
+  _isStackable: 1
+  _isDamageable: 1
+  _canBeStackedOnlyWithSameCard: 0
+  _isOrder: 0
+  _isBreakable: 1
+  _canBeUnderCards: 1
+  _isResource: 0
+  _canBePlacedInChest: 0
+  _canBeStackedWithSameCard: 1
   ID: -1
   GroupID:
     value: -1
@@ -1066,9 +1131,11 @@ MonoBehaviour:
       Resources: 
       Workers: 
       Cooldown: 0
-      ResultCount: 1
+      MinResultCount: 1
+      MaxResultCount: 1
       Result:
         Weights: []
+  PossibleRecipes: []
   Durability:
     value: 1
   MaxDurability:
@@ -1086,6 +1153,8 @@ MonoBehaviour:
       Resources: 
       ResourcesToRemove: 
       Results: []
+  PositionShakeObserver: {fileID: 0}
+  CardSelectedHeightController: {fileID: 0}
   TargetCard:
     value: 37
   Price:

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cards.Core;
+using Cards.Data;
 using Cards.Logic.Spawn;
 using UniRx;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace Runtime.Map
         [SerializeField] private List<Card> _cards = new List<Card>();
         [SerializeField] private float _delay;
         [SerializeField] private float _interval;
+
+        public event Action OnSpawnedAllCards;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
@@ -49,26 +52,36 @@ namespace Runtime.Map
 
         private void SpawnCards()
         {
+            _subscriptions.Clear();
             Observable.Timer(TimeSpan.FromSeconds(_delay)).Subscribe(_ =>
             {
                 float delay = 0f;
+
+                float moveDuration = 0;
 
                 for (int i = 0; i < _cards.Count; i++)
                 {
                     Card card = _cards[i];
                     Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
                     {
-                        SpawnCard(card);
+                        CardData spawnedCard = SpawnCard(card);
+                        moveDuration = spawnedCard.Animations.JumpAnimation.Duration;
                     }).AddTo(_subscriptions);
 
                     delay += _interval;
                 }
+
+                Observable.Timer(TimeSpan.FromSeconds(delay + moveDuration)).Subscribe(_ =>
+                {
+                    OnSpawnedAllCards?.Invoke();
+                }).AddTo(_subscriptions);
+
             }).AddTo(_subscriptions);
         }
 
-        private void SpawnCard(Card card)
+        private CardData SpawnCard(Card card)
         {
-            _cardSpawner.SpawnAndMove(card, _transform.position, tryJoinToExistingGroup: false);
+            return _cardSpawner.SpawnAndMove(card, _transform.position, tryJoinToExistingGroup: false);
         }
     }
 }

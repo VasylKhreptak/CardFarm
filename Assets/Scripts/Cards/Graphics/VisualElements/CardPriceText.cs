@@ -13,6 +13,9 @@ namespace Cards.Graphics.VisualElements
         [SerializeField] private SellableCardData _cardData;
         [SerializeField] private TMP_Text _tmp;
 
+        [Header("Preferences")]
+        // [SerializeField] private string _postfix = "$";
+
         private IDisposable _priceSubscription;
 
         #region MonoBehaviour
@@ -53,6 +56,7 @@ namespace Cards.Graphics.VisualElements
 
         private void SetPrice(int price)
         {
+            // _tmp.text = price + _postfix;
             _tmp.text = price.ToString();
         }
     }

@@ -22,9 +22,11 @@ namespace Cards.Graphics.Animations
         [SerializeField] private float _jumpPower = 1f;
         [SerializeField] private int _numberOfJumps = 1;
         [SerializeField] private Ease _jumpEase;
-
+        
         private Tween _animation;
 
+        public float Duration => _duration;
+        
         private CardsTableBounds _cardsTableBounds;
 
         [Inject]
