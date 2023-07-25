@@ -7,6 +7,7 @@ using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -14,7 +15,6 @@ namespace Cards.Data
     {
         [SerializeField] private float _baseHeight = 0.01f;
         [SerializeField] private float _selectedHeight = 0.1f;
-        [SerializeField] private float _heightOffset = 0.01f;
         [Space]
         [SerializeField] private bool _isWorker;
         [SerializeField] private bool _isFood;
@@ -35,7 +35,6 @@ namespace Cards.Data
 
         public float BaseHeight => _baseHeight;
         public float SelectedHeight => _selectedHeight;
-        public float HeightOffset => _heightOffset;
 
         public bool IsWorker => _isWorker;
         public bool IsSellableCard => _isSellableCard;

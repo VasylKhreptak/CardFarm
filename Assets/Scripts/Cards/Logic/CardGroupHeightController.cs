@@ -12,6 +12,7 @@ namespace Cards.Logic
         [SerializeField] private CardData _cardData;
 
         private IDisposable _upperCardHeightSubscription;
+        private IDisposable _isUpdatingHeightSubscription;
 
         private IDisposable _upperCardSubscription;
 
@@ -36,6 +37,7 @@ namespace Cards.Logic
         private void OnDisable()
         {
             StopObservingUpperCard();
+            _isUpdatingHeightSubscription?.Dispose();
         }
 
         #endregion
@@ -57,19 +59,33 @@ namespace Cards.Logic
             Vector3 position = _cardData.transform.position;
 
             _upperCardHeightSubscription?.Dispose();
+            _isUpdatingHeightSubscription?.Dispose();
 
             if (upperCardData == null)
             {
                 position.y = _cardData.BaseHeight;
                 _cardData.Height.Value = position.y;
             }
-            else if (_cardData.CardSelectedHeightController.IsUpdatingHeightProperty.Value == false)
+            else
             {
-                _upperCardHeightSubscription = upperCardData.Height.Subscribe(height =>
-                {
-                    position.y = height + _cardData.HeightOffset;
-                    _cardData.Height.Value = position.y;
-                });
+                _isUpdatingHeightSubscription = _cardData.CardSelectedHeightController
+                    .IsUpdatingHeightProperty
+                    .Subscribe(isUpdating =>
+                    {
+                        if (isUpdating == false)
+                        {
+                            _upperCardHeightSubscription?.Dispose();
+                            _upperCardHeightSubscription = upperCardData.Height.Subscribe(height =>
+                            {
+                                position.y = height;
+                                _cardData.Height.Value = position.y;
+                            });
+                        }
+                        else
+                        {
+                            _upperCardHeightSubscription?.Dispose();
+                        }
+                    });
             }
 
             _cardData.transform.position = position;

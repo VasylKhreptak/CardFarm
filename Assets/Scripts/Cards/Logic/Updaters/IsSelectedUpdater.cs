@@ -11,10 +11,8 @@ namespace Cards.Logic.Updaters
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
-        private IDisposable _mouseDownSubscription;
         private IDisposable _canBeSelectedSubscription;
-        private IDisposable _mouseUpSubscription;
-        
+
         #region MonoBehaviour
 
         private void OnValidate()
@@ -58,32 +56,36 @@ namespace Cards.Logic.Updaters
         private void StartObservingMouseDown()
         {
             StopObservingMouseDown();
-            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ =>
-            {
-                if (_cardData.CanBeSelected.Value)
-                {
-                    _cardData.IsSelected.Value = true;
-                }
-            });
+            _cardData.Callbacks.onPointerDown += OnMouseDown;
         }
 
         private void StopObservingMouseDown()
         {
-            _mouseDownSubscription?.Dispose();
+            _cardData.Callbacks.onPointerDown -= OnMouseDown;
         }
 
         private void StartObservingMouseUp()
         {
             StopObservingMouseUp();
-            _mouseUpSubscription = _cardData.MouseTrigger.OnMouseUpAsObservable().Subscribe(_ =>
-            {
-                _cardData.IsSelected.Value = false;
-            });
+            _cardData.Callbacks.onPointerUp += OnMouseUp;
         }
 
         private void StopObservingMouseUp()
         {
-            _mouseUpSubscription?.Dispose();
+            _cardData.Callbacks.onPointerUp -= OnMouseUp;
+        }
+
+        private void OnMouseDown()
+        {
+            if (_cardData.CanBeSelected.Value)
+            {
+                _cardData.IsSelected.Value = true;
+            }
+        }
+
+        private void OnMouseUp()
+        {
+            _cardData.IsSelected.Value = false;
         }
 
         private void StartObservingIfCanBeSelected()

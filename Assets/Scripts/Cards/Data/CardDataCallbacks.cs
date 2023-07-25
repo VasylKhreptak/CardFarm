@@ -21,5 +21,8 @@ namespace Cards.Data
         public Action<Card> onSpawnedRecipeResult;
 
         public Action onClicked;
+        
+        public Action onPointerDown;
+        public Action onPointerUp;
     }
 }

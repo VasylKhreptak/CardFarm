@@ -7,12 +7,12 @@ using Zenject;
 
 namespace Cards
 {
-    public class MouseCardUnlinker : MonoBehaviour, IValidatable
+    public class CardUnlinkerOnSelect : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
-        private IDisposable _mouseDownSubscription;
+        private IDisposable _isSelectedSubscription;
 
         #region MonoBehaviour
 
@@ -28,28 +28,28 @@ namespace Cards
 
         private void OnEnable()
         {
-            StartObservingMouseDown();
+            StartObservingIfSelected();
         }
 
         private void OnDisable()
         {
-            StopObservingMouseDown();
+            StopObservingIfSelected();
         }
 
         #endregion
 
-        private void StartObservingMouseDown()
+        private void StartObservingIfSelected()
         {
-            StopObservingMouseDown();
-            _mouseDownSubscription = _cardData.MouseTrigger.OnMouseDownAsObservable().Subscribe(_ => OnMouseDown());
+            StopObservingIfSelected();
+            _isSelectedSubscription = _cardData.IsSelected.Where(x => x == true).Subscribe(_ => OnSelected());
         }
 
-        private void StopObservingMouseDown()
+        private void StopObservingIfSelected()
         {
-            _mouseDownSubscription?.Dispose();
+            _isSelectedSubscription?.Dispose();
         }
 
-        private void OnMouseDown()
+        private void OnSelected()
         {
             _cardData.UnlinkFromUpper();
         }

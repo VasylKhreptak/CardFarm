@@ -67,7 +67,7 @@ namespace Cards.Logic
             }
             else if (_cardData.JoinableCard.Value != null)
             {
-                SetCardHeight(_cardData.JoinableCard.Value.Height.Value + _cardData.HeightOffset);
+                SetCardHeight(_cardData.JoinableCard.Value.Height.Value);
             }
             else
             {
@@ -88,6 +88,7 @@ namespace Cards.Logic
                 })
                 .SetEase(_moveEase)
                 .OnKill(() => IsUpdatingHeight.Value = false)
+                .OnComplete(() => IsUpdatingHeight.Value = false)
                 .Play();
         }
 
