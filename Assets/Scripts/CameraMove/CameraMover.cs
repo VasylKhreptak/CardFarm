@@ -1,6 +1,6 @@
 ﻿using System;
 using CameraMove.Core;
-using Runtime.Screen;
+using Cards.Data;
 using Table;
 using UniRx;
 using UnityEngine;
@@ -15,23 +15,23 @@ namespace CameraMove
 
         [Header("Preferences")]
         [SerializeField] private float _speed;
-        [SerializeField] private float _moveByEdgeSpeed;
+        [SerializeField] private float _cardCenteringSpeed = 1;
 
         private IDisposable _dragSubscription;
+        private IDisposable _selectedCardSubscription;
+        private IDisposable _cameraCenteringSubscription;
 
         private MapDragObserver _dragObserver;
-        private ScreenEdges _screenEdges;
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
+
 
         public bool CanMove = true;
 
         [Inject]
         private void Constructor(MapDragObserver dragObserver,
-            ScreenEdges screenEdges,
             CurrentSelectedCardHolder currentSelectedCardHolder)
         {
             _dragObserver = dragObserver;
-            _screenEdges = screenEdges;
             _currentSelectedCardHolder = currentSelectedCardHolder;
         }
 
@@ -40,16 +40,14 @@ namespace CameraMove
         private void OnEnable()
         {
             StartObservingDrag();
+            StartObservingSelectedCard();
         }
 
         private void OnDisable()
         {
             StopObservingDrag();
-        }
-
-        private void Update()
-        {
-            TryMoveByEdge();
+            StopObservingSelectedCard();
+            _cameraCenteringSubscription?.Dispose();
         }
 
         #endregion
@@ -66,6 +64,35 @@ namespace CameraMove
             _dragSubscription?.Dispose();
         }
 
+        private void StartObservingSelectedCard()
+        {
+            StopObservingSelectedCard();
+            _selectedCardSubscription = _currentSelectedCardHolder.SelectedCard.Subscribe(OnSelectedCardChanged);
+        }
+
+        private void StopObservingSelectedCard()
+        {
+            _selectedCardSubscription?.Dispose();
+        }
+
+        private void OnSelectedCardChanged(CardData cardData)
+        {
+            _cameraCenteringSubscription?.Dispose();
+
+            if (cardData == null) return;
+
+            _cameraCenteringSubscription = Observable.EveryUpdate().Subscribe(_ => CenterCameraStep(cardData.transform.position));
+        }
+
+        private void CenterCameraStep(Vector3 targetPosition)
+        {
+            Vector3 cameraPosition = _transform.position;
+
+            targetPosition.y = cameraPosition.y;
+            Vector3 direction = targetPosition - cameraPosition;
+            TryMoveCamera(new Vector2(direction.x, direction.z) * (_cardCenteringSpeed * Time.deltaTime));
+        }
+
         private void TryMoveCamera(Vector2 direction)
         {
             if (CanMove == false) return;
@@ -76,15 +103,6 @@ namespace CameraMove
             cameraPosition += moveDirection * _speed;
 
             _transform.position = cameraPosition;
-        }
-
-        private void TryMoveByEdge()
-        {
-            if (CanMove == false) return;
-
-            if (_currentSelectedCardHolder.SelectedCard == null) return;
-
-            TryMoveCamera(_screenEdges.DirectionFromCenter.Value * _moveByEdgeSpeed * Time.deltaTime);
         }
     }
 }
