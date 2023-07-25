@@ -4,6 +4,11 @@ namespace Runtime.Commands.Core
 {
     public class Command
     {
-        public Action OnExecute;
+        public event Action OnExecute;
+
+        public void Execute()
+        {
+            OnExecute?.Invoke();
+        }
     }
 }

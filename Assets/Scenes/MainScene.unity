@@ -8685,11 +8685,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1476206747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f230b47478a4eba895fa96bcb757dee, type: 3}
+  m_Script: {fileID: 11500000, guid: 09d2978f65a546f7b8787dd241b242a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1476206749}
-  _scene: MainScene
 --- !u!1 &1510687407
 GameObject:
   m_ObjectHideFlags: 0
