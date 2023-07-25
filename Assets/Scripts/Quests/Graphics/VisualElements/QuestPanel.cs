@@ -1,6 +1,8 @@
 ﻿using System;
 using DG.Tweening;
 using Quests.Logic;
+using Runtime.Commands;
+using Runtime.Map;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -27,34 +29,56 @@ namespace Quests.Graphics.VisualElements
         private IDisposable _currentQuestSubscription;
 
         private CurrentQuestCompletionObserver _currentQuestCompletionObserver;
+        private GameRestartCommand _gameRestartCommand;
+        private StarterCardsSpawner _starterCardsSpawner;
 
         [Inject]
-        private void Constructor(CurrentQuestCompletionObserver currentQuestCompletionObserver)
+        private void Constructor(CurrentQuestCompletionObserver currentQuestCompletionObserver,
+            GameRestartCommand gameRestartCommand,
+            StarterCardsSpawner starterCardsSpawner)
         {
             _currentQuestCompletionObserver = currentQuestCompletionObserver;
+            _gameRestartCommand = gameRestartCommand;
+            _starterCardsSpawner = starterCardsSpawner;
         }
 
         #region MonoBehaviour
 
+        private void Awake()
+        {
+            _gameRestartCommand.OnExecute += OnRestart;
+            _starterCardsSpawner.OnSpawnedAllCards += OnSpawnedStarterCards;
+        }
+
         private void OnEnable()
         {
-            StartObserving();
+            StartObservingQuestCompletion();
+            Disable();
+            SetScale(_startScale);
+            SetAlpha(0f);
         }
 
         private void OnDisable()
         {
-            StopObserving();
+            StopObservingQuestCompletion();
             KillAnimation();
+        }
+
+        private void OnDestroy()
+        {
+            _gameRestartCommand.OnExecute -= OnRestart;
+            _starterCardsSpawner.OnSpawnedAllCards -= OnSpawnedStarterCards;
         }
 
         #endregion
 
-        private void StartObserving()
+        private void StartObservingQuestCompletion()
         {
+            StopObservingQuestCompletion();
             _currentQuestSubscription = _currentQuestCompletionObserver.IsCurrentQuestCompleted.Subscribe(UpdateQuestState);
         }
 
-        private void StopObserving()
+        private void StopObservingQuestCompletion()
         {
             _currentQuestSubscription?.Dispose();
         }
@@ -106,6 +130,29 @@ namespace Quests.Graphics.VisualElements
         private void KillAnimation()
         {
             _showSequence?.Kill();
+        }
+
+        private void SetScale(Vector3 scale)
+        {
+            _quest.transform.localScale = scale;
+        }
+
+        private void SetAlpha(float alpha)
+        {
+            _canvasGroup.alpha = alpha;
+        }
+
+        private void OnSpawnedStarterCards()
+        {
+            SetScale(_startScale);
+            SetAlpha(0f);
+            StartObservingQuestCompletion();
+        }
+
+        private void OnRestart()
+        {
+            Disable();
+            StopObservingQuestCompletion();
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using ObjectPoolers;
 using Quests.Data;
 using Quests.Logic.Core;
+using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -29,11 +30,13 @@ namespace Quests.Logic
         public event Action<Quest> onStartedQuest;
 
         private QuestsObjectPooler _questsObjectPooler;
+        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(QuestsObjectPooler questsObjectPooler)
+        private void Constructor(QuestsObjectPooler questsObjectPooler, GameRestartCommand gameRestartCommand)
         {
             _questsObjectPooler = questsObjectPooler;
+            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
@@ -42,10 +45,12 @@ namespace Quests.Logic
         {
             StartObservingQuestsCount();
             CreateQuests();
+            _gameRestartCommand.OnExecute += OnRestart;
         }
         private void OnDestroy()
         {
             StopObservingQuestsCount();
+            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -127,6 +132,15 @@ namespace Quests.Logic
             QuestData questData = _leftQuests.FirstOrDefault(q => q.Quest == quest);
 
             return questData != null;
+        }
+
+        private void OnRestart()
+        {
+            _questsObjectPooler.DisableAllObjects();
+            _currentQuest.Value = null;
+            _leftQuests.Clear();
+            _finishedQuests.Clear();
+            CreateQuests();
         }
     }
 }

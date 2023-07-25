@@ -46,6 +46,7 @@ namespace Quests.Logic
         {
             StopObservingCurrentQuest();
             StopObservingQuestCompletion();
+            
         }
 
         private void StartObservingCurrentQuest()

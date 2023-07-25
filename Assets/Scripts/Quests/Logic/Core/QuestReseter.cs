@@ -27,6 +27,7 @@ namespace Quests.Logic.Core
         private void OnDisable()
         {
             StopObserving();
+            ResetData();
         }
 
         #endregion
@@ -58,9 +59,14 @@ namespace Quests.Logic.Core
             if (tookReward)
             {
                 _questData.gameObject.SetActive(false);
-                _questData.IsCompleted.Value = false;
-                _questData.TookReward.Value = false;
+                ResetData();
             }
+        }
+
+        private void ResetData()
+        {
+            _questData.IsCompleted.Value = false;
+            _questData.TookReward.Value = false;
         }
     }
 }

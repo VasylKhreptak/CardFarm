@@ -24,14 +24,15 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             _questsManager = questsManager;
         }
 
-        private void Start()
+        private void OnEnable()
         {
             StartObserving();
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             StopObserving();
+            ClearRecipe();
         }
 
         private void StartObserving()
@@ -46,8 +47,8 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
 
         private void TryDrawQuestRecipe(QuestData questData)
         {
-            _objectPooler.DisableAllObjects();
-
+            ClearRecipe();
+            
             if (questData == null || questData.Recipe.IsValid() == false) return;
 
             SpawnCard(questData.Recipe.Result);
@@ -75,12 +76,19 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
 
         private GameObject Spawn(QuestRecipePart part)
         {
+            Debug.Log(part);
+            
             GameObject spawnedPart = _objectPooler.Spawn(part);
 
             spawnedPart.transform.SetAsLastSibling();
             spawnedPart.transform.localScale = Vector3.one;
 
             return spawnedPart;
+        }
+
+        private void ClearRecipe()
+        {
+            _objectPooler.DisableAllObjects();
         }
     }
 }

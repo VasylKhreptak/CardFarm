@@ -1,6 +1,7 @@
 ﻿using System;
 using DG.Tweening;
 using Quests.Logic;
+using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -27,36 +28,50 @@ namespace Quests.Graphics.VisualElements
         private IDisposable _currentQuestSubscription;
 
         private CurrentQuestCompletionObserver _currentQuestCompletionObserver;
+        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(CurrentQuestCompletionObserver currentQuestCompletionObserver)
+        private void Constructor(CurrentQuestCompletionObserver currentQuestCompletionObserver,
+            GameRestartCommand gameRestartCommand)
         {
             _currentQuestCompletionObserver = currentQuestCompletionObserver;
+            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
 
+        private void Awake()
+        {
+            _gameRestartCommand.OnExecute += OnRestart;
+        }
+
         private void OnEnable()
         {
-            StartObserving();
+            StartObservingQuestCompletion();
             Disable();
             SetParameters(_startScale, 0f);
         }
 
         private void OnDisable()
         {
-            StopObserving();
+            StopObservingQuestCompletion();
             KillAnimation();
+        }
+
+        private void OnDestroy()
+        {
+            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
 
-        private void StartObserving()
+        private void StartObservingQuestCompletion()
         {
+            StopObservingQuestCompletion();
             _currentQuestSubscription = _currentQuestCompletionObserver.IsCurrentQuestCompleted.Subscribe(UpdateQuestState);
         }
 
-        private void StopObserving()
+        private void StopObservingQuestCompletion()
         {
             _currentQuestSubscription?.Dispose();
         }
@@ -114,6 +129,12 @@ namespace Quests.Graphics.VisualElements
         private void KillAnimation()
         {
             _showSequence?.Kill();
+        }
+
+        private void OnRestart()
+        {
+            SetParameters(_startScale, 0f);
+            Disable();
         }
     }
 }

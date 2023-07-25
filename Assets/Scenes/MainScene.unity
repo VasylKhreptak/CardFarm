@@ -334,18 +334,18 @@ MonoBehaviour:
   - pool: 0
     prefab: {fileID: 3238899505405063147, guid: 9a8c82c584a6c3f4b90ed6fae0fe59f2,
       type: 3}
-    initialSize: 0
+    initialSize: 10
     autoExpand: 1
     maxExpandSize: 10
   - pool: 1
     prefab: {fileID: 822461709162778821, guid: b34082450cc0d1d4a998f8508f91d127, type: 3}
-    initialSize: 0
+    initialSize: 10
     autoExpand: 1
     maxExpandSize: 10
   - pool: 2
     prefab: {fileID: 5441892617145859158, guid: ba5c6b0039c59e54da638c8f70455878,
       type: 3}
-    initialSize: 0
+    initialSize: 10
     autoExpand: 1
     maxExpandSize: 10
 --- !u!114 &164764357
@@ -6600,7 +6600,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1306368418}
-  - {fileID: 1862256758}
   m_Father: {fileID: 1590529562}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9216,7 +9215,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1590529562}
-  - component: {fileID: 1590529563}
   m_Layer: 5
   m_Name: CurrentQuest
   m_TagString: Untagged
@@ -9237,6 +9235,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1293628454}
+  - {fileID: 1862256758}
   m_Father: {fileID: 1163811366}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9245,19 +9244,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -107.27687}
   m_SizeDelta: {x: 0, y: 214.5638}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1590529563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590529561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ae541b7e7a4490a8b8dbdb0ad90fd5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameObject: {fileID: 1293628453}
 --- !u!1 &1619450389
 GameObject:
   m_ObjectHideFlags: 0
@@ -9989,13 +9975,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862256757}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1076741738}
-  m_Father: {fileID: 1293628454}
+  m_Father: {fileID: 1590529562}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
