@@ -16,6 +16,7 @@ namespace CameraMove
         [Header("Preferences")]
         [SerializeField] private float _speed;
         [SerializeField] private float _cardCenteringSpeed = 1;
+        [SerializeField] private bool _centeringOnCard = false;
 
         private IDisposable _dragSubscription;
         private IDisposable _selectedCardSubscription;
@@ -81,11 +82,13 @@ namespace CameraMove
 
             if (cardData == null) return;
 
-            _cameraCenteringSubscription = Observable.EveryUpdate().Subscribe(_ => CenterCameraStep(cardData.transform.position));
+            _cameraCenteringSubscription = Observable.EveryUpdate().Subscribe(_ => TryCenterCameraStep(cardData.transform.position));
         }
 
-        private void CenterCameraStep(Vector3 targetPosition)
+        private void TryCenterCameraStep(Vector3 targetPosition)
         {
+            if (_centeringOnCard == false) return;
+
             Vector3 cameraPosition = _transform.position;
 
             targetPosition.y = cameraPosition.y;
