@@ -334,18 +334,18 @@ MonoBehaviour:
   - pool: 0
     prefab: {fileID: 3238899505405063147, guid: 9a8c82c584a6c3f4b90ed6fae0fe59f2,
       type: 3}
-    initialSize: 10
+    initialSize: 0
     autoExpand: 1
     maxExpandSize: 10
   - pool: 1
     prefab: {fileID: 822461709162778821, guid: b34082450cc0d1d4a998f8508f91d127, type: 3}
-    initialSize: 10
+    initialSize: 0
     autoExpand: 1
     maxExpandSize: 10
   - pool: 2
     prefab: {fileID: 5441892617145859158, guid: ba5c6b0039c59e54da638c8f70455878,
       type: 3}
-    initialSize: 10
+    initialSize: 0
     autoExpand: 1
     maxExpandSize: 10
 --- !u!114 &164764357
@@ -2092,6 +2092,8 @@ GameObject:
   m_Component:
   - component: {fileID: 536916249}
   - component: {fileID: 536916250}
+  - component: {fileID: 536916251}
+  - component: {fileID: 536916252}
   m_Layer: 0
   m_Name: CardsZones
   m_TagString: Untagged
@@ -2149,6 +2151,33 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 1
+--- !u!225 &536916251
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536916248}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &536916252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536916248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8828be903bc4220818715839adc9eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 536916251}
+  _defaultAlpha: 0.5
+  _alphaAfterSpawnedStartedCards: 1
 --- !u!1 &545099065
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,7 +4829,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1020215384}
-  - component: {fileID: 1020215385}
   m_Layer: 0
   m_Name: UpperZone
   m_TagString: Untagged
@@ -4829,19 +4857,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -3.0251503}
   m_SizeDelta: {x: 0, y: 6.0503}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1020215385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020215383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ae541b7e7a4490a8b8dbdb0ad90fd5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameObject: {fileID: 602659625}
 --- !u!1 &1026766050
 GameObject:
   m_ObjectHideFlags: 0

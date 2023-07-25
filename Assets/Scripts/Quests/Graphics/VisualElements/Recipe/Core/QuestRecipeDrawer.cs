@@ -48,7 +48,7 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         private void TryDrawQuestRecipe(QuestData questData)
         {
             ClearRecipe();
-            
+
             if (questData == null || questData.Recipe.IsValid() == false) return;
 
             SpawnCard(questData.Recipe.Result);
@@ -76,8 +76,6 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
 
         private GameObject Spawn(QuestRecipePart part)
         {
-            Debug.Log(part);
-            
             GameObject spawnedPart = _objectPooler.Spawn(part);
 
             spawnedPart.transform.SetAsLastSibling();
