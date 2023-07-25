@@ -1,7 +1,32 @@
+using Runtime.Commands;
+using Zenject;
+
 namespace Economy.Core
 {
     public class IntegerBank : Bank<int>
     {
+        private GameRestartCommand _gameRestartCommand;
+
+        [Inject]
+        private void Constructor(GameRestartCommand gameRestartCommand)
+        {
+            _gameRestartCommand = gameRestartCommand;
+        }
+
+        #region MonoBehaviour
+
+        private void Awake()
+        {
+            _gameRestartCommand.OnExecute += OnRestart;
+        }
+
+        private void OnDestroy()
+        {
+            _gameRestartCommand.OnExecute -= OnRestart;
+        }
+
+        #endregion
+
         public override void Add(int value)
         {
             if (value <= 0) return;
@@ -33,6 +58,12 @@ namespace Economy.Core
         public bool CanAfford(int value)
         {
             return this.value >= value;
+        }
+
+        private void OnRestart()
+        {
+            value = 0;
+            OnValueChanged();
         }
     }
 }

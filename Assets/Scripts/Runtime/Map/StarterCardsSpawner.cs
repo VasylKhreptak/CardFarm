@@ -41,14 +41,19 @@ namespace Runtime.Map
             _transform ??= GetComponent<Transform>();
         }
 
+        private void Awake()
+        {
+            _gameRestartCommand.OnExecute += OnRestart;
+        }
+
         private void Start()
         {
             SpawnCards();
         }
 
-        private void OnEnable()
+        private void OnDestroy()
         {
-            _gameRestartCommand.OnExecute += OnRestart;
+            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         private void OnDisable()

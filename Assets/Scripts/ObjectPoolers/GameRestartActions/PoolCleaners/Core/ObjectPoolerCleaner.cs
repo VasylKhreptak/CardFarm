@@ -26,12 +26,12 @@ namespace ObjectPoolers.GameRestartActions
             _targetPooler ??= GetComponent<ObjectPooler<T>>();
         }
 
-        private void OnEnable()
+        private void Awake()
         {
             _gameRestartCommand.OnExecute += _targetPooler.DisableAllObjects;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _gameRestartCommand.OnExecute -= _targetPooler.DisableAllObjects;
         }
