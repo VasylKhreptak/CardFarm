@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000000020489097, y: -0.0000000018626451}
-  m_SizeDelta: {x: 1.5242, y: 1.099}
+  m_AnchoredPosition: {x: -0.000000020489097, y: 0.017}
+  m_SizeDelta: {x: 0.5019, y: 0.6846}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &302493227
 CanvasRenderer:
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -94,11 +94,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.7
+  m_fontSize: 0.6
   m_fontSizeBase: 0.7
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -150,7 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1854063491}
   _tmp: {fileID: 302493226}
-  _postfix: 
 --- !u!1 &3222009503781789299
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,14 +210,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 54b8502585d246249bd1f7540a8bf2b9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1e881dfe79ec454e9e4971cce39c288, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -437,7 +436,7 @@ PrefabInstance:
     - target: {fileID: 1475933332041759479, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1749323702996037604, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -505,6 +504,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1854063491}
     - target: {fileID: 2575682665689227054, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 2581599301053927686, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -724,7 +728,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseHeight: 0.01
   _selectedHeight: 0.4
-  _heightOffset: 0.01
   _isWorker: 0
   _isFood: 0
   _isResourceNode: 0
@@ -748,6 +751,7 @@ MonoBehaviour:
     value: 0
   MouseTrigger: {fileID: 5368408886502043287}
   Collider: {fileID: 8735950013125923528}
+  RectTransform: {fileID: 564359370849849035}
   Card:
     value: 0
   Name:
@@ -798,8 +802,6 @@ MonoBehaviour:
     value: 1
   IsInsideCardsTable:
     value: 0
-  ClampedPosition:
-    value: {x: 0, y: 0, z: 0}
   IsTakingPartInRecipe:
     value: 0
   CurrentRecipe:
@@ -830,9 +832,15 @@ MonoBehaviour:
       ResourcesToRemove: 
       Results: []
   PositionShakeObserver: {fileID: 3044150550693373442}
-  CardSelectedHeightController: {fileID: 1323148708637221451}
+  CardSelectedHeightController: {fileID: 3124017055480539372}
   Price:
     value: 0
+--- !u!224 &564359370849849035 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 615042715106327018}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1211409701403973134 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1749323702996037604, guid: 7bf54413c6b39324e9a7ddfc51606634,
@@ -845,18 +853,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4308e373710841d59f48c3aa9d4d47ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1323148708637221451 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1933687641745398689, guid: 7bf54413c6b39324e9a7ddfc51606634,
-    type: 3}
-  m_PrefabInstance: {fileID: 615042715106327018}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d672ea825926493fb6d0ac424610f83a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3044150550693373442 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2501728543964782568, guid: 7bf54413c6b39324e9a7ddfc51606634,
@@ -867,6 +863,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b3887a6b8d44fd9a1ad3c9d575b3459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3124017055480539372 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2581599301053927686, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 615042715106327018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271d54f7da1d3fb4ca805f4ff5d4c66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &4321002090125372987 stripped
