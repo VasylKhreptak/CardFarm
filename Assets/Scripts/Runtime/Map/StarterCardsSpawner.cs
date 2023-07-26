@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
+using Extensions;
 using Runtime.Commands;
 using UniRx;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace Runtime.Map
         [SerializeField] private List<Card> _cards = new List<Card>();
         [SerializeField] private float _delay;
         [SerializeField] private float _interval;
-        [SerializeField] private float _range = 4;
+        [SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
 
         public event Action OnSpawnedAllCards;
 
@@ -40,6 +41,7 @@ namespace Runtime.Map
         private void OnValidate()
         {
             _transform ??= GetComponent<Transform>();
+            _spawnPoints.Resize(_cards.Count);
         }
 
         private void Awake()
@@ -77,9 +79,13 @@ namespace Runtime.Map
                 for (int i = 0; i < _cards.Count; i++)
                 {
                     Card card = _cards[i];
+                    Vector3 position = _spawnPoints[i].position;
                     Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
                     {
-                        CardData spawnedCard = SpawnCard(card);
+                        CardData spawnedCard = _cardSpawner.Spawn(card, _transform.position);
+                        spawnedCard.Animations.JumpAnimation.Play(position);
+                        spawnedCard.Animations.FlipAnimation.Play();
+
                         moveDuration = spawnedCard.Animations.JumpAnimation.Duration;
                     }).AddTo(_subscriptions);
 
@@ -94,15 +100,21 @@ namespace Runtime.Map
             }).AddTo(_subscriptions);
         }
 
-        private CardData SpawnCard(Card card)
-        {
-            return _cardSpawner.SpawnAndMove(card, _transform.position, tryJoinToExistingGroup: false);
-        }
-
         private void OnRestart()
         {
             _subscriptions.Clear();
             SpawnCards();
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            foreach (Transform spawnPoint in _spawnPoints)
+            {
+                if (spawnPoint == null) continue;
+
+                Gizmos.DrawSphere(spawnPoint.position, 0.5f);
+            }
         }
     }
 }

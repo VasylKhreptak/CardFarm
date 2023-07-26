@@ -50,5 +50,19 @@ namespace Extensions
 
             return true;
         }
+
+        public static void Resize<T>(this List<T> list, int size, T def = default(T))
+        {
+            int count = list.Count;
+
+            if (size < count)
+            {
+                list.RemoveRange(size, count - size);
+            }
+            else if (size > count)
+            {
+                list.AddRange(Enumerable.Repeat(def, size - count));
+            }
+        }
     }
 }

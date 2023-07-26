@@ -57,7 +57,7 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             for (int i = 0; i < questData.Recipe.TargetCards.Count; i++)
             {
                 SpawnCard(questData.Recipe.TargetCards[i]);
-
+                
                 if (i < questData.Recipe.TargetCards.Count - 1)
                 {
                     Spawn(QuestRecipePart.PlusSign);
@@ -79,6 +79,7 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             GameObject spawnedPart = _objectPooler.Spawn(part);
 
             spawnedPart.transform.SetAsLastSibling();
+            
             spawnedPart.transform.localScale = Vector3.one;
 
             return spawnedPart;
