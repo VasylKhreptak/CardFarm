@@ -7,6 +7,7 @@ using Economy;
 using Graphics.UI.Particles.Coins.Logic;
 using NaughtyAttributes;
 using Providers.Graphics;
+using Runtime.Commands;
 using Table.ManualCardSelectors;
 using UnityEngine;
 using Zenject;
@@ -26,6 +27,7 @@ namespace Runtime.Workers
         private CoinsBank _coinsBank;
         private CoinsSpender _coinsSpender;
         private Camera _camera;
+        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
         private void Constructor(DaysData daysData,
@@ -59,11 +61,13 @@ namespace Runtime.Workers
         private void StartObserving()
         {
             _daysData.Callbacks.onNewDayCome += StartFeedingWorkers;
+            _gameRestartCommand.OnExecute += StopFeedingWorkers;
         }
 
         private void StopObserving()
         {
             _daysData.Callbacks.onNewDayCome -= StartFeedingWorkers;
+            _gameRestartCommand.OnExecute -= StopFeedingWorkers;
         }
 
         [Button]
