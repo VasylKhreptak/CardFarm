@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using ObjectPoolers;
 using Quests.Data;
 using Quests.Logic.Core;
@@ -16,18 +14,22 @@ namespace Quests.Logic
         [Header("Preferences")]
         [SerializeField] private List<Quest> _questsToRegister = new List<Quest>();
 
-        private ReactiveCollection<QuestData> _leftQuests = new ReactiveCollection<QuestData>();
+        private ReactiveCollection<QuestData> _totalQuests = new ReactiveCollection<QuestData>();
         private ReactiveProperty<QuestData> _currentQuest = new ReactiveProperty<QuestData>();
-        private ReactiveCollection<Quest> _finishedQuests = new ReactiveCollection<Quest>();
+        private ReactiveCollection<QuestData> _completedQuests = new ReactiveCollection<QuestData>();
+        private ReactiveCollection<QuestData> _notCompletedQuests = new ReactiveCollection<QuestData>();
+        private ReactiveCollection<QuestData> _rewardedQuests = new ReactiveCollection<QuestData>();
+        private ReactiveCollection<QuestData> _nonRewardedQuests = new ReactiveCollection<QuestData>();
 
-        private IDisposable _questsCountSubscription;
+        private CompositeDisposable _questStateSubscriptions = new CompositeDisposable();
 
-        public IReadOnlyReactiveCollection<QuestData> LeftQuests => _leftQuests;
+        public IReadOnlyReactiveCollection<QuestData> TotalQuests => _totalQuests;
         public IReadOnlyReactiveProperty<QuestData> CurrentQuest => _currentQuest;
-        public IReadOnlyReactiveCollection<Quest> FinishedQuests => _finishedQuests;
+        public IReadOnlyReactiveCollection<QuestData> CompletedQuests => _completedQuests;
+        public IReadOnlyReactiveCollection<QuestData> NotCompletedQuests => _notCompletedQuests;
 
-        public event Action<Quest> onFinishedQuest;
-        public event Action<Quest> onStartedQuest;
+        public IReadOnlyReactiveCollection<QuestData> RewardedQuests => _rewardedQuests;
+        public IReadOnlyReactiveCollection<QuestData> NonRewardedQuests => _nonRewardedQuests;
 
         private QuestsObjectPooler _questsObjectPooler;
         private GameRestartCommand _gameRestartCommand;
@@ -43,31 +45,18 @@ namespace Quests.Logic
 
         private void Awake()
         {
-            StartObservingQuestsCount();
             CreateQuests();
+            StartObservingTotalQuests();
+
             _gameRestartCommand.OnExecute += OnRestart;
         }
         private void OnDestroy()
         {
-            StopObservingQuestsCount();
             _gameRestartCommand.OnExecute -= OnRestart;
+            StopObservingTotalQuests();
         }
 
         #endregion
-
-        public void RegisterQuest(QuestData questData)
-        {
-            _leftQuests.Add(questData);
-            _finishedQuests.Remove(questData.Quest);
-            onStartedQuest?.Invoke(questData.Quest);
-        }
-
-        public void UnregisterQuest(QuestData questData)
-        {
-            _leftQuests.Remove(questData);
-            _finishedQuests.Add(questData.Quest);
-            onFinishedQuest?.Invoke(questData.Quest);
-        }
 
         private void CreateQuests()
         {
@@ -75,72 +64,102 @@ namespace Quests.Logic
             {
                 QuestData questData = _questsObjectPooler.Spawn(questToRegister).GetComponent<QuestData>();
 
-                RegisterQuest(questData);
+                _totalQuests.Add(questData);
             }
         }
 
-        private void StartObservingQuestsCount()
+        private void StartObservingTotalQuests()
         {
-            StopObservingQuestsCount();
-            _questsCountSubscription = _leftQuests.ObserveCountChanged().Subscribe(OnQuestsCountUpdated);
+            StopObservingTotalQuests();
+
+            foreach (var quest in _totalQuests)
+            {
+                quest.IsCompleted.Subscribe(_ => OnQuestUpdated(quest)).AddTo(_questStateSubscriptions);
+                quest.TookReward.Subscribe(_ => OnQuestUpdated(quest)).AddTo(_questStateSubscriptions);
+            }
         }
 
-        private void StopObservingQuestsCount()
+        private void OnQuestUpdated(QuestData questData)
         {
-            _questsCountSubscription?.Dispose();
-        }
+            if (questData.IsCompleted.Value)
+            {
+                _completedQuests.Add(questData);
+                _notCompletedQuests.Remove(questData);
 
-        private void OnQuestsCountUpdated(int questsCount)
-        {
+                if (questData.TookReward.Value)
+                {
+                    _rewardedQuests.Add(questData);
+                    _nonRewardedQuests.Remove(questData);
+                }
+                else
+                {
+                    _rewardedQuests.Remove(questData);
+                    _nonRewardedQuests.Add(questData);
+                }
+            }
+            else
+            {
+                _completedQuests.Remove(questData);
+                _notCompletedQuests.Add(questData);
+                _rewardedQuests.Remove(questData);
+                _nonRewardedQuests.Remove(questData);
+            }
+
             UpdateCurrentQuest();
+            Debug.Log("Current quest: " + _currentQuest.Value.Quest);
         }
 
         private void UpdateCurrentQuest()
         {
-            TryGetAppropriateQuest(out QuestData questData);
-            _currentQuest.Value = questData;
-        }
+            QuestData quest = null;
 
-        private bool TryGetAppropriateQuest(out QuestData questData)
-        {
-            if (_leftQuests.Count == 0)
+            foreach (var possibleQuest in _totalQuests)
             {
-                questData = null;
-                return false;
-            }
-
-            foreach (var possibleQuest in _leftQuests)
-            {
-                if (possibleQuest.TookReward.Value == false)
+                if (possibleQuest.IsCompleted.Value == false && possibleQuest.TookReward.Value == false)
                 {
-                    questData = possibleQuest;
-                    return true;
+                    quest = possibleQuest;
+                    break;
                 }
             }
 
-            questData = null;
-            return false;
+            _currentQuest.Value = quest;
         }
 
-        public bool IsQuestFinished(Quest quest)
+        private void StopObservingTotalQuests()
         {
-            return _finishedQuests.Contains(quest);
-        }
-
-        public bool IsQuestActive(Quest quest)
-        {
-            QuestData questData = _leftQuests.FirstOrDefault(q => q.Quest == quest);
-
-            return questData != null;
+            _questStateSubscriptions.Clear();
         }
 
         private void OnRestart()
         {
+            StopObservingTotalQuests();
+
             _questsObjectPooler.DisableAllObjects();
-            _currentQuest.Value = null;
-            _leftQuests.Clear();
-            _finishedQuests.Clear();
+
+            _totalQuests.Clear();
+            _completedQuests.Clear();
+            _notCompletedQuests.Clear();
+            _rewardedQuests.Clear();
+            _nonRewardedQuests.Clear();
+
             CreateQuests();
+            StartObservingTotalQuests();
+        }
+
+        public bool TryGetQuestData(Quest quest, out QuestData questData)
+        {
+            questData = null;
+
+            foreach (var possibleQuestData in _totalQuests)
+            {
+                if (possibleQuestData.Quest == quest)
+                {
+                    questData = possibleQuestData;
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

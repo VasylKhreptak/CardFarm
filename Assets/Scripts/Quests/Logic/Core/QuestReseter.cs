@@ -1,6 +1,4 @@
-﻿using System;
-using Quests.Data;
-using UniRx;
+﻿using Quests.Data;
 using UnityEngine;
 
 namespace Quests.Logic.Core
@@ -10,8 +8,6 @@ namespace Quests.Logic.Core
         [Header("References")]
         [SerializeField] private QuestData _questData;
 
-        private IDisposable _tookRewardSubscription;
-
         #region MonoBehaviour
 
         private void OnValidate()
@@ -19,49 +15,12 @@ namespace Quests.Logic.Core
             _questData ??= GetComponent<QuestData>();
         }
 
-        private void OnEnable()
-        {
-            StartObserving();
-        }
-
         private void OnDisable()
         {
-            StopObserving();
             ResetData();
         }
 
         #endregion
-
-        private void StartObserving()
-        {
-            StopObserving();
-            StartObservingTookReward();
-        }
-
-        private void StopObserving()
-        {
-            StopObservingTookReward();
-        }
-
-        private void StartObservingTookReward()
-        {
-            StopObservingTookReward();
-            _tookRewardSubscription = _questData.TookReward.Subscribe(OnTookRewardUpdated);
-        }
-
-        private void StopObservingTookReward()
-        {
-            _tookRewardSubscription?.Dispose();
-        }
-
-        private void OnTookRewardUpdated(bool tookReward)
-        {
-            if (tookReward)
-            {
-                _questData.gameObject.SetActive(false);
-                ResetData();
-            }
-        }
 
         private void ResetData()
         {

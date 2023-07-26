@@ -25,17 +25,17 @@ namespace Quests.Graphics.VisualElements
 
         private Sequence _showSequence;
 
-        private IDisposable _currentQuestSubscription;
+        private IDisposable _nonRewardedQuestSubscription;
 
-        private CurrentQuestCompletionObserver _currentQuestCompletionObserver;
         private GameRestartCommand _gameRestartCommand;
+        private QuestsManager _questsManager;
 
         [Inject]
-        private void Constructor(CurrentQuestCompletionObserver currentQuestCompletionObserver,
-            GameRestartCommand gameRestartCommand)
+        private void Constructor(GameRestartCommand gameRestartCommand,
+            QuestsManager questsManager)
         {
-            _currentQuestCompletionObserver = currentQuestCompletionObserver;
             _gameRestartCommand = gameRestartCommand;
+            _questsManager = questsManager;
         }
 
         #region MonoBehaviour
@@ -47,14 +47,14 @@ namespace Quests.Graphics.VisualElements
 
         private void OnEnable()
         {
-            StartObservingQuestCompletion();
+            StartObserving();
             Disable();
             SetParameters(_startScale, 0f);
         }
 
         private void OnDisable()
         {
-            StopObservingQuestCompletion();
+            StopObserving();
             KillAnimation();
         }
 
@@ -65,20 +65,26 @@ namespace Quests.Graphics.VisualElements
 
         #endregion
 
-        private void StartObservingQuestCompletion()
+        private void StartObserving()
         {
-            StopObservingQuestCompletion();
-            _currentQuestSubscription = _currentQuestCompletionObserver.IsCurrentQuestCompleted.Subscribe(UpdateQuestState);
+            StopObserving();
+
+            _nonRewardedQuestSubscription = _questsManager.NonRewardedQuests
+                .ObserveCountChanged()
+                .DoOnSubscribe(UpdatePanelState)
+                .Subscribe(_ => UpdatePanelState());
         }
 
-        private void StopObservingQuestCompletion()
+        private void StopObserving()
         {
-            _currentQuestSubscription?.Dispose();
+            _nonRewardedQuestSubscription?.Dispose();
         }
 
-        private void UpdateQuestState(bool isCurrentQuestCompleted)
+        private void UpdatePanelState()
         {
-            if (isCurrentQuestCompleted)
+            int nonRewardedQuestsCount = _questsManager.NonRewardedQuests.Count;
+
+            if (nonRewardedQuestsCount > 0)
             {
                 Show();
             }

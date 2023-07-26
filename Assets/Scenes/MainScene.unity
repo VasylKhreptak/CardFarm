@@ -150,8 +150,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1580158983}
+  m_Children: []
   m_Father: {fileID: 1619450391}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2261,6 +2260,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802f4b52c60e49e29bf1e97ed538c913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCurrentQuestCompleted:
+    value: 0
+  _questsManager: {fileID: 0}
 --- !u!1 &557523197
 GameObject:
   m_ObjectHideFlags: 0
@@ -4584,7 +4586,6 @@ GameObject:
   m_Component:
   - component: {fileID: 956618057}
   - component: {fileID: 956618058}
-  - component: {fileID: 956618059}
   m_Layer: 0
   m_Name: CameraMoveLogic
   m_TagString: Untagged
@@ -4623,19 +4624,6 @@ MonoBehaviour:
   _speed: 1
   _cardCenteringSpeed: 1
   CanMove: 1
---- !u!114 &956618059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956618056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27cf641c2c1b4820a517f4c2764c8cf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _allowToMoveAfterQuestNumber: 1
 --- !u!1 &971026833
 GameObject:
   m_ObjectHideFlags: 0
@@ -9331,51 +9319,6 @@ MonoBehaviour:
   _maxSpawnInterval: 20
   _spawnFromQuest: 6
   _maxOrders: 5
---- !u!1 &1580158982
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1580158983}
-  - component: {fileID: 1580158984}
-  m_Layer: 0
-  m_Name: CurrentQuestCompletionObserverInstaller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1580158983
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580158982}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 14602051}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1580158984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580158982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe551f95be4f4c6ca9eb00210fa7339f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToBind: {fileID: 545099067}
 --- !u!1 &1585800379
 GameObject:
   m_ObjectHideFlags: 0
@@ -9524,7 +9467,6 @@ MonoBehaviour:
   - {fileID: 1175873548}
   - {fileID: 2097382617}
   - {fileID: 2032828687}
-  - {fileID: 1580158984}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:

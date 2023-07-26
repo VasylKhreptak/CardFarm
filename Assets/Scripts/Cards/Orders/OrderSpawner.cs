@@ -3,6 +3,7 @@ using System.Linq;
 using Cards.Core;
 using Cards.Logic.Spawn;
 using Constraints;
+using Quests.Data;
 using Quests.Logic;
 using Quests.Logic.Core;
 using Table.Core;
@@ -22,6 +23,8 @@ namespace Cards.Orders
         [SerializeField] private int _maxOrders = 5;
 
         private IDisposable _spawnSubscription;
+        private IDisposable _questAddSubscription;
+        private IDisposable _questCompletionSubscription;
 
         private QuestsManager _questsManager;
         private CardsSelector _cardsSelector;
@@ -62,39 +65,48 @@ namespace Cards.Orders
         {
             StopObservingQuests();
 
-            if (_questsManager.IsQuestFinished(_spawnFromQuest))
+            if (_questsManager.TryGetQuestData(_spawnFromQuest, out QuestData quest))
             {
-                StartSpawningOrders();
+                StartObservingQuestCompletion(quest);
             }
             else
             {
-                StopSpawningOrders();
+                _questAddSubscription = _questsManager.TotalQuests.ObserveAdd().Subscribe(addEvent =>
+                {
+                    if (addEvent.Value.Quest == _spawnFromQuest)
+                    {
+                        StartObservingQuestCompletion(addEvent.Value);
+                        _questAddSubscription?.Dispose();
+                    }
+                });
             }
+        }
 
-            _questsManager.onFinishedQuest += OnFinishedQuest;
-            _questsManager.onStartedQuest += OnStartedQuest;
+        private void StartObservingQuestCompletion(QuestData quest)
+        {
+            StopObservingQuestCompletion();
+            _questCompletionSubscription = quest.IsCompleted.Subscribe(isCompleted =>
+            {
+                if (isCompleted)
+                {
+                    StartSpawningOrders();
+                }
+                else
+                {
+                    StopSpawningOrders();
+                }
+            });
+        }
+
+        private void StopObservingQuestCompletion()
+        {
+            _questCompletionSubscription?.Dispose();
         }
 
         private void StopObservingQuests()
         {
-            _questsManager.onFinishedQuest -= OnFinishedQuest;
-            _questsManager.onStartedQuest -= OnStartedQuest;
-        }
-
-        private void OnFinishedQuest(Quest quest)
-        {
-            if (quest == _spawnFromQuest)
-            {
-                StartSpawningOrders();
-            }
-        }
-
-        private void OnStartedQuest(Quest quest)
-        {
-            if (quest == _spawnFromQuest)
-            {
-                StopSpawningOrders();
-            }
+            StopObservingQuestCompletion();
+            _questAddSubscription?.Dispose();
         }
 
         private void StartSpawningOrders()

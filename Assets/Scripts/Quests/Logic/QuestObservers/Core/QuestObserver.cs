@@ -1,6 +1,5 @@
 ﻿using Quests.Data;
 using UnityEngine;
-using Zenject;
 
 namespace Quests.Logic.QuestObservers.Core
 {
@@ -8,14 +7,6 @@ namespace Quests.Logic.QuestObservers.Core
     {
         [Header("References")]
         [SerializeField] protected QuestData _questData;
-
-        private QuestsManager _questsManager;
-
-        [Inject]
-        private void Constructor(QuestsManager questsManager)
-        {
-            _questsManager = questsManager;
-        }
 
         #region MonoBehaviour
 
@@ -31,7 +22,6 @@ namespace Quests.Logic.QuestObservers.Core
 
         private void OnDisable()
         {
-            _questsManager.UnregisterQuest(_questData);
             StopObserving();
         }
 

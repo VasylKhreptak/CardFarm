@@ -26,20 +26,20 @@ namespace Quests.Graphics.VisualElements
 
         private Sequence _showSequence;
 
-        private IDisposable _currentQuestSubscription;
+        private CompositeDisposable _questsSubscriptions = new CompositeDisposable();
 
-        private CurrentQuestCompletionObserver _currentQuestCompletionObserver;
         private GameRestartCommand _gameRestartCommand;
         private StarterCardsSpawner _starterCardsSpawner;
+        private QuestsManager _questsManager;
 
         [Inject]
-        private void Constructor(CurrentQuestCompletionObserver currentQuestCompletionObserver,
-            GameRestartCommand gameRestartCommand,
-            StarterCardsSpawner starterCardsSpawner)
+        private void Constructor(GameRestartCommand gameRestartCommand,
+            StarterCardsSpawner starterCardsSpawner,
+            QuestsManager questsManager)
         {
-            _currentQuestCompletionObserver = currentQuestCompletionObserver;
             _gameRestartCommand = gameRestartCommand;
             _starterCardsSpawner = starterCardsSpawner;
+            _questsManager = questsManager;
         }
 
         #region MonoBehaviour
@@ -52,7 +52,6 @@ namespace Quests.Graphics.VisualElements
 
         private void OnEnable()
         {
-            StartObservingQuestCompletion();
             Disable();
             SetScale(_startScale);
             SetAlpha(0f);
@@ -60,7 +59,7 @@ namespace Quests.Graphics.VisualElements
 
         private void OnDisable()
         {
-            StopObservingQuestCompletion();
+            StopObservingQuests();
             KillAnimation();
         }
 
@@ -72,26 +71,32 @@ namespace Quests.Graphics.VisualElements
 
         #endregion
 
-        private void StartObservingQuestCompletion()
+        private void StartObservingQuests()
         {
-            StopObservingQuestCompletion();
-            _currentQuestSubscription = _currentQuestCompletionObserver.IsCurrentQuestCompleted.Subscribe(UpdateQuestState);
+            StopObservingQuests();
+
+            _questsManager.CurrentQuest.Subscribe(_ => UpdatePanelState()).AddTo(_questsSubscriptions);
+            _questsManager.NonRewardedQuests
+                .ObserveCountChanged()
+                .DoOnSubscribe(UpdatePanelState)
+                .Subscribe(_ => UpdatePanelState())
+                .AddTo(_questsSubscriptions);
         }
 
-        private void StopObservingQuestCompletion()
+        private void StopObservingQuests()
         {
-            _currentQuestSubscription?.Dispose();
+            _questsSubscriptions.Clear();
         }
 
-        private void UpdateQuestState(bool isCurrentQuestCompleted)
+        private void UpdatePanelState()
         {
-            if (isCurrentQuestCompleted)
+            if (_questsManager.CurrentQuest.Value != null && _questsManager.NonRewardedQuests.Count == 0)
             {
-                Hide();
+                Show();
             }
             else
             {
-                Show();
+                Hide();
             }
         }
 
@@ -146,13 +151,15 @@ namespace Quests.Graphics.VisualElements
         {
             SetScale(_startScale);
             SetAlpha(0f);
-            StartObservingQuestCompletion();
+            StartObservingQuests();
         }
 
         private void OnRestart()
         {
             Disable();
-            StopObservingQuestCompletion();
+            SetScale(_startScale);
+            SetAlpha(0f);
+            StopObservingQuests();
         }
     }
 }

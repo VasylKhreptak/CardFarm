@@ -1,6 +1,9 @@
-﻿using Cards.Zones.BuyZone.Data;
+﻿using System;
+using Cards.Zones.BuyZone.Data;
+using Quests.Data;
 using Quests.Logic;
 using Quests.Logic.Core;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -15,6 +18,9 @@ namespace Cards.Zones.BuyZone.Logic.Updaters
         [SerializeField] private Quest _targetQuest;
 
         private QuestsManager _questsManager;
+
+        private IDisposable _questAddSubscription;
+        private IDisposable _questCompletionSubscription;
 
         [Inject]
         private void Constructor(QuestsManager questsManager)
@@ -50,29 +56,41 @@ namespace Cards.Zones.BuyZone.Logic.Updaters
         {
             StopObserving();
 
-            _buyZoneData.IsLocked.Value = _questsManager.IsQuestFinished(_targetQuest) == false;
-            _questsManager.onStartedQuest += OnStartedQuest;
-            _questsManager.onFinishedQuest += OnFinishedQuest;
+            if (_questsManager.TryGetQuestData(_targetQuest, out QuestData quest))
+            {
+                StartObservingQuestCompletion(quest);
+            }
+            else
+            {
+                _questAddSubscription = _questsManager.TotalQuests.ObserveAdd().Subscribe(addEvent =>
+                {
+                    if (addEvent.Value.Quest == _targetQuest)
+                    {
+                        StartObservingQuestCompletion(addEvent.Value);
+                        _questAddSubscription?.Dispose();
+                    }
+                });
+            }
+        }
+
+        private void StartObservingQuestCompletion(QuestData quest)
+        {
+            StopObservingQuestCompletion();
+            _questCompletionSubscription = quest.IsCompleted.Subscribe(isCompleted =>
+            {
+                _buyZoneData.IsLocked.Value = !isCompleted;
+            });
+        }
+
+        private void StopObservingQuestCompletion()
+        {
+            _questCompletionSubscription?.Dispose();
         }
 
         private void StopObserving()
         {
-            _questsManager.onStartedQuest -= OnStartedQuest;
-            _questsManager.onFinishedQuest -= OnFinishedQuest;
-        }
-
-        private void OnStartedQuest(Quest quest)
-        {
-            if (quest != _targetQuest) return;
-
-            _buyZoneData.IsLocked.Value = true;
-        }
-
-        private void OnFinishedQuest(Quest quest)
-        {
-            if (quest != _targetQuest) return;
-
-            _buyZoneData.IsLocked.Value = false;
+            _questAddSubscription?.Dispose();
+            _questCompletionSubscription?.Dispose();
         }
     }
 }
