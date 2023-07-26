@@ -13395,7 +13395,7 @@ PrefabInstance:
     - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: Name.value
-      value: Humble Beginnings
+      value: Booster
       objectReference: {fileID: 0}
     - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
@@ -13565,7 +13565,7 @@ PrefabInstance:
     - target: {fileID: 7943049280611862358, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: m_Name
-      value: HumbleBeginningsBoosterBuyZone
+      value: BoosterBuyZone
       objectReference: {fileID: 0}
     - target: {fileID: 7943049280611862358, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
@@ -13705,7 +13705,12 @@ PrefabInstance:
     - target: {fileID: 7943049282139556783, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: m_text
-      value: Humble Beginnings
+      value: Booster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943049282139556783, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7943049282139556785, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
