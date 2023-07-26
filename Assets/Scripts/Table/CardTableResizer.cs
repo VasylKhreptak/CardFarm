@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using Cards.Core;
+using Runtime.Commands;
 using Table.Core;
 using UniRx;
 using UnityEngine;
@@ -6,7 +9,7 @@ using Zenject;
 
 namespace Table
 {
-    public class CardTableSizeController : MonoBehaviour
+    public class CardTableResizer : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private RectTransform _tableRectTransform;
@@ -14,16 +17,21 @@ namespace Table
         [Header("Preferences")]
         [SerializeField] private int _increaseEach;
         [SerializeField] private Vector2 _increaseByPercent;
+        [SerializeField] private List<Card> _blackList;
 
         private IDisposable _cardsCountChangedSubscription;
 
         private int _maxCardsCount;
+        private Vector2 _initialSizeDelta;
 
+        private GameRestartCommand _gameRestartCommand;
         private CardsTable _cardsTable;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable)
+        private void Constructor(GameRestartCommand gameRestartCommand,
+            CardsTable cardsTable)
         {
+            _gameRestartCommand = gameRestartCommand;
             _cardsTable = cardsTable;
         }
 
@@ -34,6 +42,12 @@ namespace Table
             _tableRectTransform ??= GetComponent<RectTransform>();
         }
 
+        private void Awake()
+        {
+            _initialSizeDelta = _tableRectTransform.sizeDelta;
+            _gameRestartCommand.OnExecute += ResetSize;
+        }
+
         private void OnEnable()
         {
             StartObserving();
@@ -42,6 +56,11 @@ namespace Table
         private void OnDisable()
         {
             StopObserving();
+        }
+
+        private void OnDestroy()
+        {
+            _gameRestartCommand.OnExecute -= ResetSize;
         }
 
         #endregion
@@ -61,7 +80,13 @@ namespace Table
 
         private void OnCardsCountChanged(int count)
         {
-            if (count == 0) return;
+            count = PassThroughBlackList(count);
+
+            if (count == 0)
+            {
+                _maxCardsCount = 0;
+                return;
+            }
 
             if (count > _maxCardsCount)
             {
@@ -79,6 +104,27 @@ namespace Table
                 sizeDelta.y += sizeDelta.y * _increaseByPercent.y;
                 _tableRectTransform.sizeDelta = sizeDelta;
             }
+        }
+
+        private int PassThroughBlackList(int count)
+        {
+            int blacklistCardsCount = 0;
+
+            foreach (var card in _cardsTable.Cards)
+            {
+                if (_blackList.Contains(card.Card.Value))
+                {
+                    blacklistCardsCount++;
+                }
+            }
+
+            return Mathf.Max(0, count - blacklistCardsCount);
+        }
+
+        private void ResetSize()
+        {
+            _maxCardsCount = 0;
+            _tableRectTransform.sizeDelta = _initialSizeDelta;
         }
     }
 }

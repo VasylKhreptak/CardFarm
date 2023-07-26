@@ -1,4 +1,5 @@
-﻿using Cards.Core;
+﻿using System.Linq;
+using Cards.Core;
 using Cards.Data;
 using UniRx;
 using UnityEngine;
@@ -104,6 +105,11 @@ namespace Table.Core
             }
 
             return 0;
+        }
+
+        public int GetCount()
+        {
+            return _selectedCardsMap.Sum(x => x.Value.Count);
         }
     }
 }
