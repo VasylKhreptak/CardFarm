@@ -94,9 +94,8 @@ namespace Cards.Logic.Spawn
                 return spawnedCard;
             }
 
-            Bounds cardBounds = spawnedCard.Collider.bounds;
-            cardBounds.center = position;
-            Vector3 moveToPosition = targetPosition ?? _cardsTableBounds.GetRandomPositionInRange(cardBounds, _minRange, _maxRange);
+            RectTransform spawnedCardRect = spawnedCard.RectTransform;
+            Vector3 moveToPosition = targetPosition ?? _cardsTableBounds.GetRandomPositionInRange(spawnedCardRect, _minRange, _maxRange);
 
             if (jump)
             {

@@ -40,10 +40,11 @@ namespace Cards.Logic.Updaters
 
         private void OnCardsUpdated()
         {
-            List<CardData> GroupCards = _cardData.FindGroupCards();
+            List<CardData> groupCards = _cardData.FindGroupCards();
 
-            _cardData.GroupCards = GroupCards;
-            _cardData.Callbacks.onGroupCardsListUpdated?.Invoke();
+            _cardData.GroupCards = groupCards;
+            _cardData.Callbacks.onGroupCardsListUpdatedNonArgs?.Invoke();
+            _cardData.Callbacks.onGroupCardsListUpdated?.Invoke(groupCards);
         }
     }
 }

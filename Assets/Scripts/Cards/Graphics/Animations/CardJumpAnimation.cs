@@ -22,11 +22,11 @@ namespace Cards.Graphics.Animations
         [SerializeField] private float _jumpPower = 1f;
         [SerializeField] private int _numberOfJumps = 1;
         [SerializeField] private Ease _jumpEase;
-        
+
         private Tween _animation;
 
         public float Duration => _duration;
-        
+
         private CardsTableBounds _cardsTableBounds;
 
         [Inject]
@@ -93,9 +93,7 @@ namespace Cards.Graphics.Animations
             randomDirection.y = 0;
             float range = Random.Range(minRange, maxRange);
             Vector3 targetPosition = _cardData.transform.position + randomDirection * range;
-            Bounds bounds = _cardData.Collider.bounds;
-            bounds.center = targetPosition;
-            targetPosition = _cardsTableBounds.Clamp(bounds);
+            targetPosition = _cardsTableBounds.Clamp(_cardData.RectTransform, targetPosition);
             Play(targetPosition, duration, onComplete);
         }
 

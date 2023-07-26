@@ -92,7 +92,7 @@ namespace Cards.Entities.Animals.Cattle.Logic
 
         private void JumpInRandomDirection()
         {
-            Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
+            Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.RectTransform, _minRange, _maxRange);
 
             _cardData.Animations.JumpAnimation.Play(position);
 

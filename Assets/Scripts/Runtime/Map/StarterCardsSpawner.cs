@@ -19,6 +19,7 @@ namespace Runtime.Map
         [SerializeField] private List<Card> _cards = new List<Card>();
         [SerializeField] private float _delay;
         [SerializeField] private float _interval;
+        [SerializeField] private float _range = 4;
 
         public event Action OnSpawnedAllCards;
 

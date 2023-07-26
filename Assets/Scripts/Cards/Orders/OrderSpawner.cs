@@ -123,9 +123,9 @@ namespace Cards.Orders
         {
             if (_cardsTable.Cards.Count == 0) return;
 
-            Bounds bounds = _cardsTable.Cards.First().Collider.bounds;
+            RectTransform rect = _cardsTable.Cards.First().RectTransform;
 
-            Vector3 randomPosition = _upperZoneBounds.GetRandomPoint(bounds);
+            Vector3 randomPosition = _upperZoneBounds.GetRandomPoint(rect);
 
             _cardSpawner.SpawnAndMove(Card.Order, randomPosition, randomPosition, false);
         }

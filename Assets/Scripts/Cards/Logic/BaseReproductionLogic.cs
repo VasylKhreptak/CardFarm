@@ -105,7 +105,7 @@ namespace Cards.Logic
             {
                 groupCard.UnlinkFromUpper();
 
-                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.Collider.bounds, _minRange, _maxRange);
+                Vector3 position = _cardsTableBounds.GetRandomPositionInRange(_cardData.RectTransform, _minRange, _maxRange);
 
                 groupCard.Animations.JumpAnimation.Play(position);
             }

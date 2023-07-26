@@ -1,6 +1,7 @@
 ﻿using System;
 using Cards.Core;
 using Cards.Zones.Data;
+using UniRx;
 using UnityEngine;
 
 namespace Cards.Zones.SellZone.Data
@@ -15,5 +16,7 @@ namespace Cards.Zones.SellZone.Data
         public Transform CoinSpawnPoint;
 
         public Action<Card> onSoldCard;
+
+        public IntReactiveProperty SelectedCardsTotalPrice = new IntReactiveProperty(0);
     }
 }

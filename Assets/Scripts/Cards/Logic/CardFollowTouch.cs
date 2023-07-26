@@ -113,9 +113,7 @@ namespace Cards.Logic
                 cardPosition = Vector3.Lerp(cardPosition, targetCardPosition, _speed * Time.deltaTime);
                 cardPosition.y = _cardData.Height.Value;
 
-                Bounds bounds = _cardData.Collider.bounds;
-                bounds.center = cardPosition;
-                Vector3 clampedPosition = _cardsTableBounds.Clamp(bounds);
+                Vector3 clampedPosition = _cardsTableBounds.Clamp(_cardData.RectTransform, cardPosition);
                 clampedPosition.y = startHeight;
                 _cardData.transform.position = clampedPosition;
             }

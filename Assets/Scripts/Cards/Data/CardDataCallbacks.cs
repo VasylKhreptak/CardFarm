@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cards.Core;
 using ScriptableObjects.Scripts.Cards.Recipes;
 
@@ -12,7 +13,8 @@ namespace Cards.Data
         public Action onAnyUpperCardUpdated;
         public Action onUpperCardsListUpdated;
 
-        public Action onGroupCardsListUpdated;
+        public Action onGroupCardsListUpdatedNonArgs;
+        public Action<List<CardData>> onGroupCardsListUpdated;
         public Action onBecameHeadOfGroup;
 
         public Action<Card> OnReproduced;

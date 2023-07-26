@@ -62,6 +62,8 @@ namespace Cards.Data
 
         public Collider Collider;
 
+        public RectTransform RectTransform;
+
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ColorReactiveProperty NameColor = new ColorReactiveProperty(Color.white);
@@ -98,7 +100,6 @@ namespace Cards.Data
         public BoolReactiveProperty CanBeSelected = new BoolReactiveProperty();
 
         public BoolReactiveProperty IsInsideCardsTable = new BoolReactiveProperty();
-        public Vector3ReactiveProperty ClampedPosition = new Vector3ReactiveProperty();
         public BoolReactiveProperty IsTakingPartInRecipe = new BoolReactiveProperty();
 
         public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>(null);

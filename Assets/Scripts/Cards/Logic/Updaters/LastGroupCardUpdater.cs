@@ -39,12 +39,12 @@ namespace Cards.Logic.Updaters
         {
             StopObservingGroupCards();
 
-            _cardData.Callbacks.onGroupCardsListUpdated += OnGroupCardsUpdated;
+            _cardData.Callbacks.onGroupCardsListUpdatedNonArgs += OnGroupCardsUpdated;
         }
 
         private void StopObservingGroupCards()
         {
-            _cardData.Callbacks.onGroupCardsListUpdated -= OnGroupCardsUpdated;
+            _cardData.Callbacks.onGroupCardsListUpdatedNonArgs -= OnGroupCardsUpdated;
         }
 
         private void OnGroupCardsUpdated()

@@ -39,7 +39,7 @@ namespace Cards.Logic.Updaters
 
         private void UpdateValue()
         {
-            _cardData.IsInsideCardsTable.Value = _cardsTableBounds.IsInside(_cardData.Collider.bounds);
+            _cardData.IsInsideCardsTable.Value = _cardsTableBounds.IsInside(_cardData.RectTransform);
         }
     }
 }

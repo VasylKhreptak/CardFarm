@@ -91,7 +91,7 @@ namespace Cards.Graphics.Animations
             Vector3 targetPosition = _cardData.transform.position + randomDirection * range;
             Bounds bounds = _cardData.Collider.bounds;
             bounds.center = targetPosition;
-            targetPosition = _cardsTableBounds.Clamp(bounds);
+            targetPosition = _cardsTableBounds.Clamp(_cardData.RectTransform, targetPosition);
             Play(targetPosition, duration, onComplete);
         }
 
