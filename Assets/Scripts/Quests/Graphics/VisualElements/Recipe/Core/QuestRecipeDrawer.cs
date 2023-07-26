@@ -1,5 +1,6 @@
 ﻿using System;
-using ObjectPoolers;
+using System.Collections.Generic;
+using Extensions;
 using Quests.Data;
 using Quests.Graphics.VisualElements.Recipe.RecipeParts.Card.Data;
 using Quests.Logic;
@@ -12,16 +13,28 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
     public class QuestRecipeDrawer : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private QuestRecipePartPooler _objectPooler;
+        [SerializeField] private Transform _transform;
+
+        [Header("Preferences")]
+        [SerializeField] private GameObject _equalsSign;
+        [SerializeField] private GameObject _plusSign;
+        [SerializeField] private GameObject _cardTemplate;
 
         private IDisposable _subscription;
 
         private QuestsManager _questsManager;
+        private DiContainer _container;
 
         [Inject]
-        private void Constructor(QuestsManager questsManager)
+        private void Constructor(QuestsManager questsManager, DiContainer container)
         {
             _questsManager = questsManager;
+            _container = container;
+        }
+
+        private void OnValidate()
+        {
+            _transform ??= GetComponent<Transform>();
         }
 
         private void OnEnable()
@@ -52,42 +65,47 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             if (questData == null || questData.Recipe.IsValid() == false) return;
 
             SpawnCard(questData.Recipe.Result);
-            Spawn(QuestRecipePart.EqualsSign);
+            SpawnPrefab(_equalsSign);
 
             for (int i = 0; i < questData.Recipe.TargetCards.Count; i++)
             {
                 SpawnCard(questData.Recipe.TargetCards[i]);
-                
+
                 if (i < questData.Recipe.TargetCards.Count - 1)
                 {
-                    Spawn(QuestRecipePart.PlusSign);
+                    SpawnPrefab(_plusSign);
                 }
             }
         }
 
         private void SpawnCard(QuestRecipeCardData cardData)
         {
-            GameObject spawnedCard = Spawn(QuestRecipePart.Card);
+            GameObject spawnedCard = SpawnPrefab(_cardTemplate);
 
             QuestRecipeCardDataHolder dataHolder = spawnedCard.GetComponent<QuestRecipeCardDataHolder>();
 
             dataHolder.CopyFrom(cardData);
         }
 
-        private GameObject Spawn(QuestRecipePart part)
+        private GameObject SpawnPrefab(GameObject prefab)
         {
-            GameObject spawnedPart = _objectPooler.Spawn(part);
+            GameObject instance = _container.InstantiatePrefab(prefab);
 
-            spawnedPart.transform.SetAsLastSibling();
-            
-            spawnedPart.transform.localScale = Vector3.one;
+            instance.transform.SetParent(_transform, false);
+            instance.transform.SetAsLastSibling();
+            instance.transform.localScale = Vector3.one;
 
-            return spawnedPart;
+            return instance;
         }
 
         private void ClearRecipe()
         {
-            _objectPooler.DisableAllObjects();
+            List<GameObject> children = _transform.gameObject.GetChildren();
+
+            foreach (var child in children)
+            {
+                Destroy(child);
+            }
         }
     }
 }
