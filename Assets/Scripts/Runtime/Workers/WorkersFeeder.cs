@@ -34,13 +34,15 @@ namespace Runtime.Workers
             WorkersSelector workersSelector,
             CoinsBank coinsBank,
             CoinsSpender coinsSpender,
-            CameraProvider cameraProvider)
+            CameraProvider cameraProvider,
+            GameRestartCommand gameRestartCommand)
         {
             _daysData = daysData;
             _workersSelector = workersSelector;
             _coinsBank = coinsBank;
             _coinsSpender = coinsSpender;
             _camera = cameraProvider.Value;
+            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
