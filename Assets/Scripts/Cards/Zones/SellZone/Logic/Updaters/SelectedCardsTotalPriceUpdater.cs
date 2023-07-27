@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cards.Data;
 using Cards.Zones.SellZone.Data;
 using CardsTable;
@@ -99,13 +100,16 @@ namespace Cards.Zones.SellZone.Logic.Updaters
         {
             int price = 0;
 
-            foreach (var groupCard in groupCards)
+            if (groupCards.First().IsSellableCard)
             {
-                if (groupCard.IsSellableCard == false) continue;
+                foreach (var groupCard in groupCards)
+                {
+                    if (groupCard.IsSellableCard == false) continue;
 
-                SellableCardData sellableCardData = groupCard as SellableCardData;
+                    SellableCardData sellableCardData = groupCard as SellableCardData;
 
-                price += sellableCardData.Price.Value;
+                    price += sellableCardData.Price.Value;
+                }
             }
 
             _sellZoneData.SelectedCardsTotalPrice.Value = price;
