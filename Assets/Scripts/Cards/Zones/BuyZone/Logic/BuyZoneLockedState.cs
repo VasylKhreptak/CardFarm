@@ -15,6 +15,7 @@ namespace Cards.Zones.BuyZone.Logic
         [SerializeField] private GameObject _leftCardsTextObject;
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] private Image _lockedStateImage;
+        [SerializeField] private GameObject _unlockConditionObject;
 
         private IDisposable _isLockedSubscription;
 
@@ -59,6 +60,11 @@ namespace Cards.Zones.BuyZone.Logic
             _nameText.enabled = !isLocked;
             _buyZoneData.IsInteractable.Value = !isLocked;
             _lockedStateImage.enabled = isLocked;
+
+            if (_unlockConditionObject != null)
+            {
+                _unlockConditionObject.SetActive(isLocked);
+            }
         }
     }
 }
