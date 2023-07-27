@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Cards.Data;
 using Cards.Zones.SellZone.Data;
-using Table;
+using CardsTable;
 using UniRx;
 using UnityEngine;
 using Zenject;

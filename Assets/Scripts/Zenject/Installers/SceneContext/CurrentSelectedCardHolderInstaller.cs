@@ -1,4 +1,4 @@
-﻿using Table;
+﻿using CardsTable;
 using Zenject.Installers.SceneContext.Core;
 
 namespace Zenject.Installers.SceneContext

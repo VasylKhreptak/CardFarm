@@ -3,8 +3,8 @@ using Cards.Chests.Data;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
+using CardsTable.Core;
 using Extensions;
-using Table.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -13,15 +13,15 @@ namespace Coins
 {
     public class CoinsProvider : MonoBehaviour
     {
-        private CardsTable _cardsTable;
-        private CardsSelector _cardsSelector;
+        private CardsTable.Core.CardsTable _cardsTable;
+        private CardSelector _cardSelector;
         private CardSpawner _cardSpawner;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, CardsSelector coinChestSelector, CardSpawner cardSpawner)
+        private void Constructor(CardsTable.Core.CardsTable cardsTable, CardSelector coinChestSelector, CardSpawner cardSpawner)
         {
             _cardsTable = cardsTable;
-            _cardsSelector = coinChestSelector;
+            _cardSelector = coinChestSelector;
             _cardSpawner = cardSpawner;
         }
 
@@ -31,7 +31,7 @@ namespace Coins
         {
             int count = 0;
 
-            if (_cardsSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
+            if (_cardSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
             {
                 foreach (var coinChestCard in chests)
                 {
@@ -44,7 +44,7 @@ namespace Coins
 
         public bool TryGetCoinFromChests(out CardData cardData)
         {
-            if (_cardsSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests) == false)
+            if (_cardSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests) == false)
             {
                 cardData = null;
                 return false;
@@ -119,7 +119,7 @@ namespace Coins
 
             int leftCoinsCount = count - coinsCountInTable;
 
-            if (leftCoinsCount > 0 && _cardsSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
+            if (leftCoinsCount > 0 && _cardSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
             {
                 foreach (var coinChests in chests)
                 {

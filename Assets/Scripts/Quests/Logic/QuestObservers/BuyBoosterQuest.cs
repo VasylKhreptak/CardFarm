@@ -2,8 +2,8 @@
 using Cards.Core;
 using Cards.Data;
 using Cards.Zones.BuyZone.Data;
+using CardsTable.Core;
 using Quests.Logic.QuestObservers.Core;
-using Table.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -20,12 +20,12 @@ namespace Quests.Logic.QuestObservers
 
         private BuyZoneData _currentBoosterBuyZone;
 
-        private CardsSelector _cardsSelector;
+        private CardSelector _cardSelector;
 
         [Inject]
-        private void Constructor(CardsSelector cardsSelector)
+        private void Constructor(CardSelector cardSelector)
         {
-            _cardsSelector = cardsSelector;
+            _cardSelector = cardSelector;
         }
 
         public override void StartObserving()
@@ -42,12 +42,12 @@ namespace Quests.Logic.QuestObservers
 
         private void StartObservingNewCardType()
         {
-            if (_cardsSelector.SelectedCardsMap.TryGetValue(_targetBuyZone, out ReactiveCollection<CardData> cards))
+            if (_cardSelector.SelectedCardsMap.TryGetValue(_targetBuyZone, out ReactiveCollection<CardData> cards))
             {
                 StartObservingZonesCount(cards);
             }
 
-            _newCardsAppearedSubscription = _cardsSelector.SelectedCardsMap.ObserveAdd()
+            _newCardsAppearedSubscription = _cardSelector.SelectedCardsMap.ObserveAdd()
                 .Subscribe(x =>
                 {
                     if (x.Key == _targetBuyZone)

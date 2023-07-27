@@ -5,7 +5,7 @@ using ScriptableObjects.Scripts.Cards;
 using UniRx;
 using UnityEngine;
 
-namespace Table.Core
+namespace CardsTable.Core
 {
     public class CardsTable : MonoBehaviour
     {

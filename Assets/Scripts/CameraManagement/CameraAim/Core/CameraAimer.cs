@@ -1,5 +1,10 @@
-﻿using DG.Tweening;
+﻿using CameraManagement.CameraMove.Core;
+using CameraManagement.CameraZoom.Core;
+using DG.Tweening;
+using Runtime.Commands;
+using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace CameraManagement.CameraAim.Core
 {
@@ -19,16 +24,61 @@ namespace CameraManagement.CameraAim.Core
         [Header("General Preferences")]
         [SerializeField] private float _duration = 1.5f;
 
+        private CompositeDisposable _interruptSubscriptions = new CompositeDisposable();
+
         private Sequence _aimSequence;
+
+        private MapDragObserver _mapDragObserver;
+        private ZoomObserver _zoomObserver;
+        private GameRestartCommand _gameRestartCommand;
+
+        [Inject]
+        private void Constructor(MapDragObserver mapDragObserver,
+            ZoomObserver zoomObserver,
+            GameRestartCommand gameRestartCommand)
+        {
+            _mapDragObserver = mapDragObserver;
+            _zoomObserver = zoomObserver;
+            _gameRestartCommand = gameRestartCommand;
+        }
 
         #region MonoBehaviour
 
+        private void Awake()
+        {
+            _gameRestartCommand.OnExecute += StopAiming;
+        }
+
+        private void OnEnable()
+        {
+            StartObservingInterrupt();
+        }
+
         private void OnDisable()
         {
+            StopObservingInterrupt();
             StopAiming();
         }
 
+        private void OnDestroy()
+        {
+            _gameRestartCommand.OnExecute -= StopAiming;
+        }
+
         #endregion
+
+        private void StartObservingInterrupt()
+        {
+            StopObservingInterrupt();
+
+            _mapDragObserver.IsDragging.Where(x => x).Subscribe(_ => StopAiming()).AddTo(_interruptSubscriptions);
+            _zoomObserver.IsZooming.Where(x => x).Subscribe(_ => StopAiming()).AddTo(_interruptSubscriptions);
+        }
+
+        private void StopObservingInterrupt()
+        {
+            _interruptSubscriptions.Clear();
+        }
 
         public void Aim(Transform target)
         {
@@ -42,6 +92,8 @@ namespace CameraManagement.CameraAim.Core
 
         public void Aim(Transform target, float distance, float duration)
         {
+            if (_zoomObserver.IsZooming.Value || _mapDragObserver.IsDragging.Value) return;
+
             StopAiming();
 
             Tween moveTween = CreateMoveTween(target, duration);

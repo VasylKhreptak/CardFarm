@@ -1,5 +1,4 @@
 ﻿using Cards.Data;
-using Table.Core;
 using UniRx;
 using Zenject;
 
@@ -9,10 +8,10 @@ namespace Quests.Logic.QuestObservers.Core
     {
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
-        private CardsTable _cardsTable;
+        private CardsTable.Core.CardsTable _cardsTable;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable)
+        private void Constructor(CardsTable.Core.CardsTable cardsTable)
         {
             _cardsTable = cardsTable;
         }

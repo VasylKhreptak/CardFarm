@@ -1,6 +1,6 @@
+using CardsTable;
 using Extensions;
 using Providers.Graphics;
-using Table;
 using UniRx;
 using UnityEngine;
 using Zenject;

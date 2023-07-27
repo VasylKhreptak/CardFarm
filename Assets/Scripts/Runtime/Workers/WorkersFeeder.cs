@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cards.Workers.Data;
+using CardsTable.ManualCardSelectors;
 using Data.Days;
 using Economy;
 using Graphics.UI.Particles.Coins.Logic;
 using NaughtyAttributes;
 using Providers.Graphics;
 using Runtime.Commands;
-using Table.ManualCardSelectors;
 using UnityEngine;
 using Zenject;
 

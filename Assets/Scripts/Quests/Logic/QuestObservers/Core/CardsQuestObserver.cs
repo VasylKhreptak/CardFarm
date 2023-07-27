@@ -1,7 +1,7 @@
 ﻿using System;
 using Cards.Core;
 using Cards.Data;
-using Table.Core;
+using CardsTable.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -16,22 +16,22 @@ namespace Quests.Logic.QuestObservers.Core
         private IDisposable _cardAppearedSubscription;
         private IDisposable _cardsCountSubscription;
 
-        private CardsSelector _cardsSelector;
+        private CardSelector _cardSelector;
 
         [Inject]
-        private void Constructor(CardsSelector cardsSelector)
+        private void Constructor(CardSelector cardSelector)
         {
-            _cardsSelector = cardsSelector;
+            _cardSelector = cardSelector;
         }
 
         public override void StartObserving()
         {
-            if (_cardsSelector.SelectedCardsMap.TryGetValue(_targetCard, out var boosterCards))
+            if (_cardSelector.SelectedCardsMap.TryGetValue(_targetCard, out var boosterCards))
             {
                 StarObservingCardsCount(boosterCards);
             }
 
-            _cardAppearedSubscription = _cardsSelector.SelectedCardsMap.ObserveAdd().Subscribe(x =>
+            _cardAppearedSubscription = _cardSelector.SelectedCardsMap.ObserveAdd().Subscribe(x =>
             {
                 if (x.Key == _targetCard)
                 {

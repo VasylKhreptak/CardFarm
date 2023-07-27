@@ -1,7 +1,7 @@
 ﻿using System;
 using Cards.Data;
 using Cards.Orders.Data;
-using Table;
+using CardsTable;
 using UniRx;
 using UnityEngine;
 using Zenject;

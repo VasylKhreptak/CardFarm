@@ -1,7 +1,7 @@
 ﻿using Cards.Data;
-using Table.Core;
+using CardsTable.Core;
 
-namespace Table.ManualCardSelectors
+namespace CardsTable.ManualCardSelectors
 {
     public class WorkersSelector : ManualCardSelector
     {

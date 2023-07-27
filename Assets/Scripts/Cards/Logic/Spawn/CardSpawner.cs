@@ -3,7 +3,6 @@ using Cards.Core;
 using Cards.Data;
 using Constraints.CardTable;
 using Extensions;
-using Table.Core;
 using UnityEngine;
 using Zenject;
 
@@ -24,10 +23,10 @@ namespace Cards.Logic.Spawn
 
         private CardFactory _cardFactory;
         private CardsTableBounds _cardsTableBounds;
-        private CardsTable _cardsTable;
+        private CardsTable.Core.CardsTable _cardsTable;
 
         [Inject]
-        private void Constructor(CardFactory cardFactory, CardsTableBounds cardsTableBounds, CardsTable cardsTable)
+        private void Constructor(CardFactory cardFactory, CardsTableBounds cardsTableBounds, CardsTable.Core.CardsTable cardsTable)
         {
             _cardFactory = cardFactory;
             _cardsTableBounds = cardsTableBounds;

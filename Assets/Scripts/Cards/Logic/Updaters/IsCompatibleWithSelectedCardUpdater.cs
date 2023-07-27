@@ -1,7 +1,7 @@
 ﻿using System;
 using Cards.Data;
+using CardsTable;
 using ScriptableObjects.Scripts.Cards;
-using Table;
 using UniRx;
 using UnityEngine;
 using Zenject;

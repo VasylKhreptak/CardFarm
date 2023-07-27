@@ -1,9 +1,9 @@
-﻿using Plugins.ObjectPooler.Zenject.Installers.SceneContext.Core;
-using Table.Core;
+﻿using CardsTable.Core;
+using Plugins.ObjectPooler.Zenject.Installers.SceneContext.Core;
 
 namespace Zenject.Installers.SceneContext
 {
-    public class CardsTableSelectorInstaller : SceneSingleInstanceInstaller<CardsSelector>
+    public class CardsTableSelectorInstaller : SceneSingleInstanceInstaller<CardSelector>
     {
 
     }

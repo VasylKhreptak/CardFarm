@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using Cards.Core;
 using Runtime.Commands;
-using Table.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Table
+namespace CardsTable
 {
     public class CardTableResizer : MonoBehaviour
     {
@@ -25,11 +24,11 @@ namespace Table
         private Vector2 _initialSizeDelta;
 
         private GameRestartCommand _gameRestartCommand;
-        private CardsTable _cardsTable;
+        private Core.CardsTable _cardsTable;
 
         [Inject]
         private void Constructor(GameRestartCommand gameRestartCommand,
-            CardsTable cardsTable)
+            Core.CardsTable cardsTable)
         {
             _gameRestartCommand = gameRestartCommand;
             _cardsTable = cardsTable;

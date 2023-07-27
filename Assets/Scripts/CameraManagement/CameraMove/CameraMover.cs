@@ -1,7 +1,7 @@
 ﻿using System;
 using CameraManagement.CameraMove.Core;
 using Cards.Data;
-using Table;
+using CardsTable;
 using UniRx;
 using UnityEngine;
 using Zenject;

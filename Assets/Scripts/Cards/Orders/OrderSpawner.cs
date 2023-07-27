@@ -2,11 +2,11 @@
 using System.Linq;
 using Cards.Core;
 using Cards.Logic.Spawn;
+using CardsTable.Core;
 using Constraints;
 using Quests.Data;
 using Quests.Logic;
 using Quests.Logic.Core;
-using Table.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -27,21 +27,21 @@ namespace Cards.Orders
         private IDisposable _questCompletionSubscription;
 
         private QuestsManager _questsManager;
-        private CardsSelector _cardsSelector;
+        private CardSelector _cardSelector;
         private CardSpawner _cardSpawner;
         private UpperZoneBounds _upperZoneBounds;
-        private CardsTable _cardsTable;
+        private CardsTable.Core.CardsTable _cardsTable;
 
         [Inject]
         private void Constructor(
             QuestsManager questsManager,
-            CardsSelector cardsSelector,
+            CardSelector cardSelector,
             CardSpawner cardSpawner,
             UpperZoneBounds upperZoneBounds,
-            CardsTable cardsTable)
+            CardsTable.Core.CardsTable cardsTable)
         {
             _questsManager = questsManager;
-            _cardsSelector = cardsSelector;
+            _cardSelector = cardSelector;
             _cardSpawner = cardSpawner;
             _upperZoneBounds = upperZoneBounds;
             _cardsTable = cardsTable;
@@ -117,7 +117,7 @@ namespace Cards.Orders
                 .Timer(TimeSpan.FromSeconds(Random.Range(_minSpawnInterval, _maxSpawnInterval)))
                 .Subscribe(_ =>
                 {
-                    if (_cardsSelector.GetCount(Card.Order) < _maxOrders)
+                    if (_cardSelector.GetCount(Card.Order) < _maxOrders)
                     {
                         SpawnOrder();
                     }
