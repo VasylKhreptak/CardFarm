@@ -1018,17 +1018,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -1197,12 +1202,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -1314,6 +1319,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood Variant (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
 --- !u!224 &303597999 stripped
@@ -1332,12 +1342,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -1448,6 +1458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -1737,17 +1752,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -2022,17 +2042,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -2394,17 +2419,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -2619,17 +2649,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -3307,12 +3342,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -3423,6 +3458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -3633,12 +3673,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -3750,6 +3790,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood Variant (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
 --- !u!224 &648058492 stripped
@@ -3768,12 +3813,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -3884,6 +3929,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -4352,12 +4402,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -4468,6 +4518,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -5379,12 +5434,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -5495,6 +5550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -5899,17 +5959,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -6079,12 +6144,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -6195,6 +6260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -6937,17 +7007,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -7710,12 +7785,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -7826,6 +7901,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -8020,12 +8100,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -8137,6 +8217,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood Variant (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
 --- !u!224 &1191179274 stripped
@@ -8231,12 +8316,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -8347,6 +8432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -9072,17 +9162,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -9700,17 +9795,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -11027,12 +11127,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -11143,6 +11243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -11990,17 +12095,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -12125,17 +12235,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -12742,12 +12857,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -12858,6 +12973,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -13085,12 +13205,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -13202,6 +13322,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
 --- !u!224 &1697609279 stripped
@@ -13220,17 +13345,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -13643,12 +13773,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -13759,6 +13889,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -13926,17 +14061,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -14510,17 +14650,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
@@ -14735,12 +14880,12 @@ PrefabInstance:
     - target: {fileID: 2279157737515501130, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835088514768076566, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959783505493271908, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
         type: 3}
@@ -14851,6 +14996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wood Variant (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959783505493271909, guid: 621f1ea6569dd1e4d907f6c751f2d0bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621f1ea6569dd1e4d907f6c751f2d0bb, type: 3}
@@ -15103,17 +15253,22 @@ PrefabInstance:
     - target: {fileID: 1872874713306483447, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2379230704380310443, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
       propertyPath: m_Name
       value: Stone Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794250118004255192, guid: bba4be59a399a4543a23c1b29623aef9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794250118004255193, guid: bba4be59a399a4543a23c1b29623aef9,
         type: 3}
