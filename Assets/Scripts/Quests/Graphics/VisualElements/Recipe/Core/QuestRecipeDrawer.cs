@@ -64,9 +64,6 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
 
             if (questData == null || questData.Recipe.IsValid() == false) return;
 
-            SpawnCard(questData.Recipe.Result);
-            SpawnPrefab(_equalsSign);
-
             for (int i = 0; i < questData.Recipe.TargetCards.Count; i++)
             {
                 SpawnCard(questData.Recipe.TargetCards[i]);
@@ -76,6 +73,9 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
                     SpawnPrefab(_plusSign);
                 }
             }
+
+            SpawnPrefab(_equalsSign);
+            SpawnCard(questData.Recipe.Result);
         }
 
         private void SpawnCard(QuestRecipeCardData cardData)
