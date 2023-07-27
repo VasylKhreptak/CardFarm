@@ -106,7 +106,6 @@ namespace Quests.Logic
             }
 
             UpdateCurrentQuest();
-            Debug.Log("Current quest: " + _currentQuest.Value.Quest);
         }
 
         private void UpdateCurrentQuest()

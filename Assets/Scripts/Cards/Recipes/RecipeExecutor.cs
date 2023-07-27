@@ -166,11 +166,15 @@ namespace Cards.Recipes
         private List<CardData> GetResourcesToRemove()
         {
             List<Card> recipeResources = _cardData.CurrentRecipe.Value.Resources;
-            List<CardData> resourcesToRemove = new List<CardData>(recipeResources.Count);
+            List<CardData> resourcesToRemove = new List<CardData>();
 
-            if (_cardData.GroupCards.TryGetResources(out List<CardData> foundResources))
+            List<CardData> groupCards = _cardData.GroupCards;
+
+            foreach (var recipeResource in recipeResources)
             {
-                resourcesToRemove = foundResources.Skip(foundResources.Count - recipeResources.Count).ToList();
+                int resourceCount = groupCards.Count(x => x.Card.Value == recipeResource);
+
+                resourcesToRemove.AddRange(groupCards.Where(x => x.Card.Value == recipeResource).Take(resourceCount).ToList());
             }
 
             return resourcesToRemove;

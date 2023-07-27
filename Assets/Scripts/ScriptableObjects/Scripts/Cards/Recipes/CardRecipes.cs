@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using Extensions;
@@ -15,48 +14,28 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
 
         public bool TryFindRecipe(List<CardData> cards, out CardRecipe recipe)
         {
-            bool hasResources = cards.TryGetResources(out List<Card> resources);
             bool hasWorkers = cards.TryGetWorkers(out List<Card> workers);
+            bool hasResources = cards.TryGetResources(out List<Card> resources);
+            int workersCount = workers.Count;
 
-            if (hasResources == false)
-            {
-                recipe = null;
-                return false;
-            }
-
-            if (hasWorkers == false)
-            {
-                foreach (var possibleRecipe in _recipes)
-                {
-                    if (resources.HasExactlyAllElementsOf(possibleRecipe.Resources) && possibleRecipe.HasWorkers == false)
-                    {
-                        recipe = possibleRecipe;
-                        return true;
-                    }
-                }
-            }
+            // if (resources.IsAllElementsSame())
+            // {
+            //     resources.Resize(1);
+            // }
 
             foreach (var possibleRecipe in _recipes)
             {
-                if (possibleRecipe.Workers.Count == workers.Count && resources.HasExactlyAllElementsOf(possibleRecipe.Resources))
+                List<Card> recipeResources = possibleRecipe.Resources;
+                int recipeWorkersCount = possibleRecipe.Workers.Count;
+
+                if (recipeWorkersCount != workersCount) continue;
+
+                if (hasResources == false) continue;
+
+                if (recipeResources.HasExactlyAllElementsOf(resources))
                 {
                     recipe = possibleRecipe;
                     return true;
-                }
-            }
-
-            Card firstResource = resources.First();
-            if (resources.All(x => x == firstResource))
-            {
-                foreach (var possibleRecipe in _recipes)
-                {
-                    if (possibleRecipe.Resources.Count == 1
-                        && possibleRecipe.Resources.First() == firstResource
-                        && possibleRecipe.Workers.Count == workers.Count)
-                    {
-                        recipe = possibleRecipe;
-                        return true;
-                    }
                 }
             }
 
@@ -69,28 +48,24 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
             List<CardRecipe> foundRecipes = new List<CardRecipe>();
 
             bool hasResources = cards.TryGetResources(out List<Card> resources);
+            bool hasWorkers = cards.TryGetWorkers(out List<Card> workers);
+            int workersCount = workers.Count;
 
-            if (hasResources == false)
-            {
-                possibleRecipes = null;
-                return false;
-            }
+            // if (resources.IsAllElementsSame())
+            // {
+            //     resources.Resize(1);
+            // }
 
-            Card firstResource = resources.First();
-            
-            bool isResourcesAllSame = resources.Any(x => x != firstResource) == false;
-            
-            foreach (var recipe in _recipes)
+            foreach (var possibleRecipe in _recipes)
             {
-                if(isResourcesAllSame && recipe.Resources.Count == 1 && recipe.Resources.First() == firstResource)
+                List<Card> recipeResources = possibleRecipe.Resources;
+                int recipeWorkersCount = possibleRecipe.Workers.Count;
+
+                if (workersCount > recipeWorkersCount) continue;
+
+                if (recipeResources.HasAllLessElementOf(resources))
                 {
-                    foundRecipes.Add(recipe);
-                    continue;
-                }
-                
-                if (recipe.Resources.HasAllLessElementOf(resources))
-                {
-                    foundRecipes.Add(recipe);
+                    foundRecipes.Add(possibleRecipe);
                 }
             }
 

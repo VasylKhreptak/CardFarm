@@ -64,5 +64,22 @@ namespace Extensions
                 list.AddRange(Enumerable.Repeat(def, size - count));
             }
         }
+
+        public static bool IsAllElementsSame<T>(this List<T> list)
+        {
+            if (list.Count == 0) return false;
+
+            T firstElement = list[0];
+
+            foreach (T element in list)
+            {
+                if (EqualityComparer<T>.Default.Equals(element, firstElement) == false)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

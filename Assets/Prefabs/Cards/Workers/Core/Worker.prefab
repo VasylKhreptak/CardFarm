@@ -507,6 +507,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2102762693797215169}
+    - target: {fileID: 3881378810315925577, guid: d794782d0ddca224998105c67e750aef,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 2102762693797215169}
     - target: {fileID: 3893170852478859730, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: _cardData
@@ -660,7 +665,7 @@ PrefabInstance:
     - target: {fileID: 8423776746097803548, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8431567731975675200, guid: d794782d0ddca224998105c67e750aef,
         type: 3}
@@ -751,18 +756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4308e373710841d59f48c3aa9d4d47ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4862234250290114858 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 926357504401646318, guid: d794782d0ddca224998105c67e750aef,
-    type: 3}
-  m_PrefabInstance: {fileID: 5737926172976026564}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d672ea825926493fb6d0ac424610f83a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5892237958399973779 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2189974551833070167, guid: d794782d0ddca224998105c67e750aef,
@@ -775,6 +768,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252b2605a9ca4d5a802f53b51ef5d8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &6265603487992257962 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1824749879350333038, guid: d794782d0ddca224998105c67e750aef,
+    type: 3}
+  m_PrefabInstance: {fileID: 5737926172976026564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6265603487992257963 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1824749879350333039, guid: d794782d0ddca224998105c67e750aef,
@@ -795,7 +794,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseHeight: 0.01
   _selectedHeight: 0.4
-  _heightOffset: 0.01
   _isWorker: 1
   _isFood: 0
   _isResourceNode: 0
@@ -808,7 +806,7 @@ MonoBehaviour:
   _canBeStackedOnlyWithSameCard: 0
   _isOrder: 0
   _isBreakable: 1
-  _canBeUnderCards: 0
+  _canBeUnderCards: 1
   _isResource: 0
   _canBePlacedInChest: 0
   _canBeStackedWithSameCard: 1
@@ -819,6 +817,7 @@ MonoBehaviour:
     value: 0
   MouseTrigger: {fileID: 1992437695628983798}
   Collider: {fileID: 2889816411337753001}
+  RectTransform: {fileID: 6265603487992257962}
   Card:
     value: 0
   Name:
@@ -869,8 +868,6 @@ MonoBehaviour:
     value: 0
   IsInsideCardsTable:
     value: 0
-  ClampedPosition:
-    value: {x: 0, y: 0, z: 0}
   IsTakingPartInRecipe:
     value: 0
   CurrentRecipe:
@@ -901,7 +898,7 @@ MonoBehaviour:
       ResourcesToRemove: 
       Results: []
   PositionShakeObserver: {fileID: 8869868308773631331}
-  CardSelectedHeightController: {fileID: 4862234250290114858}
+  CardSelectedHeightController: {fileID: 8826026138510621581}
   MaxHealth:
     value: 15
   Health:
@@ -950,6 +947,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5737926172976026564}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8826026138510621581 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3881378810315925577, guid: d794782d0ddca224998105c67e750aef,
+    type: 3}
+  m_PrefabInstance: {fileID: 5737926172976026564}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271d54f7da1d3fb4ca805f4ff5d4c66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8869868308773631331 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3799119778679187111, guid: d794782d0ddca224998105c67e750aef,
