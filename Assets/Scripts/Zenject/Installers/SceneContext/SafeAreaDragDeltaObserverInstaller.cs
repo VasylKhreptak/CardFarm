@@ -1,4 +1,4 @@
-﻿using CameraMove.Core;
+﻿using CameraManagement.CameraMove.Core;
 using Zenject.Installers.SceneContext.Core;
 
 namespace Zenject.Installers.SceneContext

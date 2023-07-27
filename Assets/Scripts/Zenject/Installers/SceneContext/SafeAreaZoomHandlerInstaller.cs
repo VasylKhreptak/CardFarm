@@ -1,4 +1,4 @@
-﻿using CameraZoom.Core;
+﻿using CameraManagement.CameraZoom.Core;
 using Zenject.Installers.SceneContext.Core;
 
 namespace Zenject.Installers.SceneContext

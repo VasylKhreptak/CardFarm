@@ -1,12 +1,11 @@
 using Extensions;
-using Providers;
 using Providers.Graphics;
 using Table;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace CameraMove.Core
+namespace CameraManagement.CameraMove.Core
 {
     public class MapDragObserver : MonoBehaviour
     {
@@ -14,11 +13,13 @@ namespace CameraMove.Core
         [SerializeField] private LayerMask _cardLayerMask;
 
         private Vector2ReactiveProperty _delta = new Vector2ReactiveProperty();
+        private BoolReactiveProperty _isDragging = new BoolReactiveProperty();
 
         private Vector2 _previousHitPosition;
         private int _previousTouchCount;
 
         public IReadOnlyReactiveProperty<Vector2> Delta => _delta;
+        public IReadOnlyReactiveProperty<bool> IsDragging => _isDragging;
 
         private Camera _camera;
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
@@ -40,13 +41,13 @@ namespace CameraMove.Core
             {
                 UpdatePreviousPosition(Input.GetTouch(touchCount - 1).position);
             }
-            
+
             if (touchCount != 1 || _currentSelectedCardHolder.SelectedCard.Value != null)
             {
                 ResetValues();
 
                 _previousTouchCount = touchCount;
-                
+
                 return;
             }
 
@@ -68,6 +69,11 @@ namespace CameraMove.Core
             _previousTouchCount = touchCount;
         }
 
+        private void OnDisable()
+        {
+            ResetValues();
+        }
+
         #endregion
 
         private void OnMouseDown()
@@ -81,6 +87,8 @@ namespace CameraMove.Core
 
                 _previousHitPosition = new Vector2(hit.point.x, hit.point.z);
             }
+
+            _isDragging.Value = true;
         }
 
         private void OnMouse()
@@ -109,6 +117,7 @@ namespace CameraMove.Core
         {
             _delta.Value = Vector2.zero;
             _previousHitPosition = Vector3.zero;
+            _isDragging.Value = false;
         }
 
         private void UpdatePreviousPosition(Vector2 touchPosition)

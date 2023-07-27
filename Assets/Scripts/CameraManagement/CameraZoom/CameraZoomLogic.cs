@@ -1,10 +1,10 @@
 using System;
-using CameraZoom.Core;
+using CameraManagement.CameraZoom.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace CameraZoom
+namespace CameraManagement.CameraZoom
 {
     public class CameraZoomLogic : MonoBehaviour
     {

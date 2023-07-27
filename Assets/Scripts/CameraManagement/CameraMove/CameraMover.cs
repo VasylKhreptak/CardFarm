@@ -1,12 +1,12 @@
 ﻿using System;
-using CameraMove.Core;
+using CameraManagement.CameraMove.Core;
 using Cards.Data;
 using Table;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace CameraMove
+namespace CameraManagement.CameraMove
 {
     public class CameraMover : MonoBehaviour
     {
@@ -23,9 +23,6 @@ namespace CameraMove
 
         private MapDragObserver _dragObserver;
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
-
-
-        public bool CanMove = true;
 
         [Inject]
         private void Constructor(MapDragObserver dragObserver,
@@ -56,7 +53,7 @@ namespace CameraMove
         {
             StopObservingDrag();
 
-            _dragSubscription = _dragObserver.Delta.Subscribe(delta => TryMoveCamera(-delta));
+            _dragSubscription = _dragObserver.Delta.Subscribe(delta => MoveCamera(-delta));
         }
 
         private void StopObservingDrag()
@@ -90,13 +87,11 @@ namespace CameraMove
 
             targetPosition.y = cameraPosition.y;
             Vector3 direction = targetPosition - cameraPosition;
-            TryMoveCamera(new Vector2(direction.x, direction.z) * (_cardCenteringSpeed * Time.deltaTime));
+            MoveCamera(new Vector2(direction.x, direction.z) * (_cardCenteringSpeed * Time.deltaTime));
         }
 
-        private void TryMoveCamera(Vector2 direction)
+        private void MoveCamera(Vector2 direction)
         {
-            if (CanMove == false) return;
-
             Vector3 moveDirection = new Vector3(direction.x, 0f, direction.y);
             Vector3 cameraPosition = _transform.position;
 
