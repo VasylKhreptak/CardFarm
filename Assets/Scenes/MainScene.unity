@@ -3515,6 +3515,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
+      propertyPath: Icon.value
+      value: 
+      objectReference: {fileID: 21300000, guid: c5999161aec314944b54fd862e46b791,
+        type: 3}
+    - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
       propertyPath: Name.value
       value: Buildings
       objectReference: {fileID: 0}
@@ -3813,6 +3819,12 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7943049281476601356, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c5999161aec314944b54fd862e46b791,
+        type: 3}
     - target: {fileID: 7943049281476601358, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: _cardData
@@ -7642,6 +7654,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
+      propertyPath: Icon.value
+      value: 
+      objectReference: {fileID: 21300000, guid: 2cb02dfabcb23f34eb5ad4820d0e5d68,
+        type: 3}
+    - target: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
       propertyPath: Name.value
       value: Animals
       objectReference: {fileID: 0}
@@ -7940,6 +7958,12 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7943049281476601356, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2cb02dfabcb23f34eb5ad4820d0e5d68,
+        type: 3}
     - target: {fileID: 7943049281476601358, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: _cardData
@@ -12488,6 +12512,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1463480071}
+    - target: {fileID: 1875571905146265636, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1977099087611230646, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12758,6 +12787,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 6559469006989363738, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6653085560410477969, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: _cardData
@@ -12963,6 +12997,22 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7943049281476601355, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.6241
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943049281476601355, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1.6241
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943049281476601356, guid: 2b6b2f92947187c448b6540caf49bdcd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d3ddf608171d9644bb37831ca31ebcf7,
+        type: 3}
     - target: {fileID: 7943049281476601358, guid: 2b6b2f92947187c448b6540caf49bdcd,
         type: 3}
       propertyPath: _cardData
