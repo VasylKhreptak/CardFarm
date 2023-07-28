@@ -78,6 +78,8 @@ namespace CameraManagement.CameraMove.Core
 
         private void OnMouseDown()
         {
+            if (PointerTools.IsPointerOverUI()) return;
+
             Touch firstTouch = Input.GetTouch(0);
             Ray ray = _camera.ScreenPointToRay(firstTouch.position);
 
@@ -93,6 +95,8 @@ namespace CameraManagement.CameraMove.Core
 
         private void OnMouse()
         {
+            if(_isDragging.Value == false) return;
+            
             Touch firstTouch = Input.GetTouch(0);
             Ray ray = _camera.ScreenPointToRay(firstTouch.position);
 

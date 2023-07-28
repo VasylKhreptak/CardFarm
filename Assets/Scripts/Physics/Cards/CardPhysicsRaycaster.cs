@@ -1,4 +1,5 @@
 ﻿using Cards.Data;
+using Extensions;
 using Providers.Graphics;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -55,7 +56,7 @@ namespace Physics.Cards
 
         private void OnMouseDown()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (PointerTools.IsPointerOverUI()) return;
 
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             int hitsCount = UnityEngine.Physics.RaycastNonAlloc(ray, _hits, float.MaxValue, _cardLayerMask);
