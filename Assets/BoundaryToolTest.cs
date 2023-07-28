@@ -11,15 +11,15 @@ public class BoundaryToolTest : MonoBehaviour
     [SerializeField] private RectTransform _outerRectTransform;
     [SerializeField] private List<RectTransform> _innerRectTransforms;
 
-    private IEnumerator Start()
-    {
-        while (true)
-        {
-            Randomize();
-    
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
+    // private IEnumerator Start()
+    // {
+    //     while (true)
+    //     {
+    //         Randomize();
+    //
+    //         yield return new WaitForSeconds(0.1f);
+    //     }
+    // }
 
     private void Update()
     {

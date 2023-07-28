@@ -11,6 +11,8 @@ namespace Constraints._2D.Core
         [Header("Preferences")]
         [SerializeField] private Color _gizmosColor = Color.blue;
 
+        public RectTransform Bounds => _bounds;
+        
         #region MonoBehaviour
 
         private void OnValidate()

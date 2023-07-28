@@ -22,7 +22,9 @@ namespace DebugTools
         [Button()]
         private void Spawn()
         {
-            _cardSpawner.Spawn(_card, Vector3.zero);
+            _cardSpawner.SpawnAndMove(_card, Vector3.zero, tryJoinToExistingGroup:false);
         }
+        
+        
     }
 }

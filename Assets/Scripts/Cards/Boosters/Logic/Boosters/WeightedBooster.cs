@@ -15,9 +15,10 @@ namespace Cards.Boosters.Logic.Boosters
         [SerializeField] private List<CardWeight> _cards;
 
         private CardSpawner _cardSpawner;
+        private CardsTable.Core.CardsTable _cardsTable;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner)
+        private void Constructor(CardSpawner cardSpawner, CardsTable.Core.CardsTable cardsTable)
         {
             _cardSpawner = cardSpawner;
         }

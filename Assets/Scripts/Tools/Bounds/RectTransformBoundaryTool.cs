@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Tools.Bounds
 {
@@ -102,16 +100,20 @@ namespace Tools.Bounds
 
         public static Vector3 GetClosestRandomPoint(this RectTransform outerRect, List<RectTransform> innerRects, RectTransform targetRect, Vector3 origin)
         {
-            const int IterationCount = 100;
+            const int IterationCount = 300;
+            const float MinOriginDistance = 1f;
             (Vector3 position, float weight)[] points = new (Vector3 position, float weight)[IterationCount];
 
             Vector3 initialRectPosition = targetRect.position;
+
+            (Vector3 position, float weight) foundPoint = (Vector3.zero, float.MaxValue);
 
             for (int i = 0; i < IterationCount; i++)
             {
                 Vector3 randomPoint = outerRect.GetRandomPoint(targetRect);
 
                 float originDistance = Vector3.Distance(origin, randomPoint);
+                originDistance = Mathf.Max(originDistance, MinOriginDistance);
                 targetRect.position = randomPoint;
 
                 int intersectCount = 0;
@@ -124,15 +126,22 @@ namespace Tools.Bounds
                         intersectCount++;
                     }
                 }
-                
-                points[i] = (randomPoint, originDistance * (intersectCount == 0 ? 0.1f : intersectCount));
+
+                float intersectWeight;
+
+                intersectWeight = intersectCount == 0 ? 0.01f : intersectCount * intersectCount;
+
+                points[i] = (randomPoint, originDistance * intersectWeight);
+
+                if (points[i].weight < foundPoint.weight)
+                {
+                    foundPoint = points[i];
+                }
             }
 
             targetRect.position = initialRectPosition;
 
-            Array.Sort(points, (p1, p2) => p1.weight.CompareTo(p2.weight));
-
-            return points[0].position;
+            return foundPoint.position;
         }
 
 
