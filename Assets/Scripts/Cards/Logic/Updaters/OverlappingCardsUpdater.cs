@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cards.Data;
-using Extensions;
 using Tools.Bounds;
 using UniRx;
 using UnityEngine;
@@ -96,14 +95,20 @@ namespace Cards.Logic.Updaters
         {
             List<CardData> overlappingCards = new List<CardData>();
 
-            List<CardData> tableCards = _cardsTable.Cards.ToList();
-            List<CardData> cardsToCheck = new List<CardData>();
-            List<CardData> groupCards = _cardData.GroupCards;
+            List<CardData> cardsToCheck = _cardsTable.Cards.ToList();
 
-            cardsToCheck.AddRange(tableCards);
-            cardsToCheck.RemoveAll(groupCards);
+            cardsToCheck.RemoveAll(card =>
+            {
+                bool canRemove =
+                    card == _cardData
+                    || card.IsSelected.Value
+                    || card.GroupID == _cardData.GroupID
+                    || card.IsZone
+                    ||card.IsInSelectedGroup.Value
+                    || Vector3.Distance(card.transform.position, _cardData.transform.position) > _maxDistance;
 
-            cardsToCheck.RemoveAll(card => Vector3.Distance(card.transform.position, _cardData.transform.position) > _maxDistance);
+                return canRemove;
+            });
 
             for (int i = 0; i < cardsToCheck.Count; i++)
             {

@@ -31,6 +31,7 @@ namespace Cards.Data
         [SerializeField] private bool _isResource;
         [SerializeField] private bool _canBePlacedInChest;
         [SerializeField] private bool _canBeStackedWithSameCard = true;
+        [SerializeField] private bool _isZone;
 
         public float BaseHeight => _baseHeight;
         public float SelectedHeight => _selectedHeight;
@@ -51,6 +52,7 @@ namespace Cards.Data
         public bool IsResource => _isResource;
         public bool CanBePlacedInChest => _canBePlacedInChest;
         public bool CanBeStackedWithSameCard => _canBeStackedWithSameCard;
+        public bool IsZone => _isZone;
 
         public int ID = -1;
         public IntReactiveProperty GroupID = new IntReactiveProperty(-1);
@@ -97,6 +99,7 @@ namespace Cards.Data
         public BoolReactiveProperty CanBeUnderSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty CanBeSelected = new BoolReactiveProperty();
+        public BoolReactiveProperty IsInSelectedGroup = new BoolReactiveProperty();
 
         public BoolReactiveProperty IsInsideCardsTable = new BoolReactiveProperty();
         public BoolReactiveProperty IsTakingPartInRecipe = new BoolReactiveProperty();
