@@ -1492,7 +1492,6 @@ GameObject:
   - component: {fileID: 1870714030626579857}
   - component: {fileID: 4801322907659165851}
   - component: {fileID: 6000077143140782859}
-  - component: {fileID: 8861940880643111739}
   m_Layer: 6
   m_Name: CardShadowReceiver
   m_TagString: Untagged
@@ -1548,7 +1547,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b526d623ae5b72444ac6ff3a6b4d5dea, type: 2}
+  - {fileID: 2100000, guid: 490820aff4aad8347b421186d779c087, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1570,20 +1569,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8861940880643111739
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3064678319105718337}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &3180300710051176441
 GameObject:
   m_ObjectHideFlags: 0

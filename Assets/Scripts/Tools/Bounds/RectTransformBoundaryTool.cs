@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Tools.Bounds
 {
@@ -75,12 +78,69 @@ namespace Tools.Bounds
 
             return randomPoint;
         }
-        
+
+        public static bool IsOverlapping(this RectTransform rectTransform1, RectTransform rectTransform2)
+        {
+            Rect rect1 = new Rect(rectTransform1.localPosition.x, rectTransform1.localPosition.y, rectTransform1.rect.width, rectTransform1.rect.height);
+            Rect rect2 = new Rect(rectTransform2.localPosition.x, rectTransform2.localPosition.y, rectTransform2.rect.width, rectTransform2.rect.height);
+
+            return rect1.Overlaps(rect2);
+        }
+
+        public static bool IsOverlapping(this RectTransform rectTransform1, List<RectTransform> rectTransform2)
+        {
+            for (int i = 0; i < rectTransform2.Count; i++)
+            {
+                if (rectTransform1.IsOverlapping(rectTransform2[i]))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static Vector3 GetClosestRandomPoint(this RectTransform outerRect, List<RectTransform> innerRects, RectTransform targetRect, Vector3 origin)
+        {
+            const int IterationCount = 100;
+            (Vector3 position, float weight)[] points = new (Vector3 position, float weight)[IterationCount];
+
+            Vector3 initialRectPosition = targetRect.position;
+
+            for (int i = 0; i < IterationCount; i++)
+            {
+                Vector3 randomPoint = outerRect.GetRandomPoint(targetRect);
+
+                float originDistance = Vector3.Distance(origin, randomPoint);
+                targetRect.position = randomPoint;
+
+                int intersectCount = 0;
+
+                for (int j = 0; j < innerRects.Count; j++)
+                {
+                    var innerRect = innerRects[j];
+                    if (innerRect.IsOverlapping(targetRect))
+                    {
+                        intersectCount++;
+                    }
+                }
+                
+                points[i] = (randomPoint, originDistance * (intersectCount == 0 ? 0.1f : intersectCount));
+            }
+
+            targetRect.position = initialRectPosition;
+
+            Array.Sort(points, (p1, p2) => p1.weight.CompareTo(p2.weight));
+
+            return points[0].position;
+        }
+
+
         public static void DrawGizmos(this RectTransform outerRect)
         {
             Vector3[] corners = new Vector3[4];
             outerRect.GetWorldCorners(corners);
-            
+
             Gizmos.color = Color.green;
             Gizmos.DrawLine(corners[0], corners[1]);
             Gizmos.DrawLine(corners[1], corners[2]);
