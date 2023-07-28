@@ -53,7 +53,7 @@ namespace Cards.Logic.Updaters
 
         private void OnFirstGroupCardChanged(CardData firstGroupCard)
         {
-            StopObservingFirstGroupCard();
+            StopObservingIfCardSelected();
 
             if (firstGroupCard != null)
             {

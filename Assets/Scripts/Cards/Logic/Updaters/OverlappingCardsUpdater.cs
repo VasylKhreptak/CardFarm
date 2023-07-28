@@ -102,9 +102,9 @@ namespace Cards.Logic.Updaters
                 bool canRemove =
                     card == _cardData
                     || card.IsSelected.Value
-                    || card.GroupID == _cardData.GroupID
+                    || card.GroupID.Value == _cardData.GroupID.Value
                     || card.IsZone
-                    ||card.IsInSelectedGroup.Value
+                    || card.IsInSelectedGroup.Value
                     || Vector3.Distance(card.transform.position, _cardData.transform.position) > _maxDistance;
 
                 return canRemove;
