@@ -7,7 +7,6 @@ using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -118,5 +117,7 @@ namespace Cards.Data
         public PositionShakeObserver PositionShakeObserver;
 
         public CardSelectedHeightController CardSelectedHeightController;
+        
+        public List<CardData> OverlappingCards = new List<CardData>();
     }
 }

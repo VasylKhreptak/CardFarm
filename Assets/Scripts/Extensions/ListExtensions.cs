@@ -81,5 +81,13 @@ namespace Extensions
 
             return true;
         }
+        
+        public static void RemoveAll<T>(this List<T> list, List<T> elementsToRemove)
+        {
+            foreach (T element in elementsToRemove)
+            {
+                list.Remove(element);
+            }
+        }
     }
 }

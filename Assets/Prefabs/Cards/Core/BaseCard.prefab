@@ -365,6 +365,7 @@ MonoBehaviour:
       Results: []
   PositionShakeObserver: {fileID: 2501728543964782568}
   CardSelectedHeightController: {fileID: 2581599301053927686}
+  OverlappingCards: []
 --- !u!65 &8193532437627284258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1660,6 +1661,7 @@ RectTransform:
   - {fileID: 3130306815301448044}
   - {fileID: 6799448897396897767}
   - {fileID: 7127377167791929427}
+  - {fileID: 3238667770377437702}
   m_Father: {fileID: 6256525992163840278}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1772,6 +1774,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _progressDependentObject: {fileID: 7294079551765895076}
   _progressObject: {fileID: 6188990528986735697}
+--- !u!1 &4002559306954932403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3238667770377437702}
+  - component: {fileID: 711695691268658507}
+  m_Layer: 6
+  m_Name: OverlappingCardsUpdater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3238667770377437702
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002559306954932403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3384633989507613666}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &711695691268658507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002559306954932403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e6902bc481c472fafb4547734b6e6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 1106781378184329004}
+  _updateInterval: 0.4
+  _maxDistance: 7
 --- !u!1 &4286062770183426769
 GameObject:
   m_ObjectHideFlags: 0
