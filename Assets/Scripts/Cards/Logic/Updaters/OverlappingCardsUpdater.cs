@@ -55,7 +55,7 @@ namespace Cards.Logic.Updaters
 
         private void StartObserving()
         {
-            _cardData.IsSelected.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsInSelectedGroup.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
@@ -66,7 +66,7 @@ namespace Cards.Logic.Updaters
 
         private void OnEnvironmentChanged()
         {
-            if (_cardData.IsSelected.Value == false)
+            if (_cardData.IsInSelectedGroup.Value == false)
             {
                 StartUpdating();
             }
