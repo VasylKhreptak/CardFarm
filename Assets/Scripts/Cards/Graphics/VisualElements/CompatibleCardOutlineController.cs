@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Cards.Graphics.VisualElements
 {
-    public class CardOutlineController : MonoBehaviour, IValidatable
+    public class CompatibleCardOutlineController : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;

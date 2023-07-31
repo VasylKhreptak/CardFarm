@@ -1,6 +1,7 @@
 ﻿using Cards.Data;
 using Cards.Gestures.PositionShake;
 using Cards.Graphics.Animations;
+using Cards.Graphics.Outlines;
 using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using NaughtyAttributes;
@@ -52,6 +53,8 @@ namespace DebugTools.CardDataFillers
             _cardData.CardSelectedHeightController = GetComponentInChildren<CardSelectedHeightController>();
 
             _cardData.RectTransform = GetComponentInChildren<RectTransform>();
+
+            _cardData.QuestOutline = GetComponentInChildren<QuestOutline>();
         }
     }
 }

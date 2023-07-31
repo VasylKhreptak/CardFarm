@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Cards.Core;
 using Cards.Gestures.PositionShake;
+using Cards.Graphics.Outlines;
 using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
@@ -120,7 +121,9 @@ namespace Cards.Data
         public PositionShakeObserver PositionShakeObserver;
 
         public CardSelectedHeightController CardSelectedHeightController;
-        
+
         public List<CardData> OverlappingCards = new List<CardData>();
+
+        public QuestOutline QuestOutline;
     }
 }
