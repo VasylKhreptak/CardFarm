@@ -16,6 +16,8 @@ namespace CameraManagement.CameraMove
         [Header("Preferences")]
         [SerializeField] private float _speed;
         [SerializeField] private float _cardCenteringSpeed = 1;
+        [SerializeField] private float _centeringDeadZone = 5f;
+        [SerializeField] private LayerMask _floorLayerMask;
 
         private IDisposable _dragSubscription;
         private IDisposable _selectedCardSubscription;
@@ -86,8 +88,20 @@ namespace CameraManagement.CameraMove
             Vector3 cameraPosition = _transform.position;
 
             targetPosition.y = cameraPosition.y;
-            Vector3 direction = targetPosition - cameraPosition;
-            MoveCamera(new Vector2(direction.x, direction.z) * (_cardCenteringSpeed * Time.deltaTime));
+            Vector3 worldDirection = targetPosition - cameraPosition;
+            Vector2 direction = new Vector2(worldDirection.x, worldDirection.z);
+
+            float cameraDistance = 0;
+
+            if (RaycastFloor(out var hit))
+            {
+                cameraDistance = hit.distance;
+            }
+
+            if (direction.magnitude > _centeringDeadZone * cameraDistance)
+            {
+                MoveCamera(direction * (_cardCenteringSpeed * Time.deltaTime));
+            }
         }
 
         private void MoveCamera(Vector2 direction)
@@ -98,6 +112,12 @@ namespace CameraManagement.CameraMove
             cameraPosition += moveDirection * _speed;
 
             _transform.position = cameraPosition;
+        }
+
+        private bool RaycastFloor(out RaycastHit hit)
+        {
+            Ray ray = new Ray(_transform.position, _transform.forward);
+            return UnityEngine.Physics.Raycast(ray, out hit, float.MaxValue, _floorLayerMask);
         }
     }
 }

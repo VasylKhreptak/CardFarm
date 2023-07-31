@@ -4908,7 +4908,7 @@ GameObject:
   - component: {fileID: 956618057}
   - component: {fileID: 956618058}
   m_Layer: 0
-  m_Name: CameraMoveLogic
+  m_Name: CameraMover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4944,6 +4944,10 @@ MonoBehaviour:
   _transform: {fileID: 1349560457}
   _speed: 1
   _cardCenteringSpeed: 1
+  _centeringDeadZone: 0.15
+  _floorLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &971026833
 GameObject:
   m_ObjectHideFlags: 0
