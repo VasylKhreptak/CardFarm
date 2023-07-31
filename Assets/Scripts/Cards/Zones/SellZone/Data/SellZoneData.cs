@@ -1,7 +1,7 @@
 ﻿using System;
 using Cards.Core;
 using Cards.Zones.Data;
-using Graphics.Animations.Core;
+using Graphics.Animations;
 using UniRx;
 using UnityEngine;
 

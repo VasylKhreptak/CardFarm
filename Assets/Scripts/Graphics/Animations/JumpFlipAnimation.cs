@@ -2,7 +2,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Graphics.Animations.Core
+namespace Graphics.Animations
 {
     public class JumpFlipAnimation : MonoBehaviour
     {
