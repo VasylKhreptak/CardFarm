@@ -38,7 +38,7 @@ namespace Cards.Core
         Potato = 34,
         Plains = 35,
         SellZone = 36,
-        BoosterBuyZone = 37,
+        FirstBoosterBuyZone = 37,
         Baby = 38,
         Order = 39,
         Butchery = 40,

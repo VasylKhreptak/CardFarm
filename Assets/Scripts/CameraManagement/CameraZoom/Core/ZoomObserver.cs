@@ -1,4 +1,3 @@
-using Extensions;
 using UniRx;
 using UnityEngine;
 
@@ -18,6 +17,18 @@ namespace CameraManagement.CameraZoom.Core
 
         private void Update()
         {
+            //  #if UNITY_EDITOR
+            //
+            // float scroll = Input.mouseScrollDelta.y;
+            //
+            // Debug.Log(scroll);
+            //
+            // _zoom.Value = scroll;
+            //
+            // _isZooming.Value = scroll != 0;
+            //
+            // #else
+            
             if (Input.touchCount != 2)
             {
                 ResetValues();
@@ -26,6 +37,8 @@ namespace CameraManagement.CameraZoom.Core
             {
                 OnTwoFingersPressed();
             }
+
+            // #endif
         }
 
         private void OnDisable()

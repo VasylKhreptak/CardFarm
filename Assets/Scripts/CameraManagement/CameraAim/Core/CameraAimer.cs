@@ -17,6 +17,8 @@ namespace CameraManagement.CameraAim.Core
         [SerializeField] private LayerMask _floorLayerMask;
         [SerializeField] private float _targetCameraDistance = 10f;
         [SerializeField] private AnimationCurve _zoomCurve;
+        [SerializeField] private float _minCameraDistance = 5f;
+        [SerializeField] private float _maxCameraDistance = 50f;
 
         [Header("Move Preferences")]
         [SerializeField] private AnimationCurve _moveCurve;
@@ -85,18 +87,43 @@ namespace CameraManagement.CameraAim.Core
             Aim(target, _targetCameraDistance, _duration);
         }
 
-        public void Aim(Transform target, float duration)
+        public void Aim(Vector3 targetPosition, float distance)
         {
-            Aim(target, _targetCameraDistance, duration);
+            Aim(targetPosition, distance, _duration);
         }
 
         public void Aim(Transform target, float distance, float duration)
         {
             if (_zoomObserver.IsZooming.Value || _mapDragObserver.IsDragging.Value) return;
 
+            distance = Mathf.Clamp(distance, _minCameraDistance, _maxCameraDistance);
+
             StopAiming();
 
             Tween moveTween = CreateMoveTween(target, duration);
+
+            Tween zoomTween = CreateZoomTween(distance, duration);
+
+            _aimSequence = DOTween.Sequence()
+                .Append(moveTween)
+                .Join(zoomTween)
+                .Play();
+        }
+
+        public void Aim(Vector3 targetPosition)
+        {
+            Aim(targetPosition, _targetCameraDistance, _duration);
+        }
+
+        public void Aim(Vector3 targetPosition, float distance, float duration)
+        {
+            if (_zoomObserver.IsZooming.Value || _mapDragObserver.IsDragging.Value) return;
+
+            distance = Mathf.Clamp(distance, _minCameraDistance, _maxCameraDistance);
+
+            StopAiming();
+
+            Tween moveTween = CreateMoveTween(targetPosition, duration);
 
             Tween zoomTween = CreateZoomTween(distance, duration);
 
@@ -120,6 +147,27 @@ namespace CameraManagement.CameraAim.Core
 
                     Vector3 currentCameraPosition = GetCameraPosition();
                     Vector3 targetCameraPosition = target.transform.position;
+                    targetCameraPosition.y = currentCameraPosition.y;
+                    startCameraPosition.y = currentCameraPosition.y;
+                    Vector3 cameraPosition = Vector3.Lerp(startCameraPosition, targetCameraPosition, moveProgress);
+                    SetCameraPosition(cameraPosition);
+                });
+
+            return moveTween;
+        }
+
+        private Tween CreateMoveTween(Vector3 targetPosition, float duration)
+        {
+            Vector3 startCameraPosition = GetCameraPosition();
+
+            float moveProgress = 0;
+            Tween moveTween = DOTween
+                .To(() => moveProgress, x => moveProgress = x, 1f, duration)
+                .SetEase(_moveCurve)
+                .OnUpdate(() =>
+                {
+                    Vector3 currentCameraPosition = GetCameraPosition();
+                    Vector3 targetCameraPosition = targetPosition;
                     targetCameraPosition.y = currentCameraPosition.y;
                     startCameraPosition.y = currentCameraPosition.y;
                     Vector3 cameraPosition = Vector3.Lerp(startCameraPosition, targetCameraPosition, moveProgress);
