@@ -271,9 +271,14 @@ PrefabInstance:
     - target: {fileID: 552819098959709841, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 606466236671030040, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 711695691268658507, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -436,7 +441,7 @@ PrefabInstance:
     - target: {fileID: 1475933332041759479, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1749323702996037604, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -563,11 +568,31 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 5514415617677800255, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 5514415617677800255, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _duration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5532608855236817473, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 5642879044781727168, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 5667104458554575580, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5908756320297366099, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -583,12 +608,27 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 1854063491}
+    - target: {fileID: 6301725546041918821, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6317042775427218218, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_Name
       value: CanBeParentOfSelectedCardUpdater
       objectReference: {fileID: 0}
+    - target: {fileID: 6339359218618836604, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
     - target: {fileID: 6499048130321804334, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 1854063491}
+    - target: {fileID: 6573173652045325346, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -744,6 +784,7 @@ MonoBehaviour:
   _isResource: 0
   _canBePlacedInChest: 0
   _canBeStackedWithSameCard: 1
+  _isZone: 0
   ID: -1
   GroupID:
     value: -1
@@ -800,6 +841,8 @@ MonoBehaviour:
     value: 0
   CanBeSelected:
     value: 1
+  IsInSelectedGroup:
+    value: 0
   IsInsideCardsTable:
     value: 0
   IsTakingPartInRecipe:
@@ -823,6 +866,7 @@ MonoBehaviour:
     JumpAnimation: {fileID: 5960606192708736452}
     FlipAnimation: {fileID: 7816034676176084162}
     ShakeAnimation: {fileID: 1211409701403973134}
+    ContinuousJumpingAnimation: {fileID: 4903911876357229269}
   IsPlayingAnyAnimation:
     value: 0
   CurrentReproductionRecipe:
@@ -833,6 +877,8 @@ MonoBehaviour:
       Results: []
   PositionShakeObserver: {fileID: 3044150550693373442}
   CardSelectedHeightController: {fileID: 3124017055480539372}
+  OverlappingCards: []
+  QuestOutline: {fileID: 4058438003390701426}
   Price:
     value: 0
 --- !u!224 &564359370849849035 stripped
@@ -877,12 +923,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271d54f7da1d3fb4ca805f4ff5d4c66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4058438003390701426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3520519459302729368, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 615042715106327018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0c230ad0d74a55b66889c2cd68c69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4321002090125372987 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3710502747120736209, guid: 7bf54413c6b39324e9a7ddfc51606634,
     type: 3}
   m_PrefabInstance: {fileID: 615042715106327018}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4903911876357229269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5514415617677800255, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 615042715106327018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ae4a9aa1b8475388c5c202541f78db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5368408886502043287 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4758467965833942909, guid: 7bf54413c6b39324e9a7ddfc51606634,

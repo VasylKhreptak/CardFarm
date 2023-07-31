@@ -50,6 +50,7 @@ namespace DebugTools.CardDataFillers
             _cardData.Animations.JumpAnimation = GetComponentInChildren<CardJumpAnimation>();
             _cardData.Animations.FlipAnimation = GetComponentInChildren<CardFlipAnimation>();
             _cardData.Animations.ShakeAnimation = GetComponentInChildren<CardShakeAnimation>();
+            _cardData.Animations.ContinuousJumpingAnimation = GetComponentInChildren<CardContinuousJumpingAnimation>();
             _cardData.CardSelectedHeightController = GetComponentInChildren<CardSelectedHeightController>();
 
             _cardData.RectTransform = GetComponentInChildren<RectTransform>();

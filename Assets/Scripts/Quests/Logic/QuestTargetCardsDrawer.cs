@@ -21,6 +21,7 @@ namespace Quests.Logic
         [Header("Preferences")]
         [SerializeField] private List<CardQuantityPair> _targetCards = new List<CardQuantityPair>();
         [SerializeField] private float _outlineShowTime = 2f;
+        [SerializeField] private float _cardJumpDuration = 2f;
 
         [Header("Zoom Preferences")]
         [SerializeField] private float _minAverageDistance = 10f;
@@ -89,6 +90,7 @@ namespace Quests.Logic
             _cameraAimer.Aim(center, distance);
 
             ShowOutlines(foundCards);
+            PlayAnimations(foundCards);
         }
 
         private List<CardData> FindTargetCards()
@@ -157,6 +159,17 @@ namespace Quests.Logic
             foreach (var card in cards)
             {
                 card.QuestOutline.Show(_outlineShowTime);
+            }
+        }
+
+        private void PlayAnimations(List<CardData> cards)
+        {
+            foreach (var card in cards)
+            {
+                if (card.IsTakingPartInRecipe.Value == false && card.IsSingleCard.Value)
+                {
+                    card.Animations.ContinuousJumpingAnimation.PlayContinuous(_cardJumpDuration);
+                }
             }
         }
 

@@ -10,6 +10,7 @@ namespace Cards.Data
         public CardJumpAnimation JumpAnimation;
         public CardFlipAnimation FlipAnimation;
         public CardShakeAnimation ShakeAnimation;
+        public CardContinuousJumpingAnimation ContinuousJumpingAnimation;
 
         public void Stop()
         {
@@ -17,6 +18,7 @@ namespace Cards.Data
             JumpAnimation.Stop();
             FlipAnimation.Stop();
             ShakeAnimation.Stop();
+            ContinuousJumpingAnimation.Stop();
         }
     }
 }
