@@ -552,6 +552,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 718274150106123234, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 1178447265615570673, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -757,6 +762,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 3235184119412415663, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 3273910706306169596, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -877,6 +887,21 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 6507552467412648492, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.19607845
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507552467412648492, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507552467412648492, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9960785
+      objectReference: {fileID: 0}
     - target: {fileID: 6684746522414615599, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -902,6 +927,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 7731085431621850148, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 8166719590112306359, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -922,6 +952,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanBeSellZoneUnderSelectedCard
       objectReference: {fileID: 0}
+    - target: {fileID: 8285550440254205848, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 8553110877064441643, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
@@ -937,6 +972,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 8639720198444888964, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 8751749595196191504, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_Name
@@ -965,7 +1005,7 @@ PrefabInstance:
     - target: {fileID: 9213482588005436104, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2820945151771822119, guid: d5d346ed3d610c748b54a7004eb99e4c, type: 3}
@@ -1032,6 +1072,7 @@ MonoBehaviour:
   _isResource: 0
   _canBePlacedInChest: 0
   _canBeStackedWithSameCard: 1
+  _isZone: 0
   ID: -1
   GroupID:
     value: -1
@@ -1088,6 +1129,8 @@ MonoBehaviour:
     value: 0
   CanBeSelected:
     value: 0
+  IsInSelectedGroup:
+    value: 0
   IsInsideCardsTable:
     value: 0
   IsTakingPartInRecipe:
@@ -1121,6 +1164,7 @@ MonoBehaviour:
       Results: []
   PositionShakeObserver: {fileID: 0}
   CardSelectedHeightController: {fileID: 0}
+  OverlappingCards: []
   _coinSpawnInterval: 0.1
   CoinSpawnPoint: {fileID: 5974213635198002519}
   SelectedCardsTotalPrice:

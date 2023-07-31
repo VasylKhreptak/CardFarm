@@ -2,7 +2,6 @@
 using Extensions;
 using Providers.Graphics;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Zenject;
 
 namespace Physics.Cards
@@ -41,12 +40,25 @@ namespace Physics.Cards
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            int touchCount = Input.touchCount;
+
+            if (touchCount > 1)
+            {
+                if (Input.GetTouch(touchCount - 1).phase == TouchPhase.Began)
+                {
+                    OnMouseUp();
+                }
+            }
+
+            if (Input.touchCount != 1) return;
+
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
             {
                 OnMouseDown();
             }
-
-            if (Input.GetMouseButtonUp(0))
+            else if (touch.phase == TouchPhase.Ended)
             {
                 OnMouseUp();
             }

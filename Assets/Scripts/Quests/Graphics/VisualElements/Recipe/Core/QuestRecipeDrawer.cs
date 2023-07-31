@@ -50,6 +50,7 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
 
         private void StartObserving()
         {
+            StopObserving();
             _subscription = _questsManager.CurrentQuest.Subscribe(TryDrawQuestRecipe);
         }
 
@@ -76,6 +77,8 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
 
             SpawnPrefab(_equalsSign);
             SpawnCard(questData.Recipe.Result);
+            
+            // StopObserving();
         }
 
         private void SpawnCard(QuestRecipeCardData cardData)

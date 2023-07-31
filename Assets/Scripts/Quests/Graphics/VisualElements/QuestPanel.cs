@@ -102,6 +102,7 @@ namespace Quests.Graphics.VisualElements
 
         private void Show()
         {
+            Disable();
             Enable();
             SetParametersSmooth(_targetScale, 1f);
         }
@@ -111,15 +112,9 @@ namespace Quests.Graphics.VisualElements
             SetParametersSmooth(_startScale, 0f, Disable);
         }
 
-        private void Enable()
-        {
-            _quest.SetActive(true);
-        }
+        private void Enable() => _quest.SetActive(true);
 
-        private void Disable()
-        {
-            _quest.SetActive(false);
-        }
+        private void Disable() => _quest.SetActive(false);
 
         private void SetParametersSmooth(Vector3 scale, float alpha, Action onComplete = null)
         {

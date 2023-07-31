@@ -57,6 +57,8 @@ namespace Quests.Graphics.VisualElements
             }
 
             _tmp.text = quest.Name;
+            
+            // StopObserving();
         }
     }
 }
