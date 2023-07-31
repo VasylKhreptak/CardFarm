@@ -1,6 +1,7 @@
 ﻿using System;
 using Cards.Core;
 using Cards.Zones.Data;
+using Graphics.Animations.Core;
 using UniRx;
 using UnityEngine;
 
@@ -18,5 +19,7 @@ namespace Cards.Zones.SellZone.Data
         public Action<Card> onSoldCard;
 
         public IntReactiveProperty SelectedCardsTotalPrice = new IntReactiveProperty(0);
+
+        public JumpFlipAnimation CoinFlipAnimation;
     }
 }
