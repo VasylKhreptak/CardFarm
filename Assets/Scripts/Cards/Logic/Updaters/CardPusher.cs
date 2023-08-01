@@ -94,9 +94,7 @@ namespace Cards.Logic.Updaters
         {
             StopPushing();
 
-            _pushSubscription = Observable
-                .EveryUpdate()
-                .Subscribe(_ => PushCardStep());
+            _pushSubscription = Observable.EveryUpdate().Subscribe(_ => PushCardStep());
         }
 
         private void StopPushing()
