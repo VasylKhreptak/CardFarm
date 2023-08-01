@@ -87,7 +87,7 @@ namespace Cards.Logic.Updaters
             bool isCardLastInSelectedCardUpperCards = selectedCardUpperCards.LastOrDefault() == _cardData;
 
             canBeUnderSelectedCard =
-                isLowestGroupCard
+                isLowestGroupCard == false ? isCardLastInSelectedCardUpperCards : isLowestGroupCard
                 && isSelected == false
                 && isCompatibleWithSelectedCard
                 && isCardsSame == false

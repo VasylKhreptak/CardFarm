@@ -56,7 +56,7 @@ namespace Cards.Logic.Updaters
 
         private void StartObserving()
         {
-            _cardData.IsInSelectedGroup.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsAnyGroupCardSelected.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
@@ -67,7 +67,7 @@ namespace Cards.Logic.Updaters
 
         private void OnEnvironmentChanged()
         {
-            if (_cardData.IsInSelectedGroup.Value == false)
+            if (_cardData.IsAnyGroupCardSelected.Value == false)
             {
                 StartUpdating();
             }
@@ -105,7 +105,7 @@ namespace Cards.Logic.Updaters
                     || card.IsSelected.Value
                     || card.GroupID.Value == _cardData.GroupID.Value
                     || card.IsZone
-                    || card.IsInSelectedGroup.Value
+                    || card.IsAnyGroupCardSelected.Value
                     || Vector3.Distance(card.transform.position, _cardData.transform.position) > _maxDistance;
 
                 return canRemove;

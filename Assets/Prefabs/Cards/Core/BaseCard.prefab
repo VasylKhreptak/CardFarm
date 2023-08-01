@@ -376,7 +376,7 @@ MonoBehaviour:
     value: 0
   IsSelected:
     value: 0
-  IsLowestGroupCard:
+  IsLastGroupCard:
     value: 0
   CanBeUnderSelectedCard:
     value: 0
@@ -384,7 +384,7 @@ MonoBehaviour:
     value: 0
   CanBeSelected:
     value: 0
-  IsInSelectedGroup:
+  IsAnyGroupCardSelected:
     value: 0
   IsInsideCardsTable:
     value: 0
@@ -1396,7 +1396,7 @@ GameObject:
   - component: {fileID: 5972808965931825760}
   - component: {fileID: 5642879044781727168}
   m_Layer: 6
-  m_Name: IsInSelectedGroupUpdater
+  m_Name: IsAnyGroupCardSelectedUpdater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -101,7 +101,7 @@ namespace Cards.Data
         public BoolReactiveProperty CanBeUnderSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty CanBeSelected = new BoolReactiveProperty();
-        public BoolReactiveProperty IsInSelectedGroup = new BoolReactiveProperty();
+        public BoolReactiveProperty IsAnyGroupCardSelected = new BoolReactiveProperty();
 
         public BoolReactiveProperty IsInsideCardsTable = new BoolReactiveProperty();
         public BoolReactiveProperty IsTakingPartInRecipe = new BoolReactiveProperty();
