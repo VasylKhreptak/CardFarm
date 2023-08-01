@@ -22,6 +22,23 @@ namespace Tools.Bounds
             return true;
         }
 
+        public static Vector3 Clamp(this RectTransform outerRect, Vector3 point)
+        {
+            Vector2 outerSize = outerRect.rect.size;
+            Vector3 outerWorldPos = outerRect.position;
+
+            float minX = outerWorldPos.x - outerSize.x * 0.5f;
+            float maxX = outerWorldPos.x + outerSize.x * 0.5f;
+            float minZ = outerWorldPos.z - outerSize.y * 0.5f;
+            float maxZ = outerWorldPos.z + outerSize.y * 0.5f;
+
+            float x = Mathf.Clamp(point.x, minX, maxX);
+            float z = Mathf.Clamp(point.z, minZ, maxZ);
+            Vector3 clampedPosition = new Vector3(x, point.y, z);
+
+            return clampedPosition;
+        }
+
         public static Vector3 Clamp(this RectTransform outerRect, RectTransform innerRect)
         {
             return Clamp(outerRect, innerRect, innerRect.position);

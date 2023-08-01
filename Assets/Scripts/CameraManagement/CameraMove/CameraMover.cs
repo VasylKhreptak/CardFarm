@@ -3,6 +3,7 @@ using CameraManagement.CameraAim.Core;
 using CameraManagement.CameraMove.Core;
 using Cards.Data;
 using CardsTable;
+using Constraints;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -27,15 +28,18 @@ namespace CameraManagement.CameraMove
         private MapDragObserver _dragObserver;
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
         private CameraAimer _cameraAimer;
+        private CameraBounds _cameraBounds;
 
         [Inject]
         private void Constructor(MapDragObserver dragObserver,
             CurrentSelectedCardHolder currentSelectedCardHolder,
-            CameraAimer cameraAimer)
+            CameraAimer cameraAimer,
+            CameraBounds cameraBounds)
         {
             _dragObserver = dragObserver;
             _currentSelectedCardHolder = currentSelectedCardHolder;
             _cameraAimer = cameraAimer;
+            _cameraBounds = cameraBounds;
         }
 
         #region MonoBehaviour
@@ -117,6 +121,8 @@ namespace CameraManagement.CameraMove
 
             cameraPosition += moveDirection * _speed;
 
+            cameraPosition = ClampPosition(cameraPosition);
+
             _transform.position = cameraPosition;
         }
 
@@ -124,6 +130,25 @@ namespace CameraManagement.CameraMove
         {
             Ray ray = new Ray(_transform.position, _transform.forward);
             return UnityEngine.Physics.Raycast(ray, out hit, float.MaxValue, _floorLayerMask);
+        }
+
+        private Vector3 ClampPosition(Vector3 position)
+        {
+            Ray ray = new Ray(position, _transform.forward);
+
+            if (UnityEngine.Physics.Raycast(ray, out var hit, float.MaxValue, _floorLayerMask))
+            {
+                Vector3 hitPoint = hit.point;
+                float distance = hit.distance;
+
+                hitPoint = _cameraBounds.Clamp(hitPoint);
+
+                hitPoint += -_transform.forward * distance;
+
+                return hitPoint;
+            }
+
+            return position;
         }
     }
 }

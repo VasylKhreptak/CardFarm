@@ -12,7 +12,7 @@ namespace Constraints._2D.Core
         [SerializeField] private Color _gizmosColor = Color.blue;
 
         public RectTransform Bounds => _bounds;
-        
+
         #region MonoBehaviour
 
         private void OnValidate()
@@ -25,6 +25,11 @@ namespace Constraints._2D.Core
         public bool IsInside(RectTransform innerRect)
         {
             return _bounds.IsInside(innerRect);
+        }
+
+        public Vector3 Clamp(Vector3 point)
+        {
+            return _bounds.Clamp(point);
         }
 
         public Vector3 Clamp(RectTransform innerRect)
@@ -41,7 +46,7 @@ namespace Constraints._2D.Core
         {
             return _bounds.Clamp(innerRect, targetRectPosition);
         }
-        
+
         public Vector3 GetRandomPositionInRange(RectTransform innerRect, float range)
         {
             Vector3 position = Vector3.zero;

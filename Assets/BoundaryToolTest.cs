@@ -23,7 +23,7 @@ public class BoundaryToolTest : MonoBehaviour
 
     private void Update()
     {
-        // Debug.Log(_innerRectTransform.IsOverlapping(_innerRectTransforms));
+        _innerRectTransform.position = _outerRectTransform.Clamp(_innerRectTransform.position);
     }
 
     [Button()]
