@@ -57,7 +57,6 @@ namespace Cards.Logic.Updaters
         {
             _cardData.IsAnyGroupCardSelected.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.IsPlayingAnyAnimation.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
-            _cardData.IsActivelyFollowingCard.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
@@ -72,12 +71,11 @@ namespace Cards.Logic.Updaters
 
             bool isAnyGroupCardSelected = _cardData.IsAnyGroupCardSelected.Value;
             bool isPlayingAnyAnimation = _cardData.IsPlayingAnyAnimation.Value;
-            bool isActivelyFollowingCard = _cardData.IsActivelyFollowingCard.Value;
+
 
             canPush =
                 isAnyGroupCardSelected == false
-                && isPlayingAnyAnimation == false
-                && isActivelyFollowingCard == false;
+                && isPlayingAnyAnimation == false;
 
 
             if (canPush)
@@ -104,6 +102,8 @@ namespace Cards.Logic.Updaters
 
         private void PushCardStep()
         {
+            if (_cardData.OverlappingCards.Count == 0) return;
+
             Vector3 position = _cardData.transform.position;
             Vector3 direction = Vector3.zero;
             List<CardData> overlappingCards = _cardData.OverlappingCards;

@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Cards.Logic.Updaters
 {
-    public class IsActivelyFollowingCardUpdater : MonoBehaviour, IValidatable
+    public class IsActivelyFollowingUpperCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
