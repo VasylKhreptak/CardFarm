@@ -114,6 +114,8 @@ namespace Cards.Data
         public CardAnimations Animations = new CardAnimations();
         public BoolReactiveProperty IsPlayingAnyAnimation = new BoolReactiveProperty();
 
+        public BoolReactiveProperty IsActivelyFollowingCard = new BoolReactiveProperty();
+
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
 
         public ReactiveProperty<CardReproductionRecipe> CurrentReproductionRecipe = new ReactiveProperty<CardReproductionRecipe>();
