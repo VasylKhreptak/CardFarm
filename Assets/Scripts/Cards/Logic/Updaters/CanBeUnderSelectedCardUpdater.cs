@@ -43,6 +43,7 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             StopObserving();
+            _cardData.CanBeUnderSelectedCard.Value = false;
         }
 
         #endregion

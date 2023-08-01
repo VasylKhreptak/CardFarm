@@ -13,8 +13,7 @@ namespace Cards.Data
         public Action onAnyUpperCardUpdated;
         public Action onUpperCardsListUpdated;
 
-        public Action onGroupCardsListUpdatedNonArgs;
-        public Action<List<CardData>> onGroupCardsListUpdated;
+        public Action onGroupCardsListUpdated;
         public Action onBecameHeadOfGroup;
 
         public Action<Card> OnReproduced;

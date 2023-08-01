@@ -49,6 +49,7 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             StopObserving();
+            _cardData.OverlappingCards.Clear();
         }
 
         #endregion

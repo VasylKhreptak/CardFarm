@@ -1,4 +1,5 @@
-﻿using Cards.Data;
+﻿using System;
+using Cards.Data;
 using Constraints.CardTable;
 using UnityEngine;
 using Zenject;
@@ -33,6 +34,11 @@ namespace Cards.Logic.Updaters
         private void Update()
         {
             UpdateValue();
+        }
+
+        private void OnDisable()
+        {
+            _cardData.IsInsideCardsTable.Value = false;
         }
 
         #endregion

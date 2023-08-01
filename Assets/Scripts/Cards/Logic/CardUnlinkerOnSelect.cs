@@ -41,7 +41,7 @@ namespace Cards.Logic
         private void StartObservingIfSelected()
         {
             StopObservingIfSelected();
-            _isSelectedSubscription = _cardData.IsSelected.Where(x => x == true).Subscribe(_ => OnSelected());
+            _isSelectedSubscription = _cardData.IsSelected.Where(x => x).Subscribe(_ => OnSelected());
         }
 
         private void StopObservingIfSelected()

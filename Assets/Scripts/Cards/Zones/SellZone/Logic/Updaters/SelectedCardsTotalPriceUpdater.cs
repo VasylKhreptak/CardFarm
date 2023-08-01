@@ -75,15 +75,15 @@ namespace Cards.Zones.SellZone.Logic.Updaters
                 return;
             }
 
-            StartObservingGroupCards(selectedCard);
+            StartObservingBottomCards(selectedCard);
             _previousSelectedCard = selectedCard;
         }
 
-        private void StartObservingGroupCards(CardData cardData)
+        private void StartObservingBottomCards(CardData cardData)
         {
-            OnGroupCardsUpdated(cardData.GroupCards);
+            OnBottomCardsUpdated();
 
-            cardData.Callbacks.onGroupCardsListUpdated += OnGroupCardsUpdated;
+            cardData.Callbacks.onBottomCardsListUpdated += OnBottomCardsUpdated;
         }
 
         private void StopObservingGroupCards(CardData cardData)
@@ -93,20 +93,28 @@ namespace Cards.Zones.SellZone.Logic.Updaters
                 return;
             }
 
-            cardData.Callbacks.onGroupCardsListUpdated -= OnGroupCardsUpdated;
+            cardData.Callbacks.onGroupCardsListUpdated -= OnBottomCardsUpdated;
         }
 
-        private void OnGroupCardsUpdated(List<CardData> groupCards)
+        private void OnBottomCardsUpdated()
         {
+            CardData selectedCard = _selectedCardHolder.SelectedCard.Value;
+
+            if (selectedCard == null) return;
+
+            List<CardData> targetCards = selectedCard.BottomCards.ToList();
+
+            targetCards.Add(selectedCard);
+
             int price = 0;
 
-            if (groupCards.First().IsSellableCard)
+            if (targetCards.First().IsSellableCard)
             {
-                foreach (var groupCard in groupCards)
+                foreach (var targetCard in targetCards)
                 {
-                    if (groupCard.IsSellableCard == false) continue;
+                    if (targetCard.IsSellableCard == false) continue;
 
-                    SellableCardData sellableCardData = groupCard as SellableCardData;
+                    SellableCardData sellableCardData = targetCard as SellableCardData;
 
                     price += sellableCardData.Price.Value;
                 }

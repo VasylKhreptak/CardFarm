@@ -32,6 +32,8 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             StopObservingBottomCard();
+            _cardData.BottomCards.Clear();
+            _cardData.Callbacks.onBottomCardsListUpdated?.Invoke();
         }
 
         #endregion

@@ -34,6 +34,9 @@ namespace Cards.Logic.Updaters
         {
             _cardData.Callbacks.onUpperCardsListUpdated -= OnCardsUpdated;
             _cardData.Callbacks.onBottomCardsListUpdated -= OnCardsUpdated;
+            
+            _cardData.GroupCards.Clear();
+            _cardData.Callbacks.onGroupCardsListUpdated?.Invoke();
         }
 
         #endregion
@@ -43,8 +46,7 @@ namespace Cards.Logic.Updaters
             List<CardData> groupCards = _cardData.FindGroupCards();
 
             _cardData.GroupCards = groupCards;
-            _cardData.Callbacks.onGroupCardsListUpdatedNonArgs?.Invoke();
-            _cardData.Callbacks.onGroupCardsListUpdated?.Invoke(groupCards);
+            _cardData.Callbacks.onGroupCardsListUpdated?.Invoke();
         }
     }
 }

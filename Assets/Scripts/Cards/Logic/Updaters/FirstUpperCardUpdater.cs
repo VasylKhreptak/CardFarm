@@ -30,6 +30,7 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             _cardData.Callbacks.onUpperCardsListUpdated -= OnUpperCardsListUpdated;
+            _cardData.FirstUpperCard.Value = null;
         }
 
         #endregion

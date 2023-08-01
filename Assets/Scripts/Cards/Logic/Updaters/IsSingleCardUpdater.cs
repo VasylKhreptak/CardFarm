@@ -33,6 +33,7 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             StopObserving();
+            _cardData.IsSingleCard.Value = false;
         }
 
         #endregion

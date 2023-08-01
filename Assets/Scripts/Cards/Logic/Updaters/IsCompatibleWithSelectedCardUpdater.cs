@@ -44,6 +44,7 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             StopObservingSelectedCard();
+            _cardData.IsCompatibleWithSelectedCard.Value = false;
         }
 
         #endregion

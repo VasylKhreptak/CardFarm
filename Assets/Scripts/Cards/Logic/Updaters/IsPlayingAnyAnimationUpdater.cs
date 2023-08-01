@@ -40,6 +40,7 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             StopObserving();
+            _cardData.IsPlayingAnyAnimation.Value = false;
         }
 
         #endregion

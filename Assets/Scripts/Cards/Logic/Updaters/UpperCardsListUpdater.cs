@@ -32,6 +32,8 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             StopObservingUpperCards();
+            _cardData.UpperCards.Clear();
+            _cardData.Callbacks.onUpperCardsListUpdated?.Invoke();
         }
 
         #endregion

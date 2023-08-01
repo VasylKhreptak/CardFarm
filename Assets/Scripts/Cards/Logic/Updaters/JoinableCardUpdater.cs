@@ -49,8 +49,8 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             StopObservingCardSelection();
-            StopFrameDelay();
             StopUpdatingJoinableCard();
+            StopFrameDelay();
             ResetJoinableCard();
         }
 

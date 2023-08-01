@@ -30,12 +30,12 @@ namespace Cards.Logic.Events
         {
             StartObservingIfSingleCard();
             StartObservingIfTopCard();
-            _cardData.Callbacks.onGroupCardsListUpdatedNonArgs += OnCardsGroupUpdated;
+            _cardData.Callbacks.onGroupCardsListUpdated += OnCardsGroupUpdated;
         }
 
         private void OnDisable()
         {
-            _cardData.Callbacks.onGroupCardsListUpdatedNonArgs -= OnCardsGroupUpdated;
+            _cardData.Callbacks.onGroupCardsListUpdated -= OnCardsGroupUpdated;
             StopObservingIfTopCard();
             StopObservingIfSingleCard();
         }

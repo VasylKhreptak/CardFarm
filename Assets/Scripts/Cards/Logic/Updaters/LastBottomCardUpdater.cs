@@ -30,6 +30,7 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             _cardData.Callbacks.onBottomCardsListUpdated -= OnBottomCardsListUpdated;
+            _cardData.LastBottomCard.Value = null;
         }
 
         #endregion

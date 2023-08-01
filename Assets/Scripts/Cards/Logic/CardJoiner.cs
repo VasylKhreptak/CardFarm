@@ -1,5 +1,4 @@
-﻿using System;
-using Cards.Data;
+﻿using Cards.Data;
 using Extensions;
 using UniRx;
 using UnityEngine;
@@ -12,7 +11,7 @@ namespace Cards.Logic
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
-        private IDisposable _subscription;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         #region MonoBehaviour
 
@@ -42,25 +41,29 @@ namespace Cards.Logic
         {
             StopObserving();
 
-            _subscription = Observable
-                .CombineLatest(_cardData.IsSelected, _cardData.JoinableCard,
-                    (isSelected, targetCard) => new { isSelected, targetCard })
-                .Subscribe(tuple =>
-                {
-                    OnCardDataUpdated(tuple.isSelected, tuple.targetCard);
-                });
+            _cardData.IsSelected.Subscribe(_ => OnEnvironmentUpdated()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
         {
-            _subscription?.Dispose();
+            _subscriptions?.Clear();
         }
 
-        private void OnCardDataUpdated(bool isSelected, CardData targetCard)
+        private void OnEnvironmentUpdated()
         {
-            if (isSelected == false && targetCard != null)
+            bool isSelected = _cardData.IsSelected.Value;
+            CardData joinableCard = _cardData.JoinableCard.Value;
+
+            if (isSelected == false)
             {
-                _cardData.LinkTo(targetCard);
+                if (joinableCard != null)
+                {
+                    _cardData.LinkTo(joinableCard);
+                }
+                else
+                {
+                    _cardData.UnlinkFromUpper();
+                }
             }
         }
     }

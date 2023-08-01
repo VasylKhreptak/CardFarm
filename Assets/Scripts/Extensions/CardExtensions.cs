@@ -12,11 +12,12 @@ namespace Extensions
 
             if (card == linkTo) return;
 
-            if(card.gameObject.activeSelf == false) return;
+            if (card.gameObject.activeSelf == false) return;
             
-            linkTo.BottomCard.Value.UnlinkFromUpper();
-
+            card.UpperCard.Value.UnlinkFromBottom();
+            
             card.UpperCard.Value = linkTo;
+            
             linkTo.BottomCard.Value = card;
         }
 
@@ -26,23 +27,26 @@ namespace Extensions
 
             CardData upperCard = card.UpperCard.Value;
 
+            card.UpperCard.Value = null;
+
             if (upperCard == null) return;
 
             upperCard.BottomCard.Value = null;
+        }
 
-            card.UpperCard.Value = null;
+        public static void UnlinkFromBottom(this CardData card)
+        {
+            if (card == null) return;
+            
+            CardData bottomCard = card.BottomCard.Value;
+            
+            bottomCard.UnlinkFromUpper();
         }
 
         public static void Separate(this CardData card)
         {
-            if (card == null) return;
-
             card.UnlinkFromUpper();
-
-            if (card.BottomCard.Value != null)
-            {
-                card.BottomCard.Value.UnlinkFromUpper();
-            }
+            card.UnlinkFromBottom();
         }
 
         public static List<CardData> FindBottomCards(this CardData card)

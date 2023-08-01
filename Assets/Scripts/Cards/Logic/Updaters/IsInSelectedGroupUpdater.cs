@@ -35,6 +35,7 @@ namespace Cards.Logic.Updaters
         {
             StopObservingFirstGroupCard();
             StopObservingIfCardSelected();
+            _cardData.IsInSelectedGroup.Value = false;
         }
 
         #endregion

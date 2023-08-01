@@ -31,6 +31,7 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             StopObservingGroupCards();
+            _cardData.LastGroupCard.Value = null;
         }
 
         #endregion
@@ -39,12 +40,12 @@ namespace Cards.Logic.Updaters
         {
             StopObservingGroupCards();
 
-            _cardData.Callbacks.onGroupCardsListUpdatedNonArgs += OnGroupCardsUpdated;
+            _cardData.Callbacks.onGroupCardsListUpdated += OnGroupCardsUpdated;
         }
 
         private void StopObservingGroupCards()
         {
-            _cardData.Callbacks.onGroupCardsListUpdatedNonArgs -= OnGroupCardsUpdated;
+            _cardData.Callbacks.onGroupCardsListUpdated -= OnGroupCardsUpdated;
         }
 
         private void OnGroupCardsUpdated()
