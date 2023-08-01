@@ -72,7 +72,6 @@ namespace Cards.Logic.Updaters
             bool isAnyGroupCardSelected = _cardData.IsAnyGroupCardSelected.Value;
             bool isPlayingAnyAnimation = _cardData.IsPlayingAnyAnimation.Value;
 
-
             canPush =
                 isAnyGroupCardSelected == false
                 && isPlayingAnyAnimation == false;
