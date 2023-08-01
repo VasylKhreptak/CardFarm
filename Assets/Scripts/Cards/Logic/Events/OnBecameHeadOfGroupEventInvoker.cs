@@ -42,13 +42,13 @@ namespace Cards.Logic.Events
 
             _cardData.IsTopCard.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.IsSingleCard.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
-            _cardData.Callbacks.onBottomCardsListUpdated += OnCardEnvironmentChanged;
+            _cardData.Callbacks.onGroupCardsListUpdated += OnCardEnvironmentChanged;
         }
 
         private void StopObserving()
         {
             _subscriptions.Clear();
-            _cardData.Callbacks.onBottomCardsListUpdated -= OnCardEnvironmentChanged;
+            _cardData.Callbacks.onGroupCardsListUpdated -= OnCardEnvironmentChanged;
         }
 
         private void OnCardEnvironmentChanged()

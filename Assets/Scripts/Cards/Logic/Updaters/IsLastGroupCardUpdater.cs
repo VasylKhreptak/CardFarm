@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Cards.Logic.Updaters
 {
-    public class IsLowestGroupCardUpdater : MonoBehaviour, IValidatable
+    public class IsLastGroupCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
@@ -33,7 +33,7 @@ namespace Cards.Logic.Updaters
         private void OnDisable()
         {
             StopObserving();
-            _cardData.IsLowestGroupCard.Value = false;
+            _cardData.IsLastGroupCard.Value = false;
         }
 
         #endregion
@@ -51,7 +51,7 @@ namespace Cards.Logic.Updaters
 
         private void OnLowestGroupCardUpdated(CardData cardData)
         {
-            _cardData.IsLowestGroupCard.Value = cardData == _cardData;
+            _cardData.IsLastGroupCard.Value = cardData == _cardData;
         }
     }
 }

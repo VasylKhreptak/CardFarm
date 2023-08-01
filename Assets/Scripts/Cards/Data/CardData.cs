@@ -8,6 +8,7 @@ using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cards.Data
 {
@@ -96,7 +97,7 @@ namespace Cards.Data
         public BoolReactiveProperty IsMiddleCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsSingleCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsSelected = new BoolReactiveProperty();
-        public BoolReactiveProperty IsLowestGroupCard = new BoolReactiveProperty();
+        public BoolReactiveProperty IsLastGroupCard = new BoolReactiveProperty();
         public BoolReactiveProperty CanBeUnderSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty IsCompatibleWithSelectedCard = new BoolReactiveProperty();
         public BoolReactiveProperty CanBeSelected = new BoolReactiveProperty();

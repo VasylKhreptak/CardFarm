@@ -1,4 +1,6 @@
-﻿using Cards.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Cards.Data;
 using CardsTable;
 using UniRx;
 using UnityEngine;
@@ -50,9 +52,10 @@ namespace Cards.Logic.Updaters
         {
             StopObserving();
 
-            _cardData.IsLowestGroupCard.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsLastGroupCard.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.IsCompatibleWithSelectedCard.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.IsSelected.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
+            _currentSelectedCardHolder.SelectedCard.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
@@ -64,11 +67,31 @@ namespace Cards.Logic.Updaters
         {
             bool canBeUnderSelectedCard = false;
 
-            bool isLowestGroupCard = _cardData.IsLowestGroupCard.Value;
+            bool isLowestGroupCard = _cardData.IsLastGroupCard.Value;
             bool isCompatibleWithSelectedCard = _cardData.IsCompatibleWithSelectedCard.Value;
             bool isSelected = _cardData.IsSelected.Value;
+            bool isCardsSame = _cardData == _currentSelectedCardHolder.SelectedCard.Value;
 
-            canBeUnderSelectedCard = isLowestGroupCard && isSelected == false && isCompatibleWithSelectedCard;
+            CardData selectedCard = _currentSelectedCardHolder.SelectedCard.Value;
+
+            List<CardData> selectedCardBottomCards = new List<CardData>(0);
+            List<CardData> selectedCardUpperCards = new List<CardData>(0);
+
+            if (selectedCard != null)
+            {
+                selectedCardBottomCards = selectedCard.BottomCards;
+                selectedCardUpperCards = selectedCard.UpperCards;
+            }
+
+            bool isCardInSelectedCardBottomCards = selectedCardBottomCards.Contains(_cardData);
+            bool isCardLastInSelectedCardUpperCards = selectedCardUpperCards.LastOrDefault() == _cardData;
+
+            canBeUnderSelectedCard =
+                isLowestGroupCard
+                && isSelected == false
+                && isCompatibleWithSelectedCard
+                && isCardsSame == false
+                && isCardInSelectedCardBottomCards == false;
 
 
             _cardData.CanBeUnderSelectedCard.Value = canBeUnderSelectedCard;

@@ -35,7 +35,7 @@ namespace CardsTable.Core
         {
             foreach (CardData cardInTable in _cards)
             {
-                if (cardInTable.IsLowestGroupCard.Value
+                if (cardInTable.IsLastGroupCard.Value
                     && card == cardInTable.Card.Value)
                 {
                     cardData = cardInTable;
@@ -51,7 +51,7 @@ namespace CardsTable.Core
         {
             foreach (CardData cardInTable in _cards)
             {
-                if (cardInTable.IsLowestGroupCard.Value
+                if (cardInTable.IsLastGroupCard.Value
                     && card == cardInTable.Card.Value
                     && cardInTable.IsTakingPartInRecipe.Value == false)
                 {
@@ -68,7 +68,7 @@ namespace CardsTable.Core
         {
             foreach (CardData cardInTable in _cards)
             {
-                if (cardInTable.IsLowestGroupCard.Value
+                if (cardInTable.IsLastGroupCard.Value
                     && cardData.Card.Value == cardInTable.Card.Value
                     && cardInTable.IsTakingPartInRecipe.Value == false
                     && cardData != cardInTable)
@@ -164,7 +164,7 @@ namespace CardsTable.Core
 
             foreach (CardData cardInTable in _cards)
             {
-                if (cardInTable.IsLowestGroupCard.Value)
+                if (cardInTable.IsLastGroupCard.Value)
                 {
                     List<CardData> cardsGroup = cardInTable.GroupCards;
 
