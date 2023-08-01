@@ -19,9 +19,9 @@ namespace Cards.ResourceNodes.Core.Logic
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
-        [FormerlySerializedAs("_resourceNodeRecipe")]
         [Header("Preferences")]
         [SerializeField] private ResourceNodeRecipeData _resourceNodeData;
+        [SerializeField] private float _timeScale = 3f;
 
         private IDisposable _workersSubscription;
 
@@ -79,7 +79,7 @@ namespace Cards.ResourceNodes.Core.Logic
 
             if (bottomCards.Count == 1 && bottomCards[0].IsWorker)
             {
-                StartProgress(_resourceNodeData.Recipe.Cooldown);
+                StartProgress(_resourceNodeData.Recipe.Cooldown / _timeScale);
                 StartObservingWorker();
                 return;
             }
@@ -92,7 +92,7 @@ namespace Cards.ResourceNodes.Core.Logic
         {
             SpawnCard();
 
-            StartProgress(_resourceNodeData.Recipe.Cooldown);
+            StartProgress(_resourceNodeData.Recipe.Cooldown / _timeScale);
             StartObservingWorker();
         }
 

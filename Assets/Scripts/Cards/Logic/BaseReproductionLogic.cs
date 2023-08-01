@@ -22,7 +22,10 @@ namespace Cards.Logic
         [Header("Spawn Preferences")]
         [SerializeField] private float _minRange = 5f;
         [SerializeField] private float _maxRange = 7f;
-
+        
+        [Header("Preferences")]
+        [SerializeField] private float _timeScale = 3f;
+        
         private IDisposable _currentRecipeSubscription;
 
         private CardSpawner _cardSpawner;
@@ -81,7 +84,7 @@ namespace Cards.Logic
             }
             else
             {
-                StartProgress(recipe.Cooldown);
+                StartProgress(recipe.Cooldown / _timeScale);
             }
         }
 

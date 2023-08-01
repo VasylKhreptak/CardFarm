@@ -21,6 +21,9 @@ namespace Cards.Recipes
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
+        [Header("Preferences")]
+        [SerializeField] private float _timeScale = 3f;
+        
         private IDisposable _recipeSubscription;
         private IDisposable _workersSubscription;
 
@@ -87,7 +90,7 @@ namespace Cards.Recipes
             }
             else
             {
-                StartProgress(recipe.Cooldown);
+                StartProgress(recipe.Cooldown / _timeScale);
                 StartObservingWorkers();
             }
         }
@@ -100,15 +103,13 @@ namespace Cards.Recipes
 
             SpawnRecipeResult();
             DecreaseResourcesDurability();
-
-            // TryStartCurrentRecipe();
         }
 
         private void TryStartCurrentRecipe()
         {
             if (_cardData.CurrentRecipe.Value != null && _cardData.CurrentRecipe.Value.Cooldown != 0)
             {
-                StartProgress(_cardData.CurrentRecipe.Value.Cooldown);
+                StartProgress(_cardData.CurrentRecipe.Value.Cooldown / _timeScale);
             }
         }
 
