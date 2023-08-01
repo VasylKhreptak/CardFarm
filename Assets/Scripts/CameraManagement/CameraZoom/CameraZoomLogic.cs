@@ -81,7 +81,7 @@ namespace CameraManagement.CameraZoom
         private bool RaycastFloor(out RaycastHit hit)
         {
             Ray ray = new Ray(_transform.position, _transform.forward);
-            return UnityEngine.Physics.Raycast(ray, out hit, _maxDistance, _floorLayerMask);
+            return UnityEngine.Physics.Raycast(ray, out hit, float.MaxValue, _floorLayerMask);
         }
     }
 }

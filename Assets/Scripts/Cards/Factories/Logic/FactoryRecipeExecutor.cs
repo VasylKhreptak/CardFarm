@@ -22,6 +22,7 @@ namespace Cards.Factories.Logic
         [SerializeField] private CompatibleCards _compatibleCards;
 
         [Header("Preferences")]
+        [SerializeField] private float _timeScale = 3f;
         [SerializeField] private float _minSpreadRange = 5f;
         [SerializeField] private float _maxSpreadRange = 7f;
 
@@ -91,7 +92,7 @@ namespace Cards.Factories.Logic
             }
             else
             {
-                StartProgress(_cardData.CurrentFactoryRecipe.Value.Cooldown);
+                StartProgress(_cardData.CurrentFactoryRecipe.Value.Cooldown / _timeScale);
             }
         }
 
