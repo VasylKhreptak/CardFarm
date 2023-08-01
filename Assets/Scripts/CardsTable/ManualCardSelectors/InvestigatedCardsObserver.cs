@@ -25,6 +25,7 @@ namespace CardsTable.ManualCardSelectors
                 && _blackList.Contains(cardData.Card.Value) == false)
             {
                 _cards.Add(cardData.Card.Value);
+                cardData.IsNew.Value = true;
                 OnInvestigatedCard?.Invoke(cardData);
             }
         }

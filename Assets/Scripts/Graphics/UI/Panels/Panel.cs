@@ -21,5 +21,10 @@ namespace Graphics.UI.Panels
         {
             _panel.SetActive(!_panel.activeSelf);
         }
+        
+        public void SetActive(bool isActive)
+        {
+            _panel.SetActive(isActive);
+        }
     }
 }

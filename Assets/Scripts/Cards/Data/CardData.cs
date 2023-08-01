@@ -126,6 +126,8 @@ namespace Cards.Data
 
         public List<CardData> OverlappingCards = new List<CardData>();
 
+        public BoolReactiveProperty IsNew = new BoolReactiveProperty(false);
+
         public QuestOutline QuestOutline;
     }
 }
