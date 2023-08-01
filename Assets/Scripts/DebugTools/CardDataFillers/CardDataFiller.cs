@@ -3,7 +3,6 @@ using Cards.Gestures.PositionShake;
 using Cards.Graphics.Animations;
 using Cards.Graphics.Outlines;
 using Cards.Logic;
-using Cards.Recipes;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using NaughtyAttributes;
 using Tags.Cards;
@@ -53,8 +52,6 @@ namespace DebugTools.CardDataFillers
             _cardData.Animations.ShakeAnimation = GetComponentInChildren<CardShakeAnimation>();
             _cardData.Animations.ContinuousJumpingAnimation = GetComponentInChildren<CardContinuousJumpingAnimation>();
             _cardData.CardSelectedHeightController = GetComponentInChildren<CardSelectedHeightController>();
-
-            _cardData.RecipeExecutor = GetComponentInChildren<RecipeExecutor>();
 
             _cardData.RectTransform = GetComponentInChildren<RectTransform>();
 

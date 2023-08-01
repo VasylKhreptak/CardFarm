@@ -2,6 +2,7 @@
 using Cards.Data;
 using Constraints.CardTable;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Cards.Logic.Updaters
@@ -11,8 +12,9 @@ namespace Cards.Logic.Updaters
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
+        [FormerlySerializedAs("_pushSpeedAmplifier")]
         [Header("Preferences")]
-        [SerializeField] private float _pushSpeedAmplifier = 1f;
+        [SerializeField] private float _pushSpeed = 1f;
 
         private CardsTableBounds _cardsTableBounds;
 
@@ -61,7 +63,7 @@ namespace Cards.Logic.Updaters
             direction.y = 0;
             direction.Normalize();
 
-            direction *= _pushSpeedAmplifier;
+            direction *= _pushSpeed;
 
             position -= direction * Time.deltaTime;
 

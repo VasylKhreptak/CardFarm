@@ -3,7 +3,6 @@ using Cards.Core;
 using Cards.Gestures.PositionShake;
 using Cards.Graphics.Outlines;
 using Cards.Logic;
-using Cards.Recipes;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
@@ -108,7 +107,6 @@ namespace Cards.Data
 
         public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>(null);
         public List<CardRecipe> PossibleRecipes = new List<CardRecipe>();
-        public RecipeExecutor RecipeExecutor;
 
         public IntReactiveProperty Durability = new IntReactiveProperty(1);
         public IntReactiveProperty MaxDurability = new IntReactiveProperty(1);
