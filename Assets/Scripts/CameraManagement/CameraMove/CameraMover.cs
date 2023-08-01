@@ -1,4 +1,5 @@
 ﻿using System;
+using CameraManagement.CameraAim.Core;
 using CameraManagement.CameraMove.Core;
 using Cards.Data;
 using CardsTable;
@@ -25,13 +26,16 @@ namespace CameraManagement.CameraMove
 
         private MapDragObserver _dragObserver;
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
+        private CameraAimer _cameraAimer;
 
         [Inject]
         private void Constructor(MapDragObserver dragObserver,
-            CurrentSelectedCardHolder currentSelectedCardHolder)
+            CurrentSelectedCardHolder currentSelectedCardHolder,
+            CameraAimer cameraAimer)
         {
             _dragObserver = dragObserver;
             _currentSelectedCardHolder = currentSelectedCardHolder;
+            _cameraAimer = cameraAimer;
         }
 
         #region MonoBehaviour
@@ -85,8 +89,8 @@ namespace CameraManagement.CameraMove
 
         private void MoveCameraToSelectedCard(Vector3 targetPosition)
         {
-            
-            
+            if (_cameraAimer.IsAiming.Value) return;
+
             Vector3 cameraPosition = _transform.position;
 
             targetPosition.y = cameraPosition.y;
