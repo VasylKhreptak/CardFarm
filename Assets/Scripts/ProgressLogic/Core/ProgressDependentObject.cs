@@ -54,17 +54,29 @@ namespace ProgressLogic.Core
             _progressTween.timeScale = timeScale;
         }
 
-        protected void Pause()
+        public void SetPause(bool isPaused)
+        {
+            if (isPaused)
+            {
+                Pause();
+            }
+            else
+            {
+                Resume();
+            }
+        }
+
+        public void Pause()
         {
             _progressTween?.Pause();
         }
 
-        protected void Resume()
+        public void Resume()
         {
             _progressTween?.Play();
         }
 
-        protected void TogglePause()
+        public void TogglePause()
         {
             _progressTween?.TogglePause();
         }
