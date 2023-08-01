@@ -99,10 +99,10 @@ namespace Cards.Recipes
             SpawnRecipeResult();
             DecreaseResourcesDurability();
 
-            if (_cardData.CurrentRecipe.Value != null && _cardData.CurrentRecipe.Value.Cooldown != 0)
-            {
-                StartProgress(_cardData.CurrentRecipe.Value.Cooldown);
-            }
+            // if (_cardData.CurrentRecipe.Value != null && _cardData.CurrentRecipe.Value.Cooldown != 0)
+            // {
+            //     StartProgress(_cardData.CurrentRecipe.Value.Cooldown);
+            // }
         }
 
         private void SpawnRecipeResult()

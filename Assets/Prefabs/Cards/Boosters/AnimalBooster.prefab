@@ -17,7 +17,7 @@ PrefabInstance:
     - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
       propertyPath: _cards.Array.size
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2542317279972696173, guid: 8aea9bef9ed82d6439ace7cfda0849f3,
         type: 3}
