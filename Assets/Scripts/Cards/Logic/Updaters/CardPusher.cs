@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cards.Data;
 using Constraints.CardTable;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -15,6 +17,9 @@ namespace Cards.Logic.Updaters
         [FormerlySerializedAs("_pushSpeedAmplifier")]
         [Header("Preferences")]
         [SerializeField] private float _pushSpeed = 1f;
+
+        private IDisposable _pushSubscription;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private CardsTableBounds _cardsTableBounds;
 
@@ -36,12 +41,68 @@ namespace Cards.Logic.Updaters
             _cardData = GetComponentInParent<CardData>(true);
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            PushCardStep();
+            StartObserving();
+        }
+
+        private void OnDisable()
+        {
+            StopObserving();
         }
 
         #endregion
+
+        private void StartObserving()
+        {
+            _cardData.IsAnyGroupCardSelected.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsPlayingAnyAnimation.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsActivelyFollowingCard.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
+        }
+
+        private void StopObserving()
+        {
+            _subscriptions.Clear();
+            StopPushing();
+        }
+
+        private void OnCardEnvironmentChanged()
+        {
+            bool canPush;
+
+            bool isAnyGroupCardSelected = _cardData.IsAnyGroupCardSelected.Value;
+            bool isPlayingAnyAnimation = _cardData.IsPlayingAnyAnimation.Value;
+            bool isActivelyFollowingCard = _cardData.IsActivelyFollowingCard.Value;
+
+            canPush =
+                isAnyGroupCardSelected == false
+                && isPlayingAnyAnimation == false
+                && isActivelyFollowingCard == false;
+
+
+            if (canPush)
+            {
+                StartPushing();
+            }
+            else
+            {
+                StopPushing();
+            }
+        }
+
+        private void StartPushing()
+        {
+            StopPushing();
+
+            _pushSubscription = Observable
+                .EveryUpdate()
+                .Subscribe(_ => PushCardStep());
+        }
+
+        private void StopPushing()
+        {
+            _pushSubscription?.Dispose();
+        }
 
         private void PushCardStep()
         {
