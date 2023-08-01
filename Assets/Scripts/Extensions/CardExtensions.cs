@@ -16,13 +16,13 @@ namespace Extensions
 
             CardData upperCard = card.UpperCard.Value;
 
-            if (upperCard != null && upperCard != card)
+            if (upperCard != null && upperCard != linkTo)
             {
                 upperCard.UnlinkFromBottom();
             }
 
             CardData linkToBottomCard = linkTo.BottomCard.Value;
-            
+
             if (linkToBottomCard != null && linkToBottomCard != card)
             {
                 linkTo.UnlinkFromBottom();
