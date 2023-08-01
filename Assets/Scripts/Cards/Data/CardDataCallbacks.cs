@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Cards.Core;
 using ScriptableObjects.Scripts.Cards.Recipes;
 
@@ -22,7 +21,8 @@ namespace Cards.Data
         public Action<Card> onSpawnedRecipeResult;
 
         public Action onClicked;
-        
+        public Action onClickedAnyGroupCard;
+
         public Action onPointerDown;
         public Action onPointerUp;
     }

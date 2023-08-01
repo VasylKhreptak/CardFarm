@@ -53,6 +53,7 @@ namespace Cards.Recipes
         private void OnEnable()
         {
             StartObservingRecipe();
+            StartObservingClick();
         }
 
         protected override void OnDisable()
@@ -61,6 +62,7 @@ namespace Cards.Recipes
 
             StopObservingRecipe();
             StopObservingWorkers();
+            StopObservingClick();
         }
 
         #endregion
@@ -99,10 +101,15 @@ namespace Cards.Recipes
             SpawnRecipeResult();
             DecreaseResourcesDurability();
 
-            // if (_cardData.CurrentRecipe.Value != null && _cardData.CurrentRecipe.Value.Cooldown != 0)
-            // {
-            //     StartProgress(_cardData.CurrentRecipe.Value.Cooldown);
-            // }
+            // TryStartCurrentRecipe();
+        }
+
+        private void TryStartCurrentRecipe()
+        {
+            if (_cardData.CurrentRecipe.Value != null && _cardData.CurrentRecipe.Value.Cooldown != 0)
+            {
+                StartProgress(_cardData.CurrentRecipe.Value.Cooldown);
+            }
         }
 
         private void SpawnRecipeResult()
@@ -214,6 +221,24 @@ namespace Cards.Recipes
         private float CalculateWorkersEfficiency(List<WorkerData> workers)
         {
             return workers.Select(x => x.Efficiency.Value).Average();
+        }
+
+        private void StartObservingClick()
+        {
+            _cardData.Callbacks.onClickedAnyGroupCard += OnClickedAnyGroupCard;
+        }
+
+        private void StopObservingClick()
+        {
+            _cardData.Callbacks.onClickedAnyGroupCard -= OnClickedAnyGroupCard;
+        }
+
+        private void OnClickedAnyGroupCard()
+        {
+            if (Progress.Value == 0)
+            {
+                TryStartCurrentRecipe();
+            }
         }
     }
 }
