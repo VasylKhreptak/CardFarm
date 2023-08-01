@@ -1,5 +1,4 @@
-﻿using System;
-using Cards.Data;
+﻿using Cards.Data;
 using CardsTable;
 using UniRx;
 using UnityEngine;
@@ -12,8 +11,7 @@ namespace Cards.Logic.Updaters
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
-        private IDisposable _isCardCompatibleSubscription;
-        private IDisposable _cardsInfoSubscription;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
 
@@ -50,65 +48,30 @@ namespace Cards.Logic.Updaters
 
         private void StartObserving()
         {
-            StartObservingIfCompatible();
+            StopObserving();
+
+            _cardData.IsLowestGroupCard.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsCompatibleWithSelectedCard.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsSelected.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
         {
-            StopObservingIfCompatible();
-            StopObservingCardsInfo();
+            _subscriptions.Clear();
         }
 
-        private void StartObservingIfCompatible()
+        private void OnCardsEnvironmentChanged()
         {
-            StopObservingIfCompatible();
+            bool canBeUnderSelectedCard = false;
 
-            _isCardCompatibleSubscription = _cardData.IsCompatibleWithSelectedCard.Subscribe(IsCompatibleValueChanged);
-        }
+            bool isLowestGroupCard = _cardData.IsLowestGroupCard.Value;
+            bool isCompatibleWithSelectedCard = _cardData.IsCompatibleWithSelectedCard.Value;
+            bool isSelected = _cardData.IsSelected.Value;
 
-        private void StopObservingIfCompatible()
-        {
-            _isCardCompatibleSubscription?.Dispose();
-        }
+            canBeUnderSelectedCard = isLowestGroupCard && isSelected == false && isCompatibleWithSelectedCard;
 
-        private void IsCompatibleValueChanged(bool isCompatible)
-        {
-            if (isCompatible == false
-                || _cardData == _currentSelectedCardHolder.SelectedCard.Value
-                || _currentSelectedCardHolder.SelectedCard.Value == null)
-            {
-                _cardData.CanBeUnderSelectedCard.Value = false;
-                StopObservingCardsInfo();
-                return;
-            }
 
-            StartObservingCardsInfo();
-        }
-
-        private void StartObservingCardsInfo()
-        {
-            StopObservingCardsInfo();
-
-            _cardsInfoSubscription = Observable.CombineLatest(
-                    _cardData.IsLowestGroupCard,
-                    _currentSelectedCardHolder.SelectedCard.Value.GroupID,
-                    _cardData.GroupID,
-                    (isLowestGroupCard, selectedCardGroupID, cardGroupID) => (isLowestGroupCard, selectedCardGroupID, cardGroupID))
-                .Subscribe(tuple =>
-                    OnCardsInfoUpdated(tuple.isLowestGroupCard, tuple.selectedCardGroupID, tuple.cardGroupID));
-        }
-
-        private void StopObservingCardsInfo()
-        {
-            _cardsInfoSubscription?.Dispose();
-        }
-
-        private void OnCardsInfoUpdated(bool isLowestGroupCard, int selectedCardGroupID, int cardGroupID)
-        {
-            _cardData.CanBeUnderSelectedCard.Value =
-                isLowestGroupCard
-                && selectedCardGroupID != cardGroupID
-                && _cardData != _currentSelectedCardHolder.SelectedCard.Value;
+            _cardData.CanBeUnderSelectedCard.Value = canBeUnderSelectedCard;
         }
     }
 }

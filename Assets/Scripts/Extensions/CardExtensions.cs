@@ -15,6 +15,7 @@ namespace Extensions
             if (card.gameObject.activeSelf == false) return;
             
             card.UpperCard.Value.UnlinkFromBottom();
+            linkTo.UnlinkFromBottom();
             
             card.UpperCard.Value = linkTo;
             

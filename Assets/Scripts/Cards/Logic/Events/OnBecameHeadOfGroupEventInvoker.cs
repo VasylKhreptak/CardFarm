@@ -1,5 +1,4 @@
-﻿using System;
-using Cards.Data;
+﻿using Cards.Data;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -11,8 +10,7 @@ namespace Cards.Logic.Events
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
-        private IDisposable _isTopCardSubscription;
-        private IDisposable _isSingleCardSubscription;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         #region MonoBehaviour
 
@@ -28,53 +26,40 @@ namespace Cards.Logic.Events
 
         private void OnEnable()
         {
-            StartObservingIfSingleCard();
-            StartObservingIfTopCard();
-            _cardData.Callbacks.onGroupCardsListUpdated += OnCardsGroupUpdated;
+            StartObserving();
         }
 
         private void OnDisable()
         {
-            _cardData.Callbacks.onGroupCardsListUpdated -= OnCardsGroupUpdated;
-            StopObservingIfTopCard();
-            StopObservingIfSingleCard();
+            StopObserving();
         }
 
         #endregion
 
-        private void OnCardsGroupUpdated()
+        private void StartObserving()
         {
-            StartObservingIfSingleCard();
-            StartObservingIfTopCard();
+            StopObserving();
+
+            _cardData.IsTopCard.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsSingleCard.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.Callbacks.onBottomCardsListUpdated += OnCardEnvironmentChanged;
         }
 
-        private void StartObservingIfSingleCard()
+        private void StopObserving()
         {
-            StopObservingIfSingleCard();
-            _isSingleCardSubscription = _cardData.IsSingleCard.Where(x => x).Subscribe(_ => OnBecameHeadOfGroup());
+            _subscriptions.Clear();
+            _cardData.Callbacks.onBottomCardsListUpdated -= OnCardEnvironmentChanged;
         }
 
-        private void StartObservingIfTopCard()
+        private void OnCardEnvironmentChanged()
         {
-            StopObservingIfTopCard();
-            _isTopCardSubscription = _cardData.IsTopCard.Where(x => x).Subscribe(_ => OnBecameHeadOfGroup());
-        }
+            bool isTopCard = _cardData.IsTopCard.Value;
+            bool isSingleCard = _cardData.IsSingleCard.Value;
 
-        private void StopObservingIfSingleCard()
-        {
-            _isSingleCardSubscription?.Dispose();
-        }
-
-        private void StopObservingIfTopCard()
-        {
-            _isTopCardSubscription?.Dispose();
-        }
-
-        private void OnBecameHeadOfGroup()
-        {
-            _cardData.Callbacks.onBecameHeadOfGroup?.Invoke();
-            StopObservingIfTopCard();
-            StopObservingIfSingleCard();
+            if (isTopCard || isSingleCard)
+            {
+                _cardData.Callbacks.onBecameHeadOfGroup?.Invoke();
+            }
         }
     }
 }
