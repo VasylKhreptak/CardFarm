@@ -79,6 +79,7 @@ namespace Cards.Graphics.Animations
                     onComplete?.Invoke();
                     _isPlaying.Value = false;
                 })
+                .OnKill(() => _isPlaying.Value = false)
                 .Play();
         }
 

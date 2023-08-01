@@ -26,10 +26,14 @@ namespace CameraManagement.CameraAim.Core
         [Header("General Preferences")]
         [SerializeField] private float _duration = 1.5f;
 
+        private BoolReactiveProperty _isAiming = new BoolReactiveProperty();
+
         private CompositeDisposable _interruptSubscriptions = new CompositeDisposable();
 
         private Sequence _aimSequence;
 
+        public IReadOnlyReactiveProperty<bool> IsAiming => _isAiming;
+        
         private MapDragObserver _mapDragObserver;
         private ZoomObserver _zoomObserver;
         private GameRestartCommand _gameRestartCommand;
@@ -128,8 +132,11 @@ namespace CameraManagement.CameraAim.Core
             Tween zoomTween = CreateZoomTween(distance, duration);
 
             _aimSequence = DOTween.Sequence()
+                .OnStart(() => _isAiming.Value = true)
                 .Append(moveTween)
                 .Join(zoomTween)
+                .OnComplete(() => _isAiming.Value = false)
+                .OnKill(() => _isAiming.Value = false)
                 .Play();
         }
 

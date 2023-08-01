@@ -85,6 +85,8 @@ namespace CameraManagement.CameraMove
 
         private void MoveCameraToSelectedCard(Vector3 targetPosition)
         {
+            
+            
             Vector3 cameraPosition = _transform.position;
 
             targetPosition.y = cameraPosition.y;
