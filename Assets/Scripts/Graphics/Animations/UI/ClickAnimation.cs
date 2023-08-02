@@ -46,7 +46,7 @@ namespace Graphics.Animations.UI
 
         #endregion
 
-        public void Play(Vector3 screenPosition, Vector3 linkToWorldPosition)
+        public void Play(Vector3 spawnScreenPosition, Vector3 linkToWorldPosition)
         {
             Stop();
             ResetValues();
@@ -54,7 +54,7 @@ namespace Graphics.Animations.UI
             Tween scaleTween = _transform.DOScale(_targetScale, _duration).SetEase(_scaleCurve);
             Tween fadeTween = _canvasGroup.DOFade(_targetAlpha, _duration).SetEase(_fadeCurve);
 
-            _transform.position = screenPosition;
+            _transform.position = spawnScreenPosition;
 
             _sequence = DOTween.Sequence()
                 .Append(scaleTween)
