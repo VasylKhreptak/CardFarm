@@ -76,11 +76,7 @@ namespace Quests.Graphics.VisualElements
             StopObservingQuests();
 
             _questsManager.CurrentQuest.Subscribe(_ => UpdatePanelState()).AddTo(_questsSubscriptions);
-            _questsManager.NonRewardedQuests
-                .ObserveCountChanged()
-                .DoOnSubscribe(UpdatePanelState)
-                .Subscribe(_ => UpdatePanelState())
-                .AddTo(_questsSubscriptions);
+            _questsManager.CurrentNonRewardedQuest.Subscribe(_ => UpdatePanelState()).AddTo(_questsSubscriptions);
         }
 
         private void StopObservingQuests()
@@ -90,7 +86,7 @@ namespace Quests.Graphics.VisualElements
 
         private void UpdatePanelState()
         {
-            if (_questsManager.CurrentQuest.Value != null && _questsManager.NonRewardedQuests.Count == 0)
+            if (_questsManager.CurrentQuest.Value != null && _questsManager.CurrentNonRewardedQuest.Value == null)
             {
                 Show();
             }

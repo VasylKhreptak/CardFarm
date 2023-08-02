@@ -1,5 +1,4 @@
-﻿using System;
-using Quests.Data;
+﻿using Quests.Data;
 using Quests.Logic;
 using TMPro;
 using UniRx;
@@ -13,7 +12,7 @@ namespace Quests.Graphics.VisualElements
         [Header("References")]
         [SerializeField] private TMP_Text _tmp;
 
-        private IDisposable _currentQuestSubscription;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private QuestsManager _questsManager;
 
@@ -40,25 +39,23 @@ namespace Quests.Graphics.VisualElements
         private void StartObserving()
         {
             StopObserving();
-            _currentQuestSubscription = _questsManager.CurrentQuest.Subscribe(OnCurrentQuestUpdated);
+            _questsManager.CurrentQuest.Subscribe(_ => TryUpdateName()).AddTo(_subscriptions);
+            _questsManager.CurrentNonRewardedQuest.Subscribe(_ => TryUpdateName()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
         {
-            _currentQuestSubscription?.Dispose();
+            _subscriptions?.Clear();
         }
 
-        private void OnCurrentQuestUpdated(QuestData quest)
+        private void TryUpdateName()
         {
-            if (quest == null)
-            {
-                _tmp.text = string.Empty;
-                return;
-            }
+            QuestData currentQuest = _questsManager.CurrentQuest.Value;
+            QuestData nonRewardedQuest = _questsManager.CurrentNonRewardedQuest.Value;
 
-            _tmp.text = quest.Name;
-            
-            // StopObserving();
+            if (currentQuest == null || nonRewardedQuest != null) return;
+
+            _tmp.text = currentQuest.Name;
         }
     }
 }

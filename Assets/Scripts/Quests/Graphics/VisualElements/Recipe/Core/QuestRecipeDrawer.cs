@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Extensions;
 using Quests.Data;
 using Quests.Graphics.VisualElements.Recipe.RecipeParts.Card.Data;
@@ -20,7 +19,7 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         [SerializeField] private GameObject _plusSign;
         [SerializeField] private GameObject _cardTemplate;
 
-        private IDisposable _subscription;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private QuestsManager _questsManager;
         private DiContainer _container;
@@ -51,34 +50,39 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         private void StartObserving()
         {
             StopObserving();
-            _subscription = _questsManager.CurrentQuest.Subscribe(TryDrawQuestRecipe);
+
+            _questsManager.CurrentQuest.Subscribe(_ => TryDrawCurrentQuestRecipe()).AddTo(_subscriptions);
+            _questsManager.CurrentNonRewardedQuest.Subscribe(_ => TryDrawCurrentQuestRecipe()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
         {
-            _subscription?.Dispose();
+            _subscriptions?.Clear();
         }
 
-        private void TryDrawQuestRecipe(QuestData questData)
+        private void TryDrawCurrentQuestRecipe()
         {
+            QuestData currentQuest = _questsManager.CurrentQuest.Value;
+            QuestData nonRewardedQuest = _questsManager.CurrentNonRewardedQuest.Value;
+
+            if (currentQuest == null || nonRewardedQuest != null) return;
+
             ClearRecipe();
 
-            if (questData == null || questData.Recipe.IsValid() == false) return;
+            if (currentQuest == null || currentQuest.Recipe.IsValid() == false) return;
 
-            for (int i = 0; i < questData.Recipe.TargetCards.Count; i++)
+            for (int i = 0; i < currentQuest.Recipe.TargetCards.Count; i++)
             {
-                SpawnCard(questData.Recipe.TargetCards[i]);
+                SpawnCard(currentQuest.Recipe.TargetCards[i]);
 
-                if (i < questData.Recipe.TargetCards.Count - 1)
+                if (i < currentQuest.Recipe.TargetCards.Count - 1)
                 {
                     SpawnPrefab(_plusSign);
                 }
             }
 
             SpawnPrefab(_equalsSign);
-            SpawnCard(questData.Recipe.Result);
-            
-            // StopObserving();
+            SpawnCard(currentQuest.Recipe.Result);
         }
 
         private void SpawnCard(QuestRecipeCardData cardData)

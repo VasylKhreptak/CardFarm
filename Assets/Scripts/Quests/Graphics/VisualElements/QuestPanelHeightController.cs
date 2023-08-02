@@ -1,5 +1,4 @@
-﻿using System;
-using Quests.Data;
+﻿using Quests.Data;
 using Quests.Logic;
 using UniRx;
 using UnityEngine;
@@ -16,7 +15,7 @@ namespace Quests.Graphics.VisualElements
         [SerializeField] private float _recipeHeight;
         [SerializeField] private float _noRecipeHeight;
 
-        private IDisposable _subscription;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private QuestsManager _questsManager;
 
@@ -38,19 +37,23 @@ namespace Quests.Graphics.VisualElements
 
         private void StartObserving()
         {
-            _subscription = _questsManager.CurrentQuest.Subscribe(UpdateHeight);
+            _questsManager.CurrentQuest.Subscribe(_ => UpdateHeight()).AddTo(_subscriptions);
+            _questsManager.CurrentNonRewardedQuest.Subscribe(_ => UpdateHeight()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
         {
-            _subscription?.Dispose();
+            _subscriptions?.Clear();
         }
 
-        private void UpdateHeight(QuestData questData)
+        private void UpdateHeight()
         {
-            if (questData == null) return;
+            QuestData currentQuest = _questsManager.CurrentQuest.Value;
+            QuestData nonRewardedQuest = _questsManager.CurrentNonRewardedQuest.Value;
 
-            if (questData.Recipe.IsValid())
+            if (currentQuest == null || nonRewardedQuest != null) return;
+
+            if (currentQuest.Recipe.IsValid())
             {
                 _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, _recipeHeight);
             }

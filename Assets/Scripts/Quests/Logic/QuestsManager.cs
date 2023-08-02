@@ -81,34 +81,34 @@ namespace Quests.Logic
             }
         }
 
-        private void OnQuestUpdated(QuestData questData)
+        private void OnQuestUpdated(QuestData quest)
         {
-            if (questData.IsCompleted.Value)
+            if (quest.IsCompleted.Value)
             {
-                _completedQuests.Add(questData);
-                _notCompletedQuests.Remove(questData);
+                _completedQuests.Add(quest);
+                _notCompletedQuests.Remove(quest);
 
-                if (questData.TookReward.Value)
+                if (quest.TookReward.Value)
                 {
-                    _rewardedQuests.Add(questData);
-                    _nonRewardedQuests.Remove(questData);
+                    _rewardedQuests.Add(quest);
+                    _nonRewardedQuests.Remove(quest);
                 }
                 else
                 {
-                    _rewardedQuests.Remove(questData);
-                    _nonRewardedQuests.Add(questData);
+                    _rewardedQuests.Remove(quest);
+                    _nonRewardedQuests.Add(quest);
                 }
             }
             else
             {
-                _completedQuests.Remove(questData);
-                _notCompletedQuests.Add(questData);
-                _rewardedQuests.Remove(questData);
-                _nonRewardedQuests.Remove(questData);
+                _completedQuests.Remove(quest);
+                _notCompletedQuests.Add(quest);
+                _rewardedQuests.Remove(quest);
+                _nonRewardedQuests.Remove(quest);
             }
 
-            UpdateCurrentQuest();
             UpdateCurrentNonRewardedQuest();
+            UpdateCurrentQuest();
         }
 
         private void UpdateCurrentQuest()
