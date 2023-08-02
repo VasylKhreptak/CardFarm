@@ -38,13 +38,7 @@ namespace Quests.Logic.QuestObservers.Progress
 
         private void StartObservingCard(CardData cardData)
         {
-            if (_cardSubscriptions.TryGetValue(cardData, out var subscriptions))
-            {
-                subscriptions.Item1?.Dispose();
-                subscriptions.Item2?.Dispose();
-            }
-
-            _cardSubscriptions.Remove(cardData);
+            StopObservingCard(cardData);
 
             FactoryData factoryData = cardData as FactoryData;
 
