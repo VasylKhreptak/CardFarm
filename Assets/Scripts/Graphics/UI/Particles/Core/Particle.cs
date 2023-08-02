@@ -3,5 +3,6 @@
     public enum Particle
     {
         Coin = 0,
+        Click = 1,
     }
 }
