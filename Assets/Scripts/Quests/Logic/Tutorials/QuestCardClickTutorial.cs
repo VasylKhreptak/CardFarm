@@ -23,7 +23,7 @@ namespace Quests.Logic.Tutorials
         private IDisposable _handPositionSubscription;
         private IDisposable _handClickSubscription;
 
-        private CardData _foundCard;
+        protected CardData _foundCard;
 
         private Camera _camera;
         private CardSelector _cardSelector;
@@ -123,7 +123,7 @@ namespace Quests.Logic.Tutorials
             _foundCard.Callbacks.onClicked -= OnCardClicked;
         }
 
-        private void OnCardClicked()
+        protected virtual void OnCardClicked()
         {
             StopTutorial();
         }

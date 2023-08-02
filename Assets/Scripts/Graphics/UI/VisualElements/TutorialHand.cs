@@ -54,7 +54,12 @@ namespace Graphics.UI.VisualElements
             _clickSequence?.Kill();
         }
 
-        private void ResetScale() => _panel.transform.localScale = _initialScale;
+        private void ResetScale()
+        {
+            if (_panel == null) return;
+            
+            _panel.transform.localScale = _initialScale;
+        }
 
         [Button()]
         public void Click()
@@ -113,7 +118,7 @@ namespace Graphics.UI.VisualElements
             Vector3 spawnPosition = RaycastFloor();
             GameObject particleObject = _particlePooler.Spawn(Particle.Click);
             ClickAnimation clickAnimation = particleObject.GetComponent<ClickAnimation>();
-            clickAnimation.Play(_panel.gameObject.transform.position,spawnPosition);
+            clickAnimation.Play(_panel.gameObject.transform.position, spawnPosition);
         }
 
         private Vector3 RaycastFloor()
