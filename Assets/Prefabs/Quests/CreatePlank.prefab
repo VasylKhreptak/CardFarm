@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8788698299557252707}
   - component: {fileID: 3443028053564193075}
   - component: {fileID: 5274179818909837679}
+  - component: {fileID: 6523294355400252904}
   m_Layer: 0
   m_Name: CreatePlank
   m_TagString: Untagged
@@ -67,6 +68,8 @@ MonoBehaviour:
     - BackgroundColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
       Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
       Quantity: 1
+  Progress:
+    value: 0
 --- !u!114 &8788698299557252707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +116,7 @@ MonoBehaviour:
   - Card: 0
     Quantity: 1
   _outlineShowTime: 2
+  _cardJumpDuration: 2
   _minAverageDistance: 2.28
   _maxAverageDistance: 10
   _minZoomDistance: 20
@@ -141,3 +145,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6523294355400252904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609782257049868906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5cff27c92b44dfa28ee3cf11b6ae75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questData: {fileID: 8609782257049868904}
+  _recipeResult: 17

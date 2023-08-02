@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Extensions
 {
-    public static class LinqExtensions
+    public static class IEnumerableExtensions
     {
         /// <summary>
         /// Returns the random element taking into account the weight of each element;
@@ -28,6 +28,16 @@ namespace Extensions
             }
 
             throw new InvalidOperationException("Failed to retrieve a random item by weight.");
+        }
+
+        public static bool Contains<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+        {
+            foreach (TSource item in source)
+            {
+                if (predicate(item)) return true;
+            }
+
+            return false;
         }
     }
 }

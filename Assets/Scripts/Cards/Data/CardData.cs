@@ -5,6 +5,7 @@ using Cards.Gestures.PositionShake;
 using Cards.Graphics.Animations;
 using Cards.Graphics.Outlines;
 using Cards.Logic;
+using Cards.Recipes;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
@@ -109,9 +110,14 @@ namespace Cards.Data
         public BoolReactiveProperty IsInsideCardsTable = new BoolReactiveProperty();
         public BoolReactiveProperty IsTakingPartInRecipe = new BoolReactiveProperty();
 
+        public RecipeExecutor RecipeExecutor;
         public ReactiveProperty<CardRecipe> CurrentRecipe = new ReactiveProperty<CardRecipe>(null);
         public List<CardRecipe> PossibleRecipes = new List<CardRecipe>();
 
+        public BaseReproductionLogic ReproductionLogic;
+        public ReactiveProperty<CardReproductionRecipe> CurrentReproductionRecipe = new ReactiveProperty<CardReproductionRecipe>();
+
+        
         public IntReactiveProperty Durability = new IntReactiveProperty(1);
         public IntReactiveProperty MaxDurability = new IntReactiveProperty(1);
 
@@ -121,9 +127,7 @@ namespace Cards.Data
         public BoolReactiveProperty IsActivelyFollowingCard = new BoolReactiveProperty();
 
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
-
-        public ReactiveProperty<CardReproductionRecipe> CurrentReproductionRecipe = new ReactiveProperty<CardReproductionRecipe>();
-
+        
         public PositionShakeObserver PositionShakeObserver;
 
         public CardSelectedHeightController CardSelectedHeightController;
@@ -143,25 +147,28 @@ namespace Cards.Data
 
         public virtual void Validate()
         {
-            MouseTrigger = GetComponentInChildren<ObservableMouseTrigger>();
+            MouseTrigger = GetComponentInChildren<ObservableMouseTrigger>(true);
 
-            BottomCardFollowPoint bottomCardFollowPoint = GetComponentInChildren<BottomCardFollowPoint>();
+            BottomCardFollowPoint bottomCardFollowPoint = GetComponentInChildren<BottomCardFollowPoint>(true);
             BottomCardFollowPoint = bottomCardFollowPoint != null ? bottomCardFollowPoint.transform : null;
 
             Collider = GetComponentInChildren<Collider>();
 
-            PositionShakeObserver = GetComponentInChildren<PositionShakeObserver>();
+            PositionShakeObserver = GetComponentInChildren<PositionShakeObserver>(true);
 
-            Animations.MoveAnimation = GetComponentInChildren<CardMoveAnimation>();
-            Animations.JumpAnimation = GetComponentInChildren<CardJumpAnimation>();
-            Animations.FlipAnimation = GetComponentInChildren<CardFlipAnimation>();
-            Animations.ShakeAnimation = GetComponentInChildren<CardShakeAnimation>();
-            Animations.ContinuousJumpingAnimation = GetComponentInChildren<CardContinuousJumpingAnimation>();
-            CardSelectedHeightController = GetComponentInChildren<CardSelectedHeightController>();
+            Animations.MoveAnimation = GetComponentInChildren<CardMoveAnimation>(true);
+            Animations.JumpAnimation = GetComponentInChildren<CardJumpAnimation>(true);
+            Animations.FlipAnimation = GetComponentInChildren<CardFlipAnimation>(true);
+            Animations.ShakeAnimation = GetComponentInChildren<CardShakeAnimation>(true);
+            Animations.ContinuousJumpingAnimation = GetComponentInChildren<CardContinuousJumpingAnimation>(true);
+            CardSelectedHeightController = GetComponentInChildren<CardSelectedHeightController>(true);
 
-            RectTransform = GetComponentInChildren<RectTransform>();
+            RectTransform = GetComponentInChildren<RectTransform>(true);
 
-            QuestOutline = GetComponentInChildren<QuestOutline>();
+            QuestOutline = GetComponentInChildren<QuestOutline>(true);
+            
+            RecipeExecutor = GetComponentInChildren<RecipeExecutor>(true);
+            ReproductionLogic = GetComponentInChildren<BaseReproductionLogic>(true);
         }
         
         #endregion
