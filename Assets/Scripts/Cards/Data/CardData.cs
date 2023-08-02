@@ -1,17 +1,21 @@
+using System;
 using System.Collections.Generic;
 using Cards.Core;
 using Cards.Gestures.PositionShake;
+using Cards.Graphics.Animations;
 using Cards.Graphics.Outlines;
 using Cards.Logic;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
+using Tags.Cards;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Cards.Data
 {
-    public class CardData : MonoBehaviour
+    public class CardData : MonoBehaviour, IValidatable
     {
         [SerializeField] private float _baseHeight = 0.01f;
         [SerializeField] private float _selectedHeight = 0.1f;
@@ -129,5 +133,37 @@ namespace Cards.Data
         public BoolReactiveProperty IsNew = new BoolReactiveProperty(false);
 
         public QuestOutline QuestOutline;
+
+        #region MonoBehaviour
+
+        private void OnValidate()
+        {
+            Validate();
+        }
+
+        public virtual void Validate()
+        {
+            MouseTrigger = GetComponentInChildren<ObservableMouseTrigger>();
+
+            BottomCardFollowPoint bottomCardFollowPoint = GetComponentInChildren<BottomCardFollowPoint>();
+            BottomCardFollowPoint = bottomCardFollowPoint != null ? bottomCardFollowPoint.transform : null;
+
+            Collider = GetComponentInChildren<Collider>();
+
+            PositionShakeObserver = GetComponentInChildren<PositionShakeObserver>();
+
+            Animations.MoveAnimation = GetComponentInChildren<CardMoveAnimation>();
+            Animations.JumpAnimation = GetComponentInChildren<CardJumpAnimation>();
+            Animations.FlipAnimation = GetComponentInChildren<CardFlipAnimation>();
+            Animations.ShakeAnimation = GetComponentInChildren<CardShakeAnimation>();
+            Animations.ContinuousJumpingAnimation = GetComponentInChildren<CardContinuousJumpingAnimation>();
+            CardSelectedHeightController = GetComponentInChildren<CardSelectedHeightController>();
+
+            RectTransform = GetComponentInChildren<RectTransform>();
+
+            QuestOutline = GetComponentInChildren<QuestOutline>();
+        }
+        
+        #endregion
     }
 }

@@ -228,7 +228,6 @@ GameObject:
   - component: {fileID: 8193532437627284258}
   - component: {fileID: 4758467965833942909}
   - component: {fileID: 2161483601052853841}
-  - component: {fileID: 4262552001322664400}
   - component: {fileID: 8057710944895864497}
   m_Layer: 6
   m_Name: BaseCard
@@ -472,19 +471,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &4262552001322664400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106781378184328992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34b0e1661b764df980f5858f99b03c13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardData: {fileID: 1106781378184329004}
 --- !u!225 &8057710944895864497
 CanvasGroup:
   m_ObjectHideFlags: 0
