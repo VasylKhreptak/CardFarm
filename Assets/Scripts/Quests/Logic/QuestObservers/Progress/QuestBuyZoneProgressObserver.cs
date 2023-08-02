@@ -2,6 +2,7 @@
 using Cards.Core;
 using Cards.Data;
 using Cards.Zones.BuyZone.Data;
+using DG.Tweening;
 using Quests.Logic.QuestObservers.Core;
 using UniRx;
 using UnityEngine;
@@ -12,6 +13,8 @@ namespace Quests.Logic.QuestObservers.Progress
     {
         [Header("Preferences")]
         [SerializeField] private Card _targetBuyZone;
+
+        private Tween _progressTween;
 
         private Dictionary<CardData, CompositeDisposable> _cardSubscriptions = new Dictionary<CardData, CompositeDisposable>();
 
@@ -29,6 +32,7 @@ namespace Quests.Logic.QuestObservers.Progress
         {
             StopObservingCards();
             _questData.Progress.Value = 0f;
+            KillProgressTween();
         }
 
         private void StartObservingCard(CardData cardData)
@@ -84,6 +88,21 @@ namespace Quests.Logic.QuestObservers.Progress
         private void SetProgress(float progress)
         {
             _questData.Progress.Value = progress;
+        }
+
+        private void SetProgressSmooth(float progress)
+        {
+            KillProgressTween();
+
+            _progressTween = DOTween
+                .To(() => _questData.Progress.Value, x => _questData.Progress.Value = x, progress, 0.5f)
+                .SetEase(Ease.OutCubic)
+                .Play();
+        }
+
+        private void KillProgressTween()
+        {
+            _progressTween?.Kill();
         }
     }
 }
