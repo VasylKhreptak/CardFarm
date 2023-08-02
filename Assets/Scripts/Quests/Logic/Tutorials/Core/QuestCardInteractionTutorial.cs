@@ -26,9 +26,9 @@ namespace Quests.Logic.Tutorials.Core
 
         public override void StartTutorial()
         {
+            StopTutorial();
             base.StartTutorial();
 
-            StopTutorial();
             StartObservingCardTable();
         }
 

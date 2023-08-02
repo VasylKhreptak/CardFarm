@@ -44,7 +44,7 @@ namespace Quests.Logic.Tutorials
             _handPositionSubscription?.Dispose();
             _handPositionSubscription = Observable
                 .EveryUpdate()
-                .DoOnCancel(UpdateHandPosition)
+                .DoOnSubscribe(UpdateHandPosition)
                 .Subscribe(_ => UpdateHandPosition());
 
             _handClickSubscription?.Dispose();
