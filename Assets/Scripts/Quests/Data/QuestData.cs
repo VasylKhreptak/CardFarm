@@ -1,6 +1,6 @@
 ﻿using System;
 using Quests.Logic.Core;
-using Quests.Logic.Tutorial.Core;
+using Quests.Logic.Tutorials.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -17,7 +17,7 @@ namespace Quests.Data
         public BoolReactiveProperty TookReward = new BoolReactiveProperty();
         public QuestRecipe Recipe = new QuestRecipe();
         public FloatReactiveProperty Progress = new FloatReactiveProperty();
-        public QuestTutorialExecutor QuestTutorialExecutor;
+        public QuestTutorialExecutor TutorialExecutor;
         public QuestCallbacks Callbacks = new QuestCallbacks();
 
         #region MonoBehaviour
@@ -29,7 +29,7 @@ namespace Quests.Data
 
         public void Validate()
         {
-            QuestTutorialExecutor = GetComponentInChildren<QuestTutorialExecutor>();
+            TutorialExecutor = GetComponentInChildren<QuestTutorialExecutor>();
         }
 
         #endregion

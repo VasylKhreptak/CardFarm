@@ -3,7 +3,7 @@ using Graphics.UI.VisualElements;
 using UnityEngine;
 using Zenject;
 
-namespace Quests.Logic.Tutorial.Core
+namespace Quests.Logic.Tutorials.Core
 {
     public abstract class QuestTutorialExecutor : MonoBehaviour
     {
