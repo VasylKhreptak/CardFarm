@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ObjectPoolers;
 using Quests.Data;
 using Quests.Logic.Core;
@@ -16,6 +17,7 @@ namespace Quests.Logic
 
         private ReactiveCollection<QuestData> _totalQuests = new ReactiveCollection<QuestData>();
         private ReactiveProperty<QuestData> _currentQuest = new ReactiveProperty<QuestData>();
+        private ReactiveProperty<QuestData> _currentNonRewardedQuest = new ReactiveProperty<QuestData>();
         private ReactiveCollection<QuestData> _completedQuests = new ReactiveCollection<QuestData>();
         private ReactiveCollection<QuestData> _notCompletedQuests = new ReactiveCollection<QuestData>();
         private ReactiveCollection<QuestData> _rewardedQuests = new ReactiveCollection<QuestData>();
@@ -25,9 +27,9 @@ namespace Quests.Logic
 
         public IReadOnlyReactiveCollection<QuestData> TotalQuests => _totalQuests;
         public IReadOnlyReactiveProperty<QuestData> CurrentQuest => _currentQuest;
+        public IReadOnlyReactiveProperty<QuestData> CurrentNonRewardedQuest => _currentNonRewardedQuest;
         public IReadOnlyReactiveCollection<QuestData> CompletedQuests => _completedQuests;
         public IReadOnlyReactiveCollection<QuestData> NotCompletedQuests => _notCompletedQuests;
-
         public IReadOnlyReactiveCollection<QuestData> RewardedQuests => _rewardedQuests;
         public IReadOnlyReactiveCollection<QuestData> NonRewardedQuests => _nonRewardedQuests;
 
@@ -106,6 +108,7 @@ namespace Quests.Logic
             }
 
             UpdateCurrentQuest();
+            UpdateCurrentNonRewardedQuest();
         }
 
         private void UpdateCurrentQuest()
@@ -122,6 +125,11 @@ namespace Quests.Logic
             }
 
             _currentQuest.Value = quest;
+        }
+
+        private void UpdateCurrentNonRewardedQuest()
+        {
+            _currentNonRewardedQuest.Value = _nonRewardedQuests.FirstOrDefault();
         }
 
         private void StopObservingTotalQuests()

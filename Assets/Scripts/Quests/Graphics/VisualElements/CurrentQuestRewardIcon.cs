@@ -1,4 +1,5 @@
 ﻿using System;
+using Cards.Core;
 using Quests.Data;
 using Quests.Logic;
 using ScriptableObjects.Scripts.Cards.Graphics;
@@ -16,8 +17,9 @@ namespace Quests.Graphics.VisualElements
 
         [Header("Preferences")]
         [SerializeField] private CardsGraphicData _cardsGraphicData;
+        [SerializeField] private Sprite _defaultCardSprite;
 
-        private IDisposable _currentQuestSubscription;
+        private IDisposable _questSubscription;
 
         private QuestsManager _questsManager;
 
@@ -48,15 +50,15 @@ namespace Quests.Graphics.VisualElements
 
         private void StartObservingCurrentQuest()
         {
-            _currentQuestSubscription = _questsManager.CurrentQuest.Subscribe(OnCurrentQuestChanged);
+            _questSubscription = _questsManager.CurrentNonRewardedQuest.Subscribe(OnCurrentNonRewardedQuestChanged);
         }
 
         private void StopObservingCurrentQuest()
         {
-            _currentQuestSubscription?.Dispose();
+            _questSubscription?.Dispose();
         }
 
-        private void OnCurrentQuestChanged(QuestData questData)
+        private void OnCurrentNonRewardedQuestChanged(QuestData questData)
         {
             if (questData == null || questData.Reward.Cards.Length == 0)
             {
@@ -67,7 +69,17 @@ namespace Quests.Graphics.VisualElements
             if (questData.IsCompleted.Value == false) return;
 
             _image.enabled = true;
-            _image.sprite = _cardsGraphicData.GetValue(questData.Reward.Cards[0]).Icon;
+
+            Card reward = questData.Reward.Cards[0];
+
+            if (reward != Card.Coin)
+            {
+                _image.sprite = _defaultCardSprite;
+            }
+            else
+            {
+                _image.sprite = _cardsGraphicData.GetValue(reward).Icon;
+            }
         }
     }
 }

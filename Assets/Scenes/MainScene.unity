@@ -2505,7 +2505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 557523199}
   _cardsGraphicData: {fileID: 11400000, guid: b1ab241aabb95a54e9d1f72f408cb7ca, type: 2}
-  _defaultCardSprite: {fileID: 0}
+  _defaultCardSprite: {fileID: 21300000, guid: 461ffcaa81585564aa516749e13ca966, type: 3}
 --- !u!1 &563716120
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Cards.Core;
 using Cards.Logic.Spawn;
 using Graphics.UI.Particles.Coins.Logic;
@@ -65,13 +64,13 @@ namespace Quests.Graphics.VisualElements
 
         private void OnClick()
         {
-            QuestData firstNonRewardQuest = _questsManager.NonRewardedQuests.FirstOrDefault();
+            QuestData targetQuest = _questsManager.CurrentNonRewardedQuest.Value;
 
-            if (firstNonRewardQuest == null) return;
+            if (targetQuest == null) return;
 
-            SpawnReward(firstNonRewardQuest);
+            SpawnReward(targetQuest);
 
-            MarkAsTookReward(firstNonRewardQuest);
+            MarkAsTookReward(targetQuest);
         }
 
         private void SpawnReward(QuestData questData)
