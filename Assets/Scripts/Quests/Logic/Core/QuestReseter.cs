@@ -26,6 +26,7 @@ namespace Quests.Logic.Core
         {
             _questData.IsCompleted.Value = false;
             _questData.TookReward.Value = false;
+            _questData.Progress.Value = 0;
         }
     }
 }
