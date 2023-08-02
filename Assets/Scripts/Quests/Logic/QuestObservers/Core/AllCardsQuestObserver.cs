@@ -31,6 +31,7 @@ namespace Quests.Logic.QuestObservers.Core
         public override void StopObserving()
         {
             _subscriptions.Clear();
+            OnCardsCleared();
         }
 
         protected abstract void OnCardAdded(CardData cardData);
