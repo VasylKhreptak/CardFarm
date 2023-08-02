@@ -16,6 +16,7 @@ namespace Quests.Logic.Tutorials
         [SerializeField] private Card _targetCard;
         [SerializeField] private float _handClickInterval;
         [SerializeField] private Vector3 _handOffset;
+        [TextArea, SerializeField] private string _tutorialText;
 
         private CompositeDisposable _cardTableSubscriptions = new CompositeDisposable();
 
@@ -39,6 +40,7 @@ namespace Quests.Logic.Tutorials
         {
             StopTutorial();
             StartObservingCardTable();
+            ShowText();
         }
 
         public override void StopTutorial()
@@ -50,6 +52,7 @@ namespace Quests.Logic.Tutorials
             _handClickSubscription?.Dispose();
             _tutorialHand.Hide();
             StopObservingCardClick();
+            HideText();
         }
 
         private void StartObservingCardTable()
@@ -123,6 +126,18 @@ namespace Quests.Logic.Tutorials
         private void OnCardClicked()
         {
             StopTutorial();
+        }
+
+        private void ShowText()
+        {
+            _tutorialTextPanel.Show();
+            _tutorialTextPanel.Text = _tutorialText;
+        }
+
+        private void HideText()
+        {
+            _tutorialTextPanel.Hide();
+            _tutorialTextPanel.Text = String.Empty;
         }
     }
 }
