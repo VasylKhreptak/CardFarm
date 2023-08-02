@@ -1,5 +1,6 @@
 ﻿using System;
 using Graphics.UI.Panels;
+using Graphics.UI.Panels.Core;
 using UniRx;
 
 namespace Cards.Graphics.Outlines

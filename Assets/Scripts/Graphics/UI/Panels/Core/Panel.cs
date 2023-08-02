@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-namespace Graphics.UI.Panels
+namespace Graphics.UI.Panels.Core
 {
     public class Panel : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private GameObject _panel;
+        [SerializeField] protected GameObject _panel;
         
         public void Show()
         {

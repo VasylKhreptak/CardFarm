@@ -1,6 +1,7 @@
 ﻿using System;
 using Cards.Data;
 using Graphics.UI.Panels;
+using Graphics.UI.Panels.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
