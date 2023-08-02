@@ -14,6 +14,8 @@ namespace Graphics.UI.Panels.Core
 
         public virtual void Hide()
         {
+            if (_panel == null) return;
+
             _panel.SetActive(false);
         }
 

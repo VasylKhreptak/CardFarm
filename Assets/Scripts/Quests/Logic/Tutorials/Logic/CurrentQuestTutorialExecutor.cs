@@ -1,5 +1,6 @@
 ﻿using Quests.Data;
 using Quests.Logic.Tutorials.Core;
+using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -13,14 +14,21 @@ namespace Quests.Logic.Tutorials.Logic
         private QuestTutorialExecutor _previousTutorialExecutor;
 
         private QuestsManager _questsManager;
+        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(QuestsManager questsManager)
+        private void Constructor(QuestsManager questsManager, GameRestartCommand gameRestartCommand)
         {
             _questsManager = questsManager;
+            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
+
+        private void Awake()
+        {
+            _gameRestartCommand.OnExecute += OnRestart;
+        }
 
         private void OnEnable()
         {
@@ -31,6 +39,11 @@ namespace Quests.Logic.Tutorials.Logic
         {
             StopObserving();
             StopTutorial();
+        }
+
+        private void OnDestroy()
+        {
+            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -80,6 +93,16 @@ namespace Quests.Logic.Tutorials.Logic
             if (_previousTutorialExecutor != null)
             {
                 _previousTutorialExecutor.StopTutorial();
+            }
+        }
+
+        private void OnRestart()
+        {
+            OnDisable();
+
+            if (gameObject.activeSelf)
+            {
+                OnEnable();
             }
         }
     }
