@@ -1517,6 +1517,7 @@ Transform:
   m_Children:
   - {fileID: 1074059780}
   - {fileID: 1098954620}
+  - {fileID: 1646975471}
   m_Father: {fileID: 1647381466}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5952,6 +5953,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bounds: {fileID: 1011810154}
   _gizmosColor: {r: 0, g: 0, b: 1, a: 0}
+--- !u!1 &1013072223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1013072224}
+  - component: {fileID: 1013072225}
+  m_Layer: 0
+  m_Name: SellableCardSelectorInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1013072224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013072223}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1353833040}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1013072225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013072223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20c899df1d24af08a233bb76746b4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToBind: {fileID: 1646975472}
 --- !u!1 &1018403363
 GameObject:
   m_ObjectHideFlags: 0
@@ -8622,6 +8668,7 @@ Transform:
   m_Children:
   - {fileID: 741807792}
   - {fileID: 995822881}
+  - {fileID: 1013072224}
   m_Father: {fileID: 1619450391}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11264,6 +11311,7 @@ MonoBehaviour:
   - {fileID: 1811794967}
   - {fileID: 741807793}
   - {fileID: 995822882}
+  - {fileID: 1013072225}
   - {fileID: 2046417983}
   - {fileID: 1310681193}
   - {fileID: 1284765471}
@@ -11470,6 +11518,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToBind: {fileID: 386186199}
+--- !u!1 &1646975470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646975471}
+  - component: {fileID: 1646975472}
+  m_Layer: 0
+  m_Name: SellableCardSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1646975471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646975470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 338041906}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646975472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646975470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db2d160cf39439880acc74ada757428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1647381465
 GameObject:
   m_ObjectHideFlags: 0
