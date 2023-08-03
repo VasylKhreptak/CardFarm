@@ -11,7 +11,7 @@ namespace Quests.Logic.Tutorials.Logic
     {
         private CompositeDisposable _questsSubscriptions = new CompositeDisposable();
 
-        private QuestTutorialExecutor _previousTutorialExecutor;
+        private QuestTutorial _previousTutorialExecutor;
 
         private QuestsManager _questsManager;
         private GameRestartCommand _gameRestartCommand;
@@ -79,7 +79,7 @@ namespace Quests.Logic.Tutorials.Logic
 
             if (currentQuest == null) return;
 
-            QuestTutorialExecutor tutorialExecutor = _questsManager.CurrentQuest.Value.TutorialExecutor;
+            QuestTutorial tutorialExecutor = _questsManager.CurrentQuest.Value.Tutorial;
 
             if (tutorialExecutor == null) return;
 
