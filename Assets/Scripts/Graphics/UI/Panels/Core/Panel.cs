@@ -9,6 +9,8 @@ namespace Graphics.UI.Panels.Core
 
         public virtual void Show()
         {
+            if (_panel == null) return;
+
             _panel.SetActive(true);
         }
 

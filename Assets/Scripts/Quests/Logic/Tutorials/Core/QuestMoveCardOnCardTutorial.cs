@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using UniRx;
@@ -138,11 +139,31 @@ namespace Quests.Logic.Tutorials.Core
 
         private void OnAnyBottomCardUpdated(CardData bottomCard)
         {
-            if (bottomCard == null) return;
-
-            if (bottomCard.Card.Value == _firstCard)
+            if (bottomCard != null && bottomCard.Card.Value == _firstCard)
             {
-                StopTutorial();
+                StopHandTutorial();
+                _isFinished.Value = true;
+            }
+            else
+            {
+                bool hasAnyAppropriateBottomCard = _bottomCardSubscriptions.Keys.Any(cardData =>
+                {
+                    CardData bottomCard = cardData.BottomCard.Value;
+
+                    if (bottomCard == null) return false;
+
+                    return bottomCard.Card.Value == _firstCard;
+                });
+
+                if (hasAnyAppropriateBottomCard == false)
+                {
+                    if (_firstCardData != null && _secondCardData != null)
+                    {
+                        StartHandTutorial(_firstCardData.transform, _secondCardData.transform);
+                    }
+
+                    _isFinished.Value = false;
+                }
             }
         }
 

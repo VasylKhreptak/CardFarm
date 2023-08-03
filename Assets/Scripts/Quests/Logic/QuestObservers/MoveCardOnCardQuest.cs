@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Quests.Logic.QuestObservers
 {
-    public class MoveCardOnAnotherCardQuest : CardsQuestObserver
+    public class MoveCardOnCardQuest : CardsQuestObserver
     {
         [Header("Preferences")]
         [SerializeField] private Card _targetTopCard;

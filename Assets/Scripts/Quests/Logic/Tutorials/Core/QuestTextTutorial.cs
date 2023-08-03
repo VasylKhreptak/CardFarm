@@ -10,21 +10,22 @@ namespace Quests.Logic.Tutorials.Core
 
         public override void StartTutorial()
         {
-            StopTutorial();
+            base.StartTutorial();
+            
             ShowText();
-            _isActive.Value = true;
         }
 
         public override void StopTutorial()
         {
+            base.StopTutorial();
+            
             HideText();
-            _isActive.Value = false;
         }
 
         protected void ShowText()
         {
-            _tutorialTextPanel.Show();
             _tutorialTextPanel.Text = _tutorialText;
+            _tutorialTextPanel.Show();
         }
 
         protected void HideText()

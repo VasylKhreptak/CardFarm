@@ -41,6 +41,7 @@ namespace Quests.Logic.Tutorials
         private void OnSpawnedCard()
         {
             StopTutorial();
+            _isFinished.Value = true;
         }
     }
 }

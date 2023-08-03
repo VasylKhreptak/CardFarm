@@ -83,6 +83,7 @@ namespace Quests.Logic.Tutorials
         protected virtual void OnCardClicked()
         {
             StopTutorial();
+            _isFinished.Value = true;
         }
     }
 }
