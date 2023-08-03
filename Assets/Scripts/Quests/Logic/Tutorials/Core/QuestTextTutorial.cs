@@ -30,5 +30,11 @@ namespace Quests.Logic.Tutorials.Core
             _tutorialTextPanel.Hide();
             _tutorialTextPanel.Text = String.Empty;
         }
+
+        private void ShowText(string text)
+        {
+            _tutorialTextPanel.Show();
+            _tutorialTextPanel.Text = text;
+        }
     }
 }
