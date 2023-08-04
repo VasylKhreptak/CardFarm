@@ -109,7 +109,10 @@ namespace Cards.Logic.Spawn
 
             if (jump)
             {
-                spawnedCard.Animations.JumpAnimation.Play(freeSpacePosition);
+                spawnedCard.Animations.JumpAnimation.Play(freeSpacePosition, () =>
+                {
+                    spawnedCard.Callbacks.onLanded?.Invoke();
+                });
             }
             else
             {

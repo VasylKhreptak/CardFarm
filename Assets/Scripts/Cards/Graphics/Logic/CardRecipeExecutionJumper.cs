@@ -51,6 +51,7 @@ namespace Cards.Graphics.Logic
         {
             _cardData.RecipeExecutor.IsExecuting.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.ReproductionLogic.IsExecuting.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsAnyGroupCardSelected.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.IsSelected.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
 
             if (_factoryData != null)
@@ -73,11 +74,15 @@ namespace Cards.Graphics.Logic
                 isExecuting = true;
             }
 
-            bool isSelected = _cardData.IsSelected.Value;
-
-            if (isSelected)
+            if(_cardData.IsSelected.Value)
             {
                 _cardData.Animations.ContinuousJumpingAnimation.StopAll();
+                return;
+            }
+            
+            if (_cardData.IsAnyGroupCardSelected.Value)
+            {
+                _cardData.Animations.ContinuousJumpingAnimation.StopContinuous();
                 return;
             }
 

@@ -61,10 +61,20 @@ namespace Cards.Logic
 
         private void UpdateHeight(bool isSelected)
         {
-            SetCardHeight(isSelected ? _cardData.SelectedHeight : _cardData.BaseHeight);
+            if (isSelected)
+            {
+                SetCardHeight(_cardData.SelectedHeight);
+            }
+            else
+            {
+                SetCardHeight(_cardData.BaseHeight, () =>
+                {
+                    _cardData.Callbacks.onLanded?.Invoke();
+                });
+            }
         }
 
-        private void SetCardHeight(float height)
+        private void SetCardHeight(float height, Action onComplete = null)
         {
             StopTween();
 
@@ -77,7 +87,11 @@ namespace Cards.Logic
                 })
                 .SetEase(_moveEase)
                 .OnKill(() => IsUpdatingHeight.Value = false)
-                .OnComplete(() => IsUpdatingHeight.Value = false)
+                .OnComplete(() =>
+                {
+                    IsUpdatingHeight.Value = false;
+                    onComplete?.Invoke();
+                })
                 .Play();
         }
 

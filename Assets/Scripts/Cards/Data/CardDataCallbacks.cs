@@ -25,5 +25,7 @@ namespace Cards.Data
 
         public Action onPointerDown;
         public Action onPointerUp;
+
+        public Action onLanded;
     }
 }

@@ -2,6 +2,7 @@ namespace Plugins.ObjectPooler.Example
 {
     public enum MainPool
     {
-        CloudParticle = 0,
+        CardDestroyParticle = 0,
+        CardLandParticle = 1,
     }
 }
