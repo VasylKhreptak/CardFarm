@@ -13,6 +13,16 @@ namespace Cards.Graphics.Animations
         private IDisposable _intervalDisposable;
         private IDisposable _delayDisposable;
 
+        #region MonoBehaviour
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            StopContinuous();
+        }
+
+        #endregion
+
         [Button()]
         public void PlayContinuous()
         {
@@ -43,12 +53,6 @@ namespace Cards.Graphics.Animations
         {
             _delayDisposable?.Dispose();
             _intervalDisposable?.Dispose();
-        }
-
-        public override void Stop()
-        {
-            base.Stop();
-            StopContinuous();
         }
     }
 }

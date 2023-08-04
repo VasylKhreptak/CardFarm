@@ -47,7 +47,7 @@ namespace Cards.Graphics.Animations
             _cardData = GetComponentInParent<CardData>(true);
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             Stop();
         }
@@ -73,6 +73,12 @@ namespace Cards.Graphics.Animations
                 .OnStart(() =>
                 {
                     _isPlaying.Value = true;
+                })
+                .OnUpdate(() =>
+                {
+                    Vector3 position = _cardData.transform.position;
+                    float height = position.y;
+                    _cardData.Height.Value = height;
                 })
                 .OnComplete(() =>
                 {

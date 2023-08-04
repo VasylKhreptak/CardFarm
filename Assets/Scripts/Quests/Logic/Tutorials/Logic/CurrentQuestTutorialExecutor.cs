@@ -1,6 +1,7 @@
 ﻿using Quests.Data;
 using Quests.Logic.Tutorials.Core;
 using Runtime.Commands;
+using Runtime.Map;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -15,24 +16,25 @@ namespace Quests.Logic.Tutorials.Logic
 
         private QuestsManager _questsManager;
         private GameRestartCommand _gameRestartCommand;
+        private StarterCardsSpawner _starterCardsSpawner;
 
         [Inject]
-        private void Constructor(QuestsManager questsManager, GameRestartCommand gameRestartCommand)
+        private void Constructor(QuestsManager questsManager,
+            GameRestartCommand gameRestartCommand,
+            StarterCardsSpawner starterCardsSpawner)
         {
             _questsManager = questsManager;
             _gameRestartCommand = gameRestartCommand;
+            _starterCardsSpawner = starterCardsSpawner;
         }
 
         #region MonoBehaviour
 
         private void Awake()
         {
+            OnDisable();
             _gameRestartCommand.OnExecute += OnRestart;
-        }
-
-        private void OnEnable()
-        {
-            StartObserving();
+            _starterCardsSpawner.OnSpawnedAllCards += StartObserving;
         }
 
         private void OnDisable()
@@ -44,6 +46,7 @@ namespace Quests.Logic.Tutorials.Logic
         private void OnDestroy()
         {
             _gameRestartCommand.OnExecute -= OnRestart;
+            _starterCardsSpawner.OnSpawnedAllCards -= StartObserving;
         }
 
         #endregion
@@ -99,11 +102,6 @@ namespace Quests.Logic.Tutorials.Logic
         private void OnRestart()
         {
             OnDisable();
-
-            if (gameObject.activeSelf)
-            {
-                OnEnable();
-            }
         }
     }
 }

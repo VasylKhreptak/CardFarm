@@ -7,8 +7,10 @@ namespace ProgressLogic.Core
     public abstract class ProgressDependentObject : MonoBehaviour
     {
         private FloatReactiveProperty _progress = new FloatReactiveProperty();
+        private BoolReactiveProperty _isExecuting = new BoolReactiveProperty();
 
         public IReadOnlyReactiveProperty<float> Progress => _progress;
+        public IReadOnlyReactiveProperty<bool> IsExecuting => _isExecuting;
 
         private Tween _progressTween;
 
@@ -31,17 +33,24 @@ namespace ProgressLogic.Core
                 .OnStart(() =>
                 {
                     _progress.Value = 0;
+                    _isExecuting.Value = false;
                 })
-                .OnUpdate(() => _progress.Value = progress)
+                .OnUpdate(() =>
+                {
+                    _progress.Value = progress;
+                    _isExecuting.Value = true;
+                })
                 .OnComplete(() =>
                 {
                     _progress.Value = 1;
                     OnProgressCompleted();
                     _progress.Value = 0;
+                    _isExecuting.Value = false;
                 })
                 .OnKill(() =>
                 {
                     _progress.Value = 0;
+                    _isExecuting.Value = false;
                 })
                 .SetEase(Ease.Linear)
                 .Play();
