@@ -54,5 +54,11 @@ namespace Cards.Graphics.Animations
             _delayDisposable?.Dispose();
             _intervalDisposable?.Dispose();
         }
+
+        public void StopAll()
+        {
+            StopContinuous();
+            Stop();
+        }
     }
 }
