@@ -3050,7 +3050,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 87.733, y: 87.733}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557523199
 MonoBehaviour:
@@ -6297,8 +6297,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 84.59707, y: 0}
-  m_SizeDelta: {x: 294.2559, y: 174.58}
+  m_AnchoredPosition: {x: 59.719, y: 0}
+  m_SizeDelta: {x: 244.5, y: 132.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1026766052
 MonoBehaviour:
@@ -6348,8 +6348,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 45.03
+  m_fontSizeBase: 45.03
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6360,7 +6360,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -31.2
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -6498,6 +6498,7 @@ GameObject:
   - component: {fileID: 1076741738}
   - component: {fileID: 1076741740}
   - component: {fileID: 1076741741}
+  - component: {fileID: 1076741742}
   m_Layer: 5
   m_Name: QuestGetRewardButton
   m_TagString: Untagged
@@ -6528,7 +6529,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -99.5092, y: -41.8714}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1076741740
 CanvasRenderer:
@@ -6550,6 +6551,56 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1076741742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076741737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a425dfec9204349b74ba6b6f8d28ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 1076741738}
+  _startScale: {x: 1, y: 1, z: 1}
+  _endScale: {x: 1.08, y: 1.08, z: 1.08}
+  _duration: 0.3
+  _scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9372697
+      value: 0.95558804
+      inSlope: 1.917547
+      outSlope: 1.917547
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _delay: 1
 --- !u!1 &1092403414
 GameObject:
   m_ObjectHideFlags: 0
@@ -6797,7 +6848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.29803923}
+  m_Color: {r: 0.972549, g: 0.58431375, b: 0.11764706, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6903,8 +6954,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -139, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -116.4, y: -3.8}
+  m_SizeDelta: {x: 87.733, y: 87.733}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1133678076
 GameObject:
