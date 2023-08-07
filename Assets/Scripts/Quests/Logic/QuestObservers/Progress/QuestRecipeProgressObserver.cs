@@ -4,7 +4,6 @@ using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using Cards.Factories.Data;
-using DG.Tweening;
 using Extensions;
 using ProgressLogic.Core;
 using Quests.Logic.QuestObservers.Core;
@@ -78,8 +77,6 @@ namespace Quests.Logic.QuestObservers.Progress
             }
 
             _cardSubscriptions.Clear();
-            
-            Debug.Log("StopObservingCards");
         }
 
         private void OnCardRecipeUpdated(CardData cardData)
@@ -124,7 +121,12 @@ namespace Quests.Logic.QuestObservers.Progress
                 targetCard = cardData;
             }
 
-            progressSubscription = progressDependentObject.Progress.Subscribe(SetProgress);
+            progressSubscription = progressDependentObject.Progress.Subscribe(progress =>
+            {
+                if (_questData.IsCompletedByAction.Value) return;
+
+                SetProgress(progress);
+            });
             StartObservingResultedCard(targetCard);
 
             subscriptions.Item2 = progressSubscription;
@@ -133,7 +135,6 @@ namespace Quests.Logic.QuestObservers.Progress
         private void SetProgress(float progress)
         {
             _questData.Progress.Value = progress;
-            Debug.Log($"SetProgress: {progress}");
         }
 
         private void StartObservingResultedCard(CardData cardData)

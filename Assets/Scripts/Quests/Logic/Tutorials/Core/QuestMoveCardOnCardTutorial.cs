@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cards.Core;
 using Cards.Data;
+using Extensions;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -175,7 +176,31 @@ namespace Quests.Logic.Tutorials.Core
                 return;
             }
 
+            TrySeparateFoundCards();
+
             StartHandTutorialDelayed(_firstCardData.transform, _secondCardData.transform);
+        }
+
+        private void TrySeparateFoundCards()
+        {
+            if (_firstCardData == null || _secondCardData == null) return;
+
+            if (_firstCardData.IsSingleCard.Value == false)
+            {
+                _firstCardData.Separate();
+                _firstCardData.Animations.JumpAnimation.PlayRandomly();
+            }
+
+            if (_secondCardData.IsSingleCard.Value == false)
+            {
+                _secondCardData.Separate();
+                _secondCardData.Animations.JumpAnimation.PlayRandomly();
+            }
+        }
+
+        protected override void OnRepeated()
+        {
+            // TrySeparateFoundCards();
         }
     }
 }

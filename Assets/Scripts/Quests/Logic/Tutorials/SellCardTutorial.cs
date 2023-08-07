@@ -1,6 +1,7 @@
 ﻿using Cards.Core;
 using Cards.Data;
 using Cards.Zones.SellZone.Data;
+using Extensions;
 using Quests.Logic.Tutorials.Core;
 using UniRx;
 using Zenject;
@@ -170,6 +171,8 @@ namespace Quests.Logic.Tutorials
                 return;
             }
 
+            TryUnlinkCheapestCard();
+
             StartHandTutorialDelayed(_cheapestCard.transform, _sellZone.transform);
         }
 
@@ -191,6 +194,22 @@ namespace Quests.Logic.Tutorials
         {
             StopTutorial();
             _isFinished.Value = true;
+        }
+
+        private void TryUnlinkCheapestCard()
+        {
+            if (_cheapestCard == null) return;
+
+            if (_cheapestCard.IsSingleCard.Value == false)
+            {
+                _cheapestCard.Separate();
+                _cheapestCard.Animations.JumpAnimation.PlayRandomly();
+            }
+        }
+
+        protected override void OnRepeated()
+        {
+            //TryUnlinkCheapestCard();
         }
     }
 }

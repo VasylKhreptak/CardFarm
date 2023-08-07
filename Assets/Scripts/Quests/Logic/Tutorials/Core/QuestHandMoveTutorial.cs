@@ -48,6 +48,7 @@ namespace Quests.Logic.Tutorials.Core
             _handSequence = DOTween.Sequence();
 
             _handSequence
+                .AppendCallback(OnRepeated)
                 .AppendCallback(_tutorialHand.Show)
                 .AppendCallback(() => _tutorialHand.SetPosition(GetScreenPosition(from.position)))
                 .AppendCallback(_tutorialHand.Press)
@@ -98,6 +99,11 @@ namespace Quests.Logic.Tutorials.Core
         protected Vector3 GetScreenPosition(Vector3 worldPosition)
         {
             return _camera.WorldToScreenPoint(worldPosition);
+        }
+
+        protected virtual void OnRepeated()
+        {
+
         }
     }
 }

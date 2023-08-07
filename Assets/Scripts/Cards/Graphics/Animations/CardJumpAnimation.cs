@@ -23,6 +23,10 @@ namespace Cards.Graphics.Animations
         [SerializeField] private int _numberOfJumps = 1;
         [SerializeField] private Ease _jumpEase;
 
+        [Header("Random Jump Preferences")]
+        [SerializeField] private float _minRange = 5f;
+        [SerializeField] private float _maxRange = 7f;
+
         private Tween _animation;
 
         public float Duration => _duration;
@@ -92,6 +96,11 @@ namespace Cards.Graphics.Animations
         public void PlayRandomly(float minRange, float maxRange, Action onComplete = null)
         {
             PlayRandomly(minRange, maxRange, _duration, onComplete);
+        }
+
+        public void PlayRandomly(Action onComplete = null)
+        {
+            PlayRandomly(_minRange, _maxRange, _duration, onComplete);
         }
 
         public void PlayRandomly(float minRange, float maxRange, float duration, Action onComplete = null)
