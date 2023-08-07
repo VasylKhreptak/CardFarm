@@ -106,6 +106,8 @@ namespace Cards.ResourceNodes.Core.Logic
             {
                 _cardData.Durability.Value--;
             }
+
+            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
         }
 
         private Card GetCardToSpawn()

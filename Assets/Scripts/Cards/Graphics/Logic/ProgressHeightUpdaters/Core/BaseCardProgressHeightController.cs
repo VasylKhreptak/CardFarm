@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Cards.Graphics.Logic.ProgressHeightUpdaters.Core
 {
-    public class BaseCardProgressHeightUnlinker : MonoBehaviour
+    public class BaseCardProgressHeightController : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] protected CardData _cardData;

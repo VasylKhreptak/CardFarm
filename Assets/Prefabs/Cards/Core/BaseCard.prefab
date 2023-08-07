@@ -5193,6 +5193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 552819098959709841}
   - component: {fileID: 4278842896526810275}
+  - component: {fileID: 2047803714416546758}
   m_Layer: 6
   m_Name: ReproductionProgressbar
   m_TagString: Untagged
@@ -5235,6 +5236,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _progressDependentObject: {fileID: 8113736550286103895}
   _progressObject: {fileID: 6229855829516181391}
+--- !u!114 &2047803714416546758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285886438910412785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f377f591de8d4c1dba24709c5c33529b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 1106781378184329004}
+  _transform: {fileID: 552819098959709841}
+  _unlinkedWorldHeight: 0
 --- !u!1 &8326685145913892960
 GameObject:
   m_ObjectHideFlags: 0

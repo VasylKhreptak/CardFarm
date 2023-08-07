@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Cards.Graphics.Logic
 {
-    public class CardProgressHeightUnlinker : BaseCardProgressHeightUnlinker, IValidatable
+    public class CardProgressHeightController : BaseCardProgressHeightController, IValidatable
     {
         private IDisposable _isRecipeExecutingSubscription;
 
@@ -29,7 +29,7 @@ namespace Cards.Graphics.Logic
         {
             StopObserving();
 
-            _isRecipeExecutingSubscription = _cardData.RecipeExecutor.IsExecuting.Subscribe(isExecuting =>
+            _isRecipeExecutingSubscription = _cardData.IsExecutingAnyRecipe.Subscribe(isExecuting =>
             {
                 if (isExecuting)
                 {

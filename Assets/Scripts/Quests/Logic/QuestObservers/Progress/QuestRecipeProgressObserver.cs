@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using Cards.Factories.Data;
@@ -19,12 +20,7 @@ namespace Quests.Logic.QuestObservers.Progress
         [Header("Preferences")]
         [SerializeField] private Card _recipeResult;
 
-        [Header("Preferences")]
-        [SerializeField] private float _progressResetDuration = 1f;
-
         private Dictionary<CardData, (IDisposable, IDisposable)> _cardSubscriptions = new Dictionary<CardData, (IDisposable, IDisposable)>();
-
-        private Tween _progressTween;
 
         protected override void OnCardAdded(CardData cardData)
         {
@@ -39,7 +35,6 @@ namespace Quests.Logic.QuestObservers.Progress
         protected override void OnCardsCleared()
         {
             StopObservingCards();
-            _questData.Progress.Value = 0f;
         }
 
         private void StartObservingCard(CardData cardData)
@@ -69,28 +64,32 @@ namespace Quests.Logic.QuestObservers.Progress
                 subscriptions.Item1?.Dispose();
                 subscriptions.Item2?.Dispose();
                 _cardSubscriptions.Remove(cardData);
+                StopObservingResultedCard(cardData);
             }
         }
 
         private void StopObservingCards()
         {
-            foreach (var subscriptions in _cardSubscriptions.Values)
+            foreach (var keyValuePair in _cardSubscriptions.ToList())
             {
-                subscriptions.Item1?.Dispose();
-                subscriptions.Item2?.Dispose();
+                keyValuePair.Value.Item1?.Dispose();
+                keyValuePair.Value.Item2?.Dispose();
+                StopObservingResultedCard(keyValuePair.Key);
             }
 
             _cardSubscriptions.Clear();
+            
+            Debug.Log("StopObservingCards");
         }
 
         private void OnCardRecipeUpdated(CardData cardData)
         {
             FactoryData factoryData = cardData as FactoryData;
+            CardData targetCard;
 
             _cardSubscriptions.TryGetValue(cardData, out var subscriptions);
 
             subscriptions.Item2?.Dispose();
-            _questData.Progress.Value = 0f;
 
             IDisposable progressSubscription;
 
@@ -107,6 +106,8 @@ namespace Quests.Logic.QuestObservers.Progress
                 if (hasRecipeResult == false) return;
 
                 progressDependentObject = factoryData.FactoryRecipeExecutor;
+
+                targetCard = factoryData;
             }
             else
             {
@@ -120,36 +121,40 @@ namespace Quests.Logic.QuestObservers.Progress
 
                 progressDependentObject = cardData.RecipeExecutor;
 
+                targetCard = cardData;
             }
 
             progressSubscription = progressDependentObject.Progress.Subscribe(SetProgress);
+            StartObservingResultedCard(targetCard);
 
             subscriptions.Item2 = progressSubscription;
         }
 
-        private void OnFoundProgressDependentObject(ProgressDependentObject progressDependentObject)
-        {
-            ///
-        }
-        
         private void SetProgress(float progress)
         {
             _questData.Progress.Value = progress;
+            Debug.Log($"SetProgress: {progress}");
         }
 
-        private void SetProgressSmooth(float progress, float duration)
+        private void StartObservingResultedCard(CardData cardData)
         {
-            KillProgressTween();
+            StopObservingResultedCard(cardData);
 
-            _progressTween = DOTween
-                .To(() => _questData.Progress.Value, x => _questData.Progress.Value = x, progress, duration)
-                .SetEase(Ease.OutCubic)
-                .Play();
+            cardData.Callbacks.onSpawnedRecipeResult += OnSpawnedResultedCard;
         }
 
-        private void KillProgressTween()
+        private void StopObservingResultedCard(CardData cardData)
         {
-            _progressTween?.Kill();
+            cardData.Callbacks.onSpawnedRecipeResult -= OnSpawnedResultedCard;
+        }
+
+        private void OnSpawnedResultedCard(Card card)
+        {
+            if (card == _recipeResult)
+            {
+                StopObserving();
+                SetProgress(1f);
+            }
         }
     }
 }

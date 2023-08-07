@@ -69,6 +69,7 @@ namespace Quests.Logic.QuestObservers.Progress
             if (_cardSubscriptions.TryGetValue(cardData, out var subscriptions))
             {
                 subscriptions?.Clear();
+                StopObservingBoughtCard(cardData);
             }
 
             _cardSubscriptions.Remove(cardData);

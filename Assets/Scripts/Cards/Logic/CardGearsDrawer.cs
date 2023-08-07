@@ -89,8 +89,8 @@ namespace Cards.Logic
             _gearsObject = _cardTablePooler.Spawn(CardTablePool.RotatingGears);
             _gearsObject.transform.localRotation = Quaternion.identity;
 
-            _positionUpdateSubscription = Observable
-                .EveryUpdate()
+            _positionUpdateSubscription = _cardData
+                .GroupCenter
                 .DoOnSubscribe(() =>
                 {
                     RenderGearsOnTop();
