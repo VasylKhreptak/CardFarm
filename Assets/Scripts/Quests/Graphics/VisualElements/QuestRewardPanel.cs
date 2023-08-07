@@ -97,6 +97,7 @@ namespace Quests.Graphics.VisualElements
         private void Show()
         {
             Enable();
+            SetParameters(_startScale, 0f);
             SetParametersSmooth(_targetScale, 1f);
         }
 
