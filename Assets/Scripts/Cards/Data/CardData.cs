@@ -138,6 +138,8 @@ namespace Cards.Data
         public QuestOutline QuestOutline;
 
         public Vector3ReactiveProperty GroupCenter = new Vector3ReactiveProperty();
+        
+        public BoolReactiveProperty IsExecutingAnyRecipe = new BoolReactiveProperty();
 
         #region MonoBehaviour
 

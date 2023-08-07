@@ -11252,7 +11252,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _allocateMaxMemorySize: 0
   _useFolders: 0
-  _poolsPreferences: []
+  _poolsPreferences:
+  - pool: 0
+    prefab: {fileID: 813891043048088929, guid: dfc30b35d6efe0f4ea9fe6c51c5a667f, type: 3}
+    initialSize: 0
+    autoExpand: 1
+    maxExpandSize: 99999
 --- !u!1 &1476206747
 GameObject:
   m_ObjectHideFlags: 0
