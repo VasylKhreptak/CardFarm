@@ -1,4 +1,5 @@
-﻿using Quests.Data;
+﻿using System;
+using Quests.Data;
 using Quests.Logic.Tutorials.Core;
 using Runtime.Commands;
 using Runtime.Map;
@@ -11,6 +12,8 @@ namespace Quests.Logic.Tutorials.Logic
     public class CurrentQuestTutorialExecutor : MonoBehaviour
     {
         private CompositeDisposable _questsSubscriptions = new CompositeDisposable();
+
+        private IDisposable _isQuestCompletedByActionSubscription;
 
         private QuestTutorial _previousTutorialExecutor;
 
@@ -59,14 +62,24 @@ namespace Quests.Logic.Tutorials.Logic
 
         private void StopObserving()
         {
-            _questsSubscriptions.Clear();
+            _questsSubscriptions?.Clear();
+            _isQuestCompletedByActionSubscription?.Dispose();
         }
 
         private void OnQuestsUpdated()
         {
-            if (_questsManager.CurrentQuest.Value != null && _questsManager.CurrentNonRewardedQuest.Value == null)
+            QuestData currentQuest = _questsManager.CurrentQuest.Value;
+
+            _isQuestCompletedByActionSubscription?.Dispose();
+
+            if (currentQuest != null && _questsManager.CurrentNonRewardedQuest.Value == null)
             {
                 StartTutorial();
+
+                _isQuestCompletedByActionSubscription = currentQuest.IsCompletedByAction.Where(x => x).Subscribe(isCompleted =>
+                {
+                    StopTutorial();
+                });
             }
             else
             {
