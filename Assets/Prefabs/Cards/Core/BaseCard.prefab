@@ -2111,6 +2111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6301725546041918821}
   - component: {fileID: 2465658523644437456}
+  - component: {fileID: 3178856756211132297}
   m_Layer: 6
   m_Name: RecipeProgressbar
   m_TagString: Untagged
@@ -2153,6 +2154,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _progressDependentObject: {fileID: 7294079551765895076}
   _progressObject: {fileID: 6188990528986735697}
+--- !u!114 &3178856756211132297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3607325753008040723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f377f591de8d4c1dba24709c5c33529b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 1106781378184329004}
+  _transform: {fileID: 6301725546041918821}
+  _unlinkedWorldHeight: 0
 --- !u!1 &4002559306954932403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,7 +2654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
   _duration: 0.5
-  _jumpPower: 1
+  _jumpPower: 0.5
   _numberOfJumps: 1
   _jumpEase: 0
   _jumpInterval: 0.2
