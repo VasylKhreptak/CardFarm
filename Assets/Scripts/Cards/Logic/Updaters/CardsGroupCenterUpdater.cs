@@ -26,7 +26,7 @@ namespace Cards.Logic.Updaters
         {
             List<CardData> groupCards = _cardData.GroupCards;
 
-            Vector3 center = _cardData.transform.position;
+            Vector3 center = Vector3.zero;
 
             foreach (var groupCard in groupCards)
             {
