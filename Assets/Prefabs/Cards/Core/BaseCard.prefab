@@ -2744,6 +2744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8925929009673236244}
   - component: {fileID: 3006820034307524360}
+  - component: {fileID: 1873309079266837382}
   m_Layer: 6
   m_Name: Gears
   m_TagString: Untagged
@@ -2786,6 +2787,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
   _targetObject: {fileID: 2268190555139672968}
+--- !u!114 &1873309079266837382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792841597125269366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f377f591de8d4c1dba24709c5c33529b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 1106781378184329004}
+  _transform: {fileID: 8925929009673236244}
+  _unlinkedWorldHeight: 2
 --- !u!1 &4932607098460236267
 GameObject:
   m_ObjectHideFlags: 0
