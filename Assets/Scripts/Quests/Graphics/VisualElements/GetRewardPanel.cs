@@ -1,5 +1,6 @@
 ﻿using System;
 using Graphics.Animations.Quests.RewardPanel;
+using Graphics.Animations.Reminder;
 using Quests.Logic;
 using Runtime.Commands;
 using UniRx;
@@ -17,6 +18,8 @@ namespace Quests.Graphics.VisualElements
         [Header("Animations")]
         [SerializeField] private RewardPanelShowAnimation _showAnimation;
         [SerializeField] private RewardPanelHideAnimation _hideAnimation;
+        [SerializeField] private ScalePunchReminderAnimation _scalePunchReminder;
+        [SerializeField] private AnchorPositionPunchReminderAnimation _positionPunchReminder;
 
         private GameRestartCommand _gameRestartCommand;
         private QuestsManager _questsManager;
@@ -35,6 +38,8 @@ namespace Quests.Graphics.VisualElements
         {
             _showAnimation ??= GetComponentInChildren<RewardPanelShowAnimation>(true);
             _hideAnimation ??= GetComponentInChildren<RewardPanelHideAnimation>(true);
+            _positionPunchReminder ??= GetComponentInChildren<AnchorPositionPunchReminderAnimation>(true);
+            _scalePunchReminder ??= GetComponentInChildren<ScalePunchReminderAnimation>(true);
         }
 
         private void Awake()
@@ -93,11 +98,15 @@ namespace Quests.Graphics.VisualElements
         {
             Enable();
             _showAnimation.Play();
+            _positionPunchReminder.Play();
+            _scalePunchReminder.Play();
         }
 
         private void Hide()
         {
             _hideAnimation.Play(Disable);
+            _positionPunchReminder.Stop();
+            _scalePunchReminder.Stop();
         }
 
         private void Enable()
