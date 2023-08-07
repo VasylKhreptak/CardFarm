@@ -31,7 +31,7 @@ namespace Quests.Data
 
         public void Validate()
         {
-            Tutorial = GetComponentInChildren<QuestTutorial>();
+            Tutorial = GetComponentInChildren<QuestTutorial>(true);
         }
 
         #endregion

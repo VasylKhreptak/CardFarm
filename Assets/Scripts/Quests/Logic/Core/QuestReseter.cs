@@ -1,5 +1,7 @@
 ﻿using Quests.Data;
+using Runtime.Commands;
 using UnityEngine;
+using Zenject;
 
 namespace Quests.Logic.Core
 {
@@ -8,6 +10,14 @@ namespace Quests.Logic.Core
         [Header("References")]
         [SerializeField] private QuestData _questData;
 
+        private GameRestartCommand _gameRestartCommand;
+
+        [Inject]
+        private void Constructor(GameRestartCommand gameRestartCommand)
+        {
+            _gameRestartCommand = gameRestartCommand;
+        }
+
         #region MonoBehaviour
 
         private void OnValidate()
@@ -15,9 +25,14 @@ namespace Quests.Logic.Core
             _questData ??= GetComponent<QuestData>();
         }
 
-        private void OnDisable()
+        private void Awake()
         {
-            ResetData();
+            _gameRestartCommand.OnExecute += ResetData;
+        }
+
+        private void OnDestroy()
+        {
+            _gameRestartCommand.OnExecute -= ResetData;
         }
 
         #endregion

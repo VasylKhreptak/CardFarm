@@ -13,7 +13,7 @@ namespace Quests.Graphics.VisualElements
         [Header("References")]
         [SerializeField] private Slider _slider;
 
-        private IDisposable _currentQuestSubscription;
+        private CompositeDisposable _questSubscriptions = new CompositeDisposable();
         private IDisposable _progressSubscription;
 
         private QuestsManager _questsManager;
@@ -47,23 +47,27 @@ namespace Quests.Graphics.VisualElements
         private void StartObserving()
         {
             StopObserving();
-            _currentQuestSubscription = _questsManager.CurrentQuest.Subscribe(OnCurrentQuestUpdated);
+            _questsManager.CurrentQuest.Subscribe(_ => OnQuestDataUpdated()).AddTo(_questSubscriptions);
+            _questsManager.CurrentNonRewardedQuest.Subscribe(_ => OnQuestDataUpdated()).AddTo(_questSubscriptions);
         }
 
         private void StopObserving()
         {
-            _currentQuestSubscription?.Dispose();
+            _questSubscriptions?.Clear();
         }
 
-        private void OnCurrentQuestUpdated(QuestData quest)
+        private void OnQuestDataUpdated()
         {
-            if (quest == null)
+            QuestData currentQuest = _questsManager.CurrentQuest.Value;
+            QuestData nonRewardedQuest = _questsManager.CurrentNonRewardedQuest.Value;
+
+            if (currentQuest == null || nonRewardedQuest != null)
             {
                 StopObservingProgress();
                 return;
             }
 
-            StartObservingProgress(quest);
+            StartObservingProgress(currentQuest);
         }
 
         private void StartObservingProgress(QuestData quest)

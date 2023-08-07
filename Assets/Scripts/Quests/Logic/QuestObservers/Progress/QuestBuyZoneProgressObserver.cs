@@ -39,7 +39,6 @@ namespace Quests.Logic.QuestObservers.Progress
         protected override void OnCardsCleared()
         {
             StopObservingCards();
-            _questData.Progress.Value = 0f;
             KillProgressTween();
         }
 
@@ -101,12 +100,14 @@ namespace Quests.Logic.QuestObservers.Progress
             _questData.Progress.Value = progress;
         }
 
+        private float GetProgress() => _questData.Progress.Value;
+
         private void SetProgressSmooth(float progress)
         {
             KillProgressTween();
 
             _progressTween = DOTween
-                .To(() => _questData.Progress.Value, x => _questData.Progress.Value = x, progress, _progressUpdateDuration)
+                .To(GetProgress, SetProgress, progress, _progressUpdateDuration)
                 .SetEase(Ease.OutCubic)
                 .Play();
         }
@@ -130,7 +131,7 @@ namespace Quests.Logic.QuestObservers.Progress
 
         private void OnBoughtCard()
         {
-            StopObservingCards();
+            StopObserving();
             SetProgressSmooth(1f);
         }
     }
