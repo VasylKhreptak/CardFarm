@@ -1326,7 +1326,7 @@ MonoBehaviour:
     SpeedAmplifier: -1.2
     RotationAxis: {x: 0, y: 0, z: 1}
     InitialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-  _generalSpeed: 25
+  _generalSpeed: 50
 --- !u!1 &2437813531680293211
 GameObject:
   m_ObjectHideFlags: 0

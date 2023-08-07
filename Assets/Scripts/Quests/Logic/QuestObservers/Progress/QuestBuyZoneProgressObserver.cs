@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using Cards.Zones.BuyZone.Data;
@@ -19,7 +20,7 @@ namespace Quests.Logic.QuestObservers.Progress
 
         private Tween _progressTween;
 
-        private Dictionary<CardData, CompositeDisposable> _cardSubscriptions = new Dictionary<CardData, CompositeDisposable>();
+        private Dictionary<BuyZoneData, CompositeDisposable> _cardSubscriptions = new Dictionary<BuyZoneData, CompositeDisposable>();
 
         protected override void OnCardAdded(CardData cardData)
         {
@@ -28,7 +29,11 @@ namespace Quests.Logic.QuestObservers.Progress
 
         protected override void OnCardRemoved(CardData cardData)
         {
-            StopObservingCard(cardData);
+            BuyZoneData buyZoneData = cardData as BuyZoneData;
+
+            if (buyZoneData == null) return;
+
+            StopObservingCard(buyZoneData);
         }
 
         protected override void OnCardsCleared()
@@ -42,21 +47,23 @@ namespace Quests.Logic.QuestObservers.Progress
         {
             if (cardData.Card.Value != _targetBuyZone) return;
 
-            StopObservingCard(cardData);
-
             BuyZoneData buyZoneData = cardData as BuyZoneData;
 
             if (buyZoneData == null) return;
+
+            StopObservingCard(buyZoneData);
 
             CompositeDisposable subscriptions = new CompositeDisposable();
 
             buyZoneData.Price.Subscribe(_ => OnBuyZoneDataUpdated(buyZoneData)).AddTo(subscriptions);
             buyZoneData.CollectedCoins.Subscribe(_ => OnBuyZoneDataUpdated(buyZoneData)).AddTo(subscriptions);
 
-            _cardSubscriptions.Add(cardData, subscriptions);
+            StartObservingBoughtCard(buyZoneData);
+
+            _cardSubscriptions.Add(buyZoneData, subscriptions);
         }
 
-        private void StopObservingCard(CardData cardData)
+        private void StopObservingCard(BuyZoneData cardData)
         {
             if (cardData.Card.Value != _targetBuyZone) return;
 
@@ -70,9 +77,10 @@ namespace Quests.Logic.QuestObservers.Progress
 
         private void StopObservingCards()
         {
-            foreach (var subscriptions in _cardSubscriptions.Values)
+            foreach (var keyValuePair in _cardSubscriptions.ToList())
             {
-                subscriptions?.Clear();
+                keyValuePair.Value?.Clear();
+                StopObservingCard(keyValuePair.Key);
             }
 
             _cardSubscriptions.Clear();
@@ -83,12 +91,7 @@ namespace Quests.Logic.QuestObservers.Progress
             int price = buyZoneData.Price.Value;
             int collectedCoins = buyZoneData.CollectedCoins.Value;
 
-            Debug.Log("Price: " + price);
-            Debug.Log("CollectedCoins: " + collectedCoins);
-            
             float progress = (float)collectedCoins / price;
-
-            Debug.Log("Progress: " + progress);
 
             SetProgressSmooth(progress);
         }
@@ -111,6 +114,24 @@ namespace Quests.Logic.QuestObservers.Progress
         private void KillProgressTween()
         {
             _progressTween?.Kill();
+        }
+
+        private void StartObservingBoughtCard(BuyZoneData cardData)
+        {
+            StopObservingBoughtCard(cardData);
+
+            cardData.BuyZoneCallbacks.onSpawnedCard += OnBoughtCard;
+        }
+
+        private void StopObservingBoughtCard(BuyZoneData cardData)
+        {
+            cardData.BuyZoneCallbacks.onSpawnedCard -= OnBoughtCard;
+        }
+
+        private void OnBoughtCard()
+        {
+            StopObservingCards();
+            SetProgressSmooth(1f);
         }
     }
 }
