@@ -117,7 +117,6 @@ namespace Cards.Data
         public BaseReproductionLogic ReproductionLogic;
         public ReactiveProperty<CardReproductionRecipe> CurrentReproductionRecipe = new ReactiveProperty<CardReproductionRecipe>();
 
-        
         public IntReactiveProperty Durability = new IntReactiveProperty(1);
         public IntReactiveProperty MaxDurability = new IntReactiveProperty(1);
 
@@ -127,7 +126,7 @@ namespace Cards.Data
         public BoolReactiveProperty IsActivelyFollowingCard = new BoolReactiveProperty();
 
         public CardDataCallbacks Callbacks = new CardDataCallbacks();
-        
+
         public PositionShakeObserver PositionShakeObserver;
 
         public CardSelectedHeightController CardSelectedHeightController;
@@ -137,6 +136,8 @@ namespace Cards.Data
         public BoolReactiveProperty IsNew = new BoolReactiveProperty(false);
 
         public QuestOutline QuestOutline;
+
+        public Vector3ReactiveProperty GroupCenter = new Vector3ReactiveProperty();
 
         #region MonoBehaviour
 
@@ -166,11 +167,11 @@ namespace Cards.Data
             RectTransform = GetComponentInChildren<RectTransform>(true);
 
             QuestOutline = GetComponentInChildren<QuestOutline>(true);
-            
+
             RecipeExecutor = GetComponentInChildren<RecipeExecutor>(true);
             ReproductionLogic = GetComponentInChildren<BaseReproductionLogic>(true);
         }
-        
+
         #endregion
     }
 }
