@@ -12,23 +12,27 @@ namespace Graphics.Animations.Quests
 
         [Header("Move Preferences")]
         [SerializeField] private Vector2 _startAnchoredPosition;
+        [SerializeField] private AnimationCurve _startAnchoredPositionCurve;
         [SerializeField] private Vector2 _showAnchoredPosition;
         [SerializeField] private Vector2 _endAnchoredPosition;
+        [SerializeField] private AnimationCurve _endAnchoredPositionCurve;
         [SerializeField] private float _moveToShowDuration = 1f;
         [SerializeField] private float _showDuration;
         [SerializeField] private float _moveToEndDuration;
-        [SerializeField] private AnimationCurve _moveToShowCurve;
-        [SerializeField] private AnimationCurve _moveToEndCurve;
 
         [Header("Scale Preferences")]
         [SerializeField] private Vector3 _startScale;
+        [SerializeField] private AnimationCurve _startScaleCurve;
         [SerializeField] private Vector3 _showScale;
         [SerializeField] private Vector3 _endScale;
+        [SerializeField] private AnimationCurve _endScaleCurve;
 
         [Header("Fade Preferences")]
         [SerializeField] private float _startAlpha;
         [SerializeField] private float _showAlpha;
         [SerializeField] private float _endAlpha;
+        [SerializeField] private AnimationCurve _startFadeCurve;
+        [SerializeField] private AnimationCurve _endFadeCurve;
 
         private Sequence _sequence;
 
@@ -94,13 +98,13 @@ namespace Graphics.Animations.Quests
 
             _sequence = DOTween.Sequence();
             _sequence
-                .Append(CreateMoveTween(_showAnchoredPosition, _moveToShowCurve, _moveToShowDuration))
-                .Join(CreateScaleTween(_showScale, _moveToShowCurve, _moveToShowDuration))
-                .Join(CreateFadeTween(_showAlpha, _moveToShowCurve, _moveToShowDuration))
+                .Append(CreateMoveTween(_showAnchoredPosition, _startAnchoredPositionCurve, _moveToShowDuration))
+                .Join(CreateScaleTween(_showScale, _startScaleCurve, _moveToShowDuration))
+                .Join(CreateFadeTween(_showAlpha, _startFadeCurve, _moveToShowDuration))
                 .AppendInterval(_showDuration)
-                .Append(CreateMoveTween(_endAnchoredPosition, _moveToEndCurve, _moveToEndDuration))
-                .Join(CreateScaleTween(_endScale, _moveToEndCurve, _moveToEndDuration))
-                .Join(CreateFadeTween(_endAlpha, _moveToEndCurve, _moveToEndDuration))
+                .Append(CreateMoveTween(_endAnchoredPosition, _endAnchoredPositionCurve, _moveToEndDuration))
+                .Join(CreateScaleTween(_endScale, _endScaleCurve, _moveToEndDuration))
+                .Join(CreateFadeTween(_endAlpha, _endFadeCurve, _moveToEndDuration))
                 .Play();
         }
 
@@ -111,7 +115,7 @@ namespace Graphics.Animations.Quests
                 .SetEase(curve);
         }
 
-        private Tween CreateScaleTween(Vector2 scale, AnimationCurve curve, float duration)
+        private Tween CreateScaleTween(Vector3 scale, AnimationCurve curve, float duration)
         {
             return _rectTransform
                 .DOScale(scale, duration)
