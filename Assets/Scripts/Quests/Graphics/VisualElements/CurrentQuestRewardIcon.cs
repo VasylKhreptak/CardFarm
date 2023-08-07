@@ -1,5 +1,4 @@
-﻿using System;
-using Cards.Core;
+﻿using Cards.Core;
 using Quests.Data;
 using Quests.Logic;
 using ScriptableObjects.Scripts.Cards.Graphics;
@@ -19,7 +18,7 @@ namespace Quests.Graphics.VisualElements
         [SerializeField] private CardsGraphicData _cardsGraphicData;
         [SerializeField] private Sprite _defaultCardSprite;
 
-        private IDisposable _questSubscription;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private QuestsManager _questsManager;
 
@@ -50,27 +49,25 @@ namespace Quests.Graphics.VisualElements
 
         private void StartObservingCurrentQuest()
         {
-            _questSubscription = _questsManager.CurrentNonRewardedQuest.Subscribe(OnCurrentNonRewardedQuestChanged);
+            _questsManager.CurrentQuest.Subscribe(_ => OnQuestsDataUpdated()).AddTo(_subscriptions);
+            _questsManager.CurrentNonRewardedQuest.Subscribe(_ => OnQuestsDataUpdated()).AddTo(_subscriptions);
         }
 
         private void StopObservingCurrentQuest()
         {
-            _questSubscription?.Dispose();
+            _subscriptions?.Dispose();
         }
 
-        private void OnCurrentNonRewardedQuestChanged(QuestData questData)
+        private void OnQuestsDataUpdated()
         {
-            if (questData == null || questData.Reward.Cards.Length == 0)
-            {
-                _image.enabled = false;
-                return;
-            }
+            QuestData currentQuest = _questsManager.CurrentQuest.Value;
+            QuestData nonRewardedQuest = _questsManager.CurrentNonRewardedQuest.Value;
 
-            if (questData.IsCompletedByAction.Value == false) return;
+            if (currentQuest == null || nonRewardedQuest != null) return;
 
             _image.enabled = true;
 
-            Card reward = questData.Reward.Cards[0];
+            Card reward = currentQuest.Reward.Cards[0];
 
             if (reward != Card.Coin)
             {
