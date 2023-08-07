@@ -43,7 +43,6 @@ namespace Graphics.Animations
             _sequence
                 .AppendCallback(() => _transform.localScale = _initialScale)
                 .Append(_transform.DOPunchScale(_force, _duration, vibrato, _elasticity))
-                .SetLoops(-1, LoopType.Restart)
                 .SetEase(_curve)
                 .Play();
         }
