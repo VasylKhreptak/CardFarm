@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Graphics.Animations.Quests
 {
-    public class QuestAppearAnimation : MonoBehaviour
+    public class QuestShowAnimation : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private RectTransform _rectTransform;

@@ -5,6 +5,7 @@ using Runtime.Commands;
 using Runtime.Map;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Quests.Graphics.VisualElements
@@ -14,8 +15,9 @@ namespace Quests.Graphics.VisualElements
         [Header("References")]
         [SerializeField] private GameObject _quest;
 
+        [FormerlySerializedAs("_questAppearAnimation")]
         [Header("Preferences")]
-        [SerializeField] private QuestAppearAnimation _questAppearAnimation;
+        [SerializeField] private QuestShowAnimation _questShowAnimation;
         [SerializeField] private QuestHideAnimation _questHideAnimation;
 
         private Sequence _showSequence;
@@ -91,7 +93,7 @@ namespace Quests.Graphics.VisualElements
         {
             Disable();
             Enable();
-            _questAppearAnimation.Play();
+            _questShowAnimation.Play();
         }
 
         private void Hide()

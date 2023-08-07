@@ -52,15 +52,15 @@ namespace Graphics.Animations
         private void StartAnimation()
         {
             StopAnimation();
-
-            _sequence = DOTween.Sequence();
-
-            _sequence
-                .AppendInterval(_delay)
-                .Append(CreateMoveTween(_endPosition))
-                .Append(CreateMoveTween(_startPosition))
-                .SetLoops(-1)
-                .Play();
+            //
+            // _sequence = DOTween.Sequence();
+            //
+            // _sequence
+            //     .AppendInterval(_delay)
+            //     .Append(CreateMoveTween(_endPosition))
+            //     .Append(CreateMoveTween(_startPosition))
+            //     .SetLoops(-1)
+            //     .Play();
         }
 
         private Tween CreateMoveTween(Vector2 targetPosition)

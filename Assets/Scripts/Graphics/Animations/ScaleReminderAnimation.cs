@@ -40,14 +40,14 @@ namespace Graphics.Animations
         {
             StopAnimation();
 
-            _sequence = DOTween.Sequence();
-
-            _sequence
-                .AppendInterval(_delay)
-                .Append(CreateScaleTween(_endScale))
-                .Append(CreateScaleTween(_startScale))
-                .SetLoops(-1)
-                .Play();
+            // _sequence = DOTween.Sequence();
+            //
+            // _sequence
+            //     .AppendInterval(_delay)
+            //     .Append(CreateScaleTween(_endScale))
+            //     .Append(CreateScaleTween(_startScale))
+            //     .SetLoops(-1)
+            //     .Play();
         }
 
         private Tween CreateScaleTween(Vector3 targetScale)
