@@ -58,7 +58,7 @@ namespace Graphics.Animations.Quests.RewardPanel
 
         public void Stop()
         {
-
+            _sequence?.Kill();
         }
     }
 }

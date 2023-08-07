@@ -97,7 +97,7 @@ namespace Quests.Graphics.VisualElements
 
         private void Hide()
         {
-            ///
+            _hideAnimation.Play(Disable);
         }
 
         private void Enable()
