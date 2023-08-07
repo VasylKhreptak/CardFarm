@@ -1,4 +1,5 @@
-﻿using Cards.Data;
+﻿using System;
+using Cards.Data;
 using CardsTable.PoolLogic;
 using UniRx;
 using UnityEngine;
@@ -14,7 +15,10 @@ namespace Cards.Logic
         [Header("Preferences")]
         [SerializeField] private float _height = 2f;
 
-        private CompositeDisposable _cardDataSubscriptions = new CompositeDisposable();
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
+        private IDisposable _positionUpdateSubscription;
+
+        private GameObject _gearsObject;
 
         private CardTablePooler _cardTablePooler;
 
@@ -38,12 +42,13 @@ namespace Cards.Logic
 
         private void OnEnable()
         {
-
+            StartObservingCardData();
         }
 
         private void OnDisable()
         {
-
+            StopObservingCardData();
+            StopDrawingGears();
         }
 
         #endregion
@@ -51,16 +56,79 @@ namespace Cards.Logic
         private void StartObservingCardData()
         {
             StopObservingCardData();
+
+            _cardData.IsAnyGroupCardSelected.Subscribe(_ => OnCardDataUpdated()).AddTo(_subscriptions);
+            _cardData.IsExecutingAnyRecipe.Subscribe(_ => OnCardDataUpdated()).AddTo(_subscriptions);
         }
 
         private void StopObservingCardData()
         {
-            _cardDataSubscriptions.Clear();
+            _subscriptions?.Clear();
         }
 
         private void OnCardDataUpdated()
         {
+            bool isAnyGroupCardSelected = _cardData.IsAnyGroupCardSelected.Value;
+            bool isExecutingAnyRecipe = _cardData.IsExecutingAnyRecipe.Value;
 
+            bool canDraw = isExecutingAnyRecipe && isAnyGroupCardSelected == false;
+
+            if (canDraw)
+            {
+                StartDrawingGears();
+            }
+            else
+            {
+                StopDrawingGears();
+            }
+        }
+
+        private void StartDrawingGears()
+        {
+            StopDrawingGears();
+            _gearsObject = _cardTablePooler.Spawn(CardTablePool.RotatingGears);
+            _gearsObject.transform.localRotation = Quaternion.identity;
+
+            _positionUpdateSubscription = Observable
+                .EveryUpdate()
+                .DoOnSubscribe(() =>
+                {
+                    RenderGearsOnTop();
+                    UpdateGearPosition();
+                })
+                .Subscribe(_ =>
+                {
+                    RenderGearsOnTop();
+                    UpdateGearPosition();
+                });
+        }
+
+        private void UpdateGearPosition()
+        {
+            if (_gearsObject == null) return;
+
+            Vector3 position = _cardData.GroupCenter.Value;
+            position.y = _height;
+
+            _gearsObject.transform.position = position;
+        }
+
+        private void RenderGearsOnTop()
+        {
+            if (_gearsObject == null) return;
+
+            _gearsObject.transform.SetAsLastSibling();
+        }
+
+        private void StopDrawingGears()
+        {
+            if (_gearsObject != null)
+            {
+                _gearsObject.SetActive(false);
+                _gearsObject = null;
+            }
+
+            _positionUpdateSubscription?.Dispose();
         }
     }
 }
