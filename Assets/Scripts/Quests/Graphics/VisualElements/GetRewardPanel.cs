@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Quests.Graphics.VisualElements
 {
-    public class QuestRewardPanel : MonoBehaviour
+    public class GetRewardPanel : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private GameObject _quest;
