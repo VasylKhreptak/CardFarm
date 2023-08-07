@@ -66,7 +66,7 @@ namespace Quests.Graphics.VisualElements
                 return;
             }
 
-            if (questData.IsCompleted.Value == false) return;
+            if (questData.IsCompletedByAction.Value == false) return;
 
             _image.enabled = true;
 

@@ -6,5 +6,6 @@ namespace Cards.Zones.BuyZone.Data
     {
         public Action onSpawnedCard;
         public Action spawnCardCommand;
+        public Action onCollectedCoin;
     }
 }

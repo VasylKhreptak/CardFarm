@@ -33,7 +33,7 @@ namespace Quests.Logic.QuestObservers.Core
 
         protected void MarkQuestAsCompleted(bool stopObserving = true)
         {
-            _questData.IsCompleted.Value = true;
+            _questData.IsCompletedByAction.Value = true;
 
             if (stopObserving)
             {

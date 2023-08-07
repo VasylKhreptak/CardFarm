@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2614866791736900592}
   - component: {fileID: 9219852525839706298}
   - component: {fileID: -6021368336438435720}
+  - component: {fileID: -3423230900963806132}
   m_Layer: 0
   m_Name: OpenBoosterQuest
   m_TagString: Untagged
@@ -51,7 +52,7 @@ MonoBehaviour:
   Name: Open Booster
   Reward:
     Cards: 08000000
-  IsCompleted:
+  IsCompletedByAction:
     value: 0
   TookReward:
     value: 0
@@ -63,6 +64,9 @@ MonoBehaviour:
     TargetCards: []
   Progress:
     value: 0
+  IsCompleted:
+    value: 0
+  Tutorial: {fileID: 0}
 --- !u!114 &2614866791736900592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,3 +140,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3423230900963806132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609782257049868906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c977733607574f409f808654c16aec79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questData: {fileID: 8609782257049868904}
+  _completeDelay: 0.8

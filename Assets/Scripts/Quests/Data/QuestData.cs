@@ -14,10 +14,11 @@ namespace Quests.Data
         public Quest Quest;
         public string Name;
         public QuestReward Reward;
-        public BoolReactiveProperty IsCompleted = new BoolReactiveProperty();
+        public BoolReactiveProperty IsCompletedByAction = new BoolReactiveProperty();
         public BoolReactiveProperty TookReward = new BoolReactiveProperty();
         public QuestRecipe Recipe = new QuestRecipe();
         public FloatReactiveProperty Progress = new FloatReactiveProperty();
+        public BoolReactiveProperty IsCompleted = new BoolReactiveProperty();
         public QuestTutorial Tutorial;
         public QuestCallbacks Callbacks = new QuestCallbacks();
 

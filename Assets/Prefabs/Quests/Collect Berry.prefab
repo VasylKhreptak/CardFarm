@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52b56c6d56849d49d82897ce9166c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _steps:
+  _tutorials:
   - {fileID: 6586352321207035343}
   - {fileID: 2709172052979841069}
 --- !u!1 &908094859384986845
@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: -4810308183933317129}
   - component: {fileID: -4892324505671545047}
   - component: {fileID: 2571077840471031823}
+  - component: {fileID: 3520406001332075868}
   m_Layer: 0
   m_Name: Collect Berry
   m_TagString: Untagged
@@ -197,7 +198,7 @@ MonoBehaviour:
   Name: Collect Berry
   Reward:
     Cards: 0800000008000000080000000800000008000000
-  IsCompleted:
+  IsCompletedByAction:
     value: 0
   TookReward:
     value: 0
@@ -214,6 +215,8 @@ MonoBehaviour:
       Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
       Quantity: 1
   Progress:
+    value: 0
+  IsCompleted:
     value: 0
   Tutorial: {fileID: 4787954204545992841}
 --- !u!114 &2421308040907752950
@@ -305,3 +308,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
   _recipeResult: 6
+--- !u!114 &3520406001332075868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609782257049868906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c977733607574f409f808654c16aec79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questData: {fileID: 8609782257049868904}
+  _completeDelay: 0.8

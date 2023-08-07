@@ -76,7 +76,7 @@ namespace Cards.Zones.BuyZone.Logic.Updaters
         private void StartObservingQuestCompletion(QuestData quest)
         {
             StopObservingQuestCompletion();
-            _questCompletionSubscription = quest.IsCompleted.Subscribe(isCompleted =>
+            _questCompletionSubscription = quest.IsCompletedByAction.Subscribe(isCompleted =>
             {
                 _buyZoneData.IsLocked.Value = !isCompleted;
             });

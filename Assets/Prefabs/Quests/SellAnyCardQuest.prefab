@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8788698299557252707}
   - component: {fileID: -409285975387177041}
   - component: {fileID: 7855484659183679691}
+  - component: {fileID: 6360837591521745791}
   m_Layer: 0
   m_Name: SellAnyCardQuest
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   Name: Sell Any Card
   Reward:
     Cards: 08000000
-  IsCompleted:
+  IsCompletedByAction:
     value: 0
   TookReward:
     value: 0
@@ -63,6 +64,8 @@ MonoBehaviour:
       Quantity: 1
     TargetCards: []
   Progress:
+    value: 0
+  IsCompleted:
     value: 0
   Tutorial: {fileID: 7855484659183679691}
 --- !u!114 &2767157460409460512
@@ -154,3 +157,17 @@ MonoBehaviour:
   _handMoveDuration: 1
   _handMoveDelay: 0.5
   _tutorialHandDelay: 1
+--- !u!114 &6360837591521745791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609782257049868906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c977733607574f409f808654c16aec79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questData: {fileID: 8609782257049868904}
+  _completeDelay: 0.8

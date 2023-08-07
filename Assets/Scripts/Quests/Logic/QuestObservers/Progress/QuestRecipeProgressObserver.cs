@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cards.Core;
 using Cards.Data;
 using Cards.Factories.Data;
+using DG.Tweening;
 using Extensions;
 using ProgressLogic.Core;
 using Quests.Logic.QuestObservers.Core;
@@ -18,7 +19,12 @@ namespace Quests.Logic.QuestObservers.Progress
         [Header("Preferences")]
         [SerializeField] private Card _recipeResult;
 
+        [Header("Preferences")]
+        [SerializeField] private float _progressResetDuration = 1f;
+
         private Dictionary<CardData, (IDisposable, IDisposable)> _cardSubscriptions = new Dictionary<CardData, (IDisposable, IDisposable)>();
+
+        private Tween _progressTween;
 
         protected override void OnCardAdded(CardData cardData)
         {
@@ -121,9 +127,29 @@ namespace Quests.Logic.QuestObservers.Progress
             subscriptions.Item2 = progressSubscription;
         }
 
+        private void OnFoundProgressDependentObject(ProgressDependentObject progressDependentObject)
+        {
+            ///
+        }
+        
         private void SetProgress(float progress)
         {
             _questData.Progress.Value = progress;
+        }
+
+        private void SetProgressSmooth(float progress, float duration)
+        {
+            KillProgressTween();
+
+            _progressTween = DOTween
+                .To(() => _questData.Progress.Value, x => _questData.Progress.Value = x, progress, duration)
+                .SetEase(Ease.OutCubic)
+                .Play();
+        }
+
+        private void KillProgressTween()
+        {
+            _progressTween?.Kill();
         }
     }
 }

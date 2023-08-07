@@ -127,7 +127,7 @@ namespace Quests.Logic.QuestObservers
 
         private void OnSpawnedBooster()
         {
-            _questData.IsCompleted.Value = true;
+            _questData.IsCompletedByAction.Value = true;
             StopObserving();
         }
     }

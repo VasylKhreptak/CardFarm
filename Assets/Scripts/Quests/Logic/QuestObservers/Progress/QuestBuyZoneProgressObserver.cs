@@ -14,6 +14,9 @@ namespace Quests.Logic.QuestObservers.Progress
         [Header("Preferences")]
         [SerializeField] private Card _targetBuyZone;
 
+        [Header("Preferences")]
+        [SerializeField] private float _progressUpdateDuration = 0.2f;
+
         private Tween _progressTween;
 
         private Dictionary<CardData, CompositeDisposable> _cardSubscriptions = new Dictionary<CardData, CompositeDisposable>();
@@ -80,9 +83,14 @@ namespace Quests.Logic.QuestObservers.Progress
             int price = buyZoneData.Price.Value;
             int collectedCoins = buyZoneData.CollectedCoins.Value;
 
+            Debug.Log("Price: " + price);
+            Debug.Log("CollectedCoins: " + collectedCoins);
+            
             float progress = (float)collectedCoins / price;
 
-            SetProgress(progress);
+            Debug.Log("Progress: " + progress);
+
+            SetProgressSmooth(progress);
         }
 
         private void SetProgress(float progress)
@@ -95,7 +103,7 @@ namespace Quests.Logic.QuestObservers.Progress
             KillProgressTween();
 
             _progressTween = DOTween
-                .To(() => _questData.Progress.Value, x => _questData.Progress.Value = x, progress, 0.5f)
+                .To(() => _questData.Progress.Value, x => _questData.Progress.Value = x, progress, _progressUpdateDuration)
                 .SetEase(Ease.OutCubic)
                 .Play();
         }

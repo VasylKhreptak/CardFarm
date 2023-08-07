@@ -463,6 +463,8 @@ MonoBehaviour:
     type: 3}
   _cardTemplate: {fileID: 5441892617145859158, guid: ba5c6b0039c59e54da638c8f70455878,
     type: 3}
+  _summandSize: {x: 49, y: 65.1}
+  _resultSize: {x: 70, y: 93}
 --- !u!1 &168979169
 GameObject:
   m_ObjectHideFlags: 0
@@ -5602,7 +5604,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1710359544}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: -0.06
+  m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
@@ -6874,9 +6876,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c7343d436e4deeb12695f25fc40df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 1076741738}
-  _startPosition: {x: 540, y: 2000, z: 0}
-  _endPosition: {x: 540, y: 2005, z: 0}
+  _rectTransform: {fileID: 1076741738}
+  _startPosition: {x: 0, y: 0}
+  _endPosition: {x: 0, y: 10}
   _duration: 0.3
   _delay: 1
   _moveCurve:
@@ -8598,58 +8600,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _quest: {fileID: 1306368417}
-  _canvasGroup: {fileID: 1306368422}
-  _fadeDuration: 0.5
-  _fadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _startScale: {x: 0.3, y: 0.3, z: 0.3}
-  _targetScale: {x: 1, y: 1, z: 1}
-  _scaleCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _questAppearAnimation: {fileID: 1306368424}
+  _questHideAnimation: {fileID: 1306368425}
 --- !u!1001 &1294300348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8916,6 +8868,8 @@ GameObject:
   - component: {fileID: 1306368420}
   - component: {fileID: 1306368422}
   - component: {fileID: 1306368423}
+  - component: {fileID: 1306368424}
+  - component: {fileID: 1306368425}
   m_Layer: 5
   m_Name: CurrentQuest
   m_TagString: Untagged
@@ -8933,7 +8887,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 673400351}
   - {fileID: 1193647043}
@@ -8946,7 +8900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -16}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 0, y: 181}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1306368419
@@ -9026,6 +8980,123 @@ MonoBehaviour:
   _rectTransform: {fileID: 1306368418}
   _recipeHeight: 181
   _noRecipeHeight: 93
+--- !u!114 &1306368424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306368417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9579e632264666850541c92be67918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rectTransform: {fileID: 1306368418}
+  _canvasGroup: {fileID: 1306368422}
+  _startAnchoredPosition: {x: 0, y: -678}
+  _showAnchoredPosition: {x: 0, y: -802}
+  _endAnchoredPosition: {x: 0, y: -5}
+  _moveToShowDuration: 0.4
+  _showDuration: 1
+  _moveToEndDuration: 0.8
+  _moveToShowCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _moveToEndCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _startScale: {x: 0.6, y: 0.6, z: 0.6}
+  _showScale: {x: 1.2, y: 1.2, z: 1.2}
+  _endScale: {x: 1, y: 1, z: 1}
+  _startAlpha: 0
+  _showAlpha: 1
+  _endAlpha: 1
+--- !u!114 &1306368425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306368417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee83079f55e446f1a22dc570e02fbd5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 1306368418}
+  _canvasGroup: {fileID: 1306368422}
+  _duration: 0.3
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _startScale: {x: 1, y: 1, z: 1}
+  _endScale: {x: 0.3, y: 0.3, z: 0.3}
+  _startAlpha: 1
+  _endAlpha: 0
 --- !u!1 &1310681191
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2031552929115452279}
   - component: {fileID: 3339922296446005906}
   - component: {fileID: -5355236225625112846}
+  - component: {fileID: 7257982279507290474}
   m_Layer: 0
   m_Name: GrowBerryBushQuest
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   Name: Grow Berry Bush
   Reward:
     Cards: 08000000
-  IsCompleted:
+  IsCompletedByAction:
     value: 0
   TookReward:
     value: 0
@@ -70,6 +71,9 @@ MonoBehaviour:
       Quantity: 1
   Progress:
     value: 0
+  IsCompleted:
+    value: 0
+  Tutorial: {fileID: 0}
 --- !u!114 &8788698299557252707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,3 +163,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
   _recipeResult: 3
+--- !u!114 &7257982279507290474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609782257049868906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c977733607574f409f808654c16aec79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questData: {fileID: 8609782257049868904}
+  _completeDelay: 0.8

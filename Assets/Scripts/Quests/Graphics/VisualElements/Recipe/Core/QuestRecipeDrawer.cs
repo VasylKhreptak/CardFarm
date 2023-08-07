@@ -14,10 +14,14 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         [Header("References")]
         [SerializeField] private Transform _transform;
 
-        [Header("Preferences")]
+        [Header("Component Preferences")]
         [SerializeField] private GameObject _equalsSign;
         [SerializeField] private GameObject _plusSign;
         [SerializeField] private GameObject _cardTemplate;
+
+        [Header("Size Preferences")]
+        [SerializeField] private Vector2 _summandSize;
+        [SerializeField] private Vector2 _resultSize;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
@@ -73,7 +77,7 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
 
             for (int i = 0; i < currentQuest.Recipe.TargetCards.Count; i++)
             {
-                SpawnCard(currentQuest.Recipe.TargetCards[i]);
+                SpawnCard(currentQuest.Recipe.TargetCards[i], _summandSize);
 
                 if (i < currentQuest.Recipe.TargetCards.Count - 1)
                 {
@@ -82,15 +86,16 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             }
 
             SpawnPrefab(_equalsSign);
-            SpawnCard(currentQuest.Recipe.Result);
+            SpawnCard(currentQuest.Recipe.Result, _resultSize);
         }
 
-        private void SpawnCard(QuestRecipeCardData cardData)
+        private void SpawnCard(QuestRecipeCardData cardData, Vector2 size)
         {
             GameObject spawnedCard = SpawnPrefab(_cardTemplate);
 
             QuestRecipeCardDataHolder dataHolder = spawnedCard.GetComponent<QuestRecipeCardDataHolder>();
-
+            dataHolder.RectTransform.sizeDelta = size;
+            
             dataHolder.CopyFrom(cardData);
         }
 
@@ -114,5 +119,6 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
                 Destroy(child);
             }
         }
+
     }
 }

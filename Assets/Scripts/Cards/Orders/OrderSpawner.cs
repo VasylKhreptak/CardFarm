@@ -85,7 +85,7 @@ namespace Cards.Orders
         private void StartObservingQuestCompletion(QuestData quest)
         {
             StopObservingQuestCompletion();
-            _questCompletionSubscription = quest.IsCompleted.Subscribe(isCompleted =>
+            _questCompletionSubscription = quest.IsCompletedByAction.Subscribe(isCompleted =>
             {
                 if (isCompleted)
                 {

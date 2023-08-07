@@ -24,6 +24,7 @@ namespace Quests.Logic.Core
 
         private void ResetData()
         {
+            _questData.IsCompletedByAction.Value = false;
             _questData.IsCompleted.Value = false;
             _questData.TookReward.Value = false;
             _questData.Progress.Value = 0;

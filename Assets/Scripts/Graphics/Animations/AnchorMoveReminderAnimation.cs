@@ -1,16 +1,17 @@
 ﻿using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Graphics.Animations
 {
-    public class MoveReminderAnimation : MonoBehaviour
+    public class AnchorMoveReminderAnimation : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private Transform _transform;
+        [SerializeField] private RectTransform _rectTransform;
 
         [Header("Preferences")]
-        [SerializeField] private Vector3 _startPosition;
-        [SerializeField] private Vector3 _endPosition;
+        [SerializeField] private Vector2 _startPosition;
+        [SerializeField] private Vector2 _endPosition;
         [SerializeField] private float _duration = 1f;
         [SerializeField] private float _delay = 1f;
         [SerializeField] private AnimationCurve _moveCurve;
@@ -21,7 +22,7 @@ namespace Graphics.Animations
 
         private void OnValidate()
         {
-            _transform ??= GetComponent<Transform>();
+            _rectTransform ??= GetComponent<RectTransform>();
         }
 
         private void OnEnable()
@@ -36,6 +37,18 @@ namespace Graphics.Animations
 
         #endregion
 
+        [Button()]
+        private void AssignStartPosition()
+        {
+            _startPosition = _rectTransform.anchoredPosition;
+        }
+        
+        [Button()]
+        private void AssignEndPosition()
+        {
+            _endPosition = _rectTransform.anchoredPosition;
+        }
+        
         private void StartAnimation()
         {
             StopAnimation();
@@ -50,17 +63,16 @@ namespace Graphics.Animations
                 .Play();
         }
 
-        private Tween CreateMoveTween(Vector3 targetPosition)
+        private Tween CreateMoveTween(Vector2 targetPosition)
         {
-            return _transform
-                .DOMove(targetPosition, _duration)
+            return _rectTransform.DOAnchorPos(targetPosition, _duration)
                 .SetEase(_moveCurve);
         }
 
         private void StopAnimation()
         {
             _sequence?.Kill();
-            _transform.position = _startPosition;
+            _rectTransform.anchoredPosition = _startPosition;
         }
     }
 }

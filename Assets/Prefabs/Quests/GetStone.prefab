@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 2404468955054411023}
   - component: {fileID: 5356573080013164979}
   - component: {fileID: -3470736403897390820}
+  - component: {fileID: 7789557406304142474}
   m_Layer: 0
   m_Name: GetStone
   m_TagString: Untagged
@@ -197,7 +198,7 @@ MonoBehaviour:
   Name: Get Stone
   Reward:
     Cards: 080000000800000002000000
-  IsCompleted:
+  IsCompletedByAction:
     value: 0
   TookReward:
     value: 0
@@ -214,6 +215,8 @@ MonoBehaviour:
       Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
       Quantity: 1
   Progress:
+    value: 0
+  IsCompleted:
     value: 0
   Tutorial: {fileID: 2771573474407452503}
 --- !u!114 &2421308040907752950
@@ -305,3 +308,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
   _recipeResult: 4
+--- !u!114 &7789557406304142474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609782257049868906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c977733607574f409f808654c16aec79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questData: {fileID: 8609782257049868904}
+  _completeDelay: 0.8
