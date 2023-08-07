@@ -4,7 +4,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Cards.Graphics.Logic
+namespace Cards.Graphics.Logic.Animations
 {
     public class CardShaker : MonoBehaviour, IValidatable
     {

@@ -3,7 +3,7 @@ using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Graphics.Animations.Quests
+namespace Graphics.Animations.Quests.QuestPanel
 {
     public class QuestHideAnimation : MonoBehaviour
     {

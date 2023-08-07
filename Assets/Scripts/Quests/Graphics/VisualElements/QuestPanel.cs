@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Graphics.Animations.Quests;
+using Graphics.Animations.Quests.QuestPanel;
 using Quests.Logic;
 using Runtime.Commands;
 using Runtime.Map;

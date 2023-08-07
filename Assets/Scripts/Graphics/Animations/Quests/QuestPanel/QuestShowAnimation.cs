@@ -2,7 +2,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Graphics.Animations.Quests
+namespace Graphics.Animations.Quests.QuestPanel
 {
     public class QuestShowAnimation : MonoBehaviour
     {
