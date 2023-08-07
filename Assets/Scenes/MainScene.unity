@@ -6567,6 +6567,7 @@ GameObject:
   - component: {fileID: 1076741741}
   - component: {fileID: 1076741744}
   - component: {fileID: 1076741745}
+  - component: {fileID: 1076741746}
   m_Layer: 5
   m_Name: QuestGetRewardButton
   m_TagString: Untagged
@@ -6865,6 +6866,26 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1076741746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076741737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6794b7774445c899d2e22f2f0a756c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 1076741738}
+  _startDelay: 0
+  _repeatInterval: 1
+  _force: {x: 0.1, y: 0.1, z: 0}
+  _duration: 0.7
+  vibrato: 5
+  _elasticity: 0.1
+  _initialScale: {x: 1, y: 1, z: 1}
 --- !u!1 &1092403414
 GameObject:
   m_ObjectHideFlags: 0
