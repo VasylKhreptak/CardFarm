@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace Animations.Shake.Position.Core
+namespace Graphics.Animations.Shake.Position.Core
 {
     public class PositionShakeAnimation : MonoBehaviour
     {

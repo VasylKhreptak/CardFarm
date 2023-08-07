@@ -1,6 +1,6 @@
 ﻿using System;
-using Animations.Shake.Position;
 using Cards.Boosters.Data;
+using Graphics.Animations.Shake.Position;
 using UniRx;
 using UnityEngine;
 using Zenject;
