@@ -10766,6 +10766,7 @@ GameObject:
   - component: {fileID: 1471693059}
   - component: {fileID: 1471693060}
   - component: {fileID: 1471693061}
+  - component: {fileID: 1471693062}
   m_Layer: 0
   m_Name: CardsTable
   m_TagString: Untagged
@@ -11237,6 +11238,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bounds: {fileID: 1471693054}
   _gizmosColor: {r: 0, g: 0, b: 1, a: 0}
+--- !u!114 &1471693062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471693051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf29dca0434c49189e36fb02d57495fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _allocateMaxMemorySize: 0
+  _useFolders: 0
+  _poolsPreferences: []
 --- !u!1 &1476206747
 GameObject:
   m_ObjectHideFlags: 0
@@ -11450,6 +11466,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1510599986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1510599988}
+  - component: {fileID: 1510599987}
+  m_Layer: 0
+  m_Name: CardTablePoolerInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1510599987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510599986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6dd7cf77d94339acf50d2daefe346a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToBind: {fileID: 1471693062}
+--- !u!4 &1510599988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510599986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1619450391}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1510687407
 GameObject:
   m_ObjectHideFlags: 0
@@ -12219,6 +12280,7 @@ MonoBehaviour:
   - {fileID: 2032828687}
   - {fileID: 1623408765}
   - {fileID: 516378619}
+  - {fileID: 1510599987}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -12269,6 +12331,7 @@ Transform:
   - {fileID: 14602051}
   - {fileID: 901469818}
   - {fileID: 1758442855}
+  - {fileID: 1510599988}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
