@@ -1113,14 +1113,14 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.5
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 1
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5901,7 +5901,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -10552,7 +10552,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -15437,12 +15437,12 @@ RectTransform:
   m_Children:
   - {fileID: 255106302}
   - {fileID: 255000797}
-  m_Father: {fileID: 1076741738}
-  m_RootOrder: 6
+  m_Father: {fileID: 1862256758}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -55.10737}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &255106299
@@ -15486,7 +15486,7 @@ MonoBehaviour:
   m_IsTrail: 0
   m_IgnoreCanvasScaler: 1
   m_Scale: 100
-  m_Scale3D: {x: 300, y: 300, z: 300}
+  m_Scale3D: {x: 350, y: 350, z: 350}
   m_AnimatableProperties: []
   m_Particles:
   - {fileID: 236651931}
@@ -21035,7 +21035,6 @@ RectTransform:
   - {fileID: 1248090683}
   - {fileID: 1125826318}
   - {fileID: 500032009}
-  - {fileID: 255106298}
   m_Father: {fileID: 1862256758}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21247,6 +21246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 1076741738}
   _canvasGroup: {fileID: 1076741741}
+  _particleSystem: {fileID: 236651929}
   _duration: 0.5
   _startAlpha: 1
   _endAlpha: 0
@@ -27746,6 +27746,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1076741738}
+  - {fileID: 255106298}
   m_Father: {fileID: 1163811366}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
