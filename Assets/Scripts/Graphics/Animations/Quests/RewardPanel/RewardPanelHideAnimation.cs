@@ -47,6 +47,8 @@ namespace Graphics.Animations.Quests.RewardPanel
         [Button()]
         public void Play(Action onComplete = null)
         {
+            Stop();
+            
             _canvasGroup.alpha = _startAlpha;
             _rectTransform.localScale = _startScale;
 
@@ -63,6 +65,8 @@ namespace Graphics.Animations.Quests.RewardPanel
         public void Stop()
         {
             _sequence?.Kill();
+            _particleSystem.Stop();
+            _particleSystem.gameObject.SetActive(false);
         }
 
         private void PlayParticle()
