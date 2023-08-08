@@ -25015,7 +25015,7 @@ MonoBehaviour:
   _maxCount: 10
   _minInterval: 0.04
   _maxInterval: 0.1
-  _minRange: 20
+  _minRange: 60
   _maxRange: 100
   _curve:
     serializedVersion: 2
