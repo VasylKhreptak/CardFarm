@@ -97,9 +97,11 @@ namespace Quests.Graphics.VisualElements
         private void Show()
         {
             Enable();
-            _showAnimation.Play();
-            _positionPunchReminder.Play();
-            _scalePunchReminder.Play();
+            _showAnimation.Play(() =>
+            {
+                _positionPunchReminder.Play();
+                _scalePunchReminder.Play();
+            });
         }
 
         private void Hide()

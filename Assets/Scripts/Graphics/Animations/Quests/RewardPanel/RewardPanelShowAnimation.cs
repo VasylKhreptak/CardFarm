@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -64,7 +65,7 @@ namespace Graphics.Animations.Quests.RewardPanel
         #endregion
 
         [Button()]
-        public void Play()
+        public void Play(Action onComplete = null)
         {
             Stop();
 
@@ -95,6 +96,7 @@ namespace Graphics.Animations.Quests.RewardPanel
             _sequence
                 .Join(iconSequence)
                 .Join(mainSequence)
+                .OnComplete(() => onComplete?.Invoke())
                 .Play();
         }
 
