@@ -11,7 +11,7 @@ namespace Cards.Logic
     public class CardFollowTouch : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("PReferences")]
         [SerializeField] private LayerMask _floorLayerMask;
@@ -39,7 +39,7 @@ namespace Cards.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

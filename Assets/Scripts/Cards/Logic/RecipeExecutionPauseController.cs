@@ -9,7 +9,7 @@ namespace Cards.Logic
     public class RecipeExecutionPauseController : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
         [SerializeField] private ProgressDependentObject _progressDependentObject;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
@@ -23,7 +23,7 @@ namespace Cards.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
             _progressDependentObject = GetComponent<ProgressDependentObject>();
         }
 

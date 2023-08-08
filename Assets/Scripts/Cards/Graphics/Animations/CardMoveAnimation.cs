@@ -13,7 +13,7 @@ namespace Cards.Graphics.Animations
     public class CardMoveAnimation : CardAnimation, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("Preferences")]
         [SerializeField] private AnimationCurve _curve;
@@ -40,7 +40,7 @@ namespace Cards.Graphics.Animations
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnDisable()

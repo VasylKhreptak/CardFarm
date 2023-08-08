@@ -10,7 +10,7 @@ namespace Cards.Logic.Updaters
     public class IsExecutingAnyRecipeUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         private FactoryData _factoryData;
         private ResourceNodeLogic _resourceNodeLogic;
@@ -26,7 +26,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void Awake()

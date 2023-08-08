@@ -9,7 +9,7 @@ namespace Cards.Zones.SellZone.Logic.Updaters
     public class CanBeSellZoneUnderSelectedCard : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         private IDisposable _isCompatibleWithSelectedCardSubscription;
 
@@ -22,7 +22,7 @@ namespace Cards.Zones.SellZone.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

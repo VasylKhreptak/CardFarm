@@ -22,12 +22,12 @@ namespace Quests.Logic.QuestObservers.Progress
 
         private Dictionary<BuyZoneData, CompositeDisposable> _cardSubscriptions = new Dictionary<BuyZoneData, CompositeDisposable>();
 
-        protected override void OnCardAdded(CardDataHolder cardData)
+        protected override void OnCardAdded(CardData cardData)
         {
             StartObservingCard(cardData);
         }
 
-        protected override void OnCardRemoved(CardDataHolder cardData)
+        protected override void OnCardRemoved(CardData cardData)
         {
             BuyZoneData buyZoneData = cardData as BuyZoneData;
 
@@ -42,7 +42,7 @@ namespace Quests.Logic.QuestObservers.Progress
             KillProgressTween();
         }
 
-        private void StartObservingCard(CardDataHolder cardData)
+        private void StartObservingCard(CardData cardData)
         {
             if (cardData.Card.Value != _targetBuyZone) return;
 

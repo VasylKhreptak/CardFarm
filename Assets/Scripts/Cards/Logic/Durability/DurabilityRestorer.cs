@@ -7,7 +7,7 @@ namespace Cards.Logic.Durability
     public class DurabilityRestorer : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         #region MonoBehaviour
 
@@ -18,7 +18,7 @@ namespace Cards.Logic.Durability
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnDisable()

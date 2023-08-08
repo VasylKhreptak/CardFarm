@@ -10,7 +10,7 @@ namespace Cards.Logic
     public class CardGearsDrawer : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _height = 2f;
@@ -37,7 +37,7 @@ namespace Cards.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

@@ -11,7 +11,7 @@ namespace Cards.Logic.Updaters
     public class IsCompatibleWithSelectedCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
         [SerializeField] private CompatibleCards _compatibleCards;
 
         private IDisposable _selectedCardSubscription;
@@ -33,7 +33,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -60,7 +60,7 @@ namespace Cards.Logic.Updaters
             _selectedCardSubscription?.Dispose();
         }
 
-        private void OnSelectedCardUpdated(CardDataHolder selectedCard)
+        private void OnSelectedCardUpdated(CardData selectedCard)
         {
             if (selectedCard == null || selectedCard == _cardData)
             {

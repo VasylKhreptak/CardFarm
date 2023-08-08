@@ -9,7 +9,7 @@ namespace Cards.Graphics
     public class CardClickFlicker : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
         [SerializeField] private GameObject _flickerObject;
 
         [Header("Preferences")]
@@ -26,7 +26,7 @@ namespace Cards.Graphics
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

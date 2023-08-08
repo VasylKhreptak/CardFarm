@@ -67,7 +67,7 @@ namespace Cards.Zones.SellZone.Logic
 
         private void TrySellBottomCards()
         {
-            List<CardDataHolder> bottomCards = _zoneData.BottomCards.ToList();
+            List<CardData> bottomCards = _zoneData.BottomCards.ToList();
 
             if (bottomCards.Count == 0) return;
 

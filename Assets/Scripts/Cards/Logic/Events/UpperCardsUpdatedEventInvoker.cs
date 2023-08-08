@@ -9,9 +9,9 @@ namespace Cards.Logic.Events
     public class UpperCardsUpdatedEventInvoker : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
-        private CardDataHolder _previousUpperCard;
+        private CardData _previousUpperCard;
 
         private IDisposable _upperCardSubscription;
 
@@ -24,7 +24,7 @@ namespace Cards.Logic.Events
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -52,7 +52,7 @@ namespace Cards.Logic.Events
             RemovePreviousCardSubscription();
         }
 
-        private void OnUpperCardChanged(CardDataHolder upperCard)
+        private void OnUpperCardChanged(CardData upperCard)
         {
             RemovePreviousCardSubscription();
 

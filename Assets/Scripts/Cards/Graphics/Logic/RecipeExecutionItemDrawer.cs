@@ -9,7 +9,7 @@ namespace Cards.Graphics.Logic
     public class RecipeExecutionItemDrawer : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("Preferences")]
         [SerializeField] private GameObject _targetObject;
@@ -27,7 +27,7 @@ namespace Cards.Graphics.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void Awake()

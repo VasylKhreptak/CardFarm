@@ -5,7 +5,7 @@ namespace CardsTable.ManualCardSelectors
 {
     public class FoodSelector : ManualCardSelector
     {
-        protected override bool IsCardAppropriate(CardDataHolder cardData)
+        protected override bool IsCardAppropriate(CardData cardData)
         {
             return cardData.IsFood;
         }

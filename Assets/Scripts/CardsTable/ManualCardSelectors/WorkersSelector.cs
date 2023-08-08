@@ -5,7 +5,7 @@ namespace CardsTable.ManualCardSelectors
 {
     public class WorkersSelector : ManualCardSelector
     {
-        protected override bool IsCardAppropriate(CardDataHolder cardData)
+        protected override bool IsCardAppropriate(CardData cardData)
         {
             return cardData.IsWorker;
         }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Cards.Logic.Updaters
 {
-    public class ReproductionRecipeUpdater : RecipeUpdaterCore<CardDataHolder>
+    public class ReproductionRecipeUpdater : RecipeUpdaterCore<CardData>
     {
         [Header("References")]
         [SerializeField] private CardReproductionRecipes _cardRecipes;

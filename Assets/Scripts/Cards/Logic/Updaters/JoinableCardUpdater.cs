@@ -12,7 +12,7 @@ namespace Cards.Logic.Updaters
     {
         [Header("Preferences")]
         [SerializeField] private Transform[] _cardCorners;
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
         [SerializeField] private LayerMask _cardsLayer;
         [SerializeField] private float _raycastDistance = 4f;
         [SerializeField] private float _cardUpdateInterval = 0.1f;
@@ -33,7 +33,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void Awake()
@@ -122,7 +122,7 @@ namespace Cards.Logic.Updaters
             _cardData.JoinableCard.Value = FindJoinableCard();
         }
 
-        private CardDataHolder FindJoinableCard()
+        private CardData FindJoinableCard()
         {
             for (int i = 0; i < _cardCorners.Length; i++)
             {
@@ -136,7 +136,7 @@ namespace Cards.Logic.Updaters
                 {
                     RaycastHit hit = _hits[j];
 
-                    if (hit.collider.TryGetComponent(out CardDataHolder card)
+                    if (hit.collider.TryGetComponent(out CardData card)
                         && card != _cardData
                         && card.CanBeUnderSelectedCard.Value)
                     {

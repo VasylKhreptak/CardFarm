@@ -10,7 +10,7 @@ namespace Cards.Graphics.VisualElements
     public class CardBackgroundSpriteUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
         [SerializeField] private Image _image;
 
         private IDisposable _backgroundSpriteSubscription;
@@ -25,7 +25,7 @@ namespace Cards.Graphics.VisualElements
         public void Validate()
         {
             _image = GetComponent<Image>();
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

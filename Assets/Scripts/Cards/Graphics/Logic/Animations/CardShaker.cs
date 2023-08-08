@@ -9,7 +9,7 @@ namespace Cards.Graphics.Logic.Animations
     public class CardShaker : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _interval = 10f;
@@ -25,7 +25,7 @@ namespace Cards.Graphics.Logic.Animations
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

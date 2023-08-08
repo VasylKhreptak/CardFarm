@@ -31,7 +31,7 @@ namespace Coins
         {
             int count = 0;
 
-            if (_cardSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardDataHolder> chests))
+            if (_cardSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
             {
                 foreach (var coinChestCard in chests)
                 {
@@ -42,9 +42,9 @@ namespace Coins
             return count;
         }
 
-        public bool TryGetCoinFromChests(out CardDataHolder cardData)
+        public bool TryGetCoinFromChests(out CardData cardData)
         {
-            if (_cardSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardDataHolder> chests) == false)
+            if (_cardSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests) == false)
             {
                 cardData = null;
                 return false;
@@ -66,9 +66,9 @@ namespace Coins
             return false;
         }
 
-        public bool TryGetCoin(out CardDataHolder cardData)
+        public bool TryGetCoin(out CardData cardData)
         {
-            bool hasCoinsInTable = _cardsTable.TryGetLowestGroupCardOrFirst(Card.Coin, out CardDataHolder coinFromTable);
+            bool hasCoinsInTable = _cardsTable.TryGetLowestGroupCardOrFirst(Card.Coin, out CardData coinFromTable);
 
             if (hasCoinsInTable)
             {
@@ -77,7 +77,7 @@ namespace Coins
                 return true;
             }
 
-            bool hasCoinsInChests = TryGetCoinFromChests(out CardDataHolder coinFromChest);
+            bool hasCoinsInChests = TryGetCoinFromChests(out CardData coinFromChest);
 
             if (hasCoinsInChests)
             {
@@ -90,9 +90,9 @@ namespace Coins
             return false;
         }
 
-        public bool TryGetCoins(int count, out List<CardDataHolder> coins)
+        public bool TryGetCoins(int count, out List<CardData> coins)
         {
-            List<CardDataHolder> foundCoins = new List<CardDataHolder>();
+            List<CardData> foundCoins = new List<CardData>();
 
             int coinsCount = GetCoinsCount();
 
@@ -102,7 +102,7 @@ namespace Coins
                 return false;
             }
 
-            CardDataHolder[] coinBuffer = new CardDataHolder[count];
+            CardData[] coinBuffer = new CardData[count];
             int coinsCountInTable = _cardsTable.TryGetLowestGroupCards(Card.Coin, ref coinBuffer);
 
             for (int i = 0; i < coinsCountInTable; i++)
@@ -119,7 +119,7 @@ namespace Coins
 
             int leftCoinsCount = count - coinsCountInTable;
 
-            if (leftCoinsCount > 0 && _cardSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardDataHolder> chests))
+            if (leftCoinsCount > 0 && _cardSelector.SelectedCardsMap.TryGetValue(Card.CoinChest, out ReactiveCollection<CardData> chests))
             {
                 foreach (var coinChests in chests)
                 {
@@ -130,7 +130,7 @@ namespace Coins
                     for (int i = 0; i < chestSize; i++)
                     {
                         chest.StoredCards.RemoveAt(0);
-                        CardDataHolder coin = _cardSpawner.Spawn(Card.Coin, chest.transform.position);
+                        CardData coin = _cardSpawner.Spawn(Card.Coin, chest.transform.position);
                         foundCoins.Add(coin);
 
                         if (foundCoins.Count == count) break;

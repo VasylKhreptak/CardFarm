@@ -43,7 +43,7 @@ namespace CameraManagement
             _investigatedCardsObserver.OnInvestigatedCard -= AimCamera;
         }
 
-        private void AimCamera(CardDataHolder card)
+        private void AimCamera(CardData card)
         {
             _cameraAimer.Aim(card.transform);
         }

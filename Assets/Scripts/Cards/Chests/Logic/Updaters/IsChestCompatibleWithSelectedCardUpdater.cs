@@ -59,7 +59,7 @@ namespace Cards.Chests.Logic.Updaters
             _selectedCardSubscription?.Dispose();
         }
 
-        private void OnSelectedCardUpdated(CardDataHolder selectedCard)
+        private void OnSelectedCardUpdated(CardData selectedCard)
         {
             if (selectedCard == null || selectedCard == _cardData)
             {

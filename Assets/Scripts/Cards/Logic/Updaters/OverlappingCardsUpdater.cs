@@ -12,7 +12,7 @@ namespace Cards.Logic.Updaters
     public class OverlappingCardsUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _updateInterval = 0.5f;
@@ -38,7 +38,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -94,9 +94,9 @@ namespace Cards.Logic.Updaters
 
         private void UpdateOverlappingCards()
         {
-            List<CardDataHolder> overlappingCards = new List<CardDataHolder>();
+            List<CardData> overlappingCards = new List<CardData>();
 
-            List<CardDataHolder> cardsToCheck = _cardsTable.Cards.ToList();
+            List<CardData> cardsToCheck = _cardsTable.Cards.ToList();
 
             cardsToCheck.RemoveAll(card =>
             {
@@ -114,7 +114,7 @@ namespace Cards.Logic.Updaters
 
             for (int i = 0; i < cardsToCheck.Count; i++)
             {
-                CardDataHolder cardToCheck = cardsToCheck[i];
+                CardData cardToCheck = cardsToCheck[i];
 
                 if (_cardData.RectTransform.IsOverlapping(cardToCheck.RectTransform))
                 {

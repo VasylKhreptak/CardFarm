@@ -11,7 +11,7 @@ namespace Cards.Graphics.Animations
     public class CardFlipAnimation : CardAnimation, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("Flip Preferences")]
         [SerializeField] private float _duration = 0.5f;
@@ -30,7 +30,7 @@ namespace Cards.Graphics.Animations
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnDisable()

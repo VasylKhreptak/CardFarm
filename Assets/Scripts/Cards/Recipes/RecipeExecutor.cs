@@ -19,7 +19,7 @@ namespace Cards.Recipes
     public class RecipeExecutor : ProgressDependentObject, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _timeScale = 3f;
@@ -50,7 +50,7 @@ namespace Cards.Recipes
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -132,9 +132,9 @@ namespace Cards.Recipes
 
         private void DecreaseResourcesDurability()
         {
-            CardDataHolder firstWorker = GetFirstWorker();
-            CardDataHolder lowestTargetResource = GetLastResource();
-            List<CardDataHolder> resourcesToRemove = GetResourcesToRemove();
+            CardData firstWorker = GetFirstWorker();
+            CardData lowestTargetResource = GetLastResource();
+            List<CardData> resourcesToRemove = GetResourcesToRemove();
 
             int brokenResourcesCount = 0;
 
@@ -154,12 +154,12 @@ namespace Cards.Recipes
             }
         }
 
-        private CardDataHolder GetFirstWorker()
+        private CardData GetFirstWorker()
         {
             return _cardData.GroupCards.FirstOrDefault(x => x.IsWorker);
         }
 
-        private CardDataHolder GetLastResource()
+        private CardData GetLastResource()
         {
             int recipeCardsCount = _cardData.CurrentRecipe.Value.Resources.Count + _cardData.CurrentRecipe.Value.Workers.Count;
 
@@ -171,12 +171,12 @@ namespace Cards.Recipes
             return _cardData.GroupCards[_cardData.GroupCards.Count - recipeCardsCount - 1];
         }
 
-        private List<CardDataHolder> GetResourcesToRemove()
+        private List<CardData> GetResourcesToRemove()
         {
             List<Card> recipeResources = _cardData.CurrentRecipe.Value.Resources;
-            List<CardDataHolder> resourcesToRemove = new List<CardDataHolder>();
+            List<CardData> resourcesToRemove = new List<CardData>();
 
-            List<CardDataHolder> groupCards = _cardData.GroupCards;
+            List<CardData> groupCards = _cardData.GroupCards;
 
             foreach (var recipeResource in recipeResources)
             {
@@ -214,7 +214,7 @@ namespace Cards.Recipes
 
         private List<WorkerData> GetWorkers()
         {
-            List<CardDataHolder> groupCards = _cardData.GroupCards;
+            List<CardData> groupCards = _cardData.GroupCards;
 
             return groupCards.Where(x => x.IsWorker).Select(x => x as WorkerData).ToList();
         }

@@ -34,9 +34,9 @@ namespace Quests.Logic.QuestObservers.Core
             OnCardsCleared();
         }
 
-        protected abstract void OnCardAdded(CardDataHolder cardData);
+        protected abstract void OnCardAdded(CardData cardData);
 
-        protected abstract void OnCardRemoved(CardDataHolder cardData);
+        protected abstract void OnCardRemoved(CardData cardData);
 
         protected abstract void OnCardsCleared();
     }

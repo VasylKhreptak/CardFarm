@@ -9,7 +9,7 @@ namespace Cards.Logic
     public class CardJoiner : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
@@ -22,7 +22,7 @@ namespace Cards.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -52,7 +52,7 @@ namespace Cards.Logic
         private void OnEnvironmentUpdated()
         {
             bool isSelected = _cardData.IsSelected.Value;
-            CardDataHolder joinableCard = _cardData.JoinableCard.Value;
+            CardData joinableCard = _cardData.JoinableCard.Value;
 
             if (isSelected == false)
             {

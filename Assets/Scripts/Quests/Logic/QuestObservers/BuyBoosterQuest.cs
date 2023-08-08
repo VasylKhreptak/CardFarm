@@ -42,7 +42,7 @@ namespace Quests.Logic.QuestObservers
 
         private void StartObservingNewCardType()
         {
-            if (_cardSelector.SelectedCardsMap.TryGetValue(_targetBuyZone, out ReactiveCollection<CardDataHolder> cards))
+            if (_cardSelector.SelectedCardsMap.TryGetValue(_targetBuyZone, out ReactiveCollection<CardData> cards))
             {
                 StartObservingZonesCount(cards);
             }
@@ -57,7 +57,7 @@ namespace Quests.Logic.QuestObservers
                 });
         }
 
-        private void StartObservingZonesCount(ReactiveCollection<CardDataHolder> cards)
+        private void StartObservingZonesCount(ReactiveCollection<CardData> cards)
         {
             StopObservingZonesCount();
             _zonesCountSubscription = cards.ObserveCountChanged()
@@ -68,7 +68,7 @@ namespace Quests.Logic.QuestObservers
                 });
         }
 
-        private void OnZonesCountChanged(int count, ReactiveCollection<CardDataHolder> cards)
+        private void OnZonesCountChanged(int count, ReactiveCollection<CardData> cards)
         {
             if (count > 0)
             {
@@ -87,7 +87,7 @@ namespace Quests.Logic.QuestObservers
             _zonesCountSubscription?.Dispose();
         }
 
-        private BuyZoneData GetTargetBuyZone(ReactiveCollection<CardDataHolder> cards)
+        private BuyZoneData GetTargetBuyZone(ReactiveCollection<CardData> cards)
         {
             foreach (var buyZone in cards)
             {

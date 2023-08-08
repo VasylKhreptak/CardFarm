@@ -8,7 +8,7 @@ namespace Cards.Logic.Updaters
     public class CanBeSelectedUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
@@ -21,7 +21,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

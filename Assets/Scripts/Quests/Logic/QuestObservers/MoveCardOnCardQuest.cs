@@ -23,16 +23,16 @@ namespace Quests.Logic.QuestObservers
             StopObservingTopCards();
         }
 
-        protected override void OnCardsCountChanged(ReactiveCollection<CardDataHolder> cards)
+        protected override void OnCardsCountChanged(ReactiveCollection<CardData> cards)
         {
             StartObservingTopCards(cards);
         }
 
-        private void StartObservingTopCards(ReactiveCollection<CardDataHolder> cards)
+        private void StartObservingTopCards(ReactiveCollection<CardData> cards)
         {
             StopObservingTopCards();
 
-            List<IObservable<CardDataHolder>> topCardsObservables = cards.Select(x => x.FirstUpperCard as IObservable<CardDataHolder>).ToList();
+            List<IObservable<CardData>> topCardsObservables = cards.Select(x => x.FirstUpperCard as IObservable<CardData>).ToList();
 
             _topCardsSubscription = topCardsObservables
                 .Merge()

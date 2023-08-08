@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Cards.Logic.Updaters
 {
-    public abstract class PossibleRecipesUpdaterCore<T> : MonoBehaviour, IValidatable where T : CardDataHolder
+    public abstract class PossibleRecipesUpdaterCore<T> : MonoBehaviour, IValidatable where T : CardData
     {
         [Header("References")]
         [SerializeField] protected T _cardData;

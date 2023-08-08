@@ -111,13 +111,13 @@ namespace Cards.Factories.Logic
 
         private void SpawnRecipeResults()
         {
-            CardDataHolder previousCard = null;
+            CardData previousCard = null;
 
             int cardsToSpawn = _cardData.CurrentFactoryRecipe.Value.ResultCount;
 
             for (int i = 0; i < cardsToSpawn; i++)
             {
-                CardDataHolder spawnedCard = SpawnRecipeResult();
+                CardData spawnedCard = SpawnRecipeResult();
 
                 if (i == cardsToSpawn - 1)
                 {
@@ -128,11 +128,11 @@ namespace Cards.Factories.Logic
             }
         }
 
-        private CardDataHolder SpawnRecipeResult()
+        private CardData SpawnRecipeResult()
         {
             Card cardToSpawn = GetCardToSpawn();
 
-            CardDataHolder spawnedCard = _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+            CardData spawnedCard = _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
             _cardData.AutomatedFactoryCallbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
 
@@ -162,16 +162,16 @@ namespace Cards.Factories.Logic
         {
             int recipeResourcesCount = _cardData.CurrentFactoryRecipe.Value.Resources.Count;
 
-            CardDataHolder previousCard = null;
+            CardData previousCard = null;
 
             if (_cardData.BottomCards.Count > recipeResourcesCount)
             {
                 previousCard = _cardData.BottomCards[recipeResourcesCount];
             }
 
-            List<CardDataHolder> resourcesToRemove = _cardData.BottomCards.Take(recipeResourcesCount).ToList();
+            List<CardData> resourcesToRemove = _cardData.BottomCards.Take(recipeResourcesCount).ToList();
 
-            foreach (CardDataHolder resourceCard in resourcesToRemove)
+            foreach (CardData resourceCard in resourcesToRemove)
             {
                 resourceCard.gameObject.SetActive(false);
             }
@@ -183,16 +183,16 @@ namespace Cards.Factories.Logic
         {
             int recipeResourcesCount = _cardData.CurrentFactoryRecipe.Value.Resources.Count;
 
-            CardDataHolder previousCard = null;
+            CardData previousCard = null;
 
             if (_cardData.BottomCards.Count > recipeResourcesCount)
             {
                 previousCard = _cardData.BottomCards[recipeResourcesCount];
             }
 
-            List<CardDataHolder> resourcesToSpread = _cardData.BottomCards.Take(recipeResourcesCount).ToList();
+            List<CardData> resourcesToSpread = _cardData.BottomCards.Take(recipeResourcesCount).ToList();
 
-            foreach (CardDataHolder resourceCard in resourcesToSpread)
+            foreach (CardData resourceCard in resourcesToSpread)
             {
                 resourceCard.Separate();
                 resourceCard.Animations.MoveAnimation.PlayRandomly(_minSpreadRange, _maxSpreadRange);
@@ -201,7 +201,7 @@ namespace Cards.Factories.Logic
             TryLinkCardToTop(previousCard);
         }
 
-        private void TryLinkCardToTop(CardDataHolder card)
+        private void TryLinkCardToTop(CardData card)
         {
             if (_compatibleCards.IsCompatibleByCategory(card, _cardData))
             {

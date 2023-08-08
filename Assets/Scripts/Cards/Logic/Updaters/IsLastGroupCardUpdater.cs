@@ -9,7 +9,7 @@ namespace Cards.Logic.Updaters
     public class IsLastGroupCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         private IDisposable _lowestGroupCardSubscription;
 
@@ -22,7 +22,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -49,7 +49,7 @@ namespace Cards.Logic.Updaters
             _lowestGroupCardSubscription?.Dispose();
         }
 
-        private void OnLowestGroupCardUpdated(CardDataHolder cardData)
+        private void OnLowestGroupCardUpdated(CardData cardData)
         {
             _cardData.IsLastGroupCard.Value = cardData == _cardData;
         }

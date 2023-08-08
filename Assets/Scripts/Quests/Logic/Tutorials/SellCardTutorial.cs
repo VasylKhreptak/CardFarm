@@ -49,7 +49,7 @@ namespace Quests.Logic.Tutorials
                 OnAddedCard(card);
             }
 
-            IReadOnlyReactiveCollection<CardDataHolder> tableCards = _cardsTable.Cards;
+            IReadOnlyReactiveCollection<CardData> tableCards = _cardsTable.Cards;
             tableCards.ObserveAdd().Subscribe(addEvent => OnAddedCard(addEvent.Value)).AddTo(_cardTableSubscriptions);
             tableCards.ObserveRemove().Subscribe(removeEvent => OnRemovedCard(removeEvent.Value)).AddTo(_cardTableSubscriptions);
             tableCards.ObserveReset().Subscribe(_ => OnClearCards()).AddTo(_cardTableSubscriptions);
@@ -60,7 +60,7 @@ namespace Quests.Logic.Tutorials
             _cardTableSubscriptions?.Clear();
         }
 
-        private void OnAddedCard(CardDataHolder cardData)
+        private void OnAddedCard(CardData cardData)
         {
             SellZoneData sellZoneData = cardData as SellZoneData;
 
@@ -79,7 +79,7 @@ namespace Quests.Logic.Tutorials
             }
         }
 
-        private void OnRemovedCard(CardDataHolder cardData)
+        private void OnRemovedCard(CardData cardData)
         {
             SellZoneData sellZoneData = cardData as SellZoneData;
 

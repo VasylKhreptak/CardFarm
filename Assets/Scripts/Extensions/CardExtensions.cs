@@ -6,7 +6,7 @@ namespace Extensions
 {
     public static class CardExtensions
     {
-        public static void LinkTo(this CardDataHolder card, CardDataHolder linkTo)
+        public static void LinkTo(this CardData card, CardData linkTo)
         {
             if (card == null || linkTo == null) return;
 
@@ -14,14 +14,14 @@ namespace Extensions
 
             if (card.gameObject.activeSelf == false) return;
 
-            CardDataHolder upperCard = card.UpperCard.Value;
+            CardData upperCard = card.UpperCard.Value;
 
             if (upperCard != null && upperCard != linkTo)
             {
                 upperCard.UnlinkFromBottom();
             }
 
-            CardDataHolder linkToBottomCard = linkTo.BottomCard.Value;
+            CardData linkToBottomCard = linkTo.BottomCard.Value;
 
             if (linkToBottomCard != null && linkToBottomCard != card)
             {
@@ -33,11 +33,11 @@ namespace Extensions
             linkTo.BottomCard.Value = card;
         }
 
-        public static void UnlinkFromUpper(this CardDataHolder card)
+        public static void UnlinkFromUpper(this CardData card)
         {
             if (card == null) return;
 
-            CardDataHolder upperCard = card.UpperCard.Value;
+            CardData upperCard = card.UpperCard.Value;
 
             card.UpperCard.Value = null;
 
@@ -46,30 +46,30 @@ namespace Extensions
             upperCard.BottomCard.Value = null;
         }
 
-        public static void UnlinkFromBottom(this CardDataHolder card)
+        public static void UnlinkFromBottom(this CardData card)
         {
             if (card == null) return;
 
-            CardDataHolder bottomCard = card.BottomCard.Value;
+            CardData bottomCard = card.BottomCard.Value;
 
             bottomCard.UnlinkFromUpper();
         }
 
-        public static void Separate(this CardDataHolder card)
+        public static void Separate(this CardData card)
         {
             card.UnlinkFromUpper();
             card.UnlinkFromBottom();
         }
 
-        public static List<CardDataHolder> FindBottomCards(this CardDataHolder card)
+        public static List<CardData> FindBottomCards(this CardData card)
         {
-            List<CardDataHolder> bottomCards = new List<CardDataHolder>();
+            List<CardData> bottomCards = new List<CardData>();
 
-            CardDataHolder currentCardData = card;
+            CardData currentCardData = card;
 
             while (currentCardData.BottomCard.Value != null)
             {
-                CardDataHolder targetCard = currentCardData.BottomCard.Value;
+                CardData targetCard = currentCardData.BottomCard.Value;
 
                 if (bottomCards.Count > 0 && bottomCards[0] == targetCard) break;
 
@@ -80,15 +80,15 @@ namespace Extensions
             return bottomCards;
         }
 
-        public static List<CardDataHolder> FindUpperCards(this CardDataHolder card)
+        public static List<CardData> FindUpperCards(this CardData card)
         {
-            List<CardDataHolder> upperCards = new List<CardDataHolder>();
+            List<CardData> upperCards = new List<CardData>();
 
-            CardDataHolder currentCardData = card;
+            CardData currentCardData = card;
 
             while (currentCardData.UpperCard.Value != null)
             {
-                CardDataHolder targetCard = currentCardData.UpperCard.Value;
+                CardData targetCard = currentCardData.UpperCard.Value;
 
                 if (upperCards.Count > 0 && upperCards[0] == targetCard) break;
 
@@ -101,12 +101,12 @@ namespace Extensions
             return upperCards;
         }
 
-        public static List<CardDataHolder> FindGroupCards(this CardDataHolder card)
+        public static List<CardData> FindGroupCards(this CardData card)
         {
-            List<CardDataHolder> UpperCards = card.FindUpperCards();
-            List<CardDataHolder> BottomCards = card.FindBottomCards();
+            List<CardData> UpperCards = card.FindUpperCards();
+            List<CardData> BottomCards = card.FindBottomCards();
 
-            List<CardDataHolder> GroupCards = new List<CardDataHolder>(UpperCards.Count + 1 + BottomCards.Count);
+            List<CardData> GroupCards = new List<CardData>(UpperCards.Count + 1 + BottomCards.Count);
 
             GroupCards.AddRange(UpperCards);
             GroupCards.Add(card);
@@ -115,7 +115,7 @@ namespace Extensions
             return GroupCards;
         }
 
-        public static void RenderOnTop(this CardDataHolder card)
+        public static void RenderOnTop(this CardData card)
         {
             if (card.CanSortingLayerChange == false) return;
 

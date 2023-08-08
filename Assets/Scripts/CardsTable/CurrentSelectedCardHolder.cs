@@ -6,6 +6,6 @@ namespace CardsTable
 {
     public class CurrentSelectedCardHolder : MonoBehaviour
     {
-        public ReactiveProperty<CardDataHolder> SelectedCard = new ReactiveProperty<CardDataHolder>();
+        public ReactiveProperty<CardData> SelectedCard = new ReactiveProperty<CardData>();
     }
 }

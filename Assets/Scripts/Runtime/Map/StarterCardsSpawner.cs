@@ -82,7 +82,7 @@ namespace Runtime.Map
                     Vector3 position = _spawnPoints[i].position;
                     Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
                     {
-                        CardDataHolder spawnedCard = _cardSpawner.Spawn(card, _transform.position);
+                        CardData spawnedCard = _cardSpawner.Spawn(card, _transform.position);
                         spawnedCard.Animations.JumpAnimation.Play(position);
                         spawnedCard.Animations.FlipAnimation.Play();
 

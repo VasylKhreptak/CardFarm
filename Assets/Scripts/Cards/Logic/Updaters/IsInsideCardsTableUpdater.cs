@@ -9,7 +9,7 @@ namespace Cards.Logic.Updaters
     public class IsInsideCardsTableUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         private CardsTableBounds _cardsTableBounds;
 
@@ -28,7 +28,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void Update()

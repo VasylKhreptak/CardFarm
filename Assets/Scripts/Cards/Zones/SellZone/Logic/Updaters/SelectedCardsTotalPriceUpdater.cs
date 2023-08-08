@@ -15,7 +15,7 @@ namespace Cards.Zones.SellZone.Logic.Updaters
         [Header("References")]
         [SerializeField] private SellZoneData _sellZoneData;
 
-        private CardDataHolder _previousSelectedCard;
+        private CardData _previousSelectedCard;
 
         private IDisposable _selectedCardSubscription;
 
@@ -64,7 +64,7 @@ namespace Cards.Zones.SellZone.Logic.Updaters
             _previousSelectedCard = null;
         }
 
-        private void OnSelectedCardChanged(CardDataHolder selectedCard)
+        private void OnSelectedCardChanged(CardData selectedCard)
         {
             StopObservingGroupCards(_previousSelectedCard);
 
@@ -79,14 +79,14 @@ namespace Cards.Zones.SellZone.Logic.Updaters
             _previousSelectedCard = selectedCard;
         }
 
-        private void StartObservingBottomCards(CardDataHolder cardData)
+        private void StartObservingBottomCards(CardData cardData)
         {
             OnBottomCardsUpdated();
 
             cardData.Callbacks.onBottomCardsListUpdated += OnBottomCardsUpdated;
         }
 
-        private void StopObservingGroupCards(CardDataHolder cardData)
+        private void StopObservingGroupCards(CardData cardData)
         {
             if (cardData == null)
             {
@@ -98,11 +98,11 @@ namespace Cards.Zones.SellZone.Logic.Updaters
 
         private void OnBottomCardsUpdated()
         {
-            CardDataHolder selectedCard = _selectedCardHolder.SelectedCard.Value;
+            CardData selectedCard = _selectedCardHolder.SelectedCard.Value;
 
             if (selectedCard == null) return;
 
-            List<CardDataHolder> targetCards = selectedCard.BottomCards.ToList();
+            List<CardData> targetCards = selectedCard.BottomCards.ToList();
 
             targetCards.Add(selectedCard);
 

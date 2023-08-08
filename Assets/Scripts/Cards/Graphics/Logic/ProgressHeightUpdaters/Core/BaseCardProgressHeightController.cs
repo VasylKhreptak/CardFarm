@@ -8,7 +8,7 @@ namespace Cards.Graphics.Logic.ProgressHeightUpdaters.Core
     public class BaseCardProgressHeightController : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] protected CardDataHolder _cardData;
+        [SerializeField] protected CardData _cardData;
         [SerializeField] private Transform _transform;
 
         [Header("Preferences")]
@@ -27,7 +27,7 @@ namespace Cards.Graphics.Logic.ProgressHeightUpdaters.Core
 
         public virtual void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
             _transform = GetComponent<Transform>();
         }
 

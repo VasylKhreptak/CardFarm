@@ -46,7 +46,7 @@ namespace Quests.Logic.QuestObservers.Core
             StopObservingCardsCount();
         }
 
-        private void StarObservingCardsCount(ReactiveCollection<CardDataHolder> boosters)
+        private void StarObservingCardsCount(ReactiveCollection<CardData> boosters)
         {
             StopObservingCardsCount();
 
@@ -61,6 +61,6 @@ namespace Quests.Logic.QuestObservers.Core
             _cardsCountSubscription?.Dispose();
         }
 
-        protected abstract void OnCardsCountChanged(ReactiveCollection<CardDataHolder> cards);
+        protected abstract void OnCardsCountChanged(ReactiveCollection<CardData> cards);
     }
 }

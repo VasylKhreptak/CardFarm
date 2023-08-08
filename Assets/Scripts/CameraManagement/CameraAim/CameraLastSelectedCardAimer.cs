@@ -12,7 +12,7 @@ namespace CameraManagement.CameraAim
     {
         private IDisposable _selectedCardSubscription;
 
-        private CardDataHolder _previousSelectedCard;
+        private CardData _previousSelectedCard;
 
         private CameraAimer _cameraAimer;
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
@@ -51,7 +51,7 @@ namespace CameraManagement.CameraAim
             _selectedCardSubscription?.Dispose();
         }
 
-        private void OnSelectedCardChanged(CardDataHolder selectedCard)
+        private void OnSelectedCardChanged(CardData selectedCard)
         {
             _cameraAimer.StopAiming();
 

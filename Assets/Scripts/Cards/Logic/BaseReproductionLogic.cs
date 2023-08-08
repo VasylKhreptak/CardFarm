@@ -17,7 +17,7 @@ namespace Cards.Logic
     public class BaseReproductionLogic : ProgressDependentObject, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("Spawn Preferences")]
         [SerializeField] private float _minRange = 5f;
@@ -47,7 +47,7 @@ namespace Cards.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -91,7 +91,7 @@ namespace Cards.Logic
 
         protected override void OnProgressCompleted()
         {
-            CardDataHolder[] cardsToRemove = GetCardsToRemove();
+            CardData[] cardsToRemove = GetCardsToRemove();
 
             SpawnResult();
 
@@ -102,7 +102,7 @@ namespace Cards.Logic
 
         private void UnlinkResources()
         {
-            List<CardDataHolder> groupCards = _cardData.GroupCards.ToList();
+            List<CardData> groupCards = _cardData.GroupCards.ToList();
 
             foreach (var groupCard in groupCards)
             {
@@ -114,7 +114,7 @@ namespace Cards.Logic
             }
         }
 
-        private CardDataHolder[] GetCardsToRemove()
+        private CardData[] GetCardsToRemove()
         {
             return _cardData.GroupCards.Where(x => _cardData.CurrentReproductionRecipe.Value.ResourcesToRemove.Contains(x.Card.Value)).ToArray();
         }
@@ -126,7 +126,7 @@ namespace Cards.Logic
             _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
         }
 
-        private void RemoveCards(CardDataHolder[] cards)
+        private void RemoveCards(CardData[] cards)
         {
             foreach (var card in cards)
             {

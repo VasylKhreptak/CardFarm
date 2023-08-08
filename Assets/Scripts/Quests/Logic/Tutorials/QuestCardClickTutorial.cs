@@ -35,7 +35,7 @@ namespace Quests.Logic.Tutorials
             _tutorialHand.Hide();
         }
 
-        protected override void OnFoundCard(CardDataHolder cardData)
+        protected override void OnFoundCard(CardData cardData)
         {
             base.OnFoundCard(cardData);
 

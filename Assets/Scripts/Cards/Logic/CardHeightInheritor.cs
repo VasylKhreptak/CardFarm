@@ -9,7 +9,7 @@ namespace Cards.Logic
     public class CardHeightInheritor : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         private IDisposable _upperCardHeightSubscription;
         private IDisposable _upperCardSubscription;
@@ -24,7 +24,7 @@ namespace Cards.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -53,7 +53,7 @@ namespace Cards.Logic
             _upperCardHeightSubscription?.Dispose();
         }
 
-        private void UpdateHeight(CardDataHolder upperCardData)
+        private void UpdateHeight(CardData upperCardData)
         {
             Vector3 position = _cardData.transform.position;
 

@@ -39,7 +39,7 @@ namespace ScriptableObjects.Scripts.Cards
             return topCard == bottomCard;
         }
 
-        public bool IsCompatibleByCategory(CardDataHolder topCard, CardDataHolder bottomCard)
+        public bool IsCompatibleByCategory(CardData topCard, CardData bottomCard)
         {
             if (IsProhibited(topCard, bottomCard)) return false;
 
@@ -54,16 +54,16 @@ namespace ScriptableObjects.Scripts.Cards
             return IsCompatibleWithFilters(topCard.Card.Value, bottomCard.Card.Value);
         }
 
-        public bool IsCompatibleByRecipe(CardDataHolder topCard, CardDataHolder bottomCard)
+        public bool IsCompatibleByRecipe(CardData topCard, CardData bottomCard)
         {
             if (IsProhibited(topCard, bottomCard)) return false;
 
-            CardDataHolder firstGroupCard = bottomCard.FirstGroupCard.Value;
+            CardData firstGroupCard = bottomCard.FirstGroupCard.Value;
 
             if (firstGroupCard == null) return IsCompatibleWithFilters(topCard.Card.Value, bottomCard.Card.Value);
 
             List<CardRecipe> groupPossibleRecipes = firstGroupCard.PossibleRecipes;
-            List<CardDataHolder> groupCardsData = firstGroupCard.GroupCards;
+            List<CardData> groupCardsData = firstGroupCard.GroupCards;
 
             bool isGroupCardsAllSame = groupCardsData.Any(x => x.Card.Value != firstGroupCard.Card.Value) == false;
 
@@ -137,7 +137,7 @@ namespace ScriptableObjects.Scripts.Cards
             return IsCompatibleWithFilters(topCard.Card.Value, bottomCard.Card.Value);
         }
 
-        private bool IsProhibited(CardDataHolder topCard, CardDataHolder bottomCard)
+        private bool IsProhibited(CardData topCard, CardData bottomCard)
         {
             if (topCard == null || bottomCard == null) return true;
 

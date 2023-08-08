@@ -11,7 +11,7 @@ namespace Cards.Logic.Updaters
     {
         [Header("References")]
         [SerializeField] private TMP_Text _tmp;
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         private IDisposable _colorSubscription;
 
@@ -25,7 +25,7 @@ namespace Cards.Logic.Updaters
         public void Validate()
         {
             _tmp = GetComponent<TMP_Text>();
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()

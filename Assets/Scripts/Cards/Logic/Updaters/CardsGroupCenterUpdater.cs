@@ -8,7 +8,7 @@ namespace Cards.Logic.Updaters
     public class CardsGroupCenterUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         #region MonoBehaviour
 
@@ -19,12 +19,12 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void Update()
         {
-            List<CardDataHolder> groupCards = _cardData.GroupCards;
+            List<CardData> groupCards = _cardData.GroupCards;
 
             Vector3 center = Vector3.zero;
 

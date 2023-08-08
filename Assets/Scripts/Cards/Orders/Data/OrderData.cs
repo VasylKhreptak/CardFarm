@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Cards.Orders.Data
 {
-    public class OrderData : CardDataHolder
+    public class OrderData : CardData
     {
         public ReactiveProperty<Sprite> OrderIcon = new ReactiveProperty<Sprite>();
         public Card OrderRequiredCard;

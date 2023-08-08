@@ -69,9 +69,9 @@ namespace CardsTable.Core
             ClearCards();
         }
 
-        protected abstract void OnAddedCard(CardDataHolder cardData);
+        protected abstract void OnAddedCard(CardData cardData);
 
-        protected abstract void OnRemovedCard(CardDataHolder cardData);
+        protected abstract void OnRemovedCard(CardData cardData);
 
         protected abstract void ClearCards();
     }

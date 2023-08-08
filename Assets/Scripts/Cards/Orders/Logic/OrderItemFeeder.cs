@@ -57,7 +57,7 @@ namespace Cards.Orders.Logic
 
         private void TryFeedOrder()
         {
-            List<CardDataHolder> bottomCards = _orderData.BottomCards.ToList();
+            List<CardData> bottomCards = _orderData.BottomCards.ToList();
 
             int leftCards = _orderData.LeftCardsCount.Value;
 
@@ -65,7 +65,7 @@ namespace Cards.Orders.Logic
 
             for (int i = 0; i < cardsToCollect; i++)
             {
-                CardDataHolder targetCard = bottomCards[i];
+                CardData targetCard = bottomCards[i];
 
                 if (targetCard.Card.Value == _orderData.OrderRequiredCard)
                 {

@@ -5,11 +5,11 @@ namespace CardsTable.Core
 {
     public abstract class ManualCardSelector : CardTableObserver
     {
-        private ReactiveCollection<CardDataHolder> _selectedCards = new ReactiveCollection<CardDataHolder>();
+        private ReactiveCollection<CardData> _selectedCards = new ReactiveCollection<CardData>();
 
-        public IReadOnlyReactiveCollection<CardDataHolder> SelectedCards => _selectedCards;
+        public IReadOnlyReactiveCollection<CardData> SelectedCards => _selectedCards;
 
-        protected override void OnAddedCard(CardDataHolder cardData)
+        protected override void OnAddedCard(CardData cardData)
         {
             if (IsCardAppropriate(cardData))
             {
@@ -17,7 +17,7 @@ namespace CardsTable.Core
             }
         }
 
-        protected override void OnRemovedCard(CardDataHolder cardData)
+        protected override void OnRemovedCard(CardData cardData)
         {
             if (IsCardAppropriate(cardData))
             {
@@ -30,6 +30,6 @@ namespace CardsTable.Core
             _selectedCards.Clear();
         }
 
-        protected abstract bool IsCardAppropriate(CardDataHolder cardData);
+        protected abstract bool IsCardAppropriate(CardData cardData);
     }
 }

@@ -11,7 +11,7 @@ namespace Cards.Graphics
     public class CardLayerOrderUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardDataHolder _cardData;
+        [SerializeField] private CardData _cardData;
 
         private CompositeDisposable _delaySubscriptions = new CompositeDisposable();
 
@@ -34,7 +34,7 @@ namespace Cards.Graphics
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardDataHolder>(true);
+            _cardData = GetComponentInParent<CardData>(true);
         }
 
         private void OnEnable()
@@ -90,7 +90,7 @@ namespace Cards.Graphics
             RenderOnTop(_cardData.GroupCards);
         }
 
-        private void RenderOnTop(List<CardDataHolder> cards)
+        private void RenderOnTop(List<CardData> cards)
         {
             foreach (var card in cards)
             {

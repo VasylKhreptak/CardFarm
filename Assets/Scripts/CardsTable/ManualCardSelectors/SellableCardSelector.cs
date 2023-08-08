@@ -5,7 +5,7 @@ namespace CardsTable.ManualCardSelectors
 {
     public class SellableCardSelector : ManualCardSelector
     {
-        protected override bool IsCardAppropriate(CardDataHolder cardData)
+        protected override bool IsCardAppropriate(CardData cardData)
         {
             return cardData.IsSellableCard;
         }

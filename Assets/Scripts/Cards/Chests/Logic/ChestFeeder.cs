@@ -57,7 +57,7 @@ namespace Cards.Chests.Logic
             _bottomCardSubscription?.Dispose();
         }
 
-        private void OnBottomCardUpdated(CardDataHolder bottomCard)
+        private void OnBottomCardUpdated(CardData bottomCard)
         {
             StopObservingBottomCardDistance();
 
@@ -83,7 +83,7 @@ namespace Cards.Chests.Logic
 
         private void CheckBottomCardDistance()
         {
-            CardDataHolder bottomCard = _cardData.BottomCard.Value;
+            CardData bottomCard = _cardData.BottomCard.Value;
 
             if (_cardData.BottomCard.Value == null)
             {
@@ -104,7 +104,7 @@ namespace Cards.Chests.Logic
             }
         }
 
-        private bool TryAddCardToChest(CardDataHolder card)
+        private bool TryAddCardToChest(CardData card)
         {
             if (_cardData.StoredCards.Count >= _cardData.Capacity.Value) return false;
 
@@ -117,9 +117,9 @@ namespace Cards.Chests.Logic
             return false;
         }
 
-        private void AddCardToChest(CardDataHolder card)
+        private void AddCardToChest(CardData card)
         {
-            CardDataHolder nextBottomCard = card.BottomCard.Value;
+            CardData nextBottomCard = card.BottomCard.Value;
 
             card.gameObject.SetActive(false);
 
@@ -128,7 +128,7 @@ namespace Cards.Chests.Logic
             _cardData.StoredCards.Add(card as SellableCardData);
         }
 
-        private bool CanCardBeAdded(CardDataHolder cardData)
+        private bool CanCardBeAdded(CardData cardData)
         {
             if (cardData == null) return false;
 

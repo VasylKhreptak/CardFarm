@@ -82,7 +82,7 @@ namespace CameraManagement.CameraMove
             _selectedCardSubscription?.Dispose();
         }
 
-        private void OnSelectedCardChanged(CardDataHolder cardData)
+        private void OnSelectedCardChanged(CardData cardData)
         {
             _cameraCenteringSubscription?.Dispose();
 
