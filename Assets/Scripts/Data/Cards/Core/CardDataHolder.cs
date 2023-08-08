@@ -10,7 +10,9 @@ namespace Data.Cards.Core
         public Color NameColor = Color.white;
         public Color BodyColor = Color.white;
         public Color HeaderColor = Color.white;
-        public Color DataIconsColor = Color.white;
+        public Color StatsIconColor = Color.white;
         public Sprite Icon;
+        
+        public string Description;
     }
 }

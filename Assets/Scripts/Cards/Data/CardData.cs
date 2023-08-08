@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Cards.Core;
 using Cards.Gestures.PositionShake;
@@ -74,7 +73,10 @@ namespace Cards.Data
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ColorReactiveProperty NameColor = new ColorReactiveProperty(Color.white);
-       
+        public ColorReactiveProperty BodyColor = new ColorReactiveProperty(Color.white);
+        public ColorReactiveProperty HeaderColor = new ColorReactiveProperty(Color.white);
+        public ColorReactiveProperty StatsIconColor = new ColorReactiveProperty(Color.white);
+        public ColorReactiveProperty StatsTextColor = new ColorReactiveProperty(Color.white);
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
 
         public BoolReactiveProperty IsInteractable = new BoolReactiveProperty(true);
@@ -138,7 +140,7 @@ namespace Cards.Data
         public QuestOutline QuestOutline;
 
         public Vector3ReactiveProperty GroupCenter = new Vector3ReactiveProperty();
-        
+
         public BoolReactiveProperty IsExecutingAnyRecipe = new BoolReactiveProperty();
 
         #region MonoBehaviour
