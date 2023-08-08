@@ -6680,10 +6680,19 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.635451
-      value: 1.390734
-      inSlope: 0.8262658
-      outSlope: 0.8262658
+      time: 0.6215998
+      value: 1.3609647
+      inSlope: 0.38882002
+      outSlope: 0.38882002
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.091478586
+    - serializedVersion: 3
+      time: 0.72468656
+      value: 1.3662078
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
