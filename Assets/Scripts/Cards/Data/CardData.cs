@@ -74,7 +74,7 @@ namespace Cards.Data
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ColorReactiveProperty NameColor = new ColorReactiveProperty(Color.white);
-        public ReactiveProperty<Sprite> Background = new ReactiveProperty<Sprite>();
+       
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
 
         public BoolReactiveProperty IsInteractable = new BoolReactiveProperty(true);

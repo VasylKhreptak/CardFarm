@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using Color = System.Drawing.Color;
 
 namespace Data.Cards.Core
 {
@@ -8,10 +7,10 @@ namespace Data.Cards.Core
     public class CardDataHolder
     {
         public string Name;
-        public Color NameColor;
-        public Color BodyColor;
-        public Color HeaderColor;
-        public Color DataIconsColor;
+        public Color NameColor = Color.white;
+        public Color BodyColor = Color.white;
+        public Color HeaderColor = Color.white;
+        public Color DataIconsColor = Color.white;
         public Sprite Icon;
     }
 }
