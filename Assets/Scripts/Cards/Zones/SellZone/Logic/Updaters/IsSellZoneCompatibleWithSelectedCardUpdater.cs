@@ -11,7 +11,7 @@ namespace Cards.Zones.SellZone.Logic.Updaters
     public class IsSellZoneCompatibleWithSelectedCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         private IDisposable _selectedCardSubscription;
 
@@ -32,7 +32,7 @@ namespace Cards.Zones.SellZone.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()
@@ -58,7 +58,7 @@ namespace Cards.Zones.SellZone.Logic.Updaters
             _selectedCardSubscription?.Dispose();
         }
 
-        private void OnSelectedCardUpdated(CardData selectedCard)
+        private void OnSelectedCardUpdated(CardDataHolder selectedCard)
         {
             if (selectedCard == null || selectedCard.Card.Value == Card.Coin)
             {

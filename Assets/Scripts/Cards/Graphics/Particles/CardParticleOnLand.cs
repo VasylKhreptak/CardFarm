@@ -8,7 +8,7 @@ namespace Cards.Graphics.Particles
     public class CardParticleOnLand : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         [Header("Preferences")]
         [SerializeField] private MainPool _particle = MainPool.CardLandParticle;
@@ -30,7 +30,7 @@ namespace Cards.Graphics.Particles
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()

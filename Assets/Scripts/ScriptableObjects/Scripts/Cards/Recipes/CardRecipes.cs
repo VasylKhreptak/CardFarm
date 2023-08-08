@@ -12,7 +12,7 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
         [Header("Preferences")]
         [SerializeField] private List<CardRecipe> _recipes;
 
-        public bool TryFindRecipe(List<CardData> cards, out CardRecipe recipe)
+        public bool TryFindRecipe(List<CardDataHolder> cards, out CardRecipe recipe)
         {
             bool hasWorkers = cards.TryGetWorkers(out List<Card> workers);
             bool hasResources = cards.TryGetResources(out List<Card> resources);
@@ -43,7 +43,7 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
             return false;
         }
 
-        public bool TryGetPossibleRecipes(List<CardData> cards, out List<CardRecipe> possibleRecipes)
+        public bool TryGetPossibleRecipes(List<CardDataHolder> cards, out List<CardRecipe> possibleRecipes)
         {
             List<CardRecipe> foundRecipes = new List<CardRecipe>();
 

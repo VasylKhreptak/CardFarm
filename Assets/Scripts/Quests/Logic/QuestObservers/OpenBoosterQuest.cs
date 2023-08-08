@@ -19,12 +19,12 @@ namespace Quests.Logic.QuestObservers
             StopObservingBoosters();
         }
 
-        protected override void OnCardsCountChanged(ReactiveCollection<CardData> cards)
+        protected override void OnCardsCountChanged(ReactiveCollection<CardDataHolder> cards)
         {
             StartObservingBoosters(cards);
         }
 
-        private void StartObservingBoosters(ReactiveCollection<CardData> boosters)
+        private void StartObservingBoosters(ReactiveCollection<CardDataHolder> boosters)
         {
             StopObservingBoosters();
 

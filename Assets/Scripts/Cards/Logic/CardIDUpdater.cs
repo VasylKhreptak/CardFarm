@@ -8,7 +8,7 @@ namespace Cards.Logic
     public class CardIDUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _data;
+        [SerializeField] private CardDataHolder _data;
 
         private IDProvider _idProvider;
 
@@ -27,7 +27,7 @@ namespace Cards.Logic
 
         public void Validate()
         {
-            _data = GetComponentInParent<CardData>(true);
+            _data = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void Awake()

@@ -11,7 +11,7 @@ namespace Cards.Graphics.VisualElements
     public class CardNewTag : Panel, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         private IDisposable _isNewCardSubscription;
 
@@ -24,7 +24,7 @@ namespace Cards.Graphics.VisualElements
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()

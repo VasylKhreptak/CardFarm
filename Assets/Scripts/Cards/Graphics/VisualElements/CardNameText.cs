@@ -10,7 +10,7 @@ namespace Cards.Graphics.VisualElements
     public class CardNameText : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] protected CardData _cardData;
+        [SerializeField] protected CardDataHolder _cardData;
         [SerializeField] private TMP_Text _tmp;
 
         private IDisposable _nameSubscription;
@@ -25,7 +25,7 @@ namespace Cards.Graphics.VisualElements
         public void Validate()
         {
             _tmp = GetComponent<TMP_Text>();
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()

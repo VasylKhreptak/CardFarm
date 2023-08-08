@@ -7,21 +7,21 @@ namespace CardsTable.Core
 {
     public class CardSelector : CardTableObserver
     {
-        private ReactiveDictionary<Card, ReactiveCollection<CardData>> _selectedCardsMap = new ReactiveDictionary<Card, ReactiveCollection<CardData>>();
+        private ReactiveDictionary<Card, ReactiveCollection<CardDataHolder>> _selectedCardsMap = new ReactiveDictionary<Card, ReactiveCollection<CardDataHolder>>();
 
-        public IReadOnlyReactiveDictionary<Card, ReactiveCollection<CardData>> SelectedCardsMap => _selectedCardsMap;
+        public IReadOnlyReactiveDictionary<Card, ReactiveCollection<CardDataHolder>> SelectedCardsMap => _selectedCardsMap;
 
-        protected override void OnAddedCard(CardData cardData)
+        protected override void OnAddedCard(CardDataHolder cardData)
         {
             if (_selectedCardsMap.ContainsKey(cardData.Card.Value) == false)
             {
-                _selectedCardsMap.Add(cardData.Card.Value, new ReactiveCollection<CardData>());
+                _selectedCardsMap.Add(cardData.Card.Value, new ReactiveCollection<CardDataHolder>());
             }
 
             _selectedCardsMap[cardData.Card.Value].Add(cardData);
         }
 
-        protected override void OnRemovedCard(CardData cardData)
+        protected override void OnRemovedCard(CardDataHolder cardData)
         {
             if (_selectedCardsMap.TryGetValue(cardData.Card.Value, out var collection))
             {

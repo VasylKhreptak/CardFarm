@@ -16,7 +16,7 @@ namespace Physics.Cards
 
         private RaycastHit[] _hits;
 
-        private CardData _hitCard;
+        private CardDataHolder _hitCard;
 
         private Camera _camera;
 
@@ -73,11 +73,11 @@ namespace Physics.Cards
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             int hitsCount = UnityEngine.Physics.RaycastNonAlloc(ray, _hits, float.MaxValue, _cardLayerMask);
 
-            CardData topCard = null;
+            CardDataHolder topCard = null;
             int topCardSiblingIndex = int.MinValue;
             for (int i = 0; i < hitsCount; i++)
             {
-                CardData hitCard = _hits[i].collider.GetComponent<CardData>();
+                CardDataHolder hitCard = _hits[i].collider.GetComponent<CardDataHolder>();
                 if (hitCard == null) continue;
 
                 int hitCardSiblingIndex = hitCard.transform.GetSiblingIndex();

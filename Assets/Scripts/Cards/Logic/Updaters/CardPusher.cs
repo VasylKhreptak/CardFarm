@@ -12,7 +12,7 @@ namespace Cards.Logic.Updaters
     public class CardPusher : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         [FormerlySerializedAs("_pushSpeedAmplifier")]
         [Header("Preferences")]
@@ -38,7 +38,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()
@@ -105,11 +105,11 @@ namespace Cards.Logic.Updaters
 
             Vector3 position = _cardData.transform.position;
             Vector3 direction = Vector3.zero;
-            List<CardData> overlappingCards = _cardData.OverlappingCards;
+            List<CardDataHolder> overlappingCards = _cardData.OverlappingCards;
 
             for (int i = 0; i < overlappingCards.Count; i++)
             {
-                CardData overlappingCard = overlappingCards[i];
+                CardDataHolder overlappingCard = overlappingCards[i];
 
                 Vector3 directionToCard = overlappingCard.transform.position - _cardData.transform.position;
 

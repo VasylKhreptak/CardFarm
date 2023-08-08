@@ -8,7 +8,7 @@ namespace Cards.Logic
     public class AdjacentCardsCleaner : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         #region MonoBehaviour
 
@@ -19,7 +19,7 @@ namespace Cards.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnDisable()

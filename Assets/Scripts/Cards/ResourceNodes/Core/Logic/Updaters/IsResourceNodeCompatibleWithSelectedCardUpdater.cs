@@ -10,7 +10,7 @@ namespace Cards.ResourceNodes.Core.Logic.Updaters
     public class IsResourceNodeCompatibleWithSelectedCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         private IDisposable _selectedCardSubscription;
 
@@ -31,7 +31,7 @@ namespace Cards.ResourceNodes.Core.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()
@@ -57,7 +57,7 @@ namespace Cards.ResourceNodes.Core.Logic.Updaters
             _selectedCardSubscription?.Dispose();
         }
 
-        private void OnSelectedCardUpdated(CardData selectedCard)
+        private void OnSelectedCardUpdated(CardDataHolder selectedCard)
         {
             if (selectedCard == null || selectedCard == _cardData)
             {

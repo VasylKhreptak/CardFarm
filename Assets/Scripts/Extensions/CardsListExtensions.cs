@@ -7,9 +7,9 @@ namespace Extensions
 {
     public static class CardsListExtensions
     {
-        public static bool TryGetResources(this List<CardData> cards, out List<CardData> resources)
+        public static bool TryGetResources(this List<CardDataHolder> cards, out List<CardDataHolder> resources)
         {
-            List<CardData> possibleResources = cards
+            List<CardDataHolder> possibleResources = cards
                 .Where(x => x.IsWorker == false)
                 .ToList();
 
@@ -17,16 +17,16 @@ namespace Extensions
             return possibleResources.Count > 0;
         }
 
-        public static bool TryGetResources(this List<CardData> cards, out List<Card> resources)
+        public static bool TryGetResources(this List<CardDataHolder> cards, out List<Card> resources)
         {
-            bool result = TryGetResources(cards, out List<CardData> possibleResources);
+            bool result = TryGetResources(cards, out List<CardDataHolder> possibleResources);
             resources = possibleResources.Select(x => x.Card.Value).ToList();
             return result;
         }
 
-        public static bool TryGetWorkers(this List<CardData> cards, out List<CardData> workers)
+        public static bool TryGetWorkers(this List<CardDataHolder> cards, out List<CardDataHolder> workers)
         {
-            List<CardData> possibleWorkers = cards
+            List<CardDataHolder> possibleWorkers = cards
                 .Where(x => x.IsWorker)
                 .ToList();
 
@@ -34,9 +34,9 @@ namespace Extensions
             return possibleWorkers.Count > 0;
         }
 
-        public static bool TryGetWorkers(this List<CardData> cards, out List<Card> workers)
+        public static bool TryGetWorkers(this List<CardDataHolder> cards, out List<Card> workers)
         {
-            bool result = TryGetWorkers(cards, out List<CardData> possibleWorkers);
+            bool result = TryGetWorkers(cards, out List<CardDataHolder> possibleWorkers);
             workers = possibleWorkers.Select(x => x.Card.Value).ToList();
             return result;
         }

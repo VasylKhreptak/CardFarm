@@ -11,7 +11,7 @@ namespace Cards.Logic.Updaters
     public class CanBeUnderSelectedCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
@@ -32,7 +32,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()
@@ -72,10 +72,10 @@ namespace Cards.Logic.Updaters
             bool isSelected = _cardData.IsSelected.Value;
             bool isCardsSame = _cardData == _currentSelectedCardHolder.SelectedCard.Value;
 
-            CardData selectedCard = _currentSelectedCardHolder.SelectedCard.Value;
+            CardDataHolder selectedCard = _currentSelectedCardHolder.SelectedCard.Value;
 
-            List<CardData> selectedCardBottomCards = new List<CardData>(0);
-            List<CardData> selectedCardUpperCards = new List<CardData>(0);
+            List<CardDataHolder> selectedCardBottomCards = new List<CardDataHolder>(0);
+            List<CardDataHolder> selectedCardUpperCards = new List<CardDataHolder>(0);
 
             if (selectedCard != null)
             {

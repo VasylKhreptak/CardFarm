@@ -3,7 +3,7 @@ using UniRx;
 
 namespace Cards.Boosters.Data
 {
-    public class BoosterCardData : CardData
+    public class BoosterCardData : CardDataHolder
     {
         public IntReactiveProperty TotalCards = new IntReactiveProperty(5);
         public IntReactiveProperty LeftCards = new IntReactiveProperty();

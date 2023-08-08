@@ -2,7 +2,7 @@
 
 namespace Cards.Zones.Data
 {
-    public class ZoneData : CardData
+    public class ZoneData : CardDataHolder
     {
         
     }

@@ -10,7 +10,7 @@ namespace Cards.Logic.Updaters
     public class IsAnyGroupCardSelectedUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
@@ -31,7 +31,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()
@@ -63,13 +63,13 @@ namespace Cards.Logic.Updaters
 
         private void OnCardEnvironmentChanged()
         {
-            CardData selectedCard = _currentSelectedCardHolder.SelectedCard.Value;
+            CardDataHolder selectedCard = _currentSelectedCardHolder.SelectedCard.Value;
 
             bool isAnyGroupCardSelected = false;
 
             if (selectedCard != null)
             {
-                List<CardData> groupCards = _cardData.GroupCards;
+                List<CardDataHolder> groupCards = _cardData.GroupCards;
 
                 foreach (var groupCard in groupCards)
                 {

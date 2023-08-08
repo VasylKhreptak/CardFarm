@@ -42,7 +42,7 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
             return false;
         }
 
-        public bool TryGetPossibleRecipes(List<CardData> cards, out List<FactoryRecipe> possibleRecipes)
+        public bool TryGetPossibleRecipes(List<CardDataHolder> cards, out List<FactoryRecipe> possibleRecipes)
         {
             if (cards.Count == 0)
             {

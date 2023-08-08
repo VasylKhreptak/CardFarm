@@ -19,14 +19,14 @@ namespace Quests.Logic.QuestObservers.Progress
         [Header("Preferences")]
         [SerializeField] private Card _recipeResult;
 
-        private Dictionary<CardData, (IDisposable, IDisposable)> _cardSubscriptions = new Dictionary<CardData, (IDisposable, IDisposable)>();
+        private Dictionary<CardDataHolder, (IDisposable, IDisposable)> _cardSubscriptions = new Dictionary<CardDataHolder, (IDisposable, IDisposable)>();
 
-        protected override void OnCardAdded(CardData cardData)
+        protected override void OnCardAdded(CardDataHolder cardData)
         {
             StartObservingCard(cardData);
         }
 
-        protected override void OnCardRemoved(CardData cardData)
+        protected override void OnCardRemoved(CardDataHolder cardData)
         {
             StopObservingCard(cardData);
         }
@@ -36,7 +36,7 @@ namespace Quests.Logic.QuestObservers.Progress
             StopObservingCards();
         }
 
-        private void StartObservingCard(CardData cardData)
+        private void StartObservingCard(CardDataHolder cardData)
         {
             StopObservingCard(cardData);
 
@@ -56,7 +56,7 @@ namespace Quests.Logic.QuestObservers.Progress
             _cardSubscriptions.Add(cardData, (subscription, null));
         }
 
-        private void StopObservingCard(CardData cardData)
+        private void StopObservingCard(CardDataHolder cardData)
         {
             if (_cardSubscriptions.TryGetValue(cardData, out var subscriptions))
             {
@@ -79,10 +79,10 @@ namespace Quests.Logic.QuestObservers.Progress
             _cardSubscriptions.Clear();
         }
 
-        private void OnCardRecipeUpdated(CardData cardData)
+        private void OnCardRecipeUpdated(CardDataHolder cardData)
         {
             FactoryData factoryData = cardData as FactoryData;
-            CardData targetCard;
+            CardDataHolder targetCard;
 
             _cardSubscriptions.TryGetValue(cardData, out var subscriptions);
 
@@ -137,14 +137,14 @@ namespace Quests.Logic.QuestObservers.Progress
             _questData.Progress.Value = progress;
         }
 
-        private void StartObservingResultedCard(CardData cardData)
+        private void StartObservingResultedCard(CardDataHolder cardData)
         {
             StopObservingResultedCard(cardData);
 
             cardData.Callbacks.onSpawnedRecipeResult += OnSpawnedResultedCard;
         }
 
-        private void StopObservingResultedCard(CardData cardData)
+        private void StopObservingResultedCard(CardDataHolder cardData)
         {
             cardData.Callbacks.onSpawnedRecipeResult -= OnSpawnedResultedCard;
         }

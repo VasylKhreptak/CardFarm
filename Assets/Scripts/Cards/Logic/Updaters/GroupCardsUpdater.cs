@@ -9,7 +9,7 @@ namespace Cards.Logic.Updaters
     public class GroupCardsUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         #region MonoBehaviour
 
@@ -20,7 +20,7 @@ namespace Cards.Logic.Updaters
         
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()
@@ -43,7 +43,7 @@ namespace Cards.Logic.Updaters
 
         private void OnCardsUpdated()
         {
-            List<CardData> groupCards = _cardData.FindGroupCards();
+            List<CardDataHolder> groupCards = _cardData.FindGroupCards();
 
             _cardData.GroupCards = groupCards;
             _cardData.Callbacks.onGroupCardsListUpdated?.Invoke();

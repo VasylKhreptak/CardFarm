@@ -10,7 +10,7 @@ namespace Cards.Logic.Updaters
     public class IsTakingPartInRecipeUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         private IDisposable _firstGroupCardSubscription;
         private CompositeDisposable _firstGroupCardSubscriptions = new CompositeDisposable();
@@ -24,7 +24,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()
@@ -51,7 +51,7 @@ namespace Cards.Logic.Updaters
             ClearGroupCardsSubscriptions();
         }
 
-        private void OnFirstGroupCardUpdated(CardData firstGroupCard)
+        private void OnFirstGroupCardUpdated(CardDataHolder firstGroupCard)
         {
             ClearGroupCardsSubscriptions();
 
@@ -77,7 +77,7 @@ namespace Cards.Logic.Updaters
             _cardData.IsTakingPartInRecipe.Value = state;
         }
 
-        private void TryStartObservingCurrentRecipe(CardData cardData)
+        private void TryStartObservingCurrentRecipe(CardDataHolder cardData)
         {
             cardData.CurrentRecipe.Subscribe(recipe =>
             {
@@ -85,7 +85,7 @@ namespace Cards.Logic.Updaters
             }).AddTo(_firstGroupCardSubscriptions);
         }
 
-        private void TryStartObservingReproductionRecipe(CardData cardData)
+        private void TryStartObservingReproductionRecipe(CardDataHolder cardData)
         {
             cardData.CurrentReproductionRecipe.Subscribe(recipe =>
             {
@@ -93,7 +93,7 @@ namespace Cards.Logic.Updaters
             }).AddTo(_firstGroupCardSubscriptions);
         }
 
-        private void TryStartObservingFactoryRecipe(CardData cardData)
+        private void TryStartObservingFactoryRecipe(CardDataHolder cardData)
         {
             if (cardData.IsAutomatedFactory)
             {

@@ -16,11 +16,11 @@ namespace Quests.Logic.Tutorials.Core
         [SerializeField] private Card _firstCard;
         [SerializeField] private Card _secondCard;
 
-        private Dictionary<CardData, IDisposable> _bottomCardSubscriptions = new Dictionary<CardData, IDisposable>();
+        private Dictionary<CardDataHolder, IDisposable> _bottomCardSubscriptions = new Dictionary<CardDataHolder, IDisposable>();
         private CompositeDisposable _cardTableSubscriptions = new CompositeDisposable();
 
-        private CardData _firstCardData;
-        private CardData _secondCardData;
+        private CardDataHolder _firstCardData;
+        private CardDataHolder _secondCardData;
 
         private CardsTable.Core.CardsTable _cardsTable;
 
@@ -56,7 +56,7 @@ namespace Quests.Logic.Tutorials.Core
                 OnAddedCard(card);
             }
 
-            IReadOnlyReactiveCollection<CardData> tableCards = _cardsTable.Cards;
+            IReadOnlyReactiveCollection<CardDataHolder> tableCards = _cardsTable.Cards;
             tableCards.ObserveAdd().Subscribe(addEvent => OnAddedCard(addEvent.Value)).AddTo(_cardTableSubscriptions);
             tableCards.ObserveRemove().Subscribe(removeEvent => OnRemovedCard(removeEvent.Value)).AddTo(_cardTableSubscriptions);
             tableCards.ObserveReset().Subscribe(_ => OnClearCards()).AddTo(_cardTableSubscriptions);
@@ -67,7 +67,7 @@ namespace Quests.Logic.Tutorials.Core
             _cardTableSubscriptions?.Clear();
         }
 
-        private void OnAddedCard(CardData cardData)
+        private void OnAddedCard(CardDataHolder cardData)
         {
             if (cardData.Card.Value == _firstCard && _firstCardData == null)
             {
@@ -86,7 +86,7 @@ namespace Quests.Logic.Tutorials.Core
             }
         }
 
-        private void OnRemovedCard(CardData cardData)
+        private void OnRemovedCard(CardDataHolder cardData)
         {
             if (cardData.Card.Value == _firstCard && cardData == _firstCardData)
             {
@@ -110,7 +110,7 @@ namespace Quests.Logic.Tutorials.Core
             StartTutorial();
         }
 
-        private void StartObservingBottomCard(CardData cardData)
+        private void StartObservingBottomCard(CardDataHolder cardData)
         {
             StopObservingBottomCard(cardData);
 
@@ -119,7 +119,7 @@ namespace Quests.Logic.Tutorials.Core
             _bottomCardSubscriptions.Add(cardData, subscription);
         }
 
-        private void StopObservingBottomCard(CardData cardData)
+        private void StopObservingBottomCard(CardDataHolder cardData)
         {
             if (_bottomCardSubscriptions.TryGetValue(cardData, out var subscription))
             {
@@ -138,7 +138,7 @@ namespace Quests.Logic.Tutorials.Core
             _bottomCardSubscriptions.Clear();
         }
 
-        private void OnAnyBottomCardUpdated(CardData bottomCard)
+        private void OnAnyBottomCardUpdated(CardDataHolder bottomCard)
         {
             if (bottomCard != null && bottomCard.Card.Value == _firstCard)
             {
@@ -149,7 +149,7 @@ namespace Quests.Logic.Tutorials.Core
             {
                 bool hasAnyAppropriateBottomCard = _bottomCardSubscriptions.Keys.Any(cardData =>
                 {
-                    CardData bottomCard = cardData.BottomCard.Value;
+                    CardDataHolder bottomCard = cardData.BottomCard.Value;
 
                     if (bottomCard == null) return false;
 

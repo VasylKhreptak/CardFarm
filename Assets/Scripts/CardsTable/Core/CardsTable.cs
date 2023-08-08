@@ -12,16 +12,16 @@ namespace CardsTable.Core
         [Header("Preferences")]
         [SerializeField] public CompatibleCards _compatibleCards;
 
-        private ReactiveCollection<CardData> _cards = new ReactiveCollection<CardData>();
+        private ReactiveCollection<CardDataHolder> _cards = new ReactiveCollection<CardDataHolder>();
 
-        public IReadOnlyReactiveCollection<CardData> Cards => _cards;
+        public IReadOnlyReactiveCollection<CardDataHolder> Cards => _cards;
 
-        public void AddCard(CardData cardData)
+        public void AddCard(CardDataHolder cardData)
         {
             _cards.Add(cardData);
         }
 
-        public bool RemoveCard(CardData cardData)
+        public bool RemoveCard(CardDataHolder cardData)
         {
             return _cards.Remove(cardData);
         }
@@ -31,9 +31,9 @@ namespace CardsTable.Core
             _cards.Clear();
         }
 
-        public bool TryGetLowestGroupCard(Card card, out CardData cardData)
+        public bool TryGetLowestGroupCard(Card card, out CardDataHolder cardData)
         {
-            foreach (CardData cardInTable in _cards)
+            foreach (CardDataHolder cardInTable in _cards)
             {
                 if (cardInTable.IsLastGroupCard.Value
                     && card == cardInTable.Card.Value)
@@ -47,9 +47,9 @@ namespace CardsTable.Core
             return false;
         }
 
-        public bool TryGetLowestRecipeFreeGroupCard(Card card, out CardData cardData)
+        public bool TryGetLowestRecipeFreeGroupCard(Card card, out CardDataHolder cardData)
         {
-            foreach (CardData cardInTable in _cards)
+            foreach (CardDataHolder cardInTable in _cards)
             {
                 if (cardInTable.IsLastGroupCard.Value
                     && card == cardInTable.Card.Value
@@ -64,9 +64,9 @@ namespace CardsTable.Core
             return false;
         }
 
-        public bool TryGetLowestUniqRecipeFreeGroupCard(CardData cardData, out CardData foundCard)
+        public bool TryGetLowestUniqRecipeFreeGroupCard(CardDataHolder cardData, out CardDataHolder foundCard)
         {
-            foreach (CardData cardInTable in _cards)
+            foreach (CardDataHolder cardInTable in _cards)
             {
                 if (cardInTable.IsLastGroupCard.Value
                     && cardData.Card.Value == cardInTable.Card.Value
@@ -82,11 +82,11 @@ namespace CardsTable.Core
             return false;
         }
 
-        public bool TryGetLowestGroupCardOrFirst(Card card, out CardData cardData)
+        public bool TryGetLowestGroupCardOrFirst(Card card, out CardDataHolder cardData)
         {
             if (TryGetLowestGroupCard(card, out cardData)) return true;
 
-            foreach (CardData cardInTable in _cards)
+            foreach (CardDataHolder cardInTable in _cards)
             {
                 if (cardInTable.Card.Value == card)
                 {
@@ -99,9 +99,9 @@ namespace CardsTable.Core
             return false;
         }
 
-        public bool TryGetLowestCompatibleGroupCard(Card topCard, Card card, out CardData cardData)
+        public bool TryGetLowestCompatibleGroupCard(Card topCard, Card card, out CardDataHolder cardData)
         {
-            if (TryGetLowestRecipeFreeGroupCard(card, out CardData lowestCard))
+            if (TryGetLowestRecipeFreeGroupCard(card, out CardDataHolder lowestCard))
             {
                 if (_compatibleCards.IsCompatibleWithFilters(topCard, card))
                 {
@@ -114,9 +114,9 @@ namespace CardsTable.Core
             return false;
         }
 
-        public bool TryGetLowestUniqCompatibleGroupCard(CardData topCard, Card card, out CardData cardData)
+        public bool TryGetLowestUniqCompatibleGroupCard(CardDataHolder topCard, Card card, out CardDataHolder cardData)
         {
-            if (TryGetLowestRecipeFreeGroupCard(card, out CardData lowestCard))
+            if (TryGetLowestRecipeFreeGroupCard(card, out CardDataHolder lowestCard))
             {
                 if (_compatibleCards.IsCompatibleWithFilters(topCard.Card.Value, card) &&
                     topCard != lowestCard)
@@ -130,7 +130,7 @@ namespace CardsTable.Core
             return false;
         }
 
-        public bool TryGetLowestPrioritizedCompatibleGroupCard(Card topCard, Card[] prioritizedCards, out CardData cardData)
+        public bool TryGetLowestPrioritizedCompatibleGroupCard(Card topCard, Card[] prioritizedCards, out CardDataHolder cardData)
         {
             foreach (var prioritizedCard in prioritizedCards)
             {
@@ -144,7 +144,7 @@ namespace CardsTable.Core
             return false;
         }
 
-        public bool TryGetLowestUniqPrioritizedCompatibleGroupCard(CardData topCard, Card[] prioritizedCards, out CardData cardData)
+        public bool TryGetLowestUniqPrioritizedCompatibleGroupCard(CardDataHolder topCard, Card[] prioritizedCards, out CardDataHolder cardData)
         {
             foreach (var prioritizedCard in prioritizedCards)
             {
@@ -158,21 +158,21 @@ namespace CardsTable.Core
             return false;
         }
 
-        public int TryGetLowestGroupCards(Card card, ref CardData[] cards)
+        public int TryGetLowestGroupCards(Card card, ref CardDataHolder[] cards)
         {
             int count = 0;
 
-            foreach (CardData cardInTable in _cards)
+            foreach (CardDataHolder cardInTable in _cards)
             {
                 if (cardInTable.IsLastGroupCard.Value)
                 {
-                    List<CardData> cardsGroup = cardInTable.GroupCards;
+                    List<CardDataHolder> cardsGroup = cardInTable.GroupCards;
 
                     for (int i = cardsGroup.Count - 1; i >= 0; i--)
                     {
                         if (count >= cards.Length) return count;
 
-                        CardData groupCard = cardsGroup[i];
+                        CardDataHolder groupCard = cardsGroup[i];
 
                         if (groupCard.Card.Value == card)
                         {
@@ -186,9 +186,9 @@ namespace CardsTable.Core
             return count;
         }
 
-        public bool TryGetFirstCard(Card card, out CardData cardData)
+        public bool TryGetFirstCard(Card card, out CardDataHolder cardData)
         {
-            foreach (CardData cardInTable in _cards)
+            foreach (CardDataHolder cardInTable in _cards)
             {
                 if (cardInTable.Card.Value == card)
                 {
@@ -201,11 +201,11 @@ namespace CardsTable.Core
             return false;
         }
 
-        public bool TryGetCards(Card card, out List<CardData> cardData)
+        public bool TryGetCards(Card card, out List<CardDataHolder> cardData)
         {
-            cardData = new List<CardData>();
+            cardData = new List<CardDataHolder>();
 
-            foreach (CardData cardInTable in _cards)
+            foreach (CardDataHolder cardInTable in _cards)
             {
                 if (cardInTable.Card.Value == card)
                 {
@@ -220,7 +220,7 @@ namespace CardsTable.Core
         {
             int count = 0;
 
-            foreach (CardData cardInTable in _cards)
+            foreach (CardDataHolder cardInTable in _cards)
             {
                 if (cardInTable.Card.Value == card)
                 {

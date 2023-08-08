@@ -58,7 +58,7 @@ namespace Cards.Orders.Logic.Updaters
             _selectedCardSubscription?.Dispose();
         }
 
-        private void OnSelectedCardUpdated(CardData selectedCard)
+        private void OnSelectedCardUpdated(CardDataHolder selectedCard)
         {
             if (selectedCard == null || selectedCard == _cardData)
             {

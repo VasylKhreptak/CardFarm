@@ -17,7 +17,7 @@ namespace Cards.ResourceNodes.Core.Logic
     public class ResourceNodeLogic : ProgressDependentObject, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         [Header("Preferences")]
         [SerializeField] private ResourceNodeRecipeData _resourceNodeData;
@@ -42,7 +42,7 @@ namespace Cards.ResourceNodes.Core.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()
@@ -75,7 +75,7 @@ namespace Cards.ResourceNodes.Core.Logic
 
         private void OnBottomCardsListUpdated()
         {
-            List<CardData> bottomCards = _cardData.BottomCards;
+            List<CardDataHolder> bottomCards = _cardData.BottomCards;
 
             if (bottomCards.Count == 1 && bottomCards[0].IsWorker)
             {

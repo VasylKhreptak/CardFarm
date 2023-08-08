@@ -21,7 +21,7 @@ namespace Quests.Logic.QuestObservers.Core
             StopObservingCards();
         }
 
-        protected override void OnCardAdded(CardData cardData)
+        protected override void OnCardAdded(CardDataHolder cardData)
         {
             if (cardData.IsAutomatedFactory)
             {
@@ -29,7 +29,7 @@ namespace Quests.Logic.QuestObservers.Core
             }
         }
 
-        protected override void OnCardRemoved(CardData cardData)
+        protected override void OnCardRemoved(CardDataHolder cardData)
         {
             if (cardData.IsAutomatedFactory)
             {

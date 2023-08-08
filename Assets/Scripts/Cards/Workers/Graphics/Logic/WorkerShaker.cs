@@ -10,11 +10,11 @@ namespace Cards.Workers.Graphics.Logic
     public class WorkerShaker : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         private IDisposable _firstGroupCardSubscription;
 
-        private CardData _previousFirstGroupCard;
+        private CardDataHolder _previousFirstGroupCard;
 
         #region MonoBehaviour
 
@@ -25,7 +25,7 @@ namespace Cards.Workers.Graphics.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()
@@ -51,7 +51,7 @@ namespace Cards.Workers.Graphics.Logic
             _firstGroupCardSubscription?.Dispose();
         }
 
-        private void OnFirstGroupCardChanged(CardData cardData)
+        private void OnFirstGroupCardChanged(CardDataHolder cardData)
         {
             if (cardData == null)
             {
@@ -64,7 +64,7 @@ namespace Cards.Workers.Graphics.Logic
             _previousFirstGroupCard = cardData;
         }
 
-        private void StartObservingRecipeExecution(CardData cardData)
+        private void StartObservingRecipeExecution(CardDataHolder cardData)
         {
             StopObservingRecipeExecution();
 

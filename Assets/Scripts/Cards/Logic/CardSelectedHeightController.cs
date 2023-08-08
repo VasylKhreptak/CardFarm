@@ -10,7 +10,7 @@ namespace Cards.Logic
     public class CardSelectedHeightController : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _moveDuration = 0.3f;
@@ -33,7 +33,7 @@ namespace Cards.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()

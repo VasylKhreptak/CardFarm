@@ -17,9 +17,9 @@ namespace CardsTable.ManualCardSelectors
 
         public IReadOnlyReactiveCollection<Card> Cards => _cards;
 
-        public event Action<CardData> OnInvestigatedCard;
+        public event Action<CardDataHolder> OnInvestigatedCard;
 
-        protected override void OnAddedCard(CardData cardData)
+        protected override void OnAddedCard(CardDataHolder cardData)
         {
             if (_cards.Contains(cardData.Card.Value) == false
                 && _blackList.Contains(cardData.Card.Value) == false)
@@ -30,7 +30,7 @@ namespace CardsTable.ManualCardSelectors
             }
         }
 
-        protected override void OnRemovedCard(CardData cardData)
+        protected override void OnRemovedCard(CardDataHolder cardData)
         {
 
         }

@@ -9,7 +9,7 @@ namespace Cards.Logic.Updaters
     public class IsActivelyFollowingUpperCardUpdater : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _updateInterval = 1 / 10f;
@@ -27,7 +27,7 @@ namespace Cards.Logic.Updaters
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()
@@ -97,7 +97,7 @@ namespace Cards.Logic.Updaters
         {
             bool isActivelyFollowingCard = false;
 
-            CardData upperCard = _cardData.UpperCard.Value;
+            CardDataHolder upperCard = _cardData.UpperCard.Value;
 
             if (upperCard != null)
             {

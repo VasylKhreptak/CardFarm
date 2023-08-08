@@ -14,7 +14,7 @@ namespace Quests.Logic.Tutorials.Core
 
         private CompositeDisposable _cardTableSubscriptions = new CompositeDisposable();
 
-        protected CardData _foundCard;
+        protected CardDataHolder _foundCard;
 
         private CardSelector _cardSelector;
 
@@ -66,7 +66,7 @@ namespace Quests.Logic.Tutorials.Core
             _cardTableSubscriptions.Clear();
         }
 
-        protected virtual void OnFoundCard(CardData cardData)
+        protected virtual void OnFoundCard(CardDataHolder cardData)
         {
             _foundCard = cardData;
         }

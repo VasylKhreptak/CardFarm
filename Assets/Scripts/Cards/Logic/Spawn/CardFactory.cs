@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Cards.Logic.Spawn
 {
-    public class CardFactory : MonoBehaviour, IParameterizedFactory<Card, CardData>
+    public class CardFactory : MonoBehaviour, IParameterizedFactory<Card, CardDataHolder>
     {
         private CardsObjectPooler _cardsObjectPooler;
 
@@ -18,10 +18,10 @@ namespace Cards.Logic.Spawn
             _cardsObjectPooler = cardsObjectPooler;
         }
 
-        public CardData Create(Card card)
+        public CardDataHolder Create(Card card)
         {
             GameObject cardObject = _cardsObjectPooler.Spawn(card);
-            CardData cardData = cardObject.GetComponent<CardData>();
+            CardDataHolder cardData = cardObject.GetComponent<CardDataHolder>();
             cardData.RenderOnTop();
             return cardData;
         }

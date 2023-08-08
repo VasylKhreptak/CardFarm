@@ -11,7 +11,7 @@ namespace Quests.Logic.QuestObservers.Core
         [Header("Preferences")]
         [SerializeField] private Card _recipeResult;
 
-        List<CardData> _subscribedCards = new List<CardData>();
+        List<CardDataHolder> _subscribedCards = new List<CardDataHolder>();
 
         public override void StopObserving()
         {
@@ -20,12 +20,12 @@ namespace Quests.Logic.QuestObservers.Core
             StopObservingCards();
         }
 
-        protected override void OnCardAdded(CardData cardData)
+        protected override void OnCardAdded(CardDataHolder cardData)
         {
             StartObservingCard(cardData);
         }
 
-        protected override void OnCardRemoved(CardData cardData)
+        protected override void OnCardRemoved(CardDataHolder cardData)
         {
             StopObservingCard(cardData);
         }
@@ -35,14 +35,14 @@ namespace Quests.Logic.QuestObservers.Core
             StopObservingCards();
         }
 
-        private void StartObservingCard(CardData cardData)
+        private void StartObservingCard(CardDataHolder cardData)
         {
             cardData.Callbacks.onSpawnedRecipeResult += OnSpawnedRecipeResult;
 
             _subscribedCards.Add(cardData);
         }
 
-        private void StopObservingCard(CardData cardData)
+        private void StopObservingCard(CardDataHolder cardData)
         {
             cardData.Callbacks.onSpawnedRecipeResult -= OnSpawnedRecipeResult;
 

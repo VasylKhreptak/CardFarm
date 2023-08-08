@@ -9,7 +9,7 @@ namespace Cards.Graphics.Logic
     public class CardRecipeExecutionJumper : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
@@ -24,7 +24,7 @@ namespace Cards.Graphics.Logic
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void Awake()

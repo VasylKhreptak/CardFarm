@@ -21,7 +21,7 @@ namespace Cards.Logic.Spawn
             Card.CoinChest, Card.Coin
         };
 
-        public event Action<CardData> OnCardSpawned;
+        public event Action<CardDataHolder> OnCardSpawned;
         public event Action OnCardSpawnedNonParameterized;
 
         private CardFactory _cardFactory;
@@ -41,9 +41,9 @@ namespace Cards.Logic.Spawn
             _playingAreaTableBounds = playingAreaTableBounds;
         }
 
-        public CardData Spawn(Card card, Vector3 position)
+        public CardDataHolder Spawn(Card card, Vector3 position)
         {
-            CardData spawnedCard = _cardFactory.Create(card);
+            CardDataHolder spawnedCard = _cardFactory.Create(card);
 
             spawnedCard.transform.localRotation = Quaternion.identity;
             spawnedCard.transform.localScale = Vector3.one;
@@ -62,7 +62,7 @@ namespace Cards.Logic.Spawn
             return spawnedCard;
         }
 
-        public CardData SpawnAndMove(Card card,
+        public CardDataHolder SpawnAndMove(Card card,
             Vector3 position,
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
@@ -72,7 +72,7 @@ namespace Cards.Logic.Spawn
             return SpawnAndMove(card, card, position, targetPosition, tryJoinToExistingGroup, jump, flip);
         }
 
-        public CardData SpawnAndMove(
+        public CardDataHolder SpawnAndMove(
             Card card,
             Card bottomCard,
             Vector3 position,
@@ -84,7 +84,7 @@ namespace Cards.Logic.Spawn
             return SpawnAndMove(card, new[] { bottomCard }, position, targetPosition, tryJoinToExistingGroup, jump, flip);
         }
 
-        public CardData SpawnAndMove(
+        public CardDataHolder SpawnAndMove(
             Card card,
             Card[] prioritizedCardsToJoin,
             Vector3 position,
@@ -94,7 +94,7 @@ namespace Cards.Logic.Spawn
             bool flip = true)
         {
 
-            CardData spawnedCard = Spawn(card, position);
+            CardDataHolder spawnedCard = Spawn(card, position);
             if (tryJoinToExistingGroup && _cardsTable.TryGetLowestUniqPrioritizedCompatibleGroupCard(spawnedCard, prioritizedCardsToJoin, out var lowestGroupCard))
             {
                 spawnedCard.LinkTo(lowestGroupCard);
@@ -127,7 +127,7 @@ namespace Cards.Logic.Spawn
             return spawnedCard;
         }
 
-        public CardData SpawnCoinAndMove(
+        public CardDataHolder SpawnCoinAndMove(
             Vector3 position,
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,

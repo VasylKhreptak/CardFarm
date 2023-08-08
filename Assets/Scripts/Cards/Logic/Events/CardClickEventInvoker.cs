@@ -9,7 +9,7 @@ namespace Cards.Logic.Events
     public class CardClickEventInvoker : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private CardData _cardData;
+        [SerializeField] private CardDataHolder _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _maxDistance = 0.1f;
@@ -27,7 +27,7 @@ namespace Cards.Logic.Events
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         private void OnEnable()

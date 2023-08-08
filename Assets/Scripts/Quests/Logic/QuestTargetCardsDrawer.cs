@@ -80,7 +80,7 @@ namespace Quests.Logic
 
         private void OnQuestClicked()
         {
-            List<CardData> foundCards = FindTargetCards();
+            List<CardDataHolder> foundCards = FindTargetCards();
 
             if (foundCards.Count == 0) return;
 
@@ -93,19 +93,19 @@ namespace Quests.Logic
             PlayAnimations(foundCards);
         }
 
-        private List<CardData> FindTargetCards()
+        private List<CardDataHolder> FindTargetCards()
         {
-            List<CardData> targetCards = new List<CardData>();
+            List<CardDataHolder> targetCards = new List<CardDataHolder>();
             Vector3 cameraPosition = _camera.transform.position;
 
             foreach (var targetCardPair in _targetCards)
             {
                 int count = targetCardPair.Quantity;
-                List<CardData> foundCards = new List<CardData>();
+                List<CardDataHolder> foundCards = new List<CardDataHolder>();
 
                 if (_cardSelector.SelectedCardsMap.TryGetValue(targetCardPair.Card, out var cards))
                 {
-                    List<(CardData, float)> cardDistancePairs = new List<(CardData, float)>(cards.Count);
+                    List<(CardDataHolder, float)> cardDistancePairs = new List<(CardDataHolder, float)>(cards.Count);
 
                     foreach (var card in cards)
                     {
@@ -122,7 +122,7 @@ namespace Quests.Logic
             return targetCards;
         }
 
-        private Vector3 GetCardsCenter(List<CardData> cards)
+        private Vector3 GetCardsCenter(List<CardDataHolder> cards)
         {
             Vector3 sum = Vector3.zero;
 
@@ -134,15 +134,15 @@ namespace Quests.Logic
             return sum / cards.Count;
         }
 
-        private float GetTargetCameraDistance(Vector3 center, List<CardData> cards)
+        private float GetTargetCameraDistance(Vector3 center, List<CardDataHolder> cards)
         {
             float distanceSum = 0f;
             float targetCameraDistance = 0f;
 
             for (int i = 1; i < cards.Count; i++)
             {
-                CardData previousCard = cards[i - 1];
-                CardData currentCard = cards[i];
+                CardDataHolder previousCard = cards[i - 1];
+                CardDataHolder currentCard = cards[i];
 
                 float distance = Vector3.Distance(previousCard.transform.position, currentCard.transform.position);
                 distanceSum += distance;
@@ -154,7 +154,7 @@ namespace Quests.Logic
             return targetCameraDistance;
         }
 
-        private void ShowOutlines(List<CardData> cards)
+        private void ShowOutlines(List<CardDataHolder> cards)
         {
             foreach (var card in cards)
             {
@@ -162,7 +162,7 @@ namespace Quests.Logic
             }
         }
 
-        private void PlayAnimations(List<CardData> cards)
+        private void PlayAnimations(List<CardDataHolder> cards)
         {
             foreach (var card in cards)
             {

@@ -13,7 +13,7 @@ namespace Cards.Graphics.Animations
     public class CardJumpAnimation : CardAnimation, IValidatable
     {
         [Header("References")]
-        [SerializeField] protected CardData _cardData;
+        [SerializeField] protected CardDataHolder _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _duration = 0.5f;
@@ -48,7 +48,7 @@ namespace Cards.Graphics.Animations
 
         public void Validate()
         {
-            _cardData = GetComponentInParent<CardData>(true);
+            _cardData = GetComponentInParent<CardDataHolder>(true);
         }
 
         protected virtual void OnDisable()

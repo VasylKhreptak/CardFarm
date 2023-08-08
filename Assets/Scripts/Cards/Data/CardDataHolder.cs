@@ -16,7 +16,7 @@ using Zenject;
 
 namespace Cards.Data
 {
-    public class CardData : MonoBehaviour, IValidatable
+    public class CardDataHolder : MonoBehaviour, IValidatable
     {
         [SerializeField] private float _baseHeight = 0.01f;
         [SerializeField] private float _selectedHeight = 0.1f;
@@ -79,20 +79,20 @@ namespace Cards.Data
 
         public BoolReactiveProperty IsInteractable = new BoolReactiveProperty(true);
 
-        public ReactiveProperty<CardData> UpperCard = new ReactiveProperty<CardData>();
-        public ReactiveProperty<CardData> BottomCard = new ReactiveProperty<CardData>();
+        public ReactiveProperty<CardDataHolder> UpperCard = new ReactiveProperty<CardDataHolder>();
+        public ReactiveProperty<CardDataHolder> BottomCard = new ReactiveProperty<CardDataHolder>();
 
-        public ReactiveProperty<CardData> FirstUpperCard = new ReactiveProperty<CardData>();
-        public ReactiveProperty<CardData> LastBottomCard = new ReactiveProperty<CardData>();
+        public ReactiveProperty<CardDataHolder> FirstUpperCard = new ReactiveProperty<CardDataHolder>();
+        public ReactiveProperty<CardDataHolder> LastBottomCard = new ReactiveProperty<CardDataHolder>();
 
-        public ReactiveProperty<CardData> FirstGroupCard = new ReactiveProperty<CardData>();
-        public ReactiveProperty<CardData> LastGroupCard = new ReactiveProperty<CardData>();
+        public ReactiveProperty<CardDataHolder> FirstGroupCard = new ReactiveProperty<CardDataHolder>();
+        public ReactiveProperty<CardDataHolder> LastGroupCard = new ReactiveProperty<CardDataHolder>();
 
-        public ReactiveProperty<CardData> JoinableCard = new ReactiveProperty<CardData>();
+        public ReactiveProperty<CardDataHolder> JoinableCard = new ReactiveProperty<CardDataHolder>();
 
-        public List<CardData> UpperCards = new List<CardData>();
-        public List<CardData> BottomCards = new List<CardData>();
-        public List<CardData> GroupCards = new List<CardData>();
+        public List<CardDataHolder> UpperCards = new List<CardDataHolder>();
+        public List<CardDataHolder> BottomCards = new List<CardDataHolder>();
+        public List<CardDataHolder> GroupCards = new List<CardDataHolder>();
 
         public Transform BottomCardFollowPoint;
 
@@ -131,7 +131,7 @@ namespace Cards.Data
 
         public CardSelectedHeightController CardSelectedHeightController;
 
-        public List<CardData> OverlappingCards = new List<CardData>();
+        public List<CardDataHolder> OverlappingCards = new List<CardDataHolder>();
 
         public BoolReactiveProperty IsNew = new BoolReactiveProperty(false);
 

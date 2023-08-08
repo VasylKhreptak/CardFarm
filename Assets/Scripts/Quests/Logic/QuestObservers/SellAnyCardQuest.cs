@@ -18,7 +18,7 @@ namespace Quests.Logic.QuestObservers
             StopObservingSellZones();
         }
 
-        protected override void OnCardsCountChanged(ReactiveCollection<CardData> cards)
+        protected override void OnCardsCountChanged(ReactiveCollection<CardDataHolder> cards)
         {
             StopObservingSellZones();
 
