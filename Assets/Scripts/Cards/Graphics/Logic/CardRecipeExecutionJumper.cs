@@ -11,6 +11,9 @@ namespace Cards.Graphics.Logic
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
+        [Header("Preferences")]
+        [SerializeField] private float _delay = 0.5f;
+
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private FactoryData _factoryData;
@@ -74,12 +77,12 @@ namespace Cards.Graphics.Logic
                 isExecuting = true;
             }
 
-            if(_cardData.IsSelected.Value)
+            if (_cardData.IsSelected.Value)
             {
                 _cardData.Animations.ContinuousJumpingAnimation.StopAll();
                 return;
             }
-            
+
             if (_cardData.IsAnyGroupCardSelected.Value)
             {
                 _cardData.Animations.ContinuousJumpingAnimation.StopContinuous();
@@ -98,8 +101,7 @@ namespace Cards.Graphics.Logic
 
         private void StartJumping()
         {
-            StopJumping();
-            _cardData.Animations.ContinuousJumpingAnimation.PlayContinuous();
+            _cardData.Animations.ContinuousJumpingAnimation.PlayContinuous(delay: _delay);
         }
 
         private void StopJumping()

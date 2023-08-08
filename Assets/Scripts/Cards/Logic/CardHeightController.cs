@@ -21,6 +21,7 @@ namespace Cards.Logic
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private IDisposable _upperCardHeightSubscription;
+        private IDisposable _upperCardSubscription;
 
         private Tween _heightTween;
 
@@ -39,13 +40,15 @@ namespace Cards.Logic
         private void OnEnable()
         {
             StartObserving();
+            StartObservingUpperCard();
         }
 
         private void OnDisable()
         {
             StopObserving();
             KillHeightTween();
-            StopObservingUpperCardHeight();
+            StopObservingUpperCard();
+            _upperCardHeightSubscription?.Dispose();
         }
 
         #endregion
@@ -69,7 +72,6 @@ namespace Cards.Logic
             CardData upperCard = _cardData.UpperCard.Value;
 
             KillHeightTween();
-            StopObservingUpperCardHeight();
 
             if (isSelected)
             {
@@ -81,7 +83,6 @@ namespace Cards.Logic
             if (upperCard != null)
             {
                 SetHeightSmooth(upperCard.transform);
-                StartObservingUpperCardHeight();
             }
             else if (joinableCard != null)
             {
@@ -124,8 +125,8 @@ namespace Cards.Logic
             float startHeight = GetHeight();
             _heightTween = DOTween.To(() => progress, x => progress = x, 1, _duration)
                 .SetEase(_curve)
-                .OnPlay(() => _isUpdatingHeightSmoothly.Value = true)
                 .OnUpdate(() => SetHeight(Mathf.Lerp(startHeight, target.position.y, progress)))
+                .OnPlay(() => _isUpdatingHeightSmoothly.Value = true)
                 .OnKill(() => _isUpdatingHeightSmoothly.Value = false)
                 .OnComplete(() => _isUpdatingHeightSmoothly.Value = false)
                 .Play();
@@ -136,23 +137,29 @@ namespace Cards.Logic
             _heightTween?.Kill();
         }
 
-        private void StartObservingUpperCardHeight()
+        private void StartObservingUpperCard()
         {
-            StopObservingUpperCardHeight();
+            StopObservingUpperCard();
+            _upperCardHeightSubscription?.Dispose();
 
-            CardData upperCard = _cardData.UpperCard.Value;
-
-            if (upperCard == null) return;
-
-            _upperCardHeightSubscription = upperCard.Height.Subscribe(height =>
+            _upperCardSubscription = _cardData.UpperCard.Subscribe(upperCard =>
             {
-                if (_isUpdatingHeightSmoothly.Value) return;
+                _upperCardHeightSubscription?.Dispose();
 
-                SetHeight(height);
+                if (upperCard == null) return;
+
+                upperCard.Height.Subscribe(height =>
+                {
+                    if (_isUpdatingHeightSmoothly.Value
+                        || _cardData.IsSelected.Value
+                        || _cardData.JoinableCard.Value != null) return;
+
+                    SetHeight(height);
+                });
             });
         }
 
-        private void StopObservingUpperCardHeight()
+        private void StopObservingUpperCard()
         {
             _upperCardHeightSubscription?.Dispose();
         }
