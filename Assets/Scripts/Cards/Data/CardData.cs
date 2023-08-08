@@ -131,8 +131,6 @@ namespace Cards.Data
 
         public PositionShakeObserver PositionShakeObserver;
 
-        public CardSelectedHeightController CardSelectedHeightController;
-
         public List<CardData> OverlappingCards = new List<CardData>();
 
         public BoolReactiveProperty IsNew = new BoolReactiveProperty(false);
@@ -166,7 +164,6 @@ namespace Cards.Data
             Animations.FlipAnimation = GetComponentInChildren<CardFlipAnimation>(true);
             Animations.ShakeAnimation = GetComponentInChildren<CardShakeAnimation>(true);
             Animations.ContinuousJumpingAnimation = GetComponentInChildren<CardContinuousJumpingAnimation>(true);
-            CardSelectedHeightController = GetComponentInChildren<CardSelectedHeightController>(true);
 
             RectTransform = GetComponentInChildren<RectTransform>(true);
 
