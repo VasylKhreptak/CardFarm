@@ -72,7 +72,11 @@ namespace Cards.Logic
                     _upperCardHeightSubscription?.Dispose();
                     _upperCardHeightSubscription = upperCardData.Height.Subscribe(height =>
                     {
-                        if (_cardData.CardSelectedHeightController.IsUpdatingHeightProperty.Value) return;
+                        if (_cardData.CardSelectedHeightController.IsUpdatingHeightProperty.Value)
+                        {
+                            Debug.Log("True");
+                            return;
+                        }
 
                         position.y = height;
                         _cardData.Height.Value = position.y;

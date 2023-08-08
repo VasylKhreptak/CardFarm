@@ -15,6 +15,8 @@ namespace Cards.Logic.Updaters
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
+        private CardData _previousSelectedCard;
+
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
 
         [Inject]
@@ -55,12 +57,18 @@ namespace Cards.Logic.Updaters
             _cardData.IsLastGroupCard.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.IsCompatibleWithSelectedCard.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.IsSelected.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
-            _currentSelectedCardHolder.SelectedCard.Subscribe(_ => OnCardsEnvironmentChanged()).AddTo(_subscriptions);
+            _currentSelectedCardHolder.SelectedCard.Subscribe(selectedCard =>
+            {
+                OnSelectedCardChanged(selectedCard);
+                OnCardsEnvironmentChanged();
+            }).AddTo(_subscriptions);
         }
 
         private void StopObserving()
         {
             _subscriptions.Clear();
+            StopObservingSelectedCardAdjacentCards(_previousSelectedCard);
+            _previousSelectedCard = null;
         }
 
         private void OnCardsEnvironmentChanged()
@@ -88,13 +96,41 @@ namespace Cards.Logic.Updaters
 
             canBeUnderSelectedCard =
                 isLowestGroupCard == false ? isCardLastInSelectedCardUpperCards : isLowestGroupCard
-                && isSelected == false
-                && isCompatibleWithSelectedCard
-                && isCardsSame == false
-                && isCardInSelectedCardBottomCards == false;
+                    && isSelected == false
+                    && isCompatibleWithSelectedCard
+                    && isCardsSame == false
+                    && isCardInSelectedCardBottomCards == false;
 
 
             _cardData.CanBeUnderSelectedCard.Value = canBeUnderSelectedCard;
+        }
+
+        private void OnSelectedCardChanged(CardData selectedCard)
+        {
+            StopObservingSelectedCardAdjacentCards(_previousSelectedCard);
+
+            StartObservingSelectedCardAdjacentCards(selectedCard);
+
+            _previousSelectedCard = selectedCard;
+        }
+
+        private void StartObservingSelectedCardAdjacentCards(CardData cardData)
+        {
+            if (cardData == null) return;
+
+            StopObservingSelectedCardAdjacentCards(_previousSelectedCard);
+            StopObservingSelectedCardAdjacentCards(cardData);
+
+            cardData.Callbacks.onBottomCardsListUpdated += OnCardsEnvironmentChanged;
+            cardData.Callbacks.onUpperCardsListUpdated += OnCardsEnvironmentChanged;
+        }
+
+        private void StopObservingSelectedCardAdjacentCards(CardData cardData)
+        {
+            if (cardData == null) return;
+
+            cardData.Callbacks.onBottomCardsListUpdated -= OnCardsEnvironmentChanged;
+            cardData.Callbacks.onUpperCardsListUpdated -= OnCardsEnvironmentChanged;
         }
     }
 }
