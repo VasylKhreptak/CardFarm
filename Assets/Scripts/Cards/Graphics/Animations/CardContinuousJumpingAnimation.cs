@@ -24,10 +24,12 @@ namespace Cards.Graphics.Animations
 
         public void PlayContinuous(float duration = float.MaxValue, float delay = 0f)
         {
+            StopContinuous();
+
             _delayDisposable?.Dispose();
             _delayDisposable = Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
             {
-                StopContinuous();
+                _intervalDisposable?.Dispose();
                 _intervalDisposable = Observable
                     .Interval(TimeSpan.FromSeconds(Duration + _jumpInterval))
                     .DoOnSubscribe(() => Play(_cardData.transform.position))

@@ -168,7 +168,7 @@ namespace Quests.Logic
             {
                 if (card.IsTakingPartInRecipe.Value == false && card.IsSingleCard.Value)
                 {
-                    card.Animations.ContinuousJumpingAnimation.PlayContinuous(_cardJumpDuration);
+                    card.Animations.ContinuousJumpingAnimation.PlayContinuous(duration:_cardJumpDuration);
                 }
             }
         }

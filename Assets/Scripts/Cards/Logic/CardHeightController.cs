@@ -148,7 +148,7 @@ namespace Cards.Logic
 
                 if (upperCard == null) return;
 
-                upperCard.Height.Subscribe(height =>
+                _upperCardHeightSubscription = upperCard.Height.Subscribe(height =>
                 {
                     if (_isUpdatingHeightSmoothly.Value
                         || _cardData.IsSelected.Value
