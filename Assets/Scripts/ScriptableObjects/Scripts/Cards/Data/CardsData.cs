@@ -11,7 +11,6 @@ using Extensions;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
-using DamageableCardData = Cards.Data.DamageableCardData;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -225,10 +224,22 @@ namespace ScriptableObjects.Scripts.Cards.Data
                 cardDataHolder.HeaderColor = header.color;
             }
 
-            cardDataHolder.StatsIconColor = Color.black;
+            cardDataHolder.StatsTextColor = cardDataHolder.BodyColor;
             cardDataHolder.Icon = cardData.Icon.Value;
-            cardDataHolder.Description = "Card Description";
+            cardDataHolder.Description = cardDataHolder.Name + " Description";
 
+            cardDataHolder.IsWorker = cardData.IsWorker;
+            cardDataHolder.IsFood = cardData.IsFood;
+            cardDataHolder.IsResourceNode = cardData.IsResourceNode;
+            cardDataHolder.IsSellableCard = cardData.IsSellableCard;
+            cardDataHolder.IsAutomatedFactory = cardData.IsAutomatedFactory;
+            cardDataHolder.IsAnimal = cardData.IsAnimal;
+            cardDataHolder.IsDamageable = cardData.IsDamageable;
+            cardDataHolder.IsOrder = cardData.IsOrder;
+            cardDataHolder.IsResource = cardData.IsResource;
+            cardDataHolder.IsZone = cardData.IsZone;
+            cardDataHolder.HasHeaderBackground = cardData.HasHeaderBackground;
+            
             return cardDataHolder;
         }
 

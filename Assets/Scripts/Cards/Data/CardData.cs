@@ -37,6 +37,7 @@ namespace Cards.Data
         [SerializeField] private bool _canBePlacedInChest;
         [SerializeField] private bool _canBeStackedWithSameCard = true;
         [SerializeField] private bool _isZone;
+        [SerializeField] private bool _hasHeaderBackground = true;
 
         public float BaseHeight => _baseHeight;
         public float SelectedHeight => _selectedHeight;
@@ -58,6 +59,7 @@ namespace Cards.Data
         public bool CanBePlacedInChest => _canBePlacedInChest;
         public bool CanBeStackedWithSameCard => _canBeStackedWithSameCard;
         public bool IsZone => _isZone;
+        public bool HasHeaderBackground => _hasHeaderBackground;
 
         public int ID = -1;
         public IntReactiveProperty GroupID = new IntReactiveProperty(-1);
