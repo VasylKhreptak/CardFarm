@@ -3,6 +3,7 @@ using Extensions;
 using Quests.Data;
 using Quests.Graphics.VisualElements.Recipe.RecipeParts.Card.Data;
 using Quests.Logic;
+using ScriptableObjects.Scripts.Cards.Data;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -27,12 +28,14 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
 
         private QuestsManager _questsManager;
         private DiContainer _container;
+        private CardsData _cardsData;
 
         [Inject]
-        private void Constructor(QuestsManager questsManager, DiContainer container)
+        private void Constructor(QuestsManager questsManager, DiContainer container, CardsData cardsData)
         {
             _questsManager = questsManager;
             _container = container;
+            _cardsData = cardsData;
         }
 
         private void OnValidate()
@@ -89,14 +92,19 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             SpawnCard(currentQuest.Recipe.Result, _resultSize);
         }
 
-        private void SpawnCard(QuestRecipeCardData cardData, Vector2 size)
+        private void SpawnCard(QuestRecipeCardData recipeCardData, Vector2 size)
         {
             GameObject spawnedCard = SpawnPrefab(_cardTemplate);
 
             QuestRecipeCardDataHolder dataHolder = spawnedCard.GetComponent<QuestRecipeCardDataHolder>();
             dataHolder.RectTransform.sizeDelta = size;
-            
-            dataHolder.CopyFrom(cardData);
+
+            if (_cardsData.TryGetValue(recipeCardData.Card, out var cardData))
+            {
+                dataHolder.Icon.Value = cardData.Icon;
+                dataHolder.BackgroundColor.Value = cardData.BodyColor;
+                dataHolder.Quantity.Value = recipeCardData.Quantity;
+            }
         }
 
         private GameObject SpawnPrefab(GameObject prefab)

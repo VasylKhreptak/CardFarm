@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using Data.Cards.Core;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -14,14 +15,7 @@ namespace Quests.Graphics.VisualElements.Recipe.RecipeParts.Card.Data
         public ColorReactiveProperty BackgroundColor = new ColorReactiveProperty();
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
         public IntReactiveProperty Quantity = new IntReactiveProperty();
-
-        public void CopyFrom(QuestRecipeCardData data)
-        {
-            BackgroundColor.Value = data.BackgroundColor;
-            Icon.Value = data.Icon;
-            Quantity.Value = data.Quantity;
-        }
-
+        
         #region MonoBehaviour
 
         private void OnValidate()

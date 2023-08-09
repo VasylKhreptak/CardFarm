@@ -59,15 +59,12 @@ MonoBehaviour:
     value: 0
   Recipe:
     Result:
-      BackgroundColor: {r: 0.93725497, g: 0.7058824, b: 0.6509804, a: 1}
-      Icon: {fileID: 21300000, guid: d0e75e864fa07194c94a6262c6ed6480, type: 3}
+      Card: 18
       Quantity: 1
     TargetCards:
-    - BackgroundColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
-      Icon: {fileID: 21300000, guid: ce61582e1cb853a4b9f4762a196edefe, type: 3}
+    - Card: 7
       Quantity: 1
-    - BackgroundColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
-      Icon: {fileID: 21300000, guid: a5724fbb1d2e40e4db783492e58b3278, type: 3}
+    - Card: 9
       Quantity: 1
   Progress:
     value: 0
