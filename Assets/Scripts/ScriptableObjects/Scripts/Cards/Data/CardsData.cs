@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using Cards.Food.Data;
@@ -8,11 +9,11 @@ using Data.Cards;
 using Data.Cards.Core;
 using Extensions;
 using NaughtyAttributes;
-using UnityEditor;
+using UnityEngine;
 using UnityEngine.UI;
 using DamageableCardData = Cards.Data.DamageableCardData;
 #if UNITY_EDITOR
-using UnityEngine;
+using UnityEditor;
 #endif
 
 namespace ScriptableObjects.Scripts.Cards.Data
@@ -94,7 +95,7 @@ namespace ScriptableObjects.Scripts.Cards.Data
             Debug.Log("Action Executed");
         }
 
-        #region Editor
+        #if UNITY_EDITOR
 
         [Button()]
         private void SyncWithPrefabs()
@@ -121,6 +122,23 @@ namespace ScriptableObjects.Scripts.Cards.Data
             }
 
             Debug.Log($"Found Cards {cards.Count}");
+
+            CheckForDuplicates();
+        }
+
+        private void CheckForDuplicates()
+        {
+            foreach (var cardData in _cardsData)
+            {
+                Card card = cardData.Key;
+
+                int count = _cardsData.Count(x => x.Key == card);
+
+                if (count > 1)
+                {
+                    Debug.Log($"Found Duplicates For {card}. {count} times.");
+                }
+            }
         }
 
         private void AddCardData(global::Cards.Data.CardData cardData)
@@ -128,15 +146,15 @@ namespace ScriptableObjects.Scripts.Cards.Data
             CardDataHolder cardDataHolder = new CardDataHolder();
             Card key = cardData.Card.Value;
 
-            if (cardData.IsFood)
+            if (cardData is FoodCardData)
             {
                 cardDataHolder = CreateFoodCardDataHolder(cardData);
             }
-            else if (cardData.IsSellableCard)
+            else if (cardData is SellableCardData)
             {
                 cardDataHolder = CreateSellableCardDataHolder(cardData);
             }
-            else if (cardData.IsDamageable)
+            else if (cardData is DamageableCardData)
             {
                 cardDataHolder = CreateDamageableCardDataHolder(cardData);
             }
@@ -185,7 +203,6 @@ namespace ScriptableObjects.Scripts.Cards.Data
                 foodCardDataHolder.NutritionalValue = foodCardData.MaxNutritionalValue.Value;
             }
 
-
             return foodCardDataHolder;
         }
 
@@ -215,6 +232,6 @@ namespace ScriptableObjects.Scripts.Cards.Data
             return cardDataHolder;
         }
 
-        #endregion
+        #endif
     }
 }

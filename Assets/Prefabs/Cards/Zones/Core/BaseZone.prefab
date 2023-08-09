@@ -207,13 +207,13 @@ PrefabInstance:
     - target: {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: Name.value
-      value: Sell
+      value: Name
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: PositionShakeObserver
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 554560121855317516}
     - target: {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _canSortingLayerChange
@@ -472,6 +472,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4824668281107353555, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
+--- !u!114 &554560121855317516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2501728543964782568, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 2667782056078035428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3887a6b8d44fd9a1ad3c9d575b3459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3051697175370202821 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1106781378184328993, guid: 7bf54413c6b39324e9a7ddfc51606634,

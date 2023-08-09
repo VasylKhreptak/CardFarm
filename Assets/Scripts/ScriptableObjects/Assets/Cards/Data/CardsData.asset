@@ -12,48 +12,1140 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bf4f5adba546e19953926f83c340c0, type: 3}
   m_Name: CardsData
   m_EditorClassIdentifier: 
-  _defaultCardData:
-    Name: 
-    NameColor: {r: 1, g: 1, b: 1, a: 1}
-    BodyColor: {r: 1, g: 1, b: 1, a: 1}
-    HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-    StatsIconColor: {r: 1, g: 1, b: 1, a: 1}
-    Icon: {fileID: 0}
-    Description: 
-  _defaultSellableCardData:
-    Name: 
-    NameColor: {r: 1, g: 1, b: 1, a: 1}
-    BodyColor: {r: 1, g: 1, b: 1, a: 1}
-    HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-    StatsIconColor: {r: 1, g: 1, b: 1, a: 1}
-    Icon: {fileID: 0}
-    Description: 
-    Price: 0
-  _defaultDamageableCardData:
-    Name: 
-    NameColor: {r: 1, g: 1, b: 1, a: 1}
-    BodyColor: {r: 1, g: 1, b: 1, a: 1}
-    HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-    StatsIconColor: {r: 1, g: 1, b: 1, a: 1}
-    Icon: {fileID: 0}
-    Description: 
-    Health: 0
-  _defaultFoodCardData:
-    Name: 
-    NameColor: {r: 1, g: 1, b: 1, a: 1}
-    BodyColor: {r: 1, g: 1, b: 1, a: 1}
-    HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-    StatsIconColor: {r: 1, g: 1, b: 1, a: 1}
-    Icon: {fileID: 0}
-    Description: 
-    Price: 0
-    NutritionalValue: 0
-  _defaultBoosterCardData:
-    Name: 
-    NameColor: {r: 1, g: 1, b: 1, a: 1}
-    BodyColor: {r: 1, g: 1, b: 1, a: 1}
-    HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-    StatsIconColor: {r: 1, g: 1, b: 1, a: 1}
-    Icon: {fileID: 0}
-    Description: 
-    CardsCount: 0
+  _cardsData:
+  - rid: 2095229570668560958
+  - rid: 2095229570668560959
+  - rid: 2095229570668560960
+  - rid: 2095229570668560961
+  - rid: 2095229570668560962
+  - rid: 2095229570668560963
+  - rid: 2095229570668560964
+  - rid: 2095229570668560965
+  - rid: 2095229570668560966
+  - rid: 2095229570668560967
+  - rid: 2095229570668560968
+  - rid: 2095229570668560969
+  - rid: 2095229570668560970
+  - rid: 2095229570668560971
+  - rid: 2095229570668560972
+  - rid: 2095229570668560973
+  - rid: 2095229570668560974
+  - rid: 2095229570668560975
+  - rid: 2095229570668560976
+  - rid: 2095229570668560977
+  - rid: 2095229570668560978
+  - rid: 2095229570668560979
+  - rid: 2095229570668560980
+  - rid: 2095229570668560981
+  - rid: 2095229570668560982
+  - rid: 2095229570668560983
+  - rid: 2095229570668560984
+  - rid: 2095229570668560985
+  - rid: 2095229570668560986
+  - rid: 2095229570668560987
+  - rid: 2095229570668560988
+  - rid: 2095229570668560989
+  - rid: 2095229570668560990
+  - rid: 2095229570668560991
+  - rid: 2095229570668560992
+  - rid: 2095229570668560993
+  - rid: 2095229570668560994
+  - rid: 2095229570668560995
+  - rid: 2095229570668560996
+  - rid: 2095229570668560997
+  - rid: 2095229570668560998
+  - rid: 2095229570668560999
+  - rid: 2095229570668561000
+  - rid: 2095229570668561001
+  - rid: 2095229570668561002
+  - rid: 2095229570668561003
+  - rid: 2095229570668561004
+  - rid: 2095229570668561005
+  - rid: 2095229570668561006
+  - rid: 2095229570668561007
+  - rid: 2095229570668561008
+  - rid: 2095229570668561009
+  - rid: 2095229570668561010
+  - rid: 2095229570668561011
+  - rid: 2095229570668561012
+  - rid: 2095229570668561013
+  - rid: 2095229570668561014
+  - rid: 2095229570668561015
+  - rid: 2095229570668561016
+  references:
+    version: 2
+    RefIds:
+    - rid: 2095229570668560958
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 24
+        Value:
+          rid: 2095229570668561017
+    - rid: 2095229570668560959
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 54
+        Value:
+          rid: 2095229570668561018
+    - rid: 2095229570668560960
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 23
+        Value:
+          rid: 2095229570668561019
+    - rid: 2095229570668560961
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 56
+        Value:
+          rid: 2095229570668561020
+    - rid: 2095229570668560962
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 42
+        Value:
+          rid: 2095229570668561021
+    - rid: 2095229570668560963
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 43
+        Value:
+          rid: 2095229570668561022
+    - rid: 2095229570668560964
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 55
+        Value:
+          rid: 2095229570668561023
+    - rid: 2095229570668560965
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 10
+        Value:
+          rid: 2095229570668561024
+    - rid: 2095229570668560966
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 38
+        Value:
+          rid: 2095229570668561025
+    - rid: 2095229570668560967
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 3
+        Value:
+          rid: 2095229570668561026
+    - rid: 2095229570668560968
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 48
+        Value:
+          rid: 2095229570668561027
+    - rid: 2095229570668560969
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 49
+        Value:
+          rid: 2095229570668561028
+    - rid: 2095229570668560970
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 13
+        Value:
+          rid: 2095229570668561029
+    - rid: 2095229570668560971
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 12
+        Value:
+          rid: 2095229570668561030
+    - rid: 2095229570668560972
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 16
+        Value:
+          rid: 2095229570668561031
+    - rid: 2095229570668560973
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 62
+        Value:
+          rid: 2095229570668561032
+    - rid: 2095229570668560974
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 8
+        Value:
+          rid: 2095229570668561033
+    - rid: 2095229570668560975
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 40
+        Value:
+          rid: 2095229570668561034
+    - rid: 2095229570668560976
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 18
+        Value:
+          rid: 2095229570668561035
+    - rid: 2095229570668560977
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 0
+        Value:
+          rid: 2095229570668561036
+    - rid: 2095229570668560978
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 21
+        Value:
+          rid: 2095229570668561037
+    - rid: 2095229570668560979
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 11
+        Value:
+          rid: 2095229570668561038
+    - rid: 2095229570668560980
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 44
+        Value:
+          rid: 2095229570668561039
+    - rid: 2095229570668560981
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 7
+        Value:
+          rid: 2095229570668561040
+    - rid: 2095229570668560982
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 30
+        Value:
+          rid: 2095229570668561041
+    - rid: 2095229570668560983
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 6
+        Value:
+          rid: 2095229570668561042
+    - rid: 2095229570668560984
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 33
+        Value:
+          rid: 2095229570668561043
+    - rid: 2095229570668560985
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 47
+        Value:
+          rid: 2095229570668561044
+    - rid: 2095229570668560986
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 26
+        Value:
+          rid: 2095229570668561045
+    - rid: 2095229570668560987
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 45
+        Value:
+          rid: 2095229570668561046
+    - rid: 2095229570668560988
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 29
+        Value:
+          rid: 2095229570668561047
+    - rid: 2095229570668560989
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 59
+        Value:
+          rid: 2095229570668561048
+    - rid: 2095229570668560990
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 25
+        Value:
+          rid: 2095229570668561049
+    - rid: 2095229570668560991
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 28
+        Value:
+          rid: 2095229570668561050
+    - rid: 2095229570668560992
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 31
+        Value:
+          rid: 2095229570668561051
+    - rid: 2095229570668560993
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 27
+        Value:
+          rid: 2095229570668561052
+    - rid: 2095229570668560994
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 32
+        Value:
+          rid: 2095229570668561053
+    - rid: 2095229570668560995
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 34
+        Value:
+          rid: 2095229570668561054
+    - rid: 2095229570668560996
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 58
+        Value:
+          rid: 2095229570668561055
+    - rid: 2095229570668560997
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 46
+        Value:
+          rid: 2095229570668561056
+    - rid: 2095229570668560998
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 57
+        Value:
+          rid: 2095229570668561057
+    - rid: 2095229570668560999
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 41
+        Value:
+          rid: 2095229570668561058
+    - rid: 2095229570668561000
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 60
+        Value:
+          rid: 2095229570668561059
+    - rid: 2095229570668561001
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 61
+        Value:
+          rid: 2095229570668561060
+    - rid: 2095229570668561002
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 39
+        Value:
+          rid: 2095229570668561061
+    - rid: 2095229570668561003
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 17
+        Value:
+          rid: 2095229570668561062
+    - rid: 2095229570668561004
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 53
+        Value:
+          rid: 2095229570668561063
+    - rid: 2095229570668561005
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 35
+        Value:
+          rid: 2095229570668561064
+    - rid: 2095229570668561006
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 20
+        Value:
+          rid: 2095229570668561065
+    - rid: 2095229570668561007
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 19
+        Value:
+          rid: 2095229570668561066
+    - rid: 2095229570668561008
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 1
+        Value:
+          rid: 2095229570668561067
+    - rid: 2095229570668561009
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 9
+        Value:
+          rid: 2095229570668561068
+    - rid: 2095229570668561010
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 4
+        Value:
+          rid: 2095229570668561069
+    - rid: 2095229570668561011
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 2
+        Value:
+          rid: 2095229570668561070
+    - rid: 2095229570668561012
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 5
+        Value:
+          rid: 2095229570668561071
+    - rid: 2095229570668561013
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 52
+        Value:
+          rid: 2095229570668561072
+    - rid: 2095229570668561014
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 0
+        Value:
+          rid: 2095229570668561073
+    - rid: 2095229570668561015
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 37
+        Value:
+          rid: 2095229570668561074
+    - rid: 2095229570668561016
+      type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
+        asm: Assembly-CSharp}
+      data:
+        Key: 36
+        Value:
+          rid: 2095229570668561075
+    - rid: 2095229570668561017
+      type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Chicken
+        NameColor: {r: 0.95294124, g: 0.7137255, b: 0.5254902, a: 1}
+        BodyColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        HeaderColor: {r: 0.627451, g: 0.48627454, b: 0.37647063, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 78e43e607b35432479bdba811bb23db6, type: 3}
+        Description: Card Description
+        Health: 5
+    - rid: 2095229570668561018
+      type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Cod
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.6627451, g: 0.8431373, b: 0.49411768, a: 1}
+        HeaderColor: {r: 0.4039216, g: 0.5529412, b: 0.27450982, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: aac6e7e8bc9bdfa4dadec7e81e8058bb, type: 3}
+        Description: Card Description
+        Health: 3
+    - rid: 2095229570668561019
+      type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Cow
+        NameColor: {r: 0.95294124, g: 0.7137255, b: 0.5254902, a: 1}
+        BodyColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        HeaderColor: {r: 0.627451, g: 0.48627454, b: 0.37647063, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 61d33dfe6ca716e4493a41cb37175c8e, type: 3}
+        Description: Card Description
+        Health: 5
+    - rid: 2095229570668561020
+      type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Mackerel
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.6627451, g: 0.8431373, b: 0.49411768, a: 1}
+        HeaderColor: {r: 0.4039216, g: 0.5529412, b: 0.27450982, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 1d67ae1f2b0d5c643b899d9a62e472f8, type: 3}
+        Description: Card Description
+        Health: 4
+    - rid: 2095229570668561021
+      type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Parrot
+        NameColor: {r: 0.95294124, g: 0.7137255, b: 0.5254902, a: 1}
+        BodyColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        HeaderColor: {r: 0.627451, g: 0.48627454, b: 0.37647063, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 1997b30ade7fee84e8af62c2c542e432, type: 3}
+        Description: Card Description
+        Health: 5
+    - rid: 2095229570668561022
+      type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Rabbit
+        NameColor: {r: 0.95294124, g: 0.7137255, b: 0.5254902, a: 1}
+        BodyColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        HeaderColor: {r: 0.627451, g: 0.48627454, b: 0.37647063, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 24d0172f379ad1544895b3143553d972, type: 3}
+        Description: Card Description
+        Health: 5
+    - rid: 2095229570668561023
+      type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Tuna
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.6627451, g: 0.84313726, b: 0.49411765, a: 1}
+        HeaderColor: {r: 0.40784317, g: 0.5568628, b: 0.2784314, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 7cec6a73975306147ac05a248fb820d8, type: 3}
+        Description: Card Description
+        Health: 6
+    - rid: 2095229570668561024
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Apple Tree
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.2509804, g: 0.24705884, b: 0.23137257, a: 1}
+        HeaderColor: {r: 0.36862746, g: 0.36078432, b: 0.3372549, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: fff6fd628141b374f87a0ad4b1c5ecb7, type: 3}
+        Description: Card Description
+        Price: 0
+    - rid: 2095229570668561025
+      type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
+      data:
+        Name: Baby
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
+        HeaderColor: {r: 0.92549026, g: 0.8705883, b: 0.6627451, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 38ae2d03dc6967841b44dc35c9e37cee, type: 3}
+        Description: Card Description
+    - rid: 2095229570668561026
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Berry Bush
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.2509804, g: 0.24705884, b: 0.227451, a: 1}
+        HeaderColor: {r: 0.36862746, g: 0.36078432, b: 0.3372549, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 81d954b2072658840be4ddb846644d66, type: 3}
+        Description: Card Description
+        Price: 0
+    - rid: 2095229570668561027
+      type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
+      data:
+        Name: Booster
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        HeaderColor: {r: 1, g: 1, b: 1, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
+        Description: Card Description
+    - rid: 2095229570668561028
+      type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
+      data:
+        Name: Booster
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        HeaderColor: {r: 1, g: 1, b: 1, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
+        Description: Card Description
+    - rid: 2095229570668561029
+      type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
+      data:
+        Name: Booster
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        HeaderColor: {r: 1, g: 1, b: 1, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
+        Description: Card Description
+    - rid: 2095229570668561030
+      type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
+      data:
+        Name: Booster
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        HeaderColor: {r: 1, g: 1, b: 1, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
+        Description: Card Description
+    - rid: 2095229570668561031
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Brick
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        HeaderColor: {r: 0.5803922, g: 0.6117647, b: 0.654902, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 9871e8d7308587749abee0c195a6e23d, type: 3}
+        Description: Card Description
+        Price: 5
+    - rid: 2095229570668561032
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Resource Chest
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 0}
+        Description: Card Description
+        Price: 0
+    - rid: 2095229570668561033
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Coin
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.9568628, g: 0.8588236, b: 0.59607846, a: 1}
+        HeaderColor: {r: 0.9215687, g: 0.7490196, b: 0.33333334, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 3c580b7a36bd63a48bff6caa7bc605cc, type: 3}
+        Description: Card Description
+        Price: 1
+    - rid: 2095229570668561034
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Butchery
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 8c41db9e58aa59e4ab99e6bd38cb5eb0, type: 3}
+        Description: Card Description
+        Price: 3
+    - rid: 2095229570668561035
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Campfire
+        NameColor: {r: 0.03137255, g: 0, b: 0.003921569, a: 1}
+        BodyColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: d0e75e864fa07194c94a6262c6ed6480, type: 3}
+        Description: Card Description
+        Price: 5
+    - rid: 2095229570668561036
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Factory
+        NameColor: {r: 0.9450981, g: 0.7137255, b: 0.65882355, a: 1}
+        BodyColor: {r: 0.97647065, g: 0.87843144, b: 0.62352943, a: 1}
+        HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 0}
+        Description: Card Description
+        Price: 5
+    - rid: 2095229570668561037
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Garden
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: d223422c09ff5d94b98296370f3a1964, type: 3}
+        Description: Card Description
+        Price: 5
+    - rid: 2095229570668561038
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: 'House '
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 83c46fd70292a894db584832d91b7083, type: 3}
+        Description: Card Description
+        Price: 3
+    - rid: 2095229570668561039
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Poop
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        HeaderColor: {r: 0.5803922, g: 0.6117647, b: 0.654902, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 08f12d9e8ec4871438a13b6178f94732, type: 3}
+        Description: Card Description
+        Price: 1
+    - rid: 2095229570668561040
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Flint
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        HeaderColor: {r: 0.57254905, g: 0.6039216, b: 0.64705884, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: a5724fbb1d2e40e4db783492e58b3278, type: 3}
+        Description: Card Description
+        Price: 2
+    - rid: 2095229570668561041
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Apple
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 2677ff54233cea241b46c14b399306be, type: 3}
+        Description: Card Description
+        Price: 2
+        NutritionalValue: 2
+    - rid: 2095229570668561042
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Berry
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.89019614, g: 0.5764706, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: ae995c51e784a14498ed5ef5c9e87bd0, type: 3}
+        Description: Card Description
+        Price: 1
+        NutritionalValue: 1
+    - rid: 2095229570668561043
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Carrot
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 6ee2b4d0102742c49b7ec1c7c9cf373b, type: 3}
+        Description: Card Description
+        Price: 2
+        NutritionalValue: 2
+    - rid: 2095229570668561044
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Cooked Meat
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: a90cbd8979d5db5409f1d3248903e97a, type: 3}
+        Description: Card Description
+        Price: 3
+        NutritionalValue: 2
+    - rid: 2095229570668561045
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Egg
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 8e52f493926e80e46bb2e007e11d73bb, type: 3}
+        Description: Card Description
+        Price: 1
+        NutritionalValue: 1
+    - rid: 2095229570668561046
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Frittata
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: b44ec7151f056704a872ff17a1fa1887, type: 3}
+        Description: Card Description
+        Price: 3
+        NutritionalValue: 3
+    - rid: 2095229570668561047
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Fruit Salad
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 767064bd94a27db4fb4515aaaa260754, type: 3}
+        Description: Card Description
+        Price: 5
+        NutritionalValue: 3
+    - rid: 2095229570668561048
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Grilled Fish
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 220feb7eb1b353643813278f581e23cd, type: 3}
+        Description: Card Description
+        Price: 3
+        NutritionalValue: 2
+    - rid: 2095229570668561049
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Milk
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 04780925d85617e4aba893a3ca4e6eea, type: 3}
+        Description: Card Description
+        Price: 1
+        NutritionalValue: 1
+    - rid: 2095229570668561050
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Milkshake
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 3bbcd6798185ab945869de3900794a77, type: 3}
+        Description: Card Description
+        Price: 5
+        NutritionalValue: 2
+    - rid: 2095229570668561051
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Mushroom
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 3d67c81606da8534fb48cd442e02f3d2, type: 3}
+        Description: Card Description
+        Price: 2
+        NutritionalValue: 1
+    - rid: 2095229570668561052
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Omelette
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 85a6eadd313c4af4e89e80f22ee67e9c, type: 3}
+        Description: Card Description
+        Price: 5
+        NutritionalValue: 3
+    - rid: 2095229570668561053
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Onion
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: a14ec167fc6a11444b9173494fbb6974, type: 3}
+        Description: Card Description
+        Price: 2
+        NutritionalValue: 1
+    - rid: 2095229570668561054
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Potato
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 7e578babb7685b8419380003bab21a2d, type: 3}
+        Description: Card Description
+        Price: 2
+        NutritionalValue: 1
+    - rid: 2095229570668561055
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Raw Fish
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 2259a6440acf4a2468ad71bba6793dbf, type: 3}
+        Description: Card Description
+        Price: 2
+        NutritionalValue: 1
+    - rid: 2095229570668561056
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Raw Meat
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: e62bd738a548c16488fe91bfad990423, type: 3}
+        Description: Card Description
+        Price: 5
+        NutritionalValue: 3
+    - rid: 2095229570668561057
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Seaweed
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 0ddc75831444a224c8e79fad55e0eaf2, type: 3}
+        Description: Card Description
+        Price: 1
+        NutritionalValue: 1
+    - rid: 2095229570668561058
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Stew
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 9150847d428c6a449b8471f3958e9a72, type: 3}
+        Description: Card Description
+        Price: 10
+        NutritionalValue: 10
+    - rid: 2095229570668561059
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Sushi
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: bb8a1eb9e91f6534ca5bfa65c51337e9, type: 3}
+        Description: Card Description
+        Price: 2
+        NutritionalValue: 2
+    - rid: 2095229570668561060
+      type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Tamago Sushi
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: f5d937e1b4af5dd41b7ea2022403895c, type: 3}
+        Description: Card Description
+        Price: 2
+        NutritionalValue: 4
+    - rid: 2095229570668561061
+      type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
+      data:
+        Name: Client
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.38823533, g: 0.48627454, b: 0.69411767, a: 1}
+        HeaderColor: {r: 0.535493, g: 0.64204156, b: 0.8679245, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
+        Description: Card Description
+    - rid: 2095229570668561062
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Plank
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        HeaderColor: {r: 0.5764706, g: 0.60784316, b: 0.6509804, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 35668956222d91244a45abe3154577c3, type: 3}
+        Description: Card Description
+        Price: 5
+    - rid: 2095229570668561063
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Fishing Spot
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.24705884, g: 0.24313727, b: 0.227451, a: 1}
+        HeaderColor: {r: 0.36862746, g: 0.36078432, b: 0.3372549, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 620739851e4a8c44c8149777b092deed, type: 3}
+        Description: Card Description
+        Price: 1
+    - rid: 2095229570668561064
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Plains
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.7019608, g: 0.3921569, b: 0.70980394, a: 1}
+        HeaderColor: {r: 0.7568628, g: 0.5019608, b: 0.76470596, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: a6ccb019b1c3fa44e89f1f338680c2a3, type: 3}
+        Description: Card Description
+        Price: 5
+    - rid: 2095229570668561065
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Lumber Camp
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.9450981, g: 0.7137255, b: 0.65882355, a: 1}
+        HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 426963d6f313ffc469783a996a323a43, type: 3}
+        Description: Card Description
+        Price: 5
+    - rid: 2095229570668561066
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Quarry
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.93725497, g: 0.7176471, b: 0.65882355, a: 1}
+        HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: b5d533a8e4b79ba48a41f73eb617b013, type: 3}
+        Description: Card Description
+        Price: 5
+    - rid: 2095229570668561067
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Rock
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.2509804, g: 0.24705884, b: 0.23137257, a: 1}
+        HeaderColor: {r: 0.36078432, g: 0.35686275, b: 0.33333334, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 457ed01a61bd26f479813296afd3cdd4, type: 3}
+        Description: Card Description
+        Price: 0
+    - rid: 2095229570668561068
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Stick
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        HeaderColor: {r: 0.5803922, g: 0.6117647, b: 0.654902, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: ce61582e1cb853a4b9f4762a196edefe, type: 3}
+        Description: Card Description
+        Price: 2
+    - rid: 2095229570668561069
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Stone
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        HeaderColor: {r: 0.5764706, g: 0.60784316, b: 0.6509804, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 65ce6e8de554801469cfe2b5b1bdff12, type: 3}
+        Description: Card Description
+        Price: 1
+    - rid: 2095229570668561070
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Tree
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.2509804, g: 0.24705884, b: 0.23137257, a: 1}
+        HeaderColor: {r: 0.36078432, g: 0.35686275, b: 0.33333334, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 5a2a9e1dade259d41a0bf333d3e7e079, type: 3}
+        Description: Card Description
+        Price: 0
+    - rid: 2095229570668561071
+      type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Wood
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        HeaderColor: {r: 0.5803922, g: 0.6117647, b: 0.654902, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 768f09dbc8e6e4443824c8c5de58afe9, type: 3}
+        Description: Card Description
+        Price: 1
+    - rid: 2095229570668561072
+      type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Dog
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.9568628, g: 0.9333334, b: 0.85098046, a: 1}
+        HeaderColor: {r: 0.9215687, g: 0.86666673, b: 0.65882355, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 0cc5e94ad5495404da514e5944663e2e, type: 3}
+        Description: Card Description
+        Health: 9
+    - rid: 2095229570668561073
+      type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
+      data:
+        Name: Villager
+        NameColor: {r: 0, g: 0, b: 0, a: 1}
+        BodyColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
+        HeaderColor: {r: 0.9215687, g: 0.86666673, b: 0.65882355, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
+        Description: Card Description
+        Health: 15
+    - rid: 2095229570668561074
+      type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
+      data:
+        Name: Booster
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 1, g: 1, b: 1, a: 1}
+        HeaderColor: {r: 1, g: 1, b: 1, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 0}
+        Description: Card Description
+    - rid: 2095229570668561075
+      type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
+      data:
+        Name: Sell
+        NameColor: {r: 1, g: 1, b: 1, a: 1}
+        BodyColor: {r: 1, g: 0.8004884, b: 0.19245279, a: 1}
+        HeaderColor: {r: 1, g: 1, b: 1, a: 1}
+        StatsIconColor: {r: 0, g: 0, b: 0, a: 1}
+        Icon: {fileID: 0}
+        Description: Card Description
