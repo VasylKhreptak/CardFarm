@@ -12,7 +12,23 @@ namespace Data.Cards.Core
         public Color HeaderColor = Color.white;
         public Color StatsIconColor = Color.white;
         public Sprite Icon;
-        
+
         public string Description;
+
+        public CardDataHolder()
+        {
+            
+        }
+        
+        public CardDataHolder(CardDataHolder cardDataHolder)
+        {
+            Name = cardDataHolder.Name;
+            NameColor = cardDataHolder.NameColor;
+            BodyColor = cardDataHolder.BodyColor;
+            HeaderColor = cardDataHolder.HeaderColor;
+            StatsIconColor = cardDataHolder.StatsIconColor;
+            Icon = cardDataHolder.Icon;
+            Description = cardDataHolder.Description;
+        }
     }
 }

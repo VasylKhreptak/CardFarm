@@ -7,5 +7,20 @@ namespace Data.Cards
     public class SellableCardDataHolder : CardDataHolder
     {
         public int Price;
+
+        public SellableCardDataHolder()
+        {
+
+        }
+
+        public SellableCardDataHolder(CardDataHolder cardDataHolder) : base(cardDataHolder)
+        {
+
+        }
+
+        public SellableCardDataHolder(SellableCardDataHolder sellableCardDataHolder) : base(sellableCardDataHolder)
+        {
+            Price = sellableCardDataHolder.Price;
+        }
     }
 }

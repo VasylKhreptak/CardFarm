@@ -1,0 +1,111 @@
+diff a/Assets/Scripts/ScriptableObjects/Scripts/Cards/Data/CardsData.cs b/Assets/Scripts/ScriptableObjects/Scripts/Cards/Data/CardsData.cs	(rejected hunks)
+@@ -1,23 +1,19 @@
+-﻿using System.Collections.Generic;
++﻿using System;
++using System.Collections.Generic;
+ using Cards.Core;
+ using Data.Cards;
+ using Data.Cards.Core;
+ using NaughtyAttributes;
++using UnityEditor;
++#if UNITY_EDITOR
+ using UnityEngine;
+-using UnityEngine.Rendering;
++#endif
+ 
+ namespace ScriptableObjects.Scripts.Cards.Data
+ {
+     [CreateAssetMenu(fileName = "CardsData", menuName = "ScriptableObjects/CardsData")]
+     public class CardsData : ScriptableObject
+     {
+-        [Header("Default Preferences")]
+-        [SerializeField] private CardDataHolder _defaultCardData;
+-        [SerializeField] private SellableCardDataHolder _defaultSellableCardData;
+-        [SerializeField] private DamageableCardDataHolder _defaultDamageableCardData;
+-        [SerializeField] private FoodCardDataHolder _defaultFoodCardData;
+-        [SerializeField] private BoosterCardDataHolder _defaultBoosterCardData;
+-
+         [Header("Data")]
+         [SerializeReference] private List<CardData> _cardsData = new List<CardData>();
+ 
+@@ -29,20 +25,21 @@
+             {
+                 InitData();
+             }
+-            
++
+             return _cards.TryGetValue(card, out cardData);
+         }
+-        
++
+         private void InitData()
+         {
+             _cards = new Dictionary<Card, CardDataHolder>();
+-            
++
+             foreach (var cardData in _cardsData)
+             {
+                 _cards.Add(cardData.Key, cardData.Value);
+             }
+         }
+-        
++
++        [Serializable]
+         public class CardData
+         {
+             public Card Key;
+@@ -85,25 +82,45 @@
+             });
+         }
+ 
+-        [Button()] private void AddBoosterCardData()
+-        {
+-            _cardsData.Add(new CardData
+-            {
+-                Key = default,
+-                Value = new BoosterCardDataHolder()
+-            });
+-        }
+-
+         [Button()]
+         private void ExecuteAction()
+         {
+             Debug.Log("Action Executed");
+         }
+ 
++        #region Editor
++
+         [Button()]
+         private void SyncWithPrefabs()
+         {
+             _cardsData.Clear();
++
++            string[] prefabPaths = AssetDatabase.FindAssets("t:prefab", new[] { "Assets/Prefabs" });
++
++            List<global::Cards.Data.CardData> cards = new List<global::Cards.Data.CardData>();
++
++            foreach (string prefabGUID in prefabPaths)
++            {
++                string prefabPath = AssetDatabase.GUIDToAssetPath(prefabGUID);
++                GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject));
++
++                if (prefab.TryGetComponent(out global::Cards.Data.CardData cardData))
++                {
++                    if (cardData.Name.Value != "Name")
++                    {
++                        cards.Add(cardData);
++                    }
++                }
++            }
++
++            Debug.Log($"Found Cards {cards.Count}");
++        }
++
++        private void AddCardData(CardData cardData)
++        {
++            
+         }
++
++        #endregion
+     }
+ }
