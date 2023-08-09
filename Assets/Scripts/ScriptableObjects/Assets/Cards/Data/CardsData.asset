@@ -12,48 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bf4f5adba546e19953926f83c340c0, type: 3}
   m_Name: CardsData
   m_EditorClassIdentifier: 
-  _defaultCardData:
-    Name: 
-    NameColor: {r: 1, g: 1, b: 1, a: 1}
-    BodyColor: {r: 1, g: 1, b: 1, a: 1}
-    HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-    StatsIconColor: {r: 1, g: 1, b: 1, a: 1}
-    Icon: {fileID: 0}
-    Description: 
-  _defaultSellableCardData:
-    Name: 
-    NameColor: {r: 1, g: 1, b: 1, a: 1}
-    BodyColor: {r: 1, g: 1, b: 1, a: 1}
-    HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-    StatsIconColor: {r: 1, g: 1, b: 1, a: 1}
-    Icon: {fileID: 0}
-    Description: 
-    Price: 0
-  _defaultDamageableCardData:
-    Name: 
-    NameColor: {r: 1, g: 1, b: 1, a: 1}
-    BodyColor: {r: 1, g: 1, b: 1, a: 1}
-    HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-    StatsIconColor: {r: 1, g: 1, b: 1, a: 1}
-    Icon: {fileID: 0}
-    Description: 
-    Health: 0
-  _defaultFoodCardData:
-    Name: 
-    NameColor: {r: 1, g: 1, b: 1, a: 1}
-    BodyColor: {r: 1, g: 1, b: 1, a: 1}
-    HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-    StatsIconColor: {r: 1, g: 1, b: 1, a: 1}
-    Icon: {fileID: 0}
-    Description: 
-    Price: 0
-    NutritionalValue: 0
-  _defaultBoosterCardData:
-    Name: 
-    NameColor: {r: 1, g: 1, b: 1, a: 1}
-    BodyColor: {r: 1, g: 1, b: 1, a: 1}
-    HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-    StatsIconColor: {r: 1, g: 1, b: 1, a: 1}
-    Icon: {fileID: 0}
-    Description: 
-    CardsCount: 0
+  _cardsData: []
+  references:
+    version: 2
+    RefIds: []
