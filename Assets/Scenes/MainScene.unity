@@ -1823,6 +1823,12 @@ MonoBehaviour:
     initialSize: 5
     autoExpand: 1
     maxExpandSize: 30
+  - pool: 2
+    prefab: {fileID: 5752204896905599786, guid: 4018a3d7fbd0dfa409c8b3e8db72e6e9,
+      type: 3}
+    initialSize: 5
+    autoExpand: 1
+    maxExpandSize: 30
 --- !u!114 &359594563
 MonoBehaviour:
   m_ObjectHideFlags: 0

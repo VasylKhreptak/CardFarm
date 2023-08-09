@@ -4,5 +4,6 @@ namespace Plugins.ObjectPooler.Example
     {
         CardDestroyParticle = 0,
         CardLandParticle = 1,
+        RecipeFinishedParticle = 2,
     }
 }
