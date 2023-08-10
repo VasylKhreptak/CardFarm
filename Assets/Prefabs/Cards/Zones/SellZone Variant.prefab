@@ -662,6 +662,21 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 471077923851067249, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.14901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 471077923851067249, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8470589
+      objectReference: {fileID: 0}
+    - target: {fileID: 471077923851067249, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9960785
+      objectReference: {fileID: 0}
     - target: {fileID: 480402200547533325, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
@@ -701,6 +716,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020347350629309702, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1086761790233079346, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -752,6 +772,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 2497773413687021429, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2541507366355682942, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -965,7 +990,7 @@ PrefabInstance:
     - target: {fileID: 3566371717761774355, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3809202449318263053, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -985,7 +1010,7 @@ PrefabInstance:
     - target: {fileID: 3913278531235928592, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4137616735846603641, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -1005,7 +1030,7 @@ PrefabInstance:
     - target: {fileID: 4392067207579266165, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4399263348077703630, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -1090,7 +1115,7 @@ PrefabInstance:
     - target: {fileID: 5980030912712495964, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6145836632900969399, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -1135,7 +1160,7 @@ PrefabInstance:
     - target: {fileID: 6540910043726104261, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6550068850034834491, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -1177,6 +1202,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 7673193895460688980, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 7731085431621850148, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -1372,6 +1402,7 @@ MonoBehaviour:
   _canBePlacedInChest: 0
   _canBeStackedWithSameCard: 1
   _isZone: 0
+  _hasHeaderBackground: 1
   ID: -1
   GroupID:
     value: -1

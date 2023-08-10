@@ -13,474 +13,474 @@ MonoBehaviour:
   m_Name: CardsData
   m_EditorClassIdentifier: 
   _cardsData:
-  - rid: 2095229574821970152
-  - rid: 2095229574821970153
-  - rid: 2095229574821970154
-  - rid: 2095229574821970155
-  - rid: 2095229574821970156
-  - rid: 2095229574821970157
-  - rid: 2095229574821970158
-  - rid: 2095229574821970159
-  - rid: 2095229574821970160
-  - rid: 2095229574821970161
-  - rid: 2095229574821970162
-  - rid: 2095229574821970163
-  - rid: 2095229574821970164
-  - rid: 2095229574821970165
-  - rid: 2095229574821970166
-  - rid: 2095229574821970167
-  - rid: 2095229574821970168
-  - rid: 2095229574821970169
-  - rid: 2095229574821970170
-  - rid: 2095229574821970171
-  - rid: 2095229574821970172
-  - rid: 2095229574821970173
-  - rid: 2095229574821970174
-  - rid: 2095229574821970175
-  - rid: 2095229574821970176
-  - rid: 2095229574821970177
-  - rid: 2095229574821970178
-  - rid: 2095229574821970179
-  - rid: 2095229574821970180
-  - rid: 2095229574821970181
-  - rid: 2095229574821970182
-  - rid: 2095229574821970183
-  - rid: 2095229574821970184
-  - rid: 2095229574821970185
-  - rid: 2095229574821970186
-  - rid: 2095229574821970187
-  - rid: 2095229574821970188
-  - rid: 2095229574821970189
-  - rid: 2095229574821970190
-  - rid: 2095229574821970191
-  - rid: 2095229574821970192
-  - rid: 2095229574821970193
-  - rid: 2095229574821970194
-  - rid: 2095229574821970195
-  - rid: 2095229574821970196
-  - rid: 2095229574821970197
-  - rid: 2095229574821970198
-  - rid: 2095229574821970199
-  - rid: 2095229574821970200
-  - rid: 2095229574821970201
-  - rid: 2095229574821970202
-  - rid: 2095229574821970203
-  - rid: 2095229574821970204
-  - rid: 2095229574821970205
-  - rid: 2095229574821970206
-  - rid: 2095229574821970207
-  - rid: 2095229574821970208
-  - rid: 2095229574821970209
+  - rid: 2095229591427744440
+  - rid: 2095229591427744441
+  - rid: 2095229591427744442
+  - rid: 2095229591427744443
+  - rid: 2095229591427744444
+  - rid: 2095229591427744445
+  - rid: 2095229591427744446
+  - rid: 2095229591427744447
+  - rid: 2095229591427744448
+  - rid: 2095229591427744449
+  - rid: 2095229591427744450
+  - rid: 2095229591427744451
+  - rid: 2095229591427744452
+  - rid: 2095229591427744453
+  - rid: 2095229591427744454
+  - rid: 2095229591427744455
+  - rid: 2095229591427744456
+  - rid: 2095229591427744457
+  - rid: 2095229591427744458
+  - rid: 2095229591427744459
+  - rid: 2095229591427744460
+  - rid: 2095229591427744461
+  - rid: 2095229591427744462
+  - rid: 2095229591427744463
+  - rid: 2095229591427744464
+  - rid: 2095229591427744465
+  - rid: 2095229591427744466
+  - rid: 2095229591427744467
+  - rid: 2095229591427744468
+  - rid: 2095229591427744469
+  - rid: 2095229591427744470
+  - rid: 2095229591427744471
+  - rid: 2095229591427744472
+  - rid: 2095229591427744473
+  - rid: 2095229591427744474
+  - rid: 2095229591427744475
+  - rid: 2095229591427744476
+  - rid: 2095229591427744477
+  - rid: 2095229591427744478
+  - rid: 2095229591427744479
+  - rid: 2095229591427744480
+  - rid: 2095229591427744481
+  - rid: 2095229591427744482
+  - rid: 2095229591427744483
+  - rid: 2095229591427744484
+  - rid: 2095229591427744485
+  - rid: 2095229591427744486
+  - rid: 2095229591427744487
+  - rid: 2095229591427744488
+  - rid: 2095229591427744489
+  - rid: 2095229591427744490
+  - rid: 2095229591427744491
+  - rid: 2095229591427744492
+  - rid: 2095229591427744493
+  - rid: 2095229591427744494
+  - rid: 2095229591427744495
+  - rid: 2095229591427744496
+  - rid: 2095229591427744497
   references:
     version: 2
     RefIds:
-    - rid: 2095229574821970152
+    - rid: 2095229591427744440
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 24
         Value:
-          rid: 2095229574821970210
-    - rid: 2095229574821970153
+          rid: 2095229591427744498
+    - rid: 2095229591427744441
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 54
         Value:
-          rid: 2095229574821970211
-    - rid: 2095229574821970154
+          rid: 2095229591427744499
+    - rid: 2095229591427744442
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 23
         Value:
-          rid: 2095229574821970212
-    - rid: 2095229574821970155
+          rid: 2095229591427744500
+    - rid: 2095229591427744443
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 56
         Value:
-          rid: 2095229574821970213
-    - rid: 2095229574821970156
+          rid: 2095229591427744501
+    - rid: 2095229591427744444
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 42
         Value:
-          rid: 2095229574821970214
-    - rid: 2095229574821970157
+          rid: 2095229591427744502
+    - rid: 2095229591427744445
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 43
         Value:
-          rid: 2095229574821970215
-    - rid: 2095229574821970158
+          rid: 2095229591427744503
+    - rid: 2095229591427744446
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 55
         Value:
-          rid: 2095229574821970216
-    - rid: 2095229574821970159
+          rid: 2095229591427744504
+    - rid: 2095229591427744447
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 10
         Value:
-          rid: 2095229574821970217
-    - rid: 2095229574821970160
+          rid: 2095229591427744505
+    - rid: 2095229591427744448
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 38
         Value:
-          rid: 2095229574821970218
-    - rid: 2095229574821970161
+          rid: 2095229591427744506
+    - rid: 2095229591427744449
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 3
         Value:
-          rid: 2095229574821970219
-    - rid: 2095229574821970162
+          rid: 2095229591427744507
+    - rid: 2095229591427744450
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 48
         Value:
-          rid: 2095229574821970220
-    - rid: 2095229574821970163
+          rid: 2095229591427744508
+    - rid: 2095229591427744451
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 49
         Value:
-          rid: 2095229574821970221
-    - rid: 2095229574821970164
+          rid: 2095229591427744509
+    - rid: 2095229591427744452
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 13
         Value:
-          rid: 2095229574821970222
-    - rid: 2095229574821970165
+          rid: 2095229591427744510
+    - rid: 2095229591427744453
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 12
         Value:
-          rid: 2095229574821970223
-    - rid: 2095229574821970166
+          rid: 2095229591427744511
+    - rid: 2095229591427744454
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 16
         Value:
-          rid: 2095229574821970224
-    - rid: 2095229574821970167
+          rid: 2095229591427744512
+    - rid: 2095229591427744455
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 62
         Value:
-          rid: 2095229574821970225
-    - rid: 2095229574821970168
+          rid: 2095229591427744513
+    - rid: 2095229591427744456
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 8
         Value:
-          rid: 2095229574821970226
-    - rid: 2095229574821970169
+          rid: 2095229591427744514
+    - rid: 2095229591427744457
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 40
         Value:
-          rid: 2095229574821970227
-    - rid: 2095229574821970170
+          rid: 2095229591427744515
+    - rid: 2095229591427744458
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 18
         Value:
-          rid: 2095229574821970228
-    - rid: 2095229574821970171
+          rid: 2095229591427744516
+    - rid: 2095229591427744459
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 21
         Value:
-          rid: 2095229574821970229
-    - rid: 2095229574821970172
+          rid: 2095229591427744517
+    - rid: 2095229591427744460
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 11
         Value:
-          rid: 2095229574821970230
-    - rid: 2095229574821970173
+          rid: 2095229591427744518
+    - rid: 2095229591427744461
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 44
         Value:
-          rid: 2095229574821970231
-    - rid: 2095229574821970174
+          rid: 2095229591427744519
+    - rid: 2095229591427744462
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 7
         Value:
-          rid: 2095229574821970232
-    - rid: 2095229574821970175
+          rid: 2095229591427744520
+    - rid: 2095229591427744463
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 30
         Value:
-          rid: 2095229574821970233
-    - rid: 2095229574821970176
+          rid: 2095229591427744521
+    - rid: 2095229591427744464
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 6
         Value:
-          rid: 2095229574821970234
-    - rid: 2095229574821970177
+          rid: 2095229591427744522
+    - rid: 2095229591427744465
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 33
         Value:
-          rid: 2095229574821970235
-    - rid: 2095229574821970178
+          rid: 2095229591427744523
+    - rid: 2095229591427744466
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 47
         Value:
-          rid: 2095229574821970236
-    - rid: 2095229574821970179
+          rid: 2095229591427744524
+    - rid: 2095229591427744467
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 26
         Value:
-          rid: 2095229574821970237
-    - rid: 2095229574821970180
+          rid: 2095229591427744525
+    - rid: 2095229591427744468
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 45
         Value:
-          rid: 2095229574821970238
-    - rid: 2095229574821970181
+          rid: 2095229591427744526
+    - rid: 2095229591427744469
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 29
         Value:
-          rid: 2095229574821970239
-    - rid: 2095229574821970182
+          rid: 2095229591427744527
+    - rid: 2095229591427744470
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 59
         Value:
-          rid: 2095229574821970240
-    - rid: 2095229574821970183
+          rid: 2095229591427744528
+    - rid: 2095229591427744471
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 25
         Value:
-          rid: 2095229574821970241
-    - rid: 2095229574821970184
+          rid: 2095229591427744529
+    - rid: 2095229591427744472
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 28
         Value:
-          rid: 2095229574821970242
-    - rid: 2095229574821970185
+          rid: 2095229591427744530
+    - rid: 2095229591427744473
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 31
         Value:
-          rid: 2095229574821970243
-    - rid: 2095229574821970186
+          rid: 2095229591427744531
+    - rid: 2095229591427744474
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 27
         Value:
-          rid: 2095229574821970244
-    - rid: 2095229574821970187
+          rid: 2095229591427744532
+    - rid: 2095229591427744475
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 32
         Value:
-          rid: 2095229574821970245
-    - rid: 2095229574821970188
+          rid: 2095229591427744533
+    - rid: 2095229591427744476
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 34
         Value:
-          rid: 2095229574821970246
-    - rid: 2095229574821970189
+          rid: 2095229591427744534
+    - rid: 2095229591427744477
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 58
         Value:
-          rid: 2095229574821970247
-    - rid: 2095229574821970190
+          rid: 2095229591427744535
+    - rid: 2095229591427744478
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 46
         Value:
-          rid: 2095229574821970248
-    - rid: 2095229574821970191
+          rid: 2095229591427744536
+    - rid: 2095229591427744479
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 57
         Value:
-          rid: 2095229574821970249
-    - rid: 2095229574821970192
+          rid: 2095229591427744537
+    - rid: 2095229591427744480
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 41
         Value:
-          rid: 2095229574821970250
-    - rid: 2095229574821970193
+          rid: 2095229591427744538
+    - rid: 2095229591427744481
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 60
         Value:
-          rid: 2095229574821970251
-    - rid: 2095229574821970194
+          rid: 2095229591427744539
+    - rid: 2095229591427744482
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 61
         Value:
-          rid: 2095229574821970252
-    - rid: 2095229574821970195
+          rid: 2095229591427744540
+    - rid: 2095229591427744483
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 39
         Value:
-          rid: 2095229574821970253
-    - rid: 2095229574821970196
+          rid: 2095229591427744541
+    - rid: 2095229591427744484
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 17
         Value:
-          rid: 2095229574821970254
-    - rid: 2095229574821970197
+          rid: 2095229591427744542
+    - rid: 2095229591427744485
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 53
         Value:
-          rid: 2095229574821970255
-    - rid: 2095229574821970198
+          rid: 2095229591427744543
+    - rid: 2095229591427744486
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 35
         Value:
-          rid: 2095229574821970256
-    - rid: 2095229574821970199
+          rid: 2095229591427744544
+    - rid: 2095229591427744487
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 20
         Value:
-          rid: 2095229574821970257
-    - rid: 2095229574821970200
+          rid: 2095229591427744545
+    - rid: 2095229591427744488
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 19
         Value:
-          rid: 2095229574821970258
-    - rid: 2095229574821970201
+          rid: 2095229591427744546
+    - rid: 2095229591427744489
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 1
         Value:
-          rid: 2095229574821970259
-    - rid: 2095229574821970202
+          rid: 2095229591427744547
+    - rid: 2095229591427744490
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 9
         Value:
-          rid: 2095229574821970260
-    - rid: 2095229574821970203
+          rid: 2095229591427744548
+    - rid: 2095229591427744491
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 4
         Value:
-          rid: 2095229574821970261
-    - rid: 2095229574821970204
+          rid: 2095229591427744549
+    - rid: 2095229591427744492
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 2
         Value:
-          rid: 2095229574821970262
-    - rid: 2095229574821970205
+          rid: 2095229591427744550
+    - rid: 2095229591427744493
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 5
         Value:
-          rid: 2095229574821970263
-    - rid: 2095229574821970206
+          rid: 2095229591427744551
+    - rid: 2095229591427744494
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 52
         Value:
-          rid: 2095229574821970264
-    - rid: 2095229574821970207
+          rid: 2095229591427744552
+    - rid: 2095229591427744495
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 0
         Value:
-          rid: 2095229574821970265
-    - rid: 2095229574821970208
+          rid: 2095229591427744553
+    - rid: 2095229591427744496
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 37
         Value:
-          rid: 2095229574821970266
-    - rid: 2095229574821970209
+          rid: 2095229591427744554
+    - rid: 2095229591427744497
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 36
         Value:
-          rid: 2095229574821970267
-    - rid: 2095229574821970210
+          rid: 2095229591427744555
+    - rid: 2095229591427744498
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 78e43e607b35432479bdba811bb23db6, type: 3}
         Description: Chicken Description
         Health: 5
-    - rid: 2095229574821970211
+    - rid: 2095229591427744499
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: aac6e7e8bc9bdfa4dadec7e81e8058bb, type: 3}
         Description: Cod Description
         Health: 3
-    - rid: 2095229574821970212
+    - rid: 2095229591427744500
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -546,7 +546,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 61d33dfe6ca716e4493a41cb37175c8e, type: 3}
         Description: Cow Description
         Health: 5
-    - rid: 2095229574821970213
+    - rid: 2095229591427744501
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -568,7 +568,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 1d67ae1f2b0d5c643b899d9a62e472f8, type: 3}
         Description: Mackerel Description
         Health: 4
-    - rid: 2095229574821970214
+    - rid: 2095229591427744502
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -590,7 +590,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 1997b30ade7fee84e8af62c2c542e432, type: 3}
         Description: Parrot Description
         Health: 5
-    - rid: 2095229574821970215
+    - rid: 2095229591427744503
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -612,7 +612,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 24d0172f379ad1544895b3143553d972, type: 3}
         Description: Rabbit Description
         Health: 5
-    - rid: 2095229574821970216
+    - rid: 2095229591427744504
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -634,7 +634,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 7cec6a73975306147ac05a248fb820d8, type: 3}
         Description: Tuna Description
         Health: 6
-    - rid: 2095229574821970217
+    - rid: 2095229591427744505
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -656,7 +656,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: fff6fd628141b374f87a0ad4b1c5ecb7, type: 3}
         Description: Apple Tree Description
         Price: 0
-    - rid: 2095229574821970218
+    - rid: 2095229591427744506
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -677,7 +677,7 @@ MonoBehaviour:
         StatsTextColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
         Icon: {fileID: 21300000, guid: 38ae2d03dc6967841b44dc35c9e37cee, type: 3}
         Description: Baby Description
-    - rid: 2095229574821970219
+    - rid: 2095229591427744507
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -699,7 +699,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 81d954b2072658840be4ddb846644d66, type: 3}
         Description: Berry Bush Description
         Price: 0
-    - rid: 2095229574821970220
+    - rid: 2095229591427744508
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -720,7 +720,7 @@ MonoBehaviour:
         StatsTextColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
         Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
         Description: Booster Description
-    - rid: 2095229574821970221
+    - rid: 2095229591427744509
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -741,7 +741,7 @@ MonoBehaviour:
         StatsTextColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
         Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
         Description: Booster Description
-    - rid: 2095229574821970222
+    - rid: 2095229591427744510
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -762,7 +762,7 @@ MonoBehaviour:
         StatsTextColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
         Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
         Description: Booster Description
-    - rid: 2095229574821970223
+    - rid: 2095229591427744511
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -783,7 +783,7 @@ MonoBehaviour:
         StatsTextColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
         Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
         Description: Booster Description
-    - rid: 2095229574821970224
+    - rid: 2095229591427744512
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -805,7 +805,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 9871e8d7308587749abee0c195a6e23d, type: 3}
         Description: Brick Description
         Price: 5
-    - rid: 2095229574821970225
+    - rid: 2095229591427744513
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -827,7 +827,7 @@ MonoBehaviour:
         Icon: {fileID: 0}
         Description: Resource Chest Description
         Price: 0
-    - rid: 2095229574821970226
+    - rid: 2095229591427744514
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -849,7 +849,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 3c580b7a36bd63a48bff6caa7bc605cc, type: 3}
         Description: Coin Description
         Price: 1
-    - rid: 2095229574821970227
+    - rid: 2095229591427744515
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -871,7 +871,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 8c41db9e58aa59e4ab99e6bd38cb5eb0, type: 3}
         Description: Butchery Description
         Price: 3
-    - rid: 2095229574821970228
+    - rid: 2095229591427744516
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -893,7 +893,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: d0e75e864fa07194c94a6262c6ed6480, type: 3}
         Description: Campfire Description
         Price: 5
-    - rid: 2095229574821970229
+    - rid: 2095229591427744517
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -915,7 +915,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: d223422c09ff5d94b98296370f3a1964, type: 3}
         Description: Garden Description
         Price: 5
-    - rid: 2095229574821970230
+    - rid: 2095229591427744518
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -937,7 +937,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 83c46fd70292a894db584832d91b7083, type: 3}
         Description: House  Description
         Price: 3
-    - rid: 2095229574821970231
+    - rid: 2095229591427744519
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -959,7 +959,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 08f12d9e8ec4871438a13b6178f94732, type: 3}
         Description: Poop Description
         Price: 1
-    - rid: 2095229574821970232
+    - rid: 2095229591427744520
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -981,7 +981,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: a5724fbb1d2e40e4db783492e58b3278, type: 3}
         Description: Flint Description
         Price: 2
-    - rid: 2095229574821970233
+    - rid: 2095229591427744521
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1004,7 +1004,7 @@ MonoBehaviour:
         Description: Apple Description
         Price: 2
         NutritionalValue: 2
-    - rid: 2095229574821970234
+    - rid: 2095229591427744522
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1027,7 +1027,7 @@ MonoBehaviour:
         Description: Berry Description
         Price: 1
         NutritionalValue: 1
-    - rid: 2095229574821970235
+    - rid: 2095229591427744523
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1050,7 +1050,7 @@ MonoBehaviour:
         Description: Carrot Description
         Price: 2
         NutritionalValue: 2
-    - rid: 2095229574821970236
+    - rid: 2095229591427744524
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1073,7 +1073,7 @@ MonoBehaviour:
         Description: Cooked Meat Description
         Price: 3
         NutritionalValue: 2
-    - rid: 2095229574821970237
+    - rid: 2095229591427744525
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1096,7 +1096,7 @@ MonoBehaviour:
         Description: Egg Description
         Price: 1
         NutritionalValue: 1
-    - rid: 2095229574821970238
+    - rid: 2095229591427744526
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1119,7 +1119,7 @@ MonoBehaviour:
         Description: Frittata Description
         Price: 3
         NutritionalValue: 3
-    - rid: 2095229574821970239
+    - rid: 2095229591427744527
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1142,7 +1142,7 @@ MonoBehaviour:
         Description: Fruit Salad Description
         Price: 5
         NutritionalValue: 3
-    - rid: 2095229574821970240
+    - rid: 2095229591427744528
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1165,7 +1165,7 @@ MonoBehaviour:
         Description: Grilled Fish Description
         Price: 3
         NutritionalValue: 2
-    - rid: 2095229574821970241
+    - rid: 2095229591427744529
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1188,7 +1188,7 @@ MonoBehaviour:
         Description: Milk Description
         Price: 1
         NutritionalValue: 1
-    - rid: 2095229574821970242
+    - rid: 2095229591427744530
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1211,7 +1211,7 @@ MonoBehaviour:
         Description: Milkshake Description
         Price: 5
         NutritionalValue: 2
-    - rid: 2095229574821970243
+    - rid: 2095229591427744531
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1234,7 +1234,7 @@ MonoBehaviour:
         Description: Mushroom Description
         Price: 2
         NutritionalValue: 1
-    - rid: 2095229574821970244
+    - rid: 2095229591427744532
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1257,7 +1257,7 @@ MonoBehaviour:
         Description: Omelette Description
         Price: 5
         NutritionalValue: 3
-    - rid: 2095229574821970245
+    - rid: 2095229591427744533
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1280,7 +1280,7 @@ MonoBehaviour:
         Description: Onion Description
         Price: 2
         NutritionalValue: 1
-    - rid: 2095229574821970246
+    - rid: 2095229591427744534
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1303,7 +1303,7 @@ MonoBehaviour:
         Description: Potato Description
         Price: 2
         NutritionalValue: 1
-    - rid: 2095229574821970247
+    - rid: 2095229591427744535
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1326,7 +1326,7 @@ MonoBehaviour:
         Description: Raw Fish Description
         Price: 2
         NutritionalValue: 1
-    - rid: 2095229574821970248
+    - rid: 2095229591427744536
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1349,7 +1349,7 @@ MonoBehaviour:
         Description: Raw Meat Description
         Price: 5
         NutritionalValue: 3
-    - rid: 2095229574821970249
+    - rid: 2095229591427744537
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1372,7 +1372,7 @@ MonoBehaviour:
         Description: Seaweed Description
         Price: 1
         NutritionalValue: 1
-    - rid: 2095229574821970250
+    - rid: 2095229591427744538
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1395,7 +1395,7 @@ MonoBehaviour:
         Description: Stew Description
         Price: 10
         NutritionalValue: 10
-    - rid: 2095229574821970251
+    - rid: 2095229591427744539
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1418,7 +1418,7 @@ MonoBehaviour:
         Description: Sushi Description
         Price: 2
         NutritionalValue: 2
-    - rid: 2095229574821970252
+    - rid: 2095229591427744540
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1441,7 +1441,7 @@ MonoBehaviour:
         Description: Tamago Sushi Description
         Price: 2
         NutritionalValue: 4
-    - rid: 2095229574821970253
+    - rid: 2095229591427744541
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1462,7 +1462,7 @@ MonoBehaviour:
         StatsTextColor: {r: 0.38823533, g: 0.48627454, b: 0.69411767, a: 1}
         Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
         Description: Client Description
-    - rid: 2095229574821970254
+    - rid: 2095229591427744542
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1484,7 +1484,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 35668956222d91244a45abe3154577c3, type: 3}
         Description: Plank Description
         Price: 5
-    - rid: 2095229574821970255
+    - rid: 2095229591427744543
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1506,7 +1506,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 620739851e4a8c44c8149777b092deed, type: 3}
         Description: Fishing Spot Description
         Price: 1
-    - rid: 2095229574821970256
+    - rid: 2095229591427744544
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1528,7 +1528,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: a6ccb019b1c3fa44e89f1f338680c2a3, type: 3}
         Description: Plains Description
         Price: 5
-    - rid: 2095229574821970257
+    - rid: 2095229591427744545
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1550,7 +1550,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 426963d6f313ffc469783a996a323a43, type: 3}
         Description: Lumber Camp Description
         Price: 5
-    - rid: 2095229574821970258
+    - rid: 2095229591427744546
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1572,7 +1572,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: b5d533a8e4b79ba48a41f73eb617b013, type: 3}
         Description: Quarry Description
         Price: 5
-    - rid: 2095229574821970259
+    - rid: 2095229591427744547
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1594,7 +1594,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 457ed01a61bd26f479813296afd3cdd4, type: 3}
         Description: Rock Description
         Price: 0
-    - rid: 2095229574821970260
+    - rid: 2095229591427744548
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1616,7 +1616,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: ce61582e1cb853a4b9f4762a196edefe, type: 3}
         Description: Stick Description
         Price: 2
-    - rid: 2095229574821970261
+    - rid: 2095229591427744549
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1638,7 +1638,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 65ce6e8de554801469cfe2b5b1bdff12, type: 3}
         Description: Stone Description
         Price: 1
-    - rid: 2095229574821970262
+    - rid: 2095229591427744550
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1660,7 +1660,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 5a2a9e1dade259d41a0bf333d3e7e079, type: 3}
         Description: Tree Description
         Price: 0
-    - rid: 2095229574821970263
+    - rid: 2095229591427744551
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1682,7 +1682,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 768f09dbc8e6e4443824c8c5de58afe9, type: 3}
         Description: Wood Description
         Price: 1
-    - rid: 2095229574821970264
+    - rid: 2095229591427744552
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 1
@@ -1704,7 +1704,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 0cc5e94ad5495404da514e5944663e2e, type: 3}
         Description: Dog Description
         Health: 9
-    - rid: 2095229574821970265
+    - rid: 2095229591427744553
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 1
@@ -1726,7 +1726,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
         Description: Villager Description
         Health: 15
-    - rid: 2095229574821970266
+    - rid: 2095229591427744554
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1747,7 +1747,7 @@ MonoBehaviour:
         StatsTextColor: {r: 1, g: 1, b: 1, a: 1}
         Icon: {fileID: 0}
         Description: Booster Description
-    - rid: 2095229574821970267
+    - rid: 2095229591427744555
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0

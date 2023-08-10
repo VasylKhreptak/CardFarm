@@ -603,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 858685735763845038, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 928652523411889577, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -778,7 +778,7 @@ PrefabInstance:
     - target: {fileID: 1475933332041759479, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1749323702996037604, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -793,7 +793,7 @@ PrefabInstance:
     - target: {fileID: 1870714030626579857, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1880421872753608925, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -870,6 +870,21 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 871094102}
+    - target: {fileID: 2561500649847690901, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.30980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561500649847690901, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561500649847690901, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.89411765
+      objectReference: {fileID: 0}
     - target: {fileID: 2571387044614040553, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
@@ -890,6 +905,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 871094102}
+    - target: {fileID: 2783147722772851097, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3031249869231499222, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -1168,7 +1188,7 @@ PrefabInstance:
     - target: {fileID: 9205400118501904161, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
@@ -1259,6 +1279,7 @@ MonoBehaviour:
   _canBePlacedInChest: 0
   _canBeStackedWithSameCard: 1
   _isZone: 0
+  _hasHeaderBackground: 1
   ID: -1
   GroupID:
     value: -1
