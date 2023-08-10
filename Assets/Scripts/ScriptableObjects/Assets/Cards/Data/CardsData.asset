@@ -13,474 +13,474 @@ MonoBehaviour:
   m_Name: CardsData
   m_EditorClassIdentifier: 
   _cardsData:
-  - rid: 2095229591427744440
-  - rid: 2095229591427744441
-  - rid: 2095229591427744442
-  - rid: 2095229591427744443
-  - rid: 2095229591427744444
-  - rid: 2095229591427744445
-  - rid: 2095229591427744446
-  - rid: 2095229591427744447
-  - rid: 2095229591427744448
-  - rid: 2095229591427744449
-  - rid: 2095229591427744450
-  - rid: 2095229591427744451
-  - rid: 2095229591427744452
-  - rid: 2095229591427744453
-  - rid: 2095229591427744454
-  - rid: 2095229591427744455
-  - rid: 2095229591427744456
-  - rid: 2095229591427744457
-  - rid: 2095229591427744458
-  - rid: 2095229591427744459
-  - rid: 2095229591427744460
-  - rid: 2095229591427744461
-  - rid: 2095229591427744462
-  - rid: 2095229591427744463
-  - rid: 2095229591427744464
-  - rid: 2095229591427744465
-  - rid: 2095229591427744466
-  - rid: 2095229591427744467
-  - rid: 2095229591427744468
-  - rid: 2095229591427744469
-  - rid: 2095229591427744470
-  - rid: 2095229591427744471
-  - rid: 2095229591427744472
-  - rid: 2095229591427744473
-  - rid: 2095229591427744474
-  - rid: 2095229591427744475
-  - rid: 2095229591427744476
-  - rid: 2095229591427744477
-  - rid: 2095229591427744478
-  - rid: 2095229591427744479
-  - rid: 2095229591427744480
-  - rid: 2095229591427744481
-  - rid: 2095229591427744482
-  - rid: 2095229591427744483
-  - rid: 2095229591427744484
-  - rid: 2095229591427744485
-  - rid: 2095229591427744486
-  - rid: 2095229591427744487
-  - rid: 2095229591427744488
-  - rid: 2095229591427744489
-  - rid: 2095229591427744490
-  - rid: 2095229591427744491
-  - rid: 2095229591427744492
-  - rid: 2095229591427744493
-  - rid: 2095229591427744494
-  - rid: 2095229591427744495
-  - rid: 2095229591427744496
-  - rid: 2095229591427744497
+  - rid: 2095229591427744556
+  - rid: 2095229591427744557
+  - rid: 2095229591427744558
+  - rid: 2095229591427744559
+  - rid: 2095229591427744560
+  - rid: 2095229591427744561
+  - rid: 2095229591427744562
+  - rid: 2095229591427744563
+  - rid: 2095229591427744564
+  - rid: 2095229591427744565
+  - rid: 2095229591427744566
+  - rid: 2095229591427744567
+  - rid: 2095229591427744568
+  - rid: 2095229591427744569
+  - rid: 2095229591427744570
+  - rid: 2095229591427744571
+  - rid: 2095229591427744572
+  - rid: 2095229591427744573
+  - rid: 2095229591427744574
+  - rid: 2095229591427744575
+  - rid: 2095229591427744576
+  - rid: 2095229591427744577
+  - rid: 2095229591427744578
+  - rid: 2095229591427744579
+  - rid: 2095229591427744580
+  - rid: 2095229591427744581
+  - rid: 2095229591427744582
+  - rid: 2095229591427744583
+  - rid: 2095229591427744584
+  - rid: 2095229591427744585
+  - rid: 2095229591427744586
+  - rid: 2095229591427744587
+  - rid: 2095229591427744588
+  - rid: 2095229591427744589
+  - rid: 2095229591427744590
+  - rid: 2095229591427744591
+  - rid: 2095229591427744592
+  - rid: 2095229591427744593
+  - rid: 2095229591427744594
+  - rid: 2095229591427744595
+  - rid: 2095229591427744596
+  - rid: 2095229591427744597
+  - rid: 2095229591427744598
+  - rid: 2095229591427744599
+  - rid: 2095229591427744600
+  - rid: 2095229591427744601
+  - rid: 2095229591427744602
+  - rid: 2095229591427744603
+  - rid: 2095229591427744604
+  - rid: 2095229591427744605
+  - rid: 2095229591427744606
+  - rid: 2095229591427744607
+  - rid: 2095229591427744608
+  - rid: 2095229591427744609
+  - rid: 2095229591427744610
+  - rid: 2095229591427744611
+  - rid: 2095229591427744612
+  - rid: 2095229591427744613
   references:
     version: 2
     RefIds:
-    - rid: 2095229591427744440
+    - rid: 2095229591427744556
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 24
         Value:
-          rid: 2095229591427744498
-    - rid: 2095229591427744441
+          rid: 2095229591427744614
+    - rid: 2095229591427744557
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 54
         Value:
-          rid: 2095229591427744499
-    - rid: 2095229591427744442
+          rid: 2095229591427744615
+    - rid: 2095229591427744558
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 23
         Value:
-          rid: 2095229591427744500
-    - rid: 2095229591427744443
+          rid: 2095229591427744616
+    - rid: 2095229591427744559
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 56
         Value:
-          rid: 2095229591427744501
-    - rid: 2095229591427744444
+          rid: 2095229591427744617
+    - rid: 2095229591427744560
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 42
         Value:
-          rid: 2095229591427744502
-    - rid: 2095229591427744445
+          rid: 2095229591427744618
+    - rid: 2095229591427744561
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 43
         Value:
-          rid: 2095229591427744503
-    - rid: 2095229591427744446
+          rid: 2095229591427744619
+    - rid: 2095229591427744562
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 55
         Value:
-          rid: 2095229591427744504
-    - rid: 2095229591427744447
+          rid: 2095229591427744620
+    - rid: 2095229591427744563
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 10
         Value:
-          rid: 2095229591427744505
-    - rid: 2095229591427744448
+          rid: 2095229591427744621
+    - rid: 2095229591427744564
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 38
         Value:
-          rid: 2095229591427744506
-    - rid: 2095229591427744449
+          rid: 2095229591427744622
+    - rid: 2095229591427744565
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 3
         Value:
-          rid: 2095229591427744507
-    - rid: 2095229591427744450
+          rid: 2095229591427744623
+    - rid: 2095229591427744566
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 48
         Value:
-          rid: 2095229591427744508
-    - rid: 2095229591427744451
+          rid: 2095229591427744624
+    - rid: 2095229591427744567
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 49
         Value:
-          rid: 2095229591427744509
-    - rid: 2095229591427744452
+          rid: 2095229591427744625
+    - rid: 2095229591427744568
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 13
         Value:
-          rid: 2095229591427744510
-    - rid: 2095229591427744453
+          rid: 2095229591427744626
+    - rid: 2095229591427744569
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 12
         Value:
-          rid: 2095229591427744511
-    - rid: 2095229591427744454
+          rid: 2095229591427744627
+    - rid: 2095229591427744570
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 16
         Value:
-          rid: 2095229591427744512
-    - rid: 2095229591427744455
+          rid: 2095229591427744628
+    - rid: 2095229591427744571
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 62
         Value:
-          rid: 2095229591427744513
-    - rid: 2095229591427744456
+          rid: 2095229591427744629
+    - rid: 2095229591427744572
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 8
         Value:
-          rid: 2095229591427744514
-    - rid: 2095229591427744457
+          rid: 2095229591427744630
+    - rid: 2095229591427744573
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 40
         Value:
-          rid: 2095229591427744515
-    - rid: 2095229591427744458
+          rid: 2095229591427744631
+    - rid: 2095229591427744574
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 18
         Value:
-          rid: 2095229591427744516
-    - rid: 2095229591427744459
+          rid: 2095229591427744632
+    - rid: 2095229591427744575
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 21
         Value:
-          rid: 2095229591427744517
-    - rid: 2095229591427744460
+          rid: 2095229591427744633
+    - rid: 2095229591427744576
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 11
         Value:
-          rid: 2095229591427744518
-    - rid: 2095229591427744461
+          rid: 2095229591427744634
+    - rid: 2095229591427744577
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 44
         Value:
-          rid: 2095229591427744519
-    - rid: 2095229591427744462
+          rid: 2095229591427744635
+    - rid: 2095229591427744578
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 7
         Value:
-          rid: 2095229591427744520
-    - rid: 2095229591427744463
+          rid: 2095229591427744636
+    - rid: 2095229591427744579
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 30
         Value:
-          rid: 2095229591427744521
-    - rid: 2095229591427744464
+          rid: 2095229591427744637
+    - rid: 2095229591427744580
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 6
         Value:
-          rid: 2095229591427744522
-    - rid: 2095229591427744465
+          rid: 2095229591427744638
+    - rid: 2095229591427744581
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 33
         Value:
-          rid: 2095229591427744523
-    - rid: 2095229591427744466
+          rid: 2095229591427744639
+    - rid: 2095229591427744582
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 47
         Value:
-          rid: 2095229591427744524
-    - rid: 2095229591427744467
+          rid: 2095229591427744640
+    - rid: 2095229591427744583
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 26
         Value:
-          rid: 2095229591427744525
-    - rid: 2095229591427744468
+          rid: 2095229591427744641
+    - rid: 2095229591427744584
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 45
         Value:
-          rid: 2095229591427744526
-    - rid: 2095229591427744469
+          rid: 2095229591427744642
+    - rid: 2095229591427744585
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 29
         Value:
-          rid: 2095229591427744527
-    - rid: 2095229591427744470
+          rid: 2095229591427744643
+    - rid: 2095229591427744586
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 59
         Value:
-          rid: 2095229591427744528
-    - rid: 2095229591427744471
+          rid: 2095229591427744644
+    - rid: 2095229591427744587
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 25
         Value:
-          rid: 2095229591427744529
-    - rid: 2095229591427744472
+          rid: 2095229591427744645
+    - rid: 2095229591427744588
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 28
         Value:
-          rid: 2095229591427744530
-    - rid: 2095229591427744473
+          rid: 2095229591427744646
+    - rid: 2095229591427744589
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 31
         Value:
-          rid: 2095229591427744531
-    - rid: 2095229591427744474
+          rid: 2095229591427744647
+    - rid: 2095229591427744590
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 27
         Value:
-          rid: 2095229591427744532
-    - rid: 2095229591427744475
+          rid: 2095229591427744648
+    - rid: 2095229591427744591
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 32
         Value:
-          rid: 2095229591427744533
-    - rid: 2095229591427744476
+          rid: 2095229591427744649
+    - rid: 2095229591427744592
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 34
         Value:
-          rid: 2095229591427744534
-    - rid: 2095229591427744477
+          rid: 2095229591427744650
+    - rid: 2095229591427744593
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 58
         Value:
-          rid: 2095229591427744535
-    - rid: 2095229591427744478
+          rid: 2095229591427744651
+    - rid: 2095229591427744594
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 46
         Value:
-          rid: 2095229591427744536
-    - rid: 2095229591427744479
+          rid: 2095229591427744652
+    - rid: 2095229591427744595
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 57
         Value:
-          rid: 2095229591427744537
-    - rid: 2095229591427744480
+          rid: 2095229591427744653
+    - rid: 2095229591427744596
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 41
         Value:
-          rid: 2095229591427744538
-    - rid: 2095229591427744481
+          rid: 2095229591427744654
+    - rid: 2095229591427744597
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 60
         Value:
-          rid: 2095229591427744539
-    - rid: 2095229591427744482
+          rid: 2095229591427744655
+    - rid: 2095229591427744598
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 61
         Value:
-          rid: 2095229591427744540
-    - rid: 2095229591427744483
+          rid: 2095229591427744656
+    - rid: 2095229591427744599
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 39
         Value:
-          rid: 2095229591427744541
-    - rid: 2095229591427744484
+          rid: 2095229591427744657
+    - rid: 2095229591427744600
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 17
         Value:
-          rid: 2095229591427744542
-    - rid: 2095229591427744485
+          rid: 2095229591427744658
+    - rid: 2095229591427744601
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 53
         Value:
-          rid: 2095229591427744543
-    - rid: 2095229591427744486
+          rid: 2095229591427744659
+    - rid: 2095229591427744602
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 35
         Value:
-          rid: 2095229591427744544
-    - rid: 2095229591427744487
+          rid: 2095229591427744660
+    - rid: 2095229591427744603
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 20
         Value:
-          rid: 2095229591427744545
-    - rid: 2095229591427744488
+          rid: 2095229591427744661
+    - rid: 2095229591427744604
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 19
         Value:
-          rid: 2095229591427744546
-    - rid: 2095229591427744489
+          rid: 2095229591427744662
+    - rid: 2095229591427744605
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 1
         Value:
-          rid: 2095229591427744547
-    - rid: 2095229591427744490
+          rid: 2095229591427744663
+    - rid: 2095229591427744606
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 9
         Value:
-          rid: 2095229591427744548
-    - rid: 2095229591427744491
+          rid: 2095229591427744664
+    - rid: 2095229591427744607
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 4
         Value:
-          rid: 2095229591427744549
-    - rid: 2095229591427744492
+          rid: 2095229591427744665
+    - rid: 2095229591427744608
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 2
         Value:
-          rid: 2095229591427744550
-    - rid: 2095229591427744493
+          rid: 2095229591427744666
+    - rid: 2095229591427744609
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 5
         Value:
-          rid: 2095229591427744551
-    - rid: 2095229591427744494
+          rid: 2095229591427744667
+    - rid: 2095229591427744610
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 52
         Value:
-          rid: 2095229591427744552
-    - rid: 2095229591427744495
+          rid: 2095229591427744668
+    - rid: 2095229591427744611
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 0
         Value:
-          rid: 2095229591427744553
-    - rid: 2095229591427744496
+          rid: 2095229591427744669
+    - rid: 2095229591427744612
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 37
         Value:
-          rid: 2095229591427744554
-    - rid: 2095229591427744497
+          rid: 2095229591427744670
+    - rid: 2095229591427744613
       type: {class: CardsData/CardData, ns: ScriptableObjects.Scripts.Cards.Data,
         asm: Assembly-CSharp}
       data:
         Key: 36
         Value:
-          rid: 2095229591427744555
-    - rid: 2095229591427744498
+          rid: 2095229591427744671
+    - rid: 2095229591427744614
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -496,13 +496,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Chicken
         NameColor: {r: 0.95294124, g: 0.7137255, b: 0.5254902, a: 1}
-        BodyColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        BodyColor: {r: 0.56078434, g: 0.4, b: 0.26666668, a: 1}
         HeaderColor: {r: 0.627451, g: 0.48627454, b: 0.37647063, a: 1}
-        StatsTextColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        StatsTextColor: {r: 0.56078434, g: 0.4, b: 0.26666668, a: 1}
         Icon: {fileID: 21300000, guid: 78e43e607b35432479bdba811bb23db6, type: 3}
         Description: Chicken Description
         Health: 5
-    - rid: 2095229591427744499
+    - rid: 2095229591427744615
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -518,13 +518,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Cod
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.6627451, g: 0.8431373, b: 0.49411768, a: 1}
+        BodyColor: {r: 0.6627451, g: 0.84313726, b: 0.49411765, a: 1}
         HeaderColor: {r: 0.4039216, g: 0.5529412, b: 0.27450982, a: 1}
-        StatsTextColor: {r: 0.6627451, g: 0.8431373, b: 0.49411768, a: 1}
+        StatsTextColor: {r: 0.6627451, g: 0.84313726, b: 0.49411765, a: 1}
         Icon: {fileID: 21300000, guid: aac6e7e8bc9bdfa4dadec7e81e8058bb, type: 3}
         Description: Cod Description
         Health: 3
-    - rid: 2095229591427744500
+    - rid: 2095229591427744616
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -540,13 +540,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Cow
         NameColor: {r: 0.95294124, g: 0.7137255, b: 0.5254902, a: 1}
-        BodyColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        BodyColor: {r: 0.56078434, g: 0.4, b: 0.26666668, a: 1}
         HeaderColor: {r: 0.627451, g: 0.48627454, b: 0.37647063, a: 1}
-        StatsTextColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        StatsTextColor: {r: 0.56078434, g: 0.4, b: 0.26666668, a: 1}
         Icon: {fileID: 21300000, guid: 61d33dfe6ca716e4493a41cb37175c8e, type: 3}
         Description: Cow Description
         Health: 5
-    - rid: 2095229591427744501
+    - rid: 2095229591427744617
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -562,13 +562,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Mackerel
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.6627451, g: 0.8431373, b: 0.49411768, a: 1}
+        BodyColor: {r: 0.6627451, g: 0.84313726, b: 0.49411765, a: 1}
         HeaderColor: {r: 0.4039216, g: 0.5529412, b: 0.27450982, a: 1}
-        StatsTextColor: {r: 0.6627451, g: 0.8431373, b: 0.49411768, a: 1}
+        StatsTextColor: {r: 0.6627451, g: 0.84313726, b: 0.49411765, a: 1}
         Icon: {fileID: 21300000, guid: 1d67ae1f2b0d5c643b899d9a62e472f8, type: 3}
         Description: Mackerel Description
         Health: 4
-    - rid: 2095229591427744502
+    - rid: 2095229591427744618
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -584,13 +584,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Parrot
         NameColor: {r: 0.95294124, g: 0.7137255, b: 0.5254902, a: 1}
-        BodyColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        BodyColor: {r: 0.56078434, g: 0.4, b: 0.26666668, a: 1}
         HeaderColor: {r: 0.627451, g: 0.48627454, b: 0.37647063, a: 1}
-        StatsTextColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        StatsTextColor: {r: 0.56078434, g: 0.4, b: 0.26666668, a: 1}
         Icon: {fileID: 21300000, guid: 1997b30ade7fee84e8af62c2c542e432, type: 3}
         Description: Parrot Description
         Health: 5
-    - rid: 2095229591427744503
+    - rid: 2095229591427744619
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -606,13 +606,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Rabbit
         NameColor: {r: 0.95294124, g: 0.7137255, b: 0.5254902, a: 1}
-        BodyColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        BodyColor: {r: 0.56078434, g: 0.4, b: 0.26666668, a: 1}
         HeaderColor: {r: 0.627451, g: 0.48627454, b: 0.37647063, a: 1}
-        StatsTextColor: {r: 0.56078434, g: 0.40000004, b: 0.26666668, a: 1}
+        StatsTextColor: {r: 0.56078434, g: 0.4, b: 0.26666668, a: 1}
         Icon: {fileID: 21300000, guid: 24d0172f379ad1544895b3143553d972, type: 3}
         Description: Rabbit Description
         Health: 5
-    - rid: 2095229591427744504
+    - rid: 2095229591427744620
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -634,7 +634,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 7cec6a73975306147ac05a248fb820d8, type: 3}
         Description: Tuna Description
         Health: 6
-    - rid: 2095229591427744505
+    - rid: 2095229591427744621
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -650,13 +650,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Apple Tree
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.2509804, g: 0.24705884, b: 0.23137257, a: 1}
+        BodyColor: {r: 0.2509804, g: 0.24705882, b: 0.23137255, a: 1}
         HeaderColor: {r: 0.36862746, g: 0.36078432, b: 0.3372549, a: 1}
-        StatsTextColor: {r: 0.2509804, g: 0.24705884, b: 0.23137257, a: 1}
+        StatsTextColor: {r: 0.2509804, g: 0.24705882, b: 0.23137255, a: 1}
         Icon: {fileID: 21300000, guid: fff6fd628141b374f87a0ad4b1c5ecb7, type: 3}
         Description: Apple Tree Description
         Price: 0
-    - rid: 2095229591427744506
+    - rid: 2095229591427744622
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -672,12 +672,12 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Baby
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
+        BodyColor: {r: 0.9529412, g: 0.92941177, b: 0.84705883, a: 1}
         HeaderColor: {r: 0.92549026, g: 0.8705883, b: 0.6627451, a: 1}
-        StatsTextColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
+        StatsTextColor: {r: 0.9529412, g: 0.92941177, b: 0.84705883, a: 1}
         Icon: {fileID: 21300000, guid: 38ae2d03dc6967841b44dc35c9e37cee, type: 3}
         Description: Baby Description
-    - rid: 2095229591427744507
+    - rid: 2095229591427744623
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -693,13 +693,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Berry Bush
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.2509804, g: 0.24705884, b: 0.227451, a: 1}
+        BodyColor: {r: 0.2509804, g: 0.24705882, b: 0.22745098, a: 1}
         HeaderColor: {r: 0.36862746, g: 0.36078432, b: 0.3372549, a: 1}
-        StatsTextColor: {r: 0.2509804, g: 0.24705884, b: 0.227451, a: 1}
+        StatsTextColor: {r: 0.2509804, g: 0.24705882, b: 0.22745098, a: 1}
         Icon: {fileID: 21300000, guid: 81d954b2072658840be4ddb846644d66, type: 3}
         Description: Berry Bush Description
         Price: 0
-    - rid: 2095229591427744508
+    - rid: 2095229591427744624
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -715,12 +715,12 @@ MonoBehaviour:
         HasHeaderBackground: 0
         Name: Booster
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        BodyColor: {r: 0.2, g: 0.19607843, b: 0.2627451, a: 1}
         HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-        StatsTextColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        StatsTextColor: {r: 0.2, g: 0.19607843, b: 0.2627451, a: 1}
         Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
         Description: Booster Description
-    - rid: 2095229591427744509
+    - rid: 2095229591427744625
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -736,12 +736,12 @@ MonoBehaviour:
         HasHeaderBackground: 0
         Name: Booster
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        BodyColor: {r: 0.2, g: 0.19607843, b: 0.2627451, a: 1}
         HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-        StatsTextColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        StatsTextColor: {r: 0.2, g: 0.19607843, b: 0.2627451, a: 1}
         Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
         Description: Booster Description
-    - rid: 2095229591427744510
+    - rid: 2095229591427744626
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -757,12 +757,12 @@ MonoBehaviour:
         HasHeaderBackground: 0
         Name: Booster
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        BodyColor: {r: 0.2, g: 0.19607843, b: 0.2627451, a: 1}
         HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-        StatsTextColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        StatsTextColor: {r: 0.2, g: 0.19607843, b: 0.2627451, a: 1}
         Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
         Description: Booster Description
-    - rid: 2095229591427744511
+    - rid: 2095229591427744627
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -778,12 +778,12 @@ MonoBehaviour:
         HasHeaderBackground: 0
         Name: Booster
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        BodyColor: {r: 0.2, g: 0.19607843, b: 0.2627451, a: 1}
         HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-        StatsTextColor: {r: 0.20000002, g: 0.19607845, b: 0.2627451, a: 1}
+        StatsTextColor: {r: 0.2, g: 0.19607843, b: 0.2627451, a: 1}
         Icon: {fileID: 21300000, guid: 4ec7ad8b276acb14f80f73231410dbb1, type: 3}
         Description: Booster Description
-    - rid: 2095229591427744512
+    - rid: 2095229591427744628
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -799,13 +799,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Brick
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        BodyColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         HeaderColor: {r: 0.5803922, g: 0.6117647, b: 0.654902, a: 1}
-        StatsTextColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        StatsTextColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         Icon: {fileID: 21300000, guid: 9871e8d7308587749abee0c195a6e23d, type: 3}
         Description: Brick Description
         Price: 5
-    - rid: 2095229591427744513
+    - rid: 2095229591427744629
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -821,13 +821,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Resource Chest
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        BodyColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
-        StatsTextColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        StatsTextColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         Icon: {fileID: 0}
         Description: Resource Chest Description
         Price: 0
-    - rid: 2095229591427744514
+    - rid: 2095229591427744630
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -843,13 +843,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Coin
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.9568628, g: 0.8588236, b: 0.59607846, a: 1}
+        BodyColor: {r: 0.95686275, g: 0.85882354, b: 0.59607846, a: 1}
         HeaderColor: {r: 0.9215687, g: 0.7490196, b: 0.33333334, a: 1}
-        StatsTextColor: {r: 0.9568628, g: 0.8588236, b: 0.59607846, a: 1}
+        StatsTextColor: {r: 0.95686275, g: 0.85882354, b: 0.59607846, a: 1}
         Icon: {fileID: 21300000, guid: 3c580b7a36bd63a48bff6caa7bc605cc, type: 3}
         Description: Coin Description
         Price: 1
-    - rid: 2095229591427744515
+    - rid: 2095229591427744631
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -865,13 +865,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Butchery
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        BodyColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
-        StatsTextColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        StatsTextColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         Icon: {fileID: 21300000, guid: 8c41db9e58aa59e4ab99e6bd38cb5eb0, type: 3}
         Description: Butchery Description
         Price: 3
-    - rid: 2095229591427744516
+    - rid: 2095229591427744632
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -887,13 +887,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Campfire
         NameColor: {r: 0.03137255, g: 0, b: 0.003921569, a: 1}
-        BodyColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        BodyColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
-        StatsTextColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        StatsTextColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         Icon: {fileID: 21300000, guid: d0e75e864fa07194c94a6262c6ed6480, type: 3}
         Description: Campfire Description
         Price: 5
-    - rid: 2095229591427744517
+    - rid: 2095229591427744633
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -909,13 +909,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Garden
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        BodyColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
-        StatsTextColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        StatsTextColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         Icon: {fileID: 21300000, guid: d223422c09ff5d94b98296370f3a1964, type: 3}
         Description: Garden Description
         Price: 5
-    - rid: 2095229591427744518
+    - rid: 2095229591427744634
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -931,13 +931,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: 'House '
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        BodyColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
-        StatsTextColor: {r: 0.9490197, g: 0.7176471, b: 0.6627451, a: 1}
+        StatsTextColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         Icon: {fileID: 21300000, guid: 83c46fd70292a894db584832d91b7083, type: 3}
         Description: House  Description
         Price: 3
-    - rid: 2095229591427744519
+    - rid: 2095229591427744635
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -953,13 +953,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Poop
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        BodyColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         HeaderColor: {r: 0.5803922, g: 0.6117647, b: 0.654902, a: 1}
-        StatsTextColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        StatsTextColor: {r: 0.9490196, g: 0.7176471, b: 0.6627451, a: 1}
         Icon: {fileID: 21300000, guid: 08f12d9e8ec4871438a13b6178f94732, type: 3}
         Description: Poop Description
         Price: 1
-    - rid: 2095229591427744520
+    - rid: 2095229591427744636
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -975,13 +975,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Flint
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        BodyColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         HeaderColor: {r: 0.57254905, g: 0.6039216, b: 0.64705884, a: 1}
-        StatsTextColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        StatsTextColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         Icon: {fileID: 21300000, guid: a5724fbb1d2e40e4db783492e58b3278, type: 3}
         Description: Flint Description
         Price: 2
-    - rid: 2095229591427744521
+    - rid: 2095229591427744637
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -997,14 +997,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Apple
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 2677ff54233cea241b46c14b399306be, type: 3}
         Description: Apple Description
         Price: 2
         NutritionalValue: 2
-    - rid: 2095229591427744522
+    - rid: 2095229591427744638
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1020,14 +1020,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Berry
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.89019614, g: 0.5764706, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.89019614, g: 0.5764706, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: ae995c51e784a14498ed5ef5c9e87bd0, type: 3}
         Description: Berry Description
         Price: 1
         NutritionalValue: 1
-    - rid: 2095229591427744523
+    - rid: 2095229591427744639
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1043,14 +1043,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Carrot
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 6ee2b4d0102742c49b7ec1c7c9cf373b, type: 3}
         Description: Carrot Description
         Price: 2
         NutritionalValue: 2
-    - rid: 2095229591427744524
+    - rid: 2095229591427744640
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1066,14 +1066,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Cooked Meat
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: a90cbd8979d5db5409f1d3248903e97a, type: 3}
         Description: Cooked Meat Description
         Price: 3
         NutritionalValue: 2
-    - rid: 2095229591427744525
+    - rid: 2095229591427744641
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1089,14 +1089,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Egg
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 8e52f493926e80e46bb2e007e11d73bb, type: 3}
         Description: Egg Description
         Price: 1
         NutritionalValue: 1
-    - rid: 2095229591427744526
+    - rid: 2095229591427744642
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1112,14 +1112,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Frittata
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: b44ec7151f056704a872ff17a1fa1887, type: 3}
         Description: Frittata Description
         Price: 3
         NutritionalValue: 3
-    - rid: 2095229591427744527
+    - rid: 2095229591427744643
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1135,14 +1135,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Fruit Salad
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 767064bd94a27db4fb4515aaaa260754, type: 3}
         Description: Fruit Salad Description
         Price: 5
         NutritionalValue: 3
-    - rid: 2095229591427744528
+    - rid: 2095229591427744644
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1158,14 +1158,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Grilled Fish
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 220feb7eb1b353643813278f581e23cd, type: 3}
         Description: Grilled Fish Description
         Price: 3
         NutritionalValue: 2
-    - rid: 2095229591427744529
+    - rid: 2095229591427744645
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1181,14 +1181,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Milk
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 04780925d85617e4aba893a3ca4e6eea, type: 3}
         Description: Milk Description
         Price: 1
         NutritionalValue: 1
-    - rid: 2095229591427744530
+    - rid: 2095229591427744646
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1204,14 +1204,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Milkshake
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 3bbcd6798185ab945869de3900794a77, type: 3}
         Description: Milkshake Description
         Price: 5
         NutritionalValue: 2
-    - rid: 2095229591427744531
+    - rid: 2095229591427744647
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1227,14 +1227,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Mushroom
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 3d67c81606da8534fb48cd442e02f3d2, type: 3}
         Description: Mushroom Description
         Price: 2
         NutritionalValue: 1
-    - rid: 2095229591427744532
+    - rid: 2095229591427744648
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1250,14 +1250,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Omelette
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 85a6eadd313c4af4e89e80f22ee67e9c, type: 3}
         Description: Omelette Description
         Price: 5
         NutritionalValue: 3
-    - rid: 2095229591427744533
+    - rid: 2095229591427744649
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1273,14 +1273,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Onion
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: a14ec167fc6a11444b9173494fbb6974, type: 3}
         Description: Onion Description
         Price: 2
         NutritionalValue: 1
-    - rid: 2095229591427744534
+    - rid: 2095229591427744650
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1296,14 +1296,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Potato
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 7e578babb7685b8419380003bab21a2d, type: 3}
         Description: Potato Description
         Price: 2
         NutritionalValue: 1
-    - rid: 2095229591427744535
+    - rid: 2095229591427744651
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1319,14 +1319,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Raw Fish
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 2259a6440acf4a2468ad71bba6793dbf, type: 3}
         Description: Raw Fish Description
         Price: 2
         NutritionalValue: 1
-    - rid: 2095229591427744536
+    - rid: 2095229591427744652
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1342,14 +1342,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Raw Meat
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: e62bd738a548c16488fe91bfad990423, type: 3}
         Description: Raw Meat Description
         Price: 5
         NutritionalValue: 3
-    - rid: 2095229591427744537
+    - rid: 2095229591427744653
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1365,14 +1365,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Seaweed
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 0ddc75831444a224c8e79fad55e0eaf2, type: 3}
         Description: Seaweed Description
         Price: 1
         NutritionalValue: 1
-    - rid: 2095229591427744538
+    - rid: 2095229591427744654
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1388,14 +1388,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Stew
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: 9150847d428c6a449b8471f3958e9a72, type: 3}
         Description: Stew Description
         Price: 10
         NutritionalValue: 10
-    - rid: 2095229591427744539
+    - rid: 2095229591427744655
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1411,14 +1411,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Sushi
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: bb8a1eb9e91f6534ca5bfa65c51337e9, type: 3}
         Description: Sushi Description
         Price: 2
         NutritionalValue: 2
-    - rid: 2095229591427744540
+    - rid: 2095229591427744656
       type: {class: FoodCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1434,14 +1434,14 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Tamago Sushi
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        BodyColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         HeaderColor: {r: 0.9294118, g: 0.6431373, b: 0.3803922, a: 1}
-        StatsTextColor: {r: 0.8941177, g: 0.5803922, b: 0.30980393, a: 1}
+        StatsTextColor: {r: 0.89411765, g: 0.5803922, b: 0.30980393, a: 1}
         Icon: {fileID: 21300000, guid: f5d937e1b4af5dd41b7ea2022403895c, type: 3}
         Description: Tamago Sushi Description
         Price: 2
         NutritionalValue: 4
-    - rid: 2095229591427744541
+    - rid: 2095229591427744657
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1457,12 +1457,12 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Client
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.38823533, g: 0.48627454, b: 0.69411767, a: 1}
+        BodyColor: {r: 0.3882353, g: 0.4862745, b: 0.69411767, a: 1}
         HeaderColor: {r: 0.535493, g: 0.64204156, b: 0.8679245, a: 1}
-        StatsTextColor: {r: 0.38823533, g: 0.48627454, b: 0.69411767, a: 1}
+        StatsTextColor: {r: 0.3882353, g: 0.4862745, b: 0.69411767, a: 1}
         Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
         Description: Client Description
-    - rid: 2095229591427744542
+    - rid: 2095229591427744658
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1478,13 +1478,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Plank
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        BodyColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         HeaderColor: {r: 0.5764706, g: 0.60784316, b: 0.6509804, a: 1}
-        StatsTextColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        StatsTextColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         Icon: {fileID: 21300000, guid: 35668956222d91244a45abe3154577c3, type: 3}
         Description: Plank Description
         Price: 5
-    - rid: 2095229591427744543
+    - rid: 2095229591427744659
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1500,13 +1500,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Fishing Spot
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.24705884, g: 0.24313727, b: 0.227451, a: 1}
+        BodyColor: {r: 0.24705882, g: 0.24313726, b: 0.22745098, a: 1}
         HeaderColor: {r: 0.36862746, g: 0.36078432, b: 0.3372549, a: 1}
-        StatsTextColor: {r: 0.24705884, g: 0.24313727, b: 0.227451, a: 1}
+        StatsTextColor: {r: 0.24705882, g: 0.24313726, b: 0.22745098, a: 1}
         Icon: {fileID: 21300000, guid: 620739851e4a8c44c8149777b092deed, type: 3}
         Description: Fishing Spot Description
         Price: 1
-    - rid: 2095229591427744544
+    - rid: 2095229591427744660
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1522,13 +1522,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Plains
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.7019608, g: 0.3921569, b: 0.70980394, a: 1}
+        BodyColor: {r: 0.9764706, g: 0.8784314, b: 0.62352943, a: 1}
         HeaderColor: {r: 0.7568628, g: 0.5019608, b: 0.76470596, a: 1}
-        StatsTextColor: {r: 0.7019608, g: 0.3921569, b: 0.70980394, a: 1}
+        StatsTextColor: {r: 0.9764706, g: 0.8784314, b: 0.62352943, a: 1}
         Icon: {fileID: 21300000, guid: a6ccb019b1c3fa44e89f1f338680c2a3, type: 3}
         Description: Plains Description
         Price: 5
-    - rid: 2095229591427744545
+    - rid: 2095229591427744661
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1544,13 +1544,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Lumber Camp
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.9450981, g: 0.7137255, b: 0.65882355, a: 1}
+        BodyColor: {r: 0.94509804, g: 0.7137255, b: 0.65882355, a: 1}
         HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
-        StatsTextColor: {r: 0.9450981, g: 0.7137255, b: 0.65882355, a: 1}
+        StatsTextColor: {r: 0.94509804, g: 0.7137255, b: 0.65882355, a: 1}
         Icon: {fileID: 21300000, guid: 426963d6f313ffc469783a996a323a43, type: 3}
         Description: Lumber Camp Description
         Price: 5
-    - rid: 2095229591427744546
+    - rid: 2095229591427744662
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1566,13 +1566,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Quarry
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.93725497, g: 0.7176471, b: 0.65882355, a: 1}
+        BodyColor: {r: 0.9372549, g: 0.7176471, b: 0.65882355, a: 1}
         HeaderColor: {r: 0.93725497, g: 0.6039216, b: 0.52156866, a: 1}
-        StatsTextColor: {r: 0.93725497, g: 0.7176471, b: 0.65882355, a: 1}
+        StatsTextColor: {r: 0.9372549, g: 0.7176471, b: 0.65882355, a: 1}
         Icon: {fileID: 21300000, guid: b5d533a8e4b79ba48a41f73eb617b013, type: 3}
         Description: Quarry Description
         Price: 5
-    - rid: 2095229591427744547
+    - rid: 2095229591427744663
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1588,13 +1588,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Rock
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.2509804, g: 0.24705884, b: 0.23137257, a: 1}
+        BodyColor: {r: 0.2509804, g: 0.24705882, b: 0.23137255, a: 1}
         HeaderColor: {r: 0.36078432, g: 0.35686275, b: 0.33333334, a: 1}
-        StatsTextColor: {r: 0.2509804, g: 0.24705884, b: 0.23137257, a: 1}
+        StatsTextColor: {r: 0.2509804, g: 0.24705882, b: 0.23137255, a: 1}
         Icon: {fileID: 21300000, guid: 457ed01a61bd26f479813296afd3cdd4, type: 3}
         Description: Rock Description
         Price: 0
-    - rid: 2095229591427744548
+    - rid: 2095229591427744664
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1610,13 +1610,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Stick
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        BodyColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         HeaderColor: {r: 0.5803922, g: 0.6117647, b: 0.654902, a: 1}
-        StatsTextColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        StatsTextColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         Icon: {fileID: 21300000, guid: ce61582e1cb853a4b9f4762a196edefe, type: 3}
         Description: Stick Description
         Price: 2
-    - rid: 2095229591427744549
+    - rid: 2095229591427744665
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1632,13 +1632,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Stone
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        BodyColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         HeaderColor: {r: 0.5764706, g: 0.60784316, b: 0.6509804, a: 1}
-        StatsTextColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        StatsTextColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         Icon: {fileID: 21300000, guid: 65ce6e8de554801469cfe2b5b1bdff12, type: 3}
         Description: Stone Description
         Price: 1
-    - rid: 2095229591427744550
+    - rid: 2095229591427744666
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1654,13 +1654,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Tree
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.2509804, g: 0.24705884, b: 0.23137257, a: 1}
+        BodyColor: {r: 0.2509804, g: 0.24705882, b: 0.23137255, a: 1}
         HeaderColor: {r: 0.36078432, g: 0.35686275, b: 0.33333334, a: 1}
-        StatsTextColor: {r: 0.2509804, g: 0.24705884, b: 0.23137257, a: 1}
+        StatsTextColor: {r: 0.2509804, g: 0.24705882, b: 0.23137255, a: 1}
         Icon: {fileID: 21300000, guid: 5a2a9e1dade259d41a0bf333d3e7e079, type: 3}
         Description: Tree Description
         Price: 0
-    - rid: 2095229591427744551
+    - rid: 2095229591427744667
       type: {class: SellableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1676,13 +1676,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Wood
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        BodyColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         HeaderColor: {r: 0.5803922, g: 0.6117647, b: 0.654902, a: 1}
-        StatsTextColor: {r: 0.3921569, g: 0.43529415, b: 0.5019608, a: 1}
+        StatsTextColor: {r: 0.39215687, g: 0.43529412, b: 0.5019608, a: 1}
         Icon: {fileID: 21300000, guid: 768f09dbc8e6e4443824c8c5de58afe9, type: 3}
         Description: Wood Description
         Price: 1
-    - rid: 2095229591427744552
+    - rid: 2095229591427744668
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 1
@@ -1698,13 +1698,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Dog
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.9568628, g: 0.9333334, b: 0.85098046, a: 1}
+        BodyColor: {r: 0.95686275, g: 0.93333334, b: 0.8509804, a: 1}
         HeaderColor: {r: 0.9215687, g: 0.86666673, b: 0.65882355, a: 1}
-        StatsTextColor: {r: 0.9568628, g: 0.9333334, b: 0.85098046, a: 1}
+        StatsTextColor: {r: 0.95686275, g: 0.93333334, b: 0.8509804, a: 1}
         Icon: {fileID: 21300000, guid: 0cc5e94ad5495404da514e5944663e2e, type: 3}
         Description: Dog Description
         Health: 9
-    - rid: 2095229591427744553
+    - rid: 2095229591427744669
       type: {class: DamageableCardDataHolder, ns: Data.Cards, asm: Assembly-CSharp}
       data:
         IsWorker: 1
@@ -1720,13 +1720,13 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Villager
         NameColor: {r: 0, g: 0, b: 0, a: 1}
-        BodyColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
+        BodyColor: {r: 0.95686275, g: 0.93333334, b: 0.8509804, a: 1}
         HeaderColor: {r: 0.9215687, g: 0.86666673, b: 0.65882355, a: 1}
-        StatsTextColor: {r: 0.95294124, g: 0.9294118, b: 0.8470589, a: 1}
+        StatsTextColor: {r: 0.95686275, g: 0.93333334, b: 0.8509804, a: 1}
         Icon: {fileID: 21300000, guid: 265bb0ba4df365d4aacb24f7634a93dd, type: 3}
         Description: Villager Description
         Health: 15
-    - rid: 2095229591427744554
+    - rid: 2095229591427744670
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1747,7 +1747,7 @@ MonoBehaviour:
         StatsTextColor: {r: 1, g: 1, b: 1, a: 1}
         Icon: {fileID: 0}
         Description: Booster Description
-    - rid: 2095229591427744555
+    - rid: 2095229591427744671
       type: {class: CardDataHolder, ns: Data.Cards.Core, asm: Assembly-CSharp}
       data:
         IsWorker: 0
@@ -1763,8 +1763,8 @@ MonoBehaviour:
         HasHeaderBackground: 1
         Name: Sell
         NameColor: {r: 1, g: 1, b: 1, a: 1}
-        BodyColor: {r: 1, g: 0.8004884, b: 0.19245279, a: 1}
+        BodyColor: {r: 0.9960785, g: 0.8470589, b: 0.14901961, a: 1}
         HeaderColor: {r: 1, g: 1, b: 1, a: 1}
-        StatsTextColor: {r: 1, g: 0.8004884, b: 0.19245279, a: 1}
+        StatsTextColor: {r: 0.9960785, g: 0.8470589, b: 0.14901961, a: 1}
         Icon: {fileID: 0}
         Description: Sell Description

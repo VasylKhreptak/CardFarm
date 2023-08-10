@@ -133,6 +133,21 @@ PrefabInstance:
       propertyPath: Name.value
       value: Plains
       objectReference: {fileID: 0}
+    - target: {fileID: 4517464624410200089, guid: bbc039695be3f16459608e22b3e7b762,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.70980394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517464624410200089, guid: bbc039695be3f16459608e22b3e7b762,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.3921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517464624410200089, guid: bbc039695be3f16459608e22b3e7b762,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.7019608
+      objectReference: {fileID: 0}
     - target: {fileID: 5291409564064347103, guid: bbc039695be3f16459608e22b3e7b762,
         type: 3}
       propertyPath: m_AnchorMax.y
