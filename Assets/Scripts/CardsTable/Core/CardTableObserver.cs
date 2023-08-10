@@ -24,7 +24,7 @@ namespace CardsTable.Core
 
         private void Awake()
         {
-            _gameRestartCommand.OnExecute += SyncCards;
+            _gameRestartCommand.OnAfterExecute += SyncCards;
         }
 
         private void OnEnable()
@@ -39,7 +39,7 @@ namespace CardsTable.Core
 
         private void OnDestroy()
         {
-            _gameRestartCommand.OnExecute -= SyncCards;
+            _gameRestartCommand.OnAfterExecute -= SyncCards;
         }
 
         #endregion
