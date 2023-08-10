@@ -7,8 +7,8 @@ namespace Graphics.Lighting
     public class Shadow : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private RectTransform _rootRectTransform;
-        [SerializeField] private RectTransform _rectTransform;
+        [SerializeField] private Transform _rootTransform;
+        [SerializeField] private Transform _transform;
         [SerializeField] private Image _image;
 
         [Header("Preferences")]
@@ -33,7 +33,7 @@ namespace Graphics.Lighting
 
         public void Validate()
         {
-            _rectTransform ??= GetComponent<RectTransform>();
+            _transform ??= GetComponent<Transform>();
             _image ??= GetComponent<Image>();
         }
 
@@ -53,20 +53,20 @@ namespace Graphics.Lighting
         {
             Vector3 lightDirection = _lightData.Direction;
 
-            Ray ray = new Ray(_rootRectTransform.position, lightDirection * _lightData.MaxLightDistance);
+            Ray ray = new Ray(_rootTransform.position, lightDirection * _lightData.MaxLightDistance);
 
             if (_plane.Raycast(ray, out var enter))
             {
                 _image.enabled = true;
 
                 Vector3 point = ray.GetPoint(enter);
-                _rectTransform.position = point;
+                transform.position = point;
             }
             else
             {
                 _image.enabled = false;
-                _rectTransform.localPosition = Vector3.zero;
-                _rectTransform.localRotation = Quaternion.identity;
+                _transform.localPosition = Vector3.zero;
+                _transform.localRotation = Quaternion.identity;
             }
         }
     }

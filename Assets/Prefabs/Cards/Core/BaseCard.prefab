@@ -2620,8 +2620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a3d14e77e24be68d71a82d00b73857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rootRectTransform: {fileID: 1106781378184328993}
-  _rectTransform: {fileID: 3655734679291235949}
+  _rootTransform: {fileID: 1106781378184328993}
+  _transform: {fileID: 3655734679291235949}
   _image: {fileID: 8511861038459126859}
   _planeHeight: 0
 --- !u!1 &4629711928249831538
