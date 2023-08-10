@@ -436,7 +436,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8575093375997657222}
-  m_RootOrder: 22
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -664,6 +664,11 @@ PrefabInstance:
       objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 471077923851067249, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 471077923851067249, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
       propertyPath: m_Color.b
       value: 0.14901961
       objectReference: {fileID: 0}
@@ -773,6 +778,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2892189769908355471}
     - target: {fileID: 2497773413687021429, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534751272611019266, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1010,7 +1020,7 @@ PrefabInstance:
     - target: {fileID: 3913278531235928592, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4137616735846603641, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -1117,6 +1127,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 5991451209249672623, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6145836632900969399, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -1142,6 +1157,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 6500455856049116718, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6507552467412648492, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_Color.b
@@ -1192,6 +1212,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 7234679668770093658, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 7602918863402728155, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
@@ -1205,7 +1230,7 @@ PrefabInstance:
     - target: {fileID: 7673193895460688980, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7731085431621850148, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -1226,6 +1251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8246623468920245377, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8253568150029054383, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
@@ -1277,6 +1307,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 2892189769908355471}
+    - target: {fileID: 8897579127082152760, guid: d5d346ed3d610c748b54a7004eb99e4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8904230965933755696, guid: d5d346ed3d610c748b54a7004eb99e4c,
         type: 3}
       propertyPath: _cardData
