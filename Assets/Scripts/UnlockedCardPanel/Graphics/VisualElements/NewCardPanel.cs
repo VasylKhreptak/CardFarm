@@ -1,6 +1,7 @@
 ﻿using Cards.Data;
 using CardsTable.ManualCardSelectors;
 using Data.Cards.Core;
+using Runtime.Commands;
 using ScriptableObjects.Scripts.Cards.Data;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,12 +24,16 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
         private InvestigatedCardsObserver _investigatedCardsObserver;
         private CardsData _cardsData;
+        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(InvestigatedCardsObserver investigatedCardsObserver, CardsData cardsData)
+        private void Constructor(InvestigatedCardsObserver investigatedCardsObserver,
+            CardsData cardsData,
+            GameRestartCommand gameRestartCommand)
         {
             _investigatedCardsObserver = investigatedCardsObserver;
             _cardsData = cardsData;
+            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
@@ -43,6 +48,8 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private void Awake()
         {
             Disable();
+
+            _gameRestartCommand.OnExecute += OnRestart;
         }
 
         private void OnEnable()
@@ -55,6 +62,11 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         {
             _closeButton.onClick.RemoveListener(Hide);
             _investigatedCardsObserver.OnInvestigatedCard -= OnInvestigatedNewCard;
+        }
+
+        private void OnDestroy()
+        {
+            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -84,6 +96,11 @@ namespace UnlockedCardPanel.Graphics.VisualElements
             }
 
             Show();
+        }
+
+        private void OnRestart()
+        {
+            Disable();
         }
     }
 }
