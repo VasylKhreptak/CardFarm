@@ -28,12 +28,12 @@ namespace ObjectPoolers.GameRestartActions.PoolCleaners.Core
 
         private void Awake()
         {
-            _gameRestartCommand.OnExecute += _targetPooler.DisableAllObjects;
+            _gameRestartCommand.OnBeforeExecute += _targetPooler.DisableAllObjects;
         }
 
         private void OnDestroy()
         {
-            _gameRestartCommand.OnExecute -= _targetPooler.DisableAllObjects;
+            _gameRestartCommand.OnBeforeExecute -= _targetPooler.DisableAllObjects;
         }
 
         #endregion

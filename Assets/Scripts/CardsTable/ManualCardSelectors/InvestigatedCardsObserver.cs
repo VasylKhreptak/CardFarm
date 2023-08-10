@@ -38,7 +38,6 @@ namespace CardsTable.ManualCardSelectors
         protected override void ClearCards()
         {
             _cards.Clear();
-            Debug.Log("Cleared Cards");
         }
     }
 }
