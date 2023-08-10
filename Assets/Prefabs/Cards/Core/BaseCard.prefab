@@ -379,6 +379,7 @@ MonoBehaviour:
   _canBePlacedInChest: 0
   _canBeStackedWithSameCard: 1
   _isZone: 0
+  _hasHeaderBackground: 1
   ID: -1
   GroupID:
     value: -1
@@ -3098,7 +3099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9165845091336265674
 RectTransform:
   m_ObjectHideFlags: 0
