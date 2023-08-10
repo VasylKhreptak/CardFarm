@@ -6,7 +6,6 @@ Shader "Shadow Reseter"
     {
         _Color ("Tint", Color) = (1,1,1,1)
         _MainTex ("Base (RGB), Alpha (A)", 2D) = "white" {}
-        _StencilID ("Stencil ID", Float) = 0
         _ColorMask ("Color Mask", Float) = 15
         _ClipAlpha ("ClipAlpha", Float) = 0.2
     }
@@ -24,13 +23,9 @@ Shader "Shadow Reseter"
 
         Stencil
         {
-            Ref [_StencilID]
-            Comp NotEqual
-            Pass Replace
-            Fail Keep
-            ZFail Keep
-            ReadMask 1
-            WriteMask 1
+            Ref 0
+            Comp Always
+            Pass Zero
         }
 
         Cull Off
