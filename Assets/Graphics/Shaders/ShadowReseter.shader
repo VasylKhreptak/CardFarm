@@ -1,12 +1,12 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Image Shadow"
+Shader "Shadow Reseter"
 {
     Properties
     {
         _Color ("Tint", Color) = (1,1,1,1)
         _MainTex ("Base (RGB), Alpha (A)", 2D) = "white" {}
-        _Stencil ("Stencil ID", Float) = 0
+        _StencilID ("Stencil ID", Float) = 0
         _ColorMask ("Color Mask", Float) = 15
         _ClipAlpha ("ClipAlpha", Float) = 0.2
     }
@@ -24,9 +24,13 @@ Shader "Image Shadow"
 
         Stencil
         {
-            Ref [_Stencil]
+            Ref [_StencilID]
             Comp NotEqual
             Pass Replace
+            Fail Keep
+            ZFail Keep
+            ReadMask 1
+            WriteMask 1
         }
 
         Cull Off
@@ -47,16 +51,16 @@ Shader "Image Shadow"
 
             struct appdata_t
             {
-                float4 vertex   : POSITION;
-                float4 color    : COLOR;
+                float4 vertex : POSITION;
+                float4 color : COLOR;
                 float2 texcoord : TEXCOORD0;
             };
 
             struct v2f
             {
-                float4 vertex   : SV_POSITION;
-                fixed4 color    : COLOR;
-                half2 texcoord  : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+                fixed4 color : COLOR;
+                half2 texcoord : TEXCOORD0;
                 float4 worldPosition : TEXCOORD1;
             };
 
@@ -84,13 +88,13 @@ Shader "Image Shadow"
 
             fixed4 frag(v2f IN) : SV_Target
             {
-                half4 color = (tex2D(_MainTex, IN.texcoord) );
-                color.rgb=_Color.rgb;
-                color.a*=_Color.a;
-                clip (color.a - _ClipAlpha);
+                half4 color = (tex2D(_MainTex, IN.texcoord));
+                color.rgb = _Color.rgb;
+                color.a *= _Color.a;
+                clip(color.a - _ClipAlpha);
                 return color;
             }
-        ENDCG
+            ENDCG
         }
     }
 }
