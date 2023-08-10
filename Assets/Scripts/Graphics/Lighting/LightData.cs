@@ -1,16 +1,23 @@
-﻿using UniRx;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Graphics.Lighting
 {
     public class LightData : MonoBehaviour
     {
-        public Vector3ReactiveProperty Direction = new Vector3ReactiveProperty();
+        [Header("Preferences")]
+        [SerializeField] private Material _shadowMaterial;
 
-        private void OnDrawGizmosSelected()
+        private static readonly int ColorPropertyName = Shader.PropertyToID("_Color");
+
+        private void OnValidate()
         {
-            UnityEngine.Gizmos.color = Color.yellow;
-            UnityEngine.Gizmos.DrawRay(transform.position, Direction.Value.normalized);
+            if (_shadowMaterial == null) return;
+
+            _shadowMaterial.SetColor(ColorPropertyName, ShadowsColor);
         }
+
+        public Vector3 Direction => transform.forward;
+        public float MaxLightDistance = 100f;
+        public Color ShadowsColor;
     }
 }

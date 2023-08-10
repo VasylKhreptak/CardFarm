@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CardShadow
+  m_Name: Shadow
   m_Shader: {fileID: 4800000, guid: a73501b141586c04c9f9fc1450981c87, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -25,18 +25,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3defd977d92e85e44ad48b5461a69e9b, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - PixelSnap: 0
-    - _ClipAlpha: 0.34
+    - _ClipAlpha: 0.01
     - _ColorMask: 15
     - _EnableExternalAlpha: 0
     - _Stencil: 1
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 0.35686275}
+    - _Color: {r: 0, g: 0, b: 0, a: 0.2}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
