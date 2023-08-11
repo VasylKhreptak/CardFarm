@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e040277d074745b8637f2e0c8d5e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutorialText: Wait
+  _tutorialText: 
 --- !u!1 &4966405164443432742
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e61ed12534440a0bf61a68f1fd4e944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutorialText: Move Rock on Villager
+  _tutorialText: 
   _handMoveDuration: 1
   _handMoveDelay: 0.5
   _tutorialHandDelay: 1

@@ -60,8 +60,7 @@ MonoBehaviour:
     value: 0
   Recipe:
     Result:
-      BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-      Icon: {fileID: 0}
+      Card: 0
       Quantity: 1
     TargetCards: []
   Progress:
@@ -169,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ff429c6afc4aedbf38a6740edbd4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutorialText: Click on Buy Zone
+  _tutorialText: 
   _targetCard: 37
   _handClickInterval: 2
   _handOffset: {x: 0, y: 0, z: 0.5}
