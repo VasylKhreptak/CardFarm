@@ -134,7 +134,7 @@ namespace Cards.Factories.Logic
 
             CardData spawnedCard = _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
-            _cardData.AutomatedFactoryCallbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
+            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
 
             return spawnedCard;
         }

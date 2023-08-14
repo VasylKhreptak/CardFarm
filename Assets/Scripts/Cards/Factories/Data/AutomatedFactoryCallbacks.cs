@@ -8,6 +8,5 @@ namespace Cards.Factories.Data
     public class AutomatedFactoryCallbacks
     {
         public Action<FactoryRecipe> onExecutedRecipe;
-        public Action<Card> onSpawnedRecipeResult;
     }
 }

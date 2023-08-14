@@ -44,14 +44,14 @@ namespace Quests.Logic.QuestObservers.Core
 
         private void StartObservingCard(FactoryData cardData)
         {
-            cardData.AutomatedFactoryCallbacks.onSpawnedRecipeResult += OnSpawnedRecipeResult;
+            cardData.Callbacks.onSpawnedRecipeResult += OnSpawnedRecipeResult;
 
             _subscribedCards.Add(cardData);
         }
 
         private void StopObservingCard(FactoryData cardData)
         {
-            cardData.AutomatedFactoryCallbacks.onSpawnedRecipeResult -= OnSpawnedRecipeResult;
+            cardData.Callbacks.onSpawnedRecipeResult -= OnSpawnedRecipeResult;
 
             _subscribedCards.Remove(cardData);
         }
