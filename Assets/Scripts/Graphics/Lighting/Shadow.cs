@@ -61,7 +61,7 @@ namespace Graphics.Lighting
 
                 Vector3 point = ray.GetPoint(enter);
                 _transform.position = point;
-                _transform.localRotation = _rootTransform.localRotation;
+                _transform.rotation = _rootTransform.rotation;
             }
             else
             {
