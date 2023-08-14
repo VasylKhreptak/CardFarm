@@ -26,6 +26,8 @@ MonoBehaviour:
         Weight: 2
       - Card: 30
         Weight: 2
+    UsePseudoRandom: 1
+    FirstCard: 5
   - Resources: 03000000
     Workers: 00000000
     Cooldown: 10
@@ -35,6 +37,8 @@ MonoBehaviour:
       Weights:
       - Card: 6
         Weight: 1
+    UsePseudoRandom: 1
+    FirstCard: 6
   - Resources: 01000000
     Workers: 00000000
     Cooldown: 10
@@ -48,6 +52,8 @@ MonoBehaviour:
         Weight: 5
       - Card: 8
         Weight: 3
+    UsePseudoRandom: 1
+    FirstCard: 4
   - Resources: 05000000
     Workers: 00000000
     Cooldown: 10
@@ -57,6 +63,8 @@ MonoBehaviour:
       Weights:
       - Card: 9
         Weight: 1
+    UsePseudoRandom: 1
+    FirstCard: 9
   - Resources: 040000000400000004000000
     Workers: 00000000
     Cooldown: 10
@@ -66,6 +74,8 @@ MonoBehaviour:
       Weights:
       - Card: 16
         Weight: 1
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 050000000500000005000000
     Workers: 00000000
     Cooldown: 10
@@ -75,6 +85,8 @@ MonoBehaviour:
       Weights:
       - Card: 17
         Weight: 1
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 0900000007000000
     Workers: 
     Cooldown: 10
@@ -84,6 +96,8 @@ MonoBehaviour:
       Weights:
       - Card: 18
         Weight: 1
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 04000000040000000400000005000000
     Workers: 00000000
     Cooldown: 10
@@ -93,6 +107,8 @@ MonoBehaviour:
       Weights:
       - Card: 19
         Weight: 1
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 05000000050000000500000004000000
     Workers: 00000000
     Cooldown: 10
@@ -102,6 +118,8 @@ MonoBehaviour:
       Weights:
       - Card: 20
         Weight: 1
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 0500000005000000040000000400000006000000
     Workers: 00000000
     Cooldown: 10
@@ -111,6 +129,8 @@ MonoBehaviour:
       Weights:
       - Card: 21
         Weight: 1
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 1900000006000000
     Workers: 
     Cooldown: 10
@@ -120,6 +140,8 @@ MonoBehaviour:
       Weights:
       - Card: 28
         Weight: 1
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 1e00000006000000
     Workers: 
     Cooldown: 10
@@ -129,6 +151,8 @@ MonoBehaviour:
       Weights:
       - Card: 29
         Weight: 1
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 0a000000
     Workers: 00000000
     Cooldown: 10
@@ -140,6 +164,8 @@ MonoBehaviour:
         Weight: 5
       - Card: 9
         Weight: 1
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 040000000500000005000000
     Workers: 00000000
     Cooldown: 30
@@ -149,6 +175,8 @@ MonoBehaviour:
       Weights:
       - Card: 11
         Weight: 5
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 100000000500000005000000
     Workers: 00000000
     Cooldown: 30
@@ -158,6 +186,8 @@ MonoBehaviour:
       Weights:
       - Card: 40
         Weight: 5
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 3a00000039000000
     Workers: 
     Cooldown: 20
@@ -167,6 +197,8 @@ MonoBehaviour:
       Weights:
       - Card: 60
         Weight: 5
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 1b00000039000000
     Workers: 
     Cooldown: 20
@@ -176,6 +208,8 @@ MonoBehaviour:
       Weights:
       - Card: 61
         Weight: 5
+    UsePseudoRandom: 0
+    FirstCard: 0
   - Resources: 11000000110000001000000007000000
     Workers: 00000000
     Cooldown: 10
@@ -185,3 +219,5 @@ MonoBehaviour:
       Weights:
       - Card: 62
         Weight: 5
+    UsePseudoRandom: 0
+    FirstCard: 0

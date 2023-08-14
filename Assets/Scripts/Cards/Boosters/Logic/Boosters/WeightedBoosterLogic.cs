@@ -58,7 +58,7 @@ namespace Cards.Boosters.Logic.Boosters
                     spawnedFirstCard = foundData as TemporaryData<bool>;
                 }
 
-                if (!spawnedFirstCard.Value)
+                if (spawnedFirstCard.Value == false)
                 {
                     spawnedFirstCard.Value = true;
                     _temporaryDataStorage.SetValue(KEY, spawnedFirstCard);

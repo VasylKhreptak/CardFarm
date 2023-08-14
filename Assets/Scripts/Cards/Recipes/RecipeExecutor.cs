@@ -5,6 +5,7 @@ using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
 using Cards.Workers.Data;
+using Data;
 using Extensions;
 using Graphics.UI.Particles.Coins.Logic;
 using ProgressLogic.Core;
@@ -23,7 +24,7 @@ namespace Cards.Recipes
 
         [Header("Preferences")]
         [SerializeField] private float _timeScale = 3f;
-        
+
         private IDisposable _recipeSubscription;
         private IDisposable _workersSubscription;
 
@@ -32,13 +33,18 @@ namespace Cards.Recipes
         private CardSpawner _cardSpawner;
         private CoinsCollector _coinsCollector;
         private Camera _camera;
+        private TemporaryDataStorage _temporaryDataStorage;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner, CoinsCollector coinsCollector, CameraProvider cameraProvider)
+        private void Constructor(CardSpawner cardSpawner,
+            CoinsCollector coinsCollector,
+            CameraProvider cameraProvider,
+            TemporaryDataStorage temporaryDataStorage)
         {
             _cardSpawner = cardSpawner;
             _coinsCollector = coinsCollector;
             _camera = cameraProvider.Value;
+            _temporaryDataStorage = temporaryDataStorage;
         }
 
         #region MonoBehaviour
@@ -115,7 +121,7 @@ namespace Cards.Recipes
 
         private void SpawnRecipeResult()
         {
-            Card cardToSpawn = _cardData.CurrentRecipe.Value.Result.Weights.GetByWeight(x => x.Weight).Card;
+            Card cardToSpawn = GetCardToSpawn();
 
             if (cardToSpawn == Card.Coin)
             {
@@ -128,6 +134,32 @@ namespace Cards.Recipes
             }
 
             _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
+        }
+
+        public Card GetCardToSpawn()
+        {
+            CardRecipe currentRecipe = _cardData.CurrentRecipe.Value;
+
+            if (currentRecipe.UsePseudoRandom)
+            {
+                string key = currentRecipe.GetHashCode().ToString();
+
+                TemporaryData<bool> spawnedFirstCardData;
+
+                _temporaryDataStorage.GetValue(key, new TemporaryData<bool>(false), out var foundData);
+
+                spawnedFirstCardData = foundData as TemporaryData<bool>;
+
+                if (spawnedFirstCardData.Value == false)
+                {
+                    spawnedFirstCardData.Value = true;
+                    _temporaryDataStorage.SetValue(key, spawnedFirstCardData);
+
+                    return currentRecipe.FirstCard;
+                }
+            }
+
+            return currentRecipe.Result.Weights.GetByWeight(x => x.Weight).Card;
         }
 
         private void DecreaseResourcesDurability()
