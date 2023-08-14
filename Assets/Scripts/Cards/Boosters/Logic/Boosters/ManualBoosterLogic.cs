@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Cards.Boosters.Logic.Boosters
 {
-    public class ManualBooster : BoosterBaseLogic
+    public class ManualBoosterLogic : BoosterBaseLogic
     {
         [Header("Preferences")]
         [SerializeField] private List<Card> _cards;

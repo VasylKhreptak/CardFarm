@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Cards.Boosters.Logic.Boosters
 {
-    public class WeightedBooster : BoosterBaseLogic
+    public class WeightedBoosterLogic : BoosterBaseLogic
     {
         [Header("Preferences")]
         [SerializeField] private List<CardWeight> _cards;
