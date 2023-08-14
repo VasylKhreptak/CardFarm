@@ -60,7 +60,8 @@ namespace Graphics.Lighting
                 _image.enabled = true;
 
                 Vector3 point = ray.GetPoint(enter);
-                transform.position = point;
+                _transform.position = point;
+                _transform.localRotation = _rootTransform.localRotation;
             }
             else
             {
