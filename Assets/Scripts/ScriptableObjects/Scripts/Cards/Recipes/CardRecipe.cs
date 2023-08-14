@@ -14,6 +14,9 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
         public int MinResultCount = 1;
         public int MaxResultCount = 1;
         public CardWeights Result = new CardWeights();
+        public bool UsePreudoRandom = false;
+        public Card FirstResultedCard;
+        public bool SpawnedFirstResultedCard;
 
         public bool HasWorkers => Workers.Count > 0;
         public int ResultCount => Random.Range(MinResultCount, MaxResultCount + 1);
