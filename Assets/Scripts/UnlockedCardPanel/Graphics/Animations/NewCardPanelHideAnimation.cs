@@ -29,6 +29,8 @@ namespace UnlockedCardPanel.Graphics.Animations
         private Sequence _sequence;
 
         private bool _isPlaying;
+        
+        public bool IsPlaying => _isPlaying;
 
         #region MonoBehaviour
 

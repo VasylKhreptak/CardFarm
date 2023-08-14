@@ -37,6 +37,10 @@ namespace UnlockedCardPanel.Graphics.Animations
 
         private Sequence _sequence;
 
+        private bool _isPlaying = false;
+
+        public bool IsPlaying => _isPlaying;
+
         private GameRestartCommand _gameRestartCommand;
 
         [Inject]
@@ -80,10 +84,13 @@ namespace UnlockedCardPanel.Graphics.Animations
             _sequence = DOTween.Sequence();
 
             _sequence
+                .OnPlay(() => _isPlaying = true)
                 .Join(_rectTransform.DOScale(_endScale, _duration).SetEase(_scaleCurve))
                 .Join(_rectTransform.DOSizeDelta(_endSizeDelta, _duration).SetEase(_sizeDeltaCurve))
                 .Join(_canvasGroup.DOFade(_endAlpha, _duration).SetEase(_fadeCurve))
                 .Join(_rectTransform.DOAnchorPos(_endAnchorPos, _duration).SetEase(_anchorPosCurve))
+                .OnComplete(() => _isPlaying = false)
+                .OnKill(() => _isPlaying = false)
                 .Play();
         }
 

@@ -54,13 +54,13 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
         private void OnEnable()
         {
-            _closeButton.onClick.AddListener(Hide);
+            _closeButton.onClick.AddListener(OnClicked);
             _investigatedCardsObserver.OnInvestigatedCard += OnInvestigatedNewCard;
         }
 
         private void OnDisable()
         {
-            _closeButton.onClick.RemoveListener(Hide);
+            _closeButton.onClick.RemoveListener(OnClicked);
             _investigatedCardsObserver.OnInvestigatedCard -= OnInvestigatedNewCard;
         }
 
@@ -87,6 +87,13 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private void Enable() => _panelObject.SetActive(true);
 
         private void Disable() => _panelObject.SetActive(false);
+
+        private void OnClicked()
+        {
+            if (_showAnimation.IsPlaying) return;
+
+            Hide();
+        }
 
         private void OnInvestigatedNewCard(CardData cardData)
         {
