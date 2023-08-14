@@ -7,10 +7,7 @@ namespace Data
 {
     public class TemporaryDataStorage : MonoBehaviour
     {
-        private Dictionary<string, float> _floats = new Dictionary<string, float>();
-        private Dictionary<string, int> _ints = new Dictionary<string, int>();
-        private Dictionary<string, string> _strings = new Dictionary<string, string>();
-        private Dictionary<string, bool> _bools = new Dictionary<string, bool>();
+        private Dictionary<string, TemporaryData> _data = new Dictionary<string, TemporaryData>();
 
         private GameRestartCommand _gameRestartCommand;
 
@@ -34,84 +31,61 @@ namespace Data
 
         #endregion
 
-        #region Float
+        public bool HasKey(string key) => _data.ContainsKey(key);
 
-        public void SetFloat(string key, float value) => _floats[key] = value;
-
-        public float GetFloat(string key) => _floats[key];
-
-        public float GetFloat(string key, float defaultValue)
+        public void SetValue(string key, TemporaryData data)
         {
-            if (_floats.TryGetValue(key, out var value))
-            {
-                return value;
-            }
-
-            return defaultValue;
+            _data[key] = data;
         }
 
-        #endregion
-
-        #region Int
-
-        public void SetInt(string key, int value) => _ints[key] = value;
-
-        public int GetInt(string key) => _ints[key];
-
-        public int GetInt(string key, int defaultValue)
+        public TemporaryData GetValue(string key)
         {
-            if (_ints.TryGetValue(key, out var value))
+            if (_data.TryGetValue(key, out TemporaryData data))
             {
-                return value;
+                return data;
             }
 
-            return defaultValue;
+            return null;
         }
 
-        #endregion
-
-        #region String
-
-        public void SetString(string key, string value) => _strings[key] = value;
-
-        public string GetString(string key) => _strings[key];
-
-        public string GetString(string key, string defaultValue)
+        public void RemoveValue(string key)
         {
-            if (_strings.TryGetValue(key, out var value))
+            _data.Remove(key);
+        }
+
+        public bool TryGetValue(string key, out TemporaryData data)
+        {
+            return _data.TryGetValue(key, out data);
+        }
+
+        public void GetValue(string key, TemporaryData defaultValue, out TemporaryData data)
+        {
+            if (_data.TryGetValue(key, out data))
             {
-                return value;
+                return;
             }
 
-            return defaultValue;
+            data = defaultValue;
         }
-
-        #endregion
-
-        #region Bool
-
-        public void SetBool(string key, bool value) => _bools[key] = value;
-
-        public bool GetBool(string key) => _bools[key];
-
-        public bool GetBool(string key, bool defaultValue)
-        {
-            if (_bools.TryGetValue(key, out var value))
-            {
-                return value;
-            }
-
-            return defaultValue;
-        }
-
-        #endregion
 
         private void ClearData()
         {
-            _floats.Clear();
-            _ints.Clear();
-            _strings.Clear();
-            _bools.Clear();
+            _data.Clear();
+        }
+    }
+
+    public class TemporaryData
+    {
+
+    }
+
+    public class TemporaryData<T> : TemporaryData
+    {
+        public T Value;
+
+        public TemporaryData(T value)
+        {
+            Value = value;
         }
     }
 }
