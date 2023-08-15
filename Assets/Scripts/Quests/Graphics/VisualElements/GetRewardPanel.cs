@@ -1,10 +1,10 @@
-﻿using System;
-using Graphics.Animations.Quests.RewardPanel;
+﻿using Graphics.Animations.Quests.RewardPanel;
 using Graphics.Animations.Reminder;
 using Quests.Logic;
 using Runtime.Commands;
 using UniRx;
 using UnityEngine;
+using UnlockedCardPanel.Graphics.VisualElements;
 using Zenject;
 
 namespace Quests.Graphics.VisualElements
@@ -13,7 +13,6 @@ namespace Quests.Graphics.VisualElements
     {
         [Header("References")]
         [SerializeField] private GameObject _quest;
-        private IDisposable _nonRewardedQuestSubscription;
 
         [Header("Animations")]
         [SerializeField] private RewardPanelShowAnimation _showAnimation;
@@ -21,15 +20,20 @@ namespace Quests.Graphics.VisualElements
         [SerializeField] private ScalePunchReminderAnimation _scalePunchReminder;
         [SerializeField] private AnchorPositionPunchReminderAnimation _positionPunchReminder;
 
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
+
         private GameRestartCommand _gameRestartCommand;
         private QuestsManager _questsManager;
+        private NewCardPanel _newCardPanel;
 
         [Inject]
         private void Constructor(GameRestartCommand gameRestartCommand,
-            QuestsManager questsManager)
+            QuestsManager questsManager,
+            NewCardPanel newCardPanel)
         {
             _gameRestartCommand = gameRestartCommand;
             _questsManager = questsManager;
+            _newCardPanel = newCardPanel;
         }
 
         #region MonoBehaviour
@@ -69,22 +73,25 @@ namespace Quests.Graphics.VisualElements
         {
             StopObserving();
 
-            _nonRewardedQuestSubscription = _questsManager.NonRewardedQuests
+            _questsManager.NonRewardedQuests
                 .ObserveCountChanged()
                 .DoOnSubscribe(UpdatePanelState)
-                .Subscribe(_ => UpdatePanelState());
+                .Subscribe(_ => UpdatePanelState())
+                .AddTo(_subscriptions);
+
+            _newCardPanel.IsActive.Subscribe(_ => UpdatePanelState()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
         {
-            _nonRewardedQuestSubscription?.Dispose();
+            _subscriptions?.Clear();
         }
 
         private void UpdatePanelState()
         {
             int nonRewardedQuestsCount = _questsManager.NonRewardedQuests.Count;
 
-            if (nonRewardedQuestsCount > 0)
+            if (nonRewardedQuestsCount > 0 && _newCardPanel.IsActive.Value == false)
             {
                 Show();
             }
@@ -97,6 +104,9 @@ namespace Quests.Graphics.VisualElements
         private void Show()
         {
             Enable();
+
+            _hideAnimation.Stop();
+
             _showAnimation.Play(() =>
             {
                 _positionPunchReminder.Play();
@@ -106,9 +116,10 @@ namespace Quests.Graphics.VisualElements
 
         private void Hide()
         {
-            _hideAnimation.Play(Disable);
+            _showAnimation.Stop();
             _positionPunchReminder.Stop();
             _scalePunchReminder.Stop();
+            _hideAnimation.Play(Disable);
         }
 
         private void Enable()
@@ -124,6 +135,10 @@ namespace Quests.Graphics.VisualElements
         private void OnRestart()
         {
             Disable();
+            _showAnimation.Stop();
+            _positionPunchReminder.Stop();
+            _scalePunchReminder.Stop();
+            _hideAnimation.Stop();
         }
     }
 }

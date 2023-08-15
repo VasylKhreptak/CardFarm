@@ -27,6 +27,10 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
         private IDisposable _delaySubscription;
 
+        private BoolReactiveProperty _isActive = new BoolReactiveProperty(false);
+
+        public IReadOnlyReactiveProperty<bool> IsActive => _isActive;
+
         private InvestigatedCardsObserver _investigatedCardsObserver;
         private CardsData _cardsData;
         private GameRestartCommand _gameRestartCommand;
@@ -90,9 +94,17 @@ namespace UnlockedCardPanel.Graphics.VisualElements
             _hideAnimation.Play(Disable);
         }
 
-        private void Enable() => _panelObject.SetActive(true);
+        private void Enable()
+        {
+            _panelObject.SetActive(true);
+            _isActive.Value = true;
+        }
 
-        private void Disable() => _panelObject.SetActive(false);
+        private void Disable()
+        {
+            _panelObject.SetActive(false);
+            _isActive.Value = false;
+        }
 
         private void OnClicked()
         {
@@ -104,16 +116,18 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private void OnInvestigatedNewCard(CardData cardData)
         {
             _delaySubscription?.Dispose();
-            _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(_showDelay)).Subscribe(_ =>
-            {
-                if (_cardsData.TryGetValue(cardData.Card.Value, out CardDataHolder cardDataHolder))
+            _delaySubscription = Observable
+                .Timer(TimeSpan.FromSeconds(_showDelay))
+                .DoOnSubscribe(() => _isActive.Value = true)
+                .Subscribe(_ =>
                 {
-                    _cardVisualizerData.VisualizableCard.Value = cardDataHolder;
-                }
+                    if (_cardsData.TryGetValue(cardData.Card.Value, out CardDataHolder cardDataHolder))
+                    {
+                        _cardVisualizerData.VisualizableCard.Value = cardDataHolder;
+                    }
 
-                Show();
-
-            });
+                    Show();
+                });
         }
 
         private void OnRestart()

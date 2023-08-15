@@ -16,6 +16,9 @@ namespace Quests.Graphics.VisualElements
         [Header("References")]
         [SerializeField] private Button _button;
 
+        [Header("Particle Preferences")]
+        [SerializeField] private ParticleSystem _particleSystem;
+
         private IDisposable _clickSubscription;
 
         private QuestsManager _questsManager;
@@ -90,6 +93,11 @@ namespace Quests.Graphics.VisualElements
         private void MarkAsTookReward(QuestData questData)
         {
             questData.TookReward.Value = true;
+        }
+
+        private void PlayParticle()
+        {
+            _particleSystem.Play();
         }
     }
 }

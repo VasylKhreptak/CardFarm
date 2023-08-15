@@ -11,9 +11,6 @@ namespace Graphics.Animations.Quests.RewardPanel
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private CanvasGroup _canvasGroup;
 
-        [Header("Particle Preferences")]
-        [SerializeField] private ParticleSystem _particleSystem;
-
         [Header("General Preferences")]
         [SerializeField] private float _duration;
 
@@ -48,14 +45,13 @@ namespace Graphics.Animations.Quests.RewardPanel
         public void Play(Action onComplete = null)
         {
             Stop();
-            
+
             _canvasGroup.alpha = _startAlpha;
             _rectTransform.localScale = _startScale;
 
             _sequence = DOTween.Sequence();
 
             _sequence
-                .AppendCallback(PlayParticle)
                 .Append(_canvasGroup.DOFade(_endAlpha, _duration).SetEase(_fadeCurve))
                 .Join(_rectTransform.DOScale(_endScale, _duration).SetEase(_scaleCurve))
                 .OnComplete(() => onComplete?.Invoke())
@@ -65,14 +61,6 @@ namespace Graphics.Animations.Quests.RewardPanel
         public void Stop()
         {
             _sequence?.Kill();
-            _particleSystem.Stop();
-            _particleSystem.gameObject.SetActive(false);
-        }
-
-        private void PlayParticle()
-        {
-            _particleSystem.gameObject.SetActive(true);
-            _particleSystem.Play();
         }
     }
 }
