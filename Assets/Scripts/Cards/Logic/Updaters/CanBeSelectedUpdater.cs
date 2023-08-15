@@ -40,7 +40,10 @@ namespace Cards.Logic.Updaters
         private void StartObserving()
         {
             _cardData.IsInteractable.Subscribe(_ => OnStateUpdated()).AddTo(_subscriptions);
-            //_cardData.IsPlayingAnyAnimation.Subscribe(_ => OnStateUpdated()).AddTo(_subscriptions);
+            // _cardData.IsPlayingAnyAnimation.Subscribe(_ => OnStateUpdated()).AddTo(_subscriptions);
+            _cardData.Animations.AppearAnimation.IsPlaying.Subscribe(_ => OnStateUpdated()).AddTo(_subscriptions);
+            _cardData.Animations.JumpAnimation.IsPlaying.Subscribe(_ => OnStateUpdated()).AddTo(_subscriptions);
+            _cardData.Animations.FlipAnimation.IsPlaying.Subscribe(_ => OnStateUpdated()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
@@ -51,8 +54,11 @@ namespace Cards.Logic.Updaters
         private void OnStateUpdated()
         {
             bool canBeSelected =
-                _cardData.IsInteractable.Value;
-            //&& _cardData.IsPlayingAnyAnimation.Value == false;
+                _cardData.IsInteractable.Value
+                && _cardData.Animations.AppearAnimation.IsPlaying.Value == false
+                && _cardData.Animations.JumpAnimation.IsPlaying.Value == false
+                && _cardData.Animations.FlipAnimation.IsPlaying.Value == false;
+            // && _cardData.IsPlayingAnyAnimation.Value == false;
 
             _cardData.CanBeSelected.Value = canBeSelected;
         }

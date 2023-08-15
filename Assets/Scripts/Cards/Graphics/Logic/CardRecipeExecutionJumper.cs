@@ -1,5 +1,7 @@
-﻿using Cards.Data;
+﻿using System;
+using Cards.Data;
 using Cards.Factories.Data;
+using Graphics.Animations;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -13,6 +15,8 @@ namespace Cards.Graphics.Logic
 
         [Header("Preferences")]
         [SerializeField] private float _delay = 0.5f;
+
+        private IDisposable _gearSubscription;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
@@ -46,6 +50,7 @@ namespace Cards.Graphics.Logic
         private void OnDisable()
         {
             StopObserving();
+            StopJumping();
         }
 
         #endregion
@@ -101,12 +106,26 @@ namespace Cards.Graphics.Logic
 
         private void StartJumping()
         {
-            _cardData.Animations.ContinuousJumpingAnimation.PlayContinuous(delay: _delay);
+            _cardData.Animations.ContinuousJumpingAnimation.PlayContinuous(delay: _delay, onPlay: TryPunchGearsScale);
         }
 
         private void StopJumping()
         {
             _cardData.Animations.ContinuousJumpingAnimation.StopContinuous();
+            _gearSubscription?.Dispose();
+        }
+
+        private void TryPunchGearsScale()
+        {
+            _gearSubscription?.Dispose();
+            _gearSubscription = _cardData.GearsDrawer.GearsObject.Subscribe(gears =>
+            {
+                if (gears != null)
+                {
+                    gears.GetComponentInChildren<ScalePunchAnimation>().Play();
+                    _gearSubscription?.Dispose();
+                }
+            });
         }
     }
 }

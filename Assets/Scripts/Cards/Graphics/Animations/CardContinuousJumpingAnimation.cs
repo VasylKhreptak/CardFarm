@@ -22,7 +22,7 @@ namespace Cards.Graphics.Animations
 
         #endregion
 
-        public void PlayContinuous(float duration = float.MaxValue, float delay = 0f)
+        public void PlayContinuous(float duration = float.MaxValue, float delay = 0f, Action onPlay = null)
         {
             StopContinuous();
 
@@ -32,9 +32,14 @@ namespace Cards.Graphics.Animations
                 _intervalDisposable?.Dispose();
                 _intervalDisposable = Observable
                     .Interval(TimeSpan.FromSeconds(Duration + _jumpInterval))
-                    .DoOnSubscribe(() => Play(_cardData.transform.position))
+                    .DoOnSubscribe(() =>
+                    {
+                        onPlay?.Invoke();
+                        Play(_cardData.transform.position);
+                    })
                     .Subscribe(_ =>
                     {
+                        onPlay?.Invoke();
                         Play(_cardData.transform.position);
                     });
 

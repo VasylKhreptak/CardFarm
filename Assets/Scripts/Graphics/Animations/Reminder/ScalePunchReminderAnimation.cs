@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Graphics.Animations.Reminder
         [SerializeField] private Transform _transform;
 
         [Header("Preferences")]
+        [SerializeField] private bool _playOnEnable = false;
         [SerializeField] private float _startDelay = 1f;
         [SerializeField] private float _repeatInterval = 1f;
         [SerializeField] private Vector3 _force;
@@ -26,6 +28,14 @@ namespace Graphics.Animations.Reminder
         private void OnValidate()
         {
             _transform ??= GetComponent<Transform>();
+        }
+
+        private void OnEnable()
+        {
+            if (_playOnEnable)
+            {
+                Play();
+            }
         }
 
         private void OnDisable()
@@ -56,6 +66,7 @@ namespace Graphics.Animations.Reminder
         public void Stop()
         {
             _sequence?.Kill();
+            _transform.localScale = _initialScale;
         }
     }
 }

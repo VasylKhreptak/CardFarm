@@ -10,6 +10,7 @@ namespace Graphics.Animations
         [SerializeField] private Transform _transform;
 
         [Header("Preferences")]
+        [SerializeField] private float _delay;
         [SerializeField] private Vector3 _force;
         [SerializeField] private float _duration;
         [SerializeField] private int vibrato = 10;
@@ -41,6 +42,7 @@ namespace Graphics.Animations
             _sequence = DOTween.Sequence();
 
             _sequence
+                .SetDelay(_delay)
                 .AppendCallback(() => _transform.localScale = _initialScale)
                 .Append(_transform.DOPunchScale(_force, _duration, vibrato, _elasticity))
                 .SetEase(_curve)

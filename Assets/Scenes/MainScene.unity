@@ -7715,6 +7715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1076741738}
+  _playOnEnable: 0
   _startDelay: 2
   _repeatInterval: 0.8
   _force: {x: 0.08, y: 0.08, z: 0}
@@ -8323,7 +8324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f8fdeda89b4a3e9b4856c64aaf2ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minRange: 5
+  _minRange: 6
   _maxRange: 7
   _coinJoinablePrioritizedCards: 0f00000008000000
 --- !u!1 &1145066790
@@ -12747,6 +12748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1546235180}
+  _delay: 0
   _force: {x: 0.15, y: 0.15, z: 0.15}
   _duration: 0.15
   vibrato: 3
