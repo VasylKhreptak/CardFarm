@@ -75,8 +75,6 @@ namespace Cards.Data
 
         public RectTransform RectTransform;
 
-        public bool IsPushable = true;
-
         public CardShirt CardShirt;
         public CardShirtStateUpdater CardShirtStateUpdater;
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();

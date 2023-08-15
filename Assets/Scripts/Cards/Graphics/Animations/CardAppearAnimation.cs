@@ -101,7 +101,6 @@ namespace Cards.Graphics.Animations
                 .OnPlay(() =>
                 {
                     _isPlaying.Value = true;
-                    _cardData.IsPushable = false;
                 })
                 .Join(_cardData.transform.DOScale(_endScale, _scaleDuration).SetEase(_scaleCurve))
                 .Join(_cardData.CanvasGroup.DOFade(_endAlpha, _fadeDuration).SetEase(_fadeCurve))
@@ -117,14 +116,12 @@ namespace Cards.Graphics.Animations
                 .OnComplete(() =>
                 {
                     _isPlaying.Value = false;
-                    _cardData.IsPushable = true;
                     _cardData.CardShirtStateUpdater.UpdateShirtState();
                     onComplete?.Invoke();
                 })
                 .OnKill(() =>
                 {
                     _isPlaying.Value = false;
-                    _cardData.IsPushable = true;
                     _cardData.CardShirtStateUpdater.UpdateShirtState();
                 })
                 .Play();

@@ -77,7 +77,6 @@ namespace Cards.Graphics.Animations
                 .OnStart(() =>
                 {
                     _isPlaying.Value = true;
-                    _cardData.IsPushable = false;
                 })
                 .OnUpdate(() =>
                 {
@@ -88,12 +87,10 @@ namespace Cards.Graphics.Animations
                 .OnComplete(() =>
                 {
                     _isPlaying.Value = false;
-                    _cardData.IsPushable = true;
                     onComplete?.Invoke();
                 })
                 .OnKill(() =>
                 {
-                    _cardData.IsPushable = true;
                     _isPlaying.Value = false;
                 })
                 .Play();

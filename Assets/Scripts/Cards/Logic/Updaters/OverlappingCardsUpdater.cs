@@ -104,10 +104,11 @@ namespace Cards.Logic.Updaters
                     card == _cardData
                     || card.IsSelected.Value
                     || card.GroupID.Value == _cardData.GroupID.Value
-                    || card.IsZone
+                    || card.Animations.JumpAnimation.IsPlaying.Value
+                    || card.Animations.AppearAnimation.IsPlaying.Value
                     || card.IsAnyGroupCardSelected.Value
                     || card.IsPlayingAnyAnimation.Value
-                    || card.IsPushable == false
+                    || card.IsZone
                     || Vector3.Distance(card.transform.position, _cardData.transform.position) > _maxDistance;
 
                 return canRemove;
@@ -117,6 +118,11 @@ namespace Cards.Logic.Updaters
             {
                 CardData cardToCheck = cardsToCheck[i];
 
+                if (cardToCheck.IsZone && _cardData.RectTransform.IsOverlapping(cardToCheck.RectTransform))
+                {
+                    Debug.Log("Overlaping Zones");
+                }
+                
                 if (_cardData.RectTransform.IsOverlapping(cardToCheck.RectTransform))
                 {
                     overlappingCards.Add(cardToCheck);
