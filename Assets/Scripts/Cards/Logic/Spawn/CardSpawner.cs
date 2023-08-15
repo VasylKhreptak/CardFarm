@@ -16,6 +16,7 @@ namespace Cards.Logic.Spawn
         [Header("Preferences")]
         [SerializeField] private float _minRange = 5f;
         [SerializeField] private float _maxRange = 7f;
+
         [SerializeField] private Card[] _coinJoinablePrioritizedCards = new[]
         {
             Card.CoinChest, Card.Coin
@@ -105,18 +106,18 @@ namespace Cards.Logic.Spawn
             Vector3 moveToPosition = targetPosition ?? _cardsTableBounds.GetRandomPositionInRange(spawnedCardRect, _minRange, _maxRange);
             List<RectTransform> cardsRect = _cardsTable.Cards.Select(x => x.RectTransform).ToList();
             cardsRect.Remove(spawnedCardRect);
-            Vector3 freeSpacePosition = _playingAreaTableBounds.Bounds.GetClosestRandomPoint(cardsRect, spawnedCardRect, position);
+            // Vector3 freeSpacePosition = _playingAreaTableBounds.Bounds.GetClosestRandomPoint(cardsRect, spawnedCardRect, position);
 
             if (jump)
             {
-                spawnedCard.Animations.JumpAnimation.Play(freeSpacePosition, () =>
+                spawnedCard.Animations.JumpAnimation.Play(moveToPosition, () =>
                 {
                     spawnedCard.Callbacks.onLanded?.Invoke();
                 });
             }
             else
             {
-                spawnedCard.Animations.MoveAnimation.Play(freeSpacePosition);
+                spawnedCard.Animations.MoveAnimation.Play(moveToPosition);
             }
 
             if (flip)
