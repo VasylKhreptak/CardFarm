@@ -107,6 +107,7 @@ namespace Cards.Logic.Updaters
                     || card.IsZone
                     || card.IsAnyGroupCardSelected.Value
                     || card.IsPlayingAnyAnimation.Value
+                    || card.IsPushable == false
                     || Vector3.Distance(card.transform.position, _cardData.transform.position) > _maxDistance;
 
                 return canRemove;

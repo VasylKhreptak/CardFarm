@@ -11,6 +11,7 @@ using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using Tags.Cards;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Cards.Data
@@ -72,6 +73,8 @@ namespace Cards.Data
 
         public RectTransform RectTransform;
 
+        public bool IsPushable = true;
+        
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ColorReactiveProperty NameColor = new ColorReactiveProperty(Color.white);
@@ -80,6 +83,8 @@ namespace Cards.Data
         public ColorReactiveProperty StatsIconColor = new ColorReactiveProperty(Color.white);
         public ColorReactiveProperty StatsTextColor = new ColorReactiveProperty(Color.white);
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
+
+        public CanvasGroup CanvasGroup;
 
         public BoolReactiveProperty IsInteractable = new BoolReactiveProperty(true);
 
@@ -168,6 +173,7 @@ namespace Cards.Data
             Animations.FlipAnimation = GetComponentInChildren<CardFlipAnimation>(true);
             Animations.ShakeAnimation = GetComponentInChildren<CardShakeAnimation>(true);
             Animations.ContinuousJumpingAnimation = GetComponentInChildren<CardContinuousJumpingAnimation>(true);
+            Animations.AppearAnimation = GetComponentInChildren<CardAppearAnimation>(true);
 
             RectTransform = GetComponentInChildren<RectTransform>(true);
 
@@ -175,8 +181,10 @@ namespace Cards.Data
 
             RecipeExecutor = GetComponentInChildren<RecipeExecutor>(true);
             ReproductionLogic = GetComponentInChildren<BaseReproductionLogic>(true);
-            
+
             GearsDrawer = GetComponentInChildren<CardGearsDrawer>(true);
+
+            CanvasGroup = GetComponentInChildren<CanvasGroup>(true);
         }
 
         #endregion

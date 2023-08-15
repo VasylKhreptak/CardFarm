@@ -356,6 +356,7 @@ MonoBehaviour:
   MouseTrigger: {fileID: 4758467965833942909}
   Collider: {fileID: 8193532437627284258}
   RectTransform: {fileID: 1106781378184328993}
+  IsPushable: 1
   Card:
     value: 0
   Name:
@@ -372,6 +373,7 @@ MonoBehaviour:
     value: {r: 1, g: 1, b: 1, a: 1}
   Icon:
     value: {fileID: 0}
+  CanvasGroup: {fileID: 8057710944895864497}
   IsInteractable:
     value: 1
   UpperCard:
@@ -446,6 +448,7 @@ MonoBehaviour:
     FlipAnimation: {fileID: 7273647887069144360}
     ShakeAnimation: {fileID: 1749323702996037604}
     ContinuousJumpingAnimation: {fileID: 5514415617677800255}
+    AppearAnimation: {fileID: 8635626778679820251}
   IsPlayingAnyAnimation:
     value: 0
   IsActivelyFollowingCard:
@@ -2016,6 +2019,176 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3539947527635925542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3131921425067794360}
+  - component: {fileID: 8635626778679820251}
+  m_Layer: 6
+  m_Name: CardAppearAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3131921425067794360
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539947527635925542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6032321714460157647}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8635626778679820251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539947527635925542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e8e55d7a514aeba173f160a8a29ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 1106781378184329004}
+  _startScale: {x: 0, y: 0, z: 0}
+  _endScale: {x: 1, y: 1, z: 1}
+  _scaleDuration: 0.3
+  _scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.68237114
+      value: 1.1123481
+      inSlope: 0.549242
+      outSlope: 0.549242
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _delayBeforeJump: 0.4
+  _jumpDuration: 0.4
+  _jumpPower: 5
+  _numberOfJumps: 1
+  _jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _startAlpha: 0
+  _endAlpha: 1
+  _fadeDuration: 0.3
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _minRange: 6.5
+  _maxRange: 7
+  _startLocalRotation: {x: -180, y: 0, z: 0}
+  _endLocalRotation: {x: 0, y: 0, z: 0}
+  _flipDuration: 0.4
+  _flipCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3574558125666210864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,7 +2936,30 @@ MonoBehaviour:
   _duration: 0.5
   _jumpPower: 0.5
   _numberOfJumps: 1
-  _jumpEase: 0
+  _jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _minRange: 5
   _maxRange: 7
   _jumpInterval: 0.2
@@ -3902,6 +4098,7 @@ MonoBehaviour:
   - {fileID: 7273647887069144360}
   - {fileID: 1749323702996037604}
   - {fileID: 5514415617677800255}
+  - {fileID: 8635626778679820251}
 --- !u!1 &6590546862728568967
 GameObject:
   m_ObjectHideFlags: 0
@@ -4595,6 +4792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
+  _ySpawnOffset: 2
   _timeScale: 3
 --- !u!114 &2048603308660642461
 MonoBehaviour:
@@ -4663,7 +4861,30 @@ MonoBehaviour:
   _duration: 0.4
   _jumpPower: 5
   _numberOfJumps: 1
-  _jumpEase: 3
+  _jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _minRange: 5
   _maxRange: 7
 --- !u!1 &7974350961442293296
@@ -4749,6 +4970,7 @@ RectTransform:
   - {fileID: 5065624240421892339}
   - {fileID: 6487565778431598763}
   - {fileID: 3227457684140788152}
+  - {fileID: 3131921425067794360}
   m_Father: {fileID: 6256525992163840278}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

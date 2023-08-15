@@ -97,12 +97,12 @@ namespace Cards.Logic
                 .GroupCenter
                 .DoOnSubscribe(() =>
                 {
-                    RenderGearsOnTop();
+                    UpdateGearsSortingLayer();
                     UpdateGearPosition();
                 })
                 .Subscribe(_ =>
                 {
-                    RenderGearsOnTop();
+                    UpdateGearsSortingLayer();
                     UpdateGearPosition();
                 });
         }
@@ -117,16 +117,25 @@ namespace Cards.Logic
             _gearsObject.Value.transform.position = position;
         }
 
-        private void RenderGearsOnTop()
+        private void UpdateGearsSortingLayer()
         {
             if (_gearsObject == null) return;
 
-            _gearsObject.Value.transform.SetAsLastSibling();
+            CardData lastGroupCard = _cardData.LastGroupCard.Value;
+            
+            if (lastGroupCard == null)
+            {
+                _gearsObject.Value.transform.SetAsLastSibling();
+            }
+            else
+            {
+                _gearsObject.Value.transform.SetSiblingIndex(lastGroupCard.transform.GetSiblingIndex() + 1);
+            }
         }
 
         private void StopDrawingGears()
         {
-            if ( _gearsObject.Value != null)
+            if (_gearsObject.Value != null)
             {
                 _gearsObject.Value.SetActive(false);
                 _gearsObject.Value = null;

@@ -382,7 +382,7 @@ RectTransform:
   m_Children:
   - {fileID: 1339911676}
   m_Father: {fileID: 560010439164088068}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -459,7 +459,7 @@ RectTransform:
   m_Children:
   - {fileID: 1066079520}
   m_Father: {fileID: 560010439164088068}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -603,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 858685735763845038, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 928652523411889577, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -743,7 +743,7 @@ PrefabInstance:
     - target: {fileID: 1106781378837674968, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1106781379501151864, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -908,7 +908,7 @@ PrefabInstance:
     - target: {fileID: 2783147722772851097, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3031249869231499222, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -1003,7 +1003,7 @@ PrefabInstance:
     - target: {fileID: 5189413198436498708, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5514415617677800255, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -1036,6 +1036,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 871094102}
     - target: {fileID: 5954904143893168541, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
+    - target: {fileID: 5974000198215101144, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -1150,6 +1155,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7672376005569888863, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
     - target: {fileID: 7820841018766694524, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -1190,6 +1200,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 871094102}
+    - target: {fileID: 8635626778679820251, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 871094102}
     - target: {fileID: 8680314788924757713, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -1213,7 +1228,7 @@ PrefabInstance:
     - target: {fileID: 9165845091336265674, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9205400118501904161, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -1318,6 +1333,7 @@ MonoBehaviour:
   MouseTrigger: {fileID: 8553089367571648424}
   Collider: {fileID: 4976075470399796215}
   RectTransform: {fileID: 4316638521175404532}
+  IsPushable: 1
   Card:
     value: 0
   Name:
@@ -1334,6 +1350,7 @@ MonoBehaviour:
     value: {r: 1, g: 1, b: 1, a: 1}
   Icon:
     value: {fileID: 0}
+  CanvasGroup: {fileID: 6586911895357707876}
   IsInteractable:
     value: 1
   UpperCard:
@@ -1388,6 +1405,8 @@ MonoBehaviour:
       MaxResultCount: 1
       Result:
         Weights: []
+      UsePseudoRandom: 0
+      FirstCard: 0
   PossibleRecipes: []
   ReproductionLogic: {fileID: 4909517839405469058}
   CurrentReproductionRecipe:
@@ -1406,6 +1425,7 @@ MonoBehaviour:
     FlipAnimation: {fileID: 5785687525970034173}
     ShakeAnimation: {fileID: 3241761267012286257}
     ContinuousJumpingAnimation: {fileID: 8664072291435539434}
+    AppearAnimation: {fileID: 4858325017254127374}
   IsPlayingAnyAnimation:
     value: 0
   IsActivelyFollowingCard:
@@ -1419,6 +1439,7 @@ MonoBehaviour:
     value: {x: 0, y: 0, z: 0}
   IsExecutingAnyRecipe:
     value: 0
+  GearsDrawer: {fileID: 4419264507237569734}
   Price:
     value: 0
   NutritionalValue:
@@ -1435,6 +1456,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252b2605a9ca4d5a802f53b51ef5d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4419264507237569734 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 715990660519283731, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 3799863883936356565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107c89b18bc340dcae1d9b349e77ec46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4858325017254127374 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8635626778679820251, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 3799863883936356565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e8e55d7a514aeba173f160a8a29ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4909517839405469058 stripped
@@ -1485,6 +1530,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a9a6914976485690d1552d117ae654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &6586911895357707876 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 8057710944895864497, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 3799863883936356565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7091042047862262211 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6256525992163840278, guid: 7bf54413c6b39324e9a7ddfc51606634,

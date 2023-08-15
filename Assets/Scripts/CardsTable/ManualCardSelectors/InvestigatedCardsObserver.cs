@@ -14,6 +14,7 @@ namespace CardsTable.ManualCardSelectors
         [SerializeField] private List<Card> _blackList = new List<Card>();
 
         private ReactiveCollection<Card> _cards = new ReactiveCollection<Card>();
+        private HashSet<Card> _cardsHashSet = new HashSet<Card>();
 
         public IReadOnlyReactiveCollection<Card> Cards => _cards;
 
@@ -21,10 +22,11 @@ namespace CardsTable.ManualCardSelectors
 
         protected override void OnAddedCard(CardData cardData)
         {
-            if (_cards.Contains(cardData.Card.Value) == false
+            if (_cardsHashSet.Contains(cardData.Card.Value) == false
                 && _blackList.Contains(cardData.Card.Value) == false)
             {
                 _cards.Add(cardData.Card.Value);
+                _cardsHashSet.Add(cardData.Card.Value);
                 cardData.IsNew.Value = true;
                 OnInvestigatedCard?.Invoke(cardData);
             }
@@ -38,6 +40,9 @@ namespace CardsTable.ManualCardSelectors
         protected override void ClearCards()
         {
             _cards.Clear();
+            _cardsHashSet.Clear();
         }
+
+        public bool IsInvestigated(Card card) => _cardsHashSet.Contains(card);
     }
 }

@@ -1,8 +1,10 @@
-﻿using Cards.Data;
+﻿using System;
+using Cards.Data;
 using CardsTable.ManualCardSelectors;
 using Data.Cards.Core;
 using Runtime.Commands;
 using ScriptableObjects.Scripts.Cards.Data;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using UnlockedCardPanel.Graphics.Animations;
@@ -19,8 +21,11 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         [SerializeField] private VisualizableCardData _cardVisualizerData;
 
         [Header("Preferences")]
+        [SerializeField] private float _showDelay = 1f;
         [SerializeField] private NewCardPanelShowAnimation _showAnimation;
         [SerializeField] private NewCardPanelHideAnimation _hideAnimation;
+
+        private IDisposable _delaySubscription;
 
         private InvestigatedCardsObserver _investigatedCardsObserver;
         private CardsData _cardsData;
@@ -67,6 +72,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private void OnDestroy()
         {
             _gameRestartCommand.OnExecute -= OnRestart;
+            _delaySubscription?.Dispose();
         }
 
         #endregion
@@ -97,17 +103,23 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
         private void OnInvestigatedNewCard(CardData cardData)
         {
-            if (_cardsData.TryGetValue(cardData.Card.Value, out CardDataHolder cardDataHolder))
+            _delaySubscription?.Dispose();
+            _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(_showDelay)).Subscribe(_ =>
             {
-                _cardVisualizerData.VisualizableCard.Value = cardDataHolder;
-            }
+                if (_cardsData.TryGetValue(cardData.Card.Value, out CardDataHolder cardDataHolder))
+                {
+                    _cardVisualizerData.VisualizableCard.Value = cardDataHolder;
+                }
 
-            Show();
+                Show();
+
+            });
         }
 
         private void OnRestart()
         {
             Disable();
+            _delaySubscription?.Dispose();
         }
     }
 }

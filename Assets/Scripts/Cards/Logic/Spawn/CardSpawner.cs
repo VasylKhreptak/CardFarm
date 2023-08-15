@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Cards.Core;
 using Cards.Data;
+using CardsTable.ManualCardSelectors;
 using Constraints.CardTable;
 using Extensions;
-using Tools.Bounds;
 using UnityEngine;
 using Zenject;
 
@@ -29,17 +27,20 @@ namespace Cards.Logic.Spawn
         private CardsTableBounds _cardsTableBounds;
         private CardsTable.Core.CardsTable _cardsTable;
         private PlayingAreaTableBounds _playingAreaTableBounds;
+        private InvestigatedCardsObserver _investigatedCardsObserver;
 
         [Inject]
         private void Constructor(CardFactory cardFactory,
             CardsTableBounds cardsTableBounds,
             CardsTable.Core.CardsTable cardsTable,
-            PlayingAreaTableBounds playingAreaTableBounds)
+            PlayingAreaTableBounds playingAreaTableBounds,
+            InvestigatedCardsObserver investigatedCardsObserver)
         {
             _cardFactory = cardFactory;
             _cardsTableBounds = cardsTableBounds;
             _cardsTable = cardsTable;
             _playingAreaTableBounds = playingAreaTableBounds;
+            _investigatedCardsObserver = investigatedCardsObserver;
         }
 
         public CardData Spawn(Card card, Vector3 position)
@@ -68,9 +69,10 @@ namespace Cards.Logic.Spawn
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
             bool jump = true,
-            bool flip = true)
+            bool flip = true,
+            bool appearAnimation = true)
         {
-            return SpawnAndMove(card, card, position, targetPosition, tryJoinToExistingGroup, jump, flip);
+            return SpawnAndMove(card, card, position, targetPosition, tryJoinToExistingGroup, jump, flip, appearAnimation);
         }
 
         public CardData SpawnAndMove(
@@ -80,9 +82,10 @@ namespace Cards.Logic.Spawn
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
             bool jump = true,
-            bool flip = true)
+            bool flip = true,
+            bool appearAnimation = true)
         {
-            return SpawnAndMove(card, new[] { bottomCard }, position, targetPosition, tryJoinToExistingGroup, jump, flip);
+            return SpawnAndMove(card, new[] { bottomCard }, position, targetPosition, tryJoinToExistingGroup, jump, flip, appearAnimation);
         }
 
         public CardData SpawnAndMove(
@@ -92,9 +95,11 @@ namespace Cards.Logic.Spawn
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
             bool jump = true,
-            bool flip = true)
+            bool flip = true,
+            bool appearAnimation = true)
         {
-
+            bool canPlayAppearAnimation = _investigatedCardsObserver.IsInvestigated(card) == false && appearAnimation;
+            
             CardData spawnedCard = Spawn(card, position);
             if (tryJoinToExistingGroup && _cardsTable.TryGetLowestUniqPrioritizedCompatibleGroupCard(spawnedCard, prioritizedCardsToJoin, out var lowestGroupCard))
             {
@@ -104,11 +109,15 @@ namespace Cards.Logic.Spawn
 
             RectTransform spawnedCardRect = spawnedCard.RectTransform;
             Vector3 moveToPosition = targetPosition ?? _cardsTableBounds.GetRandomPositionInRange(spawnedCardRect, _minRange, _maxRange);
-            List<RectTransform> cardsRect = _cardsTable.Cards.Select(x => x.RectTransform).ToList();
-            cardsRect.Remove(spawnedCardRect);
+            // List<RectTransform> cardsRect = _cardsTable.Cards.Select(x => x.RectTransform).ToList();
+            // cardsRect.Remove(spawnedCardRect);
             // Vector3 freeSpacePosition = _playingAreaTableBounds.Bounds.GetClosestRandomPoint(cardsRect, spawnedCardRect, position);
 
-            if (jump)
+            if (canPlayAppearAnimation)
+            {
+                spawnedCard.Animations.AppearAnimation.PlayRandomly();
+            }
+            else if (jump)
             {
                 spawnedCard.Animations.JumpAnimation.Play(moveToPosition, () =>
                 {
@@ -120,7 +129,7 @@ namespace Cards.Logic.Spawn
                 spawnedCard.Animations.MoveAnimation.Play(moveToPosition);
             }
 
-            if (flip)
+            if (flip && canPlayAppearAnimation == false)
             {
                 spawnedCard.Animations.FlipAnimation.Play();
             }
