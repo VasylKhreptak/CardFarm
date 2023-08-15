@@ -18,7 +18,9 @@ namespace Cards.Logic
         private CompositeDisposable _subscriptions = new CompositeDisposable();
         private IDisposable _positionUpdateSubscription;
 
-        private GameObject _gearsObject;
+        private ReactiveProperty<GameObject> _gearsObject = new ReactiveProperty<GameObject>();
+
+        public IReadOnlyReactiveProperty<GameObject> GearsObject => _gearsObject;
 
         private CardTablePooler _cardTablePooler;
 
@@ -86,8 +88,10 @@ namespace Cards.Logic
         private void StartDrawingGears()
         {
             StopDrawingGears();
-            _gearsObject = _cardTablePooler.Spawn(CardTablePool.RotatingGears);
-            _gearsObject.transform.localRotation = Quaternion.identity;
+            _gearsObject.Value = _cardTablePooler.Spawn(CardTablePool.RotatingGears);
+            GameObject gearsObject = _gearsObject.Value;
+
+            gearsObject.transform.localRotation = Quaternion.identity;
 
             _positionUpdateSubscription = _cardData
                 .GroupCenter
@@ -110,22 +114,22 @@ namespace Cards.Logic
             Vector3 position = _cardData.GroupCenter.Value;
             position.y = _height;
 
-            _gearsObject.transform.position = position;
+            _gearsObject.Value.transform.position = position;
         }
 
         private void RenderGearsOnTop()
         {
             if (_gearsObject == null) return;
 
-            _gearsObject.transform.SetAsLastSibling();
+            _gearsObject.Value.transform.SetAsLastSibling();
         }
 
         private void StopDrawingGears()
         {
-            if (_gearsObject != null)
+            if ( _gearsObject.Value != null)
             {
-                _gearsObject.SetActive(false);
-                _gearsObject = null;
+                _gearsObject.Value.SetActive(false);
+                _gearsObject.Value = null;
             }
 
             _positionUpdateSubscription?.Dispose();

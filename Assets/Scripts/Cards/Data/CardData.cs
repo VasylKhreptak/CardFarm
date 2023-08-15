@@ -143,6 +143,8 @@ namespace Cards.Data
 
         public BoolReactiveProperty IsExecutingAnyRecipe = new BoolReactiveProperty();
 
+        public CardGearsDrawer GearsDrawer;
+
         #region MonoBehaviour
 
         private void OnValidate()
@@ -173,6 +175,8 @@ namespace Cards.Data
 
             RecipeExecutor = GetComponentInChildren<RecipeExecutor>(true);
             ReproductionLogic = GetComponentInChildren<BaseReproductionLogic>(true);
+            
+            GearsDrawer = GetComponentInChildren<CardGearsDrawer>(true);
         }
 
         #endregion
