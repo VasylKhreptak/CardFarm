@@ -6276,6 +6276,7 @@ MonoBehaviour:
   _panelObject: {fileID: 461729474}
   _closeButton: {fileID: 805806252}
   _cardVisualizerData: {fileID: 7217366323870092450}
+  _showDelay: 1
   _showAnimation: {fileID: 461729477}
   _hideAnimation: {fileID: 461729479}
 --- !u!1001 &898783062

@@ -59,12 +59,21 @@ namespace Cards.Graphics.Animations
                 {
                     _isPlaying.Value = true;
                 })
+                .OnUpdate(() =>
+                {
+                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                })
                 .OnComplete(() =>
                 {
                     onComplete?.Invoke();
                     _isPlaying.Value = false;
+                    _cardData.CardShirtStateUpdater.UpdateShirtState();
                 })
-                .OnKill(() => _isPlaying.Value = false)
+                .OnKill(() =>
+                {
+                    _isPlaying.Value = false;
+                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                })
                 .Play();
         }
 

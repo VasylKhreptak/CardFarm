@@ -3,7 +3,9 @@ using Cards.Core;
 using Cards.Gestures.PositionShake;
 using Cards.Graphics.Animations;
 using Cards.Graphics.Outlines;
+using Cards.Graphics.VisualElements;
 using Cards.Logic;
+using Cards.Logic.Updaters;
 using Cards.Recipes;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
@@ -74,7 +76,9 @@ namespace Cards.Data
         public RectTransform RectTransform;
 
         public bool IsPushable = true;
-        
+
+        public CardShirt CardShirt;
+        public CardShirtStateUpdater CardShirtStateUpdater;
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ColorReactiveProperty NameColor = new ColorReactiveProperty(Color.white);
@@ -175,6 +179,9 @@ namespace Cards.Data
             Animations.ContinuousJumpingAnimation = GetComponentInChildren<CardContinuousJumpingAnimation>(true);
             Animations.AppearAnimation = GetComponentInChildren<CardAppearAnimation>(true);
 
+            CardShirt = GetComponentInChildren<CardShirt>(true);
+            CardShirtStateUpdater = GetComponentInChildren<CardShirtStateUpdater>(true);
+            
             RectTransform = GetComponentInChildren<RectTransform>(true);
 
             QuestOutline = GetComponentInChildren<QuestOutline>(true);

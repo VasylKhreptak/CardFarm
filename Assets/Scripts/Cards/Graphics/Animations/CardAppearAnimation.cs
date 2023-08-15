@@ -112,17 +112,20 @@ namespace Cards.Graphics.Animations
                 {
                     Vector3 position = _cardData.transform.position;
                     _cardData.Height.Value = position.y;
+                    _cardData.CardShirtStateUpdater.UpdateShirtState();
                 })
                 .OnComplete(() =>
                 {
                     _isPlaying.Value = false;
                     _cardData.IsPushable = true;
+                    _cardData.CardShirtStateUpdater.UpdateShirtState();
                     onComplete?.Invoke();
                 })
                 .OnKill(() =>
                 {
                     _isPlaying.Value = false;
                     _cardData.IsPushable = true;
+                    _cardData.CardShirtStateUpdater.UpdateShirtState();
                 })
                 .Play();
         }
