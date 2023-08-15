@@ -522,10 +522,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6678080053654861749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60a3d14e77e24be68d71a82d00b73857, type: 3}
+  m_Script: {fileID: 11500000, guid: 696d08f897ed4c25a693071a6d3fbc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rootTransform: {fileID: 813891043048088928}
   _transform: {fileID: 2144983659390372383}
   _image: {fileID: 572824138357034391}
-  _planeHeight: 0
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 73

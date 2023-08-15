@@ -1,55 +1,21 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using Zenject;
+﻿using Graphics.Lighting.Shadows.Core;
+using UnityEngine;
 
-namespace Graphics.Lighting
+namespace Graphics.Lighting.Shadows
 {
-    public class Shadow : MonoBehaviour, IValidatable
+    public class Shadow : BaseShadow
     {
-        [Header("References")]
-        [SerializeField] private Transform _rootTransform;
-        [SerializeField] private Transform _transform;
-        [SerializeField] private Image _image;
-
         [Header("Preferences")]
         [SerializeField] private float _planeHeight;
 
         private Plane _plane;
-
-        private LightData _lightData;
-
-        [Inject]
-        private void Constructor(LightData lightData)
-        {
-            _lightData = lightData;
-        }
-
-        #region MonoBehaviour
-
-        private void OnValidate()
-        {
-            Validate();
-        }
-
-        public void Validate()
-        {
-            _transform ??= GetComponent<Transform>();
-            _image ??= GetComponent<Image>();
-        }
 
         private void Awake()
         {
             _plane = new Plane(Vector3.up, new Vector3(0, _planeHeight, 0));
         }
 
-        private void Update()
-        {
-            UpdateShadow();
-        }
-
-        #endregion
-
-        private void UpdateShadow()
+        protected override void UpdateShadow()
         {
             Vector3 lightDirection = _lightData.Direction;
 
