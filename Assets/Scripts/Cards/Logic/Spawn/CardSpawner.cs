@@ -108,7 +108,7 @@ namespace Cards.Logic.Spawn
             }
 
             RectTransform spawnedCardRect = spawnedCard.RectTransform;
-            Vector3 moveToPosition = targetPosition ?? _cardsTableBounds.GetRandomPositionInRange(spawnedCardRect, _minRange, _maxRange);
+            Vector3 moveToPosition = targetPosition ?? _playingAreaTableBounds.GetRandomPositionInRange(spawnedCardRect, _minRange, _maxRange);
             // List<RectTransform> cardsRect = _cardsTable.Cards.Select(x => x.RectTransform).ToList();
             // cardsRect.Remove(spawnedCardRect);
             // Vector3 freeSpacePosition = _playingAreaTableBounds.Bounds.GetClosestRandomPoint(cardsRect, spawnedCardRect, position);

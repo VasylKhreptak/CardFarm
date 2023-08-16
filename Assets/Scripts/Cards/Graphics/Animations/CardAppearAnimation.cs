@@ -49,12 +49,12 @@ namespace Cards.Graphics.Animations
 
         private Sequence _sequence;
 
-        private CardsTableBounds _cardsTableBounds;
+        private PlayingAreaTableBounds _bounds;
 
         [Inject]
-        private void Constructor(CardsTableBounds cardsTableBounds)
+        private void Constructor(PlayingAreaTableBounds bounds)
         {
-            _cardsTableBounds = cardsTableBounds;
+            _bounds = bounds;
         }
 
         #region MonoBehaviour
@@ -161,7 +161,7 @@ namespace Cards.Graphics.Animations
 
         private Vector3 ClampPosition(Vector3 position)
         {
-            Vector3 clampedPosition = _cardsTableBounds.Clamp(_cardData.RectTransform, position);
+            Vector3 clampedPosition = _bounds.Clamp(_cardData.RectTransform, position);
             clampedPosition.y = _cardData.BaseHeight;
             return clampedPosition;
         }

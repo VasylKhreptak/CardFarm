@@ -31,12 +31,12 @@ namespace Cards.Graphics.Animations
 
         public float Duration => _duration;
 
-        private CardsTableBounds _cardsTableBounds;
+        private PlayingAreaTableBounds _bounds;
 
         [Inject]
-        private void Constructor(CardsTableBounds cardsTableBounds)
+        private void Constructor(PlayingAreaTableBounds bounds)
         {
-            _cardsTableBounds = cardsTableBounds;
+            _bounds = bounds;
         }
 
         #region MonoBehaviour
@@ -65,7 +65,7 @@ namespace Cards.Graphics.Animations
 
         public virtual void Play(Vector3 targetPosition, float duration, Action onComplete = null)
         {
-            targetPosition = ValidatePosition(targetPosition);
+            targetPosition = ClampPosition(targetPosition);
 
             _cardData.UnlinkFromUpper();
 
@@ -112,7 +112,7 @@ namespace Cards.Graphics.Animations
             randomDirection.y = 0;
             float range = Random.Range(minRange, maxRange);
             Vector3 targetPosition = _cardData.transform.position + randomDirection * range;
-            targetPosition = _cardsTableBounds.Clamp(_cardData.RectTransform, targetPosition);
+            targetPosition = _bounds.Clamp(_cardData.RectTransform, targetPosition);
             Play(targetPosition, duration, onComplete);
         }
 
@@ -122,9 +122,9 @@ namespace Cards.Graphics.Animations
             _isPlaying.Value = false;
         }
 
-        private Vector3 ValidatePosition(Vector3 position)
+        private Vector3 ClampPosition(Vector3 position)
         {
-            Vector3 clampedPosition = _cardsTableBounds.Clamp(_cardData.RectTransform, position);
+            Vector3 clampedPosition = _bounds.Clamp(_cardData.RectTransform, position);
             clampedPosition.y = _cardData.transform.position.y;
             return clampedPosition;
         }
