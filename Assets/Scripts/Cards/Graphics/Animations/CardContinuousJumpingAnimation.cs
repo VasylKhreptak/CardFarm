@@ -35,11 +35,17 @@ namespace Cards.Graphics.Animations
                     .DoOnSubscribe(() =>
                     {
                         onPlay?.Invoke();
+                        Vector3 position = _cardData.transform.position;
+                        position.y = _cardData.BaseHeight;
+                        _cardData.transform.position = position;
                         Play(_cardData.transform.position);
                     })
                     .Subscribe(_ =>
                     {
                         onPlay?.Invoke();
+                        Vector3 position = _cardData.transform.position;
+                        position.y = _cardData.BaseHeight;
+                        _cardData.transform.position = position;
                         Play(_cardData.transform.position);
                     });
 
