@@ -10,6 +10,7 @@ namespace Graphics.Animations.Reminder
         [SerializeField] private RectTransform _rectTransform;
 
         [Header("Preferences")]
+        [SerializeField] private Vector2 _initialAnchoredPosition;
         [SerializeField] private float _startDelay = 1f;
         [SerializeField] private float _repeatInterval = 1f;
         [SerializeField] private Vector2 _force;
@@ -17,9 +18,6 @@ namespace Graphics.Animations.Reminder
         [SerializeField] private int vibrato = 10;
         [SerializeField] private float _elasticity = 1f;
         [SerializeField] private AnimationCurve _curve = AnimationCurve.Linear(0, 0, 1, 1);
-
-        private Vector2 _initialAnchoredPosition;
-
         private Sequence _sequence;
 
         #region MonoBehaviour
@@ -37,6 +35,7 @@ namespace Graphics.Animations.Reminder
         private void OnDisable()
         {
             Stop();
+            SetStartPosition();
         }
 
         #endregion
@@ -45,6 +44,8 @@ namespace Graphics.Animations.Reminder
         public void Play()
         {
             Stop();
+
+            SetStartPosition();
 
             _sequence = DOTween.Sequence();
 
@@ -59,9 +60,30 @@ namespace Graphics.Animations.Reminder
         }
 
         [Button()]
-        public void Stop()
+        public void Stop(bool setStartPositionSmoothly = false)
         {
             _sequence?.Kill();
+        }
+
+        private void SetStartPosition()
+        {
+            _rectTransform.anchoredPosition = _initialAnchoredPosition;
+        }
+
+        public void SetStartPositionSmoothly()
+        {
+            Stop();
+
+            _sequence = DOTween.Sequence();
+            _sequence
+                .Append(_rectTransform.DOAnchorPos(_initialAnchoredPosition, _duration).SetEase(_curve))
+                .Play();
+        }
+
+        [Button()]
+        private void AssignInitialPosition()
+        {
+            _initialAnchoredPosition = _rectTransform.anchoredPosition;
         }
     }
 }

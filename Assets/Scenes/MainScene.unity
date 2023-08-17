@@ -7037,6 +7037,7 @@ MonoBehaviour:
   _overlappingCardsUpdateInterval: 0.05
   _direction: {x: 0, y: 0, z: -1}
   _speed: 8
+  _overlappingCards: []
 --- !u!1 &1026766050
 GameObject:
   m_ObjectHideFlags: 0
@@ -7642,6 +7643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 1076741738}
+  _initialAnchoredPosition: {x: 0, y: -212}
   _startDelay: 2
   _repeatInterval: 0.8
   _force: {x: 0, y: 13}

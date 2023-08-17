@@ -1,5 +1,4 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -41,6 +40,7 @@ namespace Graphics.Animations.Reminder
         private void OnDisable()
         {
             Stop();
+            ResetScale();
         }
 
         #endregion
@@ -51,6 +51,7 @@ namespace Graphics.Animations.Reminder
             Stop();
 
             _sequence = DOTween.Sequence();
+            ResetScale();
 
             _sequence
                 .SetDelay(_startDelay)
@@ -66,7 +67,21 @@ namespace Graphics.Animations.Reminder
         public void Stop()
         {
             _sequence?.Kill();
+        }
+
+        private void ResetScale()
+        {
             _transform.localScale = _initialScale;
+        }
+
+        public void SetStartScaleSmoothly()
+        {
+            Stop();
+            _sequence = DOTween.Sequence();
+
+            _sequence
+                .Append(_transform.DOScale(_initialScale, _duration).SetEase(_curve))
+                .Play();
         }
     }
 }

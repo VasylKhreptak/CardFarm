@@ -79,7 +79,11 @@ namespace Quests.Graphics.VisualElements
                 .Subscribe(_ => UpdatePanelState())
                 .AddTo(_subscriptions);
 
-            _newCardPanel.IsActive.Subscribe(_ => UpdatePanelState()).AddTo(_subscriptions);
+            _newCardPanel.IsActive.Subscribe(_ =>
+            {
+                UpdatePanelState();
+                OnNewCardPanelUpdated();
+            }).AddTo(_subscriptions);
         }
 
         private void StopObserving()
@@ -91,9 +95,12 @@ namespace Quests.Graphics.VisualElements
         {
             int nonRewardedQuestsCount = _questsManager.NonRewardedQuests.Count;
 
-            if (nonRewardedQuestsCount > 0 && _newCardPanel.IsActive.Value == false)
+            if (nonRewardedQuestsCount > 0)
             {
-                Show();
+                if (_newCardPanel.IsActive.Value == false && IsEnabled() == false)
+                {
+                    Show();
+                }
             }
             else
             {
@@ -132,6 +139,8 @@ namespace Quests.Graphics.VisualElements
             _quest.SetActive(false);
         }
 
+        private bool IsEnabled() => _quest.activeSelf;
+
         private void OnRestart()
         {
             Disable();
@@ -139,6 +148,22 @@ namespace Quests.Graphics.VisualElements
             _positionPunchReminder.Stop();
             _scalePunchReminder.Stop();
             _hideAnimation.Stop();
+        }
+
+        private void OnNewCardPanelUpdated()
+        {
+            bool isActive = _newCardPanel.IsActive.Value;
+
+            if (isActive)
+            {
+                _positionPunchReminder.SetStartPositionSmoothly();
+                _scalePunchReminder.SetStartScaleSmoothly();
+            }
+            else if (IsEnabled())
+            {
+                _positionPunchReminder.Play();
+                _scalePunchReminder.Play();
+            }
         }
     }
 }
