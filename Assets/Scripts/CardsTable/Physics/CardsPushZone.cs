@@ -24,7 +24,7 @@ namespace CardsTable.Physics
 
         private IDisposable _intervalSubscription;
 
-        private List<CardData> _overlappingCards = new List<CardData>();
+        public List<CardData> _overlappingCards = new List<CardData>();
 
         private Core.CardsTable _cardsTable;
         private CardsTableBounds _cardsTableBounds;
@@ -35,6 +35,7 @@ namespace CardsTable.Physics
             _cardsTable = cardsTable;
             _cardsTableBounds = cardsTableBounds;
         }
+        
         #region MonoBehaviour
 
         private void OnValidate()

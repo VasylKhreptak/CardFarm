@@ -81,16 +81,10 @@ namespace Cards.Graphics.Logic
             {
                 isExecuting = true;
             }
-
-            if (_cardData.IsSelected.Value)
-            {
-                _cardData.Animations.ContinuousJumpingAnimation.StopAll();
-                return;
-            }
-
+            
             if (_cardData.IsAnyGroupCardSelected.Value)
             {
-                _cardData.Animations.ContinuousJumpingAnimation.StopContinuous();
+                _cardData.Animations.ContinuousJumpingAnimation.Stop();
                 return;
             }
 
@@ -106,12 +100,12 @@ namespace Cards.Graphics.Logic
 
         private void StartJumping()
         {
-            _cardData.Animations.ContinuousJumpingAnimation.PlayContinuous(delay: _delay, onPlay: TryPunchGearsScale);
+            _cardData.Animations.ContinuousJumpingAnimation.Play(_delay, onLoopPlay: TryPunchGearsScale);
         }
 
         private void StopJumping()
         {
-            _cardData.Animations.ContinuousJumpingAnimation.StopContinuous();
+            _cardData.Animations.ContinuousJumpingAnimation.StopContinuously();
             _gearSubscription?.Dispose();
         }
 

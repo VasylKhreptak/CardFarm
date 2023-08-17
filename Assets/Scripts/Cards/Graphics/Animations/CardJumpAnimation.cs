@@ -13,7 +13,7 @@ namespace Cards.Graphics.Animations
     public class CardJumpAnimation : CardAnimation, IValidatable
     {
         [Header("References")]
-        [SerializeField] protected CardData _cardData;
+        [SerializeField] private CardData _cardData;
 
         [Header("Preferences")]
         [SerializeField] private float _duration = 0.5f;
@@ -51,7 +51,7 @@ namespace Cards.Graphics.Animations
             _cardData = GetComponentInParent<CardData>(true);
         }
 
-        protected virtual void OnDisable()
+        private void OnDisable()
         {
             Stop();
         }
@@ -63,7 +63,7 @@ namespace Cards.Graphics.Animations
             Play(targetPosition, _duration, onComplete);
         }
 
-        public virtual void Play(Vector3 targetPosition, float duration, Action onComplete = null)
+        public void Play(Vector3 targetPosition, float duration, Action onComplete = null)
         {
             targetPosition = ClampPosition(targetPosition);
 
