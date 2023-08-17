@@ -2,6 +2,7 @@
 using Quests.Data;
 using UniRx;
 using UnityEngine;
+using UnlockedCardPanel.Graphics.VisualElements;
 using Zenject;
 
 namespace Quests.Logic.Updaters
@@ -18,6 +19,14 @@ namespace Quests.Logic.Updaters
 
         private CompositeDisposable _questDataSubscriptions = new CompositeDisposable();
 
+        private NewCardPanel _newCardPanel;
+
+        [Inject]
+        private void Constructor(NewCardPanel newCardPanel)
+        {
+            _newCardPanel = newCardPanel;
+        }
+
         #region MonoBehaviour
 
         private void OnValidate()
@@ -33,7 +42,6 @@ namespace Quests.Logic.Updaters
         private void OnEnable()
         {
             StartObservingData();
-
         }
 
         private void OnDisable()
@@ -50,6 +58,7 @@ namespace Quests.Logic.Updaters
 
             _questData.Progress.Subscribe(_ => OnDataUpdated()).AddTo(_questDataSubscriptions);
             _questData.IsCompletedByAction.Subscribe(_ => OnDataUpdated()).AddTo(_questDataSubscriptions);
+            _newCardPanel.IsActive.Subscribe(_ => OnDataUpdated()).AddTo(_questDataSubscriptions);
         }
 
         private void StopObservingData()
@@ -60,27 +69,32 @@ namespace Quests.Logic.Updaters
         private void OnDataUpdated()
         {
             bool isCompletedByAction = _questData.IsCompletedByAction.Value;
+            bool isNewPanelActive = _newCardPanel.IsActive.Value;
 
-            if (isCompletedByAction == false) return;
+            if (isCompletedByAction == false)
+            {
+                _delaySubscription?.Dispose();
+                return;
+            }
 
             float progress = _questData.Progress.Value;
 
-            if (Mathf.Approximately(progress, 1f))
+            if (Mathf.Approximately(progress, 1f) && isNewPanelActive == false)
             {
                 StopObservingData();
-                CompleteQuestDelayed();
+                MarkQuestAsCompletedDelayed();
             }
         }
 
-        private void CompleteQuestDelayed()
+        private void MarkQuestAsCompletedDelayed()
         {
             _delaySubscription?.Dispose();
             _delaySubscription = Observable
                 .Timer(TimeSpan.FromSeconds(_completeDelay))
-                .Subscribe(_ => CompleteQuest());
+                .Subscribe(_ => MarkQuestAsCompleted());
         }
 
-        private void CompleteQuest()
+        private void MarkQuestAsCompleted()
         {
             _questData.IsCompleted.Value = true;
         }
