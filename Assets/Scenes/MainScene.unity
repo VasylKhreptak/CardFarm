@@ -7334,7 +7334,7 @@ MonoBehaviour:
   _canvasGroup: {fileID: 1076741741}
   _iconRectTransform: {fileID: 1125826318}
   _iconCanvasGroup: {fileID: 1125826319}
-  _generalDuration: 0.8
+  _generalDuration: 0.6
   _startAlpha: 0.4
   _endAlpha: 1
   _fadeCurve:
@@ -7433,8 +7433,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _sizeDeltaDuration: 0.3
-  _iconDelay: 0.5
-  _iconDuration: 0.5
+  _iconDelay: 0.4
+  _iconDuration: 0.4
   _startIconAlpha: 0.6
   _endIconAlpha: 0.5
   _iconFadeCurve:
@@ -9948,7 +9948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 1306368418}
   _canvasGroup: {fileID: 1306368422}
-  _duration: 0.3
+  _duration: 0.0001
   _curve:
     serializedVersion: 2
     m_Curve:
