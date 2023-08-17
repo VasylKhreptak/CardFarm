@@ -57,7 +57,7 @@ namespace CameraManagement.CameraAim
 
             if (selectedCard == null && _previousSelectedCard != null)
             {
-                _cameraAimer.Aim(_previousSelectedCard.transform);
+                _cameraAimer.Aim(_previousSelectedCard.transform, true);
             }
 
             _previousSelectedCard = selectedCard;

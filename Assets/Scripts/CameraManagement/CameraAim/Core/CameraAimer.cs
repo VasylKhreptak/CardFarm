@@ -86,9 +86,11 @@ namespace CameraManagement.CameraAim.Core
             _interruptSubscriptions.Clear();
         }
 
-        public void Aim(Transform target)
+        public void Aim(Transform target, bool useCurrentDistance = false)
         {
-            Aim(target, _targetCameraDistance, _duration);
+            float distance = useCurrentDistance ? GetCameraDistance() : _targetCameraDistance;
+        
+            Aim(target, distance, _duration);
         }
 
         public void Aim(Vector3 targetPosition, float distance)
@@ -114,9 +116,11 @@ namespace CameraManagement.CameraAim.Core
                 .Play();
         }
 
-        public void Aim(Vector3 targetPosition)
+        public void Aim(Vector3 targetPosition, bool useCurrentDistance = false)
         {
-            Aim(targetPosition, _targetCameraDistance, _duration);
+            float distance = useCurrentDistance ? GetCameraDistance() : _targetCameraDistance;
+            
+            Aim(targetPosition, distance, _duration);
         }
 
         public void Aim(Vector3 targetPosition, float distance, float duration)
