@@ -96,10 +96,24 @@ namespace Tools.Bounds
 
         public static bool IsOverlapping(this RectTransform rectTransform1, RectTransform rectTransform2)
         {
-            Rect rect1 = new Rect(rectTransform1.localPosition.x, rectTransform1.localPosition.y, rectTransform1.rect.width, rectTransform1.rect.height);
-            Rect rect2 = new Rect(rectTransform2.localPosition.x, rectTransform2.localPosition.y, rectTransform2.rect.width, rectTransform2.rect.height);
+            Vector3[] corners1 = new Vector3[4];
+            rectTransform1.GetWorldCorners(corners1);
 
-            return rect1.Overlaps(rect2);
+            Vector3[] corners2 = new Vector3[4];
+            rectTransform2.GetWorldCorners(corners2);
+
+            float rect1Width = Mathf.Abs(corners1[2].x - corners1[0].x);
+            float rect1Height = Mathf.Abs(corners1[2].z - corners1[0].z);
+            Vector3 position1 = rectTransform1.position;
+            UnityEngine.Bounds rect1Bounds = new UnityEngine.Bounds(position1, new Vector3(rect1Width, 0f, rect1Height));
+            
+            float rect2Width = Mathf.Abs(corners2[2].x - corners2[0].x);
+            float rect2Height = Mathf.Abs(corners2[2].z - corners2[0].z);
+            Vector3 position2 = rectTransform2.position;
+            position2.y = position1.y;
+            UnityEngine.Bounds rect2Bounds = new UnityEngine.Bounds(position2, new Vector3(rect2Width, 0f, rect2Height));
+            
+            return rect1Bounds.Intersects(rect2Bounds);
         }
 
         public static bool IsOverlapping(this RectTransform rectTransform1, List<RectTransform> rectTransform2)

@@ -118,11 +118,6 @@ namespace Cards.Logic.Updaters
             {
                 CardData cardToCheck = cardsToCheck[i];
 
-                if (cardToCheck.IsZone && _cardData.RectTransform.IsOverlapping(cardToCheck.RectTransform))
-                {
-                    Debug.Log("Overlaping Zones");
-                }
-                
                 if (_cardData.RectTransform.IsOverlapping(cardToCheck.RectTransform))
                 {
                     overlappingCards.Add(cardToCheck);
