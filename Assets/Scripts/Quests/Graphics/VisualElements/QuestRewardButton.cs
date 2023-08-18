@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Cards.Core;
 using Cards.Logic.Spawn;
 using Graphics.UI.Particles.Coins.Logic;
@@ -15,6 +16,7 @@ namespace Quests.Graphics.VisualElements
     {
         [Header("References")]
         [SerializeField] private Button _button;
+        [SerializeField] private RectTransform _rewardSpawnPlace;
 
         [Header("Particle Preferences")]
         [SerializeField] private ParticleSystem _particleSystem;
@@ -74,21 +76,22 @@ namespace Quests.Graphics.VisualElements
             SpawnReward(targetQuest);
 
             MarkAsTookReward(targetQuest);
-            
+
             PlayParticle();
         }
 
         private void SpawnReward(QuestData questData)
         {
+            int coinsCount = questData.Reward.Cards.Count(x => x == Card.Coin);
+
+            _coinsCollector.Collect(coinsCount, _rewardSpawnPlace.position);
+
             foreach (var cardToSpawn in questData.Reward.Cards)
             {
-                if (cardToSpawn == Card.Coin)
+                if (cardToSpawn != Card.Coin)
                 {
-                    _coinsCollector.Collect(1, _button.transform.position);
-                    continue;
+                    _cardSpawner.SpawnAndMove(cardToSpawn, Vector3.zero);
                 }
-
-                _cardSpawner.SpawnAndMove(cardToSpawn, Vector3.zero);
             }
         }
 

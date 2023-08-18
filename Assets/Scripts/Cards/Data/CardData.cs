@@ -13,7 +13,6 @@ using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using Tags.Cards;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Cards.Data
@@ -152,6 +151,8 @@ namespace Cards.Data
 
         public CardGearsDrawer GearsDrawer;
 
+        public CardHeightController HeightController;
+
         #region MonoBehaviour
 
         private void OnValidate()
@@ -179,7 +180,7 @@ namespace Cards.Data
 
             CardShirt = GetComponentInChildren<CardShirt>(true);
             CardShirtStateUpdater = GetComponentInChildren<CardShirtStateUpdater>(true);
-            
+
             RectTransform = GetComponentInChildren<RectTransform>(true);
 
             QuestOutline = GetComponentInChildren<QuestOutline>(true);
@@ -190,6 +191,8 @@ namespace Cards.Data
             GearsDrawer = GetComponentInChildren<CardGearsDrawer>(true);
 
             CanvasGroup = GetComponentInChildren<CanvasGroup>(true);
+
+            HeightController = GetComponentInChildren<CardHeightController>(true);
         }
 
         #endregion

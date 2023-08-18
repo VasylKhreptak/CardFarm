@@ -9058,6 +9058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1248090684}
+  _rewardSpawnPlace: {fileID: 557523198}
   _particleSystem: {fileID: 8368522799231203194}
 --- !u!1 &1257641707
 GameObject:
