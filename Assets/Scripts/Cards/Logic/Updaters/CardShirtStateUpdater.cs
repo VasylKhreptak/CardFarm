@@ -41,13 +41,15 @@ namespace Cards.Logic.Updaters
 
         public void UpdateShirtState()
         {
+            if (_camera == null) return;
+
             Vector3 cameraDirection = _camera.transform.forward;
             Vector3 cardUpDirection = _transform.up;
 
             float dotProduct = Vector3.Dot(cameraDirection, cardUpDirection);
 
             bool enabled = dotProduct > 0f;
-            
+
             _cardData.CardShirt.SetState(enabled);
         }
     }

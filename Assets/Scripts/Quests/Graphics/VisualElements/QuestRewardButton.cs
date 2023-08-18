@@ -74,6 +74,8 @@ namespace Quests.Graphics.VisualElements
             SpawnReward(targetQuest);
 
             MarkAsTookReward(targetQuest);
+            
+            PlayParticle();
         }
 
         private void SpawnReward(QuestData questData)
@@ -97,6 +99,7 @@ namespace Quests.Graphics.VisualElements
 
         private void PlayParticle()
         {
+            _particleSystem.gameObject.SetActive(true);
             _particleSystem.Play();
         }
     }
