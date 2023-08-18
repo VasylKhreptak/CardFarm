@@ -116,6 +116,7 @@ namespace Cards.Recipes
             if (_cardData.CurrentRecipe.Value != null && _cardData.CurrentRecipe.Value.Cooldown != 0)
             {
                 StartProgress(_cardData.CurrentRecipe.Value.Cooldown / _timeScale);
+                _cardData.Callbacks.onRestartedRecipe?.Invoke(_cardData.CurrentRecipe.Value);
             }
         }
 

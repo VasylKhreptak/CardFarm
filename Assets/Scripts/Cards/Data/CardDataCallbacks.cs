@@ -19,6 +19,7 @@ namespace Cards.Data
 
         public Action<CardRecipe> onExecutedRecipe;
         public Action<Card> onSpawnedRecipeResult;
+        public Action<CardRecipe> onRestartedRecipe;
 
         public Action onClicked;
         public Action onClickedAnyGroupCard;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2115335426710140454}
   - component: {fileID: 4563752907882141654}
   m_Layer: 0
-  m_Name: ClickObserver
+  m_Name: Observer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 858117250573296392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3920a7043f624712abd7c9103e4e28e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 882287be41604d45b16e6547c9357388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
