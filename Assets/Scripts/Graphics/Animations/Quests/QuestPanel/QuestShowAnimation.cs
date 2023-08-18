@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -33,6 +34,8 @@ namespace Graphics.Animations.Quests.QuestPanel
         [SerializeField] private float _endAlpha;
         [SerializeField] private AnimationCurve _startFadeCurve;
         [SerializeField] private AnimationCurve _endFadeCurve;
+
+        public event Action OnCompleted;
 
         private Sequence _sequence;
 
@@ -105,6 +108,7 @@ namespace Graphics.Animations.Quests.QuestPanel
                 .Append(CreateMoveTween(_endAnchoredPosition, _endAnchoredPositionCurve, _moveToEndDuration))
                 .Join(CreateScaleTween(_endScale, _endScaleCurve, _moveToEndDuration))
                 .Join(CreateFadeTween(_endAlpha, _endFadeCurve, _moveToEndDuration))
+                .OnComplete(() => OnCompleted?.Invoke())
                 .Play();
         }
 

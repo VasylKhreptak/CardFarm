@@ -121,7 +121,7 @@ MonoBehaviour:
   - Card: 0
     Quantity: 1
   _outlineShowTime: 2
-  _cardJumpDuration: 2
+  _jumpsCount: 3
   _minAverageDistance: 2.28
   _maxAverageDistance: 10
   _minZoomDistance: 20
@@ -177,4 +177,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
-  _completeDelay: 0.8
+  _completeDelay: 0.4

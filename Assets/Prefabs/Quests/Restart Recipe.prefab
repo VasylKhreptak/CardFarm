@@ -280,4 +280,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
-  _completeDelay: 0.8
+  _completeDelay: 0.4

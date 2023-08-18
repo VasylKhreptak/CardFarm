@@ -66,6 +66,11 @@ namespace Cards.Logic
             _questsManager.CurrentQuest.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.CurrentRecipe.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.RecipeExecutor.Progress.Subscribe(_ => OnEnvironmentChanged()).AddTo(_subscriptions);
+
+            _questsManager.NonRewardedQuests.ObserveCountChanged()
+                .DoOnSubscribe(OnEnvironmentChanged)
+                .Subscribe(_ => OnEnvironmentChanged())
+                .AddTo(_subscriptions);
         }
 
         private void StopObservingCardData()
@@ -78,12 +83,14 @@ namespace Cards.Logic
             QuestData currentQuest = _questsManager.CurrentQuest.Value;
             CardRecipe currentRecipe = _cardData.CurrentRecipe.Value;
             float progress = _cardData.RecipeExecutor.Progress.Value;
+            int nonRewardedQuestsCount = _questsManager.NonRewardedQuests.Count;
 
             bool canDraw =
                 currentQuest != null
                 && currentRecipe != null
                 && currentQuest.Quest == Quest.RestartRecipe
-                && Mathf.Approximately(progress, 0);
+                && Mathf.Approximately(progress, 0)
+                && nonRewardedQuestsCount == 0;
 
             if (canDraw)
             {

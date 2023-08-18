@@ -1,3 +1,4 @@
+using System;
 using Graphics.UI.Particles.Coins.Logic;
 using TMPro;
 using UniRx;
@@ -21,4 +22,6 @@ public class Test : MonoBehaviour
     private void Awake()
     {
     }
+
+    
 }
