@@ -35,7 +35,9 @@ namespace Graphics.Animations.Quests.QuestPanel
         [SerializeField] private AnimationCurve _startFadeCurve;
         [SerializeField] private AnimationCurve _endFadeCurve;
 
+        public event Action OnPlay;
         public event Action OnCompleted;
+        public event Action OnMovedToShowPosition;
 
         private Sequence _sequence;
 
@@ -101,9 +103,11 @@ namespace Graphics.Animations.Quests.QuestPanel
 
             _sequence = DOTween.Sequence();
             _sequence
+                .OnPlay(() => OnPlay?.Invoke())
                 .Append(CreateMoveTween(_showAnchoredPosition, _startAnchoredPositionCurve, _moveToShowDuration))
                 .Join(CreateScaleTween(_showScale, _startScaleCurve, _moveToShowDuration))
                 .Join(CreateFadeTween(_showAlpha, _startFadeCurve, _moveToShowDuration))
+                .AppendCallback(() => OnMovedToShowPosition?.Invoke())
                 .AppendInterval(_showDuration)
                 .Append(CreateMoveTween(_endAnchoredPosition, _endAnchoredPositionCurve, _moveToEndDuration))
                 .Join(CreateScaleTween(_endScale, _endScaleCurve, _moveToEndDuration))

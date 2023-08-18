@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Extensions;
+using Graphics.Animations.Quests.QuestPanel;
 using Quests.Data;
 using Quests.Graphics.VisualElements.Recipe.RecipeParts.Card.Data;
 using Quests.Logic;
@@ -24,18 +25,25 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         [SerializeField] private Vector2 _summandSize;
         [SerializeField] private Vector2 _resultSize;
 
+        private QuestRecipeCardDataHolder _currentRecipeResultCard;
+
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private QuestsManager _questsManager;
         private DiContainer _container;
         private CardsData _cardsData;
+        private QuestShowAnimation _questShowAnimation;
 
         [Inject]
-        private void Constructor(QuestsManager questsManager, DiContainer container, CardsData cardsData)
+        private void Constructor(QuestsManager questsManager,
+            DiContainer container,
+            CardsData cardsData,
+            QuestShowAnimation questShowAnimation)
         {
             _questsManager = questsManager;
             _container = container;
             _cardsData = cardsData;
+            _questShowAnimation = questShowAnimation;
         }
 
         private void OnValidate()
@@ -46,12 +54,17 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         private void OnEnable()
         {
             StartObserving();
+
+            _questShowAnimation.OnPlay += PunchResultedCard;
         }
 
         private void OnDisable()
         {
             StopObserving();
             ClearRecipe();
+
+            _currentRecipeResultCard = null;
+            _questShowAnimation.OnPlay -= PunchResultedCard;
         }
 
         private void StartObserving()
@@ -72,7 +85,11 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             QuestData currentQuest = _questsManager.CurrentQuest.Value;
             QuestData nonRewardedQuest = _questsManager.CurrentNonRewardedQuest.Value;
 
-            if (currentQuest == null || nonRewardedQuest != null) return;
+            if (currentQuest == null || nonRewardedQuest != null)
+            {
+                _currentRecipeResultCard = null;
+                return;
+            }
 
             ClearRecipe();
 
@@ -89,10 +106,10 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             }
 
             SpawnPrefab(_equalsSign);
-            SpawnCard(currentQuest.Recipe.Result, _resultSize);
+            _currentRecipeResultCard = SpawnCard(currentQuest.Recipe.Result, _resultSize);
         }
 
-        private void SpawnCard(QuestRecipeCardData recipeCardData, Vector2 size)
+        private QuestRecipeCardDataHolder SpawnCard(QuestRecipeCardData recipeCardData, Vector2 size)
         {
             GameObject spawnedCard = SpawnPrefab(_cardTemplate);
 
@@ -105,6 +122,8 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
                 dataHolder.BackgroundColor.Value = cardData.BodyColor;
                 dataHolder.Quantity.Value = recipeCardData.Quantity;
             }
+
+            return dataHolder;
         }
 
         private GameObject SpawnPrefab(GameObject prefab)
@@ -128,5 +147,11 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             }
         }
 
+        private void PunchResultedCard()
+        {
+            if (_currentRecipeResultCard == null) return;
+            
+            _currentRecipeResultCard.ScalePunchAnimation.Play();
+        }
     }
 }
