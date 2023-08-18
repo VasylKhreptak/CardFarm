@@ -12000,6 +12000,11 @@ MonoBehaviour:
     initialSize: 0
     autoExpand: 1
     maxExpandSize: 99999
+  - pool: 1
+    prefab: {fileID: 813891043048088929, guid: 037df902b00445e40ab813e48d748810, type: 3}
+    initialSize: 0
+    autoExpand: 1
+    maxExpandSize: 99999
 --- !u!1 &1476206747
 GameObject:
   m_ObjectHideFlags: 0
