@@ -32,7 +32,6 @@ namespace Runtime.Days
 
         private void Awake()
         {
-            
             _gameRestartCommand.OnExecute += OnRestart;
             _questShowAnimation.OnCompleted += OnCompletedShowAnimation;
         }
