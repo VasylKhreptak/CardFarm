@@ -65,7 +65,11 @@ namespace Quests.Graphics.VisualElements
 
             if (currentQuest == null || nonRewardedQuest != null) return;
 
-            _image.enabled = true;
+            int rewardCount = currentQuest.Reward.Cards.Length;
+
+            _image.enabled = rewardCount != 0;
+
+            if (rewardCount == 0) return;
 
             Card reward = currentQuest.Reward.Cards[0];
 

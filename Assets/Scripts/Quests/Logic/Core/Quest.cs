@@ -19,5 +19,6 @@
         CreatePlank = 15,
         MakeBaby = 16,
         PunchTree = 17,
+        RestartRecipe = 18,
     }
 }

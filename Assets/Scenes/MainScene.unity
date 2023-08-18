@@ -818,6 +818,12 @@ MonoBehaviour:
     initialSize: 0
     autoExpand: 1
     maxExpandSize: 1
+  - pool: 18
+    prefab: {fileID: 8609782257049868906, guid: 04943eef69d560547bdf91905533aae2,
+      type: 3}
+    initialSize: 0
+    autoExpand: 1
+    maxExpandSize: 1
 --- !u!1001 &232569205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14053,7 +14059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad479d6ef4146609697d9676af85ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _questsToRegister: 0200000004000000010000000300000011000000060000000800000010000000090000000a000000070000000d0000000c0000000b0000000e0000000f000000
+  _questsToRegister: 020000001200000004000000010000000300000011000000060000000800000010000000090000000a000000070000000d0000000c0000000b0000000e0000000f000000
 --- !u!114 &1843089208
 MonoBehaviour:
   m_ObjectHideFlags: 0
