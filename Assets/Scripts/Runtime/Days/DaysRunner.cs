@@ -1,5 +1,5 @@
 ﻿using Data.Days;
-using NaughtyAttributes;
+using Graphics.Animations.Quests.QuestPanel;
 using ProgressLogic.Core;
 using Runtime.Commands;
 using UnityEngine;
@@ -14,55 +14,68 @@ namespace Runtime.Days
 
         private DaysData _daysData;
         private GameRestartCommand _gameRestartCommand;
+        private QuestShowAnimation _questShowAnimation;
 
         [Inject]
-        private void Constructor(DaysData daysData, GameRestartCommand gameRestartCommand)
+        private void Constructor(DaysData daysData,
+            GameRestartCommand gameRestartCommand,
+            QuestShowAnimation questShowAnimation)
         {
             _daysData = daysData;
             _gameRestartCommand = gameRestartCommand;
+            _questShowAnimation = questShowAnimation;
         }
+
+        private bool _isRunning;
 
         #region MonoBehaviour
 
         private void Awake()
         {
+            
             _gameRestartCommand.OnExecute += OnRestart;
-        }
-
-        private void Start()
-        {
-            StartRunningDays();
+            _questShowAnimation.OnCompleted += OnCompletedShowAnimation;
         }
 
         private void OnDestroy()
         {
             _gameRestartCommand.OnExecute -= OnRestart;
+            _questShowAnimation.OnCompleted -= OnCompletedShowAnimation;
         }
 
         #endregion
 
+        private void OnCompletedShowAnimation()
+        {
+            if (_isRunning == false)
+            {
+                StartRunningDays();
+            }
+        }
+
         private void StartRunningDays()
         {
             StopProgress();
-            RunDay();
-        }
-
-        private void RunDay()
-        {
             StartProgress(_dayDuration);
+            _isRunning = true;
         }
 
-        [Button("Trigger New Day")]
+        private void StopRunningDays()
+        {
+            StopProgress();
+            _isRunning = false;
+        }
+
         protected override void OnProgressCompleted()
         {
             _daysData.Callbacks.onNewDayCome?.Invoke();
-            RunDay();
+            StartProgress(_dayDuration);
         }
 
         private void OnRestart()
         {
             _daysData.Days.Value = 1;
-            StartRunningDays();
+            StopRunningDays();
         }
     }
 }
