@@ -1985,7 +1985,7 @@ MonoBehaviour:
   _cardData: {fileID: 1106781378184329004}
   _startScale: {x: 0, y: 0, z: 0}
   _endScale: {x: 1, y: 1, z: 1}
-  _scaleDuration: 0.3
+  _scaleDuration: 0.4
   _scaleCurve:
     serializedVersion: 2
     m_Curve:
@@ -2019,7 +2019,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _delayBeforeJump: 0.4
+  _delayBeforeJump: 0.25
   _jumpDuration: 0.4
   _jumpPower: 5
   _numberOfJumps: 1
@@ -2049,7 +2049,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _startAlpha: 0
   _endAlpha: 1
-  _fadeDuration: 0.3
+  _fadeDuration: 0.2
   _fadeCurve:
     serializedVersion: 2
     m_Curve:
