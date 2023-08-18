@@ -9822,9 +9822,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _moveToShowDuration: 0.6
-  _showDuration: 1
-  _moveToEndDuration: 1
+  _moveToShowDuration: 0.5
+  _showDuration: 0.7
+  _moveToEndDuration: 0.7
   _startScale: {x: 0.6, y: 0.6, z: 0.6}
   _startScaleCurve:
     serializedVersion: 2
