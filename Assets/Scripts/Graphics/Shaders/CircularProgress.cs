@@ -1,5 +1,4 @@
-﻿using NaughtyAttributes;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -11,9 +10,6 @@ namespace Graphics.Shaders
         [SerializeField] private Image _image;
 
         [Header("Preferences")]
-        [SerializeField] private bool _useColorGradient = true;
-        [ShowIf(nameof(_useColorGradient)), SerializeField] private Gradient _colorGradient;
-
         [SerializeField] private string _propertyName = "_Progress";
         [SerializeField] private string _colorName = "_Color";
 
@@ -43,7 +39,6 @@ namespace Graphics.Shaders
         public void SetProgress(float value)
         {
             _material.SetFloat(_propertyName, value);
-            UpdateColor();
         }
 
         public float GetProgress()
@@ -51,23 +46,14 @@ namespace Graphics.Shaders
             return _material.GetFloat(_propertyName);
         }
 
-        private void SetColor(Color color)
+        public void SetColor(Color color)
         {
             _material.SetColor(_colorName, color);
         }
 
-        private Color GetColor()
+        public Color GetColor()
         {
             return _material.GetColor(_colorName);
-        }
-
-        private void UpdateColor()
-        {
-            float progress = GetProgress();
-
-            Color color = _colorGradient.Evaluate(progress);
-
-            SetColor(color);
         }
     }
 }

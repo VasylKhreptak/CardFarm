@@ -1,6 +1,8 @@
 ﻿using System;
 using Cards.Data;
 using CardsTable.PoolLogic;
+using DG.Tweening;
+using Graphics.VisualElements.Gears;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -18,9 +20,9 @@ namespace Cards.Logic
         private CompositeDisposable _subscriptions = new CompositeDisposable();
         private IDisposable _positionUpdateSubscription;
 
-        private ReactiveProperty<GameObject> _gearsObject = new ReactiveProperty<GameObject>();
+        private ReactiveProperty<GearsData> _gears = new ReactiveProperty<GearsData>();
 
-        public IReadOnlyReactiveProperty<GameObject> GearsObject => _gearsObject;
+        public IReadOnlyReactiveProperty<GearsData> Gears => _gears;
 
         private CardTablePooler _cardTablePooler;
 
@@ -88,10 +90,17 @@ namespace Cards.Logic
         private void StartDrawingGears()
         {
             StopDrawingGears();
-            _gearsObject.Value = _cardTablePooler.Spawn(CardTablePool.RotatingGears);
-            GameObject gearsObject = _gearsObject.Value;
 
-            gearsObject.transform.localRotation = Quaternion.identity;
+            if (_gears.Value == null)
+            {
+                GameObject gearsObject = _cardTablePooler.Spawn(CardTablePool.RotatingGears);
+                _gears.Value = gearsObject.GetComponent<GearsData>();
+            }
+
+            _gears.Value.HideAnimation.Stop();
+            _gears.Value.ShowAnimation.PlayForwardImmediate();
+
+            _gears.Value.transform.localRotation = Quaternion.identity;
 
             _positionUpdateSubscription = _cardData
                 .GroupCenter
@@ -109,39 +118,57 @@ namespace Cards.Logic
 
         private void UpdateGearPosition()
         {
-            if (_gearsObject == null) return;
+            if (_gears.Value == null) return;
 
             Vector3 position = _cardData.GroupCenter.Value;
             position.y = _height;
 
-            _gearsObject.Value.transform.position = position;
+            _gears.Value.transform.position = position;
         }
 
         private void UpdateGearsSortingLayer()
         {
-            if (_gearsObject == null) return;
+            if (_gears.Value == null) return;
 
             CardData lastGroupCard = _cardData.LastGroupCard.Value;
-            
+
             if (lastGroupCard == null)
             {
-                _gearsObject.Value.transform.SetAsLastSibling();
+                _gears.Value.transform.SetAsLastSibling();
             }
             else
             {
-                _gearsObject.Value.transform.SetSiblingIndex(lastGroupCard.transform.GetSiblingIndex() + 1);
+                _gears.Value.transform.SetSiblingIndex(lastGroupCard.transform.GetSiblingIndex() + 1);
             }
         }
 
         private void StopDrawingGears()
         {
-            if (_gearsObject.Value != null)
-            {
-                _gearsObject.Value.SetActive(false);
-                _gearsObject.Value = null;
-            }
-
             _positionUpdateSubscription?.Dispose();
+
+            if (_gears.Value == null) return;
+
+            GameObject gears = _gears.Value.gameObject;
+            _gears.Value.ShowAnimation.Stop();
+            _gears.Value.HideAnimation.InitForward();
+            _gears.Value.HideAnimation.Animation
+                .OnPlay(() =>
+                {
+                    UpdateGearPosition();
+                    UpdateGearsSortingLayer();
+                })
+                .OnUpdate(() =>
+                {
+                    UpdateGearPosition();
+                    UpdateGearsSortingLayer();
+                })
+                .OnComplete(() =>
+                {
+                    _gears.Value = null;
+                    gears.SetActive(false);
+                });
+
+            _gears.Value.HideAnimation.PlayCurrentAnimation();
         }
     }
 }

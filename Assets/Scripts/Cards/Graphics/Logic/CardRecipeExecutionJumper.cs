@@ -118,11 +118,11 @@ namespace Cards.Graphics.Logic
         private void TryPunchGearsScale()
         {
             _gearSubscription?.Dispose();
-            _gearSubscription = _cardData.GearsDrawer.GearsObject.Subscribe(gears =>
+            _gearSubscription = _cardData.GearsDrawer.Gears.Subscribe(gears =>
             {
                 if (gears != null)
                 {
-                    gears.GetComponentInChildren<ScalePunchAnimation>().Play();
+                    gears.ScalePunchAnimation.Play();
                     _gearSubscription?.Dispose();
                 }
             });

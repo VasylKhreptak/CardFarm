@@ -1,5 +1,6 @@
 ﻿using Cards.Data;
 using Graphics.Shaders;
+using Graphics.VisualElements.Gears;
 using ProgressLogic.Core;
 using UniRx;
 using UnityEngine;
@@ -14,8 +15,6 @@ namespace Cards.Graphics.Logic
         [SerializeField] private ProgressDependentObject _progressDependentObject;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
-
-        private CircularProgress _circularProgress;
 
         #region MonoBehaviour
 
@@ -43,7 +42,7 @@ namespace Cards.Graphics.Logic
 
         private void StartObserving()
         {
-            _cardData.GearsDrawer.GearsObject.Subscribe(_ => OnCardDataUpdated()).AddTo(_subscriptions);
+            _cardData.GearsDrawer.Gears.Subscribe(_ => OnCardDataUpdated()).AddTo(_subscriptions);
             _progressDependentObject.Progress.Subscribe(_ => OnCardDataUpdated()).AddTo(_subscriptions);
         }
 
@@ -54,19 +53,13 @@ namespace Cards.Graphics.Logic
 
         private void OnCardDataUpdated()
         {
-            GameObject gears = _cardData.GearsDrawer.GearsObject.Value;
+            GearsData gears = _cardData.GearsDrawer.Gears.Value;
 
-            if (gears == null)
-            {
-                _circularProgress = null;
-                return;
-            }
-
-            _circularProgress ??= gears.GetComponentInChildren<CircularProgress>();
+            if (gears == null) return;
 
             float progress = _progressDependentObject.Progress.Value;
 
-            _circularProgress.SetProgress(progress);
+            gears.CircularProgress.SetProgress(progress);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace CBA.Animations.Core
         [HideIf(nameof(_useAnimationCurve)), SerializeField] private Ease _ease = DOTween.defaultEaseType;
         [ShowIf(nameof(_useAnimationCurve)), SerializeField] private AnimationCurve _curve;
         [SerializeField] private bool _useAdditionalSettings;
+        [SerializeField] private bool _killOnDisable = true;
         [ShowIf(nameof(_useAdditionalSettings)), SerializeField] private int _id = -999;
         [ShowIf(nameof(_useAdditionalSettings)), SerializeField] private float _delay;
         [ShowIf(nameof(_useAdditionalSettings)), SerializeField] private int _loops = 1;
@@ -26,6 +27,14 @@ namespace CBA.Animations.Core
 
         #region MonoBehaviour
 
+        protected virtual void OnDisable()
+        {
+            if (_killOnDisable)
+            {
+                Stop();
+            }
+        }
+        
         protected virtual void OnDestroy()
         {
             _animation.Kill();
@@ -54,15 +63,17 @@ namespace CBA.Animations.Core
             }
         }
 
-        protected void InitForward()
+        public void InitForward()
         {
+            Stop();
             _animation = CreateForwardAnimation();
 
             onInit?.Invoke();
         }
 
-        protected void InitBackward()
+        public void InitBackward()
         {
+            Stop();
             _animation = CreateBackwardAnimation();
 
             onInit?.Invoke();
@@ -101,7 +112,7 @@ namespace CBA.Animations.Core
 
         public virtual void PlayForwardImmediate()
         {
-            _animation.Kill();
+            Stop();
             InitForward();
             ApplyAnimationPreferences();
             _animation.Play();
@@ -109,7 +120,7 @@ namespace CBA.Animations.Core
 
         public virtual void PlayBackwardImmediate()
         {
-            _animation.Kill();
+            Stop();
             InitBackward();
             ApplyAnimationPreferences();
             _animation.Play();
@@ -143,6 +154,17 @@ namespace CBA.Animations.Core
             PlayBackwardImmediate();
         }
 
+        public void Stop()
+        {
+            _animation?.Kill();
+            _animation = null;
+        }
+        
+        public void PlayCurrentAnimation()
+        {
+            _animation?.Play();
+        }
+        
         #endregion
     }
 }
