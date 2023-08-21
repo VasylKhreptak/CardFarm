@@ -1,10 +1,13 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
+#if UNITY_EDITOR
+using Unity.VisualScripting;
+#endif
+
 
 [ExecuteAlways]
 public class ScreenEdgeObserverDrawer : MonoBehaviour
 {
+    #if UNITY_EDITOR
     [Header("Preferences")]
     [SerializeField, Range(0f, 1f)] private float _leftRect = 0.1f;
     [SerializeField, Range(0f, 1f)] private float _rightRect = 0.1f;
@@ -101,4 +104,5 @@ public class ScreenEdgeObserverDrawer : MonoBehaviour
 
         return texture;
     }
+#endif
 }

@@ -158,6 +158,7 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.Runtime.dll
+--root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Assembly-CSharp-firstpass.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Zenject.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Services.Core.Telemetry.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\LeTai.TrueShadow.dll
@@ -176,7 +177,6 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\MoreMountains.Feedbacks.URP.dll
---root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Assembly-CSharp-firstpass.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Unity.RenderPipeline.Universal.ShaderLibrary.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\Cinemachine.dll
 --root-assembly=C:\Users\Vasyl\UnityProjects\CardFarm\Temp\StagingArea\Data\Managed\MoreMountains.Feedbacks.MMTools.dll
