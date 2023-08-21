@@ -19,7 +19,7 @@ namespace Quests.Logic.QuestObservers.Progress
         [Header("Preferences")]
         [SerializeField] private Card _recipeResult;
 
-        private Dictionary<CardData, (IDisposable, IDisposable)> _cardSubscriptions = new Dictionary<CardData, (IDisposable, IDisposable)>();
+        private Dictionary<CardData, (IDisposable, IDisposable, ProgressDependentObject, IDisposable)> _cardsData = new();
 
         protected override void OnCardAdded(CardData cardData)
         {
@@ -53,42 +53,37 @@ namespace Quests.Logic.QuestObservers.Progress
                 subscription = cardData.CurrentRecipe.Select(x => cardData).Subscribe(OnCardRecipeUpdated);
             }
 
-            _cardSubscriptions.Add(cardData, (subscription, null));
+            _cardsData.Add(cardData, (subscription, null, null, null));
         }
 
         private void StopObservingCard(CardData cardData)
         {
-            if (_cardSubscriptions.TryGetValue(cardData, out var subscriptions))
+            if (_cardsData.TryGetValue(cardData, out var subscriptions))
             {
                 subscriptions.Item1?.Dispose();
                 subscriptions.Item2?.Dispose();
-                _cardSubscriptions.Remove(cardData);
+                _cardsData.Remove(cardData);
                 StopObservingResultedCard(cardData);
             }
         }
 
         private void StopObservingCards()
         {
-            foreach (var keyValuePair in _cardSubscriptions.ToList())
+            foreach (var keyValuePair in _cardsData.ToList())
             {
                 keyValuePair.Value.Item1?.Dispose();
                 keyValuePair.Value.Item2?.Dispose();
+                keyValuePair.Value.Item4?.Dispose();
                 StopObservingResultedCard(keyValuePair.Key);
             }
 
-            _cardSubscriptions.Clear();
+            _cardsData.Clear();
         }
 
         private void OnCardRecipeUpdated(CardData cardData)
         {
             FactoryData factoryData = cardData as FactoryData;
             CardData targetCard;
-
-            _cardSubscriptions.TryGetValue(cardData, out var subscriptions);
-
-            subscriptions.Item2?.Dispose();
-
-            IDisposable progressSubscription;
 
             ProgressDependentObject progressDependentObject;
 
@@ -121,15 +116,34 @@ namespace Quests.Logic.QuestObservers.Progress
                 targetCard = cardData;
             }
 
-            progressSubscription = progressDependentObject.Progress.Subscribe(progress =>
+            StartObservingProgress(cardData, progressDependentObject);
+
+            StartObservingResultedCard(targetCard);
+        }
+
+        private void StartObservingProgress(CardData cardData, ProgressDependentObject progressDependentObject)
+        {
+            _cardsData.TryGetValue(cardData, out var cardsData);
+
+            cardsData.Item3 = progressDependentObject;
+
+            cardsData.Item2?.Dispose();
+
+            IDisposable progressSubscription = progressDependentObject.Progress.Subscribe(progress =>
             {
                 if (_questData.IsCompletedByAction.Value) return;
 
+                if (progress >= 1f)
+                {
+                    cardsData.Item2?.Dispose();
+                    SetProgress(1f);
+                    return;
+                }
+
                 SetProgress(progress);
             });
-            StartObservingResultedCard(targetCard);
 
-            subscriptions.Item2 = progressSubscription;
+            cardsData.Item2 = progressSubscription;
         }
 
         private void SetProgress(float progress)
@@ -139,22 +153,37 @@ namespace Quests.Logic.QuestObservers.Progress
 
         private void StartObservingResultedCard(CardData cardData)
         {
-            StopObservingResultedCard(cardData);
+            _cardsData.TryGetValue(cardData, out var cardsData);
+            cardsData.Item4?.Dispose();
 
-            cardData.Callbacks.onSpawnedRecipeResult += OnSpawnedResultedCard;
+            IDisposable subscription = Observable.FromEvent<Card>(
+                    handler => cardData.Callbacks.onSpawnedRecipeResult += handler,
+                    handler => cardData.Callbacks.onSpawnedRecipeResult -= handler)
+                .Subscribe(card =>
+                {
+                    OnSpawnedResultedCard(card, cardData, cardsData.Item3);
+                });
+
+            cardsData.Item4 = subscription;
         }
 
         private void StopObservingResultedCard(CardData cardData)
         {
-            cardData.Callbacks.onSpawnedRecipeResult -= OnSpawnedResultedCard;
+            _cardsData.TryGetValue(cardData, out var cardsData);
+            cardsData.Item4?.Dispose();
         }
 
-        private void OnSpawnedResultedCard(Card card)
+        private void OnSpawnedResultedCard(Card card, CardData cardData, ProgressDependentObject progressDependentObject)
         {
             if (card == _recipeResult)
             {
                 StopObserving();
                 SetProgress(1f);
+            }
+            else
+            {
+                SetProgress(0f);
+                StartObservingProgress(cardData, progressDependentObject);
             }
         }
     }
