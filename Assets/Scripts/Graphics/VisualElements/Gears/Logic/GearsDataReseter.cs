@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Zenject;
 
 namespace Graphics.VisualElements.Gears.Logic
@@ -18,6 +19,11 @@ namespace Graphics.VisualElements.Gears.Logic
         public void Validate()
         {
             _gearsData = GetComponentInParent<GearsData>(true);
+        }
+
+        private void Awake()
+        {
+            ResetData();
         }
 
         private void OnDisable()

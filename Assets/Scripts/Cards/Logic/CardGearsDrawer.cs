@@ -133,7 +133,7 @@ namespace Cards.Logic
             gears.CircularProgress.SetColor(_spawnedRecipeResultProgressColor);
 
             gears.ShowAnimation.PlayForwardImmediate();
-            gears.GearsHideAnimation.PlayFromStartImmediate();
+            gears.GearsHideAnimation.PlayForwardImmediate();
 
             gears.MarkShowAnimation.InitForward();
             gears.MarkShowAnimation.Animation.OnComplete(() =>
