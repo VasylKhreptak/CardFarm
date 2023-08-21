@@ -49,6 +49,7 @@ namespace Cards.Logic
             KillHeightTween();
             StopObservingUpperCard();
             _upperCardHeightSubscription?.Dispose();
+            ResetHeight();
         }
 
         #endregion

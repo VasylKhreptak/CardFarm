@@ -52,7 +52,6 @@ namespace Cards.Graphics.Animations
         {
             Stop();
             _cardData.HeightController.enabled = true;
-
             _isAnyCardSelectedSubscription?.Dispose();
         }
 
