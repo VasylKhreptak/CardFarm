@@ -107,6 +107,7 @@ namespace Cards.Logic.Updaters
                     || card.Animations.JumpAnimation.IsPlaying.Value
                     || card.Animations.AppearAnimation.IsPlaying.Value
                     || card.IsAnyGroupCardSelected.Value
+                    || card.IsOverlayed.Value
                     || card.IsPlayingAnyAnimation.Value
                     || card.IsZone
                     || Vector3.Distance(card.transform.position, _cardData.transform.position) > _maxDistance;

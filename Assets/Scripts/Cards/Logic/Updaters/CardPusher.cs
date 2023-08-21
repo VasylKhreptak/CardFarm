@@ -57,6 +57,7 @@ namespace Cards.Logic.Updaters
         {
             _cardData.IsAnyGroupCardSelected.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.IsPlayingAnyAnimation.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsOverlayed.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
@@ -71,11 +72,12 @@ namespace Cards.Logic.Updaters
 
             bool isAnyGroupCardSelected = _cardData.IsAnyGroupCardSelected.Value;
             bool isPlayingAnyAnimation = _cardData.IsPlayingAnyAnimation.Value;
+            bool isOverlayed = _cardData.IsOverlayed.Value;
 
             canPush =
                 isAnyGroupCardSelected == false
-                && isPlayingAnyAnimation == false;
-
+                && isPlayingAnyAnimation == false
+                && isOverlayed == false;
 
             if (canPush)
             {

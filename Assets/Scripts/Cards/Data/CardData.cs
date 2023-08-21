@@ -9,6 +9,7 @@ using Cards.Graphics.VisualElements;
 using Cards.Logic;
 using Cards.Logic.Updaters;
 using Cards.Recipes;
+using Cards.Tags;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
@@ -87,6 +88,8 @@ namespace Cards.Data
         public ColorReactiveProperty StatsTextColor = new ColorReactiveProperty(Color.white);
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
 
+        public BoolReactiveProperty IsOverlayed = new BoolReactiveProperty();
+        
         public CanvasGroup CanvasGroup;
 
         public BoolReactiveProperty IsInteractable = new BoolReactiveProperty(true);
