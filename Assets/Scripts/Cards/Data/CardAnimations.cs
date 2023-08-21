@@ -12,6 +12,7 @@ namespace Cards.Data
         public CardShakeAnimation ShakeAnimation;
         public CardContinuousJumpingAnimation ContinuousJumpingAnimation;
         public CardAppearAnimation AppearAnimation;
+        public CardWaveJumpAnimation WaveJumpAnimation;
 
         public void Stop()
         {
@@ -21,6 +22,7 @@ namespace Cards.Data
             ShakeAnimation.Stop();
             ContinuousJumpingAnimation.Stop();
             AppearAnimation.Stop();
+            WaveJumpAnimation.Stop();
         }
     }
 }

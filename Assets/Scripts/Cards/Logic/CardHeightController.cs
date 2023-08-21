@@ -163,5 +163,10 @@ namespace Cards.Logic
         {
             _upperCardHeightSubscription?.Dispose();
         }
+
+        public void ResetHeight()
+        {
+            SetHeight(_cardData.BaseHeight);
+        }
     }
 }

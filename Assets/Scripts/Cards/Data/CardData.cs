@@ -177,6 +177,7 @@ namespace Cards.Data
             Animations.ShakeAnimation = GetComponentInChildren<CardShakeAnimation>(true);
             Animations.ContinuousJumpingAnimation = GetComponentInChildren<CardContinuousJumpingAnimation>(true);
             Animations.AppearAnimation = GetComponentInChildren<CardAppearAnimation>(true);
+            Animations.WaveJumpAnimation = GetComponentInChildren<CardWaveJumpAnimation>(true);
 
             CardShirt = GetComponentInChildren<CardShirt>(true);
             CardShirtStateUpdater = GetComponentInChildren<CardShirtStateUpdater>(true);

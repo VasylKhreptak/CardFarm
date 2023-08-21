@@ -17,6 +17,7 @@ namespace Cards.Graphics.Logic
         [SerializeField] private float _delay = 0.5f;
 
         private IDisposable _gearSubscription;
+        private IDisposable _delaySubscription;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
@@ -81,7 +82,7 @@ namespace Cards.Graphics.Logic
             {
                 isExecuting = true;
             }
-            
+
             if (_cardData.IsAnyGroupCardSelected.Value)
             {
                 _cardData.Animations.ContinuousJumpingAnimation.Stop();
@@ -100,13 +101,18 @@ namespace Cards.Graphics.Logic
 
         private void StartJumping()
         {
-            _cardData.Animations.ContinuousJumpingAnimation.Play(_delay, onLoopPlay: TryPunchGearsScale);
+            StopJumping();
+
+            _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(_delay)).Subscribe(_ =>
+            {
+                _cardData.Animations.WaveJumpAnimation.Play(-1, onLoopPlay: TryPunchGearsScale);
+            });
         }
 
         private void StopJumping()
         {
-            _cardData.Animations.ContinuousJumpingAnimation.StopContinuously();
-            _gearSubscription?.Dispose();
+            _cardData.Animations.WaveJumpAnimation.Stop();
+            _delaySubscription?.Dispose();
         }
 
         private void TryPunchGearsScale()
