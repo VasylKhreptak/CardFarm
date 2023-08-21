@@ -6,13 +6,13 @@ using Zenject;
 
 namespace Cards.Graphics.Particles
 {
-    public class CardParticleOnFinishedRecipe : MonoBehaviour, IValidatable
+    public class CardParticleOnSpawnedRecipeResult : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
         [Header("Preferences")]
-        [SerializeField] private Transform _spawnPoint;
+        [SerializeField] private Vector3 _offset = new Vector3(0, 1, 0);
         [SerializeField] private MainPool _particle = MainPool.CardLandParticle;
 
         private MainObjectPooler _mainObjectPooler;
@@ -51,7 +51,7 @@ namespace Cards.Graphics.Particles
 
         private void SpawnParticle()
         {
-            _mainObjectPooler.Spawn(_particle, _spawnPoint.position, Quaternion.identity);
+            _mainObjectPooler.Spawn(_particle, _cardData.GroupCenter.Value + _offset, Quaternion.identity);
         }
     }
 }
