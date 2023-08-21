@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Graphics.Animations.Shake.Position.Core
@@ -29,9 +30,12 @@ namespace Graphics.Animations.Shake.Position.Core
 
         #endregion
 
+        [Button()]
         public void Play()
         {
             Stop();
+
+            Debug.Log("123123123213");
 
             _animation = _transform
                 .DOShakePosition(_duration, _strength, _vibrato, _randomness, _snapping, _fadeOut, _randomnessMode)
