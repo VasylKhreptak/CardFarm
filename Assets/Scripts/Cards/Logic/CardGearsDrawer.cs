@@ -141,13 +141,13 @@ namespace Cards.Logic
                 _showDelaySubscription?.Dispose();
                 _showDelaySubscription = Observable.Timer(TimeSpan.FromSeconds(_showDuration)).Subscribe(_ =>
                 {
+                    SetGroupCardsInteractableState(true);
                     OnDrawnCheckmark?.Invoke();
                     gears.HideAnimation.InitForward();
                     gears.HideAnimation.Animation.OnComplete(() =>
                     {
                         StartObservingCardData();
                         SetProgressUpdatersState(true);
-                        SetGroupCardsInteractableState(true);
                     });
                     gears.HideAnimation.PlayCurrentAnimation();
                 });

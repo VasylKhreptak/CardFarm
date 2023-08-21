@@ -143,6 +143,7 @@ namespace Cards.Logic
             StopObservingUpperCard();
             _upperCardHeightSubscription?.Dispose();
 
+            _upperCardSubscription?.Dispose();
             _upperCardSubscription = _cardData.UpperCard.Subscribe(upperCard =>
             {
                 _upperCardHeightSubscription?.Dispose();
@@ -163,6 +164,7 @@ namespace Cards.Logic
         private void StopObservingUpperCard()
         {
             _upperCardHeightSubscription?.Dispose();
+            _upperCardSubscription?.Dispose();
         }
 
         public void ResetHeight()
