@@ -28,6 +28,8 @@ namespace Cards.Factories.Logic
 
         private IDisposable _currentRecipeSubscription;
 
+        private List<Card> _cardsToSpawn = new List<Card>();
+
         private CardSpawner _cardSpawner;
 
         [Inject]
@@ -46,6 +48,8 @@ namespace Cards.Factories.Logic
         private void OnEnable()
         {
             StartObserving();
+
+            _cardData.GearsDrawer.OnDrawnCheckmark += OnDrawnCheckmark;
         }
 
         protected override void OnDisable()
@@ -53,6 +57,8 @@ namespace Cards.Factories.Logic
             base.OnDisable();
 
             StopObserving();
+
+            _cardData.GearsDrawer.OnDrawnCheckmark -= OnDrawnCheckmark;
         }
 
         #endregion
@@ -76,6 +82,16 @@ namespace Cards.Factories.Logic
 
             _cardData.AutomatedFactoryCallbacks.onExecutedRecipe?.Invoke(_cardData.CurrentFactoryRecipe.Value);
 
+            _cardsToSpawn.Clear();
+
+            for (int i = 0; i < _cardData.CurrentFactoryRecipe.Value.ResultCount; i++)
+            {
+                _cardsToSpawn.Add(GetCardToSpawn());
+            }
+        }
+
+        private void OnDrawnCheckmark()
+        {
             SpawnRecipeResults();
             TryClearRecipeResources();
 
@@ -83,6 +99,7 @@ namespace Cards.Factories.Logic
 
             TryDecreaseDurability();
         }
+
 
         private void OnCurrentRecipeChanged(FactoryRecipe recipe)
         {
@@ -112,14 +129,12 @@ namespace Cards.Factories.Logic
         private void SpawnRecipeResults()
         {
             CardData previousCard = null;
-
-            int cardsToSpawn = _cardData.CurrentFactoryRecipe.Value.ResultCount;
-
-            for (int i = 0; i < cardsToSpawn; i++)
+            
+            for (int i = 0; i < _cardsToSpawn.Count; i++)
             {
-                CardData spawnedCard = SpawnRecipeResult();
+                CardData spawnedCard = SpawnRecipeResult(_cardsToSpawn[i]);
 
-                if (i == cardsToSpawn - 1)
+                if (i == _cardsToSpawn.Count - 1)
                 {
                     spawnedCard.LinkTo(previousCard);
                 }
@@ -135,6 +150,15 @@ namespace Cards.Factories.Logic
             CardData spawnedCard = _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
             _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
+
+            return spawnedCard;
+        }
+
+        private CardData SpawnRecipeResult(Card card)
+        {
+            CardData spawnedCard = _cardSpawner.SpawnAndMove(card, _cardData.transform.position);
+
+            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(card);
 
             return spawnedCard;
         }

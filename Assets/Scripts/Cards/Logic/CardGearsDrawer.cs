@@ -1,8 +1,11 @@
 ﻿using System;
 using Cards.Data;
+using Cards.Factories.Data;
 using CardsTable.PoolLogic;
 using DG.Tweening;
 using Graphics.VisualElements.Gears;
+using ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes;
+using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -16,13 +19,21 @@ namespace Cards.Logic
 
         [Header("Preferences")]
         [SerializeField] private float _height = 2f;
+        [SerializeField] private Color _spawnedRecipeResultProgressColor = Color.yellow;
+        [SerializeField] private Color _defaultProgressColor;
+        [SerializeField] private float _showDuration = 0.7f;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
         private IDisposable _positionUpdateSubscription;
+        private IDisposable _showDelaySubscription;
 
         private ReactiveProperty<GearsData> _gears = new ReactiveProperty<GearsData>();
 
+        private FactoryData _factoryData;
+
         public IReadOnlyReactiveProperty<GearsData> Gears => _gears;
+
+        public event Action OnDrawnCheckmark;
 
         private CardTablePooler _cardTablePooler;
 
@@ -44,15 +55,40 @@ namespace Cards.Logic
             _cardData = GetComponentInParent<CardData>(true);
         }
 
+        private void Awake()
+        {
+            if (_cardData.IsAutomatedFactory)
+            {
+                _factoryData = _cardData as FactoryData;
+            }
+        }
+
         private void OnEnable()
         {
             StartObservingCardData();
+
+            _cardData.Callbacks.onExecutedRecipe += OnExecutedRecipe;
+
+            if (_factoryData != null)
+            {
+                _factoryData.AutomatedFactoryCallbacks.onExecutedRecipe += OnExecutedFactoryRecipe;
+            }
         }
 
         private void OnDisable()
         {
             StopObservingCardData();
             StopDrawingGears();
+            SetProgressUpdatersState(true);
+
+            _cardData.Callbacks.onExecutedRecipe -= OnExecutedRecipe;
+
+            if (_factoryData != null)
+            {
+                _factoryData.AutomatedFactoryCallbacks.onExecutedRecipe -= OnExecutedFactoryRecipe;
+            }
+
+            _showDelaySubscription?.Dispose();
         }
 
         #endregion
@@ -68,6 +104,55 @@ namespace Cards.Logic
         private void StopObservingCardData()
         {
             _subscriptions?.Clear();
+        }
+
+        private void OnExecutedFactoryRecipe(FactoryRecipe factoryRecipe) => OnExecutedAnyRecipe();
+
+        private void OnExecutedRecipe(CardRecipe cardRecipe) => OnExecutedAnyRecipe();
+
+        private void OnExecutedAnyRecipe()
+        {
+            _showDelaySubscription?.Dispose();
+            GearsData gears = _gears.Value;
+
+            if (gears == null) return;
+
+            gears.ShowAnimation.Stop();
+            gears.HideAnimation.Stop();
+            gears.GearsShowAnimation.Stop();
+            gears.GearsHideAnimation.Stop();
+            gears.MarkShowAnimation.Stop();
+            gears.MarkHideAnimation.Stop();
+
+            StopObservingCardData();
+
+            SetProgressUpdatersState(false);
+            SetGroupCardsInteractableState(false);
+
+            gears.CircularProgress.SetProgress(1f);
+            gears.CircularProgress.SetColor(_spawnedRecipeResultProgressColor);
+
+            gears.ShowAnimation.PlayForwardImmediate();
+            gears.GearsHideAnimation.PlayFromStartImmediate();
+
+            gears.MarkShowAnimation.InitForward();
+            gears.MarkShowAnimation.Animation.OnComplete(() =>
+            {
+                _showDelaySubscription?.Dispose();
+                _showDelaySubscription = Observable.Timer(TimeSpan.FromSeconds(_showDuration)).Subscribe(_ =>
+                {
+                    OnDrawnCheckmark?.Invoke();
+                    gears.HideAnimation.InitForward();
+                    gears.HideAnimation.Animation.OnComplete(() =>
+                    {
+                        StartObservingCardData();
+                        SetProgressUpdatersState(true);
+                        SetGroupCardsInteractableState(true);
+                    });
+                    gears.HideAnimation.PlayCurrentAnimation();
+                });
+            });
+            gears.MarkShowAnimation.PlayCurrentAnimation();
         }
 
         private void OnCardDataUpdated()
@@ -91,6 +176,8 @@ namespace Cards.Logic
         {
             StopDrawingGears();
 
+            SetProgressUpdatersState(true);
+
             if (_gears.Value == null)
             {
                 GameObject gearsObject = _cardTablePooler.Spawn(CardTablePool.RotatingGears);
@@ -99,6 +186,9 @@ namespace Cards.Logic
 
             _gears.Value.HideAnimation.Stop();
             _gears.Value.ShowAnimation.PlayForwardImmediate();
+            _gears.Value.CircularProgress.SetColor(_defaultProgressColor);
+            _gears.Value.GearsShowAnimation.MoveToEndState();
+            _gears.Value.MarkHideAnimation.MoveToEndState();
 
             _gears.Value.transform.localRotation = Quaternion.identity;
 
@@ -169,6 +259,22 @@ namespace Cards.Logic
                 });
 
             _gears.Value.HideAnimation.PlayCurrentAnimation();
+        }
+
+        private void SetProgressUpdatersState(bool enabled)
+        {
+            foreach (var progressUpdater in _cardData.CardProgressUpdaters)
+            {
+                progressUpdater.enabled = enabled;
+            }
+        }
+
+        private void SetGroupCardsInteractableState(bool isInteractable)
+        {
+            foreach (var groupCard in _cardData.GroupCards)
+            {
+                groupCard.IsInteractable.Value = isInteractable;
+            }
         }
     }
 }

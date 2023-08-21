@@ -30,6 +30,8 @@ namespace Cards.Recipes
 
         private int _resultsLeft;
 
+        private Card _cardToSpawn;
+
         private CardSpawner _cardSpawner;
         private CoinsCollector _coinsCollector;
         private Camera _camera;
@@ -63,6 +65,7 @@ namespace Cards.Recipes
         {
             StartObservingRecipe();
             StartObservingClick();
+            _cardData.GearsDrawer.OnDrawnCheckmark += OnDrawnCheckmark;
         }
 
         protected override void OnDisable()
@@ -72,6 +75,8 @@ namespace Cards.Recipes
             StopObservingRecipe();
             StopObservingWorkers();
             StopObservingClick();
+
+            _cardData.GearsDrawer.OnDrawnCheckmark -= OnDrawnCheckmark;
         }
 
         #endregion
@@ -106,9 +111,8 @@ namespace Cards.Recipes
             if (_cardData.CurrentRecipe.Value == null || _cardData.CurrentRecipe.Value.Cooldown == 0) return;
 
             _cardData.Callbacks.onExecutedRecipe?.Invoke(_cardData.CurrentRecipe.Value);
-
-            SpawnRecipeResult();
-            DecreaseResourcesDurability();
+            
+            _cardToSpawn = GetCardToSpawn();
         }
 
         private void TryStartCurrentRecipe()
@@ -120,21 +124,27 @@ namespace Cards.Recipes
             }
         }
 
+        private void OnDrawnCheckmark()
+        {
+            SpawnRecipeResult();
+            DecreaseResourcesDurability();
+        }
+
         private void SpawnRecipeResult()
         {
-            Card cardToSpawn = GetCardToSpawn();
+            Vector3 spawnPosition = _cardData.GroupCenter.Value;
 
-            if (cardToSpawn == Card.Coin)
+            if (_cardToSpawn == Card.Coin)
             {
-                Vector3 spawnPosition = RectTransformUtility.WorldToScreenPoint(_camera, _cardData.transform.position);
-                _coinsCollector.Collect(1, spawnPosition, 0f);
+                Vector3 screenGroupCenter = RectTransformUtility.WorldToScreenPoint(_camera, _cardData.transform.position);
+                _coinsCollector.Collect(1, screenGroupCenter, 0f);
             }
             else
             {
-                _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+                _cardSpawner.SpawnAndMove(_cardToSpawn, spawnPosition);
             }
 
-            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
+            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(_cardToSpawn);
         }
 
         public Card GetCardToSpawn()

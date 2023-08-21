@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using Cards.Core;
 using Cards.Gestures.PositionShake;
 using Cards.Graphics.Animations;
+using Cards.Graphics.Logic;
 using Cards.Graphics.Outlines;
 using Cards.Graphics.VisualElements;
 using Cards.Logic;
@@ -153,6 +155,8 @@ namespace Cards.Data
 
         public CardHeightController HeightController;
 
+        public List<CardProgressUpdater> CardProgressUpdaters = new List<CardProgressUpdater>();
+
         #region MonoBehaviour
 
         private void OnValidate()
@@ -194,6 +198,8 @@ namespace Cards.Data
             CanvasGroup = GetComponentInChildren<CanvasGroup>(true);
 
             HeightController = GetComponentInChildren<CardHeightController>(true);
+
+            CardProgressUpdaters = GetComponentsInChildren<CardProgressUpdater>(true).ToList();
         }
 
         #endregion

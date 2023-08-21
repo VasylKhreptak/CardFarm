@@ -1333,8 +1333,8 @@ MonoBehaviour:
   _updateType: 0
   _duration: 0.3
   _transform: {fileID: 1029864843759398862}
-  _startScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 1, y: 1, z: 1}
+  _startScale: {x: 1, y: 1, z: 1}
+  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6678080053654861749
 GameObject:
   m_ObjectHideFlags: 0

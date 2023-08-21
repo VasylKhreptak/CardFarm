@@ -77,19 +77,15 @@ namespace Cards.Graphics.Logic
         private void OnEnvironmentChanged()
         {
             bool isExecuting = _cardData.RecipeExecutor.IsExecuting.Value || _cardData.ReproductionLogic.IsExecuting.Value;
-
+            
             if (_factoryData != null && _factoryData.FactoryRecipeExecutor.IsExecuting.Value)
             {
                 isExecuting = true;
             }
 
-            if (_cardData.IsAnyGroupCardSelected.Value)
-            {
-                _cardData.Animations.ContinuousJumpingAnimation.Stop();
-                return;
-            }
-
-            if (isExecuting)
+            bool canJump = isExecuting && _cardData.IsAnyGroupCardSelected.Value == false;
+            
+            if (canJump)
             {
                 StartJumping();
             }

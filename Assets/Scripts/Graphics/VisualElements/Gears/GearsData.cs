@@ -23,6 +23,10 @@ namespace Graphics.VisualElements.Gears
         public AnimationCore HideAnimation => _hideAnimation;
         public ScalePunchAnimation ScalePunchAnimation => _scalePunchAnimation;
         public CircularProgress CircularProgress => _circularProgress;
+        public AnimationCore GearsShowAnimation => _gearsShowAnimation;
+        public AnimationCore GearsHideAnimation => _gearsHideAnimation;
+        public AnimationCore MarkShowAnimation => _markShowAnimation;
+        public AnimationCore MarkHideAnimation => _markHideAnimation;
         
         #region MonoBehaviour
 
