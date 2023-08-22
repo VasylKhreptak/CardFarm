@@ -110,7 +110,11 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
                     if (_investigatedCard != null)
                     {
-                        _investigatedCard.Animations.AppearAnimation.PlaceCardOnTable();
+                        _investigatedCard.IsInteractable.Value = false;
+                        _investigatedCard.Animations.AppearAnimation.PlaceCardOnTable(() =>
+                        {
+                            _investigatedCard.IsInteractable.Value = true;
+                        });
                     }
 
                     _investigatedCard.OverlayDrawer.DisableOverlay();
@@ -176,6 +180,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private void OnCardRaised()
         {
             Show();
+            StopObservingRaise(_investigatedCard);
         }
 
         private Vector2 GetCardAnchoredPosition()

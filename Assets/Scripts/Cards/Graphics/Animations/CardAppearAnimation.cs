@@ -184,7 +184,7 @@ namespace Cards.Graphics.Animations
             return clampedPosition;
         }
 
-        public void PlaceCardOnTable()
+        public void PlaceCardOnTable(Action onComplete = null)
         {
             Stop();
             _sequence = DOTween.Sequence();
@@ -201,6 +201,7 @@ namespace Cards.Graphics.Animations
                 .OnComplete(() =>
                 {
                     _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    onComplete?.Invoke();
                 })
                 .OnKill(() =>
                 {
