@@ -2,6 +2,7 @@
 using Extensions;
 using Providers.Graphics;
 using UnityEngine;
+using UnlockedCardPanel.Graphics.VisualElements;
 using Zenject;
 
 namespace Physics.Cards
@@ -19,11 +20,13 @@ namespace Physics.Cards
         private CardData _hitCard;
 
         private Camera _camera;
+        private NewCardPanel _newCardPanel;
 
         [Inject]
-        private void Constructor(CameraProvider cameraProvider)
+        private void Constructor(CameraProvider cameraProvider, NewCardPanel newCardPanel)
         {
             _camera = cameraProvider.Value;
+            _newCardPanel = newCardPanel;
         }
 
         #region MonoBehaviour
@@ -40,6 +43,12 @@ namespace Physics.Cards
 
         private void Update()
         {
+            if (_newCardPanel.IsActive.Value)
+            {
+                OnMouseUp();
+                return;
+            }
+
             int touchCount = Input.touchCount;
 
             if (touchCount > 1)
@@ -100,6 +109,8 @@ namespace Physics.Cards
             if (_hitCard == null) return;
 
             _hitCard.Callbacks.onPointerUp?.Invoke();
+
+            _hitCard = null;
         }
     }
 }
