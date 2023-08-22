@@ -3,6 +3,7 @@ using Extensions;
 using Providers.Graphics;
 using UniRx;
 using UnityEngine;
+using UnlockedCardPanel.Graphics.VisualElements;
 using Zenject;
 
 namespace CameraManagement.CameraMove.Core
@@ -23,18 +24,28 @@ namespace CameraManagement.CameraMove.Core
 
         private Camera _camera;
         private CurrentSelectedCardHolder _currentSelectedCardHolder;
+        private NewCardPanel _newCardPanel;
 
         [Inject]
-        private void Constructor(CameraProvider cameraProvider, CurrentSelectedCardHolder currentSelectedCardHolder)
+        private void Constructor(CameraProvider cameraProvider,
+            CurrentSelectedCardHolder currentSelectedCardHolder,
+            NewCardPanel newCardPanel)
         {
             _camera = cameraProvider.Value;
             _currentSelectedCardHolder = currentSelectedCardHolder;
+            _newCardPanel = newCardPanel;
         }
 
         #region MonoBehaviour
 
         private void Update()
         {
+            if (_newCardPanel.IsActive.Value)
+            {
+                ResetValues();
+                return;
+            }
+
             int touchCount = Input.touchCount;
 
             if (touchCount >= 1 && _previousTouchCount != touchCount)
@@ -95,8 +106,8 @@ namespace CameraManagement.CameraMove.Core
 
         private void OnMouse()
         {
-            if(_isDragging.Value == false) return;
-            
+            if (_isDragging.Value == false) return;
+
             Touch firstTouch = Input.GetTouch(0);
             Ray ray = _camera.ScreenPointToRay(firstTouch.position);
 
