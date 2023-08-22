@@ -1,6 +1,7 @@
 ﻿using System;
 using Graphics.UI.Particles.Core;
 using Graphics.UI.Particles.Data;
+using Providers.Graphics;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -9,14 +10,16 @@ namespace Graphics.UI.Particles.Logic
 {
     public class ParticleSpawner : MonoBehaviour
     {
-        private ParticlePooler _particlePooler;
-
         public event Action<Particle> OnSpawned;
 
+        private ParticlePooler _particlePooler;
+        private Camera _camera;
+
         [Inject]
-        private void Constructor(ParticlePooler particlePooler)
+        private void Constructor(ParticlePooler particlePooler, CameraProvider cameraProvider)
         {
             _particlePooler = particlePooler;
+            _camera = cameraProvider.Value;
         }
 
         public ParticleData Spawn(Particle particle)
@@ -25,6 +28,7 @@ namespace Graphics.UI.Particles.Logic
             ParticleData particleData = spawnedParticle.GetComponent<ParticleData>();
             particleData.RectTransform.position = Vector2.zero;
             particleData.RectTransform.localScale = Vector2.one;
+            particleData.RectTransform.rotation = Quaternion.LookRotation(-_camera.transform.forward);
             particleData.RectTransform.SetAsLastSibling();
             OnSpawned?.Invoke(particle);
             return particleData;

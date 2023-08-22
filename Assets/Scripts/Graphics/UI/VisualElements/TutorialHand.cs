@@ -57,7 +57,7 @@ namespace Graphics.UI.VisualElements
         private void ResetScale()
         {
             if (_panel == null) return;
-            
+
             _panel.transform.localScale = _initialScale;
         }
 
@@ -118,14 +118,17 @@ namespace Graphics.UI.VisualElements
             Vector3 spawnPosition = RaycastFloor();
             GameObject particleObject = _particlePooler.Spawn(Particle.Click);
             ClickAnimation clickAnimation = particleObject.GetComponent<ClickAnimation>();
-            clickAnimation.Play(_panel.gameObject.transform.position, spawnPosition);
+            clickAnimation.Play(spawnPosition);
         }
 
         private Vector3 RaycastFloor()
         {
             Vector3 position = Vector3.zero;
 
-            Ray ray = _camera.ScreenPointToRay(_panel.gameObject.transform.position);
+            Vector3 origin = _panel.transform.position;
+            Vector3 direction = origin - _camera.transform.position;
+
+            Ray ray = new Ray(origin, direction);
             if (UnityEngine.Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, _floorLayerMask))
             {
                 position = hit.point;

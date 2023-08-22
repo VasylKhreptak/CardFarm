@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
-using Providers.Graphics;
+using Extensions;
+using Providers.Graphics.UI;
 using UnityEngine;
 using Zenject;
 
@@ -22,12 +23,16 @@ namespace Graphics.Animations.UI
 
         private Sequence _sequence;
 
+        private Canvas _canvas;
+        private RectTransform _canvasRectTransform;
         private Camera _camera;
 
         [Inject]
-        private void Constructor(CameraProvider cameraProvider)
+        private void Constructor(CanvasProvider canvasProvider)
         {
-            _camera = cameraProvider.Value;
+            _canvas = canvasProvider.Value;
+            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
+            _camera = _canvas.worldCamera;
         }
 
         #region MonoBehaviour
@@ -46,7 +51,7 @@ namespace Graphics.Animations.UI
 
         #endregion
 
-        public void Play(Vector3 spawnScreenPosition, Vector3 linkToWorldPosition)
+        public void Play(Vector3 linkToWorldPosition)
         {
             Stop();
             ResetValues();
@@ -54,7 +59,7 @@ namespace Graphics.Animations.UI
             Tween scaleTween = _transform.DOScale(_targetScale, _duration).SetEase(_scaleCurve);
             Tween fadeTween = _canvasGroup.DOFade(_targetAlpha, _duration).SetEase(_fadeCurve);
 
-            _transform.position = spawnScreenPosition;
+            _transform.position = ConvertPosition(linkToWorldPosition);
 
             _sequence = DOTween.Sequence()
                 .Append(scaleTween)
@@ -62,8 +67,8 @@ namespace Graphics.Animations.UI
                 .OnComplete(() => gameObject.SetActive(false))
                 .OnUpdate(() =>
                 {
-                    Vector3 screenPosition = _camera.WorldToScreenPoint(linkToWorldPosition);
-                    _transform.position = screenPosition;
+                    _transform.position = ConvertPosition(linkToWorldPosition);
+                    _transform.rotation = Quaternion.LookRotation(-_camera.transform.forward);
                 })
                 .Play();
         }
@@ -93,6 +98,11 @@ namespace Graphics.Animations.UI
         private void ResetAlpha()
         {
             _canvasGroup.alpha = _startAlpha;
+        }
+
+        private Vector3 ConvertPosition(Vector3 position)
+        {
+            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, position);
         }
     }
 }

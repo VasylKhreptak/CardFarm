@@ -1,6 +1,8 @@
 ﻿using System;
 using DG.Tweening;
+using Extensions;
 using Providers.Graphics;
+using Providers.Graphics.UI;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -18,12 +20,14 @@ namespace Quests.Logic.Tutorials.Core
 
         private IDisposable _tutorialHandDelaySubscription;
 
-        private Camera _camera;
+        private Canvas _canvas;
+        private RectTransform _canvasRectTransform;
 
         [Inject]
-        private void Constructor(CameraProvider cameraProvider)
+        private void Constructor(CanvasProvider canvasProvider)
         {
-            _camera = cameraProvider.Value;
+            _canvas = canvasProvider.Value;
+            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
         }
 
         public override void StopTutorial()
@@ -50,7 +54,7 @@ namespace Quests.Logic.Tutorials.Core
             _handSequence
                 .AppendCallback(OnRepeated)
                 .AppendCallback(_tutorialHand.Show)
-                .AppendCallback(() => _tutorialHand.SetPosition(GetScreenPosition(from.position)))
+                .AppendCallback(() => _tutorialHand.SetPosition(ConvertPosition(from.position)))
                 .AppendCallback(_tutorialHand.Press)
                 .Join(CreateHandFollowTween(from, _handMoveDelay))
                 .Append(CreateHandMoveTween(from, to, _handMoveDuration))
@@ -85,20 +89,18 @@ namespace Quests.Logic.Tutorials.Core
                 .SetEase(Ease.Linear)
                 .OnPlay(() =>
                 {
-                    _tutorialHand.SetPosition(GetScreenPosition(from.transform.position));
+                    _tutorialHand.SetPosition(ConvertPosition(from.position));
                 })
                 .OnUpdate(() =>
                 {
-                    Vector3 currentScreenPosition = GetScreenPosition(from.transform.position);
-                    Vector3 targetScreenPosition = GetScreenPosition(to.transform.position);
-                    Vector3 screenPosition = Vector3.Lerp(currentScreenPosition, targetScreenPosition, progress);
-                    _tutorialHand.SetPosition(screenPosition);
+                    Vector3 position = Vector3.Lerp(ConvertPosition(from.position), ConvertPosition(to.position), progress);
+                    _tutorialHand.SetPosition(position);
                 });
         }
 
-        protected Vector3 GetScreenPosition(Vector3 worldPosition)
+        protected Vector3 ConvertPosition(Vector3 position)
         {
-            return _camera.WorldToScreenPoint(worldPosition);
+            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, position);
         }
 
         protected virtual void OnRepeated()
