@@ -35,7 +35,6 @@ namespace Cards.Recipes
 
         private CardSpawner _cardSpawner;
         private CoinsCollector _coinsCollector;
-        private Camera _camera;
         private TemporaryDataStorage _temporaryDataStorage;
         private Canvas _canvas;
         private RectTransform _canvasRectTransform;
