@@ -12,9 +12,12 @@ namespace Extensions
 
             Ray ray = new Ray(point, camera.transform.position - point);
 
-            plane.Raycast(ray, out float distance);
+            if (plane.Raycast(ray, out float distance))
+            {
+                return ray.GetPoint(distance);
+            }
 
-            return ray.GetPoint(distance);
+            return point;
         }
     }
 }

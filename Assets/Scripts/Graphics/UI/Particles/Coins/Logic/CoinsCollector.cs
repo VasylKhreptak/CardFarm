@@ -12,14 +12,16 @@ namespace Graphics.UI.Particles.Coins.Logic
     {
         private CoinsBank _coinsBank;
         private ParticlesPileSpawner _particlesPileSpawner;
-        private CoinIconPositionProvider _iconPositionProvider;
+        private Transform _coinIconTransform;
 
         [Inject]
-        private void Constructor(CoinsBank coinsBank, ParticlesPileSpawner particlesPileSpawner, CoinIconPositionProvider iconPositionProvider)
+        private void Constructor(CoinsBank coinsBank,
+            ParticlesPileSpawner particlesPileSpawner,
+            CoinIconPositionProvider iconPositionProvider)
         {
             _coinsBank = coinsBank;
             _particlesPileSpawner = particlesPileSpawner;
-            _iconPositionProvider = iconPositionProvider;
+            _coinIconTransform = iconPositionProvider.GetComponent<Transform>();
         }
 
         public void Collect(int count, Vector3 position)
@@ -35,7 +37,7 @@ namespace Graphics.UI.Particles.Coins.Logic
 
         private void OnSpawnedCoin(ParticleData coin)
         {
-            coin.Animations.MoveSequence.Play(_iconPositionProvider.Value, () =>
+            coin.Animations.MoveSequence.Play(_coinIconTransform, () =>
             {
                 OnCollectedCoin(coin);
             });

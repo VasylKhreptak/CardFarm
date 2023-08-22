@@ -1,7 +1,9 @@
 ﻿using Cards.Zones.BuyZone.Data;
 using Economy;
+using Extensions;
 using Graphics.UI.Particles.Coins.Logic;
 using Providers.Graphics;
+using Providers.Graphics.UI;
 using UnityEngine;
 using Zenject;
 
@@ -15,17 +17,19 @@ namespace Cards.Zones.BuyZone.Logic
         private bool _canCollectCoins = true;
 
         private CoinsSpender _coinsSpender;
-        private Camera _camera;
         private CoinsBank _coinsBank;
+        private Canvas _canvas;
+        private RectTransform _canvasRectTransform;
 
         [Inject]
         private void Constructor(CoinsSpender coinsSpender,
             CoinsBank coinsBank,
-            CameraProvider cameraProvider)
+            CanvasProvider canvasProvider)
         {
             _coinsSpender = coinsSpender;
-            _camera = cameraProvider.Value;
             _coinsBank = coinsBank;
+            _canvas = canvasProvider.Value;
+            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
         }
 
         #region MonoBehaviour
@@ -89,7 +93,7 @@ namespace Cards.Zones.BuyZone.Logic
 
             if (coinsToSpawn == 0) return;
 
-            _coinsSpender.Spend(coinsToSpawn, () => RectTransformUtility.WorldToScreenPoint(_camera, _cardData.transform.position),
+            _coinsSpender.Spend(coinsToSpawn, () => ConvertPoint(_cardData.transform.position),
                 () =>
                 {
                     _cardData.CollectedCoins.Value += 1;
@@ -100,6 +104,11 @@ namespace Cards.Zones.BuyZone.Logic
                 });
 
             _canCollectCoins = false;
+        }
+
+        private Vector3 ConvertPoint(Vector3 point)
+        {
+            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, point);
         }
     }
 }

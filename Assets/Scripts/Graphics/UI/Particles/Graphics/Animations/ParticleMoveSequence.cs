@@ -1,6 +1,8 @@
 ﻿using System;
 using DG.Tweening;
+using Extensions;
 using Graphics.UI.Particles.Data;
+using Providers.Graphics.UI;
 using UnityEngine;
 using Zenject;
 
@@ -24,6 +26,16 @@ namespace Graphics.UI.Particles.Graphics.Animations
 
         private Sequence _sequence;
 
+        private Canvas _canvas;
+        private RectTransform _canvasRectTransform;
+
+        [Inject]
+        private void Constructor(CanvasProvider canvasProvider)
+        {
+            _canvas = canvasProvider.Value;
+            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
+        }
+
         #region MonoBehaviour
 
         private void OnValidate()
@@ -43,7 +55,7 @@ namespace Graphics.UI.Particles.Graphics.Animations
 
         #endregion
 
-        public void Play(Vector3 position, Action onComplete = null)
+        public void Play(Transform target, Action onComplete = null)
         {
             Stop();
 
@@ -51,7 +63,20 @@ namespace Graphics.UI.Particles.Graphics.Animations
 
             rectTransform.localScale = _startScale;
             Tween scaleAnimation = rectTransform.DOScale(_endScale, _scaleDuration).SetEase(_scaleCurve);
-            Tween moveAnimation = rectTransform.DOMove(position, _moveDuration).SetEase(_moveCurve);
+
+            Vector3 startPosition = rectTransform.position;
+            
+            float moveProgress = 0f;
+            Tween moveAnimation = DOTween
+                .To(() => moveProgress, x => moveProgress = x, 1, _moveDuration)
+                .SetEase(_moveCurve)
+                .OnUpdate(() =>
+                {
+                    Vector3 targetPosition = ConvertPoint(target.position);
+
+                    Vector3 position = Vector3.Lerp(startPosition, targetPosition, moveProgress);
+                    rectTransform.position = position;
+                });
 
             _sequence = DOTween.Sequence();
             _sequence
@@ -65,6 +90,11 @@ namespace Graphics.UI.Particles.Graphics.Animations
         public void Stop()
         {
             _sequence.Kill();
+        }
+
+        private Vector3 ConvertPoint(Vector3 point)
+        {
+            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, point);
         }
     }
 }

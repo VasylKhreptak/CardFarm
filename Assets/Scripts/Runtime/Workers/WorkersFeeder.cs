@@ -5,9 +5,11 @@ using Cards.Workers.Data;
 using CardsTable.ManualCardSelectors;
 using Data.Days;
 using Economy;
+using Extensions;
 using Graphics.UI.Particles.Coins.Logic;
 using NaughtyAttributes;
 using Providers.Graphics;
+using Providers.Graphics.UI;
 using Runtime.Commands;
 using UnityEngine;
 using Zenject;
@@ -28,6 +30,8 @@ namespace Runtime.Workers
         private CoinsSpender _coinsSpender;
         private Camera _camera;
         private GameRestartCommand _gameRestartCommand;
+        private Canvas _canvas;
+        private RectTransform _canvasRectTransform;
 
         [Inject]
         private void Constructor(DaysData daysData,
@@ -35,7 +39,8 @@ namespace Runtime.Workers
             CoinsBank coinsBank,
             CoinsSpender coinsSpender,
             CameraProvider cameraProvider,
-            GameRestartCommand gameRestartCommand)
+            GameRestartCommand gameRestartCommand,
+            CanvasProvider canvasProvider)
         {
             _daysData = daysData;
             _workersSelector = workersSelector;
@@ -43,6 +48,8 @@ namespace Runtime.Workers
             _coinsSpender = coinsSpender;
             _camera = cameraProvider.Value;
             _gameRestartCommand = gameRestartCommand;
+            _canvas = canvasProvider.Value;
+            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
         }
 
         #region MonoBehaviour
@@ -122,11 +129,16 @@ namespace Runtime.Workers
             int neededCoins = worker.NeededSatiety.Value;
 
             _coinsSpender.Spend(neededCoins,
-                () => RectTransformUtility.WorldToScreenPoint(_camera, worker.transform.position),
+                () => ConvertPoint(worker.transform.position),
                 onSpentAllCoins: () =>
                 {
                     FillWorkerSatiety(worker);
                 });
+        }
+
+        private Vector3 ConvertPoint(Vector3 point)
+        {
+            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, point);
         }
     }
 }

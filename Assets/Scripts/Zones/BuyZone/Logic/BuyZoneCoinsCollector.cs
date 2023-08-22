@@ -1,6 +1,8 @@
 ﻿using System;
 using Economy;
+using Extensions;
 using Graphics.UI.Particles.Coins.Logic;
+using Providers.Graphics.UI;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -20,13 +22,18 @@ namespace Zones.BuyZone.Logic
 
         private CoinsSpender _coinsSpender;
         private CoinsBank _coinsBank;
+        private Canvas _canvas;
+        private RectTransform _canvasRectTransform;
 
         [Inject]
         private void Constructor(CoinsSpender coinsSpender,
-            CoinsBank coinsBank)
+            CoinsBank coinsBank,
+            CanvasProvider canvasProvider)
         {
             _coinsSpender = coinsSpender;
             _coinsBank = coinsBank;
+            _canvas = canvasProvider.Value;
+            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
         }
 
         #region MonoBehaviour
@@ -89,8 +96,11 @@ namespace Zones.BuyZone.Logic
             int coinsToSpawn = Mathf.Min(_zoneData.LeftCoinsCount.Value, totalCoinsCount);
 
             if (coinsToSpawn == 0) return;
+            
+            Debug.Log($"Collecting {coinsToSpawn} coins");
 
-            _coinsSpender.Spend(coinsToSpawn, () => _zoneData.transform.position,
+            _coinsSpender.Spend(coinsToSpawn,
+                () => ConvertPoint(_zoneData.transform.position),
                 () =>
                 {
                     _zoneData.CollectedCoinsCount.Value += 1;
@@ -101,6 +111,11 @@ namespace Zones.BuyZone.Logic
                 });
 
             _canCollectCoins = false;
+        }
+
+        private Vector3 ConvertPoint(Vector3 point)
+        {
+            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, point);
         }
     }
 }

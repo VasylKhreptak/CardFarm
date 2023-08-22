@@ -1,7 +1,8 @@
 ﻿using System;
+using Extensions;
 using Graphics.UI.Particles.Core;
 using Graphics.UI.Particles.Data;
-using Providers.Graphics;
+using Providers.Graphics.UI;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -14,12 +15,16 @@ namespace Graphics.UI.Particles.Logic
 
         private ParticlePooler _particlePooler;
         private Camera _camera;
+        private Canvas _canvas;
+        private RectTransform _canvasRectTransform;
 
         [Inject]
-        private void Constructor(ParticlePooler particlePooler, CameraProvider cameraProvider)
+        private void Constructor(ParticlePooler particlePooler, CanvasProvider canvasProvider)
         {
             _particlePooler = particlePooler;
-            _camera = cameraProvider.Value;
+            _canvas = canvasProvider.Value;
+            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
+            _camera = _canvas.worldCamera;
         }
 
         public ParticleData Spawn(Particle particle)
@@ -43,11 +48,11 @@ namespace Graphics.UI.Particles.Logic
 
         public ParticleData SpawnInRange(Particle particle, Vector3 position, float range)
         {
-            Vector2 insideUnitCircle = Random.insideUnitCircle.normalized;
-            Vector3 direction = new Vector3(insideUnitCircle.x, insideUnitCircle.y, 0);
-            Vector3 targetPosition = position + direction * range;
-            ParticleData particleData = Spawn(particle, targetPosition);
-            return particleData;
+            Vector3 insideUnitCircle = Random.insideUnitSphere * range;
+
+            Vector3 targetPosition = ConvertPoint(position + insideUnitCircle);
+
+            return Spawn(particle, targetPosition);
         }
 
         public ParticleData SpawnInRandomRange(Particle particle, Vector3 position, float maxRange)
@@ -59,6 +64,11 @@ namespace Graphics.UI.Particles.Logic
         {
             float range = Random.Range(minRange, maxRange);
             return SpawnInRange(particle, position, range);
+        }
+
+        private Vector3 ConvertPoint(Vector3 point)
+        {
+            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, point);
         }
     }
 }
