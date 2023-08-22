@@ -9,6 +9,9 @@ namespace CBA.Animations.Sequences.Core
 {
     public class AnimationSequence : AnimationCore
     {
+        [Header("Sequence Preferences")]
+        [SerializeField] private bool _playSimultaneously;
+
         [Header("Animations")]
         [SerializeField] private List<Animation> _animations;
 
@@ -47,7 +50,14 @@ namespace CBA.Animations.Sequences.Core
 
             foreach (var animationCore in _animations)
             {
-                sequence.Append(animationCore.CreateForwardAnimation());
+                if (_playSimultaneously)
+                {
+                    sequence.Join(animationCore.CreateForwardAnimation());
+                }
+                else
+                {
+                    sequence.Append(animationCore.CreateForwardAnimation());
+                }
             }
 
             return sequence;
@@ -60,7 +70,14 @@ namespace CBA.Animations.Sequences.Core
 
             foreach (var animationCore in GetReversedAnimations())
             {
-                sequence.Append(animationCore.CreateBackwardAnimation());
+                if (_playSimultaneously)
+                {
+                    sequence.Join(animationCore.CreateBackwardAnimation());
+                }
+                else
+                {
+                    sequence.Append(animationCore.CreateBackwardAnimation());
+                }
             }
 
             return sequence;
