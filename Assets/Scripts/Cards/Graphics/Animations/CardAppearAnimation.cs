@@ -42,10 +42,26 @@ namespace Cards.Graphics.Animations
         [SerializeField] private float _maxRange = 7f;
 
         [Header("Flip Preferences")]
+        [SerializeField] private float _flipDelay = 0.5f;
         [SerializeField] private Vector3 _startLocalRotation;
         [SerializeField] private Vector3 _endLocalRotation;
         [SerializeField] private float _flipDuration = 0.5f;
         [SerializeField] private AnimationCurve _flipCurve;
+
+        [Header("Raise Preferences")]
+        [SerializeField] private float _raiseDelay = 0.5f;
+        [SerializeField] private float _raiseDuration = 0.7f;
+        [SerializeField] private float _raiseHeight = 0.6f;
+        [SerializeField] private Vector3 _raiseScale;
+        [SerializeField] private AnimationCurve _raiseHeightCurve;
+        [SerializeField] private AnimationCurve _raiseScaleCurve;
+
+        [Header("Place Preferences")]
+        [SerializeField] private float _placeDuration;
+        [SerializeField] private AnimationCurve _placeHeightCurve;
+        [SerializeField] private AnimationCurve _placeScaleCurve;
+
+        public event Action onFlipped;
 
         private Sequence _sequence;
 
@@ -106,7 +122,12 @@ namespace Cards.Graphics.Animations
                 .Join(_cardData.CanvasGroup.DOFade(_endAlpha, _fadeDuration).SetEase(_fadeCurve))
                 .AppendInterval(_delayBeforeJump)
                 .Append(_cardData.transform.DOJump(targetPosition, _jumpPower, _numberOfJumps, duration).SetEase(_jumpCurve))
-                .Join(_cardData.transform.DOLocalRotate(_endLocalRotation, _flipDuration).SetEase(_flipCurve))
+                .AppendInterval(_raiseDelay)
+                .Append(_cardData.transform.DOMoveY(_raiseHeight, _raiseDuration).SetEase(_raiseHeightCurve))
+                .Join(_cardData.transform.DOScale(_raiseScale, _raiseDuration).SetEase(_raiseScaleCurve))
+                .AppendInterval(_flipDelay)
+                .AppendCallback(() => onFlipped?.Invoke())
+                .Append(_cardData.transform.DOLocalRotate(_endLocalRotation, _flipDuration).SetEase(_flipCurve))
                 .OnUpdate(() =>
                 {
                     Vector3 position = _cardData.transform.position;
@@ -164,6 +185,21 @@ namespace Cards.Graphics.Animations
             Vector3 clampedPosition = _bounds.Clamp(_cardData.RectTransform, position);
             clampedPosition.y = _cardData.BaseHeight;
             return clampedPosition;
+        }
+
+        public void PlaceCardOnTable()
+        {
+            Stop();
+            _sequence = DOTween.Sequence();
+
+            _sequence
+                .Append(_cardData.transform.DOMoveY(_cardData.BaseHeight, _placeDuration).SetEase(_placeHeightCurve))
+                .Join(_cardData.transform.DOScale(Vector3.one, _placeDuration).SetEase(_placeScaleCurve))
+                .OnUpdate(() =>
+                {
+                    _cardData.Height.Value = _cardData.transform.position.y;
+                })
+                .Play();
         }
     }
 }

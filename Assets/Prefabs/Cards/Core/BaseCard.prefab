@@ -424,6 +424,9 @@ MonoBehaviour:
     value: {r: 1, g: 1, b: 1, a: 1}
   Icon:
     value: {fileID: 0}
+  OverlayDrawer: {fileID: 8108464178490027812}
+  IsOverlayed:
+    value: 0
   CanvasGroup: {fileID: 8057710944895864497}
   IsInteractable:
     value: 1
@@ -2134,10 +2137,112 @@ MonoBehaviour:
     m_RotationOrder: 4
   _minRange: 6.5
   _maxRange: 7
+  _flipDelay: 0.5
   _startLocalRotation: {x: -180, y: 0, z: 0}
   _endLocalRotation: {x: 0, y: 0, z: 0}
   _flipDuration: 0.4
   _flipCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _raiseDelay: 0.4
+  _raiseDuration: 0.4
+  _raiseHeight: 0.6
+  _raiseScale: {x: 1.15, y: 1.15, z: 1.15}
+  _raiseHeightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _raiseScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _placeDuration: 0.4
+  _placeHeightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _placeScaleCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3

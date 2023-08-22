@@ -24,17 +24,20 @@ namespace Cards.Logic.Spawn
         public event Action OnCardSpawnedNonParameterized;
 
         private CardFactory _cardFactory;
+        private CardsTableBounds _cardsTableBounds;
         private CardsTable.Core.CardsTable _cardsTable;
         private PlayingAreaTableBounds _playingAreaTableBounds;
         private InvestigatedCardsObserver _investigatedCardsObserver;
 
         [Inject]
         private void Constructor(CardFactory cardFactory,
+            CardsTableBounds cardsTableBounds,
             CardsTable.Core.CardsTable cardsTable,
             PlayingAreaTableBounds playingAreaTableBounds,
             InvestigatedCardsObserver investigatedCardsObserver)
         {
             _cardFactory = cardFactory;
+            _cardsTableBounds = cardsTableBounds;
             _cardsTable = cardsTable;
             _playingAreaTableBounds = playingAreaTableBounds;
             _investigatedCardsObserver = investigatedCardsObserver;
@@ -66,9 +69,10 @@ namespace Cards.Logic.Spawn
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
             bool jump = true,
-            bool flip = true)
+            bool flip = true,
+            bool appearAnimation = true)
         {
-            return SpawnAndMove(card, card, position, targetPosition, tryJoinToExistingGroup, jump, flip);
+            return SpawnAndMove(card, card, position, targetPosition, tryJoinToExistingGroup, jump, flip, appearAnimation);
         }
 
         public CardData SpawnAndMove(
@@ -78,9 +82,10 @@ namespace Cards.Logic.Spawn
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
             bool jump = true,
-            bool flip = true)
+            bool flip = true,
+            bool appearAnimation = true)
         {
-            return SpawnAndMove(card, new[] { bottomCard }, position, targetPosition, tryJoinToExistingGroup, jump, flip);
+            return SpawnAndMove(card, new[] { bottomCard }, position, targetPosition, tryJoinToExistingGroup, jump, flip, appearAnimation);
         }
 
         public CardData SpawnAndMove(
@@ -90,17 +95,12 @@ namespace Cards.Logic.Spawn
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
             bool jump = true,
-            bool flip = true)
+            bool flip = true,
+            bool appearAnimation = true)
         {
-            bool isCardNew = _investigatedCardsObserver.IsInvestigated(card) == false;
+            bool canPlayAppearAnimation = _investigatedCardsObserver.IsInvestigated(card) == false && appearAnimation;
 
             CardData spawnedCard = Spawn(card, position);
-
-            if (isCardNew)
-            {
-                return spawnedCard;
-            }
-
             if (tryJoinToExistingGroup && _cardsTable.TryGetLowestUniqPrioritizedCompatibleGroupCard(spawnedCard, prioritizedCardsToJoin, out var lowestGroupCard))
             {
                 spawnedCard.LinkTo(lowestGroupCard);
@@ -113,7 +113,11 @@ namespace Cards.Logic.Spawn
             // cardsRect.Remove(spawnedCardRect);
             // Vector3 freeSpacePosition = _playingAreaTableBounds.Bounds.GetClosestRandomPoint(cardsRect, spawnedCardRect, position);
 
-            if (jump)
+            if (canPlayAppearAnimation)
+            {
+                spawnedCard.Animations.AppearAnimation.PlayRandomly();
+            }
+            else if (jump)
             {
                 spawnedCard.Animations.JumpAnimation.Play(moveToPosition, () =>
                 {
@@ -125,7 +129,7 @@ namespace Cards.Logic.Spawn
                 spawnedCard.Animations.MoveAnimation.Play(moveToPosition);
             }
 
-            if (flip == false)
+            if (flip && canPlayAppearAnimation == false)
             {
                 spawnedCard.Animations.FlipAnimation.Play();
             }

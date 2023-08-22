@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Graphics.UI.Particles.Coins.Logic;
 using TMPro;
 using UniRx;
