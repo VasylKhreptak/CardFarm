@@ -10,6 +10,7 @@ using Extensions;
 using Graphics.UI.Particles.Coins.Logic;
 using ProgressLogic.Core;
 using Providers.Graphics;
+using Providers.Graphics.UI;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
@@ -36,17 +37,22 @@ namespace Cards.Recipes
         private CoinsCollector _coinsCollector;
         private Camera _camera;
         private TemporaryDataStorage _temporaryDataStorage;
+        private Canvas _canvas;
+        private RectTransform _canvasRectTransform;
 
         [Inject]
         private void Constructor(CardSpawner cardSpawner,
             CoinsCollector coinsCollector,
             CameraProvider cameraProvider,
-            TemporaryDataStorage temporaryDataStorage)
+            TemporaryDataStorage temporaryDataStorage,
+            CanvasProvider canvasProvider)
         {
             _cardSpawner = cardSpawner;
             _coinsCollector = coinsCollector;
             _camera = cameraProvider.Value;
             _temporaryDataStorage = temporaryDataStorage;
+            _canvas = canvasProvider.Value;
+            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
         }
 
         #region MonoBehaviour
@@ -111,7 +117,7 @@ namespace Cards.Recipes
             if (_cardData.CurrentRecipe.Value == null || _cardData.CurrentRecipe.Value.Cooldown == 0) return;
 
             _cardData.Callbacks.onExecutedRecipe?.Invoke(_cardData.CurrentRecipe.Value);
-            
+
             _cardToSpawn = GetCardToSpawn();
         }
 
@@ -136,8 +142,8 @@ namespace Cards.Recipes
 
             if (_cardToSpawn == Card.Coin)
             {
-                Vector3 screenGroupCenter = RectTransformUtility.WorldToScreenPoint(_camera, _cardData.transform.position);
-                _coinsCollector.Collect(1, screenGroupCenter, 0f);
+                Vector3 center = ConvertPoint(_cardData.transform.position);
+                _coinsCollector.Collect(1, center, 0f);
             }
             else
             {
@@ -283,6 +289,11 @@ namespace Cards.Recipes
             {
                 TryStartCurrentRecipe();
             }
+        }
+
+        private Vector3 ConvertPoint(Vector3 point)
+        {
+            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, point);
         }
     }
 }

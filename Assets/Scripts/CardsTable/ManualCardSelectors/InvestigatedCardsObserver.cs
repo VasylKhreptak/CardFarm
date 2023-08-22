@@ -29,6 +29,7 @@ namespace CardsTable.ManualCardSelectors
                 _cardsHashSet.Add(cardData.Card.Value);
                 cardData.IsNew.Value = true;
                 OnInvestigatedCard?.Invoke(cardData);
+                Debug.Log("Investigated card: " + cardData.gameObject.name, cardData.gameObject);
             }
         }
 
