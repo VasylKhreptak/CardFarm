@@ -1,4 +1,5 @@
-﻿using Cards.Data;
+﻿using System;
+using Cards.Data;
 using CardsTable.ManualCardSelectors;
 using Data.Cards.Core;
 using Runtime.Commands;
@@ -20,8 +21,11 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         [SerializeField] private VisualizableCardData _cardVisualizerData;
 
         [Header("Preferences")]
+        [SerializeField] private float _showDelay = 1f;
         [SerializeField] private NewCardPanelShowAnimation _showAnimation;
         [SerializeField] private NewCardPanelHideAnimation _hideAnimation;
+
+        private IDisposable _delaySubscription;
 
         private BoolReactiveProperty _isActive = new BoolReactiveProperty(false);
 
@@ -72,6 +76,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private void OnDestroy()
         {
             _gameRestartCommand.OnExecute -= OnRestart;
+            _delaySubscription?.Dispose();
         }
 
         #endregion
@@ -110,17 +115,25 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
         private void OnInvestigatedNewCard(CardData cardData)
         {
-            if (_cardsData.TryGetValue(cardData.Card.Value, out CardDataHolder cardDataHolder))
-            {
-                _cardVisualizerData.VisualizableCard.Value = cardDataHolder;
-            }
+            _delaySubscription?.Dispose();
+            _delaySubscription = Observable
+                .Timer(TimeSpan.FromSeconds(_showDelay))
+                .DoOnSubscribe(() => _isActive.Value = true)
+                .Subscribe(_ =>
+                {
+                    if (_cardsData.TryGetValue(cardData.Card.Value, out CardDataHolder cardDataHolder))
+                    {
+                        _cardVisualizerData.VisualizableCard.Value = cardDataHolder;
+                    }
 
-            Show();
+                    Show();
+                });
         }
 
         private void OnRestart()
         {
             Disable();
+            _delaySubscription?.Dispose();
         }
     }
 }

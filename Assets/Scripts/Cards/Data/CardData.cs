@@ -10,7 +10,6 @@ using Cards.Graphics.VisualElements;
 using Cards.Logic;
 using Cards.Logic.Updaters;
 using Cards.Recipes;
-using Cards.Tags;
 using Extensions.UniRx.UnityEngineBridge.Triggers;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
@@ -91,7 +90,7 @@ namespace Cards.Data
 
         public CardOverlayDrawer OverlayDrawer;
         public BoolReactiveProperty IsOverlayed = new BoolReactiveProperty();
-        
+
         public CanvasGroup CanvasGroup;
 
         public BoolReactiveProperty IsInteractable = new BoolReactiveProperty(true);
@@ -205,6 +204,8 @@ namespace Cards.Data
             HeightController = GetComponentInChildren<CardHeightController>(true);
 
             CardProgressUpdaters = GetComponentsInChildren<CardProgressUpdater>(true).ToList();
+
+            OverlayDrawer = GetComponentInChildren<CardOverlayDrawer>(true);
         }
 
         #endregion
