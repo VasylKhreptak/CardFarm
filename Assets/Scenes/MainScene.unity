@@ -6572,7 +6572,6 @@ MonoBehaviour:
   _panelObject: {fileID: 461729474}
   _closeButton: {fileID: 805806252}
   _cardVisualizerData: {fileID: 7217366323870092450}
-  _showDelay: 1
   _showAnimation: {fileID: 461729477}
   _hideAnimation: {fileID: 461729479}
 --- !u!1001 &898783062
@@ -18342,6 +18341,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VisualizableCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743147507205228044, guid: 5d31f017f1fc30f459ae35f0f06eb43e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7743147507205228045, guid: 5d31f017f1fc30f459ae35f0f06eb43e,
         type: 3}

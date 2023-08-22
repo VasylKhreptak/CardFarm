@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cards.Core;
 using Cards.Gestures.PositionShake;
+using Cards.Graphics;
 using Cards.Graphics.Animations;
 using Cards.Graphics.Logic;
 using Cards.Graphics.Outlines;
@@ -88,6 +89,7 @@ namespace Cards.Data
         public ColorReactiveProperty StatsTextColor = new ColorReactiveProperty(Color.white);
         public ReactiveProperty<Sprite> Icon = new ReactiveProperty<Sprite>();
 
+        public CardOverlayDrawer OverlayDrawer;
         public BoolReactiveProperty IsOverlayed = new BoolReactiveProperty();
         
         public CanvasGroup CanvasGroup;

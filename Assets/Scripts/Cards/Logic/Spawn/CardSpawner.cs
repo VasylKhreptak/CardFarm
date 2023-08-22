@@ -24,20 +24,20 @@ namespace Cards.Logic.Spawn
         public event Action OnCardSpawnedNonParameterized;
 
         private CardFactory _cardFactory;
-        private CardsTableBounds _cardsTableBounds;
         private CardsTable.Core.CardsTable _cardsTable;
         private PlayingAreaTableBounds _playingAreaTableBounds;
+        private InvestigatedCardsObserver _investigatedCardsObserver;
 
         [Inject]
         private void Constructor(CardFactory cardFactory,
-            CardsTableBounds cardsTableBounds,
             CardsTable.Core.CardsTable cardsTable,
-            PlayingAreaTableBounds playingAreaTableBounds)
+            PlayingAreaTableBounds playingAreaTableBounds,
+            InvestigatedCardsObserver investigatedCardsObserver)
         {
             _cardFactory = cardFactory;
-            _cardsTableBounds = cardsTableBounds;
             _cardsTable = cardsTable;
             _playingAreaTableBounds = playingAreaTableBounds;
+            _investigatedCardsObserver = investigatedCardsObserver;
         }
 
         public CardData Spawn(Card card, Vector3 position)
@@ -92,7 +92,15 @@ namespace Cards.Logic.Spawn
             bool jump = true,
             bool flip = true)
         {
+            bool isCardNew = _investigatedCardsObserver.IsInvestigated(card) == false;
+
             CardData spawnedCard = Spawn(card, position);
+
+            if (isCardNew)
+            {
+                return spawnedCard;
+            }
+
             if (tryJoinToExistingGroup && _cardsTable.TryGetLowestUniqPrioritizedCompatibleGroupCard(spawnedCard, prioritizedCardsToJoin, out var lowestGroupCard))
             {
                 spawnedCard.LinkTo(lowestGroupCard);
