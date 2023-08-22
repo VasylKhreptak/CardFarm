@@ -55,8 +55,7 @@ namespace Cards.Zones.BuyZone.Logic
 
         private void SpawnCard()
         {
-            _cardSpawner.SpawnAndMove(_cardData.TargetCard.Value, _cardData.transform.position, _cardData.BoughtCardSpawnPoint.position,
-                appearAnimation:false);
+            _cardSpawner.SpawnAndMove(_cardData.TargetCard.Value, _cardData.transform.position, _cardData.BoughtCardSpawnPoint.position);
 
             _cardData.BuyZoneCallbacks.onSpawnedCard?.Invoke();
         }

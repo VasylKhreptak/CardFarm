@@ -48,7 +48,6 @@ namespace Cards.Recipes
         {
             _cardSpawner = cardSpawner;
             _coinsCollector = coinsCollector;
-            _camera = cameraProvider.Value;
             _temporaryDataStorage = temporaryDataStorage;
             _canvas = canvasProvider.Value;
             _canvasRectTransform = _canvas.GetComponent<RectTransform>();
