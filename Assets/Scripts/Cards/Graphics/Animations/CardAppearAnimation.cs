@@ -42,10 +42,9 @@ namespace Cards.Graphics.Animations
         [SerializeField] private float _maxRange = 7f;
 
         [Header("Flip Preferences")]
-        [SerializeField] private float _flipDelay = 0.5f;
+        [SerializeField] private float _flipDuration = 0.3f;
         [SerializeField] private Vector3 _startLocalRotation;
         [SerializeField] private Vector3 _endLocalRotation;
-        [SerializeField] private float _flipDuration = 0.5f;
         [SerializeField] private AnimationCurve _flipCurve;
 
         [Header("Raise Preferences")]
@@ -61,7 +60,7 @@ namespace Cards.Graphics.Animations
         [SerializeField] private AnimationCurve _placeHeightCurve;
         [SerializeField] private AnimationCurve _placeScaleCurve;
 
-        public event Action onFlipped;
+        public event Action onRaised;
 
         private Sequence _sequence;
 
@@ -125,9 +124,7 @@ namespace Cards.Graphics.Animations
                 .AppendInterval(_raiseDelay)
                 .Append(_cardData.transform.DOMoveY(_raiseHeight, _raiseDuration).SetEase(_raiseHeightCurve))
                 .Join(_cardData.transform.DOScale(_raiseScale, _raiseDuration).SetEase(_raiseScaleCurve))
-                .AppendInterval(_flipDelay)
-                .AppendCallback(() => onFlipped?.Invoke())
-                .Append(_cardData.transform.DOLocalRotate(_endLocalRotation, _flipDuration).SetEase(_flipCurve))
+                .AppendCallback(() => onRaised?.Invoke())
                 .OnUpdate(() =>
                 {
                     Vector3 position = _cardData.transform.position;
@@ -193,11 +190,21 @@ namespace Cards.Graphics.Animations
             _sequence = DOTween.Sequence();
 
             _sequence
+                .Append(_cardData.transform.DOLocalRotate(Vector3.zero, _flipDuration).SetEase(_flipCurve))
                 .Append(_cardData.transform.DOMoveY(_cardData.BaseHeight, _placeDuration).SetEase(_placeHeightCurve))
                 .Join(_cardData.transform.DOScale(Vector3.one, _placeDuration).SetEase(_placeScaleCurve))
                 .OnUpdate(() =>
                 {
                     _cardData.Height.Value = _cardData.transform.position.y;
+                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                })
+                .OnComplete(() =>
+                {
+                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                })
+                .OnKill(() =>
+                {
+                    _cardData.CardShirtStateUpdater.UpdateShirtState();
                 })
                 .Play();
         }

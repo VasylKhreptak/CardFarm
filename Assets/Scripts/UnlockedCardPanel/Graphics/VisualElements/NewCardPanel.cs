@@ -75,7 +75,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         {
             _closeButton.onClick.RemoveListener(OnClicked);
             _investigatedCardsObserver.OnInvestigatedCard -= OnInvestigatedNewCard;
-            StopObservingFlip(_investigatedCard);
+            StopObservingRaise(_investigatedCard);
         }
 
         private void OnDestroy()
@@ -150,7 +150,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
             _cardVisualizerData.VisualizableCard.Value = data;
 
-            StartObservingFlip(cardData);
+            StartObservingRaise(cardData);
         }
 
         private void OnRestart()
@@ -158,22 +158,22 @@ namespace UnlockedCardPanel.Graphics.VisualElements
             Disable();
         }
 
-        private void StartObservingFlip(CardData card)
+        private void StartObservingRaise(CardData card)
         {
-            StopObservingFlip(_investigatedCard);
-            StopObservingFlip(card);
+            StopObservingRaise(_investigatedCard);
+            StopObservingRaise(card);
 
-            card.Animations.AppearAnimation.onFlipped += OnCardFlipped;
+            card.Animations.AppearAnimation.onRaised += OnCardRaised;
         }
 
-        private void StopObservingFlip(CardData cardData)
+        private void StopObservingRaise(CardData cardData)
         {
             if (cardData == null) return;
 
-            cardData.Animations.AppearAnimation.onFlipped -= OnCardFlipped;
+            cardData.Animations.AppearAnimation.onRaised -= OnCardRaised;
         }
 
-        private void OnCardFlipped()
+        private void OnCardRaised()
         {
             Show();
         }
