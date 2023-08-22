@@ -1,5 +1,7 @@
 using UniRx;
 using UnityEngine;
+using UnlockedCardPanel.Graphics.VisualElements;
+using Zenject;
 
 namespace CameraManagement.CameraZoom.Core
 {
@@ -13,23 +15,19 @@ namespace CameraManagement.CameraZoom.Core
         public IReadOnlyReactiveProperty<float> Zoom => _zoom;
         public IReadOnlyReactiveProperty<bool> IsZooming => _isZooming;
 
+        private NewCardPanel _newCardPanel;
+
+        [Inject]
+        private void Constructor(NewCardPanel newCardPanel)
+        {
+            _newCardPanel = newCardPanel;
+        }
+
         #region MonoBehaviour
 
         private void Update()
         {
-            //  #if UNITY_EDITOR
-            //
-            // float scroll = Input.mouseScrollDelta.y;
-            //
-            // Debug.Log(scroll);
-            //
-            // _zoom.Value = scroll;
-            //
-            // _isZooming.Value = scroll != 0;
-            //
-            // #else
-            
-            if (Input.touchCount != 2)
+            if (Input.touchCount != 2 || _newCardPanel.IsActive.Value)
             {
                 ResetValues();
             }
