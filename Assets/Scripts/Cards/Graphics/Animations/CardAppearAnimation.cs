@@ -1,7 +1,6 @@
 ﻿using System;
 using Cards.Data;
 using Cards.Graphics.Animations.Core;
-using Constraints.CardTable;
 using DG.Tweening;
 using Extensions;
 using UnityEngine;
@@ -29,6 +28,7 @@ namespace Cards.Graphics.Animations
         [Header("Raise Preferences")]
         [SerializeField] private float _raiseDuration = 0.7f;
         [SerializeField] private float _raiseHeight = 0.6f;
+        [SerializeField] private Vector3 _startScale = Vector3.one * 0.4f;
         [SerializeField] private Vector3 _raiseScale;
         [SerializeField] private AnimationCurve _raiseHeightCurve;
         [SerializeField] private AnimationCurve _raiseScaleCurve;
@@ -41,14 +41,6 @@ namespace Cards.Graphics.Animations
         public event Action onRaised;
 
         private Sequence _sequence;
-
-        private PlayingAreaTableBounds _bounds;
-
-        [Inject]
-        private void Constructor(PlayingAreaTableBounds bounds)
-        {
-            _bounds = bounds;
-        }
 
         #region MonoBehaviour
 
@@ -78,20 +70,20 @@ namespace Cards.Graphics.Animations
 
             Stop();
             SetAlpha(_startAlpha);
-            SetScale(Vector3.one);
+            SetScale(_startScale);
             SetLocalRotation(_startLocalRotation);
 
             _sequence = DOTween.Sequence();
 
             _sequence
+                .Join(_cardData.CanvasGroup.DOFade(_endAlpha, _fadeDuration).SetEase(_fadeCurve))
+                .Join(_cardData.transform.DOMoveY(_raiseHeight, _raiseDuration).SetEase(_raiseHeightCurve))
+                .Join(_cardData.transform.DOScale(_raiseScale, _raiseDuration).SetEase(_raiseScaleCurve))
+                .AppendCallback(() => onRaised?.Invoke())
                 .OnPlay(() =>
                 {
                     _isPlaying.Value = true;
                 })
-                .Join(_cardData.CanvasGroup.DOFade(_endAlpha, _fadeDuration).SetEase(_fadeCurve))
-                .Append(_cardData.transform.DOMoveY(_raiseHeight, _raiseDuration).SetEase(_raiseHeightCurve))
-                .Join(_cardData.transform.DOScale(_raiseScale, _raiseDuration).SetEase(_raiseScaleCurve))
-                .AppendCallback(() => onRaised?.Invoke())
                 .OnUpdate(() =>
                 {
                     Vector3 position = _cardData.transform.position;

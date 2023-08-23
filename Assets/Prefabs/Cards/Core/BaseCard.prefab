@@ -2044,70 +2044,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 1106781378184329004}
-  _startScale: {x: 0, y: 0, z: 0}
-  _endScale: {x: 1, y: 1, z: 1}
-  _scaleDuration: 0.4
-  _scaleCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.68237114
-      value: 1.1123481
-      inSlope: 0.549242
-      outSlope: 0.549242
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _delayBeforeJump: 0.25
-  _jumpDuration: 0.4
-  _jumpPower: 5
-  _numberOfJumps: 1
-  _jumpCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   _startAlpha: 0
   _endAlpha: 1
   _fadeDuration: 0.2
@@ -2135,12 +2071,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _minRange: 6.5
-  _maxRange: 7
-  _flipDelay: 0.5
+  _flipDuration: 0.4
   _startLocalRotation: {x: -180, y: 0, z: 0}
   _endLocalRotation: {x: 0, y: 0, z: 0}
-  _flipDuration: 0.4
   _flipCurve:
     serializedVersion: 2
     m_Curve:
@@ -2165,9 +2098,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _raiseDelay: 0.4
   _raiseDuration: 0.4
   _raiseHeight: 0.6
+  _startScale: {x: 0, y: 0, z: 0}
   _raiseScale: {x: 1.15, y: 1.15, z: 1.15}
   _raiseHeightCurve:
     serializedVersion: 2
@@ -2181,6 +2114,15 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    - serializedVersion: 3
+      time: 0.72287136
+      value: 1.1010754
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
@@ -2205,6 +2147,15 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    - serializedVersion: 3
+      time: 0.72287136
+      value: 1.1010754
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
