@@ -8,5 +8,10 @@ namespace Graphics.UI.Panels.Core
         {
             _panel.transform.position = position;
         }
+
+        public void SetAnchoredPosition3D(Vector3 anchoredPosition3D)
+        {
+            _rectTransform.anchoredPosition3D = anchoredPosition3D;
+        }
     }
 }

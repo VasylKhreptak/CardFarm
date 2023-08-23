@@ -1,7 +1,7 @@
 ﻿using System;
 using Cards.Data;
 using Extensions;
-using Providers.Graphics.UI;
+using Providers.Graphics;
 using Quests.Logic.Tutorials.Core;
 using UniRx;
 using UnityEngine;
@@ -18,14 +18,12 @@ namespace Quests.Logic.Tutorials
         private IDisposable _handPositionSubscription;
         private IDisposable _handClickSubscription;
 
-        private Canvas _canvas;
-        private RectTransform _canvasRectTransform;
+        private Camera _camera;
 
         [Inject]
-        private void Constructor(CanvasProvider canvasProvider)
+        private void Constructor(CameraProvider cameraProvider)
         {
-            _canvas = canvasProvider.Value;
-            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
+            _camera = cameraProvider.Value;
         }
 
         public override void StopTutorial()
@@ -63,10 +61,9 @@ namespace Quests.Logic.Tutorials
         {
             if (_foundCard == null) return;
 
-            Vector3 cardPosition = _foundCard.transform.position;
-            Vector3 targetScreenPosition = ConvertPoint(cardPosition + _handOffset);
-            
-            _tutorialHand.SetPosition(targetScreenPosition);
+            Vector3 targetScreenPosition = _tutorialHand.RectTransform.GetAnchoredPosition(_camera, _foundCard.transform.position);
+
+            _tutorialHand.SetAnchoredPosition3D(targetScreenPosition);
         }
 
         private void StartObservingCardClick()
@@ -87,11 +84,6 @@ namespace Quests.Logic.Tutorials
         {
             StopTutorial();
             _isFinished.Value = true;
-        }
-
-        private Vector3 ConvertPoint(Vector3 point)
-        {
-            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, point);
         }
     }
 }

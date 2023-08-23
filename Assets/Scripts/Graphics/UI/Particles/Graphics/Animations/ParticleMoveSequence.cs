@@ -2,7 +2,7 @@
 using DG.Tweening;
 using Extensions;
 using Graphics.UI.Particles.Data;
-using Providers.Graphics.UI;
+using Providers.Graphics;
 using UnityEngine;
 using Zenject;
 
@@ -26,14 +26,12 @@ namespace Graphics.UI.Particles.Graphics.Animations
 
         private Sequence _sequence;
 
-        private Canvas _canvas;
-        private RectTransform _canvasRectTransform;
+        private Camera _camera;
 
         [Inject]
-        private void Constructor(CanvasProvider canvasProvider)
+        private void Constructor(CameraProvider cameraProvider)
         {
-            _canvas = canvasProvider.Value;
-            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
+            _camera = cameraProvider.Value;
         }
 
         #region MonoBehaviour
@@ -61,21 +59,26 @@ namespace Graphics.UI.Particles.Graphics.Animations
 
             RectTransform rectTransform = _particleData.RectTransform;
 
-            Vector3 startPosition = rectTransform.position;
-            
+            Vector3 startPosition = rectTransform.GetAnchoredPosition(_camera, rectTransform.position);
+
             rectTransform.localScale = _startScale;
             Tween scaleAnimation = rectTransform.DOScale(_endScale, _scaleDuration).SetEase(_scaleCurve);
-            
+
             float moveProgress = 0f;
             Tween moveAnimation = DOTween
                 .To(() => moveProgress, x => moveProgress = x, 1, _moveDuration)
                 .SetEase(_moveCurve)
+                .OnPlay(() =>
+                {
+                    Vector3 targetAnchoredPosition = rectTransform.GetAnchoredPosition(_camera, target.position);
+                    rectTransform.anchoredPosition3D = Vector3.Lerp(startPosition, targetAnchoredPosition, moveProgress);
+                    rectTransform.rotation = _camera.transform.rotation;
+                })
                 .OnUpdate(() =>
                 {
-                    Vector3 targetPosition = ConvertPoint(target.position);
-
-                    Vector3 position = Vector3.Lerp(startPosition, targetPosition, moveProgress);
-                    rectTransform.position = position;
+                    Vector3 targetAnchoredPosition = rectTransform.GetAnchoredPosition(_camera, target.position);
+                    rectTransform.anchoredPosition3D = Vector3.Lerp(startPosition, targetAnchoredPosition, moveProgress);
+                    rectTransform.transform.forward = _camera.transform.forward;
                 });
 
             _sequence = DOTween.Sequence();
@@ -90,11 +93,6 @@ namespace Graphics.UI.Particles.Graphics.Animations
         public void Stop()
         {
             _sequence.Kill();
-        }
-
-        private Vector3 ConvertPoint(Vector3 point)
-        {
-            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, point);
         }
     }
 }

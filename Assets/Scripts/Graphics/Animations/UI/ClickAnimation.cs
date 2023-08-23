@@ -1,6 +1,6 @@
 ﻿using DG.Tweening;
 using Extensions;
-using Providers.Graphics.UI;
+using Providers.Graphics;
 using UnityEngine;
 using Zenject;
 
@@ -9,7 +9,7 @@ namespace Graphics.Animations.UI
     public class ClickAnimation : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private Transform _transform;
+        [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private CanvasGroup _canvasGroup;
 
         [Header("Preferences")]
@@ -23,23 +23,19 @@ namespace Graphics.Animations.UI
 
         private Sequence _sequence;
 
-        private Canvas _canvas;
-        private RectTransform _canvasRectTransform;
         private Camera _camera;
 
         [Inject]
-        private void Constructor(CanvasProvider canvasProvider)
+        private void Constructor(CameraProvider cameraProvider)
         {
-            _canvas = canvasProvider.Value;
-            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
-            _camera = _canvas.worldCamera;
+            _camera = cameraProvider.Value;
         }
 
         #region MonoBehaviour
 
         private void OnValidate()
         {
-            _transform ??= GetComponent<Transform>();
+            _rectTransform ??= GetComponent<RectTransform>();
             _canvasGroup ??= GetComponent<CanvasGroup>();
         }
 
@@ -56,19 +52,22 @@ namespace Graphics.Animations.UI
             Stop();
             ResetValues();
 
-            Tween scaleTween = _transform.DOScale(_targetScale, _duration).SetEase(_scaleCurve);
+            Tween scaleTween = _rectTransform.DOScale(_targetScale, _duration).SetEase(_scaleCurve);
             Tween fadeTween = _canvasGroup.DOFade(_targetAlpha, _duration).SetEase(_fadeCurve);
-
-            _transform.position = ConvertPosition(linkToWorldPosition);
 
             _sequence = DOTween.Sequence()
                 .Append(scaleTween)
                 .Join(fadeTween)
+                .OnPlay(() =>
+                {
+                    _rectTransform.anchoredPosition3D = _rectTransform.GetAnchoredPosition(_camera, linkToWorldPosition);
+                    _rectTransform.rotation = _camera.transform.rotation;
+                })
                 .OnComplete(() => gameObject.SetActive(false))
                 .OnUpdate(() =>
                 {
-                    _transform.position = ConvertPosition(linkToWorldPosition);
-                    _transform.rotation = Quaternion.LookRotation(-_camera.transform.forward);
+                    _rectTransform.anchoredPosition3D = _rectTransform.GetAnchoredPosition(_camera, linkToWorldPosition);
+                    _rectTransform.rotation = _camera.transform.rotation;
                 })
                 .Play();
         }
@@ -92,17 +91,12 @@ namespace Graphics.Animations.UI
 
         private void ResetScale()
         {
-            _transform.localScale = _startScale;
+            _rectTransform.localScale = _startScale;
         }
 
         private void ResetAlpha()
         {
             _canvasGroup.alpha = _startAlpha;
-        }
-
-        private Vector3 ConvertPosition(Vector3 position)
-        {
-            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, position);
         }
     }
 }

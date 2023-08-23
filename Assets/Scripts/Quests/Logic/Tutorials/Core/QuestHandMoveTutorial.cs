@@ -2,7 +2,6 @@
 using DG.Tweening;
 using Extensions;
 using Providers.Graphics;
-using Providers.Graphics.UI;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -20,14 +19,12 @@ namespace Quests.Logic.Tutorials.Core
 
         private IDisposable _tutorialHandDelaySubscription;
 
-        private Canvas _canvas;
-        private RectTransform _canvasRectTransform;
+        private Camera _camera;
 
         [Inject]
-        private void Constructor(CanvasProvider canvasProvider)
+        private void Constructor(CameraProvider cameraProvider)
         {
-            _canvas = canvasProvider.Value;
-            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
+            _camera = cameraProvider.Value;
         }
 
         public override void StopTutorial()
@@ -54,7 +51,7 @@ namespace Quests.Logic.Tutorials.Core
             _handSequence
                 .AppendCallback(OnRepeated)
                 .AppendCallback(_tutorialHand.Show)
-                .AppendCallback(() => _tutorialHand.SetPosition(ConvertPosition(from.position)))
+                .AppendCallback(() => _tutorialHand.SetAnchoredPosition3D(GetAnchoredPosition(from.position)))
                 .AppendCallback(_tutorialHand.Press)
                 .Join(CreateHandFollowTween(from, _handMoveDelay))
                 .Append(CreateHandMoveTween(from, to, _handMoveDuration))
@@ -89,23 +86,23 @@ namespace Quests.Logic.Tutorials.Core
                 .SetEase(Ease.Linear)
                 .OnPlay(() =>
                 {
-                    _tutorialHand.SetPosition(ConvertPosition(from.position));
+                    _tutorialHand.SetAnchoredPosition3D(GetAnchoredPosition(from.position));
                 })
                 .OnUpdate(() =>
                 {
-                    Vector3 position = Vector3.Lerp(ConvertPosition(from.position), ConvertPosition(to.position), progress);
-                    _tutorialHand.SetPosition(position);
+                    Vector3 position = Vector3.Lerp(GetAnchoredPosition(from.position), GetAnchoredPosition(to.position), progress);
+                    _tutorialHand.SetAnchoredPosition3D(position);
                 });
-        }
-
-        protected Vector3 ConvertPosition(Vector3 position)
-        {
-            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, position);
         }
 
         protected virtual void OnRepeated()
         {
 
+        }
+
+        private Vector2 GetAnchoredPosition(Vector3 worldPoint)
+        {
+            return _tutorialHand.RectTransform.GetAnchoredPosition(_camera, worldPoint);
         }
     }
 }

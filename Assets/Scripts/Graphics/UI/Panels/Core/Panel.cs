@@ -7,6 +7,19 @@ namespace Graphics.UI.Panels.Core
         [Header("References")]
         [SerializeField] protected GameObject _panel;
 
+        protected RectTransform _rectTransform;
+
+        public RectTransform RectTransform
+        {
+            get
+            {
+                if (_rectTransform == null)
+                    _rectTransform = _panel.GetComponent<RectTransform>();
+
+                return _rectTransform;
+            }
+        }
+
         public virtual void Show()
         {
             if (_panel == null) return;

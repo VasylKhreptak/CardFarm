@@ -1,6 +1,8 @@
 ﻿using System;
 using DG.Tweening;
+using Extensions;
 using Graphics.UI.Particles.Data;
+using Providers.Graphics;
 using UnityEngine;
 using Zenject;
 
@@ -18,6 +20,14 @@ namespace Graphics.UI.Particles.Graphics.Animations
         private Tween _animation;
 
         public float Duration => _moveDuration;
+
+        private Camera _camera;
+
+        [Inject]
+        private void Constructor(CameraProvider cameraProvider)
+        {
+            _camera = cameraProvider.Value;
+        }
 
         #region MonoBehaviour
 
@@ -38,18 +48,19 @@ namespace Graphics.UI.Particles.Graphics.Animations
 
         #endregion
 
-        public void Play(Func<Vector3> targetPositionGetter, Action onComplete = null)
+        public void Play(Func<Vector3> targetWorldPositionGetter, Action onComplete = null)
         {
             Stop();
 
-            Vector3 startPosition = _particleData.transform.position;
+            Vector3 startAnchoredPosition = GetAnchoredPosition(_particleData.transform.position);
+            
             float progress = 0;
             _animation = DOTween.To(() => progress, x => progress = x, 1, _moveDuration)
                 .OnUpdate(() =>
                 {
-                    Vector3 targetPosition = targetPositionGetter.Invoke();
-                    Vector3 position = Vector3.Lerp(startPosition, targetPosition, progress);
-                    _particleData.transform.position = position;
+                    Vector3 targetAnchoredPosition = GetAnchoredPosition(targetWorldPositionGetter.Invoke());
+                    Vector3 position = Vector3.Lerp(startAnchoredPosition, targetAnchoredPosition, progress);
+                    _particleData.RectTransform.anchoredPosition3D = position;
                 })
                 .SetEase(_moveCurve)
                 .OnComplete(() => onComplete?.Invoke())
@@ -59,6 +70,11 @@ namespace Graphics.UI.Particles.Graphics.Animations
         public void Stop()
         {
             _animation.Kill();
+        }
+
+        public Vector2 GetAnchoredPosition(Vector3 worldPoint)
+        {
+            return _particleData.RectTransform.GetAnchoredPosition(_camera, worldPoint);
         }
     }
 }

@@ -27,5 +27,16 @@ namespace Extensions
 
             return newAnchoredPosition;
         }
+
+        public static Vector2 GetAnchoredPosition(this RectTransform rectTransform, Camera _camera, Vector3 worldPosition)
+        {
+            Vector2 screenPosition = RectTransformUtility.WorldToScreenPoint(_camera, worldPosition);
+
+            RectTransform parent = rectTransform.parent.GetComponent<RectTransform>();
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parent, screenPosition, _camera, out Vector2 anchoredPosition);
+
+            return anchoredPosition;
+        }
     }
 }

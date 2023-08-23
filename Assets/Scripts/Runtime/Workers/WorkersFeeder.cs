@@ -28,10 +28,7 @@ namespace Runtime.Workers
         private WorkersSelector _workersSelector;
         private CoinsBank _coinsBank;
         private CoinsSpender _coinsSpender;
-        private Camera _camera;
         private GameRestartCommand _gameRestartCommand;
-        private Canvas _canvas;
-        private RectTransform _canvasRectTransform;
 
         [Inject]
         private void Constructor(DaysData daysData,
@@ -46,10 +43,7 @@ namespace Runtime.Workers
             _workersSelector = workersSelector;
             _coinsBank = coinsBank;
             _coinsSpender = coinsSpender;
-            _camera = cameraProvider.Value;
             _gameRestartCommand = gameRestartCommand;
-            _canvas = canvasProvider.Value;
-            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
         }
 
         #region MonoBehaviour
@@ -129,16 +123,11 @@ namespace Runtime.Workers
             int neededCoins = worker.NeededSatiety.Value;
 
             _coinsSpender.Spend(neededCoins,
-                () => ConvertPoint(worker.transform.position),
+                () => worker.transform.position,
                 onSpentAllCoins: () =>
                 {
                     FillWorkerSatiety(worker);
                 });
-        }
-
-        private Vector3 ConvertPoint(Vector3 point)
-        {
-            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, point);
         }
     }
 }
