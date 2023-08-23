@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Cards.Graphics.VisualElements
@@ -7,6 +8,10 @@ namespace Cards.Graphics.VisualElements
     {
         [Header("References")]
         [SerializeField] private Image _image;
+
+        private BoolReactiveProperty _isEnabled = new BoolReactiveProperty();
+
+        public IReadOnlyReactiveProperty<bool> IsEnabled => _isEnabled;
 
         #region MonoBehaviour
 
@@ -26,18 +31,21 @@ namespace Cards.Graphics.VisualElements
         {
             _image.enabled = true;
             transform.SetAsLastSibling();
+            _isEnabled.Value = true;
         }
 
         public void Hide()
         {
             _image.enabled = false;
             transform.SetAsLastSibling();
+            _isEnabled.Value = false;
         }
 
         public void SetState(bool enabled)
         {
             _image.enabled = enabled;
             transform.SetAsLastSibling();
+            _isEnabled.Value = enabled;
         }
     }
 }
