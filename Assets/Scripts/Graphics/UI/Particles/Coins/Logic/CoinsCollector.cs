@@ -32,7 +32,6 @@ namespace Graphics.UI.Particles.Coins.Logic
         public void Collect(int count, Vector3 position, float maxRange)
         {
             _particlesPileSpawner.Spawn(Particle.Coin, count, position, maxRange, OnSpawnedCoin);
-
         }
 
         private void OnSpawnedCoin(ParticleData coin)

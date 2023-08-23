@@ -21,9 +21,9 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         [SerializeField] private VisualizableCardData _cardVisualizerData;
 
         [Header("Preferences")]
+        [SerializeField] private float _flipDelay = 1f;
         [SerializeField] private NewCardPanelShowAnimation _showAnimation;
         [SerializeField] private NewCardPanelHideAnimation _hideAnimation;
-        [SerializeField] private float _overlayDisableDelay = 0.5f;
 
         private BoolReactiveProperty _isActive = new BoolReactiveProperty(false);
 
@@ -87,6 +87,8 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
         private void Show()
         {
+            _cardVisualizerData.FLipAnimation.Play(_flipDelay);
+
             _hideAnimation.Stop();
             Enable();
 

@@ -61,10 +61,10 @@ namespace Graphics.UI.Particles.Graphics.Animations
 
             RectTransform rectTransform = _particleData.RectTransform;
 
+            Vector3 startPosition = rectTransform.position;
+            
             rectTransform.localScale = _startScale;
             Tween scaleAnimation = rectTransform.DOScale(_endScale, _scaleDuration).SetEase(_scaleCurve);
-
-            Vector3 startPosition = rectTransform.position;
             
             float moveProgress = 0f;
             Tween moveAnimation = DOTween

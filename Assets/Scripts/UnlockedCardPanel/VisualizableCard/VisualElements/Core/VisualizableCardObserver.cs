@@ -23,7 +23,7 @@ namespace UnlockedCardPanel.VisualizableCard.VisualElements.Core
 
         public virtual void Validate()
         {
-            _cardData = GetComponentInParent<VisualizableCardData>(true);
+            _cardData ??= GetComponentInParent<VisualizableCardData>(true);
         }
 
         private void OnEnable()
