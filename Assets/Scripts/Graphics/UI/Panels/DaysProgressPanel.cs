@@ -52,7 +52,8 @@ namespace Graphics.UI.Panels
             _panelObject.SetActive(true);
             _showAnimation.Stop();
             _showAnimation.PlayFromStartImmediate();
-            _daysRunner.StartRunningDays();            
+            _daysRunner.StartRunningDays();
+            _questShowAnimation.OnCompleted -= OnCompletedShowAnimation;
         }
 
         private void OnRestart()
@@ -60,6 +61,9 @@ namespace Graphics.UI.Panels
             _showAnimation.Stop();
             _panelObject.SetActive(false);
             _daysRunner.StopRunningDays();
+            _questShowAnimation.OnCompleted -= OnCompletedShowAnimation;
+            _questShowAnimation.OnCompleted += OnCompletedShowAnimation;
+
         }
     }
 }
