@@ -1,149 +1,137 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using Cards.Factories.Data;
 using Extensions;
 using ProgressLogic.Core;
 using Quests.Logic.QuestObservers.Core;
-using ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes;
-using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Quests.Logic.QuestObservers.Progress
 {
-    public class QuestRecipeProgressObserver : AllCardsQuestObserver
+    public class QuestRecipeProgressObserver : QuestObserver
     {
         [Header("Preferences")]
         [SerializeField] private Card _recipeResult;
 
-        private Dictionary<CardData, (IDisposable, IDisposable, ProgressDependentObject, IDisposable)> _cardsData = new();
+        private IDisposable _updateSubscription;
 
-        protected override void OnCardAdded(CardData cardData)
+        private bool _filledProgress;
+
+        private List<ListTuple> _cardsData = new List<ListTuple>();
+
+        private CardsTable.Core.CardsTable _cardsTable;
+
+        [Inject]
+        private void Constructor(CardsTable.Core.CardsTable cardsTable)
         {
-            StartObservingCard(cardData);
+            _cardsTable = cardsTable;
         }
 
-        protected override void OnCardRemoved(CardData cardData)
+        public override void StartObserving()
         {
-            StopObservingCard(cardData);
+            StopObserving();
+            StartUpdating();
         }
 
-        protected override void OnCardsCleared()
+        public override void StopObserving()
         {
-            StopObservingCards();
+            StopUpdating();
+            ClearCardsData();
+            _filledProgress = false;
         }
 
-        private void StartObservingCard(CardData cardData)
+        private void StartUpdating()
         {
-            StopObservingCard(cardData);
-
-            FactoryData factoryData = cardData as FactoryData;
-
-            IDisposable subscription;
-
-            if (factoryData != null)
-            {
-                subscription = factoryData.CurrentFactoryRecipe.Select(x => cardData).Subscribe(OnCardRecipeUpdated);
-            }
-            else
-            {
-                subscription = cardData.CurrentRecipe.Select(x => cardData).Subscribe(OnCardRecipeUpdated);
-            }
-
-            _cardsData.Add(cardData, (subscription, null, null, null));
+            _updateSubscription = Observable
+                .EveryUpdate()
+                .DoOnSubscribe(OnUpdate)
+                .Subscribe(_ => OnUpdate());
         }
 
-        private void StopObservingCard(CardData cardData)
+        private void StopUpdating()
         {
-            if (_cardsData.TryGetValue(cardData, out var subscriptions))
-            {
-                subscriptions.Item1?.Dispose();
-                subscriptions.Item2?.Dispose();
-                _cardsData.Remove(cardData);
-                StopObservingResultedCard(cardData);
-            }
+            _updateSubscription?.Dispose();
         }
 
-        private void StopObservingCards()
+        private void OnUpdate()
         {
-            foreach (var keyValuePair in _cardsData.ToList())
+            if (_filledProgress) return;
+
+            UpdateCardsData();
+
+            ProgressDependentObject largestProgress = null;
+
+            foreach (var listItem in _cardsData)
             {
-                keyValuePair.Value.Item1?.Dispose();
-                keyValuePair.Value.Item2?.Dispose();
-                keyValuePair.Value.Item4?.Dispose();
-                StopObservingResultedCard(keyValuePair.Key);
-            }
-
-            _cardsData.Clear();
-        }
-
-        private void OnCardRecipeUpdated(CardData cardData)
-        {
-            FactoryData factoryData = cardData as FactoryData;
-            CardData targetCard;
-
-            ProgressDependentObject progressDependentObject;
-
-            if (factoryData != null)
-            {
-                FactoryRecipe factoryRecipe = factoryData.CurrentFactoryRecipe.Value;
-
-                if (factoryRecipe == null) return;
-
-                bool hasRecipeResult = factoryRecipe.Result.Weights.Contains(x => x.Card == _recipeResult);
-
-                if (hasRecipeResult == false) return;
-
-                progressDependentObject = factoryData.FactoryRecipeExecutor;
-
-                targetCard = factoryData;
-            }
-            else
-            {
-                CardRecipe cardRecipe = cardData.CurrentRecipe.Value;
-
-                if (cardRecipe == null) return;
-
-                bool hasRecipeResult = cardRecipe.Result.Weights.Contains(x => x.Card == _recipeResult);
-
-                if (hasRecipeResult == false) return;
-
-                progressDependentObject = cardData.RecipeExecutor;
-
-                targetCard = cardData;
-            }
-
-            StartObservingProgress(cardData, progressDependentObject);
-
-            StartObservingResultedCard(targetCard);
-        }
-
-        private void StartObservingProgress(CardData cardData, ProgressDependentObject progressDependentObject)
-        {
-            _cardsData.TryGetValue(cardData, out var cardsData);
-
-            cardsData.Item3 = progressDependentObject;
-
-            cardsData.Item2?.Dispose();
-
-            IDisposable progressSubscription = progressDependentObject.Progress.Subscribe(progress =>
-            {
-                if (_questData.IsCompletedByAction.Value) return;
-
-                if (progress >= 1f)
+                if (largestProgress == null || listItem.ProgressDependentObject.Progress.Value > largestProgress.Progress.Value)
                 {
-                    cardsData.Item2?.Dispose();
-                    SetProgress(1f);
-                    return;
+                    largestProgress = listItem.ProgressDependentObject;
                 }
+            }
 
-                SetProgress(progress);
-            });
+            if (largestProgress == null) return;
 
-            cardsData.Item2 = progressSubscription;
+            float progressValue = largestProgress.Progress.Value;
+
+            if (progressValue >= 0.98)
+            {
+                SetProgress(1f);
+                _filledProgress = true;
+                return;
+            }
+
+            SetProgress(largestProgress.Progress.Value);
+        }
+
+        private void UpdateCardsData()
+        {
+            ClearCardsData();
+
+            foreach (var card in _cardsTable.Cards)
+            {
+                if (card.IsAutomatedFactory)
+                {
+                    FactoryData factoryData = card as FactoryData;
+
+                    if (factoryData == null) continue;
+
+                    if (factoryData.CurrentFactoryRecipe.Value == null) continue;
+
+                    if (factoryData.CurrentFactoryRecipe.Value.Result.Weights.Contains(x => x.Card == _recipeResult))
+                    {
+                        ListTuple listTuple = new ListTuple()
+                        {
+                            CardData = card,
+                            ProgressDependentObject = factoryData.FactoryRecipeExecutor
+                        };
+
+                        _cardsData.Add(listTuple);
+
+                        StartObservingRecipeResult(card);
+                    }
+                }
+                else
+                {
+                    if (card.CurrentRecipe.Value == null) continue;
+
+                    if (card.CurrentRecipe.Value.Result.Weights.Contains(x => x.Card == _recipeResult))
+                    {
+                        ListTuple listTuple = new ListTuple()
+                        {
+                            CardData = card,
+                            ProgressDependentObject = card.RecipeExecutor
+                        };
+
+                        _cardsData.Add(listTuple);
+
+                        StartObservingRecipeResult(card);
+                    }
+                }
+            }
         }
 
         private void SetProgress(float progress)
@@ -151,40 +139,46 @@ namespace Quests.Logic.QuestObservers.Progress
             _questData.Progress.Value = progress;
         }
 
-        private void StartObservingResultedCard(CardData cardData)
+        private void ClearCardsData()
         {
-            _cardsData.TryGetValue(cardData, out var cardsData);
-            cardsData.Item4?.Dispose();
+            foreach (var cardData in _cardsData)
+            {
+                StopObservingRecipeResult(cardData.CardData);
+            }
 
-            IDisposable subscription = Observable.FromEvent<Card>(
-                    handler => cardData.Callbacks.onSpawnedRecipeResult += handler,
-                    handler => cardData.Callbacks.onSpawnedRecipeResult -= handler)
-                .Subscribe(card =>
-                {
-                    OnSpawnedResultedCard(card, cardData, cardsData.Item3);
-                });
-
-            cardsData.Item4 = subscription;
+            _cardsData.Clear();
         }
 
-        private void StopObservingResultedCard(CardData cardData)
+        private void StartObservingRecipeResult(CardData cardData)
         {
-            _cardsData.TryGetValue(cardData, out var cardsData);
-            cardsData.Item4?.Dispose();
+            StopObservingRecipeResult(cardData);
+
+            cardData.Callbacks.onSpawnedRecipeResult += OnSpawnedRecipeResult;
         }
 
-        private void OnSpawnedResultedCard(Card card, CardData cardData, ProgressDependentObject progressDependentObject)
+        private void StopObservingRecipeResult(CardData cardData)
+        {
+            cardData.Callbacks.onSpawnedRecipeResult -= OnSpawnedRecipeResult;
+        }
+
+        private void OnSpawnedRecipeResult(Card card)
         {
             if (card == _recipeResult)
             {
-                StopObserving();
                 SetProgress(1f);
+                StopObserving();
             }
             else
             {
                 SetProgress(0f);
-                StartObservingProgress(cardData, progressDependentObject);
+                StartObserving();
             }
+        }
+
+        private class ListTuple
+        {
+            public CardData CardData;
+            public ProgressDependentObject ProgressDependentObject;
         }
     }
 }

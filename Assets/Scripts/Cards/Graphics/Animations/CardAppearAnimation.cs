@@ -89,6 +89,7 @@ namespace Cards.Graphics.Animations
                     Vector3 position = _cardData.transform.position;
                     _cardData.Height.Value = position.y;
                     _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.RenderOnTop();
                 })
                 .OnComplete(() =>
                 {
@@ -131,6 +132,7 @@ namespace Cards.Graphics.Animations
                 {
                     _cardData.Height.Value = _cardData.transform.position.y;
                     _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.RenderOnTop();
                 })
                 .OnComplete(() =>
                 {
