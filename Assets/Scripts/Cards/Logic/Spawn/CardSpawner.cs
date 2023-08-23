@@ -115,7 +115,7 @@ namespace Cards.Logic.Spawn
 
             if (canPlayAppearAnimation)
             {
-                spawnedCard.Animations.AppearAnimation.PlayRandomly();
+                spawnedCard.Animations.AppearAnimation.Play();
             }
             else if (jump)
             {
