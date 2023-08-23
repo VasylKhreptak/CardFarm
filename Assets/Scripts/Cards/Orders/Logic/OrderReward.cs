@@ -4,7 +4,6 @@ using Cards.Logic.Spawn;
 using Cards.Orders.Data;
 using Extensions;
 using Graphics.UI.Particles.Coins.Logic;
-using Providers.Graphics;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -20,21 +19,13 @@ namespace Cards.Orders.Logic
 
         private CardSpawner _cardSpawner;
         private CoinsCollector _coinsCollector;
-        private Camera _camera;
-        private Canvas _canvas;
-        private RectTransform _canvasRectTransform;
 
         [Inject]
         private void Constructor(CardSpawner cardSpawner,
-            CoinsCollector coinsCollector,
-            CameraProvider cameraProvider,
-            Canvas canvas)
+            CoinsCollector coinsCollector)
         {
             _cardSpawner = cardSpawner;
             _coinsCollector = coinsCollector;
-            _camera = cameraProvider.Value;
-            _canvas = canvas;
-            _canvasRectTransform = canvas.GetComponent<RectTransform>();
         }
 
         #region MonoBehaviour
@@ -86,7 +77,7 @@ namespace Cards.Orders.Logic
 
             if (cardToSpawn == Card.Coin)
             {
-                Vector3 spawnPosition = RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, _orderData.transform.position);
+                Vector3 spawnPosition = _orderData.transform.position;
                 _coinsCollector.Collect(1, spawnPosition, 0f);
             }
             else
