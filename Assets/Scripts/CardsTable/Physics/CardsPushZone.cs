@@ -89,7 +89,8 @@ namespace CardsTable.Physics
                     // || card.IsPlayingAnyAnimation.Value
                     || card.FirstGroupCard.Value != card
                     || card.IsZone
-                    || card.RectTransform.IsOverlapping(_rectTransform) == false;
+                    || card.RectTransform.IsOverlapping(_rectTransform) == false
+                    || card.Animations.AppearAnimation.IsPlaying.Value;
 
                 return canRemove;
             });

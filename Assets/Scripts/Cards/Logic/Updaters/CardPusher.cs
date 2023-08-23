@@ -70,14 +70,11 @@ namespace Cards.Logic.Updaters
         {
             bool canPush;
 
-            bool isAnyGroupCardSelected = _cardData.IsAnyGroupCardSelected.Value;
-            bool isPlayingAnyAnimation = _cardData.IsPlayingAnyAnimation.Value;
-            bool isOverlayed = _cardData.IsOverlayed.Value;
-
             canPush =
-                isAnyGroupCardSelected == false
-                && isPlayingAnyAnimation == false
-                && isOverlayed == false;
+                _cardData.IsAnyGroupCardSelected.Value == false
+                && _cardData.IsPlayingAnyAnimation.Value == false
+                && _cardData.IsOverlayed.Value == false
+                && _cardData.Animations.AppearAnimation.IsPlaying.Value == false;
 
             if (canPush)
             {

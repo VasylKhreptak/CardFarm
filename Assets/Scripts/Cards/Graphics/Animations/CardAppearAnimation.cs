@@ -100,13 +100,11 @@ namespace Cards.Graphics.Animations
                 })
                 .OnComplete(() =>
                 {
-                    _isPlaying.Value = false;
                     _cardData.CardShirtStateUpdater.UpdateShirtState();
                     onComplete?.Invoke();
                 })
                 .OnKill(() =>
                 {
-                    _isPlaying.Value = false;
                     _cardData.CardShirtStateUpdater.UpdateShirtState();
                 })
                 .Play();
@@ -124,13 +122,6 @@ namespace Cards.Graphics.Animations
 
         private void SetLocalRotation(Vector3 rotation) => _cardData.transform.localEulerAngles = rotation;
 
-        private Vector3 ClampPosition(Vector3 position)
-        {
-            Vector3 clampedPosition = _bounds.Clamp(_cardData.RectTransform, position);
-            clampedPosition.y = _cardData.BaseHeight;
-            return clampedPosition;
-        }
-
         public void PlaceCardOnTable(Action onComplete = null)
         {
             Stop();
@@ -140,6 +131,10 @@ namespace Cards.Graphics.Animations
                 .Append(_cardData.transform.DOLocalRotate(Vector3.zero, _flipDuration).SetEase(_flipCurve))
                 .Append(_cardData.transform.DOMoveY(_cardData.BaseHeight, _placeDuration).SetEase(_placeHeightCurve))
                 .Join(_cardData.transform.DOScale(Vector3.one, _placeDuration).SetEase(_placeScaleCurve))
+                .OnPlay(() =>
+                {
+                    _isPlaying.Value = true;
+                })
                 .OnUpdate(() =>
                 {
                     _cardData.Height.Value = _cardData.transform.position.y;
@@ -149,10 +144,12 @@ namespace Cards.Graphics.Animations
                 {
                     _cardData.CardShirtStateUpdater.UpdateShirtState();
                     onComplete?.Invoke();
+                    _isPlaying.Value = false;
                 })
                 .OnKill(() =>
                 {
                     _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _isPlaying.Value = false;
                 })
                 .Play();
         }
