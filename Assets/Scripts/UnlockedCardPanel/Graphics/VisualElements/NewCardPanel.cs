@@ -90,7 +90,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
             _cardVisualizerData.ShowAnimation.Play(_flipDelay);
 
             _hideAnimation.Stop();
-            Disable();
+            _panelObject.SetActive(false);
             Enable();
 
             _investigatedCard.OverlayDrawer.EnableOverlay();
