@@ -4118,7 +4118,7 @@ GameObject:
   - component: {fileID: 628779972}
   - component: {fileID: 628779973}
   m_Layer: 0
-  m_Name: ExperienceBank
+  m_Name: ExperienceController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
