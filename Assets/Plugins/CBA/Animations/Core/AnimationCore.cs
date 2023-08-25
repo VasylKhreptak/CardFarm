@@ -20,9 +20,9 @@ namespace CBA.Animations.Core
         [ShowIf(nameof(_useAdditionalSettings)), SerializeField] private UpdateType _updateType = DOTween.defaultUpdateType;
 
         private Tween _animation;
-        
+
         public Tween Animation => _animation;
-        
+
         public event Action onInit;
 
         #region MonoBehaviour
@@ -34,7 +34,7 @@ namespace CBA.Animations.Core
                 Stop();
             }
         }
-        
+
         protected virtual void OnDestroy()
         {
             _animation.Kill();
@@ -154,17 +154,17 @@ namespace CBA.Animations.Core
             PlayBackwardImmediate();
         }
 
-        public void Stop()
+        public virtual void Stop()
         {
             _animation?.Kill();
             _animation = null;
         }
-        
+
         public void PlayCurrentAnimation()
         {
             _animation?.Play();
         }
-        
+
         #endregion
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CBA.Animations.Core;
 using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 using Animation = CBA.Animations.Core.Animation;
 
@@ -99,20 +100,28 @@ namespace CBA.Animations.Sequences.Core
             }
         }
 
+        [Button()]
         public override void PlayForwardImmediate()
         {
-            _sequence.Kill();
+            Stop();
             InitForward();
             ApplyAnimationPreferences();
             _sequence.Play();
         }
 
+        [Button()]
         public override void PlayBackwardImmediate()
         {
-            _sequence.Kill();
+            Stop();
             InitBackward();
             ApplyAnimationPreferences();
             _sequence.Play();
+        }
+
+        public override void Stop()
+        {
+            _sequence?.Kill();
+            _sequence = null;
         }
     }
 }

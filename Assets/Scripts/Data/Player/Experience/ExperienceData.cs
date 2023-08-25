@@ -7,6 +7,7 @@ namespace Data.Player.Experience
     public class ExperienceData
     {
         public IntReactiveProperty Experience = new IntReactiveProperty();
+        public IntReactiveProperty ExperienceToNextLevel = new IntReactiveProperty();
         public IntReactiveProperty TotalExperience = new IntReactiveProperty(110);
         public IntReactiveProperty MaxExperience = new IntReactiveProperty(110);
         public IntReactiveProperty ExperienceLevel = new IntReactiveProperty(1);

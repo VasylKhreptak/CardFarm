@@ -84,6 +84,8 @@ namespace Data.Player.Experience.Logic
             _experienceData.Experience.Value = totalExperience % maxExperience;
             _experienceData.ExperienceLevel.Value = totalExperience / maxExperience;
 
+            _experienceData.ExperienceToNextLevel.Value = maxExperience - _experienceData.Experience.Value;
+
             _experienceData.FillAmount.Value = (float)_experienceData.Experience.Value / _experienceData.MaxExperience.Value;
         }
 
