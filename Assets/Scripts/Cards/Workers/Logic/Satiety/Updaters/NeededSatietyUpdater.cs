@@ -3,7 +3,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Cards.Workers.Logic.Updaters
+namespace Cards.Workers.Logic.Satiety.Updaters
 {
     public class NeededSatietyUpdater : MonoBehaviour, IValidatable
     {

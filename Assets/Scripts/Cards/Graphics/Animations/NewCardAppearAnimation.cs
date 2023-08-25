@@ -8,10 +8,13 @@ using Zenject;
 
 namespace Cards.Graphics.Animations
 {
-    public class CardAppearAnimation : CardAnimation, IValidatable
+    public class NewCardAppearAnimation : CardAnimation, IValidatable
     {
         [Header("References")]
         [SerializeField] protected CardData _cardData;
+
+        [Header("Preferences")]
+        [SerializeField] private GameObject _newCardShirt;
 
         [Header("Fade Preferences")]
         [SerializeField] private float _startAlpha;
@@ -86,17 +89,17 @@ namespace Cards.Graphics.Animations
                 {
                     Vector3 position = _cardData.transform.position;
                     _cardData.Height.Value = position.y;
-                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.NewCardShirtStateUpdater.UpdateCullState();
                     _cardData.RenderOnTop();
                 })
                 .OnComplete(() =>
                 {
-                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.NewCardShirtStateUpdater.UpdateCullState();
                     onComplete?.Invoke();
                 })
                 .OnKill(() =>
                 {
-                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.NewCardShirtStateUpdater.UpdateCullState();
                 })
                 .Play();
         }
@@ -128,18 +131,18 @@ namespace Cards.Graphics.Animations
                 .OnUpdate(() =>
                 {
                     _cardData.Height.Value = _cardData.transform.position.y;
-                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.NewCardShirtStateUpdater.UpdateCullState();
                     _cardData.RenderOnTop();
                 })
                 .OnComplete(() =>
                 {
-                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.NewCardShirtStateUpdater.UpdateCullState();
                     onComplete?.Invoke();
                     _isPlaying.Value = false;
                 })
                 .OnKill(() =>
                 {
-                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.NewCardShirtStateUpdater.UpdateCullState();
                     _isPlaying.Value = false;
                 })
                 .Play();
@@ -148,7 +151,7 @@ namespace Cards.Graphics.Animations
         public void ShowCardSuit()
         {
             _cardData.transform.localRotation = Quaternion.Euler(_endLocalRotation);
-            _cardData.CardShirtStateUpdater.UpdateShirtState();
+            _cardData.NewCardShirtStateUpdater.UpdateCullState();
         }
     }
 }

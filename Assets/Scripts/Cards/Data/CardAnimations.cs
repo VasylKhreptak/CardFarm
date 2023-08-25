@@ -11,7 +11,7 @@ namespace Cards.Data
         public CardFlipAnimation FlipAnimation;
         public CardShakeAnimation ShakeAnimation;
         public CardContinuousJumpingAnimation ContinuousJumpingAnimation;
-        public CardAppearAnimation AppearAnimation;
+        public NewCardAppearAnimation AppearAnimation;
         public CardWaveJumpAnimation WaveJumpAnimation;
 
         public void Stop()

@@ -87,9 +87,10 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
         private void Show()
         {
-            _cardVisualizerData.FLipAnimation.Play(_flipDelay);
+            _cardVisualizerData.ShowAnimation.Play(_flipDelay);
 
             _hideAnimation.Stop();
+            Disable();
             Enable();
 
             _investigatedCard.OverlayDrawer.EnableOverlay();

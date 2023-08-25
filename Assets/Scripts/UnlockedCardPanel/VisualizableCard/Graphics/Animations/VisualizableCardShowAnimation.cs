@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using NaughtyAttributes;
 using Providers.Graphics;
 using UnityEngine;
@@ -7,7 +8,7 @@ using Zenject;
 
 namespace UnlockedCardPanel.VisualizableCard.Graphics.Animations
 {
-    public class VisualizableCardFlipAnimation : MonoBehaviour, IValidatable
+    public class VisualizableCardShowAnimation : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private VisualizableCardData _cardData;
@@ -23,6 +24,8 @@ namespace UnlockedCardPanel.VisualizableCard.Graphics.Animations
         [SerializeField] private Vector3 _initialScale;
         [SerializeField] private Vector3 _targetScale = new Vector3(1.15f, 1.15f, 1.15f);
         [SerializeField] private AnimationCurve _scaleCurve;
+
+        public event Action OnComplete;
 
         private Sequence _sequence;
 
@@ -68,30 +71,20 @@ namespace UnlockedCardPanel.VisualizableCard.Graphics.Animations
                 .Append(_cardData.transform.DOScale(_targetScale, _scaleDuration).SetEase(_scaleCurve))
                 .Append(_cardData.transform.DOLocalRotate(_endLocalRotation, _duration).SetEase(_flipCurve))
                 .Append(_cardData.transform.DOScale(_initialScale, _scaleDuration).SetEase(_scaleCurve))
-                .OnPlay(UpdateShirtState)
-                .OnUpdate(UpdateShirtState)
-                .OnComplete(UpdateShirtState)
-                .OnKill(UpdateShirtState)
+                .OnPlay(_cardData.ShirtCuller.UpdateCullState)
+                .OnUpdate(_cardData.ShirtCuller.UpdateCullState)
+                .OnComplete(() =>
+                {
+                    _cardData.ShirtCuller.UpdateCullState();
+                    OnComplete?.Invoke();
+                })
+                .OnKill(_cardData.ShirtCuller.UpdateCullState)
                 .Play();
         }
 
         public void Stop()
         {
             _sequence?.Kill();
-        }
-
-        public void UpdateShirtState()
-        {
-            if (_camera == null) return;
-
-            Vector3 cameraDirection = _camera.transform.forward;
-            Vector3 upDirection = -_cardData.transform.forward;
-
-            float dotProduct = Vector3.Dot(cameraDirection, upDirection);
-
-            bool enabled = dotProduct > 0f;
-
-            _cardData.CardShirt.SetActive(enabled);
         }
     }
 }

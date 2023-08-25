@@ -61,18 +61,18 @@ namespace Cards.Graphics.Animations
                 })
                 .OnUpdate(() =>
                 {
-                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.DefaultCardShirtStateUpdater.UpdateCullState();
                 })
                 .OnComplete(() =>
                 {
                     onComplete?.Invoke();
                     _isPlaying.Value = false;
-                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.DefaultCardShirtStateUpdater.UpdateCullState();
                 })
                 .OnKill(() =>
                 {
                     _isPlaying.Value = false;
-                    _cardData.CardShirtStateUpdater.UpdateShirtState();
+                    _cardData.DefaultCardShirtStateUpdater.UpdateCullState();
                 })
                 .Play();
         }

@@ -6,7 +6,6 @@ using Cards.Graphics;
 using Cards.Graphics.Animations;
 using Cards.Graphics.Logic;
 using Cards.Graphics.Outlines;
-using Cards.Graphics.VisualElements;
 using Cards.Logic;
 using Cards.Logic.Updaters;
 using Cards.Recipes;
@@ -77,8 +76,9 @@ namespace Cards.Data
 
         public RectTransform RectTransform;
 
-        public CardShirt CardShirt;
-        public CardShirtStateUpdater CardShirtStateUpdater;
+        public DefaultCardShirtStateUpdater DefaultCardShirtStateUpdater;
+        public NewCardShirtStateUpdater NewCardShirtStateUpdater;
+
         public ReactiveProperty<Card> Card = new ReactiveProperty<Card>();
         public StringReactiveProperty Name = new StringReactiveProperty("Name");
         public ColorReactiveProperty NameColor = new ColorReactiveProperty(Color.white);
@@ -184,11 +184,8 @@ namespace Cards.Data
             Animations.FlipAnimation = GetComponentInChildren<CardFlipAnimation>(true);
             Animations.ShakeAnimation = GetComponentInChildren<CardShakeAnimation>(true);
             Animations.ContinuousJumpingAnimation = GetComponentInChildren<CardContinuousJumpingAnimation>(true);
-            Animations.AppearAnimation = GetComponentInChildren<CardAppearAnimation>(true);
+            Animations.AppearAnimation = GetComponentInChildren<NewCardAppearAnimation>(true);
             Animations.WaveJumpAnimation = GetComponentInChildren<CardWaveJumpAnimation>(true);
-
-            CardShirt = GetComponentInChildren<CardShirt>(true);
-            CardShirtStateUpdater = GetComponentInChildren<CardShirtStateUpdater>(true);
 
             RectTransform = GetComponentInChildren<RectTransform>(true);
 
@@ -206,6 +203,9 @@ namespace Cards.Data
             CardProgressUpdaters = GetComponentsInChildren<CardProgressUpdater>(true).ToList();
 
             OverlayDrawer = GetComponentInChildren<CardOverlayDrawer>(true);
+
+            DefaultCardShirtStateUpdater = GetComponentInChildren<DefaultCardShirtStateUpdater>(true);
+            NewCardShirtStateUpdater = GetComponentInChildren<NewCardShirtStateUpdater>(true);
         }
 
         #endregion

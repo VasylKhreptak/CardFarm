@@ -31,7 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 699385959987246443}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -484,7 +484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1374257308928137990}
-  - component: {fileID: 8794833146993125898}
+  - component: {fileID: 446491314162037657}
   m_Layer: 6
   m_Name: LeftCardsText
   m_TagString: Untagged
@@ -513,7 +513,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8794833146993125898
+--- !u!114 &446491314162037657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -522,11 +522,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6804251748780828307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d4d2ea2ede94a488aff1bfe7abb9855, type: 3}
+  m_Script: {fileID: 11500000, guid: 69cea67b2c474162aa8c1856d9304661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 3829932553933156705}
-  _targetObject: {fileID: 6432156498193465312}
+  _observableObjects:
+  - GameObject: {fileID: 8508759713953450797}
+    TargetState: 1
+  - GameObject: {fileID: 9179420384101273308}
+    TargetState: 1
+  _inheritTo: {fileID: 6432156498193465312}
+  _allMatchingState: 0
   _inverse: 1
 --- !u!1 &7410926294378359877
 GameObject:
@@ -719,7 +724,7 @@ PrefabInstance:
     - target: {fileID: 858685735763845038, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1106781378184328992, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -1060,7 +1065,7 @@ PrefabInstance:
     - target: {fileID: 2783147722772851097, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3031249869231499222, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -1390,7 +1395,7 @@ PrefabInstance:
     - target: {fileID: 9165845091336265674, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 9205400118501904161, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
@@ -1443,18 +1448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3887a6b8d44fd9a1ad3c9d575b3459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2355825793971790478 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1908257775754231860, guid: 7bf54413c6b39324e9a7ddfc51606634,
-    type: 3}
-  m_PrefabInstance: {fileID: 4236459283825386170}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37e0afc7101d4c4b901efdcbf137a054, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2489423957731478878 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1749323702996037604, guid: 7bf54413c6b39324e9a7ddfc51606634,
@@ -1465,18 +1458,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4308e373710841d59f48c3aa9d4d47ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2983775274984845354 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1414854346142765712, guid: 7bf54413c6b39324e9a7ddfc51606634,
-    type: 3}
-  m_PrefabInstance: {fileID: 4236459283825386170}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2434fbf3fe644d3a0232afb0ce1a726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3648043868061569442 stripped
@@ -1549,8 +1530,8 @@ MonoBehaviour:
   MouseTrigger: {fileID: 8701961781298001351}
   Collider: {fileID: 5440254971330906520}
   RectTransform: {fileID: 3861553596883588507}
-  CardShirt: {fileID: 2355825793971790478}
-  CardShirtStateUpdater: {fileID: 2983775274984845354}
+  DefaultCardShirtStateUpdater: {fileID: 0}
+  NewCardShirtStateUpdater: {fileID: 0}
   Card:
     value: 12
   Name:
@@ -1813,6 +1794,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c34cb2fcef4017bb857f0292e03273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8508759713953450797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5539360081562888599, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 4236459283825386170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8524696772492939653 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5514415617677800255, guid: 7bf54413c6b39324e9a7ddfc51606634,
@@ -1837,3 +1824,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da66e2c89135284458685fa7651ae81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &9179420384101273308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5019604221298175078, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 4236459283825386170}
+  m_PrefabAsset: {fileID: 0}

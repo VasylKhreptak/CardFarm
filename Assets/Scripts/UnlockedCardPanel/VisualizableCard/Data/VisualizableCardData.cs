@@ -1,4 +1,5 @@
 ﻿using Data.Cards.Core;
+using GameObjectManagement;
 using UniRx;
 using UnityEngine;
 using UnlockedCardPanel.VisualizableCard.Graphics.Animations;
@@ -10,9 +11,9 @@ namespace UnlockedCardPanel.VisualizableCard.Data
     {
         public ReactiveProperty<CardDataHolder> VisualizableCard = new ReactiveProperty<CardDataHolder>();
 
-        public GameObject CardShirt;
+        public GameObjectDirectionCuller ShirtCuller;
 
-        public VisualizableCardFlipAnimation FLipAnimation;
+        public VisualizableCardShowAnimation ShowAnimation;
 
         #region MonoBehaviour
 
@@ -23,7 +24,8 @@ namespace UnlockedCardPanel.VisualizableCard.Data
 
         public void Validate()
         {
-            FLipAnimation = GetComponentInChildren<VisualizableCardFlipAnimation>(true);
+            ShowAnimation = GetComponentInChildren<VisualizableCardShowAnimation>(true);
+            ShirtCuller = GetComponentInChildren<GameObjectDirectionCuller>(true);
         }
 
         #endregion
