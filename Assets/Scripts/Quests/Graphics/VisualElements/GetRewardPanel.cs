@@ -22,6 +22,10 @@ namespace Quests.Graphics.VisualElements
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
+        private BoolReactiveProperty _isActive = new BoolReactiveProperty(false);
+
+        public IReadOnlyReactiveProperty<bool> IsActive => _isActive;
+
         private GameRestartCommand _gameRestartCommand;
         private QuestsManager _questsManager;
         private NewCardPanel _newCardPanel;
@@ -132,11 +136,13 @@ namespace Quests.Graphics.VisualElements
         private void Enable()
         {
             _quest.SetActive(true);
+            _isActive.Value = true;
         }
 
         private void Disable()
         {
             _quest.SetActive(false);
+            _isActive.Value = false;
         }
 
         private bool IsEnabled() => _quest.activeSelf;

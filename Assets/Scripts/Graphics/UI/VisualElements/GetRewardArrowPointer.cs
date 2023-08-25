@@ -1,9 +1,10 @@
-﻿using System;
-using Graphics.Animations.UI;
+﻿using Graphics.Animations.UI;
+using Quests.Graphics.VisualElements;
 using Quests.Logic;
 using Runtime.Commands;
 using UniRx;
 using UnityEngine;
+using UnlockedCardPanel.Graphics.VisualElements;
 using Zenject;
 
 namespace Graphics.UI.VisualElements
@@ -13,16 +14,23 @@ namespace Graphics.UI.VisualElements
         [Header("References")]
         [SerializeField] private ArrowPointerAnimation _arrowPointerAnimation;
 
-        private IDisposable _completedQuestsSubscription;
+        private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private QuestsManager _questsManager;
         private GameRestartCommand _gameRestartCommand;
+        private NewCardPanel _newCardPanel;
+        private GetRewardPanel _getRewardPanel;
 
         [Inject]
-        private void Constructor(QuestsManager questsManager, GameRestartCommand gameRestartCommand)
+        private void Constructor(QuestsManager questsManager,
+            GameRestartCommand gameRestartCommand,
+            NewCardPanel newCardPanel,
+            GetRewardPanel getRewardPanel)
         {
             _questsManager = questsManager;
             _gameRestartCommand = gameRestartCommand;
+            _newCardPanel = newCardPanel;
+            _getRewardPanel = getRewardPanel;
         }
 
         #region MonoBehaviour
@@ -39,12 +47,12 @@ namespace Graphics.UI.VisualElements
 
         private void OnEnable()
         {
-            StartObservingQuests();
+            StartObserving();
         }
 
         private void OnDisable()
         {
-            StopObservingQuests();
+            StopObserving();
         }
 
         private void OnDestroy()
@@ -54,26 +62,32 @@ namespace Graphics.UI.VisualElements
 
         #endregion
 
-        private void StartObservingQuests()
+        private void StartObserving()
         {
-            StopObservingQuests();
+            StopObserving();
 
-            _completedQuestsSubscription = _questsManager.CompletedQuests
+            _questsManager.RewardedQuests
                 .ObserveCountChanged()
-                .DoOnSubscribe(OnCompletedQuestsChanged)
-                .Subscribe(_ => OnCompletedQuestsChanged());
+                .DoOnSubscribe(OnEnvironmentUpdated)
+                .Subscribe(_ => OnEnvironmentUpdated());
+
+            _newCardPanel.IsActive.Subscribe(_ => OnEnvironmentUpdated()).AddTo(_subscriptions);
+            _getRewardPanel.IsActive.Subscribe(_ => OnEnvironmentUpdated()).AddTo(_subscriptions);
         }
 
-        private void StopObservingQuests()
+        private void StopObserving()
         {
-            _completedQuestsSubscription?.Dispose();
+            _subscriptions?.Clear();
         }
 
-        private void OnCompletedQuestsChanged()
+        private void OnEnvironmentUpdated()
         {
-            int completedQuestsCount = _questsManager.CompletedQuests.Count;
+            bool canShow =
+                _questsManager.RewardedQuests.Count == 0
+                && _newCardPanel.IsActive.Value == false
+                && _getRewardPanel.IsActive.Value == true;
 
-            if (completedQuestsCount == 1)
+            if (canShow)
             {
                 _arrowPointerAnimation.Play();
             }
