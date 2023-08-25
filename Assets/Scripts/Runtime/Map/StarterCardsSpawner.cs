@@ -7,6 +7,7 @@ using Extensions;
 using Runtime.Commands;
 using UniRx;
 using UnityEngine;
+using UnlockedCardPanel.Graphics.VisualElements;
 using Zenject;
 
 namespace Runtime.Map
@@ -19,21 +20,27 @@ namespace Runtime.Map
         [Header("Preferences")]
         [SerializeField] private List<Card> _cards = new List<Card>();
         [SerializeField] private float _delay;
-        [SerializeField] private float _interval;
         [SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
 
         public event Action OnSpawnedAllCards;
 
-        private CompositeDisposable _subscriptions = new CompositeDisposable();
+        private IDisposable _delaySubscription;
+        private IDisposable _cardPanelStateSubscription;
+
+        private int _cardToSpawnIndex;
 
         private CardSpawner _cardSpawner;
         private GameRestartCommand _gameRestartCommand;
+        private NewCardPanel _newCardPanel;
 
         [Inject]
-        private void Constructor(CardSpawner cardSpawner, GameRestartCommand gameRestartCommand)
+        private void Constructor(CardSpawner cardSpawner,
+            GameRestartCommand gameRestartCommand,
+            NewCardPanel newCardPanel)
         {
             _cardSpawner = cardSpawner;
             _gameRestartCommand = gameRestartCommand;
+            _newCardPanel = newCardPanel;
         }
 
         #region MonoBehaviour
@@ -61,7 +68,7 @@ namespace Runtime.Map
 
         private void OnDisable()
         {
-            _subscriptions.Clear();
+            _cardPanelStateSubscription?.Dispose();
             _gameRestartCommand.OnExecute -= OnRestart;
         }
 
@@ -69,39 +76,46 @@ namespace Runtime.Map
 
         private void SpawnCards()
         {
-            _subscriptions.Clear();
-            Observable.Timer(TimeSpan.FromSeconds(_delay)).Subscribe(_ =>
+            _cardPanelStateSubscription?.Dispose();
+
+            _cardToSpawnIndex = 0;
+            
+            _delaySubscription?.Dispose();
+            _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(_delay)).Subscribe(_ =>
             {
-                float delay = 0f;
+                SpawnCardRecursive();
+            });
+        }
 
-                for (int i = 0; i < _cards.Count; i++)
+        private void SpawnCardRecursive()
+        {
+            if (_cardToSpawnIndex > _cards.Count - 1)
+            {
+                OnSpawnedAllCards?.Invoke();
+                return;
+            }
+
+            Card cardToSpawn = _cards[_cardToSpawnIndex];
+
+            Vector3 spawnPosition = _spawnPoints[_cardToSpawnIndex].position;
+
+            CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, spawnPosition);
+
+            spawnedCard.Animations.AppearAnimation.Play(() =>
+            {
+                _newCardPanel.Show(spawnedCard);
+                
+                _cardPanelStateSubscription?.Dispose();
+                _cardPanelStateSubscription = _newCardPanel.IsActive.Where(x => x == false).Subscribe(_ =>
                 {
-                    Card card = _cards[i];
-                    Vector3 position = _spawnPoints[i].position;
-                    int index = i;
-                    Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
-                    {
-                        CardData spawnedCard = _cardSpawner.Spawn(card, position);
-
-                        if (index == _cards.Count - 1)
-                        {
-                            spawnedCard.Animations.NoIntroduceAppearAnimation.Play(OnSpawnedAllCards);
-                        }
-                        else
-                        {
-                            spawnedCard.Animations.NoIntroduceAppearAnimation.Play();
-                        }
-                    }).AddTo(_subscriptions);
-
-                    delay += _interval;
-                }
-
-            }).AddTo(_subscriptions);
+                    _cardToSpawnIndex++;
+                    SpawnCardRecursive();
+                });
+            });
         }
 
         private void OnRestart()
         {
-            _subscriptions.Clear();
             SpawnCards();
         }
 
