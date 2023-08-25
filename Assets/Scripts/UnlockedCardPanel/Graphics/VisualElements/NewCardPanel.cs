@@ -104,6 +104,11 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         {
             _showAnimation.Stop();
 
+            if (_investigatedCard != null)
+            {
+                _investigatedCard.Animations.AppearAnimation.ShowCardSuit();
+            }
+
             _investigatedCard.OverlayDrawer.DisableOverlay();
 
             _hideAnimation.Play(GetCardAnchoredPosition(), () =>

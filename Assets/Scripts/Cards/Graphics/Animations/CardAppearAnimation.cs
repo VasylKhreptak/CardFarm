@@ -20,10 +20,8 @@ namespace Cards.Graphics.Animations
         [SerializeField] private AnimationCurve _fadeCurve;
 
         [Header("Flip Preferences")]
-        [SerializeField] private float _flipDuration = 0.3f;
         [SerializeField] private Vector3 _startLocalRotation;
         [SerializeField] private Vector3 _endLocalRotation;
-        [SerializeField] private AnimationCurve _flipCurve;
 
         [Header("Raise Preferences")]
         [SerializeField] private float _raiseDuration = 0.7f;
@@ -121,7 +119,6 @@ namespace Cards.Graphics.Animations
             _sequence = DOTween.Sequence();
 
             _sequence
-                .Append(_cardData.transform.DOLocalRotate(Vector3.zero, _flipDuration).SetEase(_flipCurve))
                 .Append(_cardData.transform.DOMoveY(_cardData.BaseHeight, _placeDuration).SetEase(_placeHeightCurve))
                 .Join(_cardData.transform.DOScale(Vector3.one, _placeDuration).SetEase(_placeScaleCurve))
                 .OnPlay(() =>
@@ -146,6 +143,12 @@ namespace Cards.Graphics.Animations
                     _isPlaying.Value = false;
                 })
                 .Play();
+        }
+
+        public void ShowCardSuit()
+        {
+            _cardData.transform.localRotation = Quaternion.Euler(_endLocalRotation);
+            _cardData.CardShirtStateUpdater.UpdateShirtState();
         }
     }
 }
