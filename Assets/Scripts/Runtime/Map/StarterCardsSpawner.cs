@@ -74,28 +74,27 @@ namespace Runtime.Map
             {
                 float delay = 0f;
 
-                float moveDuration = 0;
-
                 for (int i = 0; i < _cards.Count; i++)
                 {
                     Card card = _cards[i];
                     Vector3 position = _spawnPoints[i].position;
+                    int index = i;
                     Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
                     {
-                        CardData spawnedCard = _cardSpawner.Spawn(card, _transform.position);
-                        spawnedCard.Animations.JumpAnimation.Play(position);
-                        spawnedCard.Animations.FlipAnimation.Play();
+                        CardData spawnedCard = _cardSpawner.Spawn(card, position);
 
-                        moveDuration = spawnedCard.Animations.JumpAnimation.Duration;
+                        if (index == _cards.Count - 1)
+                        {
+                            spawnedCard.Animations.NoIntroduceAppearAnimation.Play(OnSpawnedAllCards);
+                        }
+                        else
+                        {
+                            spawnedCard.Animations.NoIntroduceAppearAnimation.Play();
+                        }
                     }).AddTo(_subscriptions);
 
                     delay += _interval;
                 }
-
-                Observable.Timer(TimeSpan.FromSeconds(delay + moveDuration)).Subscribe(_ =>
-                {
-                    OnSpawnedAllCards?.Invoke();
-                }).AddTo(_subscriptions);
 
             }).AddTo(_subscriptions);
         }

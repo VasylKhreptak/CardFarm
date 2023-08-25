@@ -1415,9 +1415,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 271586641}
-  _cards: 0300000000000000
+  _cards: 0000000003000000
   _delay: 1
-  _interval: 0.4
+  _interval: 1
   _spawnPoints:
   - {fileID: 86100519}
   - {fileID: 603846901}
@@ -9464,7 +9464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115, y: -84}
+  m_AnchoredPosition: {x: 131, y: 180}
   m_SizeDelta: {x: 123.2, y: 123.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156753873

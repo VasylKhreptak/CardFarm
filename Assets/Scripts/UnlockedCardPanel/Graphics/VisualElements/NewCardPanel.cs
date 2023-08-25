@@ -201,5 +201,16 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
             return localRectPoint;
         }
+
+        public void Show(CardData cardData)
+        {
+            _investigatedCard = cardData;
+
+            _cardsData.TryGetValue(cardData.Card.Value, out var data);
+
+            _cardVisualizerData.VisualizableCard.Value = data;
+
+            Show();
+        }
     }
 }

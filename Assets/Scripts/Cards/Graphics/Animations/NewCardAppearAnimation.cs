@@ -12,10 +12,7 @@ namespace Cards.Graphics.Animations
     {
         [Header("References")]
         [SerializeField] protected CardData _cardData;
-
-        [Header("Preferences")]
-        [SerializeField] private GameObject _newCardShirt;
-
+        
         [Header("Fade Preferences")]
         [SerializeField] private float _startAlpha;
         [SerializeField] private float _endAlpha = 1f;
