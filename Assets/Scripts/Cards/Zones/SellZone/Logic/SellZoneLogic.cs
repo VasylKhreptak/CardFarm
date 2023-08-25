@@ -86,7 +86,7 @@ namespace Cards.Zones.SellZone.Logic
 
                 if (sellableCard == null) return;
 
-                Vector3 coinsSpawnPosition = RectTransformUtility.WorldToScreenPoint(_camera, sellableCard.transform.position);
+                Vector3 coinsSpawnPosition = sellableCard.transform.position;
 
                 _coinsCollector.Collect(sellableCard.Price.Value, coinsSpawnPosition);
 
