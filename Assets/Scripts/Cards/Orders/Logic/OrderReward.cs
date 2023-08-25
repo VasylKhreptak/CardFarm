@@ -2,6 +2,8 @@
 using Cards.Core;
 using Cards.Logic.Spawn;
 using Cards.Orders.Data;
+using Data.Player.Core;
+using Data.Player.Experience;
 using Extensions;
 using Graphics.UI.Particles.Coins.Logic;
 using UniRx;
@@ -15,17 +17,23 @@ namespace Cards.Orders.Logic
         [Header("References")]
         [SerializeField] private OrderData _orderData;
 
+        [Header("preferences")]
+        [SerializeField] private int _experienceReward = 5;
+
         private IDisposable _isOrderCompletedSubscription;
 
         private CardSpawner _cardSpawner;
         private CoinsCollector _coinsCollector;
+        private ExperienceData _experienceData;
 
         [Inject]
         private void Constructor(CardSpawner cardSpawner,
-            CoinsCollector coinsCollector)
+            CoinsCollector coinsCollector,
+            PlayerData playerData)
         {
             _cardSpawner = cardSpawner;
             _coinsCollector = coinsCollector;
+            _experienceData = playerData.ExperienceData;
         }
 
         #region MonoBehaviour
@@ -84,6 +92,8 @@ namespace Cards.Orders.Logic
             {
                 _cardSpawner.SpawnAndMove(cardToSpawn, _orderData.transform.position);
             }
+
+            _experienceData.TotalExperience.Value += _experienceReward;
 
             _orderData.IsOrderCompleted.Value = false;
             _orderData.gameObject.SetActive(false);
