@@ -19,18 +19,5 @@ public class Test : MonoBehaviour
 
     private void Awake()
     {
-        Sequence mainSequence = DOTween.Sequence();
-
-        Sequence loopedSequence = DOTween.Sequence();
-
-        loopedSequence
-            .AppendInterval(0.1f)
-            .AppendCallback(() => {})
-            .SetLoops(-1, LoopType.Restart);
-
-        mainSequence
-            .AppendInterval(5f)
-            .Append(loopedSequence)
-            .Play();
     }
 }

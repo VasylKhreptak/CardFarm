@@ -1882,7 +1882,7 @@ MonoBehaviour:
   NeededEnergy:
     value: 0
   EnergyRestoreDuration:
-    value: 1
+    value: 3
   IsEnergyFull:
     value: 0
 --- !u!114 &7127278116623399646 stripped
