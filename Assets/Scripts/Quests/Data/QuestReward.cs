@@ -7,5 +7,6 @@ namespace Quests.Data
     public class QuestReward
     {
         public Card[] Cards;
+        public int Experience = 10;
     }
 }

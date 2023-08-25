@@ -2,6 +2,8 @@
 using System.Linq;
 using Cards.Core;
 using Cards.Logic.Spawn;
+using Data.Player.Core;
+using Data.Player.Experience;
 using Graphics.UI.Particles.Coins.Logic;
 using Quests.Data;
 using Quests.Logic;
@@ -26,15 +28,18 @@ namespace Quests.Graphics.VisualElements
         private QuestsManager _questsManager;
         private CoinsCollector _coinsCollector;
         private CardSpawner _cardSpawner;
+        private ExperienceData _experienceData;
 
         [Inject]
         private void Constructor(QuestsManager questsManager,
             CoinsCollector coinsCollector,
-            CardSpawner cardSpawner)
+            CardSpawner cardSpawner,
+            PlayerData playerData)
         {
             _questsManager = questsManager;
             _coinsCollector = coinsCollector;
             _cardSpawner = cardSpawner;
+            _experienceData = playerData.ExperienceData;
         }
 
         #region MonoBehaviour
@@ -75,6 +80,8 @@ namespace Quests.Graphics.VisualElements
 
             SpawnReward(targetQuest);
 
+            GainExperience(targetQuest);
+
             MarkAsTookReward(targetQuest);
 
             PlayParticle();
@@ -104,6 +111,11 @@ namespace Quests.Graphics.VisualElements
         {
             _particleSystem.gameObject.SetActive(true);
             _particleSystem.Play();
+        }
+
+        private void GainExperience(QuestData questData)
+        {
+            _experienceData.TotalExperience.Value += questData.Reward.Experience;
         }
     }
 }
