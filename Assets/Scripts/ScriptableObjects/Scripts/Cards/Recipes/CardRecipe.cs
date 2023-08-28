@@ -18,6 +18,8 @@ namespace ScriptableObjects.Scripts.Cards.Recipes
         public bool UsePseudoRandom = false;
         [ShowIf(nameof(UsePseudoRandom))] public Card FirstCard;
 
+        public int EnergyCost = 1;
+
         public bool HasWorkers => Workers.Count > 0;
         public int ResultCount => Random.Range(MinResultCount, MaxResultCount + 1);
     }

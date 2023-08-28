@@ -16,6 +16,8 @@ namespace ScriptableObjects.Scripts.Cards.AutomatedFactories.Recipes
         public int MaxResultCount = 1;
         public CardWeights Result = new CardWeights();
 
+        public int EnergyCost = 1;
+
         public int ResultCount => Random.Range(MinResultCount, MaxResultCount + 1);
     }
 }
