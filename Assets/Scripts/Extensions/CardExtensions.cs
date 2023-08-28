@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cards.Data;
+using Cards.Workers.Data;
 using UnityEngine;
 
 namespace Extensions
@@ -125,6 +126,32 @@ namespace Extensions
             {
                 card.transform.SetAsLastSibling();
             }
+        }
+
+        public static bool HasEnergy(this List<CardData> cards, int targetEnergy)
+        {
+            bool hasWorkers = false;
+            bool hasEnergy = true;
+
+            foreach (var card in cards)
+            {
+                if (card is WorkerData worker)
+                {
+                    hasWorkers = true;
+
+                    if (worker.Energy.Value < targetEnergy)
+                    {
+                        hasEnergy = false;
+                    }
+                }
+            }
+
+            if (hasWorkers == false)
+            {
+                return true;
+            }
+
+            return hasWorkers && hasEnergy;
         }
     }
 }

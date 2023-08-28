@@ -13,7 +13,7 @@ namespace Cards.Logic.Updaters
 
         private IDisposable _isTopCardSubscription;
         private IDisposable _isCardSingleSubscription;
-        private IDisposable _cardStatsSubscription;
+        private CompositeDisposable _environmentSubscriptions = new CompositeDisposable();
 
         #region MonoBehaviour
 
@@ -35,32 +35,34 @@ namespace Cards.Logic.Updaters
             _isCardSingleSubscription = _cardData.IsSingleCard.Where(x => x).Subscribe(_ => ResetCurrentRecipe());
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             _cardData.Callbacks.onBecameHeadOfGroup -= OnBecameHeadOfGroup;
             _isTopCardSubscription?.Dispose();
             _isCardSingleSubscription?.Dispose();
-            _cardStatsSubscription?.Dispose();
+            _environmentSubscriptions.Clear();
             ResetCurrentRecipe();
         }
 
         #endregion
 
-        private void OnBecameHeadOfGroup()
+        protected virtual void OnBecameHeadOfGroup()
         {
-            _cardStatsSubscription?.Dispose();
-            _cardStatsSubscription = Observable
-                .CombineLatest(_cardData.IsTopCard, _cardData.IsSingleCard)
-                .Subscribe(list =>
-                {
-                    if (list[0] == false || list[1])
-                    {
-                        ResetCurrentRecipe();
-                        return;
-                    }
+            _environmentSubscriptions?.Clear();
 
-                    UpdateRecipe();
-                });
+            _cardData.IsTopCard.Subscribe(_ => OnEnvironmentUpdated()).AddTo(_environmentSubscriptions);
+            _cardData.IsSingleCard.Subscribe(_ => OnEnvironmentUpdated()).AddTo(_environmentSubscriptions);
+        }
+
+        private void OnEnvironmentUpdated()
+        {
+            if (_cardData.IsTopCard.Value == false || _cardData.IsSingleCard.Value)
+            {
+                ResetCurrentRecipe();
+                return;
+            }
+
+            UpdateRecipe();
         }
 
         protected abstract void ResetCurrentRecipe();
