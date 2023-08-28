@@ -91,6 +91,7 @@ namespace Runtime.Map
         {
             if (_cardToSpawnIndex > _cards.Count - 1)
             {
+                _cardPanelStateSubscription?.Dispose();
                 OnSpawnedAllCards?.Invoke();
                 return;
             }

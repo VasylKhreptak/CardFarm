@@ -47,7 +47,7 @@ namespace Quests.Logic.QuestObservers
 
         private void OnSoldCard(Card card)
         {
-            MarkQuestAsCompleted();
+            MarkQuestAsCompletedByAction();
         }
     }
 }

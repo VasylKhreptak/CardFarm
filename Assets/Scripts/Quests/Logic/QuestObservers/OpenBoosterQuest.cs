@@ -37,7 +37,7 @@ namespace Quests.Logic.QuestObservers
                 {
                     if (leftCards == 0)
                     {
-                        MarkQuestAsCompleted();
+                        MarkQuestAsCompletedByAction();
                     }
                 });
         }

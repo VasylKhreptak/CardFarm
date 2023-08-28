@@ -63,7 +63,7 @@ namespace Quests.Logic.QuestObservers.Core
         {
             if (card == _recipeResult)
             {
-                MarkQuestAsCompleted();
+                MarkQuestAsCompletedByAction();
             }
         }
     }

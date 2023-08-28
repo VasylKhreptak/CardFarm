@@ -37,7 +37,7 @@ namespace Quests.Logic.QuestObservers
             _topCardsSubscription = topCardsObservables
                 .Merge()
                 .Where(x => x != null && x.Card.Value == _targetTopCard)
-                .Subscribe(_ => MarkQuestAsCompleted());
+                .Subscribe(_ => MarkQuestAsCompletedByAction());
         }
 
         private void StopObservingTopCards()

@@ -56,7 +56,6 @@ namespace Quests.Logic.Updaters
         {
             StopObservingData();
 
-            _questData.Progress.Subscribe(_ => OnDataUpdated()).AddTo(_questDataSubscriptions);
             _questData.IsCompletedByAction.Subscribe(_ => OnDataUpdated()).AddTo(_questDataSubscriptions);
             _newCardPanel.IsActive.Subscribe(_ => OnDataUpdated()).AddTo(_questDataSubscriptions);
         }
@@ -71,15 +70,7 @@ namespace Quests.Logic.Updaters
             bool isCompletedByAction = _questData.IsCompletedByAction.Value;
             bool isNewPanelActive = _newCardPanel.IsActive.Value;
 
-            if (isCompletedByAction == false)
-            {
-                _delaySubscription?.Dispose();
-                return;
-            }
-
-            float progress = _questData.Progress.Value;
-
-            if (Mathf.Approximately(progress, 1f) && isNewPanelActive == false)
+            if (isCompletedByAction && isNewPanelActive == false)
             {
                 StopObservingData();
                 MarkQuestAsCompletedDelayed();
@@ -94,9 +85,14 @@ namespace Quests.Logic.Updaters
                 .Subscribe(_ => MarkQuestAsCompleted());
         }
 
-        private void MarkQuestAsCompleted()
-        {
+        private void MarkQuestAsCompleted(bool stopObserving = true)
+        {            
             _questData.IsCompleted.Value = true;
+
+            if (stopObserving)
+            {
+                StopObservingData();
+            }
         }
     }
 }
