@@ -7,35 +7,45 @@ namespace Graphics.Rendering
     public class TextureRenderer : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private RenderTexture _texture;
-        
+        [SerializeField] private GameObject _target;
+        [SerializeField] private RawImage _rawImage;
+
         [Header("Preferences")]
-        [SerializeField] private LayerMask _layer;
+        [SerializeField] private int _resolution = 512;
 
-        private CameraTexturesRenderer.RenderTarget _target;
+        private RenderTexture _renderTexture;
+        private CameraTexturesRenderer.RenderTarget _renderTarget;
 
-        private CameraTexturesRenderer _cameraTexturesRenderer;
+        private CameraTexturesRenderer _texturesRenderer;
 
         [Inject]
         private void Constructor(CameraTexturesRenderer cameraTexturesRenderer)
         {
-            _cameraTexturesRenderer = cameraTexturesRenderer;
+            _texturesRenderer = cameraTexturesRenderer;
         }
 
-        #region MonoBehavour
+        #region MonoBehaviour
+
+        private void OnValidate()
+        {
+            _rawImage ??= GetComponent<RawImage>();
+        }
 
         private void Awake()
         {
-            _target = new CameraTexturesRenderer.RenderTarget(_texture, _layer);
+            _renderTexture = new RenderTexture(_resolution, _resolution, 0);
+            _rawImage.texture = _renderTexture;
+            _renderTarget = new CameraTexturesRenderer.RenderTarget(_renderTexture, _target);
         }
+
         private void OnEnable()
         {
-            _cameraTexturesRenderer.Add(_target);
+            _texturesRenderer.Add(_renderTarget);
         }
 
         private void OnDisable()
         {
-            _cameraTexturesRenderer.Remove(_target);
+            _texturesRenderer.Remove(_renderTarget);
         }
 
         #endregion
