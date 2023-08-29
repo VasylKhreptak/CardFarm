@@ -25,6 +25,11 @@ namespace Graphics.Rendering
 
         #region MonoBehaviour
 
+        private void Awake()
+        {
+            gameObject.SetActive(_targets.Count != 0);
+        }
+
         private void Update()
         {
             foreach (var target in _targets)
