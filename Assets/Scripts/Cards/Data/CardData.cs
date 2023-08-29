@@ -187,6 +187,7 @@ namespace Cards.Data
             Animations.AppearAnimation = GetComponentInChildren<NewCardAppearAnimation>(true);
             Animations.WaveJumpAnimation = GetComponentInChildren<CardWaveJumpAnimation>(true);
             Animations.NoIntroduceAppearAnimation = GetComponentInChildren<CardNoIntroduceAppearAnimation>(true);
+            Animations.CardHeightAnimation = GetComponentInChildren<CardHeightAnimation>(true);
 
             RectTransform = GetComponentInChildren<RectTransform>(true);
 

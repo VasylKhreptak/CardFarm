@@ -118,10 +118,10 @@ namespace Runtime.Map
 
             spawnedCard.Animations.JumpAnimation.Play(spawnPosition, () =>
             {
+                
                 _newCardPanel.Show(spawnedCard);
-
+                
                 _cardPanelStateSubscription?.Dispose();
-
                 _cardPanelStateSubscription = _newCardPanel.IsActive
                     .Where(x => x == false)
                     .Subscribe(_ =>

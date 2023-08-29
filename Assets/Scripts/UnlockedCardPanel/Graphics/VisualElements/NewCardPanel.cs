@@ -1,4 +1,5 @@
-﻿using Cards.Data;
+﻿using System;
+using Cards.Data;
 using CardsTable.ManualCardSelectors;
 using Providers.Graphics;
 using Runtime.Commands;
@@ -28,6 +29,8 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private BoolReactiveProperty _isActive = new BoolReactiveProperty(false);
 
         private CardData _investigatedCard;
+
+        private IDisposable _delaySubscription;
 
         public IReadOnlyReactiveProperty<bool> IsActive => _isActive;
 
@@ -75,7 +78,6 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         {
             _closeButton.onClick.RemoveListener(OnClicked);
             _investigatedCardsObserver.OnInvestigatedCard -= OnInvestigatedNewCard;
-            StopObservingRaise(_investigatedCard);
         }
 
         private void OnDestroy()
@@ -85,19 +87,21 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
         #endregion
 
-        private void Show()
+        private void Show(float delay = 0.7f)
         {
-            _cardVisualizerData.ShowAnimation.Play(_flipDelay);
+            _isActive.Value = true;
 
-            _hideAnimation.Stop();
-            _panelObject.SetActive(false);
-            Enable();
-
-            _investigatedCard.OverlayDrawer.EnableOverlay();
-
-            _showAnimation.Play(GetCardAnchoredPosition(), () =>
+            _delaySubscription?.Dispose();
+            _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
             {
-                _investigatedCard.OverlayDrawer.DisableOverlay();
+                _cardVisualizerData.ShowAnimation.Stop();
+                _cardVisualizerData.ShowAnimation.Play(_flipDelay);
+
+                _hideAnimation.Stop();
+                _panelObject.SetActive(false);
+                Enable();
+
+                _showAnimation.Play(GetCardAnchoredPosition());
             });
         }
 
@@ -107,30 +111,11 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
             if (_investigatedCard != null)
             {
-                _investigatedCard.Animations.AppearAnimation.ShowCardSuit();
+                _investigatedCard.transform.localRotation = Quaternion.identity;
+                _investigatedCard.NewCardShirtStateUpdater.UpdateCullState();
             }
 
-            _investigatedCard.OverlayDrawer.DisableOverlay();
-
-            _hideAnimation.Play(GetCardAnchoredPosition(), () =>
-                {
-                    Disable();
-
-                    if (_investigatedCard != null)
-                    {
-                        _investigatedCard.IsInteractable.Value = false;
-                        _investigatedCard.Animations.AppearAnimation.PlaceCardOnTable(() =>
-                        {
-                            _investigatedCard.IsInteractable.Value = true;
-                        });
-                    }
-
-                    _investigatedCard.OverlayDrawer.DisableOverlay();
-                },
-                () =>
-                {
-                    _investigatedCard.OverlayDrawer.EnableOverlay();
-                });
+            _hideAnimation.Play(GetCardAnchoredPosition(), Disable);
         }
 
         private void Enable()
@@ -147,12 +132,22 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
         private void OnClicked()
         {
-            if (_showAnimation.IsPlaying) return;
+            if (_showAnimation.IsPlaying || _hideAnimation.IsPlaying) return;
 
             Hide();
         }
 
         private void OnInvestigatedNewCard(CardData cardData)
+        {
+            Show(cardData);
+        }
+
+        private void OnRestart()
+        {
+            Disable();
+        }
+
+        public void Show(CardData cardData)
         {
             _isActive.Value = true;
 
@@ -162,33 +157,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
             _cardVisualizerData.VisualizableCard.Value = data;
 
-            StartObservingRaise(cardData);
-        }
-
-        private void OnRestart()
-        {
-            Disable();
-        }
-
-        private void StartObservingRaise(CardData card)
-        {
-            StopObservingRaise(_investigatedCard);
-            StopObservingRaise(card);
-
-            card.Animations.AppearAnimation.onRaised += OnCardRaised;
-        }
-
-        private void StopObservingRaise(CardData cardData)
-        {
-            if (cardData == null) return;
-
-            cardData.Animations.AppearAnimation.onRaised -= OnCardRaised;
-        }
-
-        private void OnCardRaised()
-        {
             Show();
-            StopObservingRaise(_investigatedCard);
         }
 
         private Vector2 GetCardAnchoredPosition()
@@ -200,17 +169,6 @@ namespace UnlockedCardPanel.Graphics.VisualElements
             RectTransformUtility.ScreenPointToLocalPointInRectangle(_rectTransform, screenPoint, _camera, out var localRectPoint);
 
             return localRectPoint;
-        }
-
-        public void Show(CardData cardData)
-        {
-            _investigatedCard = cardData;
-
-            _cardsData.TryGetValue(cardData.Card.Value, out var data);
-
-            _cardVisualizerData.VisualizableCard.Value = data;
-
-            Show();
         }
     }
 }

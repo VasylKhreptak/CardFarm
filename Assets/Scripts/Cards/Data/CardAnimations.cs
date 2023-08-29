@@ -14,6 +14,7 @@ namespace Cards.Data
         public NewCardAppearAnimation AppearAnimation;
         public CardWaveJumpAnimation WaveJumpAnimation;
         public CardNoIntroduceAppearAnimation NoIntroduceAppearAnimation;
+        public CardHeightAnimation CardHeightAnimation;
 
         public void Stop()
         {
@@ -25,6 +26,7 @@ namespace Cards.Data
             AppearAnimation.Stop();
             WaveJumpAnimation.Stop();
             NoIntroduceAppearAnimation.Stop();
+            CardHeightAnimation.Stop();
         }
     }
 }

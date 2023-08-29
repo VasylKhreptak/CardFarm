@@ -145,7 +145,7 @@ namespace Cards.Graphics.Animations
                 .Play();
         }
 
-        public void ShowCardSuit()
+        public void HideCardSuit()
         {
             _cardData.transform.localRotation = Quaternion.Euler(_endLocalRotation);
             _cardData.NewCardShirtStateUpdater.UpdateCullState();

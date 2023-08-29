@@ -3211,17 +3211,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 461729475}
   _canvasGroup: {fileID: 461729478}
-  _backgroundCanvasGroup: {fileID: 1287161642}
-  _duration: 0.5
-  _endAnchorPos: {x: 0, y: 0}
-  _anchorPosCurve:
+  _centerAnchoredPosition: {x: 0, y: 0}
+  _moveCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -3238,7 +3236,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _startScale: {x: 0.1, y: 0.1, z: 0.1}
+  _duration: 0.3
+  _startScale: {x: 0.2, y: 0.2, z: 0.2}
   _endScale: {x: 1, y: 1, z: 1}
   _scaleCurve:
     serializedVersion: 2
@@ -3246,8 +3245,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -3255,8 +3254,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -3274,84 +3273,6 @@ MonoBehaviour:
       value: 0
       inSlope: 2
       outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _startBackgroundAlpha: 0.2
-  _endBackgroundAlpha: 1
-  _backgroundFadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _startSizeDelta: {x: 549.092, y: 224.782}
-  _endSizeDelta: {x: 629.8292, y: 686.1372}
-  _sizeDeltaCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _hookOffset: {x: 0, y: -300}
-  _hookMoveDuration: 0.4
-  _hookMoveCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -3394,16 +3315,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 461729475}
   _canvasGroup: {fileID: 461729478}
-  _backgroundCanvasGroup: {fileID: 1287161642}
-  _duration: 0.5
+  _centerAnchoredPosition: {x: 0, y: 0}
   _moveCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -3420,7 +3340,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _endScale: {x: 0.1, y: 0.1, z: 0.1}
+  _duration: 0.3
+  _endScale: {x: 0.2, y: 0.2, z: 0.2}
   _scaleCurve:
     serializedVersion: 2
     m_Curve:
@@ -3452,59 +3373,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _endBackgroundAlpha: 0.2
-  _backgroundFadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
       inSlope: 2
       outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _hookOffset: {x: 0, y: 300}
-  _hookMoveDuration: 0.4
-  _hookMoveCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -7492,7 +7362,7 @@ MonoBehaviour:
   _panelObject: {fileID: 461729474}
   _closeButton: {fileID: 805806252}
   _cardVisualizerData: {fileID: 7217366323870092450}
-  _flipDelay: 1
+  _flipDelay: 0.5
   _showAnimation: {fileID: 461729477}
   _hideAnimation: {fileID: 461729479}
 --- !u!1001 &898783062

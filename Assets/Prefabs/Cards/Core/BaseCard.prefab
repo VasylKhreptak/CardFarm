@@ -478,7 +478,7 @@ MonoBehaviour:
   GroupID:
     value: -1
   Height:
-    value: 0
+    value: 0.01
   MouseTrigger: {fileID: 4758467965833942909}
   Collider: {fileID: 8193532437627284258}
   RectTransform: {fileID: 1106781378184328993}
@@ -560,6 +560,7 @@ MonoBehaviour:
         Weights: []
       UsePseudoRandom: 0
       FirstCard: 0
+      EnergyCost: 1
   PossibleRecipes: []
   ReproductionLogic: {fileID: 8113736550286103895}
   CurrentReproductionRecipe:
@@ -581,6 +582,7 @@ MonoBehaviour:
     AppearAnimation: {fileID: 8635626778679820251}
     WaveJumpAnimation: {fileID: 6177200985437226449}
     NoIntroduceAppearAnimation: {fileID: 17780353401718773}
+    CardHeightAnimation: {fileID: 7342561580210077619}
   IsPlayingAnyAnimation:
     value: 0
   IsActivelyFollowingCard:
@@ -2708,6 +2710,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _upDirectionTransform: {fileID: 4719898549670400378}
   _targetObject: {fileID: 5539360081562888599}
+--- !u!1 &4265167919365437298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6117376082874622064}
+  - component: {fileID: 7342561580210077619}
+  m_Layer: 6
+  m_Name: CardHeightAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6117376082874622064
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4265167919365437298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6032321714460157647}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7342561580210077619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4265167919365437298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c22350fa7ab4344a8a4f17f38c9ff49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 1106781378184329004}
+  _duration: 0.3
+  _raisedHeight: 1
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4286062770183426769
 GameObject:
   m_ObjectHideFlags: 0
@@ -4822,6 +4900,7 @@ MonoBehaviour:
   - {fileID: 8635626778679820251}
   - {fileID: 6177200985437226449}
   - {fileID: 17780353401718773}
+  - {fileID: 7342561580210077619}
 --- !u!1 &6590546862728568967
 GameObject:
   m_ObjectHideFlags: 0
@@ -5772,6 +5851,7 @@ RectTransform:
   - {fileID: 3131921425067794360}
   - {fileID: 131619501908602866}
   - {fileID: 5824096438133303557}
+  - {fileID: 6117376082874622064}
   m_Father: {fileID: 6256525992163840278}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
