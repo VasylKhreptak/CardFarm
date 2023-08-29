@@ -1832,6 +1832,8 @@ MonoBehaviour:
   _spawnPoints:
   - {fileID: 86100519}
   - {fileID: 603846901}
+  _startDistance: 20
+  _endDistance: 25
 --- !u!1 &276345079
 GameObject:
   m_ObjectHideFlags: 0
@@ -4913,7 +4915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660046676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.96}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7505,7 +7507,7 @@ MonoBehaviour:
   _panelObject: {fileID: 461729474}
   _closeButton: {fileID: 805806252}
   _cardVisualizerData: {fileID: 7217366323870092450}
-  _flipDelay: 0.7
+  _flipDelay: 1
   _showAnimation: {fileID: 461729477}
   _hideAnimation: {fileID: 461729479}
 --- !u!1001 &898783062
@@ -12163,7 +12165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345435472}
   m_LocalRotation: {x: 0.67559016, y: 0, z: 0, w: 0.7372774}
-  m_LocalPosition: {x: 0, y: 25.99, z: -0.8}
+  m_LocalPosition: {x: 0, y: 24.7, z: -0.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

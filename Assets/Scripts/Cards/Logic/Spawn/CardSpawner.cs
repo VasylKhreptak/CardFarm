@@ -115,6 +115,9 @@ namespace Cards.Logic.Spawn
 
             if (canPlayAppearAnimation)
             {
+                // spawnedCard.transform.localRotation = Quaternion.Euler(-180, 0, 0);
+                // spawnedCard.NewCardShirtStateUpdater.UpdateCullState();
+                
                 spawnedCard.Animations.AppearAnimation.Play();
             }
             else if (jump)

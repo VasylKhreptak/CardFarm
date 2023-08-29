@@ -93,6 +93,11 @@ namespace CameraManagement.CameraAim.Core
             Aim(target, distance, _duration);
         }
 
+        public void Aim(Transform target, float distance)
+        {
+            Aim(target, distance, _duration);
+        }
+        
         public void Aim(Vector3 targetPosition, float distance)
         {
             Aim(targetPosition, distance, _duration);
