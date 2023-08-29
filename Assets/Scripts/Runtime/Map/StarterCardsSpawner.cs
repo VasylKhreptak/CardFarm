@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CameraManagement.CameraAim.Core;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
@@ -32,15 +33,18 @@ namespace Runtime.Map
         private CardSpawner _cardSpawner;
         private GameRestartCommand _gameRestartCommand;
         private NewCardPanel _newCardPanel;
+        private CameraAimer _cameraAimer;
 
         [Inject]
         private void Constructor(CardSpawner cardSpawner,
             GameRestartCommand gameRestartCommand,
-            NewCardPanel newCardPanel)
+            NewCardPanel newCardPanel,
+            CameraAimer cameraAimer)
         {
             _cardSpawner = cardSpawner;
             _gameRestartCommand = gameRestartCommand;
             _newCardPanel = newCardPanel;
+            _cameraAimer = cameraAimer;
         }
 
         #region MonoBehaviour
@@ -79,7 +83,7 @@ namespace Runtime.Map
             _cardPanelStateSubscription?.Dispose();
 
             _cardToSpawnIndex = 0;
-            
+
             _delaySubscription?.Dispose();
             _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(_delay)).Subscribe(_ =>
             {
@@ -100,18 +104,26 @@ namespace Runtime.Map
 
             Vector3 spawnPosition = _spawnPoints[_cardToSpawnIndex].position;
 
-            CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, spawnPosition);
+            CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _transform.position);
+            
+            spawnedCard.transform.localRotation = Quaternion.Euler(-180, 0, 0);
+            spawnedCard.NewCardShirtStateUpdater.UpdateCullState();
+            
+            _cameraAimer.Aim(spawnedCard.transform, true);
 
-            spawnedCard.Animations.AppearAnimation.Play(() =>
+            spawnedCard.Animations.JumpAnimation.Play(spawnPosition, () =>
             {
                 _newCardPanel.Show(spawnedCard);
-                
+
                 _cardPanelStateSubscription?.Dispose();
-                _cardPanelStateSubscription = _newCardPanel.IsActive.Where(x => x == false).Subscribe(_ =>
-                {
-                    _cardToSpawnIndex++;
-                    SpawnCardRecursive();
-                });
+
+                _cardPanelStateSubscription = _newCardPanel.IsActive
+                    .Where(x => x == false)
+                    .Subscribe(_ =>
+                    {
+                        _cardToSpawnIndex++;
+                        SpawnCardRecursive();
+                    });
             });
         }
 
