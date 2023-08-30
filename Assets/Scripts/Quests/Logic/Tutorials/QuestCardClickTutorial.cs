@@ -13,7 +13,6 @@ namespace Quests.Logic.Tutorials
     {
         [Header("Preferences")]
         [SerializeField] private float _handClickInterval;
-        [SerializeField] private Vector3 _handOffset;
 
         private IDisposable _handPositionSubscription;
         private IDisposable _handClickSubscription;

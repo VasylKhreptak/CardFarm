@@ -4,6 +4,7 @@ using Cards.Core;
 using Cards.Logic.Spawn;
 using Data.Player.Core;
 using Data.Player.Experience;
+using Graphics.Animations.Quests.QuestPanel;
 using Graphics.UI.Particles.Coins.Logic;
 using Quests.Data;
 using Quests.Logic;
@@ -18,28 +19,31 @@ namespace Quests.Graphics.VisualElements
     {
         [Header("References")]
         [SerializeField] private Button _button;
-        [SerializeField] private RectTransform _rewardSpawnPlace;
 
         [Header("Particle Preferences")]
         [SerializeField] private ParticleSystem _particleSystem;
 
         private IDisposable _clickSubscription;
+        private IDisposable _questShowAnimationSubscription;
 
         private QuestsManager _questsManager;
         private CoinsCollector _coinsCollector;
         private CardSpawner _cardSpawner;
         private ExperienceData _experienceData;
+        private QuestShowAnimation _questShowAnimation;
 
         [Inject]
         private void Constructor(QuestsManager questsManager,
             CoinsCollector coinsCollector,
             CardSpawner cardSpawner,
-            PlayerData playerData)
+            PlayerData playerData,
+            QuestShowAnimation questShowAnimation)
         {
             _questsManager = questsManager;
             _coinsCollector = coinsCollector;
             _cardSpawner = cardSpawner;
             _experienceData = playerData.ExperienceData;
+            _questShowAnimation = questShowAnimation;
         }
 
         #region MonoBehaviour
@@ -57,6 +61,8 @@ namespace Quests.Graphics.VisualElements
         private void OnDisable()
         {
             StopObservingClick();
+
+            _questShowAnimationSubscription?.Dispose();
         }
 
         #endregion
@@ -78,26 +84,43 @@ namespace Quests.Graphics.VisualElements
 
             if (targetQuest == null) return;
 
-            SpawnReward(targetQuest);
-
-            GainExperience(targetQuest);
-
+            _questShowAnimationSubscription?.Dispose();
+            _questShowAnimationSubscription = Observable
+                .FromEvent(
+                    h => _questShowAnimation.OnPlay += h,
+                    h => _questShowAnimation.OnPlay -= h)
+                .Subscribe(_ => SpawnReward(targetQuest));
+            
             MarkAsTookReward(targetQuest);
 
-            PlayParticle();
         }
 
         private void SpawnReward(QuestData questData)
         {
+            SpawnCardReward(questData);
+
+            GainExperience(questData);
+            
+            PlayParticle();
+            
+            MarkAsTookReward(questData);
+
+            _questShowAnimationSubscription?.Dispose();
+        }
+
+        private void SpawnCardReward(QuestData questData)
+        {
             int coinsCount = questData.Reward.Cards.Count(x => x == Card.Coin);
 
-            _coinsCollector.Collect(coinsCount, _rewardSpawnPlace.position);
+            Vector3 spawnPosition = _questShowAnimation.transform.position;
+
+            _coinsCollector.Collect(coinsCount, spawnPosition);
 
             foreach (var cardToSpawn in questData.Reward.Cards)
             {
                 if (cardToSpawn != Card.Coin)
                 {
-                    _cardSpawner.SpawnAndMove(cardToSpawn, Vector3.zero);
+                    _cardSpawner.SpawnAndMove(cardToSpawn, spawnPosition);
                 }
             }
         }
