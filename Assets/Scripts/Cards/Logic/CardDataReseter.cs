@@ -31,6 +31,7 @@ namespace Cards.Logic
         private void ResetData()
         {
             _cardData.IsInteractable.Value = true;
+            _cardData.IsPushable.Value = true;
         }
     }
 }

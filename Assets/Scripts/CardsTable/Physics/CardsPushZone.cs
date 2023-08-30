@@ -86,6 +86,7 @@ namespace CardsTable.Physics
                     // || card.Animations.JumpAnimation.IsPlaying.Value
                     // || card.Animations.AppearAnimation.IsPlaying.Value
                     || card.IsAnyGroupCardSelected.Value
+                    || card.IsPushable.Value == false
                     // || card.IsPlayingAnyAnimation.Value
                     || card.FirstGroupCard.Value != card
                     || card.IsZone

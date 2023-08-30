@@ -1,4 +1,5 @@
 ﻿using System;
+using Cards.Data;
 using DG.Tweening;
 using NaughtyAttributes;
 using Runtime.Commands;
@@ -30,6 +31,19 @@ namespace UnlockedCardPanel.Graphics.Animations
         [SerializeField] private float _endAlpha;
         [SerializeField] private AnimationCurve _fadeCurve;
 
+        [Header("Card Attach Preferences")]
+        [SerializeField] private Transform _targetCardTransform;
+        [SerializeField] private Transform _questionMarkTransform;
+
+        [Header("Card Flip Preferences")]
+        [SerializeField] private float _cardFlipDelay = 0.5f;
+        [SerializeField] private float _cardFlipDuration = 0.7f;
+        [SerializeField] private Vector3 _flippedCardRotation;
+        [SerializeField] private AnimationCurve _cardFlipCurve;
+        [SerializeField] private float _cardScaleDuration = 0.4f;
+        [SerializeField] private Vector3 _targetCardScale;
+        [SerializeField] private Vector3 _defaultCardScale;
+        [SerializeField] private AnimationCurve _cardScaleCurve;
         private Sequence _sequence;
 
         private bool _isPlaying = false;
@@ -71,7 +85,7 @@ namespace UnlockedCardPanel.Graphics.Animations
 
         #endregion
 
-        public void Play(Vector2 startAnchoredPosition, Action onComplete = null)
+        public void Play(Vector2 startAnchoredPosition, CardData card, Action onComplete = null)
         {
             Stop();
 
@@ -80,12 +94,26 @@ namespace UnlockedCardPanel.Graphics.Animations
             _sequence = DOTween.Sequence();
 
             _sequence
-                .Append(_canvasGroup.DOFade(_endAlpha, _duration).SetEase(_fadeCurve))
+                .Join(_canvasGroup.DOFade(_endAlpha, _duration).SetEase(_fadeCurve))
                 .Join(_rectTransform.DOScale(_endScale, _duration).SetEase(_scaleCurve))
                 .Join(_rectTransform.DOAnchorPos(_centerAnchoredPosition, _duration).SetEase(_moveCurve))
+                .AppendInterval(_cardFlipDelay)
+                .Append(card.transform.DOScale(_targetCardScale, _cardScaleDuration).SetEase(_cardScaleCurve))
+                .Append(card.transform
+                    .DOLocalRotate(_flippedCardRotation, _cardFlipDuration)
+                    .SetEase(_cardFlipCurve)
+                    .OnUpdate(card.NewCardShirtStateUpdater.UpdateCullState))
+                .Join(card.transform.DOScale(_defaultCardScale, _cardScaleDuration).SetEase(_cardScaleCurve))
                 .OnPlay(() =>
                 {
                     _isPlaying = true;
+                    Transform cardTransform = card.transform;
+                    cardTransform.SetParent(_targetCardTransform.parent);
+                    cardTransform.localScale = Vector3.one * Mathf.Abs(_targetCardTransform.localScale.x);
+                    cardTransform.localPosition = _targetCardTransform.localPosition;
+                    cardTransform.localEulerAngles = new Vector3(0, 0, -180);
+                    card.IsPushable.Value = false;
+                    _questionMarkTransform.SetAsLastSibling();
                 })
                 .OnComplete(() =>
                 {

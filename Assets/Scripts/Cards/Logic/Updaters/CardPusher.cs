@@ -58,6 +58,7 @@ namespace Cards.Logic.Updaters
             _cardData.IsAnyGroupCardSelected.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.IsPlayingAnyAnimation.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
             _cardData.IsOverlayed.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
+            _cardData.IsPushable.Subscribe(_ => OnCardEnvironmentChanged()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
@@ -74,6 +75,7 @@ namespace Cards.Logic.Updaters
                 _cardData.IsAnyGroupCardSelected.Value == false
                 && _cardData.IsPlayingAnyAnimation.Value == false
                 && _cardData.IsOverlayed.Value == false
+                && _cardData.IsPushable.Value
                 && _cardData.Animations.AppearAnimation.IsPlaying.Value == false;
 
             if (canPush)

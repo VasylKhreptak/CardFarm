@@ -118,9 +118,11 @@ namespace Runtime.Map
 
             spawnedCard.Animations.JumpAnimation.Play(spawnPosition, () =>
             {
-                
-                _newCardPanel.Show(spawnedCard);
-                
+                _newCardPanel.Show(spawnedCard, onStart: () =>
+                {
+                    _cameraAimer.StopAiming();
+                });
+
                 _cardPanelStateSubscription?.Dispose();
                 _cardPanelStateSubscription = _newCardPanel.IsActive
                     .Where(x => x == false)

@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cards.Data;
 using CardsTable.ManualCardSelectors;
+using Data.Cards.Core;
 using Providers.Graphics;
 using Runtime.Commands;
 using ScriptableObjects.Scripts.Cards.Data;
+using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using UnlockedCardPanel.Graphics.Animations;
-using UnlockedCardPanel.VisualizableCard.Data;
 using Zenject;
 
 namespace UnlockedCardPanel.Graphics.VisualElements
@@ -19,36 +21,39 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private GameObject _panelObject;
         [SerializeField] private Button _closeButton;
-        [SerializeField] private VisualizableCardData _cardVisualizerData;
 
         [Header("Preferences")]
-        [SerializeField] private float _flipDelay = 1f;
         [SerializeField] private NewCardPanelShowAnimation _showAnimation;
         [SerializeField] private NewCardPanelHideAnimation _hideAnimation;
+
+        [Header("Card Info")]
+        [SerializeField] private List<GameObject> _cardInfoObjects;
+        [SerializeField] private TMP_Text _descriptionText;
 
         private BoolReactiveProperty _isActive = new BoolReactiveProperty(false);
 
         private CardData _investigatedCard;
+        private Vector3 _initialInvestigatedCardPosition;
 
         private IDisposable _delaySubscription;
 
         public IReadOnlyReactiveProperty<bool> IsActive => _isActive;
 
         private InvestigatedCardsObserver _investigatedCardsObserver;
-        private CardsData _cardsData;
         private GameRestartCommand _gameRestartCommand;
+        private CardsData _cardsData;
         private Camera _camera;
 
         [Inject]
         private void Constructor(InvestigatedCardsObserver investigatedCardsObserver,
-            CardsData cardsData,
             GameRestartCommand gameRestartCommand,
-            CameraProvider cameraProvider)
+            CameraProvider cameraProvider,
+            CardsData cardsData)
         {
             _investigatedCardsObserver = investigatedCardsObserver;
-            _cardsData = cardsData;
             _gameRestartCommand = gameRestartCommand;
             _camera = cameraProvider.Value;
+            _cardsData = cardsData;
         }
 
         #region MonoBehaviour
@@ -56,7 +61,6 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private void OnValidate()
         {
             _closeButton ??= GetComponentInChildren<Button>();
-            _cardVisualizerData ??= GetComponentInChildren<VisualizableCardData>();
             _closeButton ??= GetComponentInParent<Button>();
             _rectTransform ??= GetComponent<RectTransform>();
         }
@@ -87,21 +91,30 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
         #endregion
 
-        private void Show(float delay = 0.7f)
+        private void Show(float delay = 0.7f, Action onPlay = null)
         {
             _isActive.Value = true;
 
             _delaySubscription?.Dispose();
             _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
             {
-                _cardVisualizerData.ShowAnimation.Stop();
-                _cardVisualizerData.ShowAnimation.Play(_flipDelay);
+                SetActiveCardInfoObjects(false);
 
                 _hideAnimation.Stop();
                 _panelObject.SetActive(false);
                 Enable();
 
-                _showAnimation.Play(GetCardAnchoredPosition());
+                onPlay?.Invoke();
+                
+                _showAnimation.Play(GetCardAnchoredPosition(), _investigatedCard, () =>
+                {
+                    SetActiveCardInfoObjects(true);
+
+                    if (_cardsData.TryGetValue(_investigatedCard.Card.Value, out CardDataHolder cardDataHolder))
+                    {
+                        _descriptionText.text = cardDataHolder.Description;
+                    }
+                });
             });
         }
 
@@ -109,13 +122,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         {
             _showAnimation.Stop();
 
-            if (_investigatedCard != null)
-            {
-                _investigatedCard.transform.localRotation = Quaternion.identity;
-                _investigatedCard.NewCardShirtStateUpdater.UpdateCullState();
-            }
-
-            _hideAnimation.Play(GetCardAnchoredPosition(), Disable);
+            _hideAnimation.Play(GetCardAnchoredPosition(), _investigatedCard, _initialInvestigatedCardPosition, Disable);
         }
 
         private void Enable()
@@ -147,17 +154,14 @@ namespace UnlockedCardPanel.Graphics.VisualElements
             Disable();
         }
 
-        public void Show(CardData cardData)
+        public void Show(CardData cardData, float delay = 0.7f, Action onStart = null)
         {
             _isActive.Value = true;
 
             _investigatedCard = cardData;
+            _initialInvestigatedCardPosition = cardData.transform.position;
 
-            _cardsData.TryGetValue(cardData.Card.Value, out var data);
-
-            _cardVisualizerData.VisualizableCard.Value = data;
-
-            Show();
+            Show(delay, onStart);
         }
 
         private Vector2 GetCardAnchoredPosition()
@@ -169,6 +173,14 @@ namespace UnlockedCardPanel.Graphics.VisualElements
             RectTransformUtility.ScreenPointToLocalPointInRectangle(_rectTransform, screenPoint, _camera, out var localRectPoint);
 
             return localRectPoint;
+        }
+
+        private void SetActiveCardInfoObjects(bool isActive)
+        {
+            foreach (var cardInfoObject in _cardInfoObjects)
+            {
+                cardInfoObject.SetActive(isActive);
+            }
         }
     }
 }

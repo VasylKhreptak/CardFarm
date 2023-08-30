@@ -110,6 +110,8 @@ namespace Cards.Data
         public List<CardData> BottomCards = new List<CardData>();
         public List<CardData> GroupCards = new List<CardData>();
 
+        public BoolReactiveProperty IsPushable = new BoolReactiveProperty(true);
+
         public Transform BottomCardFollowPoint;
 
         public BoolReactiveProperty IsTopCard = new BoolReactiveProperty();

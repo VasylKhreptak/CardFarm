@@ -454,7 +454,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 63195405}
-  - component: {fileID: 63195406}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -483,20 +482,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -235.2156}
   m_SizeDelta: {x: 6.38327, y: 2.729687}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &63195406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63195404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 680435d4838f4c6ca323702e64eaa22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardData: {fileID: 7217366323870092450}
-  _objectToDraw: {fileID: 1337601831}
 --- !u!1 &84126089
 GameObject:
   m_ObjectHideFlags: 0
@@ -3289,6 +3274,62 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _targetCardTransform: {fileID: 1106781378245003948}
+  _questionMarkTransform: {fileID: 1156753872}
+  _cardFlipDelay: 0.35
+  _cardFlipDuration: 0.4
+  _flippedCardRotation: {x: 180, y: 0, z: -180}
+  _cardFlipCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _cardScaleDuration: 0.3
+  _targetCardScale: {x: 90, y: 90, z: 90}
+  _defaultCardScale: {x: 80.15, y: 80.15, z: 80.15}
+  _cardScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!225 &461729478
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3368,6 +3409,31 @@ MonoBehaviour:
     m_RotationOrder: 4
   _endAlpha: 0
   _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _cardMoveDuration: 1
+  _cardMoveCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -7361,10 +7427,12 @@ MonoBehaviour:
   _rectTransform: {fileID: 897301792}
   _panelObject: {fileID: 461729474}
   _closeButton: {fileID: 805806252}
-  _cardVisualizerData: {fileID: 7217366323870092450}
-  _flipDelay: 0.5
   _showAnimation: {fileID: 461729477}
   _hideAnimation: {fileID: 461729479}
+  _cardInfoObjects:
+  - {fileID: 63195404}
+  - {fileID: 1156753871}
+  _descriptionText: {fileID: 1337601834}
 --- !u!1001 &898783062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9922,7 +9990,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1156753872}
-  - component: {fileID: 1156753873}
   m_Layer: 5
   m_Name: QuestionMark
   m_TagString: Untagged
@@ -9948,23 +10015,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 131, y: 180}
-  m_SizeDelta: {x: 123.2, y: 123.2}
+  m_AnchoredPosition: {x: 111, y: -88}
+  m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1156753873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156753871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 680435d4838f4c6ca323702e64eaa22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardData: {fileID: 7217366323870092450}
-  _objectToDraw: {fileID: 1601392794}
 --- !u!1 &1163811365
 GameObject:
   m_ObjectHideFlags: 0
@@ -11813,7 +11866,6 @@ GameObject:
   - component: {fileID: 1337601832}
   - component: {fileID: 1337601835}
   - component: {fileID: 1337601834}
-  - component: {fileID: 1337601833}
   m_Layer: 6
   m_Name: Description
   m_TagString: Untagged
@@ -11841,20 +11893,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1337601833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337601831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca7892bcb9b4c76b414bc2d4afa4639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardData: {fileID: 7217366323870092450}
-  _tmp: {fileID: 1337601834}
 --- !u!114 &1337601834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20729,7 +20767,7 @@ PrefabInstance:
     - target: {fileID: 7743147507205228044, guid: 5d31f017f1fc30f459ae35f0f06eb43e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7743147507205228045, guid: 5d31f017f1fc30f459ae35f0f06eb43e,
         type: 3}
@@ -20868,18 +20906,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d31f017f1fc30f459ae35f0f06eb43e, type: 3}
---- !u!114 &7217366323870092450 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8812574915654413171, guid: 5d31f017f1fc30f459ae35f0f06eb43e,
-    type: 3}
-  m_PrefabInstance: {fileID: 7217366323870092449}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f7b8f8a79294fa4b0b0bf308dedff46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8368522799231203193
 GameObject:
   m_ObjectHideFlags: 0
