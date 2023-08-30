@@ -103,7 +103,7 @@ namespace UnlockedCardPanel.Graphics.Animations
                     .DOLocalRotate(_flippedCardRotation, _cardFlipDuration)
                     .SetEase(_cardFlipCurve)
                     .OnUpdate(card.NewCardShirtStateUpdater.UpdateCullState))
-                .Join(card.transform.DOScale(_defaultCardScale, _cardScaleDuration).SetEase(_cardScaleCurve))
+                .Append(card.transform.DOScale(_defaultCardScale, _cardScaleDuration).SetEase(_cardScaleCurve))
                 .OnPlay(() =>
                 {
                     _isPlaying = true;

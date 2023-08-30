@@ -3277,7 +3277,7 @@ MonoBehaviour:
   _targetCardTransform: {fileID: 1106781378245003948}
   _questionMarkTransform: {fileID: 1156753872}
   _cardFlipDelay: 0.35
-  _cardFlipDuration: 0.4
+  _cardFlipDuration: 0.2
   _flippedCardRotation: {x: 180, y: 0, z: -180}
   _cardFlipCurve:
     serializedVersion: 2
@@ -3432,7 +3432,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _cardMoveDuration: 1
+  _cardMoveDuration: 0.5
   _cardMoveCurve:
     serializedVersion: 2
     m_Curve:
