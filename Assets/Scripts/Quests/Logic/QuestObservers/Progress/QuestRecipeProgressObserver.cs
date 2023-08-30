@@ -16,10 +16,14 @@ namespace Quests.Logic.QuestObservers.Progress
     {
         [Header("Preferences")]
         [SerializeField] private Card _recipeResult;
+        [SerializeField] private int _targetQuantity = 1;
+
+        private int _currentQuantity;
 
         private IDisposable _updateSubscription;
 
         private bool _filledProgress;
+        private bool _filledProgressPart;
 
         private List<ListTuple> _cardsData = new List<ListTuple>();
 
@@ -42,6 +46,8 @@ namespace Quests.Logic.QuestObservers.Progress
             StopUpdating();
             ClearCardsData();
             _filledProgress = false;
+            _currentQuantity = 0;
+            _filledProgressPart = false;
         }
 
         private void StartUpdating()
@@ -75,16 +81,29 @@ namespace Quests.Logic.QuestObservers.Progress
 
             if (largestProgress == null) return;
 
-            float progressValue = largestProgress.Progress.Value;
+            float recipeProgress = largestProgress.Progress.Value;
 
-            if (progressValue >= 0.98)
+            float currentProgress = _currentQuantity / (float)_targetQuantity + recipeProgress / _targetQuantity;
+
+            if (_filledProgressPart) return;
+
+            float maxPossibleCurrentProgress = _currentQuantity / (float)_targetQuantity + 1 / (float)_targetQuantity;
+
+            if (_filledProgressPart == false && currentProgress >= maxPossibleCurrentProgress - maxPossibleCurrentProgress * 0.02)
+            {
+                _filledProgressPart = true;
+                SetProgress(maxPossibleCurrentProgress);
+                return;
+            }
+
+            if (_filledProgress == false && currentProgress >= 0.98)
             {
                 SetProgress(1f);
                 _filledProgress = true;
                 return;
             }
 
-            SetProgress(largestProgress.Progress.Value);
+            SetProgress(currentProgress);
         }
 
         private void UpdateCardsData()
@@ -165,12 +184,12 @@ namespace Quests.Logic.QuestObservers.Progress
         {
             if (card == _recipeResult)
             {
-                SetProgress(1f);
-                StopObserving();
+                _currentQuantity++;
+                _filledProgressPart = false;
             }
             else
             {
-                SetProgress(0f);
+                SetProgress(_currentQuantity / (float)_targetQuantity);
                 StartObserving();
             }
         }

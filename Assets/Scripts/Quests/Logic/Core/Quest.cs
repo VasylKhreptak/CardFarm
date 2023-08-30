@@ -20,5 +20,6 @@
         MakeBaby = 16,
         PunchTree = 17,
         RestartRecipe = 18,
+        Collect4Berries = 19,
     }
 }

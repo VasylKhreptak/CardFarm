@@ -10,14 +10,19 @@ namespace Quests.Logic.QuestObservers.Core
     {
         [Header("Preferences")]
         [SerializeField] private Card _recipeResult;
+        [SerializeField] private int _targetQuantity = 1;
 
-        List<CardData> _subscribedCards = new List<CardData>();
+        private int _currentQuantity;
+
+        private List<CardData> _subscribedCards = new List<CardData>();
 
         public override void StopObserving()
         {
             base.StopObserving();
 
             StopObservingCards();
+
+            _currentQuantity = 0;
         }
 
         protected override void OnCardAdded(CardData cardData)
@@ -63,7 +68,12 @@ namespace Quests.Logic.QuestObservers.Core
         {
             if (card == _recipeResult)
             {
-                MarkQuestAsCompletedByAction();
+                _currentQuantity++;
+
+                if (_currentQuantity >= _targetQuantity)
+                {
+                    MarkQuestAsCompletedByAction();
+                }
             }
         }
     }

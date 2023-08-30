@@ -3,7 +3,6 @@ using Quests.Logic.Core;
 using Quests.Logic.Tutorials.Core;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Quests.Data
@@ -21,6 +20,8 @@ namespace Quests.Data
         public BoolReactiveProperty IsCompleted = new BoolReactiveProperty();
         public QuestTutorial Tutorial;
         public QuestCallbacks Callbacks = new QuestCallbacks();
+
+        public BoolReactiveProperty IsCurrentQuest = new BoolReactiveProperty();
 
         #region MonoBehaviour
 

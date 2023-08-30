@@ -109,6 +109,7 @@ namespace Quests.Logic
 
             UpdateCurrentNonRewardedQuest();
             UpdateCurrentQuest();
+            MaskQuestAsCurrent(_currentQuest.Value);
         }
 
         private void UpdateCurrentQuest()
@@ -167,6 +168,14 @@ namespace Quests.Logic
             }
 
             return false;
+        }
+
+        private void MaskQuestAsCurrent(QuestData quest)
+        {
+            foreach (var possibleQuest in _totalQuests)
+            {
+                possibleQuest.IsCurrentQuest.Value = possibleQuest == quest;
+            }
         }
     }
 }

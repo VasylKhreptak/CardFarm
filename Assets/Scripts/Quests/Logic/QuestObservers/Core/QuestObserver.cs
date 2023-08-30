@@ -1,4 +1,6 @@
-﻿using Quests.Data;
+﻿using System;
+using Quests.Data;
+using UniRx;
 using UnityEngine;
 
 namespace Quests.Logic.QuestObservers.Core
@@ -7,6 +9,11 @@ namespace Quests.Logic.QuestObservers.Core
     {
         [Header("References")]
         [SerializeField] protected QuestData _questData;
+
+        [Header("Observe Preferences")]
+        [SerializeField] private bool _observeOnlyWhileActive = false;
+
+        private IDisposable _subscription;
 
         #region MonoBehaviour
 
@@ -17,12 +24,31 @@ namespace Quests.Logic.QuestObservers.Core
 
         private void OnEnable()
         {
-            StartObserving();
+            if (_observeOnlyWhileActive)
+            {
+                _subscription?.Dispose();
+                _subscription = _questData.IsCurrentQuest.Subscribe(isActive =>
+                {
+                    if (isActive && _questData.IsCompletedByAction.Value == false)
+                    {
+                        StartObserving();
+                    }
+                    else
+                    {
+                        StopObserving();
+                    }
+                });
+            }
+            else
+            {
+                StartObserving();
+            }
         }
 
         private void OnDisable()
         {
             StopObserving();
+            _subscription?.Dispose();
         }
 
         #endregion
@@ -40,11 +66,11 @@ namespace Quests.Logic.QuestObservers.Core
                 StopObserving();
             }
         }
-        
+
         protected void MarkQuestAsCompleted(bool stopObserving = true)
         {
             _questData.IsCompleted.Value = true;
-            
+
             if (stopObserving)
             {
                 StopObserving();
