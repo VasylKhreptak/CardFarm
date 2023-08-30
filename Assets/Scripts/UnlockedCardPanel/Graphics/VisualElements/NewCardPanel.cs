@@ -144,10 +144,10 @@ namespace UnlockedCardPanel.Graphics.VisualElements
             Hide();
         }
 
-        private void OnInvestigatedNewCard(CardData cardData)
-        {
-            Show(cardData);
-        }
+        // private void OnInvestigatedNewCard(CardData cardData)
+        // {
+        //     Show(cardData);
+        // }
 
         private void OnRestart()
         {
