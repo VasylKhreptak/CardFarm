@@ -8,6 +8,7 @@ namespace Graphics.Animations.UI.Buttons
     public class ButtonScaleAnimation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         [Header("References")]
+        [SerializeField] private Transform _targetTransform;
         [SerializeField] private Button _button;
 
         [Header("Preferences")]
@@ -52,7 +53,7 @@ namespace Graphics.Animations.UI.Buttons
         {
             KillAnimation();
 
-            _scaleTween = transform
+            _scaleTween = _targetTransform
                 .DOScale(scale, _duration)
                 .SetEase(_curve)
                 .Play();
