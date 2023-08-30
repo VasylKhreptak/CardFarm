@@ -79,15 +79,18 @@ namespace UnlockedCardPanel.Graphics.Animations
                 {
                     _isPlaying = true;
                     card.transform.SetParent(_cardsTableBounds.transform, true);
+                    card.IsPushable.Value = false;
                 })
                 .OnComplete(() =>
                 {
                     _isPlaying = false;
                     onComplete?.Invoke();
+                    card.IsPushable.Value = true;
                 })
                 .OnKill(() =>
                 {
                     _isPlaying = false;
+                    card.IsPushable.Value = true;
                 })
                 .Play();
         }

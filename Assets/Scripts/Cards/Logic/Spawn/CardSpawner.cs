@@ -1,10 +1,12 @@
 ﻿using System;
+using CameraManagement.CameraAim.Core;
 using Cards.Core;
 using Cards.Data;
 using CardsTable.ManualCardSelectors;
 using Constraints.CardTable;
 using Extensions;
 using UnityEngine;
+using UnlockedCardPanel.Graphics.VisualElements;
 using Zenject;
 
 namespace Cards.Logic.Spawn
@@ -28,19 +30,25 @@ namespace Cards.Logic.Spawn
         private CardsTable.Core.CardsTable _cardsTable;
         private PlayingAreaTableBounds _playingAreaTableBounds;
         private InvestigatedCardsObserver _investigatedCardsObserver;
+        private CameraAimer _cameraAimer;
+        private NewCardPanel _newCardPanel;
 
         [Inject]
         private void Constructor(CardFactory cardFactory,
             CardsTableBounds cardsTableBounds,
             CardsTable.Core.CardsTable cardsTable,
             PlayingAreaTableBounds playingAreaTableBounds,
-            InvestigatedCardsObserver investigatedCardsObserver)
+            InvestigatedCardsObserver investigatedCardsObserver,
+            CameraAimer cameraAimer,
+            NewCardPanel newCardPanel)
         {
             _cardFactory = cardFactory;
             _cardsTableBounds = cardsTableBounds;
             _cardsTable = cardsTable;
             _playingAreaTableBounds = playingAreaTableBounds;
             _investigatedCardsObserver = investigatedCardsObserver;
+            _cameraAimer = cameraAimer;
+            _newCardPanel = newCardPanel;
         }
 
         public CardData Spawn(Card card, Vector3 position)
@@ -78,29 +86,29 @@ namespace Cards.Logic.Spawn
         public CardData SpawnAndMove(
             Card card,
             Card bottomCard,
-            Vector3 position,
+            Vector3 spawnPosition,
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
             bool jump = true,
             bool flip = true,
-            bool appearAnimation = true)
+            bool newCardPopup = true)
         {
-            return SpawnAndMove(card, new[] { bottomCard }, position, targetPosition, tryJoinToExistingGroup, jump, flip, appearAnimation);
+            return SpawnAndMove(card, new[] { bottomCard }, spawnPosition, targetPosition, tryJoinToExistingGroup, jump, flip, newCardPopup);
         }
 
         public CardData SpawnAndMove(
             Card card,
             Card[] prioritizedCardsToJoin,
-            Vector3 position,
+            Vector3 spawnPosition,
             Vector3? targetPosition = null,
             bool tryJoinToExistingGroup = true,
             bool jump = true,
             bool flip = true,
-            bool appearAnimation = true)
+            bool newCardPopup = true)
         {
-            bool canPlayAppearAnimation = _investigatedCardsObserver.IsInvestigated(card) == false && appearAnimation;
+            bool canShowNewCardPopup = _investigatedCardsObserver.IsInvestigated(card) == false && newCardPopup;
 
-            CardData spawnedCard = Spawn(card, position);
+            CardData spawnedCard = Spawn(card, spawnPosition);
             if (tryJoinToExistingGroup && _cardsTable.TryGetLowestUniqPrioritizedCompatibleGroupCard(spawnedCard, prioritizedCardsToJoin, out var lowestGroupCard))
             {
                 spawnedCard.LinkTo(lowestGroupCard);
@@ -113,12 +121,18 @@ namespace Cards.Logic.Spawn
             // cardsRect.Remove(spawnedCardRect);
             // Vector3 freeSpacePosition = _playingAreaTableBounds.Bounds.GetClosestRandomPoint(cardsRect, spawnedCardRect, position);
 
-            if (canPlayAppearAnimation)
+            if (canShowNewCardPopup)
             {
-                // spawnedCard.transform.localRotation = Quaternion.Euler(-180, 0, 0);
-                // spawnedCard.NewCardShirtStateUpdater.UpdateCullState();
-                
-                spawnedCard.Animations.AppearAnimation.Play();
+                spawnedCard.transform.localRotation = Quaternion.Euler(-180, 0, 0);
+                spawnedCard.NewCardShirtStateUpdater.UpdateCullState();
+
+                spawnedCard.Animations.JumpAnimation.Play(moveToPosition, () =>
+                {
+                    _newCardPanel.Show(spawnedCard, onStart: () =>
+                    {
+                        _cameraAimer.StopAiming();
+                    });
+                });
             }
             else if (jump)
             {
@@ -132,7 +146,7 @@ namespace Cards.Logic.Spawn
                 spawnedCard.Animations.MoveAnimation.Play(moveToPosition);
             }
 
-            if (flip && canPlayAppearAnimation == false)
+            if (flip && canShowNewCardPopup == false)
             {
                 spawnedCard.Animations.FlipAnimation.Play();
             }

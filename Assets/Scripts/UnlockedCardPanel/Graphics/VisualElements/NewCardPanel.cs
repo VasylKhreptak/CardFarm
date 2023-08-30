@@ -95,6 +95,8 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         {
             _isActive.Value = true;
 
+            _investigatedCard.IsPushable.Value = false;
+
             _delaySubscription?.Dispose();
             _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
             {
@@ -105,7 +107,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
                 Enable();
 
                 onPlay?.Invoke();
-                
+
                 _showAnimation.Play(GetCardAnchoredPosition(), _investigatedCard, () =>
                 {
                     SetActiveCardInfoObjects(true);
