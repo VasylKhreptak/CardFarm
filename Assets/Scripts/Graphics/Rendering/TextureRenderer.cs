@@ -33,6 +33,7 @@ namespace Graphics.Rendering
 
         private void Awake()
         {
+            _rawImage.enabled = true;
             _renderTexture = new RenderTexture(_resolution, _resolution, 1);
             _rawImage.texture = _renderTexture;
             _renderTarget = new CameraTexturesRenderer.RenderTarget(_renderTexture, _target);
