@@ -3276,6 +3276,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _targetCardTransform: {fileID: 1106781378245003948}
   _questionMarkTransform: {fileID: 1156753872}
+  _closeButtonTransform: {fileID: 805806251}
   _cardFlipDelay: 0
   _cardFlipDuration: 0.2
   _flippedCardRotation: {x: 180, y: 0, z: -180}

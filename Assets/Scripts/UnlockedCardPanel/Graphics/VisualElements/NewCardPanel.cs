@@ -75,13 +75,13 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private void OnEnable()
         {
             _closeButton.onClick.AddListener(OnClicked);
-            _investigatedCardsObserver.OnInvestigatedCard += OnInvestigatedNewCard;
+            // _investigatedCardsObserver.OnInvestigatedCard += OnInvestigatedNewCard;
         }
 
         private void OnDisable()
         {
             _closeButton.onClick.RemoveListener(OnClicked);
-            _investigatedCardsObserver.OnInvestigatedCard -= OnInvestigatedNewCard;
+            // _investigatedCardsObserver.OnInvestigatedCard -= OnInvestigatedNewCard;
         }
 
         private void OnDestroy()

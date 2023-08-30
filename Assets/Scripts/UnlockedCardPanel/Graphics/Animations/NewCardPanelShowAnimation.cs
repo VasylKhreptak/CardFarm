@@ -4,6 +4,7 @@ using DG.Tweening;
 using NaughtyAttributes;
 using Runtime.Commands;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace UnlockedCardPanel.Graphics.Animations
@@ -34,6 +35,7 @@ namespace UnlockedCardPanel.Graphics.Animations
         [Header("Card Attach Preferences")]
         [SerializeField] private Transform _targetCardTransform;
         [SerializeField] private Transform _questionMarkTransform;
+        [SerializeField] private Transform _closeButtonTransform;
 
         [Header("Card Flip Preferences")]
         [SerializeField] private float _cardFlipDelay = 0.5f;
@@ -114,6 +116,7 @@ namespace UnlockedCardPanel.Graphics.Animations
                     cardTransform.localEulerAngles = new Vector3(0, 0, -180);
                     card.IsPushable.Value = false;
                     _questionMarkTransform.SetAsLastSibling();
+                    _closeButtonTransform.SetAsLastSibling();
                 })
                 .OnComplete(() =>
                 {
