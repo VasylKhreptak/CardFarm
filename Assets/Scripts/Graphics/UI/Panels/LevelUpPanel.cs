@@ -2,6 +2,7 @@
 using Data.Player.Core;
 using Data.Player.Experience;
 using Graphics.Animations.LevelUpPanelAnimations;
+using NaughtyAttributes;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -50,7 +51,7 @@ namespace Graphics.UI.Panels
                 .Where(x => x[1] > x[0])
                 .Subscribe(_ =>
                 {
-                    Debug.Log("Level Upo");
+
                 });
         }
 
@@ -58,5 +59,22 @@ namespace Graphics.UI.Panels
         {
             _levelUpSubscription?.Dispose();
         }
+
+        [Button()]
+        private void Show()
+        {
+            Enable();
+            _showAnimation.Play();
+        }
+
+        [Button()]
+        private void Hide()
+        {
+            Disable();
+        }
+
+        private void Enable() => _panelObject.SetActive(true);
+
+        private void Disable() => _panelObject.SetActive(false);
     }
 }

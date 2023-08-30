@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 138363552}
   - component: {fileID: 138363551}
   m_Layer: 5
-  m_Name: LevelUptext
+  m_Name: LevelUpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2245,6 +2245,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 275928800}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &275928802 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8089556432631784997, guid: 61fe1d01183fb5e4fb062980b1015282,
+    type: 3}
+  m_PrefabInstance: {fileID: 275928800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004753549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a41d82a9c414fa9b46e21bfcec35eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &276345079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2986,6 +2998,7 @@ GameObject:
   - component: {fileID: 380078909}
   - component: {fileID: 380078911}
   - component: {fileID: 380078910}
+  - component: {fileID: 380078912}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -3051,6 +3064,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380078908}
   m_CullTransparentMesh: 1
+--- !u!225 &380078912
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380078908}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &386186197
 GameObject:
   m_ObjectHideFlags: 0
@@ -4731,6 +4756,7 @@ GameObject:
   - component: {fileID: 599347904}
   - component: {fileID: 599347903}
   - component: {fileID: 599347905}
+  - component: {fileID: 599347906}
   m_Layer: 5
   m_Name: TreasureChestTexture1
   m_TagString: Untagged
@@ -4756,7 +4782,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -220, y: 0}
-  m_SizeDelta: {x: 750, y: 750}
+  m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &599347903
 MonoBehaviour:
@@ -4808,6 +4834,18 @@ MonoBehaviour:
   _target: {fileID: 120027828}
   _rawImage: {fileID: 599347903}
   _resolution: 512
+--- !u!225 &599347906
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599347901}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &602659625
 GameObject:
   m_ObjectHideFlags: 0
@@ -8661,6 +8699,7 @@ GameObject:
   - component: {fileID: 906979305}
   - component: {fileID: 906979304}
   - component: {fileID: 906979303}
+  - component: {fileID: 906979306}
   m_Layer: 5
   m_Name: TreasureChestTexture3
   m_TagString: Untagged
@@ -8686,7 +8725,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -350}
-  m_SizeDelta: {x: 750, y: 750}
+  m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906979303
 MonoBehaviour:
@@ -8738,6 +8777,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906979301}
   m_CullTransparentMesh: 1
+--- !u!225 &906979306
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906979301}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &910314956 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7943049280611862358, guid: 2b6b2f92947187c448b6540caf49bdcd,
@@ -11925,13 +11976,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1252726002}
   - component: {fileID: 1252726003}
+  - component: {fileID: 1252726004}
   m_Layer: 5
   m_Name: LevelUpPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1252726002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11966,9 +12018,144 @@ CanvasGroup:
   m_GameObject: {fileID: 1252726001}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
+  m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1252726004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252726001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604f038ed450418a9e799c3d33b05859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _backgroundCanvasGroup: {fileID: 380078912}
+  _levelUpTextTransform: {fileID: 138363550}
+  _addButtonObject: {fileID: 872904370}
+  _noThanksButtonObject: {fileID: 1876702330}
+  _mainCanvasGroup: {fileID: 1252726003}
+  _levelUpTextAnimationDelay: 0.2
+  _startLevelUpTextPosition: {x: 0, y: 100}
+  _targetLevelUpTextPosition: {x: 0, y: -390}
+  _levelUpTextMoveDuration: 0.5
+  _levelUpTextMoveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _backgroundFadeDuration: 0.3
+  _startBackgroundAlpha: 0
+  _endBackgroundAlpha: 1
+  _backgroundFadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _chests:
+  - VisualObject: {fileID: 599347901}
+    ChestData: {fileID: 1414256121013924742}
+  - VisualObject: {fileID: 1668317645}
+    ChestData: {fileID: 275928802}
+  - VisualObject: {fileID: 906979301}
+    ChestData: {fileID: 2111187276}
+  _chestPopupDelay: 0.5
+  _chestPopupDuration: 0.7
+  _startChestAlpha: 0.7
+  _targetChestAlpha: 1
+  _chestFadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _chestInterval: 0.08
+  _startChestScale: {x: 0.1, y: 0.1, z: 0.1}
+  _targetChestScale: {x: 1, y: 1, z: 1}
+  _chestScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _chestSpinCount: 1
 --- !u!1 &1257641707
 GameObject:
   m_ObjectHideFlags: 0
@@ -13184,6 +13371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1344486774}
+  - component: {fileID: 1344486775}
   m_Layer: 5
   m_Name: LevelUpPanel
   m_TagString: Untagged
@@ -13212,6 +13400,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1344486775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344486773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47de2ac776df4555bed52547583fa934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panelObject: {fileID: 1252726001}
+  _showAnimation: {fileID: 1252726004}
+  _hideAnimation: {fileID: 0}
 --- !u!1 &1345435472
 GameObject:
   m_ObjectHideFlags: 0
@@ -17353,6 +17556,7 @@ GameObject:
   - component: {fileID: 1668317649}
   - component: {fileID: 1668317648}
   - component: {fileID: 1668317647}
+  - component: {fileID: 1668317650}
   m_Layer: 5
   m_Name: TreasureChestTexture2
   m_TagString: Untagged
@@ -17378,7 +17582,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 220, y: 0}
-  m_SizeDelta: {x: 750, y: 750}
+  m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668317647
 MonoBehaviour:
@@ -17430,6 +17634,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668317645}
   m_CullTransparentMesh: 1
+--- !u!225 &1668317650
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668317645}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1693373858
 GameObject:
   m_ObjectHideFlags: 0
@@ -20608,6 +20824,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2111187274}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2111187276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8089556432631784997, guid: 61fe1d01183fb5e4fb062980b1015282,
+    type: 3}
+  m_PrefabInstance: {fileID: 2111187274}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088194248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a41d82a9c414fa9b46e21bfcec35eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2112877858
 GameObject:
   m_ObjectHideFlags: 0
@@ -20933,6 +21161,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61fe1d01183fb5e4fb062980b1015282, type: 3}
+--- !u!114 &1414256121013924742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8089556432631784997, guid: 61fe1d01183fb5e4fb062980b1015282,
+    type: 3}
+  m_PrefabInstance: {fileID: 1414256121013924741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120027828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a41d82a9c414fa9b46e21bfcec35eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2437429002487314525
 PrefabInstance:
   m_ObjectHideFlags: 0

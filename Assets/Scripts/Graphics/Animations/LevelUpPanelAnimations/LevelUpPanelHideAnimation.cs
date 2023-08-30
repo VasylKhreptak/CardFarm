@@ -1,6 +1,8 @@
-﻿namespace Graphics.Animations.LevelUpPanelAnimations
+﻿using UnityEngine;
+
+namespace Graphics.Animations.LevelUpPanelAnimations
 {
-    public class LevelUpPanelHideAnimation
+    public class LevelUpPanelHideAnimation : MonoBehaviour
     {
         
     }

@@ -36,23 +36,12 @@ namespace Graphics.Rendering
             {
                 _textureCamera.targetTexture = target.Texture;
 
-                RenderTarget foundRenderTarget = null;
-
                 foreach (var possibleTarget in _targets)
                 {
-                    if (possibleTarget == target)
-                    {
-                        foundRenderTarget = possibleTarget;
-                    }
-                    else
-                    {
-                        possibleTarget.TargetObject.SetLayerRecursive(_noRenderMask.LayerIndex);
-                    }
-                }
-
-                if (foundRenderTarget != null)
-                {
-                    foundRenderTarget.TargetObject.SetLayerRecursive(_renderMask.LayerIndex);
+                    possibleTarget.TargetObject.SetLayerRecursive(
+                        possibleTarget == target
+                            ? _renderMask.LayerIndex
+                            : _noRenderMask.LayerIndex);
                 }
 
                 _textureCamera.Render();
@@ -73,6 +62,8 @@ namespace Graphics.Rendering
             _targets.Remove(target);
 
             gameObject.SetActive(_targets.Count != 0);
+
+            target.TargetObject.SetLayerRecursive(_noRenderMask.LayerIndex);
         }
 
         [Serializable]

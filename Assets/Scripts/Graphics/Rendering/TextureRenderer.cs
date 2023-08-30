@@ -46,10 +46,7 @@ namespace Graphics.Rendering
 
         private void OnDisable()
         {
-            if (_texturesRenderer != null)
-            {
-                _texturesRenderer.Remove(_renderTarget);
-            }
+            _texturesRenderer.Remove(_renderTarget);
         }
 
         #endregion
