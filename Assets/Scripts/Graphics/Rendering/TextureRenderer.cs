@@ -33,7 +33,7 @@ namespace Graphics.Rendering
 
         private void Awake()
         {
-            _renderTexture = new RenderTexture(_resolution, _resolution, 0);
+            _renderTexture = new RenderTexture(_resolution, _resolution, 1);
             _rawImage.texture = _renderTexture;
             _renderTarget = new CameraTexturesRenderer.RenderTarget(_renderTexture, _target);
         }
@@ -45,7 +45,10 @@ namespace Graphics.Rendering
 
         private void OnDisable()
         {
-            _texturesRenderer.Remove(_renderTarget);
+            if (_texturesRenderer != null)
+            {
+                _texturesRenderer.Remove(_renderTarget);
+            }
         }
 
         #endregion
