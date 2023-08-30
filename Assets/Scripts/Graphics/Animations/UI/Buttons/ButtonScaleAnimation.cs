@@ -41,11 +41,15 @@ namespace Graphics.Animations.UI.Buttons
 
         public void OnPointerDown(PointerEventData data)
         {
+            if (_button.IsInteractable() == false) return;
+
             SetScaleSmooth(_pressedScale);
         }
 
         public void OnPointerUp(PointerEventData data)
         {
+            if (_button.IsInteractable() == false) return;
+
             SetScaleSmooth(_initialScale);
         }
 
