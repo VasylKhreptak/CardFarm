@@ -120,6 +120,8 @@ namespace UnlockedCardPanel.Graphics.VisualElements
             });
         }
 
+        public void MarkAsActive() => _isActive.Value = true;
+
         private void Hide()
         {
             _showAnimation.Stop();

@@ -108,6 +108,11 @@ namespace Cards.Logic.Spawn
         {
             bool canShowNewCardPopup = _investigatedCardsObserver.IsInvestigated(card) == false && newCardPopup;
 
+            if (canShowNewCardPopup)
+            {
+                _newCardPanel.MarkAsActive();
+            }
+            
             CardData spawnedCard = Spawn(card, spawnPosition);
             if (tryJoinToExistingGroup && _cardsTable.TryGetLowestUniqPrioritizedCompatibleGroupCard(spawnedCard, prioritizedCardsToJoin, out var lowestGroupCard))
             {

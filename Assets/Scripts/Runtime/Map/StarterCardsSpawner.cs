@@ -109,6 +109,8 @@ namespace Runtime.Map
 
             Vector3 spawnPosition = _spawnPoints[_cardToSpawnIndex].position;
 
+            _newCardPanel.MarkAsActive();
+
             CardData spawnedCard = _cardSpawner.Spawn(cardToSpawn, _transform.position);
 
             spawnedCard.transform.localRotation = Quaternion.Euler(-180, 0, 0);
