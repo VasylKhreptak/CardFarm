@@ -940,6 +940,7 @@ GameObject:
   - component: {fileID: 8336150551062048578}
   - component: {fileID: 4279947638826656204}
   - component: {fileID: 8563056475666954647}
+  - component: {fileID: 5962302564732148662}
   m_Layer: 5
   m_Name: ExclamationMark
   m_TagString: Untagged
@@ -1057,3 +1058,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5962302564732148662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7147385404573118071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ace1dde6983464899a5c791499807ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fadeHighlighter: {fileID: 8563056475666954647}
+  _buyButton: {fileID: 1029997057}

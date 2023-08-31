@@ -34,9 +34,8 @@ namespace Graphics.Animations
         [Button()]
         public void StartHighlighting()
         {
+            KillSequence();
             _canvasGroup.gameObject.SetActive(true);
-
-            StopHighlighting();
             SetAlpha(_minAlpha);
 
             _sequence = DOTween.Sequence();
