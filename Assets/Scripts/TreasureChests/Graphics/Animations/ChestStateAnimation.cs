@@ -78,7 +78,7 @@ namespace TreasureChests.Graphics.Animations
         {
             Stop();
 
-            transform.localRotation = Quaternion.Euler(opened ? _openedRotation : _closedRotation);
+            _chestData.ChestHinge.transform.localRotation = Quaternion.Euler(opened ? _openedRotation : _closedRotation);
 
             _chestData.IsOpened.Value = opened;
         }

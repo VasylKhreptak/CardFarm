@@ -45,10 +45,15 @@ namespace LevelUpPanel.Buttons
                 .Subscribe(_ => _buttonObject.SetActive(true));
         }
 
-        public void Hide() => _buttonObject.SetActive(false);
+        public void Hide()
+        {
+            _delaySubscription?.Dispose();
+            _buttonObject.SetActive(false);
+        }
 
         private void OnClicked()
         {
+            _delaySubscription?.Dispose();
             _levelUpPanel.Hide();
         }
     }

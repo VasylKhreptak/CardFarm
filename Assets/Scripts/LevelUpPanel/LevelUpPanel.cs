@@ -69,17 +69,24 @@ namespace LevelUpPanel
         public void Show()
         {
             _delaySubscription?.Dispose();
+            Disable();
             Enable();
             _hideAnimation.Stop();
             _showAnimation.Play();
         }
 
         [Button()]
-        public void Hide()
+        public void Hide(float delay = 0f, Action onPlay = null)
         {
             _delaySubscription?.Dispose();
-            _showAnimation.Stop();
-            _hideAnimation.Play(Disable);
+
+            _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(delay))
+                .Subscribe(_ =>
+                {
+                    _showAnimation.Stop();
+                    onPlay?.Invoke();
+                    _hideAnimation.Play(Disable);
+                });
         }
 
         private void Enable() => _panelObject.SetActive(true);

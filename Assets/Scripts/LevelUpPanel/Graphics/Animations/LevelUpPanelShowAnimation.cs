@@ -137,8 +137,7 @@ namespace LevelUpPanel.Graphics.Animations
                         .OnPlay(() =>
                         {
                             chestObject.SetActive(true);
-                            chestData.StateAnimation.Close();
-                            chestData.SpinAnimation.Stop();
+                            chestData.StateAnimation.SetStateImmediately(false);
                             chestData.SpinAnimation.Play(_chestSpinCount);
                         }));
             }

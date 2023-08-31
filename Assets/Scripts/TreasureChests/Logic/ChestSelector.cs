@@ -1,34 +1,46 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using LevelUpPanel.Buttons;
-using TreasureChests.Logic.Tags;
+using TreasureChests.UI;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using Zenject;
 
 namespace TreasureChests.Logic
 {
     public class ChestSelector : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private List<ChestRaycastTarget> _raycastTargets;
+        [SerializeField] private List<UITreasureChestData> _uiChests;
         [SerializeField] private WatchAdButton _watchAdButton;
         [SerializeField] private NoThanksButton _noThanksButton;
 
         [Header("Preferences")]
         [SerializeField] private int _baseOpenedChestsCount = 1;
         [SerializeField] private int _maxChestsToOpen = 2;
+        [SerializeField] private float _closeDelay = 1f;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private int _openedChestsCount = 0;
         private int _currentMaxChestsToOpen;
+        private bool _watchedAd = false;
+        private bool _openedAllChests = false;
+
+        private LevelUpPanel.LevelUpPanel _levelUpPanel;
+
+        [Inject]
+        private void Constructor(LevelUpPanel.LevelUpPanel levelUpPanel)
+        {
+            _levelUpPanel = levelUpPanel;
+        }
 
         #region MonoBehaviour
 
         private void OnValidate()
         {
-            _raycastTargets ??= GetComponentsInChildren<ChestRaycastTarget>().ToList();
+            _uiChests ??= GetComponentsInChildren<UITreasureChestData>().ToList();
         }
 
         private void OnEnable()
@@ -45,20 +57,22 @@ namespace TreasureChests.Logic
             _openedChestsCount = 0;
 
             _watchAdButton.OnWatchedAd -= OnWatchedAd;
+            _watchedAd = false;
+            _openedAllChests = false;
         }
 
         #endregion
 
         private void StartObserving()
         {
-            foreach (var raycastTarget in _raycastTargets)
+            foreach (var uiChest in _uiChests)
             {
-                raycastTarget
-                    .UIBehaviour
+                uiChest
+                    .RaycastTarget
                     .OnPointerClickAsObservable()
                     .Subscribe(_ =>
                     {
-                        OnSelected(raycastTarget);
+                        OnSelected(uiChest);
                     })
                     .AddTo(_subscriptions);
             }
@@ -69,13 +83,14 @@ namespace TreasureChests.Logic
             _subscriptions.Clear();
         }
 
-        private void OnSelected(ChestRaycastTarget raycastTarget)
+        private void OnSelected(UITreasureChestData uiChest)
         {
-            if (raycastTarget.ChestData.IsOpened.Value) return;
+            if (uiChest.ChestData.IsOpened.Value || _openedAllChests) return;
 
             if (_openedChestsCount >= _currentMaxChestsToOpen) return;
 
-            raycastTarget.ChestData.ChestRewardOpener.Open();
+            uiChest.ChestData.ChestRewardOpener.Open();
+            uiChest.TreasureController.ShowTreasure();
 
             _openedChestsCount++;
 
@@ -89,6 +104,22 @@ namespace TreasureChests.Logic
             {
                 _noThanksButton.Show(2f);
             }
+
+            if (_watchedAd && _openedChestsCount == _currentMaxChestsToOpen)
+            {
+                _watchAdButton.Hide();
+                _noThanksButton.Hide();
+
+                _openedAllChests = true;
+
+                _levelUpPanel.Hide(2f, () =>
+                {
+                    foreach (var uiChest in _uiChests)
+                    {
+                        uiChest.TreasureController.SpawnTreasure();
+                    }
+                });
+            }
         }
 
         private void OnWatchedAd()
@@ -96,6 +127,7 @@ namespace TreasureChests.Logic
             _currentMaxChestsToOpen = _maxChestsToOpen;
             _watchAdButton.Hide();
             _noThanksButton.Hide();
+            _watchedAd = true;
         }
     }
 }
