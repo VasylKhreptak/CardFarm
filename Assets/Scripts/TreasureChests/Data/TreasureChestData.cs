@@ -22,7 +22,7 @@ namespace TreasureChests.Data
         public ChestStateAnimation StateAnimation => _stateAnimation;
         public ChestRewardOpener ChestRewardOpener => _chestRewardOpener;
 
-        public BoolReactiveProperty IsRewardShown = new BoolReactiveProperty(false);
+        public BoolReactiveProperty IsOpened = new BoolReactiveProperty(false);
 
         #region MonoBehaviour
 

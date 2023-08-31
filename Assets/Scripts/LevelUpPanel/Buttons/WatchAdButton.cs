@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace LevelUpPanel.Buttons
 {
-    public class WatchAddButton : MonoBehaviour
+    public class WatchAdButton : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private GameObject _buttonObject;
@@ -56,16 +56,16 @@ namespace LevelUpPanel.Buttons
 
         #endregion
 
-        public void Show()
+        public void Show(float delay = 0f)
         {
             KillSequence();
-
-            Enable();
 
             _sequence = DOTween.Sequence();
 
             _sequence
-                .Join(_buttonObject.transform.DOScale(_endScale, _duration).SetEase(_scaleCurve))
+                .AppendInterval(delay)
+                .AppendCallback(Enable)
+                .Append(_buttonObject.transform.DOScale(_endScale, _duration).SetEase(_scaleCurve))
                 .Join(_canvasGroup.DOFade(_endAlpha, _duration).SetEase(_fadeCurve))
                 .Play();
         }

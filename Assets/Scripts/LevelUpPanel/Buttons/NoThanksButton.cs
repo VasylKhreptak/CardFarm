@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UniRx;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -9,6 +11,8 @@ namespace LevelUpPanel.Buttons
         [Header("References")]
         [SerializeField] private GameObject _buttonObject;
         [SerializeField] private Button _button;
+
+        private IDisposable _delaySubscription;
 
         private LevelUpPanel _levelUpPanel;
 
@@ -28,11 +32,18 @@ namespace LevelUpPanel.Buttons
         private void OnDisable()
         {
             _button.onClick.RemoveListener(OnClicked);
+            _delaySubscription?.Dispose();
         }
 
         #endregion
 
-        public void Show() => _buttonObject.SetActive(true);
+        public void Show(float delay = 0f)
+        {
+            _delaySubscription?.Dispose();
+
+            _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(delay))
+                .Subscribe(_ => _buttonObject.SetActive(true));
+        }
 
         public void Hide() => _buttonObject.SetActive(false);
 

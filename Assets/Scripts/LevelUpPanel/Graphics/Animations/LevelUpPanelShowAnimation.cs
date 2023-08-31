@@ -63,6 +63,9 @@ namespace LevelUpPanel.Graphics.Animations
                 .Join(_backgroundCanvasGroup
                     .DOFade(_endBackgroundAlpha, _backgroundFadeDuration)
                     .SetEase(_backgroundFadeCurve))
+                .Join(_mainCanvasGroup
+                    .DOFade(1f, _backgroundFadeDuration)
+                    .SetEase(_backgroundFadeCurve))
                 .Join(_levelUpTextTransform
                     .DOAnchorPos(_targetLevelUpTextPosition, _levelUpTextMoveDuration)
                     .SetEase(_levelUpTextMoveCurve)
@@ -134,6 +137,7 @@ namespace LevelUpPanel.Graphics.Animations
                         .OnPlay(() =>
                         {
                             chestObject.SetActive(true);
+                            chestData.StateAnimation.Close();
                             chestData.SpinAnimation.Stop();
                             chestData.SpinAnimation.Play(_chestSpinCount);
                         }));

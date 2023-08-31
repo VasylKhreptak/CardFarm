@@ -43,6 +43,8 @@ namespace TreasureChests.Graphics.Animations
 
         public void Close(Action onComplete = null)
         {
+            _chestData.IsOpened.Value = false;
+
             Stop();
 
             _sequence = DOTween.Sequence();
@@ -55,6 +57,8 @@ namespace TreasureChests.Graphics.Animations
 
         public void Open(Action onComplete = null)
         {
+            _chestData.IsOpened.Value = true;
+
             Stop();
 
             _sequence = DOTween.Sequence();
@@ -75,6 +79,8 @@ namespace TreasureChests.Graphics.Animations
             Stop();
 
             transform.localRotation = Quaternion.Euler(opened ? _openedRotation : _closedRotation);
+
+            _chestData.IsOpened.Value = opened;
         }
 
         [Button()]

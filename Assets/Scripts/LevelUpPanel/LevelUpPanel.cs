@@ -1,7 +1,6 @@
 ﻿using System;
 using Data.Player.Core;
 using Data.Player.Experience;
-using LevelUpPanel.Buttons;
 using LevelUpPanel.Graphics.Animations;
 using NaughtyAttributes;
 using UniRx;
@@ -14,14 +13,14 @@ namespace LevelUpPanel
     {
         [Header("References")]
         [SerializeField] private GameObject _panelObject;
-        [SerializeField] private WatchAddButton _watchAddButton;
-        [SerializeField] private NoThanksButton _noThanksButton;
 
         [Header("Preferences")]
         [SerializeField] private LevelUpPanelShowAnimation _showAnimation;
         [SerializeField] private LevelUpPanelHideAnimation _hideAnimation;
+        [SerializeField] private float _showDelayAfterLevelUp = 1f;
 
         private IDisposable _levelUpSubscription;
+        private IDisposable _delaySubscription;
 
         private ExperienceData _experienceData;
 
@@ -36,15 +35,12 @@ namespace LevelUpPanel
         private void Awake()
         {
             StartObservingLevelUp();
-
-            _watchAddButton.OnWatchedAd += OnWatchedAd;
         }
 
         private void OnDestroy()
         {
             StopObservingLevelUp();
-
-            _watchAddButton.OnWatchedAd -= OnWatchedAd;
+            _delaySubscription?.Dispose();
         }
 
         #endregion
@@ -58,7 +54,9 @@ namespace LevelUpPanel
                 .Where(x => x[1] > x[0])
                 .Subscribe(_ =>
                 {
-                    Show();
+                    _delaySubscription?.Dispose();
+                    _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(_showDelayAfterLevelUp))
+                        .Subscribe(_ => Show());
                 });
         }
 
@@ -70,13 +68,17 @@ namespace LevelUpPanel
         [Button()]
         public void Show()
         {
+            _delaySubscription?.Dispose();
             Enable();
+            _hideAnimation.Stop();
             _showAnimation.Play();
         }
 
         [Button()]
         public void Hide()
         {
+            _delaySubscription?.Dispose();
+            _showAnimation.Stop();
             _hideAnimation.Play(Disable);
         }
 
@@ -84,9 +86,5 @@ namespace LevelUpPanel
 
         private void Disable() => _panelObject.SetActive(false);
 
-        private void OnWatchedAd()
-        {
-
-        }
     }
 }

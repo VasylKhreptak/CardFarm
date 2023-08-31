@@ -255,8 +255,10 @@ MonoBehaviour:
   - {fileID: 6181190812441310400}
   - {fileID: 1195453066}
   - {fileID: 1337653956}
+  _watchAdButton: {fileID: 916279115}
+  _noThanksButton: {fileID: 241217702}
   _baseOpenedChestsCount: 1
-  _maxOpenedChestsCount: 2
+  _maxChestsToOpen: 2
 --- !u!1 &54826870
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -390}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 607.7, y: 178.19995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138363551
@@ -1930,6 +1932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 241217701}
+  - component: {fileID: 241217702}
   m_Layer: 5
   m_Name: NoThanksButton
   m_TagString: Untagged
@@ -1958,6 +1961,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &241217702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241217700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494571e78f0c4d2fa0ce49281c5fdb80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonObject: {fileID: 1876702330}
+  _button: {fileID: 1565308554}
 --- !u!1 &244328563
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,7 +3583,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380078908}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -8899,7 +8916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &872904371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9780,7 +9797,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 916279113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 343d98e685594059b0bab2886cc4f5f5, type: 3}
+  m_Script: {fileID: 11500000, guid: be84b5e3ff0151548814bb961b310b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonObject: {fileID: 872904370}
@@ -13073,6 +13090,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -13135,6 +13167,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TreasureChestTexture2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535106, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535229, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6181190811959535230, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
         type: 3}
@@ -15037,6 +15079,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -15099,6 +15156,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TreasureChestTexture3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535106, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535229, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6181190811959535230, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
         type: 3}
@@ -15183,6 +15250,7 @@ MonoBehaviour:
   _panelObject: {fileID: 1252726001}
   _showAnimation: {fileID: 1252726004}
   _hideAnimation: {fileID: 1252726005}
+  _showDelayAfterLevelUp: 0.7
 --- !u!1 &1345435472
 GameObject:
   m_ObjectHideFlags: 0
@@ -20299,7 +20367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1876702331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24621,6 +24689,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535105, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -24683,6 +24766,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TreasureChestTexture1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535106, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181190811959535229, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6181190811959535230, guid: 9747bbf7d26f1784b96e0c1438bf44aa,
         type: 3}

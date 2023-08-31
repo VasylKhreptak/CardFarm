@@ -11,14 +11,6 @@ namespace TreasureChests.Logic
         [Header("References")]
         [SerializeField] private TreasureChestData _chestData;
 
-        private LevelUpPanel.LevelUpPanel _levelUpPanel;
-
-        [Inject]
-        private void Constructor(LevelUpPanel.LevelUpPanel levelUpPanel)
-        {
-            _levelUpPanel = levelUpPanel;
-        }
-
         #region MonoBehaviour
 
         private void OnValidate()
