@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using NaughtyAttributes;
 using ObjectPoolers;
 using Quests.Data;
 using Quests.Logic.Core;
@@ -85,24 +86,40 @@ namespace Quests.Logic
         {
             if (quest.IsCompleted.Value)
             {
-                _completedQuests.Add(quest);
+                if (_completedQuests.Contains(quest) == false)
+                {
+                    _completedQuests.Add(quest);
+                }
+
                 _notCompletedQuests.Remove(quest);
 
                 if (quest.TookReward.Value)
                 {
-                    _rewardedQuests.Add(quest);
+                    if (_rewardedQuests.Contains(quest) == false)
+                    {
+                        _rewardedQuests.Add(quest);
+                    }
+
                     _nonRewardedQuests.Remove(quest);
                 }
                 else
                 {
                     _rewardedQuests.Remove(quest);
-                    _nonRewardedQuests.Add(quest);
+
+                    if (_nonRewardedQuests.Contains(quest) == false)
+                    {
+                        _nonRewardedQuests.Add(quest);
+                    }
                 }
             }
             else
             {
                 _completedQuests.Remove(quest);
-                _notCompletedQuests.Add(quest);
+
+                if (_notCompletedQuests.Contains(quest) == false)
+                {
+                    _notCompletedQuests.Add(quest);
+                }
                 _rewardedQuests.Remove(quest);
                 _nonRewardedQuests.Remove(quest);
             }
@@ -176,6 +193,21 @@ namespace Quests.Logic
             {
                 possibleQuest.IsCurrentQuest.Value = possibleQuest == quest;
             }
+        }
+
+        [Button()]
+        public void PauseQuests()
+        {
+            StopObservingTotalQuests();
+
+            _currentQuest.Value = null;
+            _currentNonRewardedQuest.Value = null;
+        }
+
+        [Button()]
+        public void ResumeQuests()
+        {
+            StartObservingTotalQuests();
         }
     }
 }

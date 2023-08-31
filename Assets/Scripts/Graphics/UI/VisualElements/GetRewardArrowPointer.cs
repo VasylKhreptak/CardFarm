@@ -85,7 +85,7 @@ namespace Graphics.UI.VisualElements
             bool canShow =
                 _questsManager.RewardedQuests.Count == 0
                 && _newCardPanel.IsActive.Value == false
-                && _getRewardPanel.IsActive.Value == true;
+                && _getRewardPanel.IsActive.Value;
 
             if (canShow)
             {

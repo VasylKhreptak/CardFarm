@@ -83,6 +83,8 @@ namespace Quests.Graphics.VisualElements
                 .Subscribe(_ => UpdatePanelState())
                 .AddTo(_subscriptions);
 
+            _questsManager.CurrentNonRewardedQuest.Subscribe(_ => UpdatePanelState()).AddTo(_subscriptions);
+
             _newCardPanel.IsActive.Subscribe(_ =>
             {
                 UpdatePanelState();
@@ -97,9 +99,7 @@ namespace Quests.Graphics.VisualElements
 
         private void UpdatePanelState()
         {
-            int nonRewardedQuestsCount = _questsManager.NonRewardedQuests.Count;
-
-            if (nonRewardedQuestsCount > 0)
+            if (_questsManager.NonRewardedQuests.Count > 0 && _questsManager.CurrentNonRewardedQuest.Value != null)
             {
                 if (_newCardPanel.IsActive.Value == false && IsEnabled() == false)
                 {
