@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using NaughtyAttributes;
 using TreasureChests.Data;
 using UnityEngine;
@@ -40,7 +41,7 @@ namespace TreasureChests.Graphics.Animations
 
         #endregion
 
-        public void Close()
+        public void Close(Action onComplete = null)
         {
             Stop();
 
@@ -48,10 +49,11 @@ namespace TreasureChests.Graphics.Animations
 
             _sequence
                 .Join(_chestData.ChestHinge.transform.DOLocalRotate(_closedRotation, _closeDuration).SetEase(_closeCurve))
+                .OnComplete(() => onComplete?.Invoke())
                 .Play();
         }
 
-        public void Open()
+        public void Open(Action onComplete = null)
         {
             Stop();
 
@@ -59,6 +61,7 @@ namespace TreasureChests.Graphics.Animations
 
             _sequence
                 .Join(_chestData.ChestHinge.transform.DOLocalRotate(_openedRotation, _openDuration).SetEase(_openCurve))
+                .OnComplete(() => onComplete?.Invoke())
                 .Play();
         }
 

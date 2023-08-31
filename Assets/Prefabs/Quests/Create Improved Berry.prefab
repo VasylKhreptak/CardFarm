@@ -217,6 +217,7 @@ MonoBehaviour:
   IsCompleted:
     value: 0
   Tutorial: {fileID: 4787954204545992841}
+  LevelUpAsReward: 1
   IsCurrentQuest:
     value: 0
 --- !u!114 &2421308040907752950

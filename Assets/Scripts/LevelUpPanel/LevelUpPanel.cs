@@ -1,13 +1,13 @@
 ﻿using System;
 using Data.Player.Core;
 using Data.Player.Experience;
-using Graphics.Animations.LevelUpPanelAnimations;
+using LevelUpPanel.Graphics.Animations;
 using NaughtyAttributes;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Graphics.UI.Panels
+namespace LevelUpPanel
 {
     public class LevelUpPanel : MonoBehaviour
     {
@@ -51,7 +51,7 @@ namespace Graphics.UI.Panels
                 .Where(x => x[1] > x[0])
                 .Subscribe(_ =>
                 {
-
+                    Show();
                 });
         }
 
@@ -61,16 +61,16 @@ namespace Graphics.UI.Panels
         }
 
         [Button()]
-        private void Show()
+        public void Show()
         {
             Enable();
             _showAnimation.Play();
         }
 
         [Button()]
-        private void Hide()
+        public void Hide()
         {
-            Disable();
+            _hideAnimation.Play(Disable);
         }
 
         private void Enable() => _panelObject.SetActive(true);

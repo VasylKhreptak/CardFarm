@@ -15,7 +15,7 @@ using Zenject;
 
 namespace Quests.Graphics.VisualElements
 {
-    public class QuestRewardButton : MonoBehaviour
+    public class QuestRewardSpawner : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private Button _button;
@@ -90,7 +90,7 @@ namespace Quests.Graphics.VisualElements
                     h => _questShowAnimation.OnPlay += h,
                     h => _questShowAnimation.OnPlay -= h)
                 .Subscribe(_ => SpawnReward(targetQuest));
-            
+
             MarkAsTookReward(targetQuest);
 
         }
@@ -100,9 +100,9 @@ namespace Quests.Graphics.VisualElements
             SpawnCardReward(questData);
 
             GainExperience(questData);
-            
+
             PlayParticle();
-            
+
             MarkAsTookReward(questData);
 
             _questShowAnimationSubscription?.Dispose();
@@ -138,7 +138,14 @@ namespace Quests.Graphics.VisualElements
 
         private void GainExperience(QuestData questData)
         {
-            _experienceData.TotalExperience.Value += questData.Reward.Experience;
+            if (questData.LevelUpAsReward)
+            {
+                _experienceData.TotalExperience.Value += _experienceData.ExperienceToNextLevel.Value;
+            }
+            else
+            {
+                _experienceData.TotalExperience.Value += questData.Reward.Experience;
+            }
         }
     }
 }

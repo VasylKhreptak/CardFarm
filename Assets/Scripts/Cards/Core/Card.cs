@@ -66,5 +66,6 @@ namespace Cards.Core
         ResourceChest = 62,
         ImprovedBerry = 63,
         BerryProcessingBuilding = 64,
+        ArchitecturePattern = 65,
     }
 }

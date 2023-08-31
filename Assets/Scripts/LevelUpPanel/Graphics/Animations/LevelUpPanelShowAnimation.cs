@@ -3,7 +3,7 @@ using DG.Tweening;
 using TreasureChests.Data;
 using UnityEngine;
 
-namespace Graphics.Animations.LevelUpPanelAnimations
+namespace LevelUpPanel.Graphics.Animations
 {
     public class LevelUpPanelShowAnimation : MonoBehaviour
     {

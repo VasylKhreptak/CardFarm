@@ -3,6 +3,7 @@ using Quests.Logic.Core;
 using Quests.Logic.Tutorials.Core;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Quests.Data
@@ -21,6 +22,8 @@ namespace Quests.Data
         public QuestTutorial Tutorial;
         public QuestCallbacks Callbacks = new QuestCallbacks();
 
+        public bool LevelUpAsReward = false;
+        
         public BoolReactiveProperty IsCurrentQuest = new BoolReactiveProperty();
 
         #region MonoBehaviour

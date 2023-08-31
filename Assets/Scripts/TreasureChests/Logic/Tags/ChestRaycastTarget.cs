@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TreasureChests.Data;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace TreasureChests.Logic.Tags
@@ -7,8 +8,10 @@ namespace TreasureChests.Logic.Tags
     {
         [Header("References")]
         [SerializeField] private UIBehaviour _uiBehaviour;
+        [SerializeField] private TreasureChestData _chestData;
 
         public UIBehaviour UIBehaviour => _uiBehaviour;
+        public TreasureChestData ChestData => _chestData;
 
         #region MonoBehaviour
 
