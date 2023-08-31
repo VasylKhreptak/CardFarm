@@ -64,5 +64,7 @@ namespace Cards.Core
         Sushi = 60,
         TamagoSushi = 61,
         ResourceChest = 62,
+        ImprovedBerry = 63,
+        BerryProcessingBuilding = 64,
     }
 }

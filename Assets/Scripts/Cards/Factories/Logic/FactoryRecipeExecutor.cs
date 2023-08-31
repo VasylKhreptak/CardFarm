@@ -92,12 +92,15 @@ namespace Cards.Factories.Logic
 
         private void OnDrawnCheckmark()
         {
+            if (_cardData.CurrentFactoryRecipe.Value == null) return;
+
             SpawnRecipeResults();
+            
+            TryDecreaseFactoryDurability();
+
             TryClearRecipeResources();
 
             ExecuteActiveRecipe();
-
-            TryDecreaseDurability();
         }
 
 
@@ -118,7 +121,7 @@ namespace Cards.Factories.Logic
             OnCurrentRecipeChanged(_cardData.CurrentFactoryRecipe.Value);
         }
 
-        private void TryDecreaseDurability()
+        private void TryDecreaseFactoryDurability()
         {
             if (_cardData.IsBreakable)
             {
@@ -129,7 +132,7 @@ namespace Cards.Factories.Logic
         private void SpawnRecipeResults()
         {
             CardData previousCard = null;
-            
+
             for (int i = 0; i < _cardsToSpawn.Count; i++)
             {
                 CardData spawnedCard = SpawnRecipeResult(_cardsToSpawn[i]);

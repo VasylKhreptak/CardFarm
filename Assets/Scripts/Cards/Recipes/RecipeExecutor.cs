@@ -10,7 +10,6 @@ using Extensions;
 using Graphics.UI.Particles.Coins.Logic;
 using ProgressLogic.Core;
 using Providers.Graphics;
-using Providers.Graphics.UI;
 using ScriptableObjects.Scripts.Cards.Recipes;
 using UniRx;
 using UnityEngine;
@@ -36,21 +35,15 @@ namespace Cards.Recipes
         private CardSpawner _cardSpawner;
         private CoinsCollector _coinsCollector;
         private TemporaryDataStorage _temporaryDataStorage;
-        private Canvas _canvas;
-        private RectTransform _canvasRectTransform;
 
         [Inject]
         private void Constructor(CardSpawner cardSpawner,
             CoinsCollector coinsCollector,
-            CameraProvider cameraProvider,
-            TemporaryDataStorage temporaryDataStorage,
-            CanvasProvider canvasProvider)
+            TemporaryDataStorage temporaryDataStorage)
         {
             _cardSpawner = cardSpawner;
             _coinsCollector = coinsCollector;
             _temporaryDataStorage = temporaryDataStorage;
-            _canvas = canvasProvider.Value;
-            _canvasRectTransform = _canvas.GetComponent<RectTransform>();
         }
 
         #region MonoBehaviour
@@ -130,6 +123,8 @@ namespace Cards.Recipes
 
         private void OnDrawnCheckmark()
         {
+            if (_cardData.CurrentRecipe.Value == null) return;
+
             SpawnRecipeResult();
             DecreaseResourcesDurability();
         }
@@ -140,8 +135,7 @@ namespace Cards.Recipes
 
             if (_cardToSpawn == Card.Coin)
             {
-                Vector3 center = ConvertPoint(_cardData.transform.position);
-                _coinsCollector.Collect(1, center, 0f);
+                _coinsCollector.Collect(1, _cardData.GroupCenter.Value, 0f);
             }
             else
             {
@@ -181,6 +175,7 @@ namespace Cards.Recipes
         {
             CardData firstWorker = GetFirstWorker();
             CardData lowestTargetResource = GetLastResource();
+
             List<CardData> resourcesToRemove = GetResourcesToRemove();
 
             int brokenResourcesCount = 0;
@@ -287,11 +282,6 @@ namespace Cards.Recipes
             {
                 TryStartCurrentRecipe();
             }
-        }
-
-        private Vector3 ConvertPoint(Vector3 point)
-        {
-            return RectTransformUtilityExtensions.ProjectPointOnCameraCanvas(_canvas, _canvasRectTransform, point);
         }
     }
 }
