@@ -111,6 +111,7 @@ namespace Shop.Buttons
         {
             _wasHighlighted = false;
             _opened = false;
+            _fadeHighlighter.StopHighlighting();
             StartObservingQuests();
         }
     }

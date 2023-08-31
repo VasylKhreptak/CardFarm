@@ -22,5 +22,6 @@
         RestartRecipe = 18,
         Collect4Berries = 19,
         MakeBerryProcessingBuilding = 20,
+        CreateImprovedBerry = 21,
     }
 }
