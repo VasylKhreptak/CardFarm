@@ -3216,6 +3216,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 915834504}
     m_Modifications:
+    - target: {fileID: 12736339751539080, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
+        type: 3}
+      propertyPath: _targetCard
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1068017984791402828, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
         type: 3}
       propertyPath: m_Color.b
@@ -3344,6 +3349,11 @@ PrefabInstance:
     - target: {fileID: 2539338591838351775, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
         type: 3}
       propertyPath: m_text
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607094390756917603, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
+        type: 3}
+      propertyPath: _price
       value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10161,6 +10171,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 915834504}
     m_Modifications:
+    - target: {fileID: 12736339751539080, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
+        type: 3}
+      propertyPath: _targetCard
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 763921770638975337, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
         type: 3}
       propertyPath: m_Sprite
@@ -17234,7 +17249,8 @@ MonoBehaviour:
     autoExpand: 1
     maxExpandSize: 100
   - pool: 65
-    prefab: {fileID: 0}
+    prefab: {fileID: 6712093262863462423, guid: 120a5c7a10ee8e0498b59a8cefa9ff0a,
+      type: 3}
     initialSize: 0
     autoExpand: 1
     maxExpandSize: 100
@@ -22873,6 +22889,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 915834504}
     m_Modifications:
+    - target: {fileID: 12736339751539080, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
+        type: 3}
+      propertyPath: _targetCard
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 763921770638975337, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
         type: 3}
       propertyPath: m_Sprite
@@ -22988,6 +23009,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShopItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607094390756917603, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
+        type: 3}
+      propertyPath: _price
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b, type: 3}

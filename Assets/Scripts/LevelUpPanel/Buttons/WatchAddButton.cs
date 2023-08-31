@@ -25,6 +25,8 @@ namespace LevelUpPanel.Buttons
         [SerializeField] private float _endAlpha;
         [SerializeField] private AnimationCurve _fadeCurve;
 
+        private bool _watchedAd = false;
+
         private Sequence _sequence;
 
         public event Action OnClicked;
@@ -48,6 +50,8 @@ namespace LevelUpPanel.Buttons
             _button.onClick.RemoveListener(OnCLicked);
 
             ResetValue();
+
+            _watchedAd = false;
         }
 
         #endregion
@@ -97,8 +101,12 @@ namespace LevelUpPanel.Buttons
 
         private void OnCLicked()
         {
+            if (_watchedAd) return;
+
             OnClicked?.Invoke();
             OnWatchedAd?.Invoke();
+
+            _watchedAd = true;
         }
     }
 }

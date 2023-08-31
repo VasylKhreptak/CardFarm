@@ -67,11 +67,14 @@ MonoBehaviour:
       Quantity: 1
     - Card: 6
       Quantity: 3
+    - Card: 65
+      Quantity: 1
   Progress:
     value: 0
   IsCompleted:
     value: 0
   Tutorial: {fileID: 0}
+  LevelUpAsReward: 0
   IsCurrentQuest:
     value: 0
 --- !u!114 &2421308040907752950
@@ -121,6 +124,8 @@ MonoBehaviour:
     Quantity: 1
   - Card: 6
     Quantity: 3
+  - Card: 65
+    Quantity: 1
   _outlineShowTime: 2
   _jumpsCount: 3
   _minAverageDistance: 2.28

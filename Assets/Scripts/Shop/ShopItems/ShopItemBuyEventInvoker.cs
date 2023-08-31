@@ -26,12 +26,12 @@ namespace Shop.ShopItems
 
         #region MonoBehaviour
 
-        private void OnEnable()
+        private void Awake()
         {
             _button.onClick.AddListener(OnClicked);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _button.onClick.RemoveListener(OnClicked);
         }

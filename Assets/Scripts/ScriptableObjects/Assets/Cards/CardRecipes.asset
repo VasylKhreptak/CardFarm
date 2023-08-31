@@ -239,7 +239,7 @@ MonoBehaviour:
     UsePseudoRandom: 0
     FirstCard: 0
     EnergyCost: 1
-  - Resources: 060000000600000006000000
+  - Resources: 06000000060000000600000041000000
     Workers: 00000000
     Cooldown: 10
     MinResultCount: 1

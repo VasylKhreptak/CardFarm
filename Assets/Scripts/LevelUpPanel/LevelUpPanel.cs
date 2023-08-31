@@ -1,6 +1,7 @@
 ﻿using System;
 using Data.Player.Core;
 using Data.Player.Experience;
+using LevelUpPanel.Buttons;
 using LevelUpPanel.Graphics.Animations;
 using NaughtyAttributes;
 using UniRx;
@@ -13,6 +14,8 @@ namespace LevelUpPanel
     {
         [Header("References")]
         [SerializeField] private GameObject _panelObject;
+        [SerializeField] private WatchAddButton _watchAddButton;
+        [SerializeField] private NoThanksButton _noThanksButton;
 
         [Header("Preferences")]
         [SerializeField] private LevelUpPanelShowAnimation _showAnimation;
@@ -33,11 +36,15 @@ namespace LevelUpPanel
         private void Awake()
         {
             StartObservingLevelUp();
+
+            _watchAddButton.OnWatchedAd += OnWatchedAd;
         }
 
         private void OnDestroy()
         {
             StopObservingLevelUp();
+
+            _watchAddButton.OnWatchedAd -= OnWatchedAd;
         }
 
         #endregion
@@ -76,5 +83,10 @@ namespace LevelUpPanel
         private void Enable() => _panelObject.SetActive(true);
 
         private void Disable() => _panelObject.SetActive(false);
+
+        private void OnWatchedAd()
+        {
+
+        }
     }
 }
