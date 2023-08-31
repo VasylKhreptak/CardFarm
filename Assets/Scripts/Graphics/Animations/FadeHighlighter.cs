@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Graphics.Animations
@@ -25,12 +26,12 @@ namespace Graphics.Animations
 
         private void OnDisable()
         {
-            KillSequence();
-            SetAlpha(_minAlpha);
+            StopHighlighting();
         }
 
         #endregion
 
+        [Button()]
         public void StartHighlighting()
         {
             _canvasGroup.gameObject.SetActive(true);
@@ -46,6 +47,7 @@ namespace Graphics.Animations
                 .Play();
         }
 
+        [Button()]
         public void StopHighlighting()
         {
             KillSequence();
