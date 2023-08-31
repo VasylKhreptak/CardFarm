@@ -18345,6 +18345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _experienceOnDayPassed: 100
+  _targetQuest: 21
 --- !u!1 &1585800379
 GameObject:
   m_ObjectHideFlags: 0
