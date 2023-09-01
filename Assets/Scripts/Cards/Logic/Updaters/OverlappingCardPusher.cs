@@ -4,17 +4,15 @@ using Cards.Data;
 using Constraints.CardTable;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Cards.Logic.Updaters
 {
-    public class CardPusher : MonoBehaviour, IValidatable
+    public class OverlappingCardPusher : MonoBehaviour, IValidatable
     {
         [Header("References")]
         [SerializeField] private CardData _cardData;
 
-        [FormerlySerializedAs("_pushSpeedAmplifier")]
         [Header("Preferences")]
         [SerializeField] private float _pushSpeed = 1f;
 

@@ -15,6 +15,7 @@ using ScriptableObjects.Scripts.Cards.ReproductionRecipes;
 using Tags.Cards;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Cards.Data
@@ -111,6 +112,8 @@ namespace Cards.Data
         public List<CardData> GroupCards = new List<CardData>();
 
         public BoolReactiveProperty IsPushable = new BoolReactiveProperty(true);
+
+        public BoolReactiveProperty IsPushedByAnyBottomCard = new BoolReactiveProperty(true);
 
         public Transform BottomCardFollowPoint;
 
