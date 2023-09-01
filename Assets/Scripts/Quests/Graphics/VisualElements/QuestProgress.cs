@@ -12,6 +12,11 @@ namespace Quests.Graphics.VisualElements
     {
         [Header("References")]
         [SerializeField] private Slider _slider;
+        [SerializeField] private Image _fillImage;
+
+        [Header("Color Preferences")]
+        [SerializeField] private Color _baseColor = Color.green;
+        [SerializeField] private Color _filledColor = Color.yellow;
 
         private CompositeDisposable _questSubscriptions = new CompositeDisposable();
         private IDisposable _progressSubscription;
@@ -85,6 +90,8 @@ namespace Quests.Graphics.VisualElements
         private void SetProgress(float progress)
         {
             _slider.value = progress;
+
+            _fillImage.color = Mathf.Approximately(_slider.value, 1f) ? _filledColor : _baseColor;
         }
     }
 }

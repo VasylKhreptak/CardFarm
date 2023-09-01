@@ -9449,6 +9449,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 881102860}
+  _fillImage: {fileID: 1710359545}
+  _baseColor: {r: 0, g: 1, b: 0, a: 1}
+  _filledColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &895879491
 GameObject:
   m_ObjectHideFlags: 0
@@ -13779,6 +13782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 1248090684}
   _particleSystem: {fileID: 8368522799231203194}
+  _spawnRewardDelay: 0.1
 --- !u!1 &1252726001
 GameObject:
   m_ObjectHideFlags: 0
@@ -20043,7 +20047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.972549, g: 0.58431375, b: 0.11764706, a: 1}
+  m_Color: {r: 0.23137255, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
