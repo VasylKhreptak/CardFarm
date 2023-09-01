@@ -139,10 +139,10 @@ namespace Cards.Recipes
             }
             else
             {
-                _cardSpawner.SpawnAndMove(_cardToSpawn, spawnPosition);
-            }
+                CardData spawnedCard = _cardSpawner.SpawnAndMove(_cardToSpawn, spawnPosition);
 
-            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(_cardToSpawn);
+                _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(spawnedCard);
+            }
         }
 
         public Card GetCardToSpawn()

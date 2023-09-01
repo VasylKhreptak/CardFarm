@@ -66,9 +66,9 @@ namespace Quests.Logic.QuestObservers.Core
             _subscribedCards.Clear();
         }
 
-        private void OnSpawnedRecipeResult(Card card)
+        private void OnSpawnedRecipeResult(CardData cardData)
         {
-            if (card == _recipeResult)
+            if (cardData.Card.Value == _recipeResult)
             {
                 MarkQuestAsCompletedByAction();
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Cards.Data;
 using Quests.Logic.Core;
 using Quests.Logic.Tutorials.Core;
 using UniRx;
@@ -22,8 +23,10 @@ namespace Quests.Data
         public QuestTutorial Tutorial;
         public QuestCallbacks Callbacks = new QuestCallbacks();
 
+        public CardData ResultedCard;
+
         public bool LevelUpAsReward = false;
-        
+
         public BoolReactiveProperty IsCurrentQuest = new BoolReactiveProperty();
 
         #region MonoBehaviour

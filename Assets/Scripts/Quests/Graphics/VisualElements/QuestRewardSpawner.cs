@@ -8,7 +8,6 @@ using Data.Player.Experience;
 using Graphics.Animations.Quests.QuestPanel;
 using Graphics.UI.Particles.Coins.Logic;
 using Quests.Data;
-using Quests.Graphics.VisualElements.Recipe.Core;
 using Quests.Logic;
 using UniRx;
 using UnityEngine;
@@ -25,19 +24,14 @@ namespace Quests.Graphics.VisualElements
         [Header("Particle Preferences")]
         [SerializeField] private ParticleSystem _particleSystem;
 
-        [Header("Preferences")]
-        [SerializeField] private float _spawnRewardDelay = 0.1f;
-
         private IDisposable _clickSubscription;
         private IDisposable _questShowAnimationSubscription;
-        private IDisposable _delaySubscription;
 
         private QuestsManager _questsManager;
         private CoinsCollector _coinsCollector;
         private CardSpawner _cardSpawner;
         private ExperienceData _experienceData;
         private QuestShowAnimation _questShowAnimation;
-        private QuestRecipeDrawer _questRecipeDrawer;
         private PlayingAreaTableBounds _playingAreaTableBounds;
 
         [Inject]
@@ -46,7 +40,6 @@ namespace Quests.Graphics.VisualElements
             CardSpawner cardSpawner,
             PlayerData playerData,
             QuestShowAnimation questShowAnimation,
-            QuestRecipeDrawer questRecipeDrawer,
             PlayingAreaTableBounds playingAreaTableBounds)
         {
             _questsManager = questsManager;
@@ -54,7 +47,6 @@ namespace Quests.Graphics.VisualElements
             _cardSpawner = cardSpawner;
             _experienceData = playerData.ExperienceData;
             _questShowAnimation = questShowAnimation;
-            _questRecipeDrawer = questRecipeDrawer;
             _playingAreaTableBounds = playingAreaTableBounds;
         }
 
@@ -75,7 +67,6 @@ namespace Quests.Graphics.VisualElements
             StopObservingClick();
 
             _questShowAnimationSubscription?.Dispose();
-            _delaySubscription?.Dispose();
         }
 
         #endregion
@@ -109,21 +100,15 @@ namespace Quests.Graphics.VisualElements
 
         private void SpawnReward(QuestData questData)
         {
-            _delaySubscription?.Dispose();
-            _delaySubscription = Observable
-                .Timer(TimeSpan.FromSeconds(_spawnRewardDelay))
-                .Subscribe(_ =>
-                {
-                    SpawnCardReward(questData);
+            SpawnCardReward(questData);
 
-                    GainExperience(questData);
+            GainExperience(questData);
 
-                    PlayParticle();
+            PlayParticle();
 
-                    MarkAsTookReward(questData);
+            MarkAsTookReward(questData);
 
-                    _questShowAnimationSubscription?.Dispose();
-                });
+            _questShowAnimationSubscription?.Dispose();
         }
 
         private void SpawnCardReward(QuestData questData)
@@ -132,13 +117,13 @@ namespace Quests.Graphics.VisualElements
 
             Vector3 coinSpawnPosition;
 
-            if (_questRecipeDrawer.GetResultedCardTransform() != null)
+            if (questData.ResultedCard != null)
             {
-                coinSpawnPosition = _questRecipeDrawer.GetResultedCardTransform().position;
+                coinSpawnPosition = questData.ResultedCard.transform.position;
             }
             else
             {
-                coinSpawnPosition = _questShowAnimation.transform.position;
+                coinSpawnPosition = _playingAreaTableBounds.transform.position;
             }
 
             Vector3 cardSpawnPosition = _playingAreaTableBounds.transform.position;

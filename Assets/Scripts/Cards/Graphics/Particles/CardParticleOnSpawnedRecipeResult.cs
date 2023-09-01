@@ -47,7 +47,7 @@ namespace Cards.Graphics.Particles
 
         #endregion
 
-        private void OnSpawnedRecipeResult(Card card) => SpawnParticle();
+        private void OnSpawnedRecipeResult(CardData card) => SpawnParticle();
 
         private void SpawnParticle()
         {

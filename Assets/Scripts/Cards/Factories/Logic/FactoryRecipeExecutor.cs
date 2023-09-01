@@ -152,7 +152,7 @@ namespace Cards.Factories.Logic
 
             CardData spawnedCard = _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
-            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
+            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(spawnedCard);
 
             return spawnedCard;
         }
@@ -161,7 +161,7 @@ namespace Cards.Factories.Logic
         {
             CardData spawnedCard = _cardSpawner.SpawnAndMove(card, _cardData.transform.position);
 
-            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(card);
+            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(spawnedCard);
 
             return spawnedCard;
         }

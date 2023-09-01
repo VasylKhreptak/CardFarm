@@ -180,9 +180,9 @@ namespace Quests.Logic.QuestObservers.Progress
             cardData.Callbacks.onSpawnedRecipeResult -= OnSpawnedRecipeResult;
         }
 
-        private void OnSpawnedRecipeResult(Card card)
+        private void OnSpawnedRecipeResult(CardData cardData)
         {
-            if (card == _recipeResult)
+            if (cardData.Card.Value == _recipeResult)
             {
                 _currentQuantity++;
                 _filledProgressPart = false;

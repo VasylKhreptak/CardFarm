@@ -100,14 +100,14 @@ namespace Cards.ResourceNodes.Core.Logic
         {
             Card cardToSpawn = GetCardToSpawn();
 
-            _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
+            CardData spawnedCard = _cardSpawner.SpawnAndMove(cardToSpawn, _cardData.transform.position);
 
             if (_cardData.IsBreakable)
             {
                 _cardData.Durability.Value--;
             }
 
-            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(cardToSpawn);
+            _cardData.Callbacks.onSpawnedRecipeResult?.Invoke(spawnedCard);
         }
 
         private Card GetCardToSpawn()

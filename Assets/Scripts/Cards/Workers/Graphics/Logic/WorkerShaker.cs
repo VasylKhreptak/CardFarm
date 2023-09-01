@@ -78,7 +78,7 @@ namespace Cards.Workers.Graphics.Logic
             _previousFirstGroupCard.Callbacks.onSpawnedRecipeResult -= OnSpawnedRecipeResult;
         }
 
-        private void OnSpawnedRecipeResult(Card card)
+        private void OnSpawnedRecipeResult(CardData cardData)
         {
             Shake();
         }

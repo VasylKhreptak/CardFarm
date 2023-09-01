@@ -47,7 +47,7 @@ namespace Cards.Logic
 
         #endregion
 
-        private void OnSpawnedRecipeResult(Card card) => GainExperience();
+        private void OnSpawnedRecipeResult(CardData card) => GainExperience();
 
         private void GainExperience()
         {

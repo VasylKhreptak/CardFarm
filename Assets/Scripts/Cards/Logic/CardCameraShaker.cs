@@ -1,5 +1,4 @@
-﻿using Cards.Core;
-using Cards.Data;
+﻿using Cards.Data;
 using Graphics.Animations.Shake.Position;
 using UnityEngine;
 using Zenject;
@@ -43,7 +42,7 @@ namespace Cards.Logic
 
         #endregion
 
-        private void OnSpawnedRecipeResult(Card card) => ShakeCamera();
+        private void OnSpawnedRecipeResult(CardData card) => ShakeCamera();
 
         private void ShakeCamera() => _cameraShakeAnimation.Play();
     }
