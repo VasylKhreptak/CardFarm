@@ -1,4 +1,5 @@
 ﻿using System;
+using Economy;
 using Graphics.UI.Particles.Coins.Logic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,11 +18,13 @@ namespace Shop.ShopItems
         public event Action onBought;
 
         private CoinsSpender _coinsSpender;
+        private CoinsBank _bank;
 
         [Inject]
-        private void Constructor(CoinsSpender coinsSpender)
+        private void Constructor(CoinsSpender coinsSpender, CoinsBank bank)
         {
             _coinsSpender = coinsSpender;
+            _bank = bank;
         }
 
         #region MonoBehaviour
@@ -40,6 +43,8 @@ namespace Shop.ShopItems
 
         private void OnClicked()
         {
+            if (_bank.Value < _price) return;
+
             _coinsSpender.Spend(_price, () => _button.transform.position, onSpentAllCoins: () =>
             {
                 onBought?.Invoke();

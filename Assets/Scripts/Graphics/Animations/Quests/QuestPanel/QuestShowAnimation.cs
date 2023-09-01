@@ -1,6 +1,7 @@
 ﻿using System;
 using DG.Tweening;
 using NaughtyAttributes;
+using UniRx;
 using UnityEngine;
 
 namespace Graphics.Animations.Quests.QuestPanel
@@ -35,9 +36,13 @@ namespace Graphics.Animations.Quests.QuestPanel
         [SerializeField] private AnimationCurve _startFadeCurve;
         [SerializeField] private AnimationCurve _endFadeCurve;
 
+        private BoolReactiveProperty _isInTop = new BoolReactiveProperty(false);
+
         public event Action OnPlay;
         public event Action OnCompleted;
         public event Action OnMovedToShowPosition;
+
+        public IReadOnlyReactiveProperty<bool> IsInTop => _isInTop;
 
         private Sequence _sequence;
 
@@ -52,6 +57,7 @@ namespace Graphics.Animations.Quests.QuestPanel
         private void OnDisable()
         {
             Stop();
+            _isInTop.Value = false;
         }
 
         #endregion
@@ -97,6 +103,8 @@ namespace Graphics.Animations.Quests.QuestPanel
         {
             Stop();
 
+            _isInTop.Value = false;
+
             _rectTransform.anchoredPosition = _startAnchoredPosition;
             _rectTransform.localScale = _startScale;
             _canvasGroup.alpha = _startAlpha;
@@ -112,7 +120,11 @@ namespace Graphics.Animations.Quests.QuestPanel
                 .Append(CreateMoveTween(_endAnchoredPosition, _endAnchoredPositionCurve, _moveToEndDuration))
                 .Join(CreateScaleTween(_endScale, _endScaleCurve, _moveToEndDuration))
                 .Join(CreateFadeTween(_endAlpha, _endFadeCurve, _moveToEndDuration))
-                .OnComplete(() => OnCompleted?.Invoke())
+                .OnComplete(() =>
+                {
+                    OnCompleted?.Invoke();
+                    _isInTop.Value = true;
+                })
                 .Play();
         }
 

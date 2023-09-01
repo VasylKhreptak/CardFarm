@@ -1,4 +1,5 @@
 ﻿using System;
+using Graphics.Animations.Quests.QuestPanel;
 using Quests.Data;
 using Quests.Logic.Tutorials.Core;
 using Runtime.Commands;
@@ -14,21 +15,25 @@ namespace Quests.Logic.Tutorials.Logic
         private CompositeDisposable _questsSubscriptions = new CompositeDisposable();
 
         private IDisposable _isQuestCompletedByActionSubscription;
+        private IDisposable _isQuestInTop;
 
         private QuestTutorial _previousTutorialExecutor;
 
         private QuestsManager _questsManager;
         private GameRestartCommand _gameRestartCommand;
         private StarterCardsSpawner _starterCardsSpawner;
+        private QuestShowAnimation _questShowAnimation;
 
         [Inject]
         private void Constructor(QuestsManager questsManager,
             GameRestartCommand gameRestartCommand,
-            StarterCardsSpawner starterCardsSpawner)
+            StarterCardsSpawner starterCardsSpawner,
+            QuestShowAnimation questShowAnimation)
         {
             _questsManager = questsManager;
             _gameRestartCommand = gameRestartCommand;
             _starterCardsSpawner = starterCardsSpawner;
+            _questShowAnimation = questShowAnimation;
         }
 
         #region MonoBehaviour
@@ -44,6 +49,7 @@ namespace Quests.Logic.Tutorials.Logic
         {
             StopObserving();
             StopTutorial();
+            _isQuestInTop?.Dispose();
         }
 
         private void OnDestroy()
@@ -68,13 +74,18 @@ namespace Quests.Logic.Tutorials.Logic
 
         private void OnQuestsUpdated()
         {
+            _isQuestInTop?.Dispose();
+            
             QuestData currentQuest = _questsManager.CurrentQuest.Value;
 
             _isQuestCompletedByActionSubscription?.Dispose();
 
             if (currentQuest != null && _questsManager.CurrentNonRewardedQuest.Value == null)
             {
-                StartTutorial();
+                _isQuestInTop = _questShowAnimation.IsInTop.Where(x => x).Subscribe(_ =>
+                {
+                    StartTutorial();
+                });
 
                 _isQuestCompletedByActionSubscription = currentQuest.IsCompletedByAction.Where(x => x).Subscribe(isCompleted =>
                 {
