@@ -1,5 +1,6 @@
 ﻿using System;
 using UniRx;
+using UnityEngine.Serialization;
 
 namespace Data.Player.Experience
 {
@@ -11,6 +12,6 @@ namespace Data.Player.Experience
         public IntReactiveProperty TotalExperience = new IntReactiveProperty(110);
         public IntReactiveProperty MaxExperience = new IntReactiveProperty(110);
         public IntReactiveProperty ExperienceLevel = new IntReactiveProperty(1);
-        public FloatReactiveProperty FillAmount = new FloatReactiveProperty();
+        public FloatReactiveProperty Progress = new FloatReactiveProperty();
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Extensions;
 using Graphics.Animations.Quests.QuestPanel;
 using Quests.Data;
@@ -29,8 +28,6 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         private QuestRecipeCardDataHolder _currentRecipeResultCard;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
-
-        public Transform ResultedCardTransform => _currentRecipeResultCard.transform;
 
         private QuestsManager _questsManager;
         private DiContainer _container;
@@ -156,6 +153,13 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             if (_currentRecipeResultCard == null) return;
 
             _currentRecipeResultCard.ScalePunchAnimation.Play();
+        }
+
+        public Transform GetResultedCardTransform()
+        {
+            if (_currentRecipeResultCard == null) return null;
+
+            return _currentRecipeResultCard.transform;
         }
     }
 }

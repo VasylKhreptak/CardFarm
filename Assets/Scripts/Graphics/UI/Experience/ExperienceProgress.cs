@@ -39,7 +39,7 @@ namespace Graphics.UI.Experience
 
         private void OnEnable()
         {
-            SetSliderValue(_experienceData.FillAmount.Value);
+            SetSliderValue(_experienceData.Progress.Value);
             StartObserving();
         }
 
@@ -54,7 +54,7 @@ namespace Graphics.UI.Experience
         private void StartObserving()
         {
             StopObserving();
-            _fillAmountSubscription = _experienceData.FillAmount
+            _fillAmountSubscription = _experienceData.Progress
                 .Subscribe(SetSliderValueSmooth);
         }
 

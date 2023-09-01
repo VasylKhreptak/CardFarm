@@ -81,12 +81,19 @@ namespace Data.Player.Experience.Logic
             int maxExperience = _experienceData.MaxExperience.Value;
             int totalExperience = _experienceData.TotalExperience.Value;
 
+            if (totalExperience >= maxExperience * (_experienceData.ExperienceLevel.Value + 1))
+            {
+                _experienceData.Progress.Value = 1f;
+
+            }
+
             _experienceData.Experience.Value = totalExperience % maxExperience;
+
             _experienceData.ExperienceLevel.Value = totalExperience / maxExperience;
 
             _experienceData.ExperienceToNextLevel.Value = maxExperience - _experienceData.Experience.Value;
 
-            _experienceData.FillAmount.Value = (float)_experienceData.Experience.Value / _experienceData.MaxExperience.Value;
+            _experienceData.Progress.Value = (float)_experienceData.Experience.Value / _experienceData.MaxExperience.Value;
         }
 
         [Button]

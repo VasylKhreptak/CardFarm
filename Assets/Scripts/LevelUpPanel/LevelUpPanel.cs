@@ -1,11 +1,9 @@
 ﻿using System;
-using Data.Player.Core;
-using Data.Player.Experience;
+using Graphics.UI.Experience.Progress;
 using LevelUpPanel.Graphics.Animations;
 using NaughtyAttributes;
 using UniRx;
 using UnityEngine;
-using Zenject;
 
 namespace LevelUpPanel
 {
@@ -13,56 +11,39 @@ namespace LevelUpPanel
     {
         [Header("References")]
         [SerializeField] private GameObject _panelObject;
+        [SerializeField] private UpperExperienceProgress _upperExperienceProgress;
 
         [Header("Preferences")]
         [SerializeField] private LevelUpPanelShowAnimation _showAnimation;
         [SerializeField] private LevelUpPanelHideAnimation _hideAnimation;
-        [SerializeField] private float _showDelayAfterLevelUp = 1f;
 
-        private IDisposable _levelUpSubscription;
         private IDisposable _delaySubscription;
-
-        private ExperienceData _experienceData;
-
-        [Inject]
-        private void Constructor(PlayerData playerData)
-        {
-            _experienceData = playerData.ExperienceData;
-        }
 
         #region MonoBehaviour
 
         private void Awake()
         {
-            StartObservingLevelUp();
+            StartObservingProgress();
         }
 
         private void OnDestroy()
         {
-            StopObservingLevelUp();
+            StopObservingProgress();
             _delaySubscription?.Dispose();
         }
 
         #endregion
 
-        private void StartObservingLevelUp()
+        private void StartObservingProgress()
         {
-            StopObservingLevelUp();
+            StopObservingProgress();
 
-            _levelUpSubscription = _experienceData.ExperienceLevel
-                .Buffer(2, 1)
-                .Where(x => x[1] > x[0])
-                .Subscribe(_ =>
-                {
-                    _delaySubscription?.Dispose();
-                    _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(_showDelayAfterLevelUp))
-                        .Subscribe(_ => Show());
-                });
+            _upperExperienceProgress.OnFilled += Show;
         }
 
-        private void StopObservingLevelUp()
+        private void StopObservingProgress()
         {
-            _levelUpSubscription?.Dispose();
+            _upperExperienceProgress.OnFilled -= Show;
         }
 
         [Button()]

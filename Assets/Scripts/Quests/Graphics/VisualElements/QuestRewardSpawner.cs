@@ -132,9 +132,9 @@ namespace Quests.Graphics.VisualElements
 
             Vector3 coinSpawnPosition;
 
-            if (_questRecipeDrawer.ResultedCardTransform != null)
+            if (_questRecipeDrawer.GetResultedCardTransform() != null)
             {
-                coinSpawnPosition = _questRecipeDrawer.ResultedCardTransform.position;
+                coinSpawnPosition = _questRecipeDrawer.GetResultedCardTransform().position;
             }
             else
             {
