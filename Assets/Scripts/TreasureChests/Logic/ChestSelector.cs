@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LevelUpPanel.Buttons;
 using TreasureChests.UI;
@@ -43,6 +44,11 @@ namespace TreasureChests.Logic
             _uiChests ??= GetComponentsInChildren<UITreasureChestData>().ToList();
         }
 
+        private void Awake()
+        {
+            _noThanksButton.onClicked += OnCLickedOnNoThanksButton;
+        }
+
         private void OnEnable()
         {
             _currentMaxChestsToOpen = _baseOpenedChestsCount;
@@ -59,6 +65,11 @@ namespace TreasureChests.Logic
             _watchAdButton.OnWatchedAd -= OnWatchedAd;
             _watchedAd = false;
             _openedAllChests = false;
+        }
+
+        private void OnDestroy()
+        {
+            OnCLickedOnNoThanksButton();
         }
 
         #endregion
@@ -158,6 +169,22 @@ namespace TreasureChests.Logic
         {
             // uiChest.ChestData.ScalePressAnimation.Stop();
             // uiChest.ChestData.ScaleReleaseAnimation.PlayForwardImmediate();
+        }
+
+        private void OnCLickedOnNoThanksButton()
+        {
+            _watchAdButton.Hide();
+            _noThanksButton.Hide();
+
+            _openedAllChests = true;
+
+            _levelUpPanel.Hide(0.5f, () =>
+            {
+                foreach (var uiChest in _uiChests)
+                {
+                    uiChest.TreasureController.SpawnTreasure();
+                }
+            });
         }
     }
 }

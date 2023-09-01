@@ -14,6 +14,8 @@ namespace LevelUpPanel.Buttons
 
         private IDisposable _delaySubscription;
 
+        public event Action onClicked;
+
         private LevelUpPanel _levelUpPanel;
 
         [Inject]
@@ -55,6 +57,7 @@ namespace LevelUpPanel.Buttons
         {
             _delaySubscription?.Dispose();
             _levelUpPanel.Hide();
+            onClicked?.Invoke();
         }
     }
 }
