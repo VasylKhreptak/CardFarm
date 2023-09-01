@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CameraManagement.CameraAim.Core;
 using Cards.Data;
 using CardsTable.ManualCardSelectors;
 using Data.Cards.Core;
@@ -43,17 +44,20 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private GameRestartCommand _gameRestartCommand;
         private CardsData _cardsData;
         private Camera _camera;
+        private CameraAimer _cameraAimer;
 
         [Inject]
         private void Constructor(InvestigatedCardsObserver investigatedCardsObserver,
             GameRestartCommand gameRestartCommand,
             CameraProvider cameraProvider,
-            CardsData cardsData)
+            CardsData cardsData,
+            CameraAimer cameraAimer)
         {
             _investigatedCardsObserver = investigatedCardsObserver;
             _gameRestartCommand = gameRestartCommand;
             _camera = cameraProvider.Value;
             _cardsData = cardsData;
+            _cameraAimer = cameraAimer;
         }
 
         #region MonoBehaviour
@@ -95,8 +99,6 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         {
             _isActive.Value = true;
 
-            _investigatedCard.IsPushable.Value = false;
-
             _delaySubscription?.Dispose();
             _delaySubscription = Observable.Timer(TimeSpan.FromSeconds(delay)).Subscribe(_ =>
             {
@@ -107,6 +109,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
                 Enable();
 
                 onPlay?.Invoke();
+                _cameraAimer.StopAiming();
 
                 _showAnimation.Play(GetCardAnchoredPosition(), _investigatedCard, () =>
                 {
@@ -164,6 +167,7 @@ namespace UnlockedCardPanel.Graphics.VisualElements
 
             _investigatedCard = cardData;
             _initialInvestigatedCardPosition = cardData.transform.position;
+            cardData.IsPushable.Value = false;
 
             Show(delay, onStart);
         }

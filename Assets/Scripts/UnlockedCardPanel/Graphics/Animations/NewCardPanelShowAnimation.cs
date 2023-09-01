@@ -114,6 +114,7 @@ namespace UnlockedCardPanel.Graphics.Animations
                     cardTransform.localScale = Vector3.one * Mathf.Abs(_targetCardTransform.localScale.x);
                     cardTransform.localPosition = _targetCardTransform.localPosition;
                     cardTransform.localEulerAngles = new Vector3(0, 0, -180);
+                    card.NewCardShirtStateUpdater.UpdateCullState();
                     card.IsPushable.Value = false;
                     _questionMarkTransform.SetAsLastSibling();
                     _closeButtonTransform.SetAsLastSibling();
