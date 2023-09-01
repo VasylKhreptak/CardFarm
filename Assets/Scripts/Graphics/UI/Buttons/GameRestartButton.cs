@@ -1,5 +1,6 @@
 ﻿using Runtime.Commands;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
 
@@ -10,14 +11,6 @@ namespace Graphics.UI.Buttons
         [Header("References")]
         [SerializeField] private Button _button;
 
-        private GameRestartCommand _gameRestartCommand;
-
-        [Inject]
-        private void Constructor(GameRestartCommand gameRestartCommand)
-        {
-            _gameRestartCommand = gameRestartCommand;
-        }
-
         #region MonoBehaviour
 
         private void OnValidate()
@@ -27,14 +20,19 @@ namespace Graphics.UI.Buttons
 
         private void OnEnable()
         {
-            _button.onClick.AddListener(_gameRestartCommand.Execute);
+            _button.onClick.AddListener(RestartScene);
         }
 
         private void OnDisable()
         {
-            _button.onClick.RemoveListener(_gameRestartCommand.Execute);
+            _button.onClick.RemoveListener(RestartScene);
         }
 
         #endregion
+
+        private void RestartScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
