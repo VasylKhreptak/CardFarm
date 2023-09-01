@@ -142,6 +142,9 @@ namespace LevelUpPanel.Graphics.Animations
                             chestObject.SetActive(true);
                             chestData.StateAnimation.SetStateImmediately(false);
                             chestData.SpinAnimation.Play(_chestSpinCount);
+                            chestData.ScalePressAnimation.Stop();
+                            chestData.ScaleReleaseAnimation.Stop();
+                            chestData.ScaleReleaseAnimation.MoveToEndState();
                         }));
             }
 

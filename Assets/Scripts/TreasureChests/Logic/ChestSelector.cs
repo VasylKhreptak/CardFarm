@@ -75,6 +75,24 @@ namespace TreasureChests.Logic
                         OnSelected(uiChest);
                     })
                     .AddTo(_subscriptions);
+
+                uiChest
+                    .RaycastTarget
+                    .OnPointerDownAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        OnPointerDown(uiChest);
+                    })
+                    .AddTo(_subscriptions);
+
+                uiChest
+                    .RaycastTarget
+                    .OnPointerUpAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        OnPointerUp(uiChest);
+                    })
+                    .AddTo(_subscriptions);
             }
         }
 
@@ -128,6 +146,18 @@ namespace TreasureChests.Logic
             _watchAdButton.Hide();
             _noThanksButton.Hide();
             _watchedAd = true;
+        }
+
+        private void OnPointerDown(UITreasureChestData uiChest)
+        {
+            // uiChest.ChestData.ScaleReleaseAnimation.Stop();
+            // uiChest.ChestData.ScalePressAnimation.PlayForwardImmediate();
+        }
+
+        private void OnPointerUp(UITreasureChestData uiChest)
+        {
+            // uiChest.ChestData.ScalePressAnimation.Stop();
+            // uiChest.ChestData.ScaleReleaseAnimation.PlayForwardImmediate();
         }
     }
 }
