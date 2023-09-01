@@ -80,6 +80,11 @@ namespace UnlockedCardPanel.Graphics.VisualElements
             _closeButton.onClick.RemoveListener(OnClicked);
         }
 
+        private void OnDestroy()
+        {
+            _delaySubscription?.Dispose();
+        }
+
         #endregion
 
         private void Show(float delay = 0.7f, Action onPlay = null)

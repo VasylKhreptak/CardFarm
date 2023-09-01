@@ -1,4 +1,3 @@
-using DG.Tweening;
 using Graphics.UI.Particles.Coins.Logic;
 using UnityEngine;
 using Zenject;
