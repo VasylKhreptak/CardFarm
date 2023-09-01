@@ -17,8 +17,8 @@ namespace TreasureChests.Graphics.Animations
         [SerializeField] private Vector3 _openedRotation;
         [SerializeField] private float _openDuration;
         [SerializeField] private float _closeDuration;
-        [SerializeField] private AnimationCurve _openCurve;
-        [SerializeField] private AnimationCurve _closeCurve;
+        [SerializeField] private Ease _openCurve;
+        [SerializeField] private Ease _closeCurve;
 
         private Sequence _sequence;
 
