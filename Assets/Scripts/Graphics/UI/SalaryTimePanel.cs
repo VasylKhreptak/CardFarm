@@ -1,6 +1,5 @@
 ﻿using Data.Days;
 using DG.Tweening;
-using Runtime.Commands;
 using UnityEngine;
 using Zenject;
 
@@ -19,22 +18,15 @@ namespace Graphics.UI
         private Sequence _showSequence;
 
         private DaysData _daysData;
-        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(DaysData daysData, GameRestartCommand gameRestartCommand)
+        private void Constructor(DaysData daysData)
         {
             _daysData = daysData;
-            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
-
-        private void Awake()
-        {
-            _gameRestartCommand.OnExecute += OnRestart;
-        }
-
+        
         private void OnEnable()
         {
             StartObserving();
@@ -46,11 +38,6 @@ namespace Graphics.UI
             StopObserving();
             Disable();
             KillAnimation();
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -96,12 +83,6 @@ namespace Graphics.UI
         private void KillAnimation()
         {
             _showSequence?.Kill();
-        }
-
-        private void OnRestart()
-        {
-            KillAnimation();
-            Disable();
         }
     }
 }

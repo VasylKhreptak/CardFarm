@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using Graphics.Animations.Quests.QuestPanel;
 using Quests.Logic;
-using Runtime.Commands;
 using Runtime.Map;
 using UniRx;
 using UnityEngine;
@@ -24,16 +23,13 @@ namespace Quests.Graphics.VisualElements
 
         private CompositeDisposable _questsSubscriptions = new CompositeDisposable();
 
-        private GameRestartCommand _gameRestartCommand;
         private StarterCardsSpawner _starterCardsSpawner;
         private QuestsManager _questsManager;
 
         [Inject]
-        private void Constructor(GameRestartCommand gameRestartCommand,
-            StarterCardsSpawner starterCardsSpawner,
+        private void Constructor(StarterCardsSpawner starterCardsSpawner,
             QuestsManager questsManager)
         {
-            _gameRestartCommand = gameRestartCommand;
             _starterCardsSpawner = starterCardsSpawner;
             _questsManager = questsManager;
         }
@@ -42,7 +38,6 @@ namespace Quests.Graphics.VisualElements
 
         private void Awake()
         {
-            _gameRestartCommand.OnExecute += OnRestart;
             _starterCardsSpawner.OnSpawnedAllCards += OnSpawnedStarterCards;
         }
 
@@ -58,7 +53,6 @@ namespace Quests.Graphics.VisualElements
 
         private void OnDestroy()
         {
-            _gameRestartCommand.OnExecute -= OnRestart;
             _starterCardsSpawner.OnSpawnedAllCards -= OnSpawnedStarterCards;
         }
 
@@ -108,12 +102,6 @@ namespace Quests.Graphics.VisualElements
         private void OnSpawnedStarterCards()
         {
             StartObservingQuests();
-        }
-
-        private void OnRestart()
-        {
-            StopObservingQuests();
-            Disable();
         }
     }
 }

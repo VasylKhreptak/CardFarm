@@ -1,6 +1,5 @@
 ﻿using CBA.Animations.Sequences.Core;
 using Graphics.Animations.Quests.QuestPanel;
-using Runtime.Commands;
 using Runtime.Days;
 using UnityEngine;
 using Zenject;
@@ -17,32 +16,31 @@ namespace Graphics.UI.Panels
 
         private DaysRunner _daysRunner;
         private QuestShowAnimation _questShowAnimation;
-        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
         private void Constructor(DaysRunner daysRunner,
-            QuestShowAnimation questShowAnimation,
-            GameRestartCommand gameRestartCommand)
+            QuestShowAnimation questShowAnimation)
         {
             _daysRunner = daysRunner;
             _questShowAnimation = questShowAnimation;
-            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
 
         private void Awake()
         {
-            OnRestart();
+            _showAnimation.Stop();
+            _panelObject.SetActive(false);
+            _daysRunner.StopRunningDays();
+            _questShowAnimation.OnCompleted -= OnCompletedShowAnimation;
+            _questShowAnimation.OnCompleted += OnCompletedShowAnimation;
 
             _questShowAnimation.OnCompleted += OnCompletedShowAnimation;
-            _gameRestartCommand.OnExecute += OnRestart;
         }
 
         private void OnDestroy()
         {
             _questShowAnimation.OnCompleted -= OnCompletedShowAnimation;
-            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -54,16 +52,6 @@ namespace Graphics.UI.Panels
             _showAnimation.PlayFromStartImmediate();
             _daysRunner.StartRunningDays();
             _questShowAnimation.OnCompleted -= OnCompletedShowAnimation;
-        }
-
-        private void OnRestart()
-        {
-            _showAnimation.Stop();
-            _panelObject.SetActive(false);
-            _daysRunner.StopRunningDays();
-            _questShowAnimation.OnCompleted -= OnCompletedShowAnimation;
-            _questShowAnimation.OnCompleted += OnCompletedShowAnimation;
-
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Graphics.Animations.Quests.RewardPanel;
 using Graphics.Animations.Reminder;
 using Quests.Logic;
-using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using UnlockedCardPanel.Graphics.VisualElements;
@@ -26,16 +25,13 @@ namespace Quests.Graphics.VisualElements
 
         public IReadOnlyReactiveProperty<bool> IsActive => _isActive;
 
-        private GameRestartCommand _gameRestartCommand;
         private QuestsManager _questsManager;
         private NewCardPanel _newCardPanel;
 
         [Inject]
-        private void Constructor(GameRestartCommand gameRestartCommand,
-            QuestsManager questsManager,
+        private void Constructor(QuestsManager questsManager,
             NewCardPanel newCardPanel)
         {
-            _gameRestartCommand = gameRestartCommand;
             _questsManager = questsManager;
             _newCardPanel = newCardPanel;
         }
@@ -49,12 +45,7 @@ namespace Quests.Graphics.VisualElements
             _positionPunchReminder ??= GetComponentInChildren<AnchorPositionPunchReminderAnimation>(true);
             _scalePunchReminder ??= GetComponentInChildren<ScalePunchReminderAnimation>(true);
         }
-
-        private void Awake()
-        {
-            _gameRestartCommand.OnExecute += OnRestart;
-        }
-
+        
         private void OnEnable()
         {
             StartObserving();
@@ -64,11 +55,6 @@ namespace Quests.Graphics.VisualElements
         private void OnDisable()
         {
             StopObserving();
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -146,16 +132,7 @@ namespace Quests.Graphics.VisualElements
         }
 
         private bool IsEnabled() => _quest.activeSelf;
-
-        private void OnRestart()
-        {
-            Disable();
-            _showAnimation.Stop();
-            _positionPunchReminder.Stop();
-            _scalePunchReminder.Stop();
-            _hideAnimation.Stop();
-        }
-
+        
         private void OnNewCardPanelUpdated()
         {
             bool isActive = _newCardPanel.IsActive.Value;

@@ -2,7 +2,6 @@
 using Graphics.Animations;
 using Quests.Logic;
 using Quests.Logic.Core;
-using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,29 +24,22 @@ namespace Shop.Buttons
         private bool _wasHighlighted = false;
 
         private QuestsManager _questsManager;
-        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(QuestsManager questsManager,
-            GameRestartCommand gameRestartCommand)
+        private void Constructor(QuestsManager questsManager)
         {
             _questsManager = questsManager;
-            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
 
         private void Awake()
         {
-            _gameRestartCommand.OnExecute += OnRestart;
-
             StartObservingQuests();
         }
 
         private void OnDestroy()
         {
-            _gameRestartCommand.OnExecute -= OnRestart;
-
             StopObservingQuests();
 
             _fadeHighlighter.StopHighlighting();
@@ -105,14 +97,6 @@ namespace Shop.Buttons
             _openButton.onClick.RemoveListener(OnClick);
             _openButton.onClick.AddListener(OnClick);
             _wasHighlighted = true;
-        }
-
-        private void OnRestart()
-        {
-            _wasHighlighted = false;
-            _opened = false;
-            _fadeHighlighter.StopHighlighting();
-            StartObservingQuests();
         }
     }
 }

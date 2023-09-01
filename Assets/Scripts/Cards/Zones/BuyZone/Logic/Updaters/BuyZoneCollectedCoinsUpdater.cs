@@ -1,6 +1,5 @@
 ﻿using System;
 using Cards.Zones.BuyZone.Data;
-using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -14,14 +13,6 @@ namespace Cards.Zones.BuyZone.Logic.Updaters
 
         private IDisposable _collectedCoinsSubscription;
 
-        private GameRestartCommand _gameRestartCommand;
-
-        [Inject]
-        private void Constructor(GameRestartCommand gameRestartCommand)
-        {
-            _gameRestartCommand = gameRestartCommand;
-        }
-
         #region MonoBehaviour
 
         private void OnValidate()
@@ -34,11 +25,6 @@ namespace Cards.Zones.BuyZone.Logic.Updaters
             _buyZoneData = GetComponentInParent<BuyZoneData>(true);
         }
 
-        private void Awake()
-        {
-            _gameRestartCommand.OnExecute += OnRestart;
-        }
-
         private void OnEnable()
         {
             StartObserving();
@@ -47,11 +33,6 @@ namespace Cards.Zones.BuyZone.Logic.Updaters
         private void OnDisable()
         {
             StopObserving();
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -84,11 +65,6 @@ namespace Cards.Zones.BuyZone.Logic.Updaters
             {
                 _buyZoneData.CollectedCoins.Value = 0;
             }
-        }
-
-        private void OnRestart()
-        {
-            _buyZoneData.CollectedCoins.Value = 0;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Cards.Data;
-using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -11,21 +10,14 @@ namespace CardsTable.Core
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private CardsTable _cardsTable;
-        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(CardsTable cardsTable, GameRestartCommand gameRestartCommand)
+        private void Constructor(CardsTable cardsTable)
         {
             _cardsTable = cardsTable;
-            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaivour
-
-        private void Awake()
-        {
-            _gameRestartCommand.OnAfterExecute += SyncCards;
-        }
 
         private void OnEnable()
         {
@@ -35,11 +27,6 @@ namespace CardsTable.Core
         private void OnDisable()
         {
             StopObserving();
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnAfterExecute -= SyncCards;
         }
 
         #endregion

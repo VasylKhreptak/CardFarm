@@ -5,12 +5,10 @@ using Cards.Workers.Data;
 using CardsTable.ManualCardSelectors;
 using Data.Days;
 using Economy;
-using Extensions;
 using Graphics.UI.Particles.Coins.Logic;
 using NaughtyAttributes;
 using Providers.Graphics;
 using Providers.Graphics.UI;
-using Runtime.Commands;
 using UnityEngine;
 using Zenject;
 
@@ -28,7 +26,6 @@ namespace Runtime.Workers
         private WorkersSelector _workersSelector;
         private CoinsBank _coinsBank;
         private CoinsSpender _coinsSpender;
-        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
         private void Constructor(DaysData daysData,
@@ -36,14 +33,12 @@ namespace Runtime.Workers
             CoinsBank coinsBank,
             CoinsSpender coinsSpender,
             CameraProvider cameraProvider,
-            GameRestartCommand gameRestartCommand,
             CanvasProvider canvasProvider)
         {
             _daysData = daysData;
             _workersSelector = workersSelector;
             _coinsBank = coinsBank;
             _coinsSpender = coinsSpender;
-            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
@@ -64,13 +59,11 @@ namespace Runtime.Workers
         private void StartObserving()
         {
             _daysData.Callbacks.onNewDayCome += StartFeedingWorkers;
-            _gameRestartCommand.OnExecute += StopFeedingWorkers;
         }
 
         private void StopObserving()
         {
             _daysData.Callbacks.onNewDayCome -= StartFeedingWorkers;
-            _gameRestartCommand.OnExecute -= StopFeedingWorkers;
         }
 
         [Button]

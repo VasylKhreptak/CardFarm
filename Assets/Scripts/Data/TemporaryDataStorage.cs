@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Runtime.Commands;
 using UnityEngine;
 using Zenject;
 
@@ -8,28 +7,6 @@ namespace Data
     public class TemporaryDataStorage : MonoBehaviour
     {
         private Dictionary<string, TemporaryData> _data = new Dictionary<string, TemporaryData>();
-
-        private GameRestartCommand _gameRestartCommand;
-
-        [Inject]
-        private void Constructor(GameRestartCommand gameRestartCommand)
-        {
-            _gameRestartCommand = gameRestartCommand;
-        }
-
-        #region MonoBehaviour
-
-        private void Awake()
-        {
-            _gameRestartCommand.OnExecute += ClearData;
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= ClearData;
-        }
-
-        #endregion
 
         public bool HasKey(string key) => _data.ContainsKey(key);
 

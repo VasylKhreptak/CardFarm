@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8609782257049868907}
   - component: {fileID: 8609782257049868904}
   - component: {fileID: 2614866791736900592}
-  - component: {fileID: 9219852525839706298}
   - component: {fileID: -6021368336438435720}
   - component: {fileID: -3423230900963806132}
   m_Layer: 0
@@ -52,6 +51,7 @@ MonoBehaviour:
   Name: Open Booster
   Reward:
     Cards: 08000000
+    Experience: 10
   IsCompletedByAction:
     value: 0
   TookReward:
@@ -66,6 +66,10 @@ MonoBehaviour:
   IsCompleted:
     value: 0
   Tutorial: {fileID: 0}
+  ResultedCard: {fileID: 0}
+  LevelUpAsReward: 0
+  IsCurrentQuest:
+    value: 0
 --- !u!114 &2614866791736900592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,20 +83,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
+  _observeOnlyWhileActive: 0
   _targetCard: 12
---- !u!114 &9219852525839706298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8609782257049868906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 699da7e5f34d45218cd9ecd57fd30d5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _questData: {fileID: 8609782257049868904}
 --- !u!114 &-6021368336438435720
 MonoBehaviour:
   m_ObjectHideFlags: 0

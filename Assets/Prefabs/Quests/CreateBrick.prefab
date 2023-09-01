@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8609782257049868907}
   - component: {fileID: 8609782257049868904}
-  - component: {fileID: 8788698299557252707}
   - component: {fileID: 3443028053564193075}
   - component: {fileID: 7672137796010780727}
   - component: {fileID: -8497944949206770001}
@@ -53,6 +52,7 @@ MonoBehaviour:
   Name: Create Brick
   Reward:
     Cards: 08000000
+    Experience: 10
   IsCompletedByAction:
     value: 0
   TookReward:
@@ -71,19 +71,10 @@ MonoBehaviour:
   IsCompleted:
     value: 0
   Tutorial: {fileID: 0}
---- !u!114 &8788698299557252707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8609782257049868906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 699da7e5f34d45218cd9ecd57fd30d5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _questData: {fileID: 8609782257049868904}
+  ResultedCard: {fileID: 0}
+  LevelUpAsReward: 0
+  IsCurrentQuest:
+    value: 0
 --- !u!114 &3443028053564193075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +88,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
+  _observeOnlyWhileActive: 0
   _recipeResult: 16
+  _targetQuantity: 1
 --- !u!114 &7672137796010780727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
+  _observeOnlyWhileActive: 0
   _recipeResult: 16
+  _targetQuantity: 1
 --- !u!114 &-7774986630827907095
 MonoBehaviour:
   m_ObjectHideFlags: 0

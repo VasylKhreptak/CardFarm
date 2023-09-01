@@ -1,6 +1,5 @@
 ﻿using Data.Days;
 using ProgressLogic.Core;
-using Runtime.Commands;
 using UnityEngine;
 using Zenject;
 
@@ -12,28 +11,12 @@ namespace Runtime.Days
         [SerializeField] private float _dayDuration = 120f;
 
         private DaysData _daysData;
-        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(DaysData daysData, GameRestartCommand gameRestartCommand)
+        private void Constructor(DaysData daysData)
         {
             _daysData = daysData;
-            _gameRestartCommand = gameRestartCommand;
         }
-
-        #region MonoBehaviour
-
-        private void Awake()
-        {
-            _gameRestartCommand.OnExecute += OnRestart;
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= OnRestart;
-        }
-
-        #endregion
 
         public void StartRunningDays()
         {
@@ -50,11 +33,6 @@ namespace Runtime.Days
         {
             _daysData.Callbacks.onNewDayCome?.Invoke();
             StartProgress(_dayDuration);
-        }
-
-        private void OnRestart()
-        {
-            _daysData.Days.Value = 1;
         }
     }
 }

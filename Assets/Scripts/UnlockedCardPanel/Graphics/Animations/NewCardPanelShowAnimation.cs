@@ -2,10 +2,7 @@
 using Cards.Data;
 using DG.Tweening;
 using NaughtyAttributes;
-using Runtime.Commands;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Zenject;
 
 namespace UnlockedCardPanel.Graphics.Animations
 {
@@ -52,21 +49,11 @@ namespace UnlockedCardPanel.Graphics.Animations
 
         public bool IsPlaying => _isPlaying;
 
-        private GameRestartCommand _gameRestartCommand;
-
-        [Inject]
-        private void Constructor(GameRestartCommand gameRestartCommand)
-        {
-            _gameRestartCommand = gameRestartCommand;
-        }
-
         #region MonoBehaviour
 
         private void Awake()
         {
             SetStartValues();
-
-            _gameRestartCommand.OnExecute += OnRestart;
         }
 
         private void OnValidate()
@@ -78,11 +65,6 @@ namespace UnlockedCardPanel.Graphics.Animations
         private void OnDisable()
         {
             Stop();
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -155,12 +137,6 @@ namespace UnlockedCardPanel.Graphics.Animations
         private void AssignEndScale()
         {
             _endScale = _rectTransform.localScale;
-        }
-
-        private void OnRestart()
-        {
-            Stop();
-            SetStartValues();
         }
     }
 }

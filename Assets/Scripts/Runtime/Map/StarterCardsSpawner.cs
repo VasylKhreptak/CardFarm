@@ -5,7 +5,6 @@ using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
 using Extensions;
-using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using UnlockedCardPanel.Graphics.VisualElements;
@@ -35,18 +34,15 @@ namespace Runtime.Map
         private int _cardToSpawnIndex;
 
         private CardSpawner _cardSpawner;
-        private GameRestartCommand _gameRestartCommand;
         private NewCardPanel _newCardPanel;
         private CameraAimer _cameraAimer;
 
         [Inject]
         private void Constructor(CardSpawner cardSpawner,
-            GameRestartCommand gameRestartCommand,
             NewCardPanel newCardPanel,
             CameraAimer cameraAimer)
         {
             _cardSpawner = cardSpawner;
-            _gameRestartCommand = gameRestartCommand;
             _newCardPanel = newCardPanel;
             _cameraAimer = cameraAimer;
         }
@@ -59,25 +55,14 @@ namespace Runtime.Map
             _spawnPoints.Resize(_cards.Count);
         }
 
-        private void Awake()
-        {
-            _gameRestartCommand.OnExecute += OnRestart;
-        }
-
         private void Start()
         {
             SpawnCards();
         }
 
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= OnRestart;
-        }
-
         private void OnDisable()
         {
             _cardPanelStateSubscription?.Dispose();
-            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -134,11 +119,6 @@ namespace Runtime.Map
                         SpawnCardRecursive();
                     });
             });
-        }
-
-        private void OnRestart()
-        {
-            SpawnCards();
         }
 
         private void OnDrawGizmos()

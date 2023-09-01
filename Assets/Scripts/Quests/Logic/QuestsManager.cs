@@ -4,7 +4,6 @@ using NaughtyAttributes;
 using ObjectPoolers;
 using Quests.Data;
 using Quests.Logic.Core;
-using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -35,13 +34,11 @@ namespace Quests.Logic
         public IReadOnlyReactiveCollection<QuestData> NonRewardedQuests => _nonRewardedQuests;
 
         private QuestsObjectPooler _questsObjectPooler;
-        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(QuestsObjectPooler questsObjectPooler, GameRestartCommand gameRestartCommand)
+        private void Constructor(QuestsObjectPooler questsObjectPooler)
         {
             _questsObjectPooler = questsObjectPooler;
-            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
@@ -50,12 +47,9 @@ namespace Quests.Logic
         {
             CreateQuests();
             StartObservingTotalQuests();
-
-            _gameRestartCommand.OnExecute += OnRestart;
         }
         private void OnDestroy()
         {
-            _gameRestartCommand.OnExecute -= OnRestart;
             StopObservingTotalQuests();
         }
 
@@ -153,22 +147,6 @@ namespace Quests.Logic
         private void StopObservingTotalQuests()
         {
             _questStateSubscriptions.Clear();
-        }
-
-        private void OnRestart()
-        {
-            StopObservingTotalQuests();
-
-            _questsObjectPooler.DisableAllObjects();
-
-            _totalQuests.Clear();
-            _completedQuests.Clear();
-            _notCompletedQuests.Clear();
-            _rewardedQuests.Clear();
-            _nonRewardedQuests.Clear();
-
-            CreateQuests();
-            StartObservingTotalQuests();
         }
 
         public bool TryGetQuestData(Quest quest, out QuestData questData)

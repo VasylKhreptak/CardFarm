@@ -1,5 +1,4 @@
-﻿using Runtime.Commands;
-using Runtime.Map;
+﻿using Runtime.Map;
 using UnityEngine;
 using Zenject;
 
@@ -15,13 +14,11 @@ namespace Graphics
         [SerializeField] private float _targetAlpha = 1f;
 
         private StarterCardsSpawner _starterCardsSpawner;
-        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
-        private void Constructor(StarterCardsSpawner starterCardsSpawner, GameRestartCommand gameRestartCommand)
+        private void Constructor(StarterCardsSpawner starterCardsSpawner)
         {
             _starterCardsSpawner = starterCardsSpawner;
-            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
@@ -34,22 +31,15 @@ namespace Graphics
         private void Awake()
         {
             SetStartAlpha();
-            _gameRestartCommand.OnExecute += OnRestart;
             _starterCardsSpawner.OnSpawnedAllCards += SetTargetAlpha;
         }
 
         private void OnDestroy()
         {
-            _gameRestartCommand.OnExecute -= OnRestart;
             _starterCardsSpawner.OnSpawnedAllCards -= SetTargetAlpha;
         }
 
         #endregion
-
-        private void OnRestart()
-        {
-            SetStartAlpha();
-        }
 
         private void SetStartAlpha() => _canvasGroup.alpha = _startAlpha;
 

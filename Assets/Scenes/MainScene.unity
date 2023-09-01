@@ -3013,7 +3013,6 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3121,22 +3120,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &330585548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66747b5c21664814b456b1936e612ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 330585546}
-  _resetLocalPosition: 1
-  _resetLocalRotation: 1
-  _resetScale: 1
 --- !u!1 &338041905
 GameObject:
   m_ObjectHideFlags: 0
@@ -3552,7 +3535,6 @@ GameObject:
   m_Component:
   - component: {fileID: 359594561}
   - component: {fileID: 359594562}
-  - component: {fileID: 359594563}
   m_Layer: 0
   m_Name: MainObjectPooler
   m_TagString: Untagged
@@ -3608,19 +3590,6 @@ MonoBehaviour:
     initialSize: 5
     autoExpand: 1
     maxExpandSize: 30
---- !u!114 &359594563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359594560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 332436601b0e4d228a74e203000e5599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetPooler: {fileID: 359594562}
 --- !u!114 &365505692 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5607094390756917603, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
@@ -5861,7 +5830,6 @@ GameObject:
   - component: {fileID: 603790468}
   - component: {fileID: 603790472}
   - component: {fileID: 603790470}
-  - component: {fileID: 603790469}
   - component: {fileID: 603790473}
   m_Layer: 0
   m_Name: Overlay Camera
@@ -5885,22 +5853,6 @@ Transform:
   m_Father: {fileID: 660046677}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 85.522, y: 0, z: 0}
---- !u!114 &603790469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 603790467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66747b5c21664814b456b1936e612ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 603790468}
-  _resetLocalPosition: 1
-  _resetLocalRotation: 1
-  _resetScale: 1
 --- !u!114 &603790470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6495,7 +6447,6 @@ GameObject:
   m_Component:
   - component: {fileID: 660046677}
   - component: {fileID: 660046678}
-  - component: {fileID: 660046679}
   m_Layer: 0
   m_Name: ShakeLayer
   m_TagString: Untagged
@@ -6541,22 +6492,6 @@ MonoBehaviour:
   _fadeOut: 1
   _randomnessMode: 0
   _ease: 1
---- !u!114 &660046679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660046676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66747b5c21664814b456b1936e612ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 660046677}
-  _resetLocalPosition: 1
-  _resetLocalRotation: 1
-  _resetScale: 1
 --- !u!1 &666438131
 GameObject:
   m_ObjectHideFlags: 0
@@ -15908,7 +15843,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1345435473}
-  - component: {fileID: 1345435474}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -15932,22 +15866,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 85, y: 0, z: 0}
---- !u!114 &1345435474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345435472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66747b5c21664814b456b1936e612ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 1345435473}
-  _resetLocalPosition: 1
-  _resetLocalRotation: 1
-  _resetScale: 1
 --- !u!1 &1349560456
 GameObject:
   m_ObjectHideFlags: 0
@@ -15957,7 +15875,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1349560457}
-  - component: {fileID: 1349560458}
   m_Layer: 0
   m_Name: MainLayer
   m_TagString: Untagged
@@ -15981,22 +15898,6 @@ Transform:
   m_Father: {fileID: 1345435473}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1349560458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349560456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66747b5c21664814b456b1936e612ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 1349560457}
-  _resetLocalPosition: 1
-  _resetLocalRotation: 1
-  _resetScale: 1
 --- !u!1 &1353833039
 GameObject:
   m_ObjectHideFlags: 0
@@ -17311,7 +17212,6 @@ GameObject:
   - component: {fileID: 1444864359}
   - component: {fileID: 1444864360}
   - component: {fileID: 1444864361}
-  - component: {fileID: 1444864362}
   m_Layer: 5
   m_Name: UIParticlePooler
   m_TagString: Untagged
@@ -17420,19 +17320,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1444864362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444864357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae93dbe89c248f0970067c8f296c84b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetPooler: {fileID: 1444864359}
 --- !u!114 &1463480071 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4682650202823771812, guid: 2b6b2f92947187c448b6540caf49bdcd,
@@ -17579,11 +17466,9 @@ GameObject:
   - component: {fileID: 1471693056}
   - component: {fileID: 1471693057}
   - component: {fileID: 1471693058}
-  - component: {fileID: 1471693059}
   - component: {fileID: 1471693060}
   - component: {fileID: 1471693061}
   - component: {fileID: 1471693062}
-  - component: {fileID: 1471693063}
   m_Layer: 0
   m_Name: CardsTable
   m_TagString: Untagged
@@ -18027,19 +17912,6 @@ MonoBehaviour:
   _increaseEach: 10
   _increaseByPercent: {x: 0.15, y: 0.1}
   _blackList: 24000000250000003200000033000000
---- !u!114 &1471693059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471693051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd70561ad684b0c9e09d66a9caedaa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetPooler: {fileID: 1471693057}
 --- !u!114 &1471693060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18093,19 +17965,6 @@ MonoBehaviour:
     initialSize: 0
     autoExpand: 1
     maxExpandSize: 99999
---- !u!114 &1471693063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471693051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe02065230c409ea6b31366d2c5d4d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetPooler: {fileID: 1471693062}
 --- !u!1 &1476206747
 GameObject:
   m_ObjectHideFlags: 0

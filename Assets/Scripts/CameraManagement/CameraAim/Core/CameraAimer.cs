@@ -1,7 +1,6 @@
 ﻿using CameraManagement.CameraMove.Core;
 using CameraManagement.CameraZoom.Core;
 using DG.Tweening;
-using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -36,24 +35,16 @@ namespace CameraManagement.CameraAim.Core
         
         private MapDragObserver _mapDragObserver;
         private ZoomObserver _zoomObserver;
-        private GameRestartCommand _gameRestartCommand;
 
         [Inject]
         private void Constructor(MapDragObserver mapDragObserver,
-            ZoomObserver zoomObserver,
-            GameRestartCommand gameRestartCommand)
+            ZoomObserver zoomObserver)
         {
             _mapDragObserver = mapDragObserver;
             _zoomObserver = zoomObserver;
-            _gameRestartCommand = gameRestartCommand;
         }
 
         #region MonoBehaviour
-
-        private void Awake()
-        {
-            _gameRestartCommand.OnExecute += StopAiming;
-        }
 
         private void OnEnable()
         {
@@ -64,11 +55,6 @@ namespace CameraManagement.CameraAim.Core
         {
             StopObservingInterrupt();
             StopAiming();
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= StopAiming;
         }
 
         #endregion

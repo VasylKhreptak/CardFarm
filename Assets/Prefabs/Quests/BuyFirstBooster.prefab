@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8609782257049868907}
   - component: {fileID: 8609782257049868904}
-  - component: {fileID: 8788698299557252707}
   - component: {fileID: 7699514600414436390}
   - component: {fileID: -1567575501276675436}
   - component: {fileID: -4532876836752784365}
@@ -54,6 +53,7 @@ MonoBehaviour:
   Name: Buy Booster
   Reward:
     Cards: 08000000
+    Experience: 10
   IsCompletedByAction:
     value: 0
   TookReward:
@@ -68,19 +68,10 @@ MonoBehaviour:
   IsCompleted:
     value: 0
   Tutorial: {fileID: 7249764412937390449}
---- !u!114 &8788698299557252707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8609782257049868906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 699da7e5f34d45218cd9ecd57fd30d5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _questData: {fileID: 8609782257049868904}
+  ResultedCard: {fileID: 0}
+  LevelUpAsReward: 0
+  IsCurrentQuest:
+    value: 0
 --- !u!114 &7699514600414436390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
+  _observeOnlyWhileActive: 0
   _targetBuyZone: 37
 --- !u!114 &-1567575501276675436
 MonoBehaviour:
@@ -154,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
+  _observeOnlyWhileActive: 0
   _targetBuyZone: 37
   _progressUpdateDuration: 0.2
 --- !u!114 &7249764412937390449
@@ -171,7 +164,6 @@ MonoBehaviour:
   _tutorialText: 
   _targetCard: 37
   _handClickInterval: 2
-  _handOffset: {x: 0, y: 0, z: 0.5}
 --- !u!114 &8668325684029717964
 MonoBehaviour:
   m_ObjectHideFlags: 0

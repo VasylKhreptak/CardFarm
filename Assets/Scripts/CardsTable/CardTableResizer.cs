@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cards.Core;
-using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -23,14 +22,11 @@ namespace CardsTable
         private int _maxCardsCount;
         private Vector2 _initialSizeDelta;
 
-        private GameRestartCommand _gameRestartCommand;
         private Core.CardsTable _cardsTable;
 
         [Inject]
-        private void Constructor(GameRestartCommand gameRestartCommand,
-            Core.CardsTable cardsTable)
+        private void Constructor(Core.CardsTable cardsTable)
         {
-            _gameRestartCommand = gameRestartCommand;
             _cardsTable = cardsTable;
         }
 
@@ -44,7 +40,6 @@ namespace CardsTable
         private void Awake()
         {
             _initialSizeDelta = _tableRectTransform.sizeDelta;
-            _gameRestartCommand.OnExecute += ResetSize;
         }
 
         private void OnEnable()
@@ -55,11 +50,6 @@ namespace CardsTable
         private void OnDisable()
         {
             StopObserving();
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= ResetSize;
         }
 
         #endregion

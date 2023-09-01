@@ -2,7 +2,6 @@
 using Graphics.Animations.Quests.QuestPanel;
 using Quests.Data;
 using Quests.Logic.Tutorials.Core;
-using Runtime.Commands;
 using Runtime.Map;
 using UniRx;
 using UnityEngine;
@@ -20,18 +19,15 @@ namespace Quests.Logic.Tutorials.Logic
         private QuestTutorial _previousTutorialExecutor;
 
         private QuestsManager _questsManager;
-        private GameRestartCommand _gameRestartCommand;
         private StarterCardsSpawner _starterCardsSpawner;
         private QuestShowAnimation _questShowAnimation;
 
         [Inject]
         private void Constructor(QuestsManager questsManager,
-            GameRestartCommand gameRestartCommand,
             StarterCardsSpawner starterCardsSpawner,
             QuestShowAnimation questShowAnimation)
         {
             _questsManager = questsManager;
-            _gameRestartCommand = gameRestartCommand;
             _starterCardsSpawner = starterCardsSpawner;
             _questShowAnimation = questShowAnimation;
         }
@@ -41,7 +37,6 @@ namespace Quests.Logic.Tutorials.Logic
         private void Awake()
         {
             OnDisable();
-            _gameRestartCommand.OnExecute += OnRestart;
             _starterCardsSpawner.OnSpawnedAllCards += StartObserving;
         }
 
@@ -54,7 +49,6 @@ namespace Quests.Logic.Tutorials.Logic
 
         private void OnDestroy()
         {
-            _gameRestartCommand.OnExecute -= OnRestart;
             _starterCardsSpawner.OnSpawnedAllCards -= StartObserving;
         }
 
@@ -121,11 +115,6 @@ namespace Quests.Logic.Tutorials.Logic
             {
                 _previousTutorialExecutor.StopTutorial();
             }
-        }
-
-        private void OnRestart()
-        {
-            OnDisable();
         }
     }
 }

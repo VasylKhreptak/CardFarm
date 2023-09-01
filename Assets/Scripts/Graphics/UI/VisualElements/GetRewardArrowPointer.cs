@@ -1,7 +1,6 @@
 ﻿using Graphics.Animations.UI;
 using Quests.Graphics.VisualElements;
 using Quests.Logic;
-using Runtime.Commands;
 using UniRx;
 using UnityEngine;
 using UnlockedCardPanel.Graphics.VisualElements;
@@ -17,29 +16,21 @@ namespace Graphics.UI.VisualElements
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 
         private QuestsManager _questsManager;
-        private GameRestartCommand _gameRestartCommand;
         private NewCardPanel _newCardPanel;
         private GetRewardPanel _getRewardPanel;
 
         [Inject]
         private void Constructor(QuestsManager questsManager,
-            GameRestartCommand gameRestartCommand,
             NewCardPanel newCardPanel,
             GetRewardPanel getRewardPanel)
         {
             _questsManager = questsManager;
-            _gameRestartCommand = gameRestartCommand;
             _newCardPanel = newCardPanel;
             _getRewardPanel = getRewardPanel;
         }
 
         #region MonoBehaviour
-
-        private void Awake()
-        {
-            _gameRestartCommand.OnExecute += OnRestart;
-        }
-
+        
         private void OnValidate()
         {
             _arrowPointerAnimation ??= GetComponentInChildren<ArrowPointerAnimation>(true);
@@ -53,11 +44,6 @@ namespace Graphics.UI.VisualElements
         private void OnDisable()
         {
             StopObserving();
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -95,11 +81,6 @@ namespace Graphics.UI.VisualElements
             {
                 _arrowPointerAnimation.Stop();
             }
-        }
-
-        private void OnRestart()
-        {
-            _arrowPointerAnimation.gameObject.SetActive(false);
         }
     }
 }

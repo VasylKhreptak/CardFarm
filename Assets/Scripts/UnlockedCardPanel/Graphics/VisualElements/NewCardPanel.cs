@@ -5,7 +5,6 @@ using Cards.Data;
 using CardsTable.ManualCardSelectors;
 using Data.Cards.Core;
 using Providers.Graphics;
-using Runtime.Commands;
 using ScriptableObjects.Scripts.Cards.Data;
 using TMPro;
 using UniRx;
@@ -41,20 +40,17 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         public IReadOnlyReactiveProperty<bool> IsActive => _isActive;
 
         private InvestigatedCardsObserver _investigatedCardsObserver;
-        private GameRestartCommand _gameRestartCommand;
         private CardsData _cardsData;
         private Camera _camera;
         private CameraAimer _cameraAimer;
 
         [Inject]
         private void Constructor(InvestigatedCardsObserver investigatedCardsObserver,
-            GameRestartCommand gameRestartCommand,
             CameraProvider cameraProvider,
             CardsData cardsData,
             CameraAimer cameraAimer)
         {
             _investigatedCardsObserver = investigatedCardsObserver;
-            _gameRestartCommand = gameRestartCommand;
             _camera = cameraProvider.Value;
             _cardsData = cardsData;
             _cameraAimer = cameraAimer;
@@ -72,25 +68,16 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         private void Awake()
         {
             Disable();
-
-            _gameRestartCommand.OnExecute += OnRestart;
         }
 
         private void OnEnable()
         {
             _closeButton.onClick.AddListener(OnClicked);
-            // _investigatedCardsObserver.OnInvestigatedCard += OnInvestigatedNewCard;
         }
 
         private void OnDisable()
         {
             _closeButton.onClick.RemoveListener(OnClicked);
-            // _investigatedCardsObserver.OnInvestigatedCard -= OnInvestigatedNewCard;
-        }
-
-        private void OnDestroy()
-        {
-            _gameRestartCommand.OnExecute -= OnRestart;
         }
 
         #endregion
@@ -155,11 +142,6 @@ namespace UnlockedCardPanel.Graphics.VisualElements
         // {
         //     Show(cardData);
         // }
-
-        private void OnRestart()
-        {
-            Disable();
-        }
 
         public void Show(CardData cardData, float delay = 0.7f, Action onStart = null)
         {
