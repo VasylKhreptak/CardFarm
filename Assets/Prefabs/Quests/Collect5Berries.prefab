@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 2571077840471031823}
   - component: {fileID: 3520406001332075868}
   m_Layer: 0
-  m_Name: Collect4Berries
+  m_Name: Collect5Berries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,6 +217,7 @@ MonoBehaviour:
   IsCompleted:
     value: 0
   Tutorial: {fileID: 4787954204545992841}
+  ResultedCard: {fileID: 0}
   LevelUpAsReward: 0
   IsCurrentQuest:
     value: 0
@@ -246,9 +247,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
-  _observeOnlyWhileActive: 1
+  _observeOnlyWhileActive: 0
   _recipeResult: 6
-  _targetQuantity: 4
+  _targetQuantity: 5
 --- !u!114 &-4892324505671545047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,9 +311,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questData: {fileID: 8609782257049868904}
-  _observeOnlyWhileActive: 1
+  _observeOnlyWhileActive: 0
   _recipeResult: 6
-  _targetQuantity: 4
+  _targetQuantity: 5
 --- !u!114 &3520406001332075868
 MonoBehaviour:
   m_ObjectHideFlags: 0
