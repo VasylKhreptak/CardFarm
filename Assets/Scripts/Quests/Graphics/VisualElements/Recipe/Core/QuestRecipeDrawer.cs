@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Extensions;
 using Graphics.Animations.Quests.QuestPanel;
 using Quests.Data;
@@ -28,6 +29,8 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         private QuestRecipeCardDataHolder _currentRecipeResultCard;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
+
+        public Transform ResultedCardTransform => _currentRecipeResultCard.transform;
 
         private QuestsManager _questsManager;
         private DiContainer _container;
@@ -88,6 +91,7 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
             if (currentQuest == null || nonRewardedQuest != null)
             {
                 _currentRecipeResultCard = null;
+                ClearRecipe();
                 return;
             }
 
@@ -150,7 +154,7 @@ namespace Quests.Graphics.VisualElements.Recipe.Core
         private void PunchResultedCard()
         {
             if (_currentRecipeResultCard == null) return;
-            
+
             _currentRecipeResultCard.ScalePunchAnimation.Play();
         }
     }

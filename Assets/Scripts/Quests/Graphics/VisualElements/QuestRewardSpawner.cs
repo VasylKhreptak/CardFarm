@@ -2,11 +2,13 @@
 using System.Linq;
 using Cards.Core;
 using Cards.Logic.Spawn;
+using Constraints.CardTable;
 using Data.Player.Core;
 using Data.Player.Experience;
 using Graphics.Animations.Quests.QuestPanel;
 using Graphics.UI.Particles.Coins.Logic;
 using Quests.Data;
+using Quests.Graphics.VisualElements.Recipe.Core;
 using Quests.Logic;
 using UniRx;
 using UnityEngine;
@@ -23,27 +25,37 @@ namespace Quests.Graphics.VisualElements
         [Header("Particle Preferences")]
         [SerializeField] private ParticleSystem _particleSystem;
 
+        [Header("Preferences")]
+        [SerializeField] private float _spawnRewardDelay = 0.1f;
+
         private IDisposable _clickSubscription;
         private IDisposable _questShowAnimationSubscription;
+        private IDisposable _delaySubscription;
 
         private QuestsManager _questsManager;
         private CoinsCollector _coinsCollector;
         private CardSpawner _cardSpawner;
         private ExperienceData _experienceData;
         private QuestShowAnimation _questShowAnimation;
+        private QuestRecipeDrawer _questRecipeDrawer;
+        private PlayingAreaTableBounds _playingAreaTableBounds;
 
         [Inject]
         private void Constructor(QuestsManager questsManager,
             CoinsCollector coinsCollector,
             CardSpawner cardSpawner,
             PlayerData playerData,
-            QuestShowAnimation questShowAnimation)
+            QuestShowAnimation questShowAnimation,
+            QuestRecipeDrawer questRecipeDrawer,
+            PlayingAreaTableBounds playingAreaTableBounds)
         {
             _questsManager = questsManager;
             _coinsCollector = coinsCollector;
             _cardSpawner = cardSpawner;
             _experienceData = playerData.ExperienceData;
             _questShowAnimation = questShowAnimation;
+            _questRecipeDrawer = questRecipeDrawer;
+            _playingAreaTableBounds = playingAreaTableBounds;
         }
 
         #region MonoBehaviour
@@ -63,6 +75,7 @@ namespace Quests.Graphics.VisualElements
             StopObservingClick();
 
             _questShowAnimationSubscription?.Dispose();
+            _delaySubscription?.Dispose();
         }
 
         #endregion
@@ -92,35 +105,51 @@ namespace Quests.Graphics.VisualElements
                 .Subscribe(_ => SpawnReward(targetQuest));
 
             MarkAsTookReward(targetQuest);
-
         }
 
         private void SpawnReward(QuestData questData)
         {
-            SpawnCardReward(questData);
+            _delaySubscription?.Dispose();
+            _delaySubscription = Observable
+                .Timer(TimeSpan.FromSeconds(_spawnRewardDelay))
+                .Subscribe(_ =>
+                {
+                    SpawnCardReward(questData);
 
-            GainExperience(questData);
+                    GainExperience(questData);
 
-            PlayParticle();
+                    PlayParticle();
 
-            MarkAsTookReward(questData);
+                    MarkAsTookReward(questData);
 
-            _questShowAnimationSubscription?.Dispose();
+                    _questShowAnimationSubscription?.Dispose();
+                });
         }
 
         private void SpawnCardReward(QuestData questData)
         {
             int coinsCount = questData.Reward.Cards.Count(x => x == Card.Coin);
 
-            Vector3 spawnPosition = _questShowAnimation.transform.position;
+            Vector3 coinSpawnPosition;
 
-            _coinsCollector.Collect(coinsCount, spawnPosition);
+            if (_questRecipeDrawer.ResultedCardTransform != null)
+            {
+                coinSpawnPosition = _questRecipeDrawer.ResultedCardTransform.position;
+            }
+            else
+            {
+                coinSpawnPosition = _questShowAnimation.transform.position;
+            }
+
+            Vector3 cardSpawnPosition = _playingAreaTableBounds.transform.position;
+
+            _coinsCollector.Collect(coinsCount, coinSpawnPosition);
 
             foreach (var cardToSpawn in questData.Reward.Cards)
             {
                 if (cardToSpawn != Card.Coin)
                 {
-                    _cardSpawner.SpawnAndMove(cardToSpawn, spawnPosition);
+                    _cardSpawner.SpawnAndMove(cardToSpawn, cardSpawnPosition);
                 }
             }
         }
