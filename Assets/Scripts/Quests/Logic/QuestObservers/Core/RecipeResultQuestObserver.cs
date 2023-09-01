@@ -70,11 +70,9 @@ namespace Quests.Logic.QuestObservers.Core
             {
                 _currentQuantity++;
 
-                if (_currentQuantity >= _targetQuantity)
-                {
-                    _questData.ResultedCard = cardData;
-                    MarkQuestAsCompletedByAction();
-                }
+                _questData.ResultedCard = cardData;
+
+                OnQuantityChanged();
             }
         }
 
@@ -83,6 +81,26 @@ namespace Quests.Logic.QuestObservers.Core
             if (card == _recipeResult && _currentQuantity != _targetQuantity)
             {
                 _currentQuantity--;
+
+                OnQuantityChanged();
+            }
+        }
+
+        protected override void OnBoughtCard(Card card)
+        {
+            if (card == _recipeResult && _currentQuantity != _targetQuantity)
+            {
+                _currentQuantity++;
+
+                OnQuantityChanged();
+            }
+        }
+
+        private void OnQuantityChanged()
+        {
+            if (_currentQuantity >= _targetQuantity)
+            {
+                MarkQuestAsCompletedByAction();
             }
         }
     }

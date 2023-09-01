@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using Cards.Core;
 using Cards.Data;
 using Cards.Factories.Data;
-using Cards.Zones.SellZone.Data;
-using CardsTable.Core;
 using Extensions;
 using ProgressLogic.Core;
 using Quests.Logic.QuestObservers.Core;
 using UniRx;
 using UnityEngine;
-using Zenject;
 
 namespace Quests.Logic.QuestObservers.Progress
 {
-    public class QuestRecipeProgressObserver : QuestObserver
+    public class QuestRecipeProgressObserver : AllCardsQuestObserver
     {
         [Header("Preferences")]
         [SerializeField] private Card _recipeResult;
@@ -23,41 +20,34 @@ namespace Quests.Logic.QuestObservers.Progress
         private int _currentQuantity;
 
         private IDisposable _updateSubscription;
-        private IDisposable _sellZoneSubscription;
 
         private bool _filledProgress;
         private bool _filledProgressPart;
 
         private List<ListTuple> _cardsData = new List<ListTuple>();
 
-        private SellZoneData _foundSellZone;
-
-        private CardsTable.Core.CardsTable _cardsTable;
-        private CardSelector _cardSelector;
-
-        [Inject]
-        private void Constructor(CardsTable.Core.CardsTable cardsTable, CardSelector cardSelector)
-        {
-            _cardsTable = cardsTable;
-            _cardSelector = cardSelector;
-        }
-
         public override void StartObserving()
         {
-            StopObserving();
+            base.StartObserving();
             StartUpdating();
-            StartObservingSellZone();
         }
 
         public override void StopObserving()
         {
+            base.StopObserving();
+
             StopUpdating();
             ClearCardsData();
             _filledProgress = false;
             _currentQuantity = 0;
             _filledProgressPart = false;
-            StopObservingSellZone();
         }
+
+        protected override void OnCardAdded(CardData cardData) {}
+
+        protected override void OnCardRemoved(CardData cardData) {}
+
+        protected override void OnCardsCleared() {}
 
         private void StartUpdating()
         {
@@ -203,56 +193,19 @@ namespace Quests.Logic.QuestObservers.Progress
             }
         }
 
-        private void StartObservingSellZone()
-        {
-            StopObservingSellZone();
-
-            foreach (var kvp in _cardSelector.SelectedCardsMap)
-            {
-                if (kvp.Key == Card.SellZone && kvp.Value.Count > 0)
-                {
-                    OnFoundSellZone(kvp.Value[0] as SellZoneData);
-
-                    return;
-                }
-            }
-
-            _sellZoneSubscription = _cardSelector.SelectedCardsMap.ObserveAdd().Subscribe(x =>
-            {
-                if (x.Key == Card.SellZone && x.Value.Count > 0)
-                {
-                    OnFoundSellZone(x.Value[0] as SellZoneData);
-                }
-            });
-        }
-
-        private void OnFoundSellZone(SellZoneData sellZoneData)
-        {
-            _foundSellZone = sellZoneData;
-
-            if (_foundSellZone == null) return;
-
-            _foundSellZone.onSoldCard += OnSoldCard;
-
-            _sellZoneSubscription?.Dispose();
-        }
-
-        private void StopObservingSellZone()
-        {
-            _sellZoneSubscription?.Dispose();
-
-            if (_foundSellZone != null)
-            {
-                _foundSellZone.onSoldCard -= OnSoldCard;
-                _foundSellZone = null;
-            }
-        }
-
-        private void OnSoldCard(Card card)
+        protected override void OnSoldCard(Card card)
         {
             if (card == _recipeResult && _filledProgress == false)
             {
                 _currentQuantity--;
+            }
+        }
+
+        protected override void OnBoughtCard(Card card)
+        {
+            if (card == _recipeResult && _filledProgress == false)
+            {
+                _currentQuantity++;
             }
         }
 

@@ -3,6 +3,7 @@ using Cards.Core;
 using Cards.Data;
 using Cards.Zones.SellZone.Data;
 using CardsTable.Core;
+using Shop;
 using UniRx;
 using Zenject;
 
@@ -16,15 +17,18 @@ namespace Quests.Logic.QuestObservers.Core
 
         private SellZoneData _foundSellZone;
 
-        private CardsTable.Core.CardsTable _cardsTable;
-        private CardSelector _cardSelector;
+        protected CardsTable.Core.CardsTable _cardsTable;
+        protected CardSelector _cardSelector;
+        protected ShopEvents _shopEvents;
 
         [Inject]
         private void Constructor(CardsTable.Core.CardsTable cardsTable,
-            CardSelector cardSelector)
+            CardSelector cardSelector,
+            ShopEvents shopEvents)
         {
             _cardsTable = cardsTable;
             _cardSelector = cardSelector;
+            _shopEvents = shopEvents;
         }
 
         public override void StartObserving()
@@ -39,6 +43,7 @@ namespace Quests.Logic.QuestObservers.Core
             _cardsTable.Cards.ObserveReset().Subscribe(_ => OnCardsCleared()).AddTo(_subscriptions);
 
             StartObservingSellZone();
+            StartObservingShopEvents();
         }
 
         public override void StopObserving()
@@ -46,6 +51,7 @@ namespace Quests.Logic.QuestObservers.Core
             _subscriptions.Clear();
             OnCardsCleared();
             StopObservingSellZone();
+            StopObservingShopEvents();
         }
 
         protected abstract void OnCardAdded(CardData cardData);
@@ -99,7 +105,23 @@ namespace Quests.Logic.QuestObservers.Core
             }
         }
 
+        private void StartObservingShopEvents()
+        {
+            StopObservingShopEvents();
+
+            _shopEvents.onSpawnedCard += OnBoughtCard;
+        }
+
+        private void StopObservingShopEvents()
+        {
+            _shopEvents.onSpawnedCard -= OnBoughtCard;
+        }
+
         protected virtual void OnSoldCard(Card card)
+        {
+        }
+
+        protected virtual void OnBoughtCard(Card card)
         {
         }
     }

@@ -1,4 +1,5 @@
-﻿using CameraManagement.CameraAim.Core;
+﻿using System;
+using CameraManagement.CameraAim.Core;
 using Cards.Core;
 using Cards.Data;
 using Cards.Logic.Spawn;
@@ -17,6 +18,8 @@ namespace Shop.ShopItems
 
         [Header("Preferences")]
         [SerializeField] private Card _targetCard;
+
+        public event Action<Card> onSpawnedCard;
 
         private CardSpawner _cardSpawner;
         private ShopPanel _shopPanel;
@@ -62,6 +65,8 @@ namespace Shop.ShopItems
             canShowNewCardPanel = _investigatedCardsObserver.IsInvestigated(_targetCard) == false;
 
             CardData spawnedCard = _cardSpawner.Spawn(_targetCard, _playingAreaTableBounds.transform.position);
+
+            onSpawnedCard?.Invoke(spawnedCard.Card.Value);
 
             _shopPanel.Hide();
             _cameraAimer.Aim(spawnedCard.transform, true);
