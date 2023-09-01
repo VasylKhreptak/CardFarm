@@ -129,7 +129,10 @@ namespace LevelUpPanel.Graphics.Animations
                 GameObject chestObject = _chests[i].VisualObject;
                 CanvasGroup chestCanvasGroup = chestObject.GetComponent<CanvasGroup>();
                 sequence
-                    .Join(chestObject.transform.DOScale(_targetChestScale, _chestPopupDuration).SetEase(_chestScaleCurve).SetDelay(_chestInterval))
+                    .Join(chestObject.transform
+                        .DOScale(_targetChestScale, _chestPopupDuration)
+                        .SetEase(_chestScaleCurve)
+                        .SetDelay(_chestInterval))
                     .Join(chestCanvasGroup
                         .DOFade(_targetChestAlpha, _chestPopupDuration)
                         .SetEase(_chestFadeCurve)
