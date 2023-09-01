@@ -3621,6 +3621,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetPooler: {fileID: 359594562}
+--- !u!114 &365505692 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5607094390756917603, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 983416162}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c371da0a27394e03aa04ba20a72ec1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &380078908
 GameObject:
   m_ObjectHideFlags: 0
@@ -10773,7 +10785,17 @@ PrefabInstance:
       propertyPath: m_text
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5962302564732148662, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
+        type: 3}
+      propertyPath: _buyEvent
+      value: 
+      objectReference: {fileID: 365505692}
     - target: {fileID: 7147385404573118071, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648966137165530481, guid: 9308ba1ac9fcf1c4c845e7af4bf43d2b,
         type: 3}
       propertyPath: m_IsActive
       value: 1

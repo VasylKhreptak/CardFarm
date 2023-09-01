@@ -1,6 +1,5 @@
 ﻿using Graphics.Animations;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Shop.ShopItems
 {
@@ -8,7 +7,7 @@ namespace Shop.ShopItems
     {
         [Header("References")]
         [SerializeField] private FadeHighlighter _fadeHighlighter;
-        [SerializeField] private Button _buyButton;
+        [SerializeField] private ShopItemBuyEventInvoker _buyEvent;
 
         private bool _bought = false;
 
@@ -19,20 +18,19 @@ namespace Shop.ShopItems
             if (_bought == false)
             {
                 _fadeHighlighter.StartHighlighting();
-                _buyButton.onClick.AddListener(OnClick);
+                _buyEvent.onBought += OnBoughtCard;
             }
         }
 
         private void OnDisable()
         {
             _fadeHighlighter.StopHighlighting();
-
-            _buyButton.onClick.RemoveListener(OnClick);
+            _buyEvent.onBought -= OnBoughtCard;
         }
 
         #endregion
 
-        private void OnClick()
+        private void OnBoughtCard()
         {
             _fadeHighlighter.StopHighlighting();
             _bought = true;
