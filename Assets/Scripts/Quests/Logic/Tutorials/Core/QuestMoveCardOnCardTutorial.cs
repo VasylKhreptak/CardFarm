@@ -176,7 +176,7 @@ namespace Quests.Logic.Tutorials.Core
                 return;
             }
 
-            TrySeparateFoundCards();
+            // TrySeparateFoundCards();
 
             StartHandTutorialDelayed(_firstCardData.transform, _secondCardData.transform);
         }
