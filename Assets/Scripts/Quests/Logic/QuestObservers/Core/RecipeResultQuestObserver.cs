@@ -77,5 +77,13 @@ namespace Quests.Logic.QuestObservers.Core
                 }
             }
         }
+
+        protected override void OnSoldCard(Card card)
+        {
+            if (card == _recipeResult && _currentQuantity != _targetQuantity)
+            {
+                _currentQuantity--;
+            }
+        }
     }
 }
