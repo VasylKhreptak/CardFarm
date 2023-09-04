@@ -62,7 +62,7 @@ namespace Graphics.UI.VisualElements
         }
 
         [Button()]
-        public void Click()
+        public void Click(bool clickParticle = true)
         {
             if (_panel.gameObject.activeSelf == false) return;
 
@@ -74,14 +74,20 @@ namespace Graphics.UI.VisualElements
 
             _clickSequence = DOTween.Sequence()
                 .Append(pressTween)
-                .AppendCallback(SpawnClickParticle)
+                .AppendCallback(() =>
+                {
+                    if (clickParticle)
+                    {
+                        SpawnClickParticle();
+                    }
+                })
                 .AppendInterval(_pressDuration)
                 .Append(releaseTween)
                 .Play();
         }
 
         [Button()]
-        public void Press()
+        public void Press(bool clickParticle = true)
         {
             if (_panel.gameObject.activeSelf == false) return;
 
@@ -91,7 +97,13 @@ namespace Graphics.UI.VisualElements
 
             _clickSequence = DOTween.Sequence()
                 .Append(pressTween)
-                .OnComplete(SpawnClickParticle)
+                .OnComplete(() =>
+                {
+                    if (clickParticle)
+                    {
+                        SpawnClickParticle();
+                    }
+                })
                 .Play();
         }
 

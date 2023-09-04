@@ -20,7 +20,6 @@ namespace TreasureChests.Logic
         [Header("Preferences")]
         [SerializeField] private int _baseOpenedChestsCount = 1;
         [SerializeField] private int _maxChestsToOpen = 2;
-        [SerializeField] private float _closeDelay = 1f;
 
         private CompositeDisposable _subscriptions = new CompositeDisposable();
 

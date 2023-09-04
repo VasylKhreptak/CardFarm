@@ -52,7 +52,7 @@ namespace Quests.Logic.Tutorials.Core
                 .AppendCallback(OnRepeated)
                 .AppendCallback(_tutorialHand.Show)
                 .AppendCallback(() => _tutorialHand.SetAnchoredPosition3D(GetAnchoredPosition(from.position)))
-                .AppendCallback(_tutorialHand.Press)
+                .AppendCallback(() => _tutorialHand.Press())
                 .Join(CreateHandFollowTween(from, _handMoveDelay))
                 .Append(CreateHandMoveTween(from, to, _handMoveDuration))
                 .AppendCallback(_tutorialHand.Release)
