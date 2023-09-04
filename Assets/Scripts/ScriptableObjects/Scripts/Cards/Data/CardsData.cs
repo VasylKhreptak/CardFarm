@@ -239,7 +239,7 @@ namespace ScriptableObjects.Scripts.Cards.Data
             cardDataHolder.IsResource = cardData.IsResource;
             cardDataHolder.IsZone = cardData.IsZone;
             cardDataHolder.HasHeaderBackground = cardData.HasHeaderBackground;
-            
+
             return cardDataHolder;
         }
 

@@ -13,6 +13,9 @@ namespace Quests.Graphics.VisualElements.Recipe.RecipeParts.Card.Logic.Updaters
         [SerializeField] private QuestRecipeCardDataHolder _cardData;
         [SerializeField] private TMP_Text _tmp;
 
+        [Header("Preferences")]
+        [SerializeField] private string _format = "x{0}";
+
         private IDisposable _subscription;
 
         #region MonoBehaivour
@@ -52,7 +55,7 @@ namespace Quests.Graphics.VisualElements.Recipe.RecipeParts.Card.Logic.Updaters
 
         private void UpdateQuantity(int quantity)
         {
-            _tmp.text = quantity.ToString();
+            _tmp.text = string.Format(_format, quantity);
             _tmp.enabled = quantity > 1;
         }
     }

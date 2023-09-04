@@ -67,5 +67,7 @@ namespace Cards.Core
         ImprovedBerry = 63,
         BerryProcessingBuilding = 64,
         ArchitecturePattern = 65,
+        CraftingGridCell = 66,
+        CraftingGrid = 67,
     }
 }
