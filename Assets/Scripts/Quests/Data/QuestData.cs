@@ -4,7 +4,6 @@ using Quests.Logic.Core;
 using Quests.Logic.Tutorials.Core;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Quests.Data
@@ -18,7 +17,6 @@ namespace Quests.Data
         public BoolReactiveProperty IsCompletedByAction = new BoolReactiveProperty();
         public BoolReactiveProperty TookReward = new BoolReactiveProperty();
         public QuestRecipe Recipe = new QuestRecipe();
-        public FloatReactiveProperty Progress = new FloatReactiveProperty();
         public BoolReactiveProperty IsCompleted = new BoolReactiveProperty();
         public QuestTutorial Tutorial;
         public QuestCallbacks Callbacks = new QuestCallbacks();
@@ -28,6 +26,11 @@ namespace Quests.Data
         public bool LevelUpAsReward = false;
 
         public BoolReactiveProperty IsCurrentQuest = new BoolReactiveProperty();
+
+        [Header("Progress Preferences")]
+        public FloatReactiveProperty Progress = new FloatReactiveProperty();
+        public IntReactiveProperty CurrentQuantity = new IntReactiveProperty();
+        public IntReactiveProperty TargetQuantity = new IntReactiveProperty();
 
         #region MonoBehaviour
 
