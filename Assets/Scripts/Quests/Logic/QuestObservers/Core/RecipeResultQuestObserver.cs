@@ -16,13 +16,20 @@ namespace Quests.Logic.QuestObservers.Core
 
         private List<CardData> _subscribedCards = new List<CardData>();
 
+        public override void StartObserving()
+        {
+            base.StartObserving();
+
+            _currentQuantity = 0;
+            _questData.CurrentQuantity.Value = _currentQuantity;
+            _questData.TargetQuantity.Value = _targetQuantity;
+        }
+
         public override void StopObserving()
         {
             base.StopObserving();
 
             StopObservingCards();
-
-            _currentQuantity = 0;
         }
 
         protected override void OnCardAdded(CardData cardData)
@@ -102,6 +109,8 @@ namespace Quests.Logic.QuestObservers.Core
             {
                 MarkQuestAsCompletedByAction();
             }
+
+            _questData.CurrentQuantity.Value = _currentQuantity;
         }
     }
 }
