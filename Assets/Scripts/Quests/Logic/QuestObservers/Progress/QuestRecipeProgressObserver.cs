@@ -78,31 +78,13 @@ namespace Quests.Logic.QuestObservers.Progress
                 }
             }
 
-            if (largestProgress == null) return;
-
-            float recipeProgress = largestProgress.Progress.Value;
-
-            float currentProgress = _currentQuantity / (float)_targetQuantity + recipeProgress / _targetQuantity;
-
-            if (_filledProgressPart) return;
-
-            float maxPossibleCurrentProgress = _currentQuantity / (float)_targetQuantity + 1 / (float)_targetQuantity;
-
-            if (_filledProgressPart == false && currentProgress >= maxPossibleCurrentProgress - maxPossibleCurrentProgress * 0.02)
+            if (largestProgress == null)
             {
-                _filledProgressPart = true;
-                SetProgress(maxPossibleCurrentProgress);
+                UpdateProgress(0f);
                 return;
             }
 
-            if (_filledProgress == false && currentProgress >= 0.98)
-            {
-                SetProgress(1f);
-                _filledProgress = true;
-                return;
-            }
-
-            SetProgress(currentProgress);
+            UpdateProgress(largestProgress.Progress.Value);
         }
 
         private void UpdateCardsData()
@@ -207,6 +189,31 @@ namespace Quests.Logic.QuestObservers.Progress
             {
                 _currentQuantity++;
             }
+        }
+
+        private void UpdateProgress(float recipeProgress)
+        {
+            float currentProgress = _currentQuantity / (float)_targetQuantity + recipeProgress / _targetQuantity;
+
+            if (_filledProgressPart) return;
+
+            float maxPossibleCurrentProgress = _currentQuantity / (float)_targetQuantity + 1 / (float)_targetQuantity;
+
+            if (_filledProgressPart == false && currentProgress >= maxPossibleCurrentProgress - maxPossibleCurrentProgress * 0.02)
+            {
+                _filledProgressPart = true;
+                SetProgress(maxPossibleCurrentProgress);
+                return;
+            }
+
+            if (_filledProgress == false && currentProgress >= 0.98)
+            {
+                SetProgress(1f);
+                _filledProgress = true;
+                return;
+            }
+
+            SetProgress(currentProgress);
         }
 
         private class ListTuple
