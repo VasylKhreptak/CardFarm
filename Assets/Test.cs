@@ -1,4 +1,7 @@
+using System;
+using System.Threading.Tasks;
 using Graphics.UI.Particles.Coins.Logic;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -18,5 +21,6 @@ public class Test : MonoBehaviour
 
     private void Awake()
     {
+        
     }
 }

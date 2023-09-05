@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardData: {fileID: 8046888899198110401}
   _containsTargetCardAlpha: 1
-  _defaultAlpha: 0.3
+  _defaultAlpha: 0.18
 --- !u!1 &6429180647812436171
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using CameraManagement.CameraMove.Core;
+﻿using System;
+using CameraManagement.CameraMove.Core;
 using CameraManagement.CameraZoom.Core;
 using DG.Tweening;
 using UniRx;
@@ -32,7 +33,7 @@ namespace CameraManagement.CameraAim.Core
         private Sequence _aimSequence;
 
         public IReadOnlyReactiveProperty<bool> IsAiming => _isAiming;
-        
+
         private MapDragObserver _mapDragObserver;
         private ZoomObserver _zoomObserver;
 
@@ -72,24 +73,24 @@ namespace CameraManagement.CameraAim.Core
             _interruptSubscriptions.Clear();
         }
 
-        public void Aim(Transform target, bool useCurrentDistance = false)
+        public void Aim(Transform centerTarget, bool useCurrentDistance = false)
         {
             float distance = useCurrentDistance ? GetCameraDistance() : _targetCameraDistance;
-        
-            Aim(target, distance, _duration);
+
+            Aim(centerTarget, distance, _duration);
         }
 
-        public void Aim(Transform target, float distance)
+        public void Aim(Transform centerTarget, float distance)
         {
-            Aim(target, distance, _duration);
-        }
-        
-        public void Aim(Vector3 targetPosition, float distance)
-        {
-            Aim(targetPosition, distance, _duration);
+            Aim(centerTarget, distance, _duration);
         }
 
-        public void Aim(Transform target, float distance, float duration)
+        public void Aim(Vector3 targetCenter, float distance)
+        {
+            Aim(targetCenter, distance, _duration);
+        }
+
+        public void Aim(Transform centerTarget, float distance, float duration)
         {
             if (_zoomObserver.IsZooming.Value || _mapDragObserver.IsDragging.Value) return;
 
@@ -97,7 +98,7 @@ namespace CameraManagement.CameraAim.Core
 
             StopAiming();
 
-            Tween moveTween = CreateMoveTween(target, duration);
+            Tween moveTween = CreateCenteringTween(() => centerTarget.position, duration);
 
             Tween zoomTween = CreateZoomTween(distance, duration);
 
@@ -107,14 +108,14 @@ namespace CameraManagement.CameraAim.Core
                 .Play();
         }
 
-        public void Aim(Vector3 targetPosition, bool useCurrentDistance = false)
+        public void Aim(Vector3 targetCenter, bool useCurrentDistance = false)
         {
             float distance = useCurrentDistance ? GetCameraDistance() : _targetCameraDistance;
-            
-            Aim(targetPosition, distance, _duration);
+
+            Aim(targetCenter, distance, _duration);
         }
 
-        public void Aim(Vector3 targetPosition, float distance, float duration)
+        public void Aim(Vector3 targetCenter, float distance, float duration)
         {
             if (_zoomObserver.IsZooming.Value || _mapDragObserver.IsDragging.Value) return;
 
@@ -122,7 +123,7 @@ namespace CameraManagement.CameraAim.Core
 
             StopAiming();
 
-            Tween moveTween = CreateMoveTween(targetPosition, duration);
+            Tween moveTween = CreateCenteringTween(() => targetCenter, duration);
 
             Tween zoomTween = CreateZoomTween(distance, duration);
 
@@ -135,7 +136,7 @@ namespace CameraManagement.CameraAim.Core
                 .Play();
         }
 
-        private Tween CreateMoveTween(Transform target, float duration)
+        private Tween CreateCenteringTween(Func<Vector3> targetPositionGetter, float duration)
         {
             Vector3 startCameraPosition = GetCameraPosition();
 
@@ -145,31 +146,9 @@ namespace CameraManagement.CameraAim.Core
                 .SetEase(_moveCurve)
                 .OnUpdate(() =>
                 {
-                    if (target == null) StopAiming();
-
+                    float currentCameraDistance = GetCameraDistance();
                     Vector3 currentCameraPosition = GetCameraPosition();
-                    Vector3 targetCameraPosition = target.transform.position;
-                    targetCameraPosition.y = currentCameraPosition.y;
-                    startCameraPosition.y = currentCameraPosition.y;
-                    Vector3 cameraPosition = Vector3.Lerp(startCameraPosition, targetCameraPosition, moveProgress);
-                    SetCameraPosition(cameraPosition);
-                });
-
-            return moveTween;
-        }
-
-        private Tween CreateMoveTween(Vector3 targetPosition, float duration)
-        {
-            Vector3 startCameraPosition = GetCameraPosition();
-
-            float moveProgress = 0;
-            Tween moveTween = DOTween
-                .To(() => moveProgress, x => moveProgress = x, 1f, duration)
-                .SetEase(_moveCurve)
-                .OnUpdate(() =>
-                {
-                    Vector3 currentCameraPosition = GetCameraPosition();
-                    Vector3 targetCameraPosition = targetPosition;
+                    Vector3 targetCameraPosition = targetPositionGetter.Invoke() + -_transform.forward * currentCameraDistance;
                     targetCameraPosition.y = currentCameraPosition.y;
                     startCameraPosition.y = currentCameraPosition.y;
                     Vector3 cameraPosition = Vector3.Lerp(startCameraPosition, targetCameraPosition, moveProgress);
