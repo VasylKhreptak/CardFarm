@@ -33,6 +33,8 @@ namespace Runtime.Map
 
         private int _cardToSpawnIndex;
 
+        public List<Card> Cards => _cards;
+
         private CardSpawner _cardSpawner;
         private NewCardPanel _newCardPanel;
         private CameraAimer _cameraAimer;

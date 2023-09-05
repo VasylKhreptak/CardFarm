@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Cards.Core;
 using Cards.Data;
 using CardsTable.Core;
+using Runtime.Map;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace CardsTable.ManualCardSelectors
 {
@@ -20,10 +22,19 @@ namespace CardsTable.ManualCardSelectors
 
         public event Action<CardData> OnInvestigatedCard;
 
+        private StarterCardsSpawner _starterCardsSpawner;
+
+        [Inject]
+        private void Constructor(StarterCardsSpawner starterCardsSpawner)
+        {
+            _starterCardsSpawner = starterCardsSpawner;
+        }
+
         protected override void OnAddedCard(CardData cardData)
         {
             if (_cardsHashSet.Contains(cardData.Card.Value) == false
-                && _blackList.Contains(cardData.Card.Value) == false)
+                && _blackList.Contains(cardData.Card.Value) == false
+                && _starterCardsSpawner.Cards.Contains(cardData.Card.Value) == false)
             {
                 _cards.Add(cardData.Card.Value);
                 _cardsHashSet.Add(cardData.Card.Value);
