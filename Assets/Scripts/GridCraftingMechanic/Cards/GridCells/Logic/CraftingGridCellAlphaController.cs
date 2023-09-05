@@ -10,6 +10,10 @@ namespace GridCraftingMechanic.Cards.GridCells.Logic
         [Header("References")]
         [SerializeField] private GridCellCardData _cardData;
 
+        [Header("Preferences")]
+        [SerializeField] private float _containsTargetCardAlpha = 1f;
+        [SerializeField] private float _defaultAlpha = 0.3f;
+
         private IDisposable _subscription;
 
         #region MonoBehaviour
@@ -50,7 +54,7 @@ namespace GridCraftingMechanic.Cards.GridCells.Logic
 
         private void OnContainsTargetCardChanged(bool containsTargetCard)
         {
-            _cardData.CanvasGroup.alpha = containsTargetCard ? 1f : 0.5f;
+            _cardData.CanvasGroup.alpha = containsTargetCard ? _containsTargetCardAlpha : _defaultAlpha;
         }
     }
 }

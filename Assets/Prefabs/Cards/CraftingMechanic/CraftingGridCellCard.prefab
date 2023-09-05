@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 8046888899198110401}
+  _containsTargetCardAlpha: 1
+  _defaultAlpha: 0.3
 --- !u!1 &6429180647812436171
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +523,11 @@ PrefabInstance:
       propertyPath: _cardData
       value: 
       objectReference: {fileID: 8046888899198110401}
+    - target: {fileID: 6678653204198878801, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6682434459153667145, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
@@ -547,6 +554,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8046888899198110401}
     - target: {fileID: 7342561580210077619, guid: 7bf54413c6b39324e9a7ddfc51606634,
+        type: 3}
+      propertyPath: _cardData
+      value: 
+      objectReference: {fileID: 8046888899198110401}
+    - target: {fileID: 7443649228844248858, guid: 7bf54413c6b39324e9a7ddfc51606634,
         type: 3}
       propertyPath: _cardData
       value: 
@@ -618,6 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 8046888899198110401}
     m_RemovedComponents:
     - {fileID: 1106781378184329004, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
+    - {fileID: 2306884501545121961, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bf54413c6b39324e9a7ddfc51606634, type: 3}
 --- !u!114 &139983311735672391 stripped
 MonoBehaviour:
@@ -930,6 +943,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c34cb2fcef4017bb857f0292e03273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5628706066050734729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6317042775427218218, guid: 7bf54413c6b39324e9a7ddfc51606634,
+    type: 3}
+  m_PrefabInstance: {fileID: 1853102290945384867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8379326320649741936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628706066050734729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a35c6bc784473d87ac0b5c84b81325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 8046888899198110401}
 --- !u!224 &5720749700222529717 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6256525992163840278, guid: 7bf54413c6b39324e9a7ddfc51606634,

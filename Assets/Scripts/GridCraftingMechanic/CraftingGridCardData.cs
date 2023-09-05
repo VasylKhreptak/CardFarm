@@ -3,6 +3,7 @@ using System.Linq;
 using Cards.Core;
 using Cards.Data;
 using GridCraftingMechanic.Cards.GridCells;
+using GridCraftingMechanic.Core;
 using UniRx;
 using UnityEngine;
 
@@ -11,10 +12,10 @@ namespace GridCraftingMechanic
     public class CraftingGridCardData : CardData
     {
         [Header("Grid Preferences")]
-        public ReactiveProperty<Card> ResultedCard = new ReactiveProperty<Card>();
         public List<GridCellCardData> GridCells = new List<GridCellCardData>();
+        public ReactiveProperty<GridRecipe> GridRecipe = new ReactiveProperty<GridRecipe>(new GridRecipe());
 
-        #region MonoBehaviour
+        #region MonoBehaviours
 
         public override void Validate()
         {
