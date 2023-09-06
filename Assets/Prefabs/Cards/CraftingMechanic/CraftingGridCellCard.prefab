@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardData: {fileID: 8046888899198110401}
-  _experienceGain: 20
+  _experienceGain: 11
 --- !u!1 &4667586619209375856
 GameObject:
   m_ObjectHideFlags: 0

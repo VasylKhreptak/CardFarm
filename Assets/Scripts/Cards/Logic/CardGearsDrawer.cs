@@ -1,6 +1,8 @@
 ﻿using System;
+using Cards.Core;
 using Cards.Data;
 using Cards.Factories.Data;
+using Cards.Workers.Data;
 using CardsTable.PoolLogic;
 using DG.Tweening;
 using Graphics.VisualElements.Gears;
@@ -28,6 +30,7 @@ namespace Cards.Logic
         private IDisposable _showDelaySubscription;
 
         private ReactiveProperty<GearsData> _gears = new ReactiveProperty<GearsData>();
+        private WorkerData _villagerData;
 
         private FactoryData _factoryData;
 
@@ -89,6 +92,7 @@ namespace Cards.Logic
             }
 
             _showDelaySubscription?.Dispose();
+            _villagerData = null;
         }
 
         #endregion
@@ -180,8 +184,20 @@ namespace Cards.Logic
 
             if (_gears.Value == null)
             {
-                GameObject gearsObject = _cardTablePooler.Spawn(CardTablePool.RotatingGears);
-                _gears.Value = gearsObject.GetComponent<GearsData>();
+                CardData villager = _cardData.GroupCards.Find(x => x.Card.Value == Card.Villager);
+
+                if (villager is WorkerData worker)
+                {
+                    GameObject gearsObject = _cardTablePooler.Spawn(CardTablePool.RotatingGears);
+                    _gears.Value = gearsObject.GetComponent<GearsData>();
+                    _gears.Value.gameObject.SetActive(true);
+                    _villagerData = worker;
+                }
+                else
+                {
+                    GameObject gearsObject = _cardTablePooler.Spawn(CardTablePool.RotatingGears);
+                    _gears.Value = gearsObject.GetComponent<GearsData>();
+                }
             }
 
             _gears.Value.HideAnimation.Stop();
@@ -197,21 +213,31 @@ namespace Cards.Logic
                 .DoOnSubscribe(() =>
                 {
                     UpdateGearsSortingLayer();
-                    UpdateGearPosition();
+                    UpdateGearTransform();
                 })
                 .Subscribe(_ =>
                 {
                     UpdateGearsSortingLayer();
-                    UpdateGearPosition();
+                    UpdateGearTransform();
                 });
         }
 
-        private void UpdateGearPosition()
+        private void UpdateGearTransform()
         {
             if (_gears.Value == null) return;
 
-            Vector3 position = _cardData.GroupCenter.Value;
-            position.y = _height;
+            Vector3 position = Vector3.zero;
+
+            if (_villagerData != null)
+            {
+                position = _villagerData.GearsPoint.position;
+                _gears.Value.transform.forward = _villagerData.GearsPoint.forward;
+            }
+            else
+            {
+                position = _cardData.GroupCenter.Value;
+                position.y = _height;
+            }
 
             _gears.Value.transform.position = position;
         }
@@ -232,6 +258,7 @@ namespace Cards.Logic
             }
         }
 
+
         private void StopDrawingGears()
         {
             _positionUpdateSubscription?.Dispose();
@@ -244,17 +271,18 @@ namespace Cards.Logic
             _gears.Value.HideAnimation.Animation
                 .OnPlay(() =>
                 {
-                    UpdateGearPosition();
+                    UpdateGearTransform();
                     UpdateGearsSortingLayer();
                 })
                 .OnUpdate(() =>
                 {
-                    UpdateGearPosition();
+                    UpdateGearTransform();
                     UpdateGearsSortingLayer();
                 })
                 .OnComplete(() =>
                 {
                     _gears.Value = null;
+                    _villagerData = null;
                     gears.SetActive(false);
                 });
 

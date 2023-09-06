@@ -25,5 +25,7 @@ namespace Cards.Workers.Data
         public IntReactiveProperty NeededEnergy = new IntReactiveProperty(0);
         public FloatReactiveProperty EnergyRestoreDuration = new FloatReactiveProperty(1);
         public BoolReactiveProperty IsEnergyFull = new BoolReactiveProperty(false);
+
+        public Transform GearsPoint;
     }
 }
