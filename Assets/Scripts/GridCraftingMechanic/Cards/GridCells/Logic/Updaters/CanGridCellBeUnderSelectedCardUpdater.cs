@@ -52,6 +52,7 @@ namespace GridCraftingMechanic.Cards.GridCells.Logic.Updaters
             StopObserving();
 
             _selectedCardHolder.SelectedCard.Subscribe(_ => OnEnvironmentUpdated()).AddTo(_subscriptions);
+            _cardData.IsUnlocked.Subscribe(_ => OnEnvironmentUpdated()).AddTo(_subscriptions);
         }
 
         private void StopObserving()
@@ -63,7 +64,10 @@ namespace GridCraftingMechanic.Cards.GridCells.Logic.Updaters
         {
             CardData selectedCard = _selectedCardHolder.SelectedCard.Value;
 
-            bool canBeUnderSelectedCard = selectedCard != null && selectedCard.Card.Value == _cardData.TargetCard.Value;
+            bool canBeUnderSelectedCard =
+                selectedCard != null
+                && selectedCard.Card.Value == _cardData.TargetCard.Value
+                && _cardData.IsUnlocked.Value;
 
             _cardData.CanBeUnderSelectedCard.Value = canBeUnderSelectedCard;
         }

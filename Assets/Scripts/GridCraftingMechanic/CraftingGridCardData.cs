@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Cards.Core;
 using Cards.Data;
 using GridCraftingMechanic.Cards.GridCells;
 using GridCraftingMechanic.Core;
@@ -17,7 +16,7 @@ namespace GridCraftingMechanic
         public ReactiveProperty<GridRecipe> GridRecipe = new ReactiveProperty<GridRecipe>(new GridRecipe());
 
         public Action<CardData> OnSpawnedGridCard;
-
+        
         #region MonoBehaviours
 
         public override void Validate()

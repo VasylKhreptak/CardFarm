@@ -11,5 +11,7 @@ namespace GridCraftingMechanic.Cards.GridCells
         [Header("Grid Cell Data")]
         public ReactiveProperty<Card> TargetCard = new ReactiveProperty<Card>();
         public BoolReactiveProperty ContainsTargetCard = new BoolReactiveProperty(false);
+
+        public BoolReactiveProperty IsUnlocked = new BoolReactiveProperty(false);
     }
 }

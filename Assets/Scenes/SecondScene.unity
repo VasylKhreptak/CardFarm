@@ -28665,6 +28665,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1471693054}
     m_Modifications:
+    - target: {fileID: 282788336989394739, guid: 70c83721783f725408991302c1e98eb6,
+        type: 3}
+      propertyPath: IsUnlocked.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 282788337617997155, guid: 70c83721783f725408991302c1e98eb6,
+        type: 3}
+      propertyPath: IsUnlocked.value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4816970568698874686, guid: 70c83721783f725408991302c1e98eb6,
         type: 3}
       propertyPath: m_AnchorMax.y
