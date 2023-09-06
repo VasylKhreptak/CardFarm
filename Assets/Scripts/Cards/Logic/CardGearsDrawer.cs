@@ -237,6 +237,7 @@ namespace Cards.Logic
             {
                 position = _cardData.GroupCenter.Value;
                 position.y = _height;
+                _gears.Value.transform.localRotation = Quaternion.identity;
             }
 
             _gears.Value.transform.position = position;

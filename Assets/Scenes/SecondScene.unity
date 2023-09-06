@@ -2967,7 +2967,7 @@ MonoBehaviour:
   _spawnPoints:
   - {fileID: 86100519}
   - {fileID: 603846901}
-  _startCameraSize: 10
+  _startCameraSize: 13
   _endCameraSize: 15
 --- !u!1001 &275928800
 PrefabInstance:
