@@ -73,14 +73,14 @@ namespace GridCraftingMechanic.Cards.Grid.Logic
             if (isRecipeMatched)
             {
                 StopObserving();
-                
+
                 _frameDelaySubscription?.Dispose();
                 _frameDelaySubscription = Observable.NextFrame().Subscribe(_ =>
                 {
                     ResetCells();
-                    
+
                     SpawnTargetCard();
-                    
+
                     StartObserving();
                 });
             }
@@ -91,6 +91,8 @@ namespace GridCraftingMechanic.Cards.Grid.Logic
             CardData spawnedCard = _cardSpawner.Spawn(_cardData.GridRecipe.Value.RecipeResult, _cardData.transform.position);
 
             spawnedCard.Animations.JumpAnimation.PlayRandomly();
+
+            _cardData.OnSpawnedGridCard?.Invoke(spawnedCard);
         }
 
         private void ResetCells()

@@ -1,22 +1,21 @@
 ﻿using System;
 using Data.Player.Core;
 using Data.Player.Experience;
-using TMPro;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Graphics.UI.Experience
+namespace GridCraftingMechanic.Cards.GridCells.Logic
 {
-    public class ExperienceLevelText : MonoBehaviour
+    public class GridCellExperienceGainer : MonoBehaviour, IValidatable
     {
         [Header("References")]
-        [SerializeField] private TMP_Text _tmp;
+        [SerializeField] private GridCellCardData _cardData;
 
         [Header("Preferences")]
-        [SerializeField] private int _offset;
+        [SerializeField] private int _experienceGain = 20;
 
-        private IDisposable _experienceLevelSubscription;
+        private IDisposable _subscription;
 
         private ExperienceData _experienceData;
 
@@ -30,7 +29,12 @@ namespace Graphics.UI.Experience
 
         private void OnValidate()
         {
-            _tmp ??= GetComponent<TMP_Text>();
+            Validate();
+        }
+
+        public void Validate()
+        {
+            _cardData = GetComponentInParent<GridCellCardData>(true);
         }
 
         private void OnEnable()
@@ -49,17 +53,17 @@ namespace Graphics.UI.Experience
         {
             StopObserving();
 
-            _experienceLevelSubscription = _experienceData.ExperienceLevel.Subscribe(SetText);
+            _subscription = _cardData.ContainsTargetCard.Where(x => x).Subscribe(_ => GainExperience());
         }
 
         private void StopObserving()
         {
-            _experienceLevelSubscription?.Dispose();
+            _subscription?.Dispose();
         }
 
-        private void SetText(int experienceLevel)
+        private void GainExperience()
         {
-            _tmp.text = (experienceLevel + _offset).ToString();
+            _experienceData.TotalExperience.Value += _experienceGain;
         }
     }
 }

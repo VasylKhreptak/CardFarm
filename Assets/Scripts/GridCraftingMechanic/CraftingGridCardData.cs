@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Cards.Core;
 using Cards.Data;
@@ -14,6 +15,8 @@ namespace GridCraftingMechanic
         [Header("Grid Preferences")]
         public List<GridCellCardData> GridCells = new List<GridCellCardData>();
         public ReactiveProperty<GridRecipe> GridRecipe = new ReactiveProperty<GridRecipe>(new GridRecipe());
+
+        public Action<CardData> OnSpawnedGridCard;
 
         #region MonoBehaviours
 
