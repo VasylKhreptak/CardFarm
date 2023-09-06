@@ -1,5 +1,6 @@
 using System;
 using CameraManagement.CameraZoom.Core;
+using Providers.Graphics;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -8,80 +9,57 @@ namespace CameraManagement.CameraZoom
 {
     public class CameraZoomLogic : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] private Transform _transform;
-
         [Header("Preferences")]
-        [SerializeField] private LayerMask _floorLayerMask;
         [SerializeField] private float _zoomSpeed = 1f;
-        [SerializeField] private float _minDistance = 5f;
-        [SerializeField] private float _maxDistance = 35f;
+        [SerializeField] private float _minSize = 5f;
+        [SerializeField] private float _maxSize = 10f;
 
         private IDisposable _zoomSubscription;
 
-        private FloatReactiveProperty _cameraDistance = new FloatReactiveProperty();
-
-        public IReadOnlyReactiveProperty<float> CameraDistance => _cameraDistance;
-
+        public float MinSize => _minSize;
+        public float MaxSize => _maxSize;
+        
         private ZoomObserver _safeAreaZoomObserver;
+        private Camera _camera;
 
         [Inject]
-        private void Constructor(ZoomObserver safeAreaZoomObserver)
+        private void Constructor(ZoomObserver safeAreaZoomObserver, CameraProvider camera)
         {
             _safeAreaZoomObserver = safeAreaZoomObserver;
+            _camera = camera.Value;
         }
 
         #region MonoBehaviour
 
-        private void Awake()
-        {
-            if (RaycastFloor(out RaycastHit hit))
-            {
-                _cameraDistance.Value = hit.distance;
-            }
-        }
-
         private void OnEnable()
         {
-            StartZooming();
+            StartObserving();
         }
 
         private void OnDisable()
         {
-            StopZooming();
+            StopObserving();
         }
 
         #endregion
 
-        private void StartZooming()
+        private void StartObserving()
         {
-            StopZooming();
+            StopObserving();
 
             _zoomSubscription = _safeAreaZoomObserver.Zoom.Subscribe(Zoom);
         }
 
-        private void StopZooming()
+        private void StopObserving()
         {
             _zoomSubscription?.Dispose();
         }
 
         private void Zoom(float delta)
         {
-            if (RaycastFloor(out RaycastHit hit))
-            {
-                float cameraDistance = hit.distance;
-                _cameraDistance.Value = cameraDistance;
-                float newCameraDistance = cameraDistance - delta * _zoomSpeed;
-                newCameraDistance = Mathf.Clamp(newCameraDistance, _minDistance, _maxDistance);
-                Vector3 newCameraPosition = hit.point - _transform.forward * newCameraDistance;
-                _transform.position = newCameraPosition;
-            }
-        }
+            float newSize = _camera.orthographicSize + delta * _zoomSpeed * Time.deltaTime;
 
-        private bool RaycastFloor(out RaycastHit hit)
-        {
-            Ray ray = new Ray(_transform.position, _transform.forward);
-            return UnityEngine.Physics.Raycast(ray, out hit, float.MaxValue, _floorLayerMask);
+            _camera.orthographicSize = Mathf.Clamp(newSize, _minSize, _maxSize);
         }
     }
 }

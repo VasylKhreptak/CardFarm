@@ -23,8 +23,8 @@ namespace Runtime.Map
         [SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
 
         [Header("Camera Distance Preferences")]
-        [SerializeField] private float _startDistance;
-        [SerializeField] private float _endDistance;
+        [SerializeField] private float _startCameraSize;
+        [SerializeField] private float _endCameraSize;
 
         public event Action OnSpawnedAllCards;
 
@@ -87,7 +87,7 @@ namespace Runtime.Map
             if (_cardToSpawnIndex > _cards.Count - 1)
             {
                 _cardPanelStateSubscription?.Dispose();
-                _cameraAimer.Aim(_transform, _endDistance);
+                _cameraAimer.Aim(_transform, _endCameraSize);
                 OnSpawnedAllCards?.Invoke();
                 return;
             }
@@ -103,7 +103,7 @@ namespace Runtime.Map
             spawnedCard.transform.localRotation = Quaternion.Euler(-180, 0, 0);
             spawnedCard.NewCardShirtStateUpdater.UpdateCullState();
 
-            _cameraAimer.Aim(spawnedCard.transform, _startDistance);
+            _cameraAimer.Aim(spawnedCard.transform, _startCameraSize);
 
             spawnedCard.Animations.JumpAnimation.Play(spawnPosition, () =>
             {

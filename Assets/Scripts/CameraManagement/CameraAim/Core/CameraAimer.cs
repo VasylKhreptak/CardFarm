@@ -2,6 +2,7 @@
 using CameraManagement.CameraMove.Core;
 using CameraManagement.CameraZoom.Core;
 using DG.Tweening;
+using Providers.Graphics;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -14,13 +15,13 @@ namespace CameraManagement.CameraAim.Core
         [SerializeField] private Transform _transform;
 
         [Header("Zoom Preferences")]
-        [SerializeField] private LayerMask _floorLayerMask;
-        [SerializeField] private float _targetCameraDistance = 10f;
+        [SerializeField] private float _defaultCameraSize = 15f;
+        [SerializeField] private float _minCameraSize = 5f;
+        [SerializeField] private float _maxCameraSize = 20f;
         [SerializeField] private AnimationCurve _zoomCurve;
-        [SerializeField] private float _minCameraDistance = 5f;
-        [SerializeField] private float _maxCameraDistance = 50f;
 
         [Header("Move Preferences")]
+        [SerializeField] private LayerMask _floorLayerMask;
         [SerializeField] private AnimationCurve _moveCurve;
 
         [Header("General Preferences")]
@@ -36,13 +37,16 @@ namespace CameraManagement.CameraAim.Core
 
         private MapDragObserver _mapDragObserver;
         private ZoomObserver _zoomObserver;
+        private Camera _camera;
 
         [Inject]
         private void Constructor(MapDragObserver mapDragObserver,
-            ZoomObserver zoomObserver)
+            ZoomObserver zoomObserver,
+            CameraProvider cameraProvider)
         {
             _mapDragObserver = mapDragObserver;
             _zoomObserver = zoomObserver;
+            _camera = cameraProvider.Value;
         }
 
         #region MonoBehaviour
@@ -73,34 +77,34 @@ namespace CameraManagement.CameraAim.Core
             _interruptSubscriptions.Clear();
         }
 
-        public void Aim(Transform centerTarget, bool useCurrentDistance = false)
+        public void Aim(Transform centerTarget, bool useCurrentSize = false)
         {
-            float distance = useCurrentDistance ? GetCameraDistance() : _targetCameraDistance;
+            float distance = useCurrentSize ? _camera.orthographicSize : _defaultCameraSize;
 
             Aim(centerTarget, distance, _duration);
         }
 
-        public void Aim(Transform centerTarget, float distance)
+        public void Aim(Transform centerTarget, float cameraSize)
         {
-            Aim(centerTarget, distance, _duration);
+            Aim(centerTarget, cameraSize, _duration);
         }
 
-        public void Aim(Vector3 targetCenter, float distance)
+        public void Aim(Vector3 targetCenter, float cameraSize)
         {
-            Aim(targetCenter, distance, _duration);
+            Aim(targetCenter, cameraSize, _duration);
         }
 
-        public void Aim(Transform centerTarget, float distance, float duration)
+        public void Aim(Transform centerTarget, float cameraSize, float duration)
         {
             if (_zoomObserver.IsZooming.Value || _mapDragObserver.IsDragging.Value) return;
 
-            distance = Mathf.Clamp(distance, _minCameraDistance, _maxCameraDistance);
+            cameraSize = Mathf.Clamp(cameraSize, _minCameraSize, _maxCameraSize);
 
             StopAiming();
 
             Tween moveTween = CreateCenteringTween(() => centerTarget.position, duration);
 
-            Tween zoomTween = CreateZoomTween(distance, duration);
+            Tween zoomTween = CreateZoomTween(cameraSize, duration);
 
             _aimSequence = DOTween.Sequence()
                 .Append(moveTween)
@@ -108,24 +112,24 @@ namespace CameraManagement.CameraAim.Core
                 .Play();
         }
 
-        public void Aim(Vector3 targetCenter, bool useCurrentDistance = false)
+        public void Aim(Vector3 targetCenter, bool useCurrentSize = false)
         {
-            float distance = useCurrentDistance ? GetCameraDistance() : _targetCameraDistance;
+            float distance = useCurrentSize ? _camera.orthographicSize : _defaultCameraSize;
 
             Aim(targetCenter, distance, _duration);
         }
 
-        public void Aim(Vector3 targetCenter, float distance, float duration)
+        public void Aim(Vector3 targetCenter, float cameraSize, float duration)
         {
             if (_zoomObserver.IsZooming.Value || _mapDragObserver.IsDragging.Value) return;
 
-            distance = Mathf.Clamp(distance, _minCameraDistance, _maxCameraDistance);
+            cameraSize = Mathf.Clamp(cameraSize, _minCameraSize, _maxCameraSize);
 
             StopAiming();
 
             Tween moveTween = CreateCenteringTween(() => targetCenter, duration);
 
-            Tween zoomTween = CreateZoomTween(distance, duration);
+            Tween zoomTween = CreateZoomTween(cameraSize, duration);
 
             _aimSequence = DOTween.Sequence()
                 .OnStart(() => _isAiming.Value = true)
@@ -158,9 +162,10 @@ namespace CameraManagement.CameraAim.Core
             return moveTween;
         }
 
-        private Tween CreateZoomTween(float distance, float duration)
+        private Tween CreateZoomTween(float targetCameraSize, float duration)
         {
-            float startCameraDistance = GetCameraDistance();
+            float startCameraSize = _camera.orthographicSize;
+
 
             float zoomProgress = 0;
             Tween zoomTween = DOTween
@@ -168,8 +173,8 @@ namespace CameraManagement.CameraAim.Core
                 .SetEase(_zoomCurve)
                 .OnUpdate(() =>
                 {
-                    float cameraDistance = Mathf.Lerp(startCameraDistance, distance, zoomProgress);
-                    SetCameraDistance(cameraDistance);
+                    float newCameraSize = Mathf.Lerp(startCameraSize, targetCameraSize, zoomProgress);
+                    _camera.orthographicSize = newCameraSize;
                 })
                 .Play();
 
@@ -199,17 +204,6 @@ namespace CameraManagement.CameraAim.Core
             }
 
             return 0;
-        }
-
-        private void SetCameraDistance(float distance)
-        {
-            if (RaycastFloor(out var hit))
-            {
-                Vector3 hitPoint = hit.point;
-                Vector3 direction = -_transform.forward;
-                Vector3 targetPosition = hitPoint + direction * distance;
-                _transform.position = targetPosition;
-            }
         }
 
         private bool RaycastFloor(out RaycastHit hit)
